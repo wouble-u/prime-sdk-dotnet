@@ -178,5 +178,30 @@ namespace CoinbaseSdk.Prime.Transactions
         options,
         cancellationToken);
     }
+
+    public CreateOnchainTransactionResponse CreateOnchainTransaction(
+      CreateOnchainTransactionRequest request,
+      CallOptions? options = null)
+    {
+      return this.Request<CreateOnchainTransactionResponse>(
+        HttpMethod.Post,
+        $"/portfolios/{request.PortfolioId}/wallets/{request.WalletId}/onchain_transaction",
+        [HttpStatusCode.Created, HttpStatusCode.OK],
+        request,
+        options);
+    }
+    public Task<CreateOnchainTransactionResponse> CreateOnchainTransactionAsync(
+      CreateOnchainTransactionRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default)
+    {
+      return this.RequestAsync<CreateOnchainTransactionResponse>(
+        HttpMethod.Post,
+        $"/portfolios/{request.PortfolioId}/wallets/{request.WalletId}/onchain_transaction",
+        [HttpStatusCode.Created, HttpStatusCode.OK],
+        request,
+        options,
+        cancellationToken);
+    }
   }
 }
