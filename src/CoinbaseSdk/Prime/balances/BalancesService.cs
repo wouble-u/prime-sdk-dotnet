@@ -74,7 +74,7 @@ namespace CoinbaseSdk.Prime.Balances
         cancellationToken);
     }
 
-    public ListOnchainWalletBalancesResponse ListWeb3WalletBalances(
+    public ListOnchainWalletBalancesResponse ListOnchainWalletBalances(
       ListOnchainWalletBalancesRequest request,
       CallOptions? options = null)
     {
@@ -86,7 +86,7 @@ namespace CoinbaseSdk.Prime.Balances
         options);
     }
 
-    public Task<ListOnchainWalletBalancesResponse> ListWeb3WalletBalancesAsync(
+    public Task<ListOnchainWalletBalancesResponse> ListOnchainWalletBalancesAsync(
       ListOnchainWalletBalancesRequest request,
       CallOptions? options = null,
       CancellationToken cancellationToken = default)
