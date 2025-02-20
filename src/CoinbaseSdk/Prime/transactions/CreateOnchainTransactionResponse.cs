@@ -22,28 +22,5 @@ namespace CoinbaseSdk.Prime.Transactions
     {
         [JsonPropertyName("transaction_id")]
         public string? TransactionId { get; set; }
-
-        public class CreateOnchainTransactionResponseBuilder
-        {
-            private string? _transactionId;
-
-            public CreateOnchainTransactionResponseBuilder WithTransactionId(string transactionId)
-            {
-                this._transactionId = transactionId;
-                return this;
-            }
-
-            /// <summary>
-            /// Build the <see cref="CreateOnchainTransactionResponse"/> object.
-            /// </summary>
-            /// <returns>The <see cref="CreateOnchainTransactionResponse"/> object.</returns>
-            public CreateOnchainTransactionResponse Build()
-            {
-                return new CreateOnchainTransactionResponse()
-                {
-                    TransactionId = this._transactionId,
-                };
-            }
-        }
     }
 }

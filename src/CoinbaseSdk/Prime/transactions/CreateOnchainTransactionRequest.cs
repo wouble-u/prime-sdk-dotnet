@@ -17,7 +17,6 @@
 namespace CoinbaseSdk.Prime.Transactions
 {
     using System.Text.Json.Serialization;
-    using CoinbaseSdk.Core.Error;
     using CoinbaseSdk.Prime.Common;
 
     public class CreateOnchainTransactionRequest(string portfolioId, string walletId)
@@ -30,69 +29,5 @@ namespace CoinbaseSdk.Prime.Transactions
 
         [JsonPropertyName("rpc")]
         public RPC? RPC { get; set; }
-
-        public class CreateOnchainTransactionRequestBuilder
-        {
-            private string? _portfolioId;
-            private string? _walletId;
-            private EVMParams? _evmParams;
-            private RPC? _rpc;
-
-            public CreateOnchainTransactionRequestBuilder WithPortfolioId(string portfolioId)
-            {
-                this._portfolioId = portfolioId;
-                return this;
-            }
-
-            public CreateOnchainTransactionRequestBuilder WithWalletId(string walletId)
-            {
-                this._walletId = walletId;
-                return this;
-            }
-
-            public CreateOnchainTransactionRequestBuilder WithEVMParams(EVMParams evmParams)
-            {
-                this._evmParams = evmParams;
-                return this;
-            }
-
-            public CreateOnchainTransactionRequestBuilder WithRPC(RPC rpc)
-            {
-                this._rpc = rpc;
-                return this;
-            }
-
-            /// <summary>
-            /// Validate the builder.
-            /// </summary>
-            /// <exception cref="CoinbaseClientException">Thrown when the
-            /// <see cref="_portfolioId"/> is null, empty or whitespace.</exception>
-            private void Validate()
-            {
-                if (string.IsNullOrWhiteSpace(this._portfolioId))
-                {
-                    throw new CoinbaseClientException("PortfolioId is required");
-                }
-                if (string.IsNullOrWhiteSpace(this._walletId))
-                {
-                    throw new CoinbaseClientException("WalletId is required");
-                }
-            }
-
-            /// <summary>
-            /// Build the <see cref="CreateOnchainTransactionRequest"/> object.
-            /// </summary>
-            /// <returns>The <see cref="CreateOnchainTransactionRequest"/> object.</returns>
-            /// <exception cref="CoinbaseClientException">Thrown when the required fields are not set.</exception>
-            public CreateOnchainTransactionRequest Build()
-            {
-                this.Validate();
-                return new CreateOnchainTransactionRequest(this._portfolioId!, this._walletId!)
-                {
-                    EVMParams = this._evmParams,
-                    RPC = this._rpc,
-                };
-            }
-        }
     }
 }
