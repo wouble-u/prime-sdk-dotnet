@@ -34,7 +34,7 @@ namespace CoinbaseSdk.Prime.OnchainAddressBook
             CallOptions? options = null);
 
         public Task<UpdateOnchainAddressBookEntryResponse> UpdateOnchainAddressBookEntryAsync(
-            UpdateOnchainAddressBookEntryResponse request,
+            UpdateOnchainAddressBookEntryRequest request,
             CallOptions? options = null,
             CancellationToken cancellationToken = default);
 
@@ -42,7 +42,7 @@ namespace CoinbaseSdk.Prime.OnchainAddressBook
             DeleteOnchainAddressGroupRequest request,
             CallOptions? options = null);
 
-        public Task<DeleteOnchainAddressGroupResponse> DeleteOnchainAddressGroup(
+        public Task<DeleteOnchainAddressGroupResponse> DeleteOnchainAddressGroupAsync(
             DeleteOnchainAddressGroupRequest request,
             CallOptions? options = null,
             CancellationToken cancellationToken = default);
@@ -51,7 +51,7 @@ namespace CoinbaseSdk.Prime.OnchainAddressBook
             ListOnchainAddressGroupsRequest request,
             CallOptions? options = null);
 
-        public Task<ListOnchainAddressGroupsResponse> ListOnchainAddressGroups(
+        public Task<ListOnchainAddressGroupsResponse> ListOnchainAddressGroupsAsync(
             ListOnchainAddressGroupsRequest request,
             CallOptions? options = null,
             CancellationToken cancellationToken = default);
