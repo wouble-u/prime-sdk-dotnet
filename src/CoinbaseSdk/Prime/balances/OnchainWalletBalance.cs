@@ -19,18 +19,18 @@ namespace CoinbaseSdk.Prime.Balances
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Prime.Model;
 
-  public class Web3WalletBalance
+  public class OnchainWalletBalance
   {
-    public Web3WalletAsset? Asset { get; set; }
+    public OnchainWalletAsset? Asset { get; set; }
 
     public string? Amount { get; set; }
 
     [JsonPropertyName("visibility_status")]
     public VisibilityStatus VisibilityStatus { get; set; }
 
-    public Web3WalletBalance() { }
+    public OnchainWalletBalance() { }
 
-    public Web3WalletBalance(Web3WalletAsset asset, string amount, VisibilityStatus visibilityStatus)
+    public OnchainWalletBalance(OnchainWalletAsset asset, string amount, VisibilityStatus visibilityStatus)
     {
       Asset = asset;
       Amount = amount;
@@ -39,11 +39,11 @@ namespace CoinbaseSdk.Prime.Balances
 
     public class Web3WalletBalanceBuilder
     {
-      private Web3WalletAsset? _asset;
+      private OnchainWalletAsset? _asset;
       private string? _amount;
       private VisibilityStatus _visibilityStatus;
 
-      public Web3WalletBalanceBuilder WithAsset(Web3WalletAsset? asset)
+      public Web3WalletBalanceBuilder WithAsset(OnchainWalletAsset? asset)
       {
         this._asset = asset;
         return this;
@@ -61,9 +61,9 @@ namespace CoinbaseSdk.Prime.Balances
         return this;
       }
 
-      public Web3WalletBalance Build()
+      public OnchainWalletBalance Build()
       {
-        return new Web3WalletBalance
+        return new OnchainWalletBalance
         {
           Asset = this._asset,
           Amount = this._amount,

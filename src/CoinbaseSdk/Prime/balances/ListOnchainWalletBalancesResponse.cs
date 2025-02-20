@@ -17,33 +17,33 @@
 namespace CoinbaseSdk.Prime.Balances
 {
   using CoinbaseSdk.Prime.Common;
-  public class ListWeb3WalletBalancesResponse
+  public class ListOnchainWalletBalancesResponse
   {
-    public Web3WalletBalance[] Balances { get; set; } = [];
+    public OnchainWalletBalance[] Balances { get; set; } = [];
     public Pagination? Pagination { get; set; }
 
-    public ListWeb3WalletBalancesResponse() { }
+    public ListOnchainWalletBalancesResponse() { }
 
-    public class ListWeb3WalletBalancesResponseBuilder
+    public class ListOnchainWalletBalancesResponseBuilder
     {
-      private Web3WalletBalance[] _balances = Array.Empty<Web3WalletBalance>();
+      private OnchainWalletBalance[] _balances = Array.Empty<OnchainWalletBalance>();
       private Pagination? _pagination;
 
-      public ListWeb3WalletBalancesResponseBuilder WithBalances(Web3WalletBalance[] balances)
+      public ListOnchainWalletBalancesResponseBuilder WithBalances(OnchainWalletBalance[] balances)
       {
         this._balances = balances;
         return this;
       }
 
-      public ListWeb3WalletBalancesResponseBuilder WithPagination(Pagination? pagination)
+      public ListOnchainWalletBalancesResponseBuilder WithPagination(Pagination? pagination)
       {
         this._pagination = pagination;
         return this;
       }
 
-      public ListWeb3WalletBalancesResponse Build()
+      public ListOnchainWalletBalancesResponse Build()
       {
-        return new ListWeb3WalletBalancesResponse
+        return new ListOnchainWalletBalancesResponse
         {
           Balances = this._balances,
           Pagination = this._pagination

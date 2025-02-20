@@ -21,64 +21,62 @@ namespace CoinbaseSdk.Prime.Balances
   using CoinbaseSdk.Prime.Common;
   using CoinbaseSdk.Prime.Model;
 
-  public class ListWeb3WalletBalancesRequest(string portfolioId, string walletId)
-  : BaseListRequest(portfolioId, null)
+  public class ListOnchainWalletBalancesRequest(string portfolioId, string walletId)
   {
+    [JsonIgnore]
+    public string PortfolioId { get; set; } = portfolioId;
+
     [JsonIgnore]
     public string WalletId { get; set; } = walletId;
 
     [JsonPropertyName("visibility_statuses")]
     public VisibilityStatus[] VisibilityStatuses { get; set; } = [];
 
-    public class ListWeb3WalletBalancesRequestBuilder
+    public string? Cursor { get; set; }
+
+    public int? Limit { get; set; }
+
+    public class ListOnchainWalletBalancesRequestBuilder
     {
       private string? _portfolioId;
       private string? _walletId;
       private VisibilityStatus[] _visibilityStatuses = [];
       private string? _cursor;
-      private string? _sortDirection;
       private int? _limit;
 
-      public ListWeb3WalletBalancesRequestBuilder WithPortfolioId(string portfolioId)
+      public ListOnchainWalletBalancesRequestBuilder WithPortfolioId(string portfolioId)
       {
         this._portfolioId = portfolioId;
         return this;
       }
 
-      public ListWeb3WalletBalancesRequestBuilder WithWalletId(string walletId)
+      public ListOnchainWalletBalancesRequestBuilder WithWalletId(string walletId)
       {
         this._walletId = walletId;
         return this;
       }
 
-      public ListWeb3WalletBalancesRequestBuilder WithVisibilityStatuses(VisibilityStatus[] visibilityStatuses)
+      public ListOnchainWalletBalancesRequestBuilder WithVisibilityStatuses(VisibilityStatus[] visibilityStatuses)
       {
         this._visibilityStatuses = visibilityStatuses;
         return this;
       }
 
-      public ListWeb3WalletBalancesRequestBuilder WithCursor(string cursor)
+      public ListOnchainWalletBalancesRequestBuilder WithCursor(string cursor)
       {
         this._cursor = cursor;
         return this;
       }
 
-      public ListWeb3WalletBalancesRequestBuilder WithSortDirection(string sortDirection)
-      {
-        this._sortDirection = sortDirection;
-        return this;
-      }
-
-      public ListWeb3WalletBalancesRequestBuilder WithLimit(int limit)
+      public ListOnchainWalletBalancesRequestBuilder WithLimit(int limit)
       {
         this._limit = limit;
         return this;
       }
 
-      public ListWeb3WalletBalancesRequestBuilder WithPagination(Pagination pagination)
+      public ListOnchainWalletBalancesRequestBuilder WithPagination(Pagination pagination)
       {
         this._cursor = pagination.NextCursor;
-        this._sortDirection = pagination.SortDirection;
         return this;
       }
 
@@ -102,18 +100,17 @@ namespace CoinbaseSdk.Prime.Balances
       }
 
       /// <summary>
-      /// Build the <see cref="ListWeb3WalletBalancesRequest"/>.
+      /// Build the <see cref="ListOnchainWalletBalancesRequest"/>.
       /// </summary>
-      /// <returns>The <see cref="ListWeb3WalletBalancesRequest"/>.</returns>
+      /// <returns>The <see cref="ListOnchainWalletBalancesRequest"/>.</returns>
       /// <exception cref="CoinbaseClientException">Thrown when the required fields are not set.</exception>
-      public ListWeb3WalletBalancesRequest Build()
+      public ListOnchainWalletBalancesRequest Build()
       {
         Validate();
-        return new ListWeb3WalletBalancesRequest(_portfolioId!, this._walletId!)
+        return new ListOnchainWalletBalancesRequest(_portfolioId!, this._walletId!)
         {
           VisibilityStatuses = this._visibilityStatuses,
           Cursor = this._cursor,
-          SortDirection = this._sortDirection,
           Limit = this._limit
         };
       }

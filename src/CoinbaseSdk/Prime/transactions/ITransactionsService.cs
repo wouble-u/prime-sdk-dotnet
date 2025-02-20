@@ -80,7 +80,7 @@ namespace CoinbaseSdk.Prime.Transactions
 
         public Task<CreateOnchainTransactionResponse> CreateOnchainTransactionAsync(
             CreateOnchainTransactionRequest request,
-            CallOptions? optiona = null,
+            CallOptions? options = null,
             CancellationToken cancellationToken = default);
     }
 }

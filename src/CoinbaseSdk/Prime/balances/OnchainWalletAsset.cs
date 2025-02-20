@@ -17,7 +17,7 @@
 namespace CoinbaseSdk.Prime.Balances
 {
   using System.Text.Json.Serialization;
-  public class Web3WalletAsset
+  public class OnchainWalletAsset
   {
     public string? Network { get; set; }
 
@@ -29,9 +29,9 @@ namespace CoinbaseSdk.Prime.Balances
     [JsonPropertyName("token_id")]
     public string? TokenId { get; set; }
 
-    public Web3WalletAsset() { }
+    public OnchainWalletAsset() { }
 
-    public Web3WalletAsset(string network, string contractAddress, string symbol, string tokenId)
+    public OnchainWalletAsset(string network, string contractAddress, string symbol, string tokenId)
     {
       Network = network;
       ContractAddress = contractAddress;
@@ -39,40 +39,40 @@ namespace CoinbaseSdk.Prime.Balances
       TokenId = tokenId;
     }
 
-    public class Web3WalletAssetBuilder
+    public class OnchainWalletAssetBuilder
     {
       private string? _network;
       private string? _contractAddress;
       private string? _symbol;
       private string? _tokenId;
 
-      public Web3WalletAssetBuilder WithNetwork(string? network)
+      public OnchainWalletAssetBuilder WithNetwork(string? network)
       {
         this._network = network;
         return this;
       }
 
-      public Web3WalletAssetBuilder WithContractAddress(string? contractAddress)
+      public OnchainWalletAssetBuilder WithContractAddress(string? contractAddress)
       {
         this._contractAddress = contractAddress;
         return this;
       }
 
-      public Web3WalletAssetBuilder WithSymbol(string? symbol)
+      public OnchainWalletAssetBuilder WithSymbol(string? symbol)
       {
         this._symbol = symbol;
         return this;
       }
 
-      public Web3WalletAssetBuilder WithTokenId(string? tokenId)
+      public OnchainWalletAssetBuilder WithTokenId(string? tokenId)
       {
         this._tokenId = tokenId;
         return this;
       }
 
-      public Web3WalletAsset Build()
+      public OnchainWalletAsset Build()
       {
-        return new Web3WalletAsset
+        return new OnchainWalletAsset
         {
           Network = this._network,
           ContractAddress = this._contractAddress,
