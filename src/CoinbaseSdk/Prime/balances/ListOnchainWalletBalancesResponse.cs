@@ -1,5 +1,5 @@
 /*
- * Copyright 2024-present Coinbase Global, Inc.
+ * Copyright 2025-present Coinbase Global, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,13 +14,14 @@
  * limitations under the License.
  */
 
-namespace CoinbaseSdk.Prime.Model
+namespace CoinbaseSdk.Prime.Balances
 {
-  public enum WalletType
+  using CoinbaseSdk.Prime.Common;
+  public class ListOnchainWalletBalancesResponse
   {
-    VAULT,
-    TRADING,
-    WALLET_TYPE_OTHER,
-    ONCHAIN
+    public OnchainWalletBalance[] Balances { get; set; } = [];
+    public Pagination? Pagination { get; set; }
+
+    public ListOnchainWalletBalancesResponse() { }
   }
 }

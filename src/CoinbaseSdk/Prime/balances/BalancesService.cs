@@ -74,11 +74,11 @@ namespace CoinbaseSdk.Prime.Balances
         cancellationToken);
     }
 
-    public ListWeb3WalletBalancesResponse ListWeb3WalletBalances(
-      ListWeb3WalletBalancesRequest request,
+    public ListOnchainWalletBalancesResponse ListOnchainWalletBalances(
+      ListOnchainWalletBalancesRequest request,
       CallOptions? options = null)
     {
-      return this.Request<ListWeb3WalletBalancesResponse>(
+      return this.Request<ListOnchainWalletBalancesResponse>(
         HttpMethod.Get,
         $"/portfolios/{request.PortfolioId}/wallets/{request.WalletId}/web3_balances",
         [HttpStatusCode.OK],
@@ -86,12 +86,12 @@ namespace CoinbaseSdk.Prime.Balances
         options);
     }
 
-    public Task<ListWeb3WalletBalancesResponse> ListWeb3WalletBalancesAsync(
-      ListWeb3WalletBalancesRequest request,
+    public Task<ListOnchainWalletBalancesResponse> ListOnchainWalletBalancesAsync(
+      ListOnchainWalletBalancesRequest request,
       CallOptions? options = null,
       CancellationToken cancellationToken = default)
     {
-      return this.RequestAsync<ListWeb3WalletBalancesResponse>(
+      return this.RequestAsync<ListOnchainWalletBalancesResponse>(
         HttpMethod.Get,
         $"/portfolios/{request.PortfolioId}/wallets/{request.WalletId}/web3_balances",
         [HttpStatusCode.OK],

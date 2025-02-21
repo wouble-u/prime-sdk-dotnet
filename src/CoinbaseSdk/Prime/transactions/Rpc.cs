@@ -1,5 +1,5 @@
 /*
- * Copyright 2024-present Coinbase Global, Inc.
+ * Copyright 2025-present Coinbase Global, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,13 +14,17 @@
  * limitations under the License.
  */
 
-namespace CoinbaseSdk.Prime.Model
+namespace CoinbaseSdk.Prime.Transactions
 {
-  public enum WalletType
-  {
-    VAULT,
-    TRADING,
-    WALLET_TYPE_OTHER,
-    ONCHAIN
-  }
+    using System.Text.Json.Serialization;
+
+    public class Rpc
+    {
+        [JsonPropertyName("skip_broadcast")]
+        public bool? SkipBroadcast { get; set; }
+
+        public string? Url { get; set; }
+
+        public Rpc() { }
+    }
 }
