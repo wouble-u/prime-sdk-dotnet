@@ -19,10 +19,10 @@ namespace CoinbaseSdk.Prime.OnchainAddressBook
     using System.Text.Json.Serialization;
     using CoinbaseSdk.Prime.Common;
 
-    public class CreateOnchainAddressBookEntryRequest(string portfolioId)
+    public class CreateOnchainAddressBookEntryRequest(string portfolioId, AddressGroup addressGroup)
         : BasePrimeRequest(portfolioId, null)
     {
         [JsonPropertyName("address_group")]
-        public AddressGroup? AddressGroup { get; set; }
+        public AddressGroup AddressGroup { get; set; } = addressGroup;
     }
 }
