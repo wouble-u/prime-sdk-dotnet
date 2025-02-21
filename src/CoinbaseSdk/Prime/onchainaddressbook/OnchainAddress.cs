@@ -24,6 +24,6 @@ namespace CoinbaseSdk.Prime.OnchainAddressBook
         public string? Address { get; set; }
 
         [JsonPropertyName("chain_ids")]
-        public string[] ChainIds { get; set; } = [];
+        public string[] ChainIds { get; set; } = ["1"];
     }
 }
