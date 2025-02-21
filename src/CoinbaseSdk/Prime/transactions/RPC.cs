@@ -26,30 +26,5 @@ namespace CoinbaseSdk.Prime.Transactions
         public string? Url { get; set; }
 
         public Rpc() { }
-
-        public class RPCBuilder
-        {
-            private bool? _skipBroadcast;
-            private string? _url;
-
-            public RPCBuilder() { }
-
-            public RPCBuilder WithSkipBroadcast(bool skipBroadcast)
-            {
-                this._skipBroadcast = skipBroadcast;
-                return this;
-            }
-
-            public RPCBuilder WithUrl(string url)
-            {
-                this._url = url;
-                return this;
-            }
-
-            public Rpc Build()
-            {
-                return new Rpc { SkipBroadcast = this._skipBroadcast, Url = this._url };
-            }
-        }
     }
 }

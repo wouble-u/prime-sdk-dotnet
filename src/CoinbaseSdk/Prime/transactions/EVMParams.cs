@@ -30,42 +30,5 @@ namespace CoinbaseSdk.Prime.Transactions
         public string? ChainId { get; set; }
 
         public EvmParams() { }
-
-        public class EVMParamsBuilder
-        {
-            private bool? _disableDynamicGas;
-            private string? _replacedTransactionString;
-            private string? _chainId;
-
-            public EVMParamsBuilder() { }
-
-            public EVMParamsBuilder WithDisableDynamicGas(bool disableDynamicGas)
-            {
-                this._disableDynamicGas = disableDynamicGas;
-                return this;
-            }
-
-            public EVMParamsBuilder WithReplacedTransactionString(string replacedTransactionString)
-            {
-                this._replacedTransactionString = replacedTransactionString;
-                return this;
-            }
-
-            public EVMParamsBuilder WithChainId(string chainId)
-            {
-                this._chainId = chainId;
-                return this;
-            }
-
-            public EvmParams Build()
-            {
-                return new EvmParams
-                {
-                    DisableDynamicGas = this._disableDynamicGas,
-                    ReplacedTransactionString = this._replacedTransactionString,
-                    ChainId = this._chainId,
-                };
-            }
-        }
     }
 }
