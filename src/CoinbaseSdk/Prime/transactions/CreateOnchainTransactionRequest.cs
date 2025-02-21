@@ -25,9 +25,9 @@ namespace CoinbaseSdk.Prime.Transactions
         public string WalletId { get; set; } = walletId;
 
         [JsonPropertyName("evm_params")]
-        public EVMParams? EVMParams { get; set; }
+        public EvmParams? EVMParams { get; set; }
 
         [JsonPropertyName("rpc")]
-        public RPC? RPC { get; set; }
+        public Rpc? Rpc { get; set; }
     }
 }

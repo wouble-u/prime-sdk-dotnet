@@ -22,7 +22,7 @@ namespace CoinbaseSdk.Prime.OnchainAddressBook
     public class UpdateOnchainAddressBookEntryResponse
     {
         [JsonPropertyName("activity_type")]
-        public AddressBookActivityType? ActivityType { get; set; }
+        public CustodyActivityType? ActivityType { get; set; }
 
         [JsonPropertyName("num_approvals_remaining")]
         public int? NumApprovalsRemaining { get; set; }

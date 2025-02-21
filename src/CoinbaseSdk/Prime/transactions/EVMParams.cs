@@ -18,7 +18,7 @@ namespace CoinbaseSdk.Prime.Transactions
 {
     using System.Text.Json.Serialization;
 
-    public class EVMParams
+    public class EvmParams
     {
         [JsonPropertyName("disable_dynamic_gas")]
         public bool? DisableDynamicGas { get; set; }
@@ -29,7 +29,7 @@ namespace CoinbaseSdk.Prime.Transactions
         [JsonPropertyName("chain_id")]
         public string? ChainId { get; set; }
 
-        public EVMParams() { }
+        public EvmParams() { }
 
         public class EVMParamsBuilder
         {
@@ -57,9 +57,9 @@ namespace CoinbaseSdk.Prime.Transactions
                 return this;
             }
 
-            public EVMParams Build()
+            public EvmParams Build()
             {
-                return new EVMParams
+                return new EvmParams
                 {
                     DisableDynamicGas = this._disableDynamicGas,
                     ReplacedTransactionString = this._replacedTransactionString,

@@ -18,14 +18,14 @@ namespace CoinbaseSdk.Prime.Transactions
 {
     using System.Text.Json.Serialization;
 
-    public class RPC
+    public class Rpc
     {
         [JsonPropertyName("skip_broadcast")]
         public bool? SkipBroadcast { get; set; }
 
         public string? Url { get; set; }
 
-        public RPC() { }
+        public Rpc() { }
 
         public class RPCBuilder
         {
@@ -46,9 +46,9 @@ namespace CoinbaseSdk.Prime.Transactions
                 return this;
             }
 
-            public RPC Build()
+            public Rpc Build()
             {
-                return new RPC { SkipBroadcast = this._skipBroadcast, Url = this._url };
+                return new Rpc { SkipBroadcast = this._skipBroadcast, Url = this._url };
             }
         }
     }

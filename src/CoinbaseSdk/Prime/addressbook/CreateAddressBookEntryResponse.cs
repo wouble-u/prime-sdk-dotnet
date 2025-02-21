@@ -22,7 +22,7 @@ namespace CoinbaseSdk.Prime.AddressBook
   public class CreateAddressBookEntryResponse
   {
     [JsonPropertyName("activity_type")]
-    public AddressBookActivityType ActivityType { get; set; }
+    public CustodyActivityType ActivityType { get; set; }
     [JsonPropertyName("num_approvals_remaining")]
     public int? NumApprovalsRemaining { get; set; }
     [JsonPropertyName("activity_id")]
@@ -30,11 +30,11 @@ namespace CoinbaseSdk.Prime.AddressBook
 
     public class CreateAddressBookEntryResponseBuilder
     {
-      private AddressBookActivityType _activityType;
+      private CustodyActivityType _activityType;
       private int? _numApprovalsRemaining;
       private string? _activityId;
 
-      public CreateAddressBookEntryResponseBuilder WithActivityType(AddressBookActivityType activityType)
+      public CreateAddressBookEntryResponseBuilder WithActivityType(CustodyActivityType activityType)
       {
         this._activityType = activityType;
         return this;

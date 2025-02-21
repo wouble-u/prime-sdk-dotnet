@@ -16,7 +16,7 @@
 
 namespace CoinbaseSdk.Prime.Model
 {
-    public enum AddressBookActivityType
+    public enum CustodyActivityType
     {
         ACTIVITY_TYPE_UNKNOWN,
         ACTIVITY_TYPE_GOVERNANCE_VOTE,

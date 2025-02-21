@@ -21,7 +21,7 @@ namespace CoinbaseSdk.Prime.OnchainAddressBook
 
     public class AddressGroup
     {
-        public string? ID { get; set; }
+        public string? Id { get; set; }
         public string? Name { get; set; }
 
         [JsonPropertyName("network_type")]
