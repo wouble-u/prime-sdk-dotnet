@@ -20,10 +20,13 @@ namespace CoinbaseSdk.Prime.Assets
 
   public class NetworkInfo
   {
+    [JsonPropertyName("network")]
     public NetworkDetails? Network { get; set; }
+    [JsonPropertyName("name")]
     public string? Name { get; set; }
     [JsonPropertyName("max_decimals")]
     public string? MaxDecimals { get; set; }
+    [JsonPropertyName("default")]
     public bool? Default { get; set; }
     [JsonPropertyName("trading_supported")]
     public bool? TradingSupported { get; set; }

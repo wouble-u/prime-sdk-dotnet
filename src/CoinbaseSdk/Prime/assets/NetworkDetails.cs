@@ -18,7 +18,9 @@ namespace CoinbaseSdk.Prime.Assets
 {
   public class NetworkDetails
   {
+    [JsonPropertyName("id")]
     public string? Id { get; set; }
+    [JsonPropertyName("type")]
     public string? Type { get; set; }
   }
 }

@@ -23,6 +23,7 @@ namespace CoinbaseSdk.Prime.Activities
   public class ListEntityActivitiesRequest(string entityId)
   : BaseListRequest(null, entityId)
   {
+    [JsonPropertyName("activity_level")]
     public string? ActivityLevel { get; set; }
     public string[] Symbols { get; set; } = [];
     public string[] Categories { get; set; } = [];
