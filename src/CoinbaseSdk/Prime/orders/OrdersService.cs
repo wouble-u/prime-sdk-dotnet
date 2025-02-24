@@ -205,5 +205,30 @@ namespace CoinbaseSdk.Prime.Orders
         options,
         cancellationToken);
     }
+
+    public ListOrderFillsResponse ListPortfolioFills(
+      ListPortfolioFillsRequest request,
+      CallOptions? options = null)
+    {
+      return this.Request<ListOrderFillsResponse>(
+        HttpMethod.Get,
+        $"/portfolios/{request.PortfolioId}/fills",
+        [HttpStatusCode.OK],
+        request,
+        options);
+    }
+
+    public Task<ListOrderFillsResponse> ListPortfolioFillsAsync(
+      ListPortfolioFillsRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default)
+    {
+      return this.RequestAsync<ListOrderFillsResponse>(
+        HttpMethod.Get,
+        $"/portfolios/{request.PortfolioId}/fills",
+        [HttpStatusCode.OK],
+        request,
+        options,
+        cancellationToken);
   }
 }

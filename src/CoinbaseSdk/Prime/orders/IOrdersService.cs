@@ -82,5 +82,14 @@ namespace CoinbaseSdk.Prime.Orders
       ListPortfolioOrdersRequest request,
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
+
+    public ListOrderFillsResponse ListPortfolioFills(
+      ListPortfolioFillsRequest request,
+      CallOptions? options = null);
+
+    public Task<ListOrderFillsResponse> ListPortfolioFillsAsync(
+      ListPortfolioFillsRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default);
   }
 }

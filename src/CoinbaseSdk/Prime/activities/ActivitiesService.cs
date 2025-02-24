@@ -49,6 +49,32 @@ namespace CoinbaseSdk.Prime.Activities
         cancellationToken);
     }
 
+    public ListActivitiesResponse ListEntityActivities(
+      ListEntityActivitiesRequest request,
+      CallOptions? options = null)
+    {
+      return this.Request<ListActivitiesResponse>(
+        HttpMethod.Get,
+        $"/entities/{request.EntityId}/activities",
+        [HttpStatusCode.OK],
+        request,
+        options);
+    }
+
+    public Task<ListActivitiesResponse> ListEntityActivitiesAsync(
+      ListEntityActivitiesRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default)
+    {
+      return this.RequestAsync<ListActivitiesResponse>(
+        HttpMethod.Get,
+        $"/entities/{request.EntityId}/activities",
+        [HttpStatusCode.OK],
+        request,
+        options,
+        cancellationToken);
+    }
+
     public GetActivityByActivityIdResponse GetActivityByActivityId(
       GetActivityByActivityIdRequest request,
       CallOptions? options = null)
@@ -69,6 +95,32 @@ namespace CoinbaseSdk.Prime.Activities
       return this.RequestAsync<GetActivityByActivityIdResponse>(
         HttpMethod.Get,
         $"/portfolios/{request.PortfolioId}/activities/{request.ActivityId}",
+        [HttpStatusCode.OK],
+        null,
+        options,
+        cancellationToken);
+    }
+
+    public GetActivityByActivityIdResponse GetEntityActivityByActivityId(
+      GetEntityActivityByActivityIdRequest request,
+      CallOptions? options = null)
+    {
+      return this.Request<GetActivityByActivityIdResponse>(
+        HttpMethod.Get,
+        $"/activities/{request.ActivityId}",
+        [HttpStatusCode.OK],
+        null,
+        options);
+    }
+
+    public Task<GetActivityByActivityIdResponse> GetEntityActivityByActivityIdAsync(
+      GetEntityActivityByActivityIdRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default)
+    {
+      return this.RequestAsync<GetActivityByActivityIdResponse>(
+        HttpMethod.Get,
+        $"/activities/{request.ActivityId}",
         [HttpStatusCode.OK],
         null,
         options,
