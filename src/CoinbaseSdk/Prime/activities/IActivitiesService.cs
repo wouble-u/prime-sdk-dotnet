@@ -37,5 +37,23 @@ namespace CoinbaseSdk.Prime.Activities
       GetActivityByActivityIdRequest request,
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
+
+    public ListActivitiesResponse ListEntityActivities(
+      ListEntityActivitiesRequest request,
+      CallOptions? options = null);
+
+    public Task<ListActivitiesResponse> ListEntityActivitiesAsync(
+      ListEntityActivitiesRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default);
+
+    public GetActivityByActivityIdResponse GetEntityActivityByActivityId(
+      GetEntityActivityByActivityIdRequest request,
+      CallOptions? options = null);
+
+    public Task<GetActivityByActivityIdResponse> GetEntityActivityByActivityIdAsync(
+      GetEntityActivityByActivityIdRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default);
   }
 }

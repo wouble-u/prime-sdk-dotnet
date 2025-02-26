@@ -16,7 +16,9 @@
 
 namespace CoinbaseSdk.Prime.Assets
 {
+  using System.Collections.Generic;
   using System.Text.Json.Serialization;
+
   public class Asset
   {
     public string? Name { get; set; }
@@ -31,6 +33,9 @@ namespace CoinbaseSdk.Prime.Assets
     [JsonPropertyName("explorer_url")]
     public string? ExplorerUrl { get; set; }
 
+    [JsonPropertyName("networks")]
+    public List<NetworkInfo>? Networks { get; set; }
+
     public Asset() { }
 
     public class AssetBuilder
@@ -40,6 +45,7 @@ namespace CoinbaseSdk.Prime.Assets
       private string? _decimalPrecision;
       private bool? _tradingSupported;
       private string? _explorerUrl;
+      private List<NetworkInfo>? _networks;
 
       public AssetBuilder WithName(string? name)
       {
@@ -71,6 +77,12 @@ namespace CoinbaseSdk.Prime.Assets
         return this;
       }
 
+      public AssetBuilder WithNetworks(List<NetworkInfo>? networks)
+      {
+        this._networks = networks;
+        return this;
+      }
+
       public Asset Build()
       {
         return new Asset
@@ -79,7 +91,8 @@ namespace CoinbaseSdk.Prime.Assets
           Symbol = this._symbol,
           DecimalPrecision = this._decimalPrecision,
           TradingSupported = this._tradingSupported,
-          ExplorerUrl = this._explorerUrl
+          ExplorerUrl = this._explorerUrl,
+          Networks = this._networks
         };
       }
     }
