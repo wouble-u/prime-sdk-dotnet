@@ -1,5 +1,5 @@
 /*
- * Copyright 2024-present Coinbase Global, Inc.
+ * Copyright 2025-present Coinbase Global, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,13 +14,21 @@
  * limitations under the License.
  */
 
-namespace CoinbaseSdk.Prime.Model
+namespace CoinbaseSdk.Prime.Transactions
 {
-  public enum WalletType
-  {
-    VAULT,
-    TRADING,
-    WALLET_TYPE_OTHER,
-    ONCHAIN
-  }
+    using System.Text.Json.Serialization;
+
+    public class EvmParams
+    {
+        [JsonPropertyName("disable_dynamic_gas")]
+        public bool? DisableDynamicGas { get; set; }
+
+        [JsonPropertyName("replaced_transaction_string")]
+        public string? ReplacedTransactionString { get; set; }
+
+        [JsonPropertyName("chain_id")]
+        public string? ChainId { get; set; }
+
+        public EvmParams() { }
+    }
 }

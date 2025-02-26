@@ -1,5 +1,5 @@
 /*
- * Copyright 2024-present Coinbase Global, Inc.
+ * Copyright 2025-present Coinbase Global, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,13 +14,20 @@
  * limitations under the License.
  */
 
-namespace CoinbaseSdk.Prime.Model
+namespace CoinbaseSdk.Prime.Transactions
 {
-  public enum WalletType
-  {
-    VAULT,
-    TRADING,
-    WALLET_TYPE_OTHER,
-    ONCHAIN
-  }
+    using System.Text.Json.Serialization;
+    using CoinbaseSdk.Prime.Common;
+
+    public class CreateOnchainTransactionRequest(string portfolioId, string walletId)
+        : BasePrimeRequest(portfolioId, null)
+    {
+        public string WalletId { get; set; } = walletId;
+
+        [JsonPropertyName("evm_params")]
+        public EvmParams? EVMParams { get; set; }
+
+        [JsonPropertyName("rpc")]
+        public Rpc? Rpc { get; set; }
+    }
 }
