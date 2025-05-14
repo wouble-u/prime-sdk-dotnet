@@ -18,44 +18,48 @@ namespace CoinbaseSdk.Prime.Financing
 {
     using System.Text.Json.Serialization;
     using CoinbaseSdk.Prime.Common;
-    public class CreateNewLocatesRequest(string portfolioId) : BasePrimeRequest(portfolioId, null)
+    public class ListExistingLocatesRequest(string portfolioId) : BasePrimeRequest(portfolioId, null)
     {
-        public string? Symbol { get; set; }
-        public string? Amount { get; set; }
+        [JsonPropertyName("locate_ids")]
+        public string[] LocateIds { get; set; } = [];
+
+        [JsonPropertyName("conversion_date")]
+        public string? ConversionDate { get; set; }
+
         [JsonPropertyName("locate_date")]
         public string? LocateDate { get; set; }
 
-        public class CreateNewLocatesRequestBuilder
+        public class ListExistingLocatesRequestBuilder
         {
-            private string? _symbol;
-            private string? _amount;
+            private string[] _locateIds = [];
+            private string? _conversionDate;
             private string? _locateDate;
 
-            public CreateNewLocatesRequestBuilder WithSymbol(string? symbol)
+            public ListExistingLocatesRequestBuilder WithLocateIds(string[] locateIds)
             {
-                this._symbol = symbol;
+                _locateIds = locateIds;
                 return this;
             }
 
-            public CreateNewLocatesRequestBuilder WithAmount(string? amount)
+            public ListExistingLocatesRequestBuilder WithConversionDate(string conversionDate)
             {
-                this._amount = amount;
+                _conversionDate = conversionDate;
                 return this;
             }
 
-            public CreateNewLocatesRequestBuilder WithLocateDate(string? locateDate)
+            public ListExistingLocatesRequestBuilder WithLocateDate(string locateDate)
             {
-                this._locateDate = locateDate;
+                _locateDate = locateDate;
                 return this;
             }
 
-            public CreateNewLocatesRequest Build(string portfolioId)
+            public ListExistingLocatesRequest Build(string portfolioId)
             {
-                return new CreateNewLocatesRequest(portfolioId)
+                return new ListExistingLocatesRequest(portfolioId)
                 {
-                    Symbol = this._symbol,
-                    Amount = this._amount,
-                    LocateDate = this._locateDate
+                    LocateIds = _locateIds,
+                    ConversionDate = _conversionDate,
+                    LocateDate = _locateDate
                 };
             }
         }

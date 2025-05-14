@@ -16,50 +16,40 @@
 
 namespace CoinbaseSdk.Prime.Model
 {
-    public class Locate
+    public class TieredPricingFee
     {
         public string? Symbol { get; set; }
 
-        public string? Quantity { get; set; }
+        public string? Fee { get; set; }
 
-        public string? Rate { get; set; }
+        public TieredPricingFee() { }
 
-        public Locate()
+        public TieredPricingFee(string? symbol, string? fee)
         {
+            Symbol = symbol;
+            Fee = fee;
         }
 
-        public class LocateBuilder
+        public class TieredPricingFeeBuilder
         {
             private string? _symbol;
-            private string? _quantity;
-            private string? _rate;
+            private string? _fee;
 
-            public LocateBuilder WithSymbol(string symbol)
+            public TieredPricingFeeBuilder WithSymbol(string? symbol)
             {
                 _symbol = symbol;
                 return this;
             }
 
-            public LocateBuilder WithQuantity(string quantity)
+            public TieredPricingFeeBuilder WithFee(string? fee)
             {
-                _quantity = quantity;
+                _fee = fee;
                 return this;
             }
 
-            public LocateBuilder WithRate(string rate)
+            public TieredPricingFee Build()
             {
-                _rate = rate;
-                return this;
-            }
-
-            public Locate Build()
-            {
-                return new Locate()
-                {
-                    Symbol = _symbol,
-                    Quantity = _quantity,
-                    Rate = _rate
-                };
+                return new TieredPricingFee(_symbol, _fee);
             }
         }
     }

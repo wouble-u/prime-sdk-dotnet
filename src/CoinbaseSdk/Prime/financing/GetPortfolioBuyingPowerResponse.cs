@@ -17,26 +17,29 @@
 namespace CoinbaseSdk.Prime.Financing
 {
     using System.Text.Json.Serialization;
-    public class CreateNewLocatesResponse
+    using CoinbaseSdk.Prime.Model;
+    public class GetPortfolioBuyingPowerResponse
     {
-        [JsonPropertyName("locate_id")]
-        public string? LocateId { get; set; }
+        [JsonPropertyName("buying_power")]
+        public BuyingPower? BuyingPower { get; set; }
 
-        public class CreateNewLocatesResponseBuilder
+        public GetPortfolioBuyingPowerResponse() { }
+
+        public class GetPortfolioBuyingPowerResponseBuilder
         {
-            private string? _locateId;
+            private BuyingPower? _buyingPower;
 
-            public CreateNewLocatesResponseBuilder WithLocateId(string? locateId)
+            public GetPortfolioBuyingPowerResponseBuilder WithBuyingPower(BuyingPower? buyingPower)
             {
-                this._locateId = locateId;
+                _buyingPower = buyingPower;
                 return this;
             }
 
-            public CreateNewLocatesResponse Build()
+            public GetPortfolioBuyingPowerResponse Build()
             {
-                return new CreateNewLocatesResponse
+                return new GetPortfolioBuyingPowerResponse
                 {
-                    LocateId = this._locateId
+                    BuyingPower = _buyingPower
                 };
             }
         }

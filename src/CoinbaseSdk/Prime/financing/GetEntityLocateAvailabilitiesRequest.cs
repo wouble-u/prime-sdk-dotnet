@@ -18,43 +18,37 @@ namespace CoinbaseSdk.Prime.Financing
 {
     using System.Text.Json.Serialization;
     using CoinbaseSdk.Prime.Common;
-    public class CreateNewLocatesRequest(string portfolioId) : BasePrimeRequest(portfolioId, null)
+
+    public class GetEntityLocateAvailabilitiesRequest(string entityId) : BasePrimeRequest(null, entityId)
     {
-        public string? Symbol { get; set; }
-        public string? Amount { get; set; }
+        [JsonPropertyName("conversion_date")]
+        public string? ConversionDate { get; set; }
+
         [JsonPropertyName("locate_date")]
         public string? LocateDate { get; set; }
 
-        public class CreateNewLocatesRequestBuilder
+        public class GetEntityLocateAvailabilitiesRequestBuilder
         {
-            private string? _symbol;
-            private string? _amount;
+            private string? _conversionDate;
             private string? _locateDate;
 
-            public CreateNewLocatesRequestBuilder WithSymbol(string? symbol)
+            public GetEntityLocateAvailabilitiesRequestBuilder WithConversionDate(string? conversionDate)
             {
-                this._symbol = symbol;
+                this._conversionDate = conversionDate;
                 return this;
             }
 
-            public CreateNewLocatesRequestBuilder WithAmount(string? amount)
-            {
-                this._amount = amount;
-                return this;
-            }
-
-            public CreateNewLocatesRequestBuilder WithLocateDate(string? locateDate)
+            public GetEntityLocateAvailabilitiesRequestBuilder WithLocateDate(string? locateDate)
             {
                 this._locateDate = locateDate;
                 return this;
             }
 
-            public CreateNewLocatesRequest Build(string portfolioId)
+            public GetEntityLocateAvailabilitiesRequest Build(string entityId)
             {
-                return new CreateNewLocatesRequest(portfolioId)
+                return new GetEntityLocateAvailabilitiesRequest(entityId)
                 {
-                    Symbol = this._symbol,
-                    Amount = this._amount,
+                    ConversionDate = this._conversionDate,
                     LocateDate = this._locateDate
                 };
             }

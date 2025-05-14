@@ -16,50 +16,40 @@
 
 namespace CoinbaseSdk.Prime.Model
 {
-    public class Locate
+    public class WithdrawalPower
     {
         public string? Symbol { get; set; }
 
-        public string? Quantity { get; set; }
+        public string? Amount { get; set; }
 
-        public string? Rate { get; set; }
+        public WithdrawalPower() { }
 
-        public Locate()
+        public WithdrawalPower(string? symbol, string? amount)
         {
+            Symbol = symbol;
+            Amount = amount;
         }
 
-        public class LocateBuilder
+        public class WithdrawalPowerBuilder
         {
             private string? _symbol;
-            private string? _quantity;
-            private string? _rate;
+            private string? _amount;
 
-            public LocateBuilder WithSymbol(string symbol)
+            public WithdrawalPowerBuilder WithSymbol(string? symbol)
             {
                 _symbol = symbol;
                 return this;
             }
 
-            public LocateBuilder WithQuantity(string quantity)
+            public WithdrawalPowerBuilder WithAmount(string? amount)
             {
-                _quantity = quantity;
+                _amount = amount;
                 return this;
             }
 
-            public LocateBuilder WithRate(string rate)
+            public WithdrawalPower Build()
             {
-                _rate = rate;
-                return this;
-            }
-
-            public Locate Build()
-            {
-                return new Locate()
-                {
-                    Symbol = _symbol,
-                    Quantity = _quantity,
-                    Rate = _rate
-                };
+                return new WithdrawalPower(_symbol, _amount);
             }
         }
     }

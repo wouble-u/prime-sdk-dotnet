@@ -16,27 +16,26 @@
 
 namespace CoinbaseSdk.Prime.Financing
 {
-    using System.Text.Json.Serialization;
-    public class CreateNewLocatesResponse
+    using CoinbaseSdk.Prime.Model;
+    public class ListMarginConversionsResponse
     {
-        [JsonPropertyName("locate_id")]
-        public string? LocateId { get; set; }
+        public Conversion[] Conversions { get; set; } = [];
 
-        public class CreateNewLocatesResponseBuilder
+        public class ListMarginConversionsResponseBuilder
         {
-            private string? _locateId;
+            private Conversion[] _conversions = [];
 
-            public CreateNewLocatesResponseBuilder WithLocateId(string? locateId)
+            public ListMarginConversionsResponseBuilder WithConversions(Conversion[] conversions)
             {
-                this._locateId = locateId;
+                _conversions = conversions;
                 return this;
             }
 
-            public CreateNewLocatesResponse Build()
+            public ListMarginConversionsResponse Build()
             {
-                return new CreateNewLocatesResponse
+                return new ListMarginConversionsResponse()
                 {
-                    LocateId = this._locateId
+                    Conversions = _conversions
                 };
             }
         }

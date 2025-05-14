@@ -14,29 +14,31 @@
  * limitations under the License.
  */
 
+
 namespace CoinbaseSdk.Prime.Financing
 {
-    using System.Text.Json.Serialization;
-    public class CreateNewLocatesResponse
+    using CoinbaseSdk.Prime.Model;
+    public class GetPortfolioWithdrawalPowerResponse
     {
-        [JsonPropertyName("locate_id")]
-        public string? LocateId { get; set; }
+        public WithdrawalPower? WithdrawalPower { get; set; }
 
-        public class CreateNewLocatesResponseBuilder
+        public GetPortfolioWithdrawalPowerResponse() { }
+
+        public class GetPortfolioWithdrawalPowerResponseBuilder
         {
-            private string? _locateId;
+            private WithdrawalPower? withdrawalPower;
 
-            public CreateNewLocatesResponseBuilder WithLocateId(string? locateId)
+            public GetPortfolioWithdrawalPowerResponseBuilder WithWithdrawalPower(WithdrawalPower? withdrawalPower)
             {
-                this._locateId = locateId;
+                this.withdrawalPower = withdrawalPower;
                 return this;
             }
 
-            public CreateNewLocatesResponse Build()
+            public GetPortfolioWithdrawalPowerResponse Build()
             {
-                return new CreateNewLocatesResponse
+                return new GetPortfolioWithdrawalPowerResponse
                 {
-                    LocateId = this._locateId
+                    WithdrawalPower = withdrawalPower
                 };
             }
         }

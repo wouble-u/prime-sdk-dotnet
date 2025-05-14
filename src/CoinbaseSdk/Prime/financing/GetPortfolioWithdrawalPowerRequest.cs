@@ -16,27 +16,26 @@
 
 namespace CoinbaseSdk.Prime.Financing
 {
-    using System.Text.Json.Serialization;
-    public class CreateNewLocatesResponse
+    using CoinbaseSdk.Prime.Common;
+    public class GetPortfolioWithdrawalPowerRequest(string portfolioId) : BasePrimeRequest(portfolioId, null)
     {
-        [JsonPropertyName("locate_id")]
-        public string? LocateId { get; set; }
+        public string? Symbol { get; set; }
 
-        public class CreateNewLocatesResponseBuilder
+        public class GetPortfolioWithdrawalPowerRequestBuilder
         {
-            private string? _locateId;
+            private string? _symbol;
 
-            public CreateNewLocatesResponseBuilder WithLocateId(string? locateId)
+            public GetPortfolioWithdrawalPowerRequestBuilder WithSymbol(string symbol)
             {
-                this._locateId = locateId;
+                _symbol = symbol;
                 return this;
             }
 
-            public CreateNewLocatesResponse Build()
+            public GetPortfolioWithdrawalPowerRequest Build(string portfolioId)
             {
-                return new CreateNewLocatesResponse
+                return new GetPortfolioWithdrawalPowerRequest(portfolioId)
                 {
-                    LocateId = this._locateId
+                    Symbol = _symbol
                 };
             }
         }

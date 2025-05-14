@@ -17,26 +17,27 @@
 namespace CoinbaseSdk.Prime.Financing
 {
     using System.Text.Json.Serialization;
-    public class CreateNewLocatesResponse
+    using CoinbaseSdk.Prime.Common;
+    public class GetTradeFinanceTieredPricingFeesRequest(string entityId) : BasePrimeRequest(null, entityId)
     {
-        [JsonPropertyName("locate_id")]
-        public string? LocateId { get; set; }
+        [JsonPropertyName("effective_at")]
+        public string? EffectiveAt { get; set; }
 
-        public class CreateNewLocatesResponseBuilder
+        public class GetTradeFinanceTieredPricingFeesRequestBuilder
         {
-            private string? _locateId;
+            private string? _effectiveAt;
 
-            public CreateNewLocatesResponseBuilder WithLocateId(string? locateId)
+            public GetTradeFinanceTieredPricingFeesRequestBuilder WithEffectiveAt(string effectiveAt)
             {
-                this._locateId = locateId;
+                _effectiveAt = effectiveAt;
                 return this;
             }
 
-            public CreateNewLocatesResponse Build()
+            public GetTradeFinanceTieredPricingFeesRequest Build(string entityId)
             {
-                return new CreateNewLocatesResponse
+                return new GetTradeFinanceTieredPricingFeesRequest(entityId)
                 {
-                    LocateId = this._locateId
+                    EffectiveAt = _effectiveAt
                 };
             }
         }

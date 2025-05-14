@@ -14,29 +14,38 @@
  * limitations under the License.
  */
 
-namespace CoinbaseSdk.Prime.Financing
+namespace CoinbaseSdk.Prime.Model
 {
-    using System.Text.Json.Serialization;
-    public class CreateNewLocatesResponse
+    public class MarketRate
     {
-        [JsonPropertyName("locate_id")]
-        public string? LocateId { get; set; }
+        public string? Symbol { get; set; }
+        public string? Rate { get; set; }
 
-        public class CreateNewLocatesResponseBuilder
+        public MarketRate() { }
+
+        public class MarketRateBuilder
         {
-            private string? _locateId;
+            private string? _symbol;
+            private string? _rate;
 
-            public CreateNewLocatesResponseBuilder WithLocateId(string? locateId)
+            public MarketRateBuilder WithSymbol(string? symbol)
             {
-                this._locateId = locateId;
+                this._symbol = symbol;
                 return this;
             }
 
-            public CreateNewLocatesResponse Build()
+            public MarketRateBuilder WithRate(string? rate)
             {
-                return new CreateNewLocatesResponse
+                this._rate = rate;
+                return this;
+            }
+
+            public MarketRate Build()
+            {
+                return new MarketRate
                 {
-                    LocateId = this._locateId
+                    Symbol = this._symbol,
+                    Rate = this._rate
                 };
             }
         }

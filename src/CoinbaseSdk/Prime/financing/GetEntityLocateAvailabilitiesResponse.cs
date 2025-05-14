@@ -16,27 +16,29 @@
 
 namespace CoinbaseSdk.Prime.Financing
 {
-    using System.Text.Json.Serialization;
-    public class CreateNewLocatesResponse
+    using CoinbaseSdk.Prime.Model;
+
+    public class GetEntityLocateAvailabilitiesResponse
     {
-        [JsonPropertyName("locate_id")]
-        public string? LocateId { get; set; }
+        public Locate[]? Locates { get; set; }
 
-        public class CreateNewLocatesResponseBuilder
+        public GetEntityLocateAvailabilitiesResponse() { }
+
+        public class GetEntityLocateAvailabilitiesResponseBuilder
         {
-            private string? _locateId;
+            private Locate[]? _locates;
 
-            public CreateNewLocatesResponseBuilder WithLocateId(string? locateId)
+            public GetEntityLocateAvailabilitiesResponseBuilder WithLocates(Locate[] locates)
             {
-                this._locateId = locateId;
+                this._locates = locates;
                 return this;
             }
 
-            public CreateNewLocatesResponse Build()
+            public GetEntityLocateAvailabilitiesResponse Build()
             {
-                return new CreateNewLocatesResponse
+                return new GetEntityLocateAvailabilitiesResponse
                 {
-                    LocateId = this._locateId
+                    Locates = this._locates
                 };
             }
         }
