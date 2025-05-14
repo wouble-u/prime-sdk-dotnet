@@ -14,12 +14,15 @@
  *  limitations under the License.
  */
 
-namespace CoinbaseSdk.Prime.Model.Enum
+namespace CoinbaseSdk.Prime.Model
 {
-    public enum AddressBookType
+    public enum OrderStatus
     {
-        ADDRESS_BOOK_TYPE_UNSPECIFIED,
-        ADDRESS_BOOK_TYPE_ADDRESS,
-        ADDRESS_BOOK_TYPE_COUNTERPARTY_ID,
+        OPEN,
+        FILLED,
+        CANCELLED,
+        EXPIRED,
+        FAILED,
+        PENDING
     }
 }

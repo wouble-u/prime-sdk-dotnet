@@ -14,14 +14,13 @@
  * limitations under the License.
  */
 
-namespace CoinbaseSdk.Prime.Model.Enum
+namespace CoinbaseSdk.Prime.Model
 {
-    public enum DepositType
+    public enum PaymentMethodType
     {
-        CRYPTO,
-        WIRE,
-        SEN,
-        SWIFT,
-        UNKNOWN_WALLET_DEPOSIT_TYPE
+        UNKNOWN_PAYMENT_METHOD_TYPE,
+        METHOD_WIRE,
+        METHOD_SEN,
+        METHOD_SWIFT
     }
 }

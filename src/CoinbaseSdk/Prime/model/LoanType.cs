@@ -14,13 +14,15 @@
  * limitations under the License.
  */
 
-namespace CoinbaseSdk.Prime.Model.Enum
+namespace CoinbaseSdk.Prime.Model
 {
-    public enum Benchmark
+    public enum LoanType
     {
-        BENCHMARK_UNSET,
-        ZERO,
-        SOFR_360,
-        CRYPTO_RFR
+        LOAN_TYPE_UNSET,
+        BILATERAL_LENDING,
+        TRADE_FINANCE,
+        PORTFOLIO_MARGIN,
+        SHORT_COLLATERAL_LOAN,
+        SHORT_COLLATERAL
     }
 }

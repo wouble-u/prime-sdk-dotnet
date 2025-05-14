@@ -18,7 +18,7 @@ namespace CoinbaseSdk.Prime.Orders
 {
     using System.Text.Json.Serialization;
     using CoinbaseSdk.Prime.Common;
-    using CoinbaseSdk.Prime.Model.Enum;
+    using CoinbaseSdk.Prime.Model;
 
     public class ListOpenOrdersRequest(string portfolioId)
     : BaseListRequest(portfolioId, null)

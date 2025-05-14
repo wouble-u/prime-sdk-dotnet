@@ -1,5 +1,5 @@
 /*
- * Copyright 2024-present Coinbase Global, Inc.
+ * Copyright 2025-present Coinbase Global, Inc.
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -14,15 +14,12 @@
  *  limitations under the License.
  */
 
-namespace CoinbaseSdk.Prime.Model.Enum
+namespace CoinbaseSdk.Prime.Model
 {
-    public enum ActivityCategory
+    public enum NetworkType
     {
-        OTHER_ACTIVITY_CATEGORY,
-        ACTIVITY_CATEGORY_ORDER,
-        ACTIVITY_CATEGORY_TRANSACTION,
-        ACTIVITY_CATEGORY_ACCOUNT,
-        ACTIVITY_CATEGORY_ADMIN,
-        ACTIVITY_CATEGORY_ALLOCATION,
+        NETWORK_TYPE_UNSPECIFIED,
+        NETWORK_TYPE_EVM,
+        NETWORK_TYPE_SOLANA,
     }
 }

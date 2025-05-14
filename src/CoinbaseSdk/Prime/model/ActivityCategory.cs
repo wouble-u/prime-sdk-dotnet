@@ -14,15 +14,15 @@
  *  limitations under the License.
  */
 
-namespace CoinbaseSdk.Prime.Model.Enum
+namespace CoinbaseSdk.Prime.Model
 {
-    public enum OrderType
+    public enum ActivityCategory
     {
-        MARKET,
-        LIMIT,
-        TWAP,
-        BLOCK,
-        VWAP,
-        STOP_LIMIT
+        OTHER_ACTIVITY_CATEGORY,
+        ACTIVITY_CATEGORY_ORDER,
+        ACTIVITY_CATEGORY_TRANSACTION,
+        ACTIVITY_CATEGORY_ACCOUNT,
+        ACTIVITY_CATEGORY_ADMIN,
+        ACTIVITY_CATEGORY_ALLOCATION,
     }
 }

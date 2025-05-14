@@ -14,16 +14,12 @@
  *  limitations under the License.
  */
 
-namespace CoinbaseSdk.Prime.Model.Enum
+namespace CoinbaseSdk.Prime.Model
 {
-    public enum ActivityStatus
+    public enum BalanceType
     {
-        OTHER_ACTIVITY_STATUS,
-        ACTIVITY_STATUS_CANCELLED,
-        ACTIVITY_STATUS_PROCESSING,
-        ACTIVITY_STATUS_COMPLETED,
-        ACTIVITY_STATUS_EXPIRED,
-        ACTIVITY_STATUS_REJECTED,
-        ACTIVITY_STATUS_FAILED,
+        TRADING_BALANCES,
+        VAULT_BALANCES,
+        TOTAL_BALANCES,
     }
 }

@@ -14,11 +14,12 @@
  *  limitations under the License.
  */
 
-namespace CoinbaseSdk.Prime.Model.Enum
+namespace CoinbaseSdk.Prime.Model
 {
-    public enum OrderSide
+    public enum SizeType
     {
-        BUY,
-        SELL
+        BASE,
+        QUOTE,
+        PERCENT
     }
 }

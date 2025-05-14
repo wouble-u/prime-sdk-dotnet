@@ -1,5 +1,5 @@
 /*
- * Copyright 2025-present Coinbase Global, Inc.
+ * Copyright 2024-present Coinbase Global, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,15 +14,15 @@
  * limitations under the License.
  */
 
-namespace CoinbaseSdk.Prime.Model.Enum
+namespace CoinbaseSdk.Prime.Model
 {
-    public enum LoanType
+    public enum InvoiceType
     {
-        LOAN_TYPE_UNSET,
-        BILATERAL_LENDING,
-        TRADE_FINANCE,
-        PORTFOLIO_MARGIN,
-        SHORT_COLLATERAL_LOAN,
-        SHORT_COLLATERAL
+        INVOICE_TYPE_UNSPECIFIED,
+        INVOICE_TYPE_AUC_FEE,
+        INVOICE_TYPE_MINIMUM_FEE,
+        INVOICE_TYPE_WITHDRAWAL_FEE,
+        INVOICE_TYPE_NEW_WALLET_FEE,
+        INVOICE_TYPE_STAKING_FEE
     }
 }

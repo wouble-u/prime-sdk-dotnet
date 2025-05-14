@@ -14,11 +14,14 @@
  * limitations under the License.
  */
 
-namespace CoinbaseSdk.Prime.Model.Enum
+namespace CoinbaseSdk.Prime.Model
 {
-    public enum DestinationType
+    public enum DepositType
     {
-        DESTINATION_PAYMENT_METHOD,
-        DESTINATION_BLOCKCHAIN
+        CRYPTO,
+        WIRE,
+        SEN,
+        SWIFT,
+        UNKNOWN_WALLET_DEPOSIT_TYPE
     }
 }

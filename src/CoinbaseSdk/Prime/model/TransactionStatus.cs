@@ -14,14 +14,23 @@
  * limitations under the License.
  */
 
-namespace CoinbaseSdk.Prime.Model.Enum
+namespace CoinbaseSdk.Prime.Model
 {
-    public enum InvoiceState
+    public enum TransactionStatus
     {
-        INVOICE_STATE_UNSPECIFIED,
-        INVOICE_STATE_IMPORTED,
-        INVOICE_STATE_BILLED,
-        INVOICE_STATE_PARTIALLY_PAID,
-        INVOICE_STATE_PAID
+        TRANSACTION_CREATED,
+        TRANSACTION_REQUESTED,
+        TRANSACTION_APPROVED,
+        TRANSACTION_PROCESSING,
+        TRANSACTION_DONE,
+        TRANSACTION_IMPORT_PENDING,
+        TRANSACTION_IMPORTED,
+        TRANSACTION_CANCELLED,
+        TRANSACTION_REJECTED,
+        TRANSACTION_DELAYED,
+        TRANSACTION_RETRIED,
+        TRANSACTION_FAILED,
+        TRANSACTION_EXPIRED,
+        OTHER_TRANSACTION_STATUS
     }
 }

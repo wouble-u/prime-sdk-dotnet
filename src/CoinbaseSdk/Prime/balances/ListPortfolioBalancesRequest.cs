@@ -19,7 +19,7 @@ namespace CoinbaseSdk.Prime.Balances
     using System.Text.Json.Serialization;
     using CoinbaseSdk.Core.Error;
     using CoinbaseSdk.Prime.Common;
-    using CoinbaseSdk.Prime.Model.Enum;
+    using CoinbaseSdk.Prime.Model;
 
     public class ListPortfolioBalancesRequest(string portfolioId)
     : BaseListRequest(portfolioId, null)

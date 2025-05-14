@@ -14,14 +14,13 @@
  *  limitations under the License.
  */
 
-namespace CoinbaseSdk.Prime.Model.Enum
+namespace CoinbaseSdk.Prime.Model
 {
-    public enum AllocationStatus
+    public enum TimeInForce
     {
-        ALLOCATION_STATUS_UNSPECIFIED,
-        ALLOCATION_STATUS_ALLOCATION_PENDING,
-        ALLOCATION_STATUS_ALLOCATION_ACCEPTED,
-        ALLOCATION_STATUS_ALLOCATION_REJECTED,
-        ALLOCATION_STATUS_ALLOCATION_ALLOCATED,
+        FILL_OR_KILL,
+        GOOD_UNTIL_DATE_TIME,
+        GOOD_UNTIL_CANCELLED,
+        IMMEDIATE_OR_CANCEL
     }
 }

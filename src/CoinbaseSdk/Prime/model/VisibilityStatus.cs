@@ -14,12 +14,13 @@
  *  limitations under the License.
  */
 
-namespace CoinbaseSdk.Prime.Model.Enum
+namespace CoinbaseSdk.Prime.Model
 {
-    public enum SizeType
+    public enum VisibilityStatus
     {
-        BASE,
-        QUOTE,
-        PERCENT
+        UNKNOWN_VISIBILITY_STATUS,
+        VISIBLE,
+        HIDDEN,
+        SPAM
     }
 }

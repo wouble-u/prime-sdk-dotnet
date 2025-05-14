@@ -14,13 +14,14 @@
  *  limitations under the License.
  */
 
-namespace CoinbaseSdk.Prime.Model.Enum
+namespace CoinbaseSdk.Prime.Model
 {
-    public enum TimeInForce
+    public enum UserActionType
     {
-        FILL_OR_KILL,
-        GOOD_UNTIL_DATE_TIME,
-        GOOD_UNTIL_CANCELLED,
-        IMMEDIATE_OR_CANCEL
+        OTHER_ACTION,
+        ACTION_APPROVE,
+        ACTION_REJECT,
+        ACTION_INITIATE,
+        ACTION_CANCEL
     }
 }

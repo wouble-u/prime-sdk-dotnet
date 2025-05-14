@@ -1,5 +1,5 @@
 /*
- * Copyright 2025-present Coinbase Global, Inc.
+ * Copyright 2024-present Coinbase Global, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-namespace CoinbaseSdk.Prime.Model.Enum
+namespace CoinbaseSdk.Prime.Model
 {
-    public enum AddOnType
+    public enum AssetChangeType
     {
-        MARGIN_ADD_ON_TYPE_UNSPECIFIED,
-        SINGLE_COIN_STRESS,
-        CONCENTRATION_STRESS,
-        MACRO_STRESS,
-        SHORT_BIASED_STRESS
+        BalanceTransfer,
+        BalanceApproval,
+        ItemTransfer,
+        ItemApproval,
+        ItemApprovalAll,
     }
 }

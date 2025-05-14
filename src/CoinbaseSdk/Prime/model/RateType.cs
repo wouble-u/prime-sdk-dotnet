@@ -1,5 +1,5 @@
 /*
- * Copyright 2024-present Coinbase Global, Inc.
+ * Copyright 2025-present Coinbase Global, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,15 +14,14 @@
  * limitations under the License.
  */
 
-namespace CoinbaseSdk.Prime.Model.Enum
+namespace CoinbaseSdk.Prime.Model
 {
-    public enum InvoiceType
+    public enum RateType
     {
-        INVOICE_TYPE_UNSPECIFIED,
-        INVOICE_TYPE_AUC_FEE,
-        INVOICE_TYPE_MINIMUM_FEE,
-        INVOICE_TYPE_WITHDRAWAL_FEE,
-        INVOICE_TYPE_NEW_WALLET_FEE,
-        INVOICE_TYPE_STAKING_FEE
+        RATE_TYPE_UNSET,
+        BPS,
+        APR_360,
+        APR_365,
+        APR
     }
 }

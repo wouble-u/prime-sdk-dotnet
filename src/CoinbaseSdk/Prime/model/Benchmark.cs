@@ -14,14 +14,13 @@
  * limitations under the License.
  */
 
-namespace CoinbaseSdk.Prime.Model.Enum
+namespace CoinbaseSdk.Prime.Model
 {
-    public enum RateType
+    public enum Benchmark
     {
-        RATE_TYPE_UNSET,
-        BPS,
-        APR_360,
-        APR_365,
-        APR
+        BENCHMARK_UNSET,
+        ZERO,
+        SOFR_360,
+        CRYPTO_RFR
     }
 }

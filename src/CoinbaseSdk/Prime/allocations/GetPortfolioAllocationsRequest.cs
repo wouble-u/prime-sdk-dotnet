@@ -19,7 +19,7 @@ namespace CoinbaseSdk.Prime.Allocations
     using System.Text.Json.Serialization;
     using CoinbaseSdk.Core.Error;
     using CoinbaseSdk.Prime.Common;
-    using CoinbaseSdk.Prime.Model.Enum;
+    using CoinbaseSdk.Prime.Model;
 
     public class GetPortfolioAllocationsRequest(string portfolioId)
     : BaseListRequest(portfolioId, null)

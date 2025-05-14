@@ -14,13 +14,11 @@
  *  limitations under the License.
  */
 
-namespace CoinbaseSdk.Prime.Model.Enum
+namespace CoinbaseSdk.Prime.Model
 {
-    public enum VisibilityStatus
+    public enum OrderSide
     {
-        UNKNOWN_VISIBILITY_STATUS,
-        VISIBLE,
-        HIDDEN,
-        SPAM
+        BUY,
+        SELL
     }
 }

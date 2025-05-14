@@ -14,16 +14,12 @@
  *  limitations under the License.
  */
 
-namespace CoinbaseSdk.Prime.Model.Enum
+namespace CoinbaseSdk.Prime.Model
 {
-    public enum ActivitySecondaryType
+    public enum AddressBookType
     {
-        NO_SECONDARY_TYPE,
-        ACTIVITY_SECONDARY_TYPE_BUY,
-        ACTIVITY_SECONDARY_TYPE_SELL,
-        ACTIVITY_SECONDARY_TYPE_INTERNAL_TRANSFER,
-        ACTIVITY_SECONDARY_TYPE_SWEEP_TRANSFER_TYPE,
-        ACTIVITY_SECONDARY_TYPE_WEB3_SIGNER,
-        ACTIVITY_SECONDARY_TYPE_WEB3_WALLET,
+        ADDRESS_BOOK_TYPE_UNSPECIFIED,
+        ADDRESS_BOOK_TYPE_ADDRESS,
+        ADDRESS_BOOK_TYPE_COUNTERPARTY_ID,
     }
 }

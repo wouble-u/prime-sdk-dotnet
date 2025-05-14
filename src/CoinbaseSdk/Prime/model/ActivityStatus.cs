@@ -1,5 +1,5 @@
 /*
- * Copyright 2025-present Coinbase Global, Inc.
+ * Copyright 2024-present Coinbase Global, Inc.
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -14,12 +14,16 @@
  *  limitations under the License.
  */
 
-namespace CoinbaseSdk.Prime.Model.Enum
+namespace CoinbaseSdk.Prime.Model
 {
-    public enum NetworkType
+    public enum ActivityStatus
     {
-        NETWORK_TYPE_UNSPECIFIED,
-        NETWORK_TYPE_EVM,
-        NETWORK_TYPE_SOLANA,
+        OTHER_ACTIVITY_STATUS,
+        ACTIVITY_STATUS_CANCELLED,
+        ACTIVITY_STATUS_PROCESSING,
+        ACTIVITY_STATUS_COMPLETED,
+        ACTIVITY_STATUS_EXPIRED,
+        ACTIVITY_STATUS_REJECTED,
+        ACTIVITY_STATUS_FAILED,
     }
 }

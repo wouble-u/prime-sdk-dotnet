@@ -17,7 +17,8 @@
 namespace CoinbaseSdk.Prime.Transactions
 {
     using System.Text.Json.Serialization;
-    using CoinbaseSdk.Prime.Model.Enum;
+    using CoinbaseSdk.Prime.Model;
+    using CoinbaseSdk.Prime.Model;
 
     public class CreateWithdrawalResponse
     {

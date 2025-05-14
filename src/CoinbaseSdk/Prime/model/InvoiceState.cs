@@ -14,18 +14,14 @@
  * limitations under the License.
  */
 
-namespace CoinbaseSdk.Prime.Model.Enum
+namespace CoinbaseSdk.Prime.Model
 {
-    public enum Role
+    public enum InvoiceState
     {
-        AUDITOR,
-        SIGNATORY,
-        ADMIN,
-        INITIATOR,
-        REVIEWER,
-        TRADER,
-        FULL_TRADER,
-        TEAM_MANAGER,
-        APPROVER
+        INVOICE_STATE_UNSPECIFIED,
+        INVOICE_STATE_IMPORTED,
+        INVOICE_STATE_BILLED,
+        INVOICE_STATE_PARTIALLY_PAID,
+        INVOICE_STATE_PAID
     }
 }

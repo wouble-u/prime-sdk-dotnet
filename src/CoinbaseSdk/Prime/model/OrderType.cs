@@ -14,12 +14,15 @@
  *  limitations under the License.
  */
 
-namespace CoinbaseSdk.Prime.Model.Enum
+namespace CoinbaseSdk.Prime.Model
 {
-    public enum BalanceType
+    public enum OrderType
     {
-        TRADING_BALANCES,
-        VAULT_BALANCES,
-        TOTAL_BALANCES,
+        MARKET,
+        LIMIT,
+        TWAP,
+        BLOCK,
+        VWAP,
+        STOP_LIMIT
     }
 }
