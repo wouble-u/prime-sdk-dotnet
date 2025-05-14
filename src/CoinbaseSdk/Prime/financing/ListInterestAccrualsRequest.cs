@@ -18,9 +18,14 @@
 namespace CoinbaseSdk.Prime.Financing
 {
     using System.Text.Json.Serialization;
-    using CoinbaseSdk.Prime.Common;
-    public class ListInterestAccrualsRequest(string entityId, string? portfolioId) : BasePrimeRequest(portfolioId, entityId)
+    public class ListInterestAccrualsRequest(string entityId)
     {
+        [JsonIgnore, JsonPropertyName("entity_id")]
+        public string EntityId { get; set; } = entityId;
+
+        [JsonPropertyName("portfolio_id")]
+        public string? PortfolioId { get; set; }
+
         [JsonPropertyName("start_date")]
         public string? StartDate { get; set; }
 
@@ -29,8 +34,15 @@ namespace CoinbaseSdk.Prime.Financing
 
         public class ListInterestAccrualsRequestBuilder
         {
+            private string? _portfolioId;
             private string? _startDate;
             private string? _endDate;
+
+            public ListInterestAccrualsRequestBuilder WithPortfolioId(string portfolioId)
+            {
+                _portfolioId = portfolioId;
+                return this;
+            }
 
             public ListInterestAccrualsRequestBuilder WithStartDate(string startDate)
             {
@@ -44,10 +56,11 @@ namespace CoinbaseSdk.Prime.Financing
                 return this;
             }
 
-            public ListInterestAccrualsRequest Build(string entityId, string? portfolioId)
+            public ListInterestAccrualsRequest Build(string entityId)
             {
-                return new ListInterestAccrualsRequest(entityId, portfolioId)
+                return new ListInterestAccrualsRequest(entityId)
                 {
+                    PortfolioId = _portfolioId,
                     StartDate = _startDate,
                     EndDate = _endDate
                 };
