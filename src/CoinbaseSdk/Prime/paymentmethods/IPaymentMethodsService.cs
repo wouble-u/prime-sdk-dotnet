@@ -16,26 +16,26 @@
 
 namespace CoinbaseSdk.Prime.PaymentMethods
 {
-  using CoinbaseSdk.Core.Http;
+    using CoinbaseSdk.Core.Http;
 
-  public interface IPaymentMethodsService
-  {
-    public GetEntityPaymentMethodResponse GetEntityPaymentMethod(
-      GetEntityPaymentMethodRequest request,
-      CallOptions? options = null);
+    public interface IPaymentMethodsService
+    {
+        public GetEntityPaymentMethodResponse GetEntityPaymentMethod(
+          GetEntityPaymentMethodRequest request,
+          CallOptions? options = null);
 
-    public Task<GetEntityPaymentMethodResponse> GetEntityPaymentMethodAsync(
-      GetEntityPaymentMethodRequest request,
-      CallOptions? options = null,
-      CancellationToken cancellationToken = default);
+        public Task<GetEntityPaymentMethodResponse> GetEntityPaymentMethodAsync(
+          GetEntityPaymentMethodRequest request,
+          CallOptions? options = null,
+          CancellationToken cancellationToken = default);
 
-    public ListEntityPaymentMethodsResponse ListEntityPaymentMethods(
-      ListEntityPaymentMethodsRequest request,
-      CallOptions? options = null);
+        public ListEntityPaymentMethodsResponse ListEntityPaymentMethods(
+          ListEntityPaymentMethodsRequest request,
+          CallOptions? options = null);
 
-    public Task<ListEntityPaymentMethodsResponse> ListEntityPaymentMethodsAsync(
-      ListEntityPaymentMethodsRequest request,
-      CallOptions? options = null,
-      CancellationToken cancellationToken = default);
-  }
+        public Task<ListEntityPaymentMethodsResponse> ListEntityPaymentMethodsAsync(
+          ListEntityPaymentMethodsRequest request,
+          CallOptions? options = null,
+          CancellationToken cancellationToken = default);
+    }
 }

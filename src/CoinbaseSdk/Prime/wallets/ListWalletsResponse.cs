@@ -16,41 +16,43 @@
 
 namespace CoinbaseSdk.Prime.Wallets
 {
-  using CoinbaseSdk.Prime.Common;
-  public class ListWalletsResponse
-  {
-    public Wallet[] Wallets { get; set; } = [];
-    public Pagination? Pagination { get; set; }
+    using CoinbaseSdk.Prime.Common;
+    using CoinbaseSdk.Prime.Model;
 
-    public ListWalletsResponse() { }
-
-    public class ListWalletsResponseBuilder
+    public class ListWalletsResponse
     {
-      private Wallet[] _wallets = [];
-      private Pagination? _pagination;
+        public Wallet[] Wallets { get; set; } = [];
+        public Pagination? Pagination { get; set; }
 
-      public ListWalletsResponseBuilder() { }
+        public ListWalletsResponse() { }
 
-      public ListWalletsResponseBuilder WithWallets(Wallet[] wallets)
-      {
-        this._wallets = wallets;
-        return this;
-      }
-
-      public ListWalletsResponseBuilder WithPagination(Pagination pagination)
-      {
-        this._pagination = pagination;
-        return this;
-      }
-
-      public ListWalletsResponse Build()
-      {
-        return new ListWalletsResponse
+        public class ListWalletsResponseBuilder
         {
-          Wallets = this._wallets,
-          Pagination = this._pagination
-        };
-      }
+            private Wallet[] _wallets = [];
+            private Pagination? _pagination;
+
+            public ListWalletsResponseBuilder() { }
+
+            public ListWalletsResponseBuilder WithWallets(Wallet[] wallets)
+            {
+                this._wallets = wallets;
+                return this;
+            }
+
+            public ListWalletsResponseBuilder WithPagination(Pagination pagination)
+            {
+                this._pagination = pagination;
+                return this;
+            }
+
+            public ListWalletsResponse Build()
+            {
+                return new ListWalletsResponse
+                {
+                    Wallets = this._wallets,
+                    Pagination = this._pagination
+                };
+            }
+        }
     }
-  }
 }

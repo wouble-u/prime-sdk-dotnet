@@ -16,36 +16,36 @@
 
 namespace CoinbaseSdk.Prime.Commission
 {
-  using System.Net;
-  using CoinbaseSdk.Core.Client;
-  using CoinbaseSdk.Core.Http;
-  using CoinbaseSdk.Core.Service;
-  public class CommissionService(ICoinbaseClient client) : CoinbaseService(client), ICommissionService
-  {
-    public GetPortfolioCommissionResponse GetPortfolioCommission(
-      GetPortfolioCommissionRequest request,
-      CallOptions? options = null)
+    using System.Net;
+    using CoinbaseSdk.Core.Client;
+    using CoinbaseSdk.Core.Http;
+    using CoinbaseSdk.Core.Service;
+    public class CommissionService(ICoinbaseClient client) : CoinbaseService(client), ICommissionService
     {
-      return this.Request<GetPortfolioCommissionResponse>(
-        HttpMethod.Get,
-        $"/portfolios/{request.PortfolioId}/commission",
-        [HttpStatusCode.OK],
-        null,
-        options);
-    }
+        public GetPortfolioCommissionResponse GetPortfolioCommission(
+          GetPortfolioCommissionRequest request,
+          CallOptions? options = null)
+        {
+            return this.Request<GetPortfolioCommissionResponse>(
+              HttpMethod.Get,
+              $"/portfolios/{request.PortfolioId}/commission",
+              [HttpStatusCode.OK],
+              null,
+              options);
+        }
 
-    public Task<GetPortfolioCommissionResponse> GetPortfolioCommissionAsync(
-      GetPortfolioCommissionRequest request,
-      CallOptions? options = null,
-      CancellationToken cancellationToken = default)
-    {
-      return this.RequestAsync<GetPortfolioCommissionResponse>(
-        HttpMethod.Get,
-        $"/portfolios/{request.PortfolioId}/commission",
-        [HttpStatusCode.OK],
-        null,
-        options,
-        cancellationToken);
+        public Task<GetPortfolioCommissionResponse> GetPortfolioCommissionAsync(
+          GetPortfolioCommissionRequest request,
+          CallOptions? options = null,
+          CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<GetPortfolioCommissionResponse>(
+              HttpMethod.Get,
+              $"/portfolios/{request.PortfolioId}/commission",
+              [HttpStatusCode.OK],
+              null,
+              options,
+              cancellationToken);
+        }
     }
-  }
 }

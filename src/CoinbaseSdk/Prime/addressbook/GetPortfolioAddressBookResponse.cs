@@ -16,37 +16,39 @@
 
 namespace CoinbaseSdk.Prime.AddressBook
 {
-  using CoinbaseSdk.Prime.Common;
-  public class GetPortfolioAddressBookResponse
-  {
-    public AddressBookEntry[] Addresses { get; set; } = [];
-    public Pagination? Pagination { get; set; }
+    using CoinbaseSdk.Prime.Common;
+    using CoinbaseSdk.Prime.Model;
 
-    public class GetPortfolioAddressBookResponseBuilder
+    public class GetPortfolioAddressBookResponse
     {
-      private AddressBookEntry[] _addresses = [];
-      private Pagination? _pagination;
+        public AddressBookEntry[] Addresses { get; set; } = [];
+        public Pagination? Pagination { get; set; }
 
-      public GetPortfolioAddressBookResponseBuilder WithAddresses(AddressBookEntry[] addresses)
-      {
-        this._addresses = addresses;
-        return this;
-      }
-
-      public GetPortfolioAddressBookResponseBuilder WithPagination(Pagination? pagination)
-      {
-        this._pagination = pagination;
-        return this;
-      }
-
-      public GetPortfolioAddressBookResponse Build()
-      {
-        return new GetPortfolioAddressBookResponse
+        public class GetPortfolioAddressBookResponseBuilder
         {
-          Addresses = this._addresses,
-          Pagination = this._pagination
-        };
-      }
+            private AddressBookEntry[] _addresses = [];
+            private Pagination? _pagination;
+
+            public GetPortfolioAddressBookResponseBuilder WithAddresses(AddressBookEntry[] addresses)
+            {
+                this._addresses = addresses;
+                return this;
+            }
+
+            public GetPortfolioAddressBookResponseBuilder WithPagination(Pagination? pagination)
+            {
+                this._pagination = pagination;
+                return this;
+            }
+
+            public GetPortfolioAddressBookResponse Build()
+            {
+                return new GetPortfolioAddressBookResponse
+                {
+                    Addresses = this._addresses,
+                    Pagination = this._pagination
+                };
+            }
+        }
     }
-  }
 }

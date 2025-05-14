@@ -16,34 +16,35 @@
 
 namespace CoinbaseSdk.Prime.Portfolios
 {
-  public class GetPortfolioByIdResponse
-  {
-    public Portfolio? Portfolio { get; set; }
-
-    public GetPortfolioByIdResponse(Portfolio portfolio)
+    using CoinbaseSdk.Prime.Model;
+    public class GetPortfolioByIdResponse
     {
-      Portfolio = portfolio;
-    }
+        public Portfolio? Portfolio { get; set; }
 
-    public GetPortfolioByIdResponse() { }
-
-    public class GetPortfolioByIdResponseBuilder
-    {
-      private Portfolio? _portfolio;
-
-      public GetPortfolioByIdResponseBuilder WithPortfolio(Portfolio? portfolio)
-      {
-        this._portfolio = portfolio;
-        return this;
-      }
-
-      public GetPortfolioByIdResponse Build()
-      {
-        return new GetPortfolioByIdResponse
+        public GetPortfolioByIdResponse(Portfolio portfolio)
         {
-          Portfolio = this._portfolio
-        };
-      }
+            Portfolio = portfolio;
+        }
+
+        public GetPortfolioByIdResponse() { }
+
+        public class GetPortfolioByIdResponseBuilder
+        {
+            private Portfolio? _portfolio;
+
+            public GetPortfolioByIdResponseBuilder WithPortfolio(Portfolio? portfolio)
+            {
+                this._portfolio = portfolio;
+                return this;
+            }
+
+            public GetPortfolioByIdResponse Build()
+            {
+                return new GetPortfolioByIdResponse
+                {
+                    Portfolio = this._portfolio
+                };
+            }
+        }
     }
-  }
 }

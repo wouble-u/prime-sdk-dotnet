@@ -16,34 +16,34 @@
 
 namespace CoinbaseSdk.Prime.Balances
 {
-  using CoinbaseSdk.Core.Http;
-  public interface IBalancesService
-  {
-    public GetWalletBalanceResponse GetWalletBalance(
-      GetWalletBalanceRequest request,
-      CallOptions? options = null);
+    using CoinbaseSdk.Core.Http;
+    public interface IBalancesService
+    {
+        public GetWalletBalanceResponse GetWalletBalance(
+          GetWalletBalanceRequest request,
+          CallOptions? options = null);
 
-    public Task<GetWalletBalanceResponse> GetWalletBalanceAsync(
-      GetWalletBalanceRequest request,
-      CallOptions? options = null,
-      CancellationToken cancellationToken = default);
+        public Task<GetWalletBalanceResponse> GetWalletBalanceAsync(
+          GetWalletBalanceRequest request,
+          CallOptions? options = null,
+          CancellationToken cancellationToken = default);
 
-    public ListPortfolioBalancesResponse ListPortfolioBalances(
-      ListPortfolioBalancesRequest request,
-      CallOptions? options = null);
+        public ListPortfolioBalancesResponse ListPortfolioBalances(
+          ListPortfolioBalancesRequest request,
+          CallOptions? options = null);
 
-    public Task<ListPortfolioBalancesResponse> ListPortfolioBalancesAsync(
-      ListPortfolioBalancesRequest request,
-      CallOptions? options = null,
-      CancellationToken cancellationToken = default);
+        public Task<ListPortfolioBalancesResponse> ListPortfolioBalancesAsync(
+          ListPortfolioBalancesRequest request,
+          CallOptions? options = null,
+          CancellationToken cancellationToken = default);
 
-    public ListOnchainWalletBalancesResponse ListOnchainWalletBalances(
-      ListOnchainWalletBalancesRequest request,
-      CallOptions? options = null);
+        public ListOnchainWalletBalancesResponse ListOnchainWalletBalances(
+          ListOnchainWalletBalancesRequest request,
+          CallOptions? options = null);
 
-    public Task<ListOnchainWalletBalancesResponse> ListOnchainWalletBalancesAsync(
-      ListOnchainWalletBalancesRequest request,
-      CallOptions? options = null,
-      CancellationToken cancellationToken = default);
-  }
+        public Task<ListOnchainWalletBalancesResponse> ListOnchainWalletBalancesAsync(
+          ListOnchainWalletBalancesRequest request,
+          CallOptions? options = null,
+          CancellationToken cancellationToken = default);
+    }
 }

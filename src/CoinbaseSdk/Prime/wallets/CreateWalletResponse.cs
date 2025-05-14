@@ -16,66 +16,66 @@
 
 namespace CoinbaseSdk.Prime.Wallets
 {
-  using System.Text.Json.Serialization;
-  using CoinbaseSdk.Prime.Model;
+    using System.Text.Json.Serialization;
+    using CoinbaseSdk.Prime.Model.Enum;
 
-  public class CreateWalletResponse
-  {
-    [JsonPropertyName("activity_id")]
-    public string? ActivityId { get; set; }
-
-    public string? Name { get; set; }
-
-    public string? Symbol { get; set; }
-
-    [JsonPropertyName("wallet_type")]
-    public WalletType Type { get; set; }
-
-    public CreateWalletResponse() { }
-
-    public class CreateWalletResponseBuilder
+    public class CreateWalletResponse
     {
-      private string? _activityId;
-      private string? _name;
-      private string? _symbol;
-      private WalletType _type;
+        [JsonPropertyName("activity_id")]
+        public string? ActivityId { get; set; }
 
-      public CreateWalletResponseBuilder() { }
+        public string? Name { get; set; }
 
-      public CreateWalletResponseBuilder WithActivityId(string activityId)
-      {
-        this._activityId = activityId;
-        return this;
-      }
+        public string? Symbol { get; set; }
 
-      public CreateWalletResponseBuilder WithName(string name)
-      {
-        this._name = name;
-        return this;
-      }
+        [JsonPropertyName("wallet_type")]
+        public WalletType Type { get; set; }
 
-      public CreateWalletResponseBuilder WithSymbol(string symbol)
-      {
-        this._symbol = symbol;
-        return this;
-      }
+        public CreateWalletResponse() { }
 
-      public CreateWalletResponseBuilder WithType(WalletType type)
-      {
-        this._type = type;
-        return this;
-      }
-
-      public CreateWalletResponse Build()
-      {
-        return new CreateWalletResponse
+        public class CreateWalletResponseBuilder
         {
-          ActivityId = this._activityId,
-          Name = this._name,
-          Symbol = this._symbol,
-          Type = this._type
-        };
-      }
+            private string? _activityId;
+            private string? _name;
+            private string? _symbol;
+            private WalletType _type;
+
+            public CreateWalletResponseBuilder() { }
+
+            public CreateWalletResponseBuilder WithActivityId(string activityId)
+            {
+                this._activityId = activityId;
+                return this;
+            }
+
+            public CreateWalletResponseBuilder WithName(string name)
+            {
+                this._name = name;
+                return this;
+            }
+
+            public CreateWalletResponseBuilder WithSymbol(string symbol)
+            {
+                this._symbol = symbol;
+                return this;
+            }
+
+            public CreateWalletResponseBuilder WithType(WalletType type)
+            {
+                this._type = type;
+                return this;
+            }
+
+            public CreateWalletResponse Build()
+            {
+                return new CreateWalletResponse
+                {
+                    ActivityId = this._activityId,
+                    Name = this._name,
+                    Symbol = this._symbol,
+                    Type = this._type
+                };
+            }
+        }
     }
-  }
 }

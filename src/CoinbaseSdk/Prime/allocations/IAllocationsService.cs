@@ -16,52 +16,52 @@
 
 namespace CoinbaseSdk.Prime.Allocations
 {
-  using CoinbaseSdk.Core.Http;
-  public interface IAllocationsService
-  {
-    public CreateAllocationResponse CreateAllocation(
-      CreateAllocationRequest request,
-      CallOptions? options = null);
+    using CoinbaseSdk.Core.Http;
+    public interface IAllocationsService
+    {
+        public CreateAllocationResponse CreateAllocation(
+          CreateAllocationRequest request,
+          CallOptions? options = null);
 
-    public Task<CreateAllocationResponse> CreateAllocationAsync(
-      CreateAllocationRequest request,
-      CallOptions? options = null,
-      CancellationToken cancellationToken = default);
+        public Task<CreateAllocationResponse> CreateAllocationAsync(
+          CreateAllocationRequest request,
+          CallOptions? options = null,
+          CancellationToken cancellationToken = default);
 
-    public CreateNetAllocationResponse CreateNetAllocation(
-      CreateNetAllocationRequest request,
-      CallOptions? options = null);
+        public CreateNetAllocationResponse CreateNetAllocation(
+          CreateNetAllocationRequest request,
+          CallOptions? options = null);
 
-    public Task<CreateNetAllocationResponse> CreateNetAllocationAsync(
-      CreateNetAllocationRequest request,
-      CallOptions? options = null,
-      CancellationToken cancellationToken = default);
+        public Task<CreateNetAllocationResponse> CreateNetAllocationAsync(
+          CreateNetAllocationRequest request,
+          CallOptions? options = null,
+          CancellationToken cancellationToken = default);
 
-    public GetAllocationResponse GetAllocation(
-      GetAllocationRequest request,
-      CallOptions? options = null);
+        public GetAllocationResponse GetAllocation(
+          GetAllocationRequest request,
+          CallOptions? options = null);
 
-    public Task<GetAllocationResponse> GetAllocationAsync(
-      GetAllocationRequest request,
-      CallOptions? options = null,
-      CancellationToken cancellationToken = default);
+        public Task<GetAllocationResponse> GetAllocationAsync(
+          GetAllocationRequest request,
+          CallOptions? options = null,
+          CancellationToken cancellationToken = default);
 
-    public GetAllocationsByClientNettingIdResponse GetAllocationsByClientNettingId(
-      GetAllocationsByClientNettingIdRequest request,
-      CallOptions? options = null);
+        public GetAllocationsByClientNettingIdResponse GetAllocationsByClientNettingId(
+          GetAllocationsByClientNettingIdRequest request,
+          CallOptions? options = null);
 
-    public Task<GetAllocationsByClientNettingIdResponse> GetAllocationsByClientNettingIdAsync(
-      GetAllocationsByClientNettingIdRequest request,
-      CallOptions? options = null,
-      CancellationToken cancellationToken = default);
+        public Task<GetAllocationsByClientNettingIdResponse> GetAllocationsByClientNettingIdAsync(
+          GetAllocationsByClientNettingIdRequest request,
+          CallOptions? options = null,
+          CancellationToken cancellationToken = default);
 
-    public GetPortfolioAllocationsResponse GetPortfolioAllocations(
-      GetPortfolioAllocationsRequest request,
-      CallOptions? options = null);
+        public GetPortfolioAllocationsResponse GetPortfolioAllocations(
+          GetPortfolioAllocationsRequest request,
+          CallOptions? options = null);
 
-    public Task<GetPortfolioAllocationsResponse> GetPortfolioAllocationsAsync(
-      GetPortfolioAllocationsRequest request,
-      CallOptions? options = null,
-      CancellationToken cancellationToken = default);
-  }
+        public Task<GetPortfolioAllocationsResponse> GetPortfolioAllocationsAsync(
+          GetPortfolioAllocationsRequest request,
+          CallOptions? options = null,
+          CancellationToken cancellationToken = default);
+    }
 }

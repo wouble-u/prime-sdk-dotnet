@@ -16,17 +16,17 @@
 
 namespace CoinbaseSdk.Prime.Invoice
 {
-  using CoinbaseSdk.Core.Http;
+    using CoinbaseSdk.Core.Http;
 
-  public interface IInvoiceService
-  {
-    public ListInvoicesResponse ListInvoices(
-      ListInvoicesRequest request,
-      CallOptions? options = null);
+    public interface IInvoiceService
+    {
+        public ListInvoicesResponse ListInvoices(
+          ListInvoicesRequest request,
+          CallOptions? options = null);
 
-    public Task<ListInvoicesResponse> ListInvoicesAsync(
-      ListInvoicesRequest request,
-      CallOptions? options = null,
-      CancellationToken cancellationToken = default);
-  }
+        public Task<ListInvoicesResponse> ListInvoicesAsync(
+          ListInvoicesRequest request,
+          CallOptions? options = null,
+          CancellationToken cancellationToken = default);
+    }
 }

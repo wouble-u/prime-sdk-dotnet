@@ -16,43 +16,45 @@
 
 namespace CoinbaseSdk.Prime.Wallets
 {
-  using System.Text.Json.Serialization;
-  public class GetWalletDepositInstructionsResponse
-  {
-    [JsonPropertyName("crypto_instructions")]
-    public CryptoDepositInstructions? CryptoDepositInstructions { get; set; }
-    [JsonPropertyName("fiat_instructions")]
-    public FiatDepositInstructions? FiatDepositInstructions { get; set; }
+    using System.Text.Json.Serialization;
+    using CoinbaseSdk.Prime.Model;
 
-    public GetWalletDepositInstructionsResponse() { }
-
-    public class GetWalletDepositInstructionsResponseBuilder
+    public class GetWalletDepositInstructionsResponse
     {
-      private CryptoDepositInstructions? _cryptoDepositInstructions;
-      private FiatDepositInstructions? _fiatDepositInstructions;
+        [JsonPropertyName("crypto_instructions")]
+        public CryptoDepositInstructions? CryptoDepositInstructions { get; set; }
+        [JsonPropertyName("fiat_instructions")]
+        public FiatDepositInstructions? FiatDepositInstructions { get; set; }
 
-      public GetWalletDepositInstructionsResponseBuilder() { }
+        public GetWalletDepositInstructionsResponse() { }
 
-      public GetWalletDepositInstructionsResponseBuilder WithCryptoDepositInstructions(CryptoDepositInstructions cryptoDepositInstructions)
-      {
-        this._cryptoDepositInstructions = cryptoDepositInstructions;
-        return this;
-      }
-
-      public GetWalletDepositInstructionsResponseBuilder WithFiatDepositInstructions(FiatDepositInstructions fiatDepositInstructions)
-      {
-        this._fiatDepositInstructions = fiatDepositInstructions;
-        return this;
-      }
-
-      public GetWalletDepositInstructionsResponse Build()
-      {
-        return new GetWalletDepositInstructionsResponse
+        public class GetWalletDepositInstructionsResponseBuilder
         {
-          CryptoDepositInstructions = this._cryptoDepositInstructions,
-          FiatDepositInstructions = this._fiatDepositInstructions
-        };
-      }
+            private CryptoDepositInstructions? _cryptoDepositInstructions;
+            private FiatDepositInstructions? _fiatDepositInstructions;
+
+            public GetWalletDepositInstructionsResponseBuilder() { }
+
+            public GetWalletDepositInstructionsResponseBuilder WithCryptoDepositInstructions(CryptoDepositInstructions cryptoDepositInstructions)
+            {
+                this._cryptoDepositInstructions = cryptoDepositInstructions;
+                return this;
+            }
+
+            public GetWalletDepositInstructionsResponseBuilder WithFiatDepositInstructions(FiatDepositInstructions fiatDepositInstructions)
+            {
+                this._fiatDepositInstructions = fiatDepositInstructions;
+                return this;
+            }
+
+            public GetWalletDepositInstructionsResponse Build()
+            {
+                return new GetWalletDepositInstructionsResponse
+                {
+                    CryptoDepositInstructions = this._cryptoDepositInstructions,
+                    FiatDepositInstructions = this._fiatDepositInstructions
+                };
+            }
+        }
     }
-  }
 }

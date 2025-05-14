@@ -16,61 +16,61 @@
 
 namespace CoinbaseSdk.Prime.Orders
 {
-  using System.Text.Json.Serialization;
-  using CoinbaseSdk.Core.Error;
-  using CoinbaseSdk.Prime.Common;
+    using System.Text.Json.Serialization;
+    using CoinbaseSdk.Core.Error;
+    using CoinbaseSdk.Prime.Common;
 
-  public class GetOrderByOrderIdRequest(string portfolioId, string orderId)
-  : BasePrimeRequest(portfolioId, null)
-  {
-    [JsonIgnore]
-    public string OrderId { get; set; } = orderId;
-
-    public class GetOrderByOrderIdRequestBuilder
+    public class GetOrderByOrderIdRequest(string portfolioId, string orderId)
+    : BasePrimeRequest(portfolioId, null)
     {
-      private string? _portfolioId;
-      private string? _orderId;
+        [JsonIgnore]
+        public string OrderId { get; set; } = orderId;
 
-      public GetOrderByOrderIdRequestBuilder WithPortfolioId(string portfolioId)
-      {
-        _portfolioId = portfolioId;
-        return this;
-      }
-
-      public GetOrderByOrderIdRequestBuilder WithOrderId(string orderId)
-      {
-        _orderId = orderId;
-        return this;
-      }
-
-      /// <summary>
-      /// Validate the builder.
-      /// </summary>
-      /// <exception cref="CoinbaseClientException">Thrown when the
-      /// <see cref="_portfolioId"/> or <see cref="_orderId"/> are null, empty
-      /// or whitespace.</exception>
-      private void Validate()
-      {
-        if (string.IsNullOrWhiteSpace(this._portfolioId))
+        public class GetOrderByOrderIdRequestBuilder
         {
-          throw new CoinbaseClientException("PortfolioId is required");
-        }
-        if (string.IsNullOrWhiteSpace(this._orderId))
-        {
-          throw new CoinbaseClientException("OrderId is required");
-        }
-      }
+            private string? _portfolioId;
+            private string? _orderId;
 
-      /// <summary>
-      /// Build the <see cref="GetOrderByOrderIdRequest"/> object.
-      /// </summary>
-      /// <returns>The <see cref="GetOrderByOrderIdRequest"/> object.</returns>
-      /// <exception cref="CoinbaseClientException">Thrown when the required fields are not set.</exception>
-      public GetOrderByOrderIdRequest Build()
-      {
-        this.Validate();
-        return new GetOrderByOrderIdRequest(this._portfolioId!, this._orderId!);
-      }
+            public GetOrderByOrderIdRequestBuilder WithPortfolioId(string portfolioId)
+            {
+                _portfolioId = portfolioId;
+                return this;
+            }
+
+            public GetOrderByOrderIdRequestBuilder WithOrderId(string orderId)
+            {
+                _orderId = orderId;
+                return this;
+            }
+
+            /// <summary>
+            /// Validate the builder.
+            /// </summary>
+            /// <exception cref="CoinbaseClientException">Thrown when the
+            /// <see cref="_portfolioId"/> or <see cref="_orderId"/> are null, empty
+            /// or whitespace.</exception>
+            private void Validate()
+            {
+                if (string.IsNullOrWhiteSpace(this._portfolioId))
+                {
+                    throw new CoinbaseClientException("PortfolioId is required");
+                }
+                if (string.IsNullOrWhiteSpace(this._orderId))
+                {
+                    throw new CoinbaseClientException("OrderId is required");
+                }
+            }
+
+            /// <summary>
+            /// Build the <see cref="GetOrderByOrderIdRequest"/> object.
+            /// </summary>
+            /// <returns>The <see cref="GetOrderByOrderIdRequest"/> object.</returns>
+            /// <exception cref="CoinbaseClientException">Thrown when the required fields are not set.</exception>
+            public GetOrderByOrderIdRequest Build()
+            {
+                this.Validate();
+                return new GetOrderByOrderIdRequest(this._portfolioId!, this._orderId!);
+            }
+        }
     }
-  }
 }

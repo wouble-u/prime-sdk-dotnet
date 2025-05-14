@@ -16,40 +16,42 @@
 
 namespace CoinbaseSdk.Prime.Users
 {
-  using CoinbaseSdk.Prime.Common;
-  public class ListUsersResponse
-  {
-    public User[] Users { get; set; } = [];
-    public Pagination? Pagination { get; set; }
-    public ListUsersResponse() { }
+    using CoinbaseSdk.Prime.Common;
+    using CoinbaseSdk.Prime.Model;
 
-    public class ListUsersResponseBuilder
+    public class ListUsersResponse
     {
-      private User[] _users = [];
-      private Pagination? _pagination;
+        public EntityUser[] Users { get; set; } = [];
+        public Pagination? Pagination { get; set; }
+        public ListUsersResponse() { }
 
-      public ListUsersResponseBuilder() { }
-
-      public ListUsersResponseBuilder WithUsers(User[] users)
-      {
-        this._users = users;
-        return this;
-      }
-
-      public ListUsersResponseBuilder WithPagination(Pagination pagination)
-      {
-        this._pagination = pagination;
-        return this;
-      }
-
-      public ListUsersResponse Build()
-      {
-        return new ListUsersResponse
+        public class ListUsersResponseBuilder
         {
-          Users = this._users,
-          Pagination = this._pagination
-        };
-      }
+            private EntityUser[] _users = [];
+            private Pagination? _pagination;
+
+            public ListUsersResponseBuilder() { }
+
+            public ListUsersResponseBuilder WithUsers(EntityUser[] users)
+            {
+                this._users = users;
+                return this;
+            }
+
+            public ListUsersResponseBuilder WithPagination(Pagination pagination)
+            {
+                this._pagination = pagination;
+                return this;
+            }
+
+            public ListUsersResponse Build()
+            {
+                return new ListUsersResponse
+                {
+                    Users = this._users,
+                    Pagination = this._pagination
+                };
+            }
+        }
     }
-  }
 }

@@ -16,31 +16,33 @@
 
 namespace CoinbaseSdk.Prime.PaymentMethods
 {
-  using System.Text.Json.Serialization;
-  public class ListEntityPaymentMethodsResponse
-  {
-    [JsonPropertyName("payment_methods")]
-    public EntityPaymentMethod[] PaymentMethods { get; set; } = [];
+    using System.Text.Json.Serialization;
+    using CoinbaseSdk.Prime.Model;
 
-    public ListEntityPaymentMethodsResponse() { }
-
-    public class ListEntityPaymentMethodsResponseBuilder
+    public class ListEntityPaymentMethodsResponse
     {
-      private EntityPaymentMethod[] _paymentMethods = [];
+        [JsonPropertyName("payment_methods")]
+        public EntityPaymentMethod[] PaymentMethods { get; set; } = [];
 
-      public ListEntityPaymentMethodsResponseBuilder WithPaymentMethods(EntityPaymentMethod[] paymentMethods)
-      {
-        this._paymentMethods = paymentMethods;
-        return this;
-      }
+        public ListEntityPaymentMethodsResponse() { }
 
-      public ListEntityPaymentMethodsResponse Build()
-      {
-        return new ListEntityPaymentMethodsResponse
+        public class ListEntityPaymentMethodsResponseBuilder
         {
-          PaymentMethods = this._paymentMethods
-        };
-      }
+            private EntityPaymentMethod[] _paymentMethods = [];
+
+            public ListEntityPaymentMethodsResponseBuilder WithPaymentMethods(EntityPaymentMethod[] paymentMethods)
+            {
+                this._paymentMethods = paymentMethods;
+                return this;
+            }
+
+            public ListEntityPaymentMethodsResponse Build()
+            {
+                return new ListEntityPaymentMethodsResponse
+                {
+                    PaymentMethods = this._paymentMethods
+                };
+            }
+        }
     }
-  }
 }

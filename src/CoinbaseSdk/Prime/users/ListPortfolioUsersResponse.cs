@@ -16,41 +16,43 @@
 
 namespace CoinbaseSdk.Prime.Users
 {
-  using CoinbaseSdk.Prime.Common;
-  public class ListPortfolioUsersResponse
-  {
-    public User[] Users { get; set; } = [];
-    public Pagination? Pagination { get; set; }
+    using CoinbaseSdk.Prime.Common;
+    using CoinbaseSdk.Prime.Model;
 
-    public ListPortfolioUsersResponse() { }
-
-    public class ListPortfolioUsersResponseBuilder
+    public class ListPortfolioUsersResponse
     {
-      private User[] _users = [];
-      private Pagination? _pagination;
+        public EntityUser[] Users { get; set; } = [];
+        public Pagination? Pagination { get; set; }
 
-      public ListPortfolioUsersResponseBuilder() { }
+        public ListPortfolioUsersResponse() { }
 
-      public ListPortfolioUsersResponseBuilder WithUsers(User[] users)
-      {
-        this._users = users;
-        return this;
-      }
-
-      public ListPortfolioUsersResponseBuilder WithPagination(Pagination pagination)
-      {
-        this._pagination = pagination;
-        return this;
-      }
-
-      public ListPortfolioUsersResponse Build()
-      {
-        return new ListPortfolioUsersResponse
+        public class ListPortfolioUsersResponseBuilder
         {
-          Users = this._users,
-          Pagination = this._pagination
-        };
-      }
+            private EntityUser[] _users = [];
+            private Pagination? _pagination;
+
+            public ListPortfolioUsersResponseBuilder() { }
+
+            public ListPortfolioUsersResponseBuilder WithUsers(EntityUser[] users)
+            {
+                this._users = users;
+                return this;
+            }
+
+            public ListPortfolioUsersResponseBuilder WithPagination(Pagination pagination)
+            {
+                this._pagination = pagination;
+                return this;
+            }
+
+            public ListPortfolioUsersResponse Build()
+            {
+                return new ListPortfolioUsersResponse
+                {
+                    Users = this._users,
+                    Pagination = this._pagination
+                };
+            }
+        }
     }
-  }
 }

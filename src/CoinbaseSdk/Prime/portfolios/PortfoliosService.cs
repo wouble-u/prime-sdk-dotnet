@@ -72,31 +72,5 @@ namespace CoinbaseSdk.Prime.Portfolios
         options,
         cancellationToken);
     }
-
-    public GetPortfolioCreditInformationResponse GetPortfolioCreditInformation(
-      GetPortfolioCreditInformationRequest request,
-      CallOptions? options = null)
-    {
-      return this.Request<GetPortfolioCreditInformationResponse>(
-        HttpMethod.Post,
-        $"/portfolios/{request.PortfolioId}/credit",
-        [HttpStatusCode.OK],
-        null,
-        options);
-    }
-
-    public Task<GetPortfolioCreditInformationResponse> GetPortfolioCreditInformationAsync(
-      GetPortfolioCreditInformationRequest request,
-      CallOptions? options = null,
-      CancellationToken cancellationToken = default)
-    {
-      return this.RequestAsync<GetPortfolioCreditInformationResponse>(
-        HttpMethod.Post,
-        $"/portfolios/{request.PortfolioId}/credit",
-        [HttpStatusCode.OK],
-        null,
-        options,
-        cancellationToken);
-    }
   }
 }

@@ -16,50 +16,50 @@
 
 namespace CoinbaseSdk.Prime.Commission
 {
-  using System.Text.Json.Serialization;
-  public class Commission
-  {
-    public string? Type { get; set; }
-    public string? Rate { get; set; }
-
-    [JsonPropertyName("trading_volume")]
-    public string? TradingVolume { get; set; }
-
-    public Commission() { }
-
-    public class CommissionBuilder
+    using System.Text.Json.Serialization;
+    public class Commission
     {
-      private string? _type;
-      private string? _rate;
-      private string? _tradingVolume;
+        public string? Type { get; set; }
+        public string? Rate { get; set; }
 
-      public CommissionBuilder WithType(string? type)
-      {
-        this._type = type;
-        return this;
-      }
+        [JsonPropertyName("trading_volume")]
+        public string? TradingVolume { get; set; }
 
-      public CommissionBuilder WithRate(string? rate)
-      {
-        this._rate = rate;
-        return this;
-      }
+        public Commission() { }
 
-      public CommissionBuilder WithTradingVolume(string? tradingVolume)
-      {
-        this._tradingVolume = tradingVolume;
-        return this;
-      }
-
-      public Commission Build()
-      {
-        return new Commission
+        public class CommissionBuilder
         {
-          Type = this._type,
-          Rate = this._rate,
-          TradingVolume = this._tradingVolume
-        };
-      }
+            private string? _type;
+            private string? _rate;
+            private string? _tradingVolume;
+
+            public CommissionBuilder WithType(string? type)
+            {
+                this._type = type;
+                return this;
+            }
+
+            public CommissionBuilder WithRate(string? rate)
+            {
+                this._rate = rate;
+                return this;
+            }
+
+            public CommissionBuilder WithTradingVolume(string? tradingVolume)
+            {
+                this._tradingVolume = tradingVolume;
+                return this;
+            }
+
+            public Commission Build()
+            {
+                return new Commission
+                {
+                    Type = this._type,
+                    Rate = this._rate,
+                    TradingVolume = this._tradingVolume
+                };
+            }
+        }
     }
-  }
 }

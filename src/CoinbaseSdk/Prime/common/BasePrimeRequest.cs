@@ -16,19 +16,19 @@
 
 namespace CoinbaseSdk.Prime.Common
 {
-  using System.Text.Json.Serialization;
+    using System.Text.Json.Serialization;
 
-  public class BasePrimeRequest
-  {
-    [JsonIgnore]
-    public string? PortfolioId { get; set; }
-    [JsonIgnore]
-    public string? EntityId { get; set; }
-
-    public BasePrimeRequest(string? portfolioId, string? entityId)
+    public class BasePrimeRequest
     {
-      this.PortfolioId = portfolioId;
-      this.EntityId = entityId;
+        [JsonIgnore]
+        public string? PortfolioId { get; set; }
+        [JsonIgnore]
+        public string? EntityId { get; set; }
+
+        public BasePrimeRequest(string? portfolioId, string? entityId)
+        {
+            this.PortfolioId = portfolioId;
+            this.EntityId = entityId;
+        }
     }
-  }
 }

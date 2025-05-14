@@ -16,60 +16,60 @@
 
 namespace CoinbaseSdk.Prime.Activities
 {
-  using System.Text.Json.Serialization;
-  using CoinbaseSdk.Core.Error;
-  using CoinbaseSdk.Prime.Common;
-  public class GetActivityByActivityIdRequest(string portfolioId, string activityId)
-  : BasePrimeRequest(portfolioId, null)
-  {
-    [JsonIgnore]
-    public string ActivityId { get; set; } = activityId;
-
-    public class GetActivityByActivityIdRequestBuilder
+    using System.Text.Json.Serialization;
+    using CoinbaseSdk.Core.Error;
+    using CoinbaseSdk.Prime.Common;
+    public class GetActivityByActivityIdRequest(string portfolioId, string activityId)
+    : BasePrimeRequest(portfolioId, null)
     {
-      private string? _portfolioId;
-      private string? _activityId;
+        [JsonIgnore]
+        public string ActivityId { get; set; } = activityId;
 
-      public GetActivityByActivityIdRequestBuilder WithPortfolioId(string portfolioId)
-      {
-        _portfolioId = portfolioId;
-        return this;
-      }
-
-      public GetActivityByActivityIdRequestBuilder WithActivityId(string activityId)
-      {
-        _activityId = activityId;
-        return this;
-      }
-
-      /// <summary>
-      /// Validates the input fields.
-      /// </summary>
-      /// <exception cref="CoinbaseClientException">
-      /// If <see cref="_portfolioId"/> or <see cref="_activityId"/> are null, empty, or whitespace.
-      /// </exception>
-      private void Validate()
-      {
-        if (string.IsNullOrWhiteSpace(_portfolioId))
+        public class GetActivityByActivityIdRequestBuilder
         {
-          throw new CoinbaseClientException("PortfolioId is required");
-        }
-        if (string.IsNullOrWhiteSpace(_activityId))
-        {
-          throw new CoinbaseClientException("ActivityId is required");
-        }
-      }
+            private string? _portfolioId;
+            private string? _activityId;
 
-      /// <summary>
-      /// Builds the <see cref="GetActivityByActivityIdRequest"/>.
-      /// </summary>
-      /// <returns>The new <see cref="GetActivityByActivityIdRequest"/>.</returns>
-      /// <exception cref="CoinbaseClientException"> If the required fields are not set.</exception>
-      public GetActivityByActivityIdRequest Build()
-      {
-        this.Validate();
-        return new GetActivityByActivityIdRequest(_portfolioId!, _activityId!);
-      }
+            public GetActivityByActivityIdRequestBuilder WithPortfolioId(string portfolioId)
+            {
+                _portfolioId = portfolioId;
+                return this;
+            }
+
+            public GetActivityByActivityIdRequestBuilder WithActivityId(string activityId)
+            {
+                _activityId = activityId;
+                return this;
+            }
+
+            /// <summary>
+            /// Validates the input fields.
+            /// </summary>
+            /// <exception cref="CoinbaseClientException">
+            /// If <see cref="_portfolioId"/> or <see cref="_activityId"/> are null, empty, or whitespace.
+            /// </exception>
+            private void Validate()
+            {
+                if (string.IsNullOrWhiteSpace(_portfolioId))
+                {
+                    throw new CoinbaseClientException("PortfolioId is required");
+                }
+                if (string.IsNullOrWhiteSpace(_activityId))
+                {
+                    throw new CoinbaseClientException("ActivityId is required");
+                }
+            }
+
+            /// <summary>
+            /// Builds the <see cref="GetActivityByActivityIdRequest"/>.
+            /// </summary>
+            /// <returns>The new <see cref="GetActivityByActivityIdRequest"/>.</returns>
+            /// <exception cref="CoinbaseClientException"> If the required fields are not set.</exception>
+            public GetActivityByActivityIdRequest Build()
+            {
+                this.Validate();
+                return new GetActivityByActivityIdRequest(_portfolioId!, _activityId!);
+            }
+        }
     }
-  }
 }

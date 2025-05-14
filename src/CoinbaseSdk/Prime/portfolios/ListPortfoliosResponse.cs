@@ -16,34 +16,35 @@
 
 namespace CoinbaseSdk.Prime.Portfolios
 {
-  public class ListPortfoliosResponse
-  {
-    public ListPortfoliosResponse(Portfolio[] portfolios)
+    using CoinbaseSdk.Prime.Model;
+    public class ListPortfoliosResponse
     {
-      this.Portfolios = portfolios;
-    }
-
-    public ListPortfoliosResponse() { }
-
-    public Portfolio[]? Portfolios { get; set; }
-
-    public class ListPortfoliosResponseBuilder
-    {
-      private Portfolio[]? _portfolios;
-
-      public ListPortfoliosResponseBuilder WithPortfolios(Portfolio[]? portfolios)
-      {
-        this._portfolios = portfolios;
-        return this;
-      }
-
-      public ListPortfoliosResponse Build()
-      {
-        return new ListPortfoliosResponse
+        public ListPortfoliosResponse(Portfolio[] portfolios)
         {
-          Portfolios = this._portfolios
-        };
-      }
+            this.Portfolios = portfolios;
+        }
+
+        public ListPortfoliosResponse() { }
+
+        public Portfolio[]? Portfolios { get; set; }
+
+        public class ListPortfoliosResponseBuilder
+        {
+            private Portfolio[]? _portfolios;
+
+            public ListPortfoliosResponseBuilder WithPortfolios(Portfolio[]? portfolios)
+            {
+                this._portfolios = portfolios;
+                return this;
+            }
+
+            public ListPortfoliosResponse Build()
+            {
+                return new ListPortfoliosResponse
+                {
+                    Portfolios = this._portfolios
+                };
+            }
+        }
     }
-  }
 }

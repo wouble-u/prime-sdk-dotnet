@@ -16,56 +16,56 @@
 
 namespace CoinbaseSdk.Prime.Activities
 {
-  using System.Text.Json.Serialization;
-  using CoinbaseSdk.Core.Error;
-  using CoinbaseSdk.Prime.Common;
+    using System.Text.Json.Serialization;
+    using CoinbaseSdk.Core.Error;
+    using CoinbaseSdk.Prime.Common;
 
-  public class GetEntityActivityByActivityIdRequest
-  : BasePrimeRequest
-  {
-    [JsonIgnore]
-    public string ActivityId { get; set; }
-
-    public GetEntityActivityByActivityIdRequest(string activityId)
-    : base(null, null) // Adjust the base constructor call if needed
+    public class GetEntityActivityByActivityIdRequest
+    : BasePrimeRequest
     {
-        ActivityId = activityId;
-    }
+        [JsonIgnore]
+        public string ActivityId { get; set; }
 
-    public class GetActivityByActivityIdRequestBuilder
-    {
-      private string? _activityId;
-
-      public GetActivityByActivityIdRequestBuilder WithActivityId(string activityId)
-      {
-        _activityId = activityId;
-        return this;
-      }
-
-      /// <summary>
-      /// Validates the input fields.
-      /// </summary>
-      /// <exception cref="CoinbaseClientException">
-      /// If <see cref="_activityId"/> is null, empty, or whitespace.
-      /// </exception>
-      private void Validate()
-      {
-        if (string.IsNullOrWhiteSpace(_activityId))
+        public GetEntityActivityByActivityIdRequest(string activityId)
+        : base(null, null) // Adjust the base constructor call if needed
         {
-          throw new CoinbaseClientException("ActivityId is required");
+            ActivityId = activityId;
         }
-      }
 
-      /// <summary>
-      /// Builds the <see cref="GetEntityActivityByActivityIdRequest"/>.
-      /// </summary>
-      /// <returns>The new <see cref="GetEntityActivityByActivityIdRequest"/>.</returns>
-      /// <exception cref="CoinbaseClientException"> If the required fields are not set.</exception>
-      public GetEntityActivityByActivityIdRequest Build()
-      {
-        this.Validate();
-        return new GetEntityActivityByActivityIdRequest(_activityId!);
-      }
+        public class GetActivityByActivityIdRequestBuilder
+        {
+            private string? _activityId;
+
+            public GetActivityByActivityIdRequestBuilder WithActivityId(string activityId)
+            {
+                _activityId = activityId;
+                return this;
+            }
+
+            /// <summary>
+            /// Validates the input fields.
+            /// </summary>
+            /// <exception cref="CoinbaseClientException">
+            /// If <see cref="_activityId"/> is null, empty, or whitespace.
+            /// </exception>
+            private void Validate()
+            {
+                if (string.IsNullOrWhiteSpace(_activityId))
+                {
+                    throw new CoinbaseClientException("ActivityId is required");
+                }
+            }
+
+            /// <summary>
+            /// Builds the <see cref="GetEntityActivityByActivityIdRequest"/>.
+            /// </summary>
+            /// <returns>The new <see cref="GetEntityActivityByActivityIdRequest"/>.</returns>
+            /// <exception cref="CoinbaseClientException"> If the required fields are not set.</exception>
+            public GetEntityActivityByActivityIdRequest Build()
+            {
+                this.Validate();
+                return new GetEntityActivityByActivityIdRequest(_activityId!);
+            }
+        }
     }
-  }
 }

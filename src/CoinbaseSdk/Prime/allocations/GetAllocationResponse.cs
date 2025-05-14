@@ -14,29 +14,31 @@
  *  limitations under the License.
  */
 
+
 namespace CoinbaseSdk.Prime.Allocations
 {
-  public class GetAllocationResponse
-  {
-    public Allocation? Allocation { get; set; }
-
-    public class GetAllocationResponseBuilder
+    using CoinbaseSdk.Prime.Model;
+    public class GetAllocationResponse
     {
-      private Allocation? _allocation;
+        public Allocation? Allocation { get; set; }
 
-      public GetAllocationResponseBuilder WithAllocation(Allocation allocation)
-      {
-        this._allocation = allocation;
-        return this;
-      }
-
-      public GetAllocationResponse Build()
-      {
-        return new GetAllocationResponse()
+        public class GetAllocationResponseBuilder
         {
-          Allocation = this._allocation
-        };
-      }
+            private Allocation? _allocation;
+
+            public GetAllocationResponseBuilder WithAllocation(Allocation allocation)
+            {
+                this._allocation = allocation;
+                return this;
+            }
+
+            public GetAllocationResponse Build()
+            {
+                return new GetAllocationResponse()
+                {
+                    Allocation = this._allocation
+                };
+            }
+        }
     }
-  }
 }

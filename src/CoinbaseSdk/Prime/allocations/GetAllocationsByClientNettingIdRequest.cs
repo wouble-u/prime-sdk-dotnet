@@ -16,60 +16,60 @@
 
 namespace CoinbaseSdk.Prime.Allocations
 {
-  using System.Text.Json.Serialization;
-  using CoinbaseSdk.Core.Error;
-  using CoinbaseSdk.Prime.Common;
-  public class GetAllocationsByClientNettingIdRequest(string portfolioId, string clientNettingId)
-  : BasePrimeRequest(portfolioId, null)
-  {
-    [JsonIgnore]
-    public string ClientNettingId { get; set; } = clientNettingId;
-
-    public class GetAllocationsByClientNettingIdRequestBuilder
+    using System.Text.Json.Serialization;
+    using CoinbaseSdk.Core.Error;
+    using CoinbaseSdk.Prime.Common;
+    public class GetAllocationsByClientNettingIdRequest(string portfolioId, string clientNettingId)
+    : BasePrimeRequest(portfolioId, null)
     {
-      private string? _portfolioId;
-      private string? _clientNettingId;
+        [JsonIgnore]
+        public string ClientNettingId { get; set; } = clientNettingId;
 
-      public GetAllocationsByClientNettingIdRequestBuilder WithPortfolioId(string portfolioId)
-      {
-        this._portfolioId = portfolioId;
-        return this;
-      }
-
-      public GetAllocationsByClientNettingIdRequestBuilder WithClientNettingId(string clientNettingId)
-      {
-        this._clientNettingId = clientNettingId;
-        return this;
-      }
-
-      /// <summary>
-      /// Validate the builder.
-      /// </summary>
-      /// <exception cref="CoinbaseClientException">Thrown when the
-      /// <see cref="_portfolioId"/> or <see cref="_clientNettingId"/> are null, empty
-      /// or whitespace.</exception>
-      private void Validate()
-      {
-        if (string.IsNullOrWhiteSpace(this._portfolioId))
+        public class GetAllocationsByClientNettingIdRequestBuilder
         {
-          throw new CoinbaseClientException("PortfolioId is required");
-        }
-        if (string.IsNullOrWhiteSpace(this._clientNettingId))
-        {
-          throw new CoinbaseClientException("ClientNettingId is required");
-        }
-      }
+            private string? _portfolioId;
+            private string? _clientNettingId;
 
-      /// <summary>
-      /// Build the <see cref="GetAllocationsByClientNettingIdRequest"/> object.
-      /// </summary>
-      /// <returns>The <see cref="GetAllocationsByClientNettingIdRequest"/> object.</returns>
-      /// <exception cref="CoinbaseClientException">Thrown when the required fields are not set.</exception>
-      public GetAllocationsByClientNettingIdRequest Build()
-      {
-        this.Validate();
-        return new GetAllocationsByClientNettingIdRequest(this._portfolioId!, this._clientNettingId!);
-      }
+            public GetAllocationsByClientNettingIdRequestBuilder WithPortfolioId(string portfolioId)
+            {
+                this._portfolioId = portfolioId;
+                return this;
+            }
+
+            public GetAllocationsByClientNettingIdRequestBuilder WithClientNettingId(string clientNettingId)
+            {
+                this._clientNettingId = clientNettingId;
+                return this;
+            }
+
+            /// <summary>
+            /// Validate the builder.
+            /// </summary>
+            /// <exception cref="CoinbaseClientException">Thrown when the
+            /// <see cref="_portfolioId"/> or <see cref="_clientNettingId"/> are null, empty
+            /// or whitespace.</exception>
+            private void Validate()
+            {
+                if (string.IsNullOrWhiteSpace(this._portfolioId))
+                {
+                    throw new CoinbaseClientException("PortfolioId is required");
+                }
+                if (string.IsNullOrWhiteSpace(this._clientNettingId))
+                {
+                    throw new CoinbaseClientException("ClientNettingId is required");
+                }
+            }
+
+            /// <summary>
+            /// Build the <see cref="GetAllocationsByClientNettingIdRequest"/> object.
+            /// </summary>
+            /// <returns>The <see cref="GetAllocationsByClientNettingIdRequest"/> object.</returns>
+            /// <exception cref="CoinbaseClientException">Thrown when the required fields are not set.</exception>
+            public GetAllocationsByClientNettingIdRequest Build()
+            {
+                this.Validate();
+                return new GetAllocationsByClientNettingIdRequest(this._portfolioId!, this._clientNettingId!);
+            }
+        }
     }
-  }
 }

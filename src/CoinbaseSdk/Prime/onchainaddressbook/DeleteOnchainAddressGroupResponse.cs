@@ -17,7 +17,7 @@
 namespace CoinbaseSdk.Prime.OnchainAddressBook
 {
     using System.Text.Json.Serialization;
-    using CoinbaseSdk.Prime.Model;
+    using CoinbaseSdk.Prime.Model.Enum;
 
     public class DeleteOnchainAddressGroupResponse
     {

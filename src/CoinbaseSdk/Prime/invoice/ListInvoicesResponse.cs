@@ -16,34 +16,34 @@
 
 namespace CoinbaseSdk.Prime.Invoice
 {
-  public class ListInvoicesResponse
-  {
-    public Invoice[] Invoices { get; set; } = [];
-
-    public ListInvoicesResponse() { }
-
-    public ListInvoicesResponse(Invoice[] invoices)
+    public class ListInvoicesResponse
     {
-      Invoices = invoices;
-    }
+        public Invoice[] Invoices { get; set; } = [];
 
-    public class ListInvoicesResponseBuilder
-    {
-      private Invoice[] _invoices = [];
+        public ListInvoicesResponse() { }
 
-      public ListInvoicesResponseBuilder WithInvoices(Invoice[] invoices)
-      {
-        this._invoices = invoices;
-        return this;
-      }
-
-      public ListInvoicesResponse Build()
-      {
-        return new ListInvoicesResponse
+        public ListInvoicesResponse(Invoice[] invoices)
         {
-          Invoices = this._invoices
-        };
-      }
+            Invoices = invoices;
+        }
+
+        public class ListInvoicesResponseBuilder
+        {
+            private Invoice[] _invoices = [];
+
+            public ListInvoicesResponseBuilder WithInvoices(Invoice[] invoices)
+            {
+                this._invoices = invoices;
+                return this;
+            }
+
+            public ListInvoicesResponse Build()
+            {
+                return new ListInvoicesResponse
+                {
+                    Invoices = this._invoices
+                };
+            }
+        }
     }
-  }
 }

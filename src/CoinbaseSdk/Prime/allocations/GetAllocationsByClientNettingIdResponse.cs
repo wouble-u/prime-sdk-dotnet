@@ -16,29 +16,30 @@
 
 namespace CoinbaseSdk.Prime.Allocations
 {
-  public class GetAllocationsByClientNettingIdResponse
-  {
-    public Allocation[] Allocations { get; set; } = [];
-
-    public GetAllocationsByClientNettingIdResponse() { }
-
-    public class GetAllocationsByClientNettingIdResponseBuilder
+    using CoinbaseSdk.Prime.Model;
+    public class GetAllocationsByClientNettingIdResponse
     {
-      private Allocation[] _allocations = [];
+        public Allocation[] Allocations { get; set; } = [];
 
-      public GetAllocationsByClientNettingIdResponseBuilder WithAllocations(Allocation[] allocations)
-      {
-        this._allocations = allocations;
-        return this;
-      }
+        public GetAllocationsByClientNettingIdResponse() { }
 
-      public GetAllocationsByClientNettingIdResponse Build()
-      {
-        return new GetAllocationsByClientNettingIdResponse
+        public class GetAllocationsByClientNettingIdResponseBuilder
         {
-          Allocations = this._allocations
-        };
-      }
+            private Allocation[] _allocations = [];
+
+            public GetAllocationsByClientNettingIdResponseBuilder WithAllocations(Allocation[] allocations)
+            {
+                this._allocations = allocations;
+                return this;
+            }
+
+            public GetAllocationsByClientNettingIdResponse Build()
+            {
+                return new GetAllocationsByClientNettingIdResponse
+                {
+                    Allocations = this._allocations
+                };
+            }
+        }
     }
-  }
 }

@@ -16,34 +16,35 @@
 
 namespace CoinbaseSdk.Prime.Balances
 {
-  public class GetWalletBalanceResponse
-  {
-    public Balance? Balance { get; set; }
-
-    public GetWalletBalanceResponse() { }
-
-    public GetWalletBalanceResponse(Balance balance)
+    using CoinbaseSdk.Prime.Model;
+    public class GetWalletBalanceResponse
     {
-      Balance = balance;
-    }
+        public Balance? Balance { get; set; }
 
-    public class GetWalletBalanceResponseBuilder
-    {
-      private Balance? _balance;
+        public GetWalletBalanceResponse() { }
 
-      public GetWalletBalanceResponseBuilder WithBalance(Balance? balance)
-      {
-        this._balance = balance;
-        return this;
-      }
-
-      public GetWalletBalanceResponse Build()
-      {
-        return new GetWalletBalanceResponse
+        public GetWalletBalanceResponse(Balance balance)
         {
-          Balance = this._balance
-        };
-      }
+            Balance = balance;
+        }
+
+        public class GetWalletBalanceResponseBuilder
+        {
+            private Balance? _balance;
+
+            public GetWalletBalanceResponseBuilder WithBalance(Balance? balance)
+            {
+                this._balance = balance;
+                return this;
+            }
+
+            public GetWalletBalanceResponse Build()
+            {
+                return new GetWalletBalanceResponse
+                {
+                    Balance = this._balance
+                };
+            }
+        }
     }
-  }
 }

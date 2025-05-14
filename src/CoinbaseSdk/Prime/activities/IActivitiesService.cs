@@ -16,44 +16,44 @@
 
 namespace CoinbaseSdk.Prime.Activities
 {
-  using CoinbaseSdk.Core.Http;
+    using CoinbaseSdk.Core.Http;
 
-  public interface IActivitiesService
-  {
-    public ListActivitiesResponse ListActivities(
-      ListActivitiesRequest request,
-      CallOptions? options = null);
+    public interface IActivitiesService
+    {
+        public ListActivitiesResponse ListActivities(
+          ListActivitiesRequest request,
+          CallOptions? options = null);
 
-    public Task<ListActivitiesResponse> ListActivitiesAsync(
-      ListActivitiesRequest request,
-      CallOptions? options = null,
-      CancellationToken cancellationToken = default);
+        public Task<ListActivitiesResponse> ListActivitiesAsync(
+          ListActivitiesRequest request,
+          CallOptions? options = null,
+          CancellationToken cancellationToken = default);
 
-    public GetActivityByActivityIdResponse GetActivityByActivityId(
-      GetActivityByActivityIdRequest request,
-      CallOptions? options = null);
+        public GetActivityByActivityIdResponse GetActivityByActivityId(
+          GetActivityByActivityIdRequest request,
+          CallOptions? options = null);
 
-    public Task<GetActivityByActivityIdResponse> GetActivityByActivityIdAsync(
-      GetActivityByActivityIdRequest request,
-      CallOptions? options = null,
-      CancellationToken cancellationToken = default);
+        public Task<GetActivityByActivityIdResponse> GetActivityByActivityIdAsync(
+          GetActivityByActivityIdRequest request,
+          CallOptions? options = null,
+          CancellationToken cancellationToken = default);
 
-    public ListActivitiesResponse ListEntityActivities(
-      ListEntityActivitiesRequest request,
-      CallOptions? options = null);
+        public ListActivitiesResponse ListEntityActivities(
+          ListEntityActivitiesRequest request,
+          CallOptions? options = null);
 
-    public Task<ListActivitiesResponse> ListEntityActivitiesAsync(
-      ListEntityActivitiesRequest request,
-      CallOptions? options = null,
-      CancellationToken cancellationToken = default);
+        public Task<ListActivitiesResponse> ListEntityActivitiesAsync(
+          ListEntityActivitiesRequest request,
+          CallOptions? options = null,
+          CancellationToken cancellationToken = default);
 
-    public GetActivityByActivityIdResponse GetEntityActivityByActivityId(
-      GetEntityActivityByActivityIdRequest request,
-      CallOptions? options = null);
+        public GetActivityByActivityIdResponse GetEntityActivityByActivityId(
+          GetEntityActivityByActivityIdRequest request,
+          CallOptions? options = null);
 
-    public Task<GetActivityByActivityIdResponse> GetEntityActivityByActivityIdAsync(
-      GetEntityActivityByActivityIdRequest request,
-      CallOptions? options = null,
-      CancellationToken cancellationToken = default);
-  }
+        public Task<GetActivityByActivityIdResponse> GetEntityActivityByActivityIdAsync(
+          GetEntityActivityByActivityIdRequest request,
+          CallOptions? options = null,
+          CancellationToken cancellationToken = default);
+    }
 }

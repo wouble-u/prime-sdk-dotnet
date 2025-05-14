@@ -16,29 +16,30 @@
 
 namespace CoinbaseSdk.Prime.PaymentMethods
 {
-  public class GetEntityPaymentMethodResponse
-  {
-    public EntityPaymentMethod? PaymentMethod { get; set; }
-
-    public GetEntityPaymentMethodResponse() { }
-
-    public class GetEntityPaymentMethodResponseBuilder
+    using CoinbaseSdk.Prime.Model;
+    public class GetEntityPaymentMethodResponse
     {
-      private EntityPaymentMethod? _paymentMethod;
+        public EntityPaymentMethod? PaymentMethod { get; set; }
 
-      public GetEntityPaymentMethodResponseBuilder WithPaymentMethod(EntityPaymentMethod? paymentMethod)
-      {
-        this._paymentMethod = paymentMethod;
-        return this;
-      }
+        public GetEntityPaymentMethodResponse() { }
 
-      public GetEntityPaymentMethodResponse Build()
-      {
-        return new GetEntityPaymentMethodResponse
+        public class GetEntityPaymentMethodResponseBuilder
         {
-          PaymentMethod = this._paymentMethod
-        };
-      }
+            private EntityPaymentMethod? _paymentMethod;
+
+            public GetEntityPaymentMethodResponseBuilder WithPaymentMethod(EntityPaymentMethod? paymentMethod)
+            {
+                this._paymentMethod = paymentMethod;
+                return this;
+            }
+
+            public GetEntityPaymentMethodResponse Build()
+            {
+                return new GetEntityPaymentMethodResponse
+                {
+                    PaymentMethod = this._paymentMethod
+                };
+            }
+        }
     }
-  }
 }

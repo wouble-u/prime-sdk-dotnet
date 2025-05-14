@@ -16,40 +16,41 @@
 
 namespace CoinbaseSdk.Prime.Orders
 {
-  using CoinbaseSdk.Prime.Common;
+    using CoinbaseSdk.Prime.Common;
+    using CoinbaseSdk.Prime.Model;
 
-  public class ListPortfolioOrdersResponse
-  {
-    public Order[] Orders { get; set; } = [];
-    public Pagination? Pagination { get; set; }
-
-    public ListPortfolioOrdersResponse() { }
-
-    public class ListPortfolioOrdersResponseBuilder
+    public class ListPortfolioOrdersResponse
     {
-      private Order[] _orders = [];
-      private Pagination? _pagination;
+        public Order[] Orders { get; set; } = [];
+        public Pagination? Pagination { get; set; }
 
-      public ListPortfolioOrdersResponseBuilder WithOrders(Order[] orders)
-      {
-        this._orders = orders;
-        return this;
-      }
+        public ListPortfolioOrdersResponse() { }
 
-      public ListPortfolioOrdersResponseBuilder WithPagination(Pagination pagination)
-      {
-        this._pagination = pagination;
-        return this;
-      }
-
-      public ListPortfolioOrdersResponse Build()
-      {
-        return new ListPortfolioOrdersResponse
+        public class ListPortfolioOrdersResponseBuilder
         {
-          Orders = this._orders,
-          Pagination = this._pagination
-        };
-      }
+            private Order[] _orders = [];
+            private Pagination? _pagination;
+
+            public ListPortfolioOrdersResponseBuilder WithOrders(Order[] orders)
+            {
+                this._orders = orders;
+                return this;
+            }
+
+            public ListPortfolioOrdersResponseBuilder WithPagination(Pagination pagination)
+            {
+                this._pagination = pagination;
+                return this;
+            }
+
+            public ListPortfolioOrdersResponse Build()
+            {
+                return new ListPortfolioOrdersResponse
+                {
+                    Orders = this._orders,
+                    Pagination = this._pagination
+                };
+            }
+        }
     }
-  }
 }

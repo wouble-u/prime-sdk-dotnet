@@ -16,80 +16,80 @@
 
 namespace CoinbaseSdk.Prime.Wallets
 {
-  using System.Text.Json.Serialization;
-  using CoinbaseSdk.Core.Error;
-  using CoinbaseSdk.Prime.Common;
-  using CoinbaseSdk.Prime.Model;
+    using System.Text.Json.Serialization;
+    using CoinbaseSdk.Core.Error;
+    using CoinbaseSdk.Prime.Common;
+    using CoinbaseSdk.Prime.Model.Enum;
 
-  public class CreateWalletRequest(string portfolioId)
-  : BasePrimeRequest(portfolioId, null)
-  {
-    public string? Name { get; set; }
-
-    public string? Symbol { get; set; }
-
-    [JsonPropertyName("wallet_type")]
-    public WalletType Type { get; set; }
-
-    public class CreateWalletRequestBuilder
+    public class CreateWalletRequest(string portfolioId)
+    : BasePrimeRequest(portfolioId, null)
     {
-      private string? _portfolioId;
-      private string? _name;
-      private string? _symbol;
-      private WalletType _type;
+        public string? Name { get; set; }
 
-      public CreateWalletRequestBuilder WithPortfolioId(string portfolioId)
-      {
-        this._portfolioId = portfolioId;
-        return this;
-      }
+        public string? Symbol { get; set; }
 
-      public CreateWalletRequestBuilder WithName(string? name)
-      {
-        this._name = name;
-        return this;
-      }
+        [JsonPropertyName("wallet_type")]
+        public WalletType Type { get; set; }
 
-      public CreateWalletRequestBuilder WithSymbol(string? symbol)
-      {
-        this._symbol = symbol;
-        return this;
-      }
-
-      public CreateWalletRequestBuilder WithType(WalletType type)
-      {
-        this._type = type;
-        return this;
-      }
-
-      /// <summary>
-      /// Validate the builder.
-      /// </summary>
-      /// <exception cref="CoinbaseClientException">Thrown when the
-      /// <see cref="_portfolioId"/> is null, empty or whitespace.</exception>
-      private void Validate()
-      {
-        if (string.IsNullOrWhiteSpace(this._portfolioId))
+        public class CreateWalletRequestBuilder
         {
-          throw new CoinbaseClientException("PortfolioId is required");
+            private string? _portfolioId;
+            private string? _name;
+            private string? _symbol;
+            private WalletType _type;
+
+            public CreateWalletRequestBuilder WithPortfolioId(string portfolioId)
+            {
+                this._portfolioId = portfolioId;
+                return this;
+            }
+
+            public CreateWalletRequestBuilder WithName(string? name)
+            {
+                this._name = name;
+                return this;
+            }
+
+            public CreateWalletRequestBuilder WithSymbol(string? symbol)
+            {
+                this._symbol = symbol;
+                return this;
+            }
+
+            public CreateWalletRequestBuilder WithType(WalletType type)
+            {
+                this._type = type;
+                return this;
+            }
+
+            /// <summary>
+            /// Validate the builder.
+            /// </summary>
+            /// <exception cref="CoinbaseClientException">Thrown when the
+            /// <see cref="_portfolioId"/> is null, empty or whitespace.</exception>
+            private void Validate()
+            {
+                if (string.IsNullOrWhiteSpace(this._portfolioId))
+                {
+                    throw new CoinbaseClientException("PortfolioId is required");
+                }
+            }
+
+            /// <summary>
+            /// Build the <see cref="CreateWalletRequest"/> object.
+            /// </summary>
+            /// <returns>The <see cref="CreateWalletRequest"/> object.</returns>
+            /// <exception cref="CoinbaseClientException">Thrown when the required fields are not set.</exception>
+            public CreateWalletRequest Build()
+            {
+                this.Validate();
+                return new CreateWalletRequest(this._portfolioId!)
+                {
+                    Name = this._name,
+                    Symbol = this._symbol,
+                    Type = this._type
+                };
+            }
         }
-      }
-
-      /// <summary>
-      /// Build the <see cref="CreateWalletRequest"/> object.
-      /// </summary>
-      /// <returns>The <see cref="CreateWalletRequest"/> object.</returns>
-      /// <exception cref="CoinbaseClientException">Thrown when the required fields are not set.</exception>
-      public CreateWalletRequest Build()
-      {
-        this.Validate();
-        return new CreateWalletRequest(this._portfolioId!)
-        {
-          Name = this._name,
-          Symbol = this._symbol,
-          Type = this._type
-        };
-      }
     }
-  }
 }

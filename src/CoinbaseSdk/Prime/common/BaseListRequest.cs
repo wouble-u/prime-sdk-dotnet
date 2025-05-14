@@ -16,15 +16,15 @@
 
 namespace CoinbaseSdk.Prime.Common
 {
-  using System.Text.Json.Serialization;
+    using System.Text.Json.Serialization;
 
-  public class BaseListRequest(string? portfolioId, string? entityId) : BasePrimeRequest(portfolioId, entityId)
-  {
-    public string? Cursor { get; set; }
+    public class BaseListRequest(string? portfolioId, string? entityId) : BasePrimeRequest(portfolioId, entityId)
+    {
+        public string? Cursor { get; set; }
 
-    [JsonPropertyName("sort_direction")]
-    public string? SortDirection { get; set; }
+        [JsonPropertyName("sort_direction")]
+        public string? SortDirection { get; set; }
 
-    public int? Limit { get; set; }
-  }
+        public int? Limit { get; set; }
+    }
 }

@@ -16,17 +16,17 @@
 
 namespace CoinbaseSdk.Prime.Assets
 {
-  using CoinbaseSdk.Core.Http;
-  public interface IAssetsService
-  {
-    public ListAssetsResponse ListAssets(
-      ListAssetsRequest request,
-      CallOptions? options = null);
+    using CoinbaseSdk.Core.Http;
+    public interface IAssetsService
+    {
+        public ListAssetsResponse ListAssets(
+          ListAssetsRequest request,
+          CallOptions? options = null);
 
-    public Task<ListAssetsResponse> ListAssetsAsync(
-      ListAssetsRequest request,
-      CallOptions? options = null,
-      CancellationToken cancellationToken = default);
-  }
+        public Task<ListAssetsResponse> ListAssetsAsync(
+          ListAssetsRequest request,
+          CallOptions? options = null,
+          CancellationToken cancellationToken = default);
+    }
 }
 

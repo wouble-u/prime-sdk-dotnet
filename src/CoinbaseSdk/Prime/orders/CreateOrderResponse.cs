@@ -16,36 +16,36 @@
 
 namespace CoinbaseSdk.Prime.Orders
 {
-  using System.Text.Json.Serialization;
-  public class CreateOrderResponse
-  {
-    [JsonPropertyName("order_id")]
-    public string? OrderId { get; set; }
-
-    public CreateOrderResponse() { }
-
-    public CreateOrderResponse(string orderId)
+    using System.Text.Json.Serialization;
+    public class CreateOrderResponse
     {
-      OrderId = orderId;
-    }
+        [JsonPropertyName("order_id")]
+        public string? OrderId { get; set; }
 
-    public class CreateOrderResponseBuilder
-    {
-      private string? _orderId;
+        public CreateOrderResponse() { }
 
-      public CreateOrderResponseBuilder WithOrderId(string? orderId)
-      {
-        this._orderId = orderId;
-        return this;
-      }
-
-      public CreateOrderResponse Build()
-      {
-        return new CreateOrderResponse
+        public CreateOrderResponse(string orderId)
         {
-          OrderId = this._orderId
-        };
-      }
+            OrderId = orderId;
+        }
+
+        public class CreateOrderResponseBuilder
+        {
+            private string? _orderId;
+
+            public CreateOrderResponseBuilder WithOrderId(string? orderId)
+            {
+                this._orderId = orderId;
+                return this;
+            }
+
+            public CreateOrderResponse Build()
+            {
+                return new CreateOrderResponse
+                {
+                    OrderId = this._orderId
+                };
+            }
+        }
     }
-  }
 }

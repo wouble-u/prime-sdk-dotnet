@@ -16,81 +16,81 @@
 
 namespace CoinbaseSdk.Prime.Transactions
 {
-  using System.Text.Json.Serialization;
-  public class CreateConversionResponse
-  {
-    [JsonPropertyName("activity_id")]
-    public string? ActivityId { get; set; }
-
-    [JsonPropertyName("source_symbol")]
-    public string? SourceSymbol { get; set; }
-
-    [JsonPropertyName("destination_symbol")]
-    public string? DestinationSymbol { get; set; }
-
-    public string? Amount { get; set; }
-    public string? Destination { get; set; }
-    public string? Source { get; set; }
-
-    public CreateConversionResponse() { }
-
-    public class CreateConversionResponseBuilder
+    using System.Text.Json.Serialization;
+    public class CreateConversionResponse
     {
-      private string? _activityId;
-      private string? _sourceSymbol;
-      private string? _destinationSymbol;
-      private string? _amount;
-      private string? _destination;
-      private string? _source;
+        [JsonPropertyName("activity_id")]
+        public string? ActivityId { get; set; }
 
-      public CreateConversionResponseBuilder WithActivityId(string? activityId)
-      {
-        this._activityId = activityId;
-        return this;
-      }
+        [JsonPropertyName("source_symbol")]
+        public string? SourceSymbol { get; set; }
 
-      public CreateConversionResponseBuilder WithSourceSymbol(string? sourceSymbol)
-      {
-        this._sourceSymbol = sourceSymbol;
-        return this;
-      }
+        [JsonPropertyName("destination_symbol")]
+        public string? DestinationSymbol { get; set; }
 
-      public CreateConversionResponseBuilder WithDestinationSymbol(string? destinationSymbol)
-      {
-        this._destinationSymbol = destinationSymbol;
-        return this;
-      }
+        public string? Amount { get; set; }
+        public string? Destination { get; set; }
+        public string? Source { get; set; }
 
-      public CreateConversionResponseBuilder WithAmount(string? amount)
-      {
-        this._amount = amount;
-        return this;
-      }
+        public CreateConversionResponse() { }
 
-      public CreateConversionResponseBuilder WithDestination(string? destination)
-      {
-        this._destination = destination;
-        return this;
-      }
-
-      public CreateConversionResponseBuilder WithSource(string? source)
-      {
-        this._source = source;
-        return this;
-      }
-
-      public CreateConversionResponse Build()
-      {
-        return new CreateConversionResponse
+        public class CreateConversionResponseBuilder
         {
-          ActivityId = this._activityId,
-          SourceSymbol = this._sourceSymbol,
-          DestinationSymbol = this._destinationSymbol,
-          Amount = this._amount,
-          Destination = this._destination,
-          Source = this._source
-        };
-      }
+            private string? _activityId;
+            private string? _sourceSymbol;
+            private string? _destinationSymbol;
+            private string? _amount;
+            private string? _destination;
+            private string? _source;
+
+            public CreateConversionResponseBuilder WithActivityId(string? activityId)
+            {
+                this._activityId = activityId;
+                return this;
+            }
+
+            public CreateConversionResponseBuilder WithSourceSymbol(string? sourceSymbol)
+            {
+                this._sourceSymbol = sourceSymbol;
+                return this;
+            }
+
+            public CreateConversionResponseBuilder WithDestinationSymbol(string? destinationSymbol)
+            {
+                this._destinationSymbol = destinationSymbol;
+                return this;
+            }
+
+            public CreateConversionResponseBuilder WithAmount(string? amount)
+            {
+                this._amount = amount;
+                return this;
+            }
+
+            public CreateConversionResponseBuilder WithDestination(string? destination)
+            {
+                this._destination = destination;
+                return this;
+            }
+
+            public CreateConversionResponseBuilder WithSource(string? source)
+            {
+                this._source = source;
+                return this;
+            }
+
+            public CreateConversionResponse Build()
+            {
+                return new CreateConversionResponse
+                {
+                    ActivityId = this._activityId,
+                    SourceSymbol = this._sourceSymbol,
+                    DestinationSymbol = this._destinationSymbol,
+                    Amount = this._amount,
+                    Destination = this._destination,
+                    Source = this._source
+                };
+            }
+        }
     }
-  }
 }

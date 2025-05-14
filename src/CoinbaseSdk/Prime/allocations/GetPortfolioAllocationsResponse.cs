@@ -16,39 +16,40 @@
 
 namespace CoinbaseSdk.Prime.Allocations
 {
-  using CoinbaseSdk.Prime.Common;
-  public class GetPortfolioAllocationsResponse
-  {
-    public Allocation[] Allocations { get; set; } = [];
-    public Pagination? Pagination { get; set; }
-
-    public GetPortfolioAllocationsResponse() { }
-
-    public class GetPortfolioAllocationsResponseBuilder
+    using CoinbaseSdk.Prime.Common;
+    using CoinbaseSdk.Prime.Model;
+    public class GetPortfolioAllocationsResponse
     {
-      private Allocation[] _allocations = Array.Empty<Allocation>();
-      private Pagination? _pagination;
+        public Allocation[] Allocations { get; set; } = [];
+        public Pagination? Pagination { get; set; }
 
-      public GetPortfolioAllocationsResponseBuilder WithAllocations(Allocation[] allocations)
-      {
-        this._allocations = allocations;
-        return this;
-      }
+        public GetPortfolioAllocationsResponse() { }
 
-      public GetPortfolioAllocationsResponseBuilder WithPagination(Pagination? pagination)
-      {
-        this._pagination = pagination;
-        return this;
-      }
-
-      public GetPortfolioAllocationsResponse Build()
-      {
-        return new GetPortfolioAllocationsResponse
+        public class GetPortfolioAllocationsResponseBuilder
         {
-          Allocations = this._allocations,
-          Pagination = this._pagination
-        };
-      }
+            private Allocation[] _allocations = Array.Empty<Allocation>();
+            private Pagination? _pagination;
+
+            public GetPortfolioAllocationsResponseBuilder WithAllocations(Allocation[] allocations)
+            {
+                this._allocations = allocations;
+                return this;
+            }
+
+            public GetPortfolioAllocationsResponseBuilder WithPagination(Pagination? pagination)
+            {
+                this._pagination = pagination;
+                return this;
+            }
+
+            public GetPortfolioAllocationsResponse Build()
+            {
+                return new GetPortfolioAllocationsResponse
+                {
+                    Allocations = this._allocations,
+                    Pagination = this._pagination
+                };
+            }
+        }
     }
-  }
 }

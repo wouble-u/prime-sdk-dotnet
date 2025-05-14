@@ -16,44 +16,44 @@
 
 namespace CoinbaseSdk.Prime.Wallets
 {
-  using CoinbaseSdk.Core.Http;
+    using CoinbaseSdk.Core.Http;
 
-  public interface IWalletsService
-  {
-    public ListWalletsResponse ListWallets(
-      ListWalletsRequest request,
-      CallOptions? options = null);
+    public interface IWalletsService
+    {
+        public ListWalletsResponse ListWallets(
+          ListWalletsRequest request,
+          CallOptions? options = null);
 
-    public Task<ListWalletsResponse> ListWalletsAsync(
-      ListWalletsRequest request,
-      CallOptions? options = null,
-      CancellationToken cancellationToken = default);
+        public Task<ListWalletsResponse> ListWalletsAsync(
+          ListWalletsRequest request,
+          CallOptions? options = null,
+          CancellationToken cancellationToken = default);
 
-    public CreateWalletResponse CreateWallet(
-      CreateWalletRequest request,
-      CallOptions? options = null);
+        public CreateWalletResponse CreateWallet(
+          CreateWalletRequest request,
+          CallOptions? options = null);
 
-    public Task<CreateWalletResponse> CreateWalletAsync(
-      CreateWalletRequest request,
-      CallOptions? options = null,
-      CancellationToken cancellationToken = default);
+        public Task<CreateWalletResponse> CreateWalletAsync(
+          CreateWalletRequest request,
+          CallOptions? options = null,
+          CancellationToken cancellationToken = default);
 
-    public GetWalletByIdResponse GetWalletById(
-      GetWalletByIdRequest request,
-      CallOptions? options = null);
+        public GetWalletByIdResponse GetWalletById(
+          GetWalletByIdRequest request,
+          CallOptions? options = null);
 
-    public Task<GetWalletByIdResponse> GetWalletByIdAsync(
-      GetWalletByIdRequest request,
-      CallOptions? options = null,
-      CancellationToken cancellationToken = default);
+        public Task<GetWalletByIdResponse> GetWalletByIdAsync(
+          GetWalletByIdRequest request,
+          CallOptions? options = null,
+          CancellationToken cancellationToken = default);
 
-    public GetWalletDepositInstructionsResponse GetWalletDepositInstructions(
-      GetWalletDepositInstructionsRequest request,
-      CallOptions? options = null);
+        public GetWalletDepositInstructionsResponse GetWalletDepositInstructions(
+          GetWalletDepositInstructionsRequest request,
+          CallOptions? options = null);
 
-    public Task<GetWalletDepositInstructionsResponse> GetWalletDepositInstructionsAsync(
-      GetWalletDepositInstructionsRequest request,
-      CallOptions? options = null,
-      CancellationToken cancellationToken = default);
-  }
+        public Task<GetWalletDepositInstructionsResponse> GetWalletDepositInstructionsAsync(
+          GetWalletDepositInstructionsRequest request,
+          CallOptions? options = null,
+          CancellationToken cancellationToken = default);
+    }
 }

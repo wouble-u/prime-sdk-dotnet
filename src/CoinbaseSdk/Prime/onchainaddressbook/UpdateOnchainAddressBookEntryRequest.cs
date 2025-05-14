@@ -18,6 +18,7 @@ namespace CoinbaseSdk.Prime.OnchainAddressBook
 {
     using System.Text.Json.Serialization;
     using CoinbaseSdk.Prime.Common;
+    using CoinbaseSdk.Prime.Model;
 
     public class UpdateOnchainAddressBookEntryRequest(string portfolioId, AddressGroup addressGroup)
         : BasePrimeRequest(portfolioId, null)

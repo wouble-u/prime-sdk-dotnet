@@ -16,12 +16,13 @@
 
 namespace CoinbaseSdk.Prime.Balances
 {
-  using CoinbaseSdk.Prime.Common;
-  public class ListOnchainWalletBalancesResponse
-  {
-    public OnchainWalletBalance[] Balances { get; set; } = [];
-    public Pagination? Pagination { get; set; }
+    using CoinbaseSdk.Prime.Common;
+    using CoinbaseSdk.Prime.Model;
+    public class ListOnchainWalletBalancesResponse
+    {
+        public OnchainWalletBalance[] Balances { get; set; } = [];
+        public Pagination? Pagination { get; set; }
 
-    public ListOnchainWalletBalancesResponse() { }
-  }
+        public ListOnchainWalletBalancesResponse() { }
+    }
 }

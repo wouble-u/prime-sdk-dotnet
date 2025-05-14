@@ -16,39 +16,41 @@
 
 namespace CoinbaseSdk.Prime.Products
 {
-  using CoinbaseSdk.Prime.Common;
-  public class ListPortfolioProductsResponse
-  {
-    public Product[] Products { get; set; } = [];
-    public Pagination? Pagination { get; set; }
+    using CoinbaseSdk.Prime.Common;
+    using CoinbaseSdk.Prime.Model;
 
-    public ListPortfolioProductsResponse() { }
-
-    public class ListPortfolioProductsResponseBuilder
+    public class ListPortfolioProductsResponse
     {
-      private Product[] _products = [];
-      private Pagination? _pagination;
+        public Product[] Products { get; set; } = [];
+        public Pagination? Pagination { get; set; }
 
-      public ListPortfolioProductsResponseBuilder WithProducts(Product[] products)
-      {
-        this._products = products;
-        return this;
-      }
+        public ListPortfolioProductsResponse() { }
 
-      public ListPortfolioProductsResponseBuilder WithPagination(Pagination? pagination)
-      {
-        this._pagination = pagination;
-        return this;
-      }
-
-      public ListPortfolioProductsResponse Build()
-      {
-        return new ListPortfolioProductsResponse
+        public class ListPortfolioProductsResponseBuilder
         {
-          Products = this._products,
-          Pagination = this._pagination
-        };
-      }
+            private Product[] _products = [];
+            private Pagination? _pagination;
+
+            public ListPortfolioProductsResponseBuilder WithProducts(Product[] products)
+            {
+                this._products = products;
+                return this;
+            }
+
+            public ListPortfolioProductsResponseBuilder WithPagination(Pagination? pagination)
+            {
+                this._pagination = pagination;
+                return this;
+            }
+
+            public ListPortfolioProductsResponse Build()
+            {
+                return new ListPortfolioProductsResponse
+                {
+                    Products = this._products,
+                    Pagination = this._pagination
+                };
+            }
+        }
     }
-  }
 }

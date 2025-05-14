@@ -16,124 +16,124 @@
 
 namespace CoinbaseSdk.Prime.Allocations
 {
-  using System.Text.Json.Serialization;
-  using CoinbaseSdk.Core.Error;
-  using CoinbaseSdk.Prime.Common;
-  using CoinbaseSdk.Prime.Model;
+    using System.Text.Json.Serialization;
+    using CoinbaseSdk.Core.Error;
+    using CoinbaseSdk.Prime.Common;
+    using CoinbaseSdk.Prime.Model.Enum;
 
-  public class GetPortfolioAllocationsRequest(string portfolioId)
-  : BaseListRequest(portfolioId, null)
-  {
-    [JsonPropertyName("product_ids")]
-    public string[] ProductIds { get; set; } = [];
-
-    [JsonPropertyName("order_side")]
-    public OrderSide OrderSide { get; set; }
-
-    [JsonPropertyName("start_date")]
-    public string? StartDate { get; set; }
-
-    [JsonPropertyName("end_date")]
-    public string? EndDate { get; set; }
-
-    public class GetPortfolioAllocationsRequestBuilder
+    public class GetPortfolioAllocationsRequest(string portfolioId)
+    : BaseListRequest(portfolioId, null)
     {
-      private string? _portfolioId;
-      private string[] _productIds = Array.Empty<string>();
-      private OrderSide _orderSide;
-      private string? _startDate;
-      private string? _endDate;
-      private string? _cursor;
-      private string? _sortDirection;
-      private int? _limit;
+        [JsonPropertyName("product_ids")]
+        public string[] ProductIds { get; set; } = [];
 
-      public GetPortfolioAllocationsRequestBuilder WithPortfolioId(string portfolioId)
-      {
-        this._portfolioId = portfolioId;
-        return this;
-      }
+        [JsonPropertyName("order_side")]
+        public OrderSide OrderSide { get; set; }
 
-      public GetPortfolioAllocationsRequestBuilder WithProductIds(string[] productIds)
-      {
-        this._productIds = productIds;
-        return this;
-      }
+        [JsonPropertyName("start_date")]
+        public string? StartDate { get; set; }
 
-      public GetPortfolioAllocationsRequestBuilder WithOrderSide(OrderSide orderSide)
-      {
-        this._orderSide = orderSide;
-        return this;
-      }
+        [JsonPropertyName("end_date")]
+        public string? EndDate { get; set; }
 
-      public GetPortfolioAllocationsRequestBuilder WithStartDate(string? startDate)
-      {
-        this._startDate = startDate;
-        return this;
-      }
-
-      public GetPortfolioAllocationsRequestBuilder WithEndDate(string? endDate)
-      {
-        this._endDate = endDate;
-        return this;
-      }
-
-      public GetPortfolioAllocationsRequestBuilder WithCursor(string? cursor)
-      {
-        this._cursor = cursor;
-        return this;
-      }
-
-      public GetPortfolioAllocationsRequestBuilder WithSortDirection(string? sortDirection)
-      {
-        this._sortDirection = sortDirection;
-        return this;
-      }
-
-      public GetPortfolioAllocationsRequestBuilder WithLimit(int? limit)
-      {
-        this._limit = limit;
-        return this;
-      }
-
-      public GetPortfolioAllocationsRequestBuilder WithPagination(Pagination pagination)
-      {
-        this._cursor = pagination.NextCursor;
-        this._sortDirection = pagination.SortDirection;
-        return this;
-      }
-
-      /// <summary>
-      /// Validates the builder.
-      /// </summary>
-      /// <exception cref="CoinbaseClientException">Thrown when the
-      /// <see cref="_portfolioId"/> is null, empty or whitespace.</exception>
-      private void Validate()
-      {
-        if (string.IsNullOrWhiteSpace(this._portfolioId))
+        public class GetPortfolioAllocationsRequestBuilder
         {
-          throw new CoinbaseClientException("PortfolioId is required");
+            private string? _portfolioId;
+            private string[] _productIds = Array.Empty<string>();
+            private OrderSide _orderSide;
+            private string? _startDate;
+            private string? _endDate;
+            private string? _cursor;
+            private string? _sortDirection;
+            private int? _limit;
+
+            public GetPortfolioAllocationsRequestBuilder WithPortfolioId(string portfolioId)
+            {
+                this._portfolioId = portfolioId;
+                return this;
+            }
+
+            public GetPortfolioAllocationsRequestBuilder WithProductIds(string[] productIds)
+            {
+                this._productIds = productIds;
+                return this;
+            }
+
+            public GetPortfolioAllocationsRequestBuilder WithOrderSide(OrderSide orderSide)
+            {
+                this._orderSide = orderSide;
+                return this;
+            }
+
+            public GetPortfolioAllocationsRequestBuilder WithStartDate(string? startDate)
+            {
+                this._startDate = startDate;
+                return this;
+            }
+
+            public GetPortfolioAllocationsRequestBuilder WithEndDate(string? endDate)
+            {
+                this._endDate = endDate;
+                return this;
+            }
+
+            public GetPortfolioAllocationsRequestBuilder WithCursor(string? cursor)
+            {
+                this._cursor = cursor;
+                return this;
+            }
+
+            public GetPortfolioAllocationsRequestBuilder WithSortDirection(string? sortDirection)
+            {
+                this._sortDirection = sortDirection;
+                return this;
+            }
+
+            public GetPortfolioAllocationsRequestBuilder WithLimit(int? limit)
+            {
+                this._limit = limit;
+                return this;
+            }
+
+            public GetPortfolioAllocationsRequestBuilder WithPagination(Pagination pagination)
+            {
+                this._cursor = pagination.NextCursor;
+                this._sortDirection = pagination.SortDirection;
+                return this;
+            }
+
+            /// <summary>
+            /// Validates the builder.
+            /// </summary>
+            /// <exception cref="CoinbaseClientException">Thrown when the
+            /// <see cref="_portfolioId"/> is null, empty or whitespace.</exception>
+            private void Validate()
+            {
+                if (string.IsNullOrWhiteSpace(this._portfolioId))
+                {
+                    throw new CoinbaseClientException("PortfolioId is required");
+                }
+            }
+
+            /// <summary>
+            /// Builds the <see cref="GetPortfolioAllocationsRequest"/>.
+            /// </summary>
+            /// <returns>The <see cref="GetPortfolioAllocationsRequest"/>.</returns>
+            /// <exception cref="CoinbaseClientException">Thrown when the required fields are not set.</exception>
+            public GetPortfolioAllocationsRequest Build()
+            {
+                this.Validate();
+                return new GetPortfolioAllocationsRequest(this._portfolioId!)
+                {
+                    ProductIds = this._productIds,
+                    OrderSide = this._orderSide,
+                    StartDate = this._startDate,
+                    EndDate = this._endDate,
+                    Cursor = this._cursor,
+                    SortDirection = this._sortDirection,
+                    Limit = this._limit
+                };
+            }
         }
-      }
-
-      /// <summary>
-      /// Builds the <see cref="GetPortfolioAllocationsRequest"/>.
-      /// </summary>
-      /// <returns>The <see cref="GetPortfolioAllocationsRequest"/>.</returns>
-      /// <exception cref="CoinbaseClientException">Thrown when the required fields are not set.</exception>
-      public GetPortfolioAllocationsRequest Build()
-      {
-        this.Validate();
-        return new GetPortfolioAllocationsRequest(this._portfolioId!)
-        {
-          ProductIds = this._productIds,
-          OrderSide = this._orderSide,
-          StartDate = this._startDate,
-          EndDate = this._endDate,
-          Cursor = this._cursor,
-          SortDirection = this._sortDirection,
-          Limit = this._limit
-        };
-      }
     }
-  }
 }
