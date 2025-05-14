@@ -20,7 +20,6 @@ namespace CoinbaseSdk.Prime.Transactions
     using CoinbaseSdk.Core.Error;
     using CoinbaseSdk.Prime.Common;
     using CoinbaseSdk.Prime.Model;
-    using CoinbaseSdk.Prime.Model;
 
     public class CreateWithdrawalRequest(string portfolioId, string walletId)
     : BasePrimeRequest(portfolioId, null)
