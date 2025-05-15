@@ -18,7 +18,8 @@ namespace CoinbaseSdk.Prime.Products
 {
     using System.Text.Json.Serialization;
     using CoinbaseSdk.Core.Error;
-    using CoinbaseSdk.Prime.Common;
+    using CoinbaseSdk.Prime.Model;
+
     public class ListPortfolioProductsRequest(string portfolioId)
     {
         [JsonIgnore, JsonPropertyName("portfolio_id")]

@@ -16,7 +16,6 @@
 
 namespace CoinbaseSdk.Prime.Orders
 {
-    using CoinbaseSdk.Prime.Common;
     using CoinbaseSdk.Prime.Model;
 
     public class ListPortfolioOrdersResponse

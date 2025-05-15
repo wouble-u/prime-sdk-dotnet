@@ -16,88 +16,114 @@
 
 namespace CoinbaseSdk.Prime.Balances
 {
-    using System.Net;
-    using CoinbaseSdk.Core.Client;
-    using CoinbaseSdk.Core.Http;
-    using CoinbaseSdk.Core.Service;
-    public class BalancesService(ICoinbaseClient client) : CoinbaseService(client), IBalancesService
+  using System.Net;
+  using CoinbaseSdk.Core.Client;
+  using CoinbaseSdk.Core.Http;
+  using CoinbaseSdk.Core.Service;
+  public class BalancesService(ICoinbaseClient client) : CoinbaseService(client), IBalancesService
+  {
+    public GetWalletBalanceResponse GetWalletBalance(
+      GetWalletBalanceRequest request,
+      CallOptions? options = null)
     {
-        public GetWalletBalanceResponse GetWalletBalance(
-          GetWalletBalanceRequest request,
-          CallOptions? options = null)
-        {
-            return this.Request<GetWalletBalanceResponse>(
-              HttpMethod.Get,
-              $"/portfolios/{request.PortfolioId}/wallets/{request.WalletId}/balance",
-              [HttpStatusCode.OK],
-              null,
-              options);
-        }
-
-        public Task<GetWalletBalanceResponse> GetWalletBalanceAsync(
-          GetWalletBalanceRequest request,
-          CallOptions? options = null,
-          CancellationToken cancellationToken = default)
-        {
-            return this.RequestAsync<GetWalletBalanceResponse>(
-              HttpMethod.Get,
-              $"/portfolios/{request.PortfolioId}/wallets/{request.WalletId}/balance",
-              [HttpStatusCode.OK],
-              null,
-              options,
-              cancellationToken);
-        }
-
-        public ListPortfolioBalancesResponse ListPortfolioBalances(
-          ListPortfolioBalancesRequest request,
-          CallOptions? options = null)
-        {
-            return this.Request<ListPortfolioBalancesResponse>(
-              HttpMethod.Get,
-              $"/portfolios/{request.PortfolioId}/balances",
-              [HttpStatusCode.OK],
-              request,
-              options);
-        }
-
-        public Task<ListPortfolioBalancesResponse> ListPortfolioBalancesAsync(
-          ListPortfolioBalancesRequest request,
-          CallOptions? options = null,
-          CancellationToken cancellationToken = default)
-        {
-            return this.RequestAsync<ListPortfolioBalancesResponse>(
-              HttpMethod.Get,
-              $"/portfolios/{request.PortfolioId}/balances",
-              [HttpStatusCode.OK],
-              request,
-              options,
-              cancellationToken);
-        }
-
-        public ListOnchainWalletBalancesResponse ListOnchainWalletBalances(
-          ListOnchainWalletBalancesRequest request,
-          CallOptions? options = null)
-        {
-            return this.Request<ListOnchainWalletBalancesResponse>(
-              HttpMethod.Get,
-              $"/portfolios/{request.PortfolioId}/wallets/{request.WalletId}/web3_balances",
-              [HttpStatusCode.OK],
-              request,
-              options);
-        }
-
-        public Task<ListOnchainWalletBalancesResponse> ListOnchainWalletBalancesAsync(
-          ListOnchainWalletBalancesRequest request,
-          CallOptions? options = null,
-          CancellationToken cancellationToken = default)
-        {
-            return this.RequestAsync<ListOnchainWalletBalancesResponse>(
-              HttpMethod.Get,
-              $"/portfolios/{request.PortfolioId}/wallets/{request.WalletId}/web3_balances",
-              [HttpStatusCode.OK],
-              request,
-              options,
-              cancellationToken);
-        }
+      return this.Request<GetWalletBalanceResponse>(
+        HttpMethod.Get,
+        $"/portfolios/{request.PortfolioId}/wallets/{request.WalletId}/balance",
+        [HttpStatusCode.OK],
+        null,
+        options);
     }
+
+    public Task<GetWalletBalanceResponse> GetWalletBalanceAsync(
+      GetWalletBalanceRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default)
+    {
+      return this.RequestAsync<GetWalletBalanceResponse>(
+        HttpMethod.Get,
+        $"/portfolios/{request.PortfolioId}/wallets/{request.WalletId}/balance",
+        [HttpStatusCode.OK],
+        null,
+        options,
+        cancellationToken);
+    }
+
+    public ListEntityBalancesResponse ListEntityBalances(
+              ListEntityBalancesRequest request,
+              CallOptions? options = null)
+    {
+      return this.Request<ListEntityBalancesResponse>(
+        HttpMethod.Get,
+        $"/entities/{request.EntityId}/balances",
+        [HttpStatusCode.OK],
+        request,
+        options);
+    }
+
+    public Task<ListEntityBalancesResponse> ListEntityBalancesAsync(
+      ListEntityBalancesRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default)
+    {
+      return this.RequestAsync<ListEntityBalancesResponse>(
+        HttpMethod.Get,
+        $"/entities/{request.EntityId}/balances",
+        [HttpStatusCode.OK],
+        request,
+        options,
+        cancellationToken);
+    }
+
+    public ListPortfolioBalancesResponse ListPortfolioBalances(
+      ListPortfolioBalancesRequest request,
+      CallOptions? options = null)
+    {
+      return this.Request<ListPortfolioBalancesResponse>(
+        HttpMethod.Get,
+        $"/portfolios/{request.PortfolioId}/balances",
+        [HttpStatusCode.OK],
+        request,
+        options);
+    }
+
+    public Task<ListPortfolioBalancesResponse> ListPortfolioBalancesAsync(
+      ListPortfolioBalancesRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default)
+    {
+      return this.RequestAsync<ListPortfolioBalancesResponse>(
+        HttpMethod.Get,
+        $"/portfolios/{request.PortfolioId}/balances",
+        [HttpStatusCode.OK],
+        request,
+        options,
+        cancellationToken);
+    }
+
+    public ListOnchainWalletBalancesResponse ListOnchainWalletBalances(
+      ListOnchainWalletBalancesRequest request,
+      CallOptions? options = null)
+    {
+      return this.Request<ListOnchainWalletBalancesResponse>(
+        HttpMethod.Get,
+        $"/portfolios/{request.PortfolioId}/wallets/{request.WalletId}/web3_balances",
+        [HttpStatusCode.OK],
+        request,
+        options);
+    }
+
+    public Task<ListOnchainWalletBalancesResponse> ListOnchainWalletBalancesAsync(
+      ListOnchainWalletBalancesRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default)
+    {
+      return this.RequestAsync<ListOnchainWalletBalancesResponse>(
+        HttpMethod.Get,
+        $"/portfolios/{request.PortfolioId}/wallets/{request.WalletId}/web3_balances",
+        [HttpStatusCode.OK],
+        request,
+        options,
+        cancellationToken);
+    }
+  }
 }

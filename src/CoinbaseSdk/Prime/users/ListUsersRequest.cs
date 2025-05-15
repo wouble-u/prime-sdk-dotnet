@@ -18,7 +18,8 @@ namespace CoinbaseSdk.Prime.Users
 {
     using System.Text.Json.Serialization;
     using CoinbaseSdk.Core.Error;
-    using CoinbaseSdk.Prime.Common;
+    using CoinbaseSdk.Prime.Model;
+
     public class ListUsersRequest(string entityId)
     {
         [JsonIgnore, JsonPropertyName("entity_id")]

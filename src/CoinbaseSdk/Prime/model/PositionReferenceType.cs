@@ -14,14 +14,12 @@
  * limitations under the License.
  */
 
-namespace CoinbaseSdk.Prime.Balances
+namespace CoinbaseSdk.Prime.Model
 {
-    using CoinbaseSdk.Prime.Model;
-    public class ListOnchainWalletBalancesResponse
+    public enum PositionReferenceType
     {
-        public OnchainWalletBalance[] Balances { get; set; } = [];
-        public Pagination? Pagination { get; set; }
-
-        public ListOnchainWalletBalancesResponse() { }
+        POSITION_REFERENCE_TYPE_UNSPECIFIED,
+        ENTITY,
+        PORTFOLIO
     }
 }

@@ -18,7 +18,6 @@ namespace CoinbaseSdk.Prime.Orders
 {
     using System.Text.Json.Serialization;
     using CoinbaseSdk.Core.Error;
-    using CoinbaseSdk.Prime.Common;
 
     public class ListPortfolioFillsRequest(string portfolioId)
     {

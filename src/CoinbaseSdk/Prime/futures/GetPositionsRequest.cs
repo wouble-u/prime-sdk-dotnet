@@ -1,7 +1,6 @@
 namespace CoinbaseSdk.Prime.Futures
 {
     using System.Text.Json.Serialization;
-    using CoinbaseSdk.Prime.Common;
     public class GetPositionsRequest(string entityId)
     {
         [JsonIgnore, JsonPropertyName("entity_id")]

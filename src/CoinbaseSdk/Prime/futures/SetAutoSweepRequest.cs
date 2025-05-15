@@ -1,7 +1,6 @@
 namespace CoinbaseSdk.Prime.Futures
 {
     using System.Text.Json.Serialization;
-    using CoinbaseSdk.Prime.Common;
 
     public class SetAutoSweepRequest(string entityId)
     {

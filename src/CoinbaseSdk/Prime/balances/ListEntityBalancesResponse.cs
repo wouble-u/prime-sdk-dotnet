@@ -1,5 +1,5 @@
 /*
- * Copyright 2024-present Coinbase Global, Inc.
+ * Copyright 2025-present Coinbase Global, Inc.
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -14,15 +14,14 @@
  *  limitations under the License.
  */
 
-namespace CoinbaseSdk.Prime.Model
+namespace CoinbaseSdk.Prime.Balances
 {
-    public enum BalanceType
+    using CoinbaseSdk.Prime.Model;
+
+    public class ListEntityBalancesResponse
     {
-        UNKNOWN_BALANCE_TYPE,
-        TRADING_BALANCES,
-        VAULT_BALANCES,
-        TOTAL_BALANCES,
-        PRIME_CUSTODY_BALANCES,
-        UNIFIED_TOTAL_BALANCES
+        public EntityBalance[] Balances { get; set; } = [];
+
+        public Pagination? Pagination { get; set; }
     }
 }
