@@ -18,12 +18,13 @@ namespace CoinbaseSdk.Prime.Orders
 {
     using System.Text.Json.Serialization;
     using CoinbaseSdk.Core.Error;
-    using CoinbaseSdk.Prime.Common;
 
     public class GetOrderByOrderIdRequest(string portfolioId, string orderId)
-    : BasePrimeRequest(portfolioId, null)
     {
-        [JsonIgnore]
+        [JsonIgnore, JsonPropertyName("portfolio_id")]
+        public string PortfolioId { get; set; } = portfolioId;
+
+        [JsonIgnore, JsonPropertyName("order_id")]
         public string OrderId { get; set; } = orderId;
 
         public class GetOrderByOrderIdRequestBuilder

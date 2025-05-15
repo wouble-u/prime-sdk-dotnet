@@ -16,9 +16,12 @@
 
 namespace CoinbaseSdk.Prime.Financing
 {
-    using CoinbaseSdk.Prime.Common;
-    public class GetPortfolioWithdrawalPowerRequest(string portfolioId) : BasePrimeRequest(portfolioId, null)
+    using System.Text.Json.Serialization;
+    public class GetPortfolioWithdrawalPowerRequest(string portfolioId)
     {
+        [JsonIgnore, JsonPropertyName("portfolio_id")]
+        public string PortfolioId { get; set; } = portfolioId;
+
         public string? Symbol { get; set; }
 
         public class GetPortfolioWithdrawalPowerRequestBuilder

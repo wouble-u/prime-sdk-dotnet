@@ -17,9 +17,11 @@
 namespace CoinbaseSdk.Prime.Financing
 {
     using System.Text.Json.Serialization;
-    using CoinbaseSdk.Prime.Common;
-    public class CreateNewLocatesRequest(string portfolioId) : BasePrimeRequest(portfolioId, null)
+    public class CreateNewLocatesRequest(string portfolioId)
     {
+        [JsonIgnore, JsonPropertyName("portfolio_id")]
+        public string PortfolioId { get; set; } = portfolioId;
+
         public string? Symbol { get; set; }
         public string? Amount { get; set; }
         [JsonPropertyName("locate_date")]

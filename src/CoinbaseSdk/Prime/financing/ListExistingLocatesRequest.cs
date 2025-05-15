@@ -17,9 +17,11 @@
 namespace CoinbaseSdk.Prime.Financing
 {
     using System.Text.Json.Serialization;
-    using CoinbaseSdk.Prime.Common;
-    public class ListExistingLocatesRequest(string portfolioId) : BasePrimeRequest(portfolioId, null)
+    public class ListExistingLocatesRequest(string portfolioId)
     {
+        [JsonIgnore, JsonPropertyName("portfolio_id")]
+        public string PortfolioId { get; set; } = portfolioId;
+
         [JsonPropertyName("locate_ids")]
         public string[] LocateIds { get; set; } = [];
 

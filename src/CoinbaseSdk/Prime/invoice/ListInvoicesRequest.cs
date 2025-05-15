@@ -18,11 +18,13 @@ namespace CoinbaseSdk.Prime.Invoice
 {
     using System.Text.Json.Serialization;
     using CoinbaseSdk.Core.Error;
-    using CoinbaseSdk.Prime.Common;
     using CoinbaseSdk.Prime.Model;
 
-    public class ListInvoicesRequest(string entityId) : BasePrimeRequest(null, entityId)
+    public class ListInvoicesRequest(string entityId)
     {
+        [JsonIgnore, JsonPropertyName("entity_id")]
+        public string EntityId { get; set; } = entityId;
+
         public InvoiceState[] States { get; set; } = [];
 
         [JsonPropertyName("billing_month")]

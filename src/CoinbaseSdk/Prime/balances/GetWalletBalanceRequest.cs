@@ -17,11 +17,12 @@
 namespace CoinbaseSdk.Prime.Balances
 {
     using System.Text.Json.Serialization;
-    using CoinbaseSdk.Prime.Common;
     public class GetWalletBalanceRequest(string portfolioId, string walletId)
-    : BasePrimeRequest(portfolioId, null)
     {
-        [JsonIgnore]
+        [JsonIgnore, JsonPropertyName("portfolio_id")]
+        public string PortfolioId { get; set; } = portfolioId;
+
+        [JsonIgnore, JsonPropertyName("wallet_id")]
         public string WalletId { get; set; } = walletId;
     }
 }

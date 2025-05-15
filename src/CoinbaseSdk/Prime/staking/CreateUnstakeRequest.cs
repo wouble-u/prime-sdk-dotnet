@@ -17,11 +17,13 @@
 namespace CoinbaseSdk.Prime.Staking
 {
     using System.Text.Json.Serialization;
-    using CoinbaseSdk.Prime.Common;
     using CoinbaseSdk.Prime.Model;
 
-    public class CreateUnstakeRequest(string portfolioId, string walletId) : BasePrimeRequest(portfolioId, null)
+    public class CreateUnstakeRequest(string portfolioId, string walletId)
     {
+        [JsonIgnore, JsonPropertyName("portfolio_id")]
+        public string PortfolioId { get; set; } = portfolioId;
+
         [JsonIgnore, JsonPropertyName("wallet_id")]
         public string WalletId { get; set; } = walletId;
 

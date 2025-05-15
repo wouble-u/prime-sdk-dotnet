@@ -16,9 +16,11 @@
 
 namespace CoinbaseSdk.Prime.Financing
 {
-    using CoinbaseSdk.Prime.Common;
+    using System.Text.Json.Serialization;
 
-    public class GetMarginInformationRequest(string entityId) : BasePrimeRequest(null, entityId)
+    public class GetMarginInformationRequest(string entityId)
     {
+        [JsonIgnore, JsonPropertyName("entity_id")]
+        public string EntityId { get; set; } = entityId;
     }
 }

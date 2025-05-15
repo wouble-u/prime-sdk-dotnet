@@ -18,13 +18,14 @@ namespace CoinbaseSdk.Prime.Transactions
 {
     using System.Text.Json.Serialization;
     using CoinbaseSdk.Core.Error;
-    using CoinbaseSdk.Prime.Common;
     using CoinbaseSdk.Prime.Model;
 
     public class CreateWithdrawalRequest(string portfolioId, string walletId)
-    : BasePrimeRequest(portfolioId, null)
     {
-        [JsonIgnore]
+        [JsonIgnore, JsonPropertyName("portfolio_id")]
+        public string PortfolioId { get; set; } = portfolioId;
+
+        [JsonIgnore, JsonPropertyName("wallet_id")]
         public string WalletId { get; set; } = walletId;
 
         public string? Amount { get; set; }

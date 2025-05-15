@@ -18,19 +18,11 @@ namespace CoinbaseSdk.Prime.Activities
 {
     using System.Text.Json.Serialization;
     using CoinbaseSdk.Core.Error;
-    using CoinbaseSdk.Prime.Common;
 
-    public class GetEntityActivityByActivityIdRequest
-    : BasePrimeRequest
+    public class GetEntityActivityByActivityIdRequest(string activityId)
     {
-        [JsonIgnore]
-        public string ActivityId { get; set; }
-
-        public GetEntityActivityByActivityIdRequest(string activityId)
-        : base(null, null) // Adjust the base constructor call if needed
-        {
-            ActivityId = activityId;
-        }
+        [JsonIgnore, JsonPropertyName("activity_id")]
+        public string ActivityId { get; set; } = activityId;
 
         public class GetActivityByActivityIdRequestBuilder
         {

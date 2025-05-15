@@ -3,8 +3,11 @@ namespace CoinbaseSdk.Prime.Futures
     using System.Text.Json.Serialization;
     using CoinbaseSdk.Prime.Common;
 
-    public class SetAutoSweepRequest(string entityId) : BasePrimeRequest(null, entityId)
+    public class SetAutoSweepRequest(string entityId)
     {
+        [JsonIgnore, JsonPropertyName("entity_id")]
+        public string EntityId { get; set; } = entityId;
+
         [JsonPropertyName("auto_sweep")]
         public bool? AutoSweep { get; set; }
 

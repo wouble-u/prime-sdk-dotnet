@@ -2,8 +2,11 @@ namespace CoinbaseSdk.Prime.Futures
 {
     using System.Text.Json.Serialization;
     using CoinbaseSdk.Prime.Common;
-    public class GetPositionsRequest(string entityId) : BasePrimeRequest(null, entityId)
+    public class GetPositionsRequest(string entityId)
     {
+        [JsonIgnore, JsonPropertyName("entity_id")]
+        public string EntityId { get; set; } = entityId;
+
         [JsonPropertyName("product_id")]
         public string? ProductId { get; set; }
 

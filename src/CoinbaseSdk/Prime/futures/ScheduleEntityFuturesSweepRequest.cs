@@ -1,10 +1,12 @@
 namespace CoinbaseSdk.Prime.Futures
 {
-    using CoinbaseSdk.Prime.Common;
+    using System.Text.Json.Serialization;
 
     public class ScheduleEntityFuturesSweepRequest(string entityId)
-        : BasePrimeRequest(null, entityId)
     {
+        [JsonIgnore, JsonPropertyName("entity_id")]
+        public string EntityId { get; set; } = entityId;
+
         public string? Amount { get; set; }
         public string? Currency { get; set; }
 

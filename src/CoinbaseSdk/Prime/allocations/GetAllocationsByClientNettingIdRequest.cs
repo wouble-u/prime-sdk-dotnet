@@ -18,11 +18,12 @@ namespace CoinbaseSdk.Prime.Allocations
 {
     using System.Text.Json.Serialization;
     using CoinbaseSdk.Core.Error;
-    using CoinbaseSdk.Prime.Common;
     public class GetAllocationsByClientNettingIdRequest(string portfolioId, string clientNettingId)
-    : BasePrimeRequest(portfolioId, null)
     {
-        [JsonIgnore]
+        [JsonIgnore, JsonPropertyName("portfolio_id")]
+        public string PortfolioId { get; set; } = portfolioId;
+
+        [JsonIgnore, JsonPropertyName("client_netting_id")]
         public string ClientNettingId { get; set; } = clientNettingId;
 
         public class GetAllocationsByClientNettingIdRequestBuilder

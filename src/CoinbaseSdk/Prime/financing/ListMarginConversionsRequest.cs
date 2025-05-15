@@ -17,9 +17,11 @@
 namespace CoinbaseSdk.Prime.Financing
 {
     using System.Text.Json.Serialization;
-    using CoinbaseSdk.Prime.Common;
-    public class ListMarginConversionsRequest(string portfolioId) : BasePrimeRequest(portfolioId, null)
+    public class ListMarginConversionsRequest(string portfolioId)
     {
+        [JsonIgnore, JsonPropertyName("portfolio_id")]
+        public string PortfolioId { get; set; } = portfolioId;
+
         [JsonPropertyName("start_date")]
         public string? StartDate { get; set; }
 

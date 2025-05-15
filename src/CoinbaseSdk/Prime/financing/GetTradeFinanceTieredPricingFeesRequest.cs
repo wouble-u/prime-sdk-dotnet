@@ -17,9 +17,11 @@
 namespace CoinbaseSdk.Prime.Financing
 {
     using System.Text.Json.Serialization;
-    using CoinbaseSdk.Prime.Common;
-    public class GetTradeFinanceTieredPricingFeesRequest(string entityId) : BasePrimeRequest(null, entityId)
+    public class GetTradeFinanceTieredPricingFeesRequest(string entityId)
     {
+        [JsonIgnore, JsonPropertyName("entity_id")]
+        public string EntityId { get; set; } = entityId;
+
         [JsonPropertyName("effective_at")]
         public string? EffectiveAt { get; set; }
 

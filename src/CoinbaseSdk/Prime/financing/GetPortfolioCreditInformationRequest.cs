@@ -16,12 +16,14 @@
 
 namespace CoinbaseSdk.Prime.Financing
 {
+    using System.Text.Json.Serialization;
     using CoinbaseSdk.Core.Error;
-    using CoinbaseSdk.Prime.Common;
 
     public class GetPortfolioCreditInformationRequest(string portfolioId)
-    : BasePrimeRequest(portfolioId, null)
     {
+        [JsonIgnore, JsonPropertyName("portfolio_id")]
+        public string PortfolioId { get; set; } = portfolioId;
+
         public class GetPortfolioCreditInformationRequestBuilder
         {
             private string? _portfolioId;

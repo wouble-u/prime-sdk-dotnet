@@ -1,7 +1,9 @@
 namespace CoinbaseSdk.Prime.Futures
 {
-    using CoinbaseSdk.Prime.Common;
-    public class CancelEntityFuturesSweepRequest(string entityId) : BasePrimeRequest(null, entityId)
+    using System.Text.Json.Serialization;
+    public class CancelEntityFuturesSweepRequest(string entityId)
     {
+        [JsonIgnore, JsonPropertyName("entity_id")]
+        public string EntityId { get; set; } = entityId;
     }
 }

@@ -21,11 +21,17 @@ namespace CoinbaseSdk.Prime.AddressBook
     using CoinbaseSdk.Prime.Common;
 
     public class GetPortfolioAddressBookRequest(string portfolioId)
-    : BaseListRequest(portfolioId, null)
     {
+        [JsonIgnore, JsonPropertyName("portfolio_id")]
+        public string PortfolioId { get; set; } = portfolioId;
+
         [JsonPropertyName("currency_symbol")]
         public string? CurrencySymbol { get; set; }
         public string? Search { get; set; }
+        public string? Cursor { get; set; }
+        [JsonPropertyName("sort_direction")]
+        public string? SortDirection { get; set; }
+        public int? Limit { get; set; }
 
         public class GetPortfolioAddressBookRequestBuilder
         {

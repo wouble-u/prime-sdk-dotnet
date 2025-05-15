@@ -16,15 +16,24 @@
 
 namespace CoinbaseSdk.Prime.Wallets
 {
+    using System.Text.Json.Serialization;
     using CoinbaseSdk.Core.Error;
     using CoinbaseSdk.Prime.Common;
     using CoinbaseSdk.Prime.Model;
 
-    public class ListWalletsRequest(string portfolioId) : BaseListRequest(portfolioId, null)
+    public class ListWalletsRequest(string portfolioId)
     {
+        [JsonIgnore, JsonPropertyName("portfolio_id")]
+        public string PortfolioId { get; set; } = portfolioId;
+
         public WalletType Type { get; set; }
 
         public string[] Symbols { get; set; } = [];
+
+        public string? Cursor { get; set; }
+        [JsonPropertyName("sort_direction")]
+        public string? SortDirection { get; set; }
+        public int? Limit { get; set; }
 
         public class ListWalletsRequestBuilder
         {

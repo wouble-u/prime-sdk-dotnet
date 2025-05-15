@@ -17,10 +17,12 @@
 namespace CoinbaseSdk.Prime.Financing
 {
     using System.Text.Json.Serialization;
-    using CoinbaseSdk.Prime.Common;
 
-    public class GetEntityLocateAvailabilitiesRequest(string entityId) : BasePrimeRequest(null, entityId)
+    public class GetEntityLocateAvailabilitiesRequest(string entityId)
     {
+        [JsonIgnore, JsonPropertyName("entity_id")]
+        public string EntityId { get; set; } = entityId;
+
         [JsonPropertyName("conversion_date")]
         public string? ConversionDate { get; set; }
 

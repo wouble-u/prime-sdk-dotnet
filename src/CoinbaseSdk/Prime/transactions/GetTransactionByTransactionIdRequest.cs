@@ -18,12 +18,13 @@ namespace CoinbaseSdk.Prime.Transactions
 {
     using System.Text.Json.Serialization;
     using CoinbaseSdk.Core.Error;
-    using CoinbaseSdk.Prime.Common;
 
     public class GetTransactionByTransactionIdRequest(string portfolioId, string transactionId)
-    : BasePrimeRequest(portfolioId, null)
     {
-        [JsonIgnore]
+        [JsonIgnore, JsonPropertyName("portfolio_id")]
+        public string PortfolioId { get; set; } = portfolioId;
+
+        [JsonIgnore, JsonPropertyName("transaction_id")]
         public string TransactionId { get; set; } = transactionId;
 
         public class GetTransactionByTransactionIdRequestBuilder

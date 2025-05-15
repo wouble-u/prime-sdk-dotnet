@@ -20,13 +20,21 @@ namespace CoinbaseSdk.Prime.Orders
     using CoinbaseSdk.Core.Error;
     using CoinbaseSdk.Prime.Common;
 
-    public class ListPortfolioFillsRequest(string portfolioId) : BaseListRequest(portfolioId, null)
+    public class ListPortfolioFillsRequest(string portfolioId)
     {
+        [JsonIgnore, JsonPropertyName("portfolio_id")]
+        public string PortfolioId { get; set; } = portfolioId;
+
         [JsonPropertyName("start_date")]
         public string? StartDate { get; set; }
 
         [JsonPropertyName("end_date")]
         public string? EndDate { get; set; }
+
+        public string? Cursor { get; set; }
+        [JsonPropertyName("sort_direction")]
+        public string? SortDirection { get; set; }
+        public int? Limit { get; set; }
 
         public class ListPortfolioFillsRequestBuilder
         {

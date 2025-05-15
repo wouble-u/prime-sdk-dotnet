@@ -17,9 +17,11 @@
 namespace CoinbaseSdk.Prime.Financing
 {
     using System.Text.Json.Serialization;
-    using CoinbaseSdk.Prime.Common;
-    public class GetPortfolioBuyingPowerRequest(string portfolioId) : BasePrimeRequest(portfolioId, null)
+    public class GetPortfolioBuyingPowerRequest(string portfolioId)
     {
+        [JsonIgnore, JsonPropertyName("portfolio_id")]
+        public string PortfolioId { get; set; } = portfolioId;
+
         [JsonPropertyName("base_currency")]
         public string? BaseCurrency { get; set; }
 

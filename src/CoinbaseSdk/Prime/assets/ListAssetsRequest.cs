@@ -16,10 +16,13 @@
 
 namespace CoinbaseSdk.Prime.Assets
 {
+    using System.Text.Json.Serialization;
     using CoinbaseSdk.Core.Error;
-    using CoinbaseSdk.Prime.Common;
-    public class ListAssetsRequest(string entityId) : BasePrimeRequest(null, entityId)
+    public class ListAssetsRequest(string entityId)
     {
+        [JsonIgnore, JsonPropertyName("entity_id")]
+        public string EntityId { get; } = entityId;
+
         public class ListAssetsRequestBuilder
         {
             private string? _entityId;

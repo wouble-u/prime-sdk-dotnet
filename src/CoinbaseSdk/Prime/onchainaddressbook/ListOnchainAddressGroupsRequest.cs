@@ -16,9 +16,11 @@
 
 namespace CoinbaseSdk.Prime.OnchainAddressBook
 {
-    using CoinbaseSdk.Prime.Common;
+    using System.Text.Json.Serialization;
 
-    public class ListOnchainAddressGroupsRequest(string portfolioId) : BasePrimeRequest(portfolioId, null)
+    public class ListOnchainAddressGroupsRequest(string portfolioId)
     {
+        [JsonIgnore, JsonPropertyName("portfolio_id")]
+        public string PortfolioId { get; set; } = portfolioId;
     }
 }

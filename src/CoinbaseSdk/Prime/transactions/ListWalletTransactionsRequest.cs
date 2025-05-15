@@ -22,9 +22,11 @@ namespace CoinbaseSdk.Prime.Transactions
     using CoinbaseSdk.Prime.Model;
 
     public class ListWalletTransactionsRequest(string portfolioId, string walletId)
-    : BaseListRequest(portfolioId, null)
     {
-        [JsonIgnore]
+        [JsonIgnore, JsonPropertyName("portfolio_id")]
+        public string PortfolioId { get; set; } = portfolioId;
+
+        [JsonIgnore, JsonPropertyName("wallet_id")]
         public string WalletId { get; set; } = walletId;
 
         [JsonPropertyName("type")]
@@ -35,6 +37,11 @@ namespace CoinbaseSdk.Prime.Transactions
 
         [JsonPropertyName("end_time")]
         public string? EndTime { get; set; }
+
+        public string? Cursor { get; set; }
+        [JsonPropertyName("sort_direction")]
+        public string? SortDirection { get; set; }
+        public int? Limit { get; set; }
 
         public class ListWalletTransactionsRequestBuilder
         {

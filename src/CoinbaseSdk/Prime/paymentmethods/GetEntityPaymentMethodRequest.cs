@@ -21,9 +21,11 @@ namespace CoinbaseSdk.Prime.PaymentMethods
     using CoinbaseSdk.Prime.Common;
 
     public class GetEntityPaymentMethodRequest(string entityId, string paymentMethodId)
-    : BasePrimeRequest(null, entityId)
     {
-        [JsonIgnore]
+        [JsonIgnore, JsonPropertyName("entity_id")]
+        public string EntityId { get; set; } = entityId;
+
+        [JsonIgnore, JsonPropertyName("payment_method_id")]
         public string PaymentMethodId { get; set; } = paymentMethodId;
 
         public class GetEntityPaymentMethodRequestBuilder

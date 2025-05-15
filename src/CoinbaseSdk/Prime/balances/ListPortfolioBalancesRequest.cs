@@ -22,12 +22,19 @@ namespace CoinbaseSdk.Prime.Balances
     using CoinbaseSdk.Prime.Model;
 
     public class ListPortfolioBalancesRequest(string portfolioId)
-    : BaseListRequest(portfolioId, null)
     {
+        [JsonIgnore, JsonPropertyName("portfolio_id")]
+        public string PortfolioId { get; set; } = portfolioId;
+
         public string[] Symbols { get; set; } = [];
 
         [JsonPropertyName("balance_type")]
         public BalanceType? BalanceType { get; set; }
+
+        public string? Cursor { get; set; }
+        [JsonPropertyName("sort_direction")]
+        public string? SortDirection { get; set; }
+        public int? Limit { get; set; }
 
         public class ListPortfolioBalancesRequestBuilder
         {
