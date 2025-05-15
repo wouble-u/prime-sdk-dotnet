@@ -38,11 +38,11 @@ namespace CoinbaseSdk.Prime.Orders
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
-    public CreateQuoteRequest CreateQuote(
+    public CreateQuoteResponse CreateQuote(
       CreateQuoteRequest request,
       CallOptions? options = null);
 
-    public Task<CreateQuoteRequest> CreateQuoteAsync(
+    public Task<CreateQuoteResponse> CreateQuoteAsync(
       CreateQuoteRequest request,
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
