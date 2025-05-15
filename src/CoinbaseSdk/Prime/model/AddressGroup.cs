@@ -17,7 +17,6 @@
 namespace CoinbaseSdk.Prime.Model
 {
     using System.Text.Json.Serialization;
-    using CoinbaseSdk.Prime.Model.Enum;
 
     public class AddressGroup
     {

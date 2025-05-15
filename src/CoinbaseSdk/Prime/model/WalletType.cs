@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-namespace CoinbaseSdk.Prime.Model.Enum
+namespace CoinbaseSdk.Prime.Model
 {
     public enum WalletType
     {
         VAULT,
         TRADING,
         WALLET_TYPE_OTHER,
-        ONCHAIN
+        ONCHAIN,
     }
 }

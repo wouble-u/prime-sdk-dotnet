@@ -17,7 +17,6 @@
 namespace CoinbaseSdk.Prime.Model
 {
     using System.Text.Json.Serialization;
-    using CoinbaseSdk.Prime.Model.Enum;
 
     public class Accrual
     {
@@ -212,9 +211,10 @@ namespace CoinbaseSdk.Prime.Model
                     RateType = this._rateType,
                     LoanAmountNotional = this._loanAmountNotional,
                     NominalOpenBorrowSod = this._nominalOpenBorrowSod,
-                    NotionalOpenBorrowSod = this._notionalOpenBorrowSod
+                    NotionalOpenBorrowSod = this._notionalOpenBorrowSod,
                 };
             }
         }
     }
 }
+

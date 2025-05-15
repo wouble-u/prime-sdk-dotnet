@@ -17,7 +17,6 @@
 namespace CoinbaseSdk.Prime.Model
 {
     using System.Text.Json.Serialization;
-    using CoinbaseSdk.Prime.Model.Enum;
 
     public class InvoiceItem
     {
@@ -109,7 +108,7 @@ namespace CoinbaseSdk.Prime.Model
                     Quantity = this._quantity,
                     Price = this._price,
                     AverageAuc = this._averageAuc,
-                    Total = this._total
+                    Total = this._total,
                 };
             }
         }

@@ -16,8 +16,6 @@
 
 namespace CoinbaseSdk.Prime.Model
 {
-    using CoinbaseSdk.Prime.Model.Enum;
-
     public class TransferLocation
     {
         public TransferLocationType Type { get; set; }
@@ -46,11 +44,7 @@ namespace CoinbaseSdk.Prime.Model
 
             public TransferLocation Build()
             {
-                return new TransferLocation
-                {
-                    Type = this._type,
-                    Value = this._value
-                };
+                return new TransferLocation { Type = this._type, Value = this._value };
             }
         }
     }

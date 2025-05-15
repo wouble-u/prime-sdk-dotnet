@@ -18,6 +18,7 @@ namespace CoinbaseSdk.Prime.Transactions
 {
     using System.Text.Json.Serialization;
     using CoinbaseSdk.Prime.Common;
+    using CoinbaseSdk.Prime.Model;
 
     public class CreateOnchainTransactionRequest(string portfolioId, string walletId)
         : BasePrimeRequest(portfolioId, null)

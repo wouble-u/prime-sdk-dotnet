@@ -17,7 +17,6 @@
 namespace CoinbaseSdk.Prime.Model
 {
     using System.Text.Json.Serialization;
-    using CoinbaseSdk.Prime.Model.Enum;
 
     public class AddressBookEntry
     {
@@ -55,9 +54,7 @@ namespace CoinbaseSdk.Prime.Model
         [JsonPropertyName("counterparty_id")]
         public string? CounterpartyId { get; set; }
 
-        public AddressBookEntry()
-        {
-        }
+        public AddressBookEntry() { }
 
         public class AddressBookEntryBuilder
         {
@@ -169,7 +166,7 @@ namespace CoinbaseSdk.Prime.Model
                     AddedAt = this._addedAt,
                     AddedBy = this._addedBy,
                     Type = this._type,
-                    CounterpartyId = this._counterpartyId
+                    CounterpartyId = this._counterpartyId,
                 };
             }
         }

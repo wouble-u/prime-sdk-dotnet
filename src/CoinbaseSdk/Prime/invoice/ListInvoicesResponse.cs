@@ -16,6 +16,8 @@
 
 namespace CoinbaseSdk.Prime.Invoice
 {
+    using CoinbaseSdk.Prime.Model;
+
     public class ListInvoicesResponse
     {
         public Invoice[] Invoices { get; set; } = [];
@@ -39,10 +41,7 @@ namespace CoinbaseSdk.Prime.Invoice
 
             public ListInvoicesResponse Build()
             {
-                return new ListInvoicesResponse
-                {
-                    Invoices = this._invoices
-                };
+                return new ListInvoicesResponse { Invoices = this._invoices };
             }
         }
     }

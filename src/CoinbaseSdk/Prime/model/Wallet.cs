@@ -17,7 +17,6 @@
 namespace CoinbaseSdk.Prime.Model
 {
     using System.Text.Json.Serialization;
-    using CoinbaseSdk.Prime.Model.Enum;
 
     public class Wallet
     {
@@ -92,7 +91,7 @@ namespace CoinbaseSdk.Prime.Model
                     Symbol = this.Symbol,
                     Type = this.Type,
                     Address = this.Address,
-                    CreatedAt = this.CreatedAt
+                    CreatedAt = this.CreatedAt,
                 };
             }
         }

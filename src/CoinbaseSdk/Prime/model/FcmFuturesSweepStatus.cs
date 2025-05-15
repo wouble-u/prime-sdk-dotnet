@@ -16,27 +16,12 @@
 
 namespace CoinbaseSdk.Prime.Model
 {
-    using System.Text.Json.Serialization;
-
-    public class OnchainWalletBalance
+    public enum FcmFuturesSweepStatus
     {
-        public OnchainWalletAsset? Asset { get; set; }
-
-        public string? Amount { get; set; }
-
-        [JsonPropertyName("visibility_status")]
-        public VisibilityStatus VisibilityStatus { get; set; }
-
-        public OnchainWalletBalance() { }
-
-        public OnchainWalletBalance(
-            OnchainWalletAsset asset,
-            string amount,
-            VisibilityStatus visibilityStatus)
-        {
-            Asset = asset;
-            Amount = amount;
-            VisibilityStatus = visibilityStatus;
-        }
+        FCM_FUTURES_SWEEP_STATUS_UNSPECIFIED,
+        FCM_FUTURES_SWEEP_STATUS_PENDING,
+        FCM_FUTURES_SWEEP_STATUS_CLOSED,
+        FCM_FUTURES_SWEEP_STATUS_CANCELED,
+        FCM_FUTURES_SWEEP_STATUS_PROCESSING
     }
 }

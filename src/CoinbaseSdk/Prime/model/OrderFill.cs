@@ -17,7 +17,6 @@
 namespace CoinbaseSdk.Prime.Model
 {
     using System.Text.Json.Serialization;
-    using CoinbaseSdk.Prime.Model.Enum;
 
     public class OrderFill
     {
@@ -133,7 +132,7 @@ namespace CoinbaseSdk.Prime.Model
                     Price = this._price,
                     Time = this._time,
                     Commission = this._commission,
-                    Venue = this._venue
+                    Venue = this._venue,
                 };
             }
         }

@@ -17,7 +17,6 @@
 namespace CoinbaseSdk.Prime.Model
 {
     using System.Text.Json.Serialization;
-    using CoinbaseSdk.Prime.Model.Enum;
 
     public class EntityUser
     {
@@ -93,7 +92,7 @@ namespace CoinbaseSdk.Prime.Model
                     Email = this.Email,
                     EntityId = this.EntityId,
                     PortfolioId = this.PortfolioId,
-                    Role = this.Role
+                    Role = this.Role,
                 };
             }
         }

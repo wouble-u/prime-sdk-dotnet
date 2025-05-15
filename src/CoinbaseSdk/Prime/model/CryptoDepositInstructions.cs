@@ -17,7 +17,6 @@
 namespace CoinbaseSdk.Prime.Model
 {
     using System.Text.Json.Serialization;
-    using CoinbaseSdk.Prime.Model.Enum;
 
     public class CryptoDepositInstructions
     {
@@ -82,7 +81,7 @@ namespace CoinbaseSdk.Prime.Model
                     Name = this._name,
                     Address = this._address,
                     Type = this._type,
-                    AccountIdentifier = this._accountIdentifier
+                    AccountIdentifier = this._accountIdentifier,
                 };
             }
         }

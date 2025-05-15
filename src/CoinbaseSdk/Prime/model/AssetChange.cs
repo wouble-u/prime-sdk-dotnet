@@ -16,8 +16,6 @@
 
 namespace CoinbaseSdk.Prime.Model
 {
-    using CoinbaseSdk.Prime.Model.Enum;
-
     public class AssetChange
     {
         public AssetChangeType Type { get; set; }
@@ -74,7 +72,7 @@ namespace CoinbaseSdk.Prime.Model
                     Symbol = this._symbol,
                     Amount = this._amount,
                     Collection = this._collection,
-                    Item = this._item
+                    Item = this._item,
                 };
             }
         }

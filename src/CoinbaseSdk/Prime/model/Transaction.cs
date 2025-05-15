@@ -17,7 +17,6 @@
 namespace CoinbaseSdk.Prime.Model
 {
     using System.Text.Json.Serialization;
-    using CoinbaseSdk.Prime.Model.Enum;
 
     public class Transaction
     {
@@ -204,7 +203,8 @@ namespace CoinbaseSdk.Prime.Model
                 return this;
             }
 
-            public TransactionBuilder WithEstimatedNetworkFees(EstimatedNetworkFees estimatedNetworkFees)
+            public TransactionBuilder WithEstimatedNetworkFees(
+                EstimatedNetworkFees estimatedNetworkFees)
             {
                 this._estimatedNetworkFees = estimatedNetworkFees;
                 return this;
@@ -252,7 +252,7 @@ namespace CoinbaseSdk.Prime.Model
                     EstimatedNetworkFees = this._estimatedNetworkFees,
                     Network = this._network,
                     EstimatedAssetChanges = this._estimatedAssetChanges,
-                    Metadata = this._metadata
+                    Metadata = this._metadata,
                 };
             }
         }

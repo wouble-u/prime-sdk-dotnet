@@ -17,7 +17,6 @@
 namespace CoinbaseSdk.Prime.Model
 {
     using System.Text.Json.Serialization;
-    using CoinbaseSdk.Prime.Model.Enum;
 
     public class EntityPaymentMethod
     {
@@ -56,7 +55,8 @@ namespace CoinbaseSdk.Prime.Model
                 return this;
             }
 
-            public EntityPaymentMethodBuilder WithPaymentMethodType(PaymentMethodType paymentMethodType)
+            public EntityPaymentMethodBuilder WithPaymentMethodType(
+                PaymentMethodType paymentMethodType)
             {
                 this._paymentMethodType = paymentMethodType;
                 return this;
@@ -82,7 +82,7 @@ namespace CoinbaseSdk.Prime.Model
                     Symbol = this._symbol,
                     PaymentMethodType = this._paymentMethodType,
                     BankName = this._bankName,
-                    AccountNumber = this._accountNumber
+                    AccountNumber = this._accountNumber,
                 };
             }
         }

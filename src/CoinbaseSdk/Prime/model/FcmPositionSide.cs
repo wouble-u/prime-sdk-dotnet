@@ -16,27 +16,10 @@
 
 namespace CoinbaseSdk.Prime.Model
 {
-    using System.Text.Json.Serialization;
-
-    public class OnchainWalletBalance
+    public enum FcmPositionSide
     {
-        public OnchainWalletAsset? Asset { get; set; }
-
-        public string? Amount { get; set; }
-
-        [JsonPropertyName("visibility_status")]
-        public VisibilityStatus VisibilityStatus { get; set; }
-
-        public OnchainWalletBalance() { }
-
-        public OnchainWalletBalance(
-            OnchainWalletAsset asset,
-            string amount,
-            VisibilityStatus visibilityStatus)
-        {
-            Asset = asset;
-            Amount = amount;
-            VisibilityStatus = visibilityStatus;
-        }
+        FCM_POSITION_SIDE_UNSPECIFIED,
+        LONG,
+        SHORT
     }
 }

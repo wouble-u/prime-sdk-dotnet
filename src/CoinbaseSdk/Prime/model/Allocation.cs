@@ -17,7 +17,6 @@
 namespace CoinbaseSdk.Prime.Model
 {
     using System.Text.Json.Serialization;
-    using CoinbaseSdk.Prime.Model.Enum;
 
     public class Allocation
     {
@@ -190,7 +189,7 @@ namespace CoinbaseSdk.Prime.Model
                     Source = this._source,
                     OrderIds = this._orderIds,
                     NettingId = this._nettingId,
-                    Destinations = this._destinations
+                    Destinations = this._destinations,
                 };
             }
         }

@@ -17,7 +17,6 @@
 namespace CoinbaseSdk.Prime.Model
 {
     using System.Text.Json.Serialization;
-    using CoinbaseSdk.Prime.Model.Enum;
 
     public class FiatDepositInstructions
     {
@@ -92,7 +91,7 @@ namespace CoinbaseSdk.Prime.Model
                     Type = this._type,
                     AccountNumber = this._accountNumber,
                     RoutingNumber = this._routingNumber,
-                    ReferenceCode = this._referenceCode
+                    ReferenceCode = this._referenceCode,
                 };
             }
         }

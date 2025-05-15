@@ -17,7 +17,6 @@
 namespace CoinbaseSdk.Prime.Model
 {
     using System.Text.Json.Serialization;
-    using CoinbaseSdk.Prime.Model.Enum;
 
     public class MarginAddOn
     {
@@ -47,12 +46,9 @@ namespace CoinbaseSdk.Prime.Model
 
             public MarginAddOn Build()
             {
-                return new MarginAddOn
-                {
-                    Amount = this._amount,
-                    AddOnType = this._addOnType
-                };
+                return new MarginAddOn { Amount = this._amount, AddOnType = this._addOnType };
             }
         }
     }
 }
+

@@ -16,61 +16,61 @@
 
 namespace CoinbaseSdk.Prime.Portfolios
 {
-  using System.Net;
-  using CoinbaseSdk.Core.Client;
-  using CoinbaseSdk.Core.Http;
-  using CoinbaseSdk.Core.Service;
+    using System.Net;
+    using CoinbaseSdk.Core.Client;
+    using CoinbaseSdk.Core.Http;
+    using CoinbaseSdk.Core.Service;
 
-  public class PortfoliosService(ICoinbaseClient client) :
-   CoinbaseService(client), IPortfoliosService
-  {
-    public ListPortfoliosResponse ListPortfolios(CallOptions? options = null)
+    public class PortfoliosService(ICoinbaseClient client) :
+     CoinbaseService(client), IPortfoliosService
     {
-      return this.Request<ListPortfoliosResponse>(
-        HttpMethod.Get,
-        "/portfolios",
-        [HttpStatusCode.OK],
-        null,
-        options);
-    }
+        public ListPortfoliosResponse ListPortfolios(CallOptions? options = null)
+        {
+            return this.Request<ListPortfoliosResponse>(
+              HttpMethod.Get,
+              "/portfolios",
+              [HttpStatusCode.OK],
+              null,
+              options);
+        }
 
-    public Task<ListPortfoliosResponse> ListPortfoliosAsync(
-      CallOptions? options = null,
-      CancellationToken cancellationToken = default)
-    {
-      return this.RequestAsync<ListPortfoliosResponse>(
-        HttpMethod.Get,
-        "/portfolios",
-        [HttpStatusCode.OK],
-        null,
-        options,
-        cancellationToken);
-    }
+        public Task<ListPortfoliosResponse> ListPortfoliosAsync(
+          CallOptions? options = null,
+          CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<ListPortfoliosResponse>(
+              HttpMethod.Get,
+              "/portfolios",
+              [HttpStatusCode.OK],
+              null,
+              options,
+              cancellationToken);
+        }
 
-    public GetPortfolioByIdResponse GetPortfolioById(
-      GetPortfolioByIdRequest request,
-      CallOptions? options = null)
-    {
-      return this.Request<GetPortfolioByIdResponse>(
-        HttpMethod.Get,
-        $"/portfolios/{request.PortfolioId}",
-        [HttpStatusCode.OK],
-        null,
-        options);
-    }
+        public GetPortfolioByIdResponse GetPortfolioById(
+          GetPortfolioByIdRequest request,
+          CallOptions? options = null)
+        {
+            return this.Request<GetPortfolioByIdResponse>(
+              HttpMethod.Get,
+              $"/portfolios/{request.PortfolioId}",
+              [HttpStatusCode.OK],
+              null,
+              options);
+        }
 
-    public Task<GetPortfolioByIdResponse> GetPortfolioByIdAsync(
-      GetPortfolioByIdRequest request,
-      CallOptions? options = null,
-      CancellationToken cancellationToken = default)
-    {
-      return this.RequestAsync<GetPortfolioByIdResponse>(
-        HttpMethod.Get,
-        $"/portfolios/{request.PortfolioId}",
-        [HttpStatusCode.OK],
-        null,
-        options,
-        cancellationToken);
+        public Task<GetPortfolioByIdResponse> GetPortfolioByIdAsync(
+          GetPortfolioByIdRequest request,
+          CallOptions? options = null,
+          CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<GetPortfolioByIdResponse>(
+              HttpMethod.Get,
+              $"/portfolios/{request.PortfolioId}",
+              [HttpStatusCode.OK],
+              null,
+              options,
+              cancellationToken);
+        }
     }
-  }
 }

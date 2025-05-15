@@ -17,7 +17,6 @@
 namespace CoinbaseSdk.Prime.Model
 {
     using System.Text.Json.Serialization;
-    using CoinbaseSdk.Prime.Model.Enum;
 
     public class Order
     {
@@ -266,7 +265,7 @@ namespace CoinbaseSdk.Prime.Model
                     AverageFilledPrice = this._averageFilledPrice,
                     Commission = this._commission,
                     ExchangeFee = this._exchangeFee,
-                    HistoricalPov = this._historicalPov
+                    HistoricalPov = this._historicalPov,
                 };
             }
         }
