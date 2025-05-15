@@ -2,8 +2,16 @@
 
 ## [1.3.0] - 2025-MAY-14
 
+### Removed
+
+- Common abstract classes BasePrimeRequest and BaseListRequest
+
 ### Added
 
+- Entity Endpoints
+  - ListEntityBalances
+  - ListEntityPositions
+  - ListAggregateEntityPositions
 - Futures Endpoints
   - cancelEntityFuturesSweep
   - getEntityFcmBalance
