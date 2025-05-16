@@ -24,159 +24,159 @@ namespace CoinbaseSdk.Prime.Futures
   public class FuturesService(ICoinbaseClient client) : CoinbaseService(client), IFuturesService
   {
     public CancelEntityFuturesSweepResponse CancelEntityFuturesSweep(
-        CancelEntityFuturesSweepRequest request,
-        CallOptions? options = null)
+      CancelEntityFuturesSweepRequest request,
+      CallOptions? options = null)
     {
       return this.Request<CancelEntityFuturesSweepResponse>(
-          HttpMethod.Delete,
-          $"/entities/{request.EntityId}/futures/sweeps",
-          [HttpStatusCode.OK],
-          null,
-          options);
+        HttpMethod.Delete,
+        $"/entities/{request.EntityId}/futures/sweeps",
+        [HttpStatusCode.OK],
+        null,
+        options);
     }
 
     public Task<CancelEntityFuturesSweepResponse> CancelEntityFuturesSweepAsync(
-        CancelEntityFuturesSweepRequest request,
-        CallOptions? options = null,
-        CancellationToken cancellationToken = default)
+      CancelEntityFuturesSweepRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default)
     {
       return this.RequestAsync<CancelEntityFuturesSweepResponse>(
-          HttpMethod.Delete,
-          $"/entities/{request.EntityId}/futures/sweeps",
-          [HttpStatusCode.OK],
-          null,
-          options,
-          cancellationToken);
+        HttpMethod.Delete,
+        $"/entities/{request.EntityId}/futures/sweeps",
+        [HttpStatusCode.OK],
+        null,
+        options,
+        cancellationToken);
     }
 
     public GetFcmBalanceResponse GetFcmBalance(
-        GetFcmBalanceRequest request,
-        CallOptions? options = null)
+      GetFcmBalanceRequest request,
+      CallOptions? options = null)
     {
       return this.Request<GetFcmBalanceResponse>(
-          HttpMethod.Get,
-          $"/entities/{request.EntityId}/futures/balance_summary",
-          [HttpStatusCode.OK],
-          null,
-          options);
+        HttpMethod.Get,
+        $"/entities/{request.EntityId}/futures/balance_summary",
+        [HttpStatusCode.OK],
+        null,
+        options);
     }
 
     public Task<GetFcmBalanceResponse> GetFcmBalanceAsync(
-        GetFcmBalanceRequest request,
-        CallOptions? options = null,
-        CancellationToken cancellationToken = default)
+      GetFcmBalanceRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default)
     {
       return this.RequestAsync<GetFcmBalanceResponse>(
-          HttpMethod.Get,
-          $"/entities/{request.EntityId}/futures/balance_summary",
-          [HttpStatusCode.OK],
-          null,
-          options,
-          cancellationToken);
+        HttpMethod.Get,
+        $"/entities/{request.EntityId}/futures/balance_summary",
+        [HttpStatusCode.OK],
+        null,
+        options,
+        cancellationToken);
     }
 
     public GetPositionsResponse GetPositions(
-        GetPositionsRequest request,
-        CallOptions? options = null)
+      GetPositionsRequest request,
+      CallOptions? options = null)
     {
       return this.Request<GetPositionsResponse>(
-          HttpMethod.Get,
-          $"/entities/{request.EntityId}/futures/positions",
-          [HttpStatusCode.OK],
-          null,
-          options);
+        HttpMethod.Get,
+        $"/entities/{request.EntityId}/futures/positions",
+        [HttpStatusCode.OK],
+        null,
+        options);
     }
 
     public Task<GetPositionsResponse> GetPositionsAsync(
-        GetPositionsRequest request,
-        CallOptions? options = null,
-        CancellationToken cancellationToken = default)
+      GetPositionsRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default)
     {
       return this.RequestAsync<GetPositionsResponse>(
-          HttpMethod.Get,
-          $"/entities/{request.EntityId}/futures/positions",
-          [HttpStatusCode.OK],
-          null,
-          options,
-          cancellationToken);
+        HttpMethod.Get,
+        $"/entities/{request.EntityId}/futures/positions",
+        [HttpStatusCode.OK],
+        null,
+        options,
+        cancellationToken);
     }
 
     public ListEntityFuturesSweepsResponse ListEntityFuturesSweeps(
-        ListEntityFuturesSweepsRequest request,
-        CallOptions? options = null)
+      ListEntityFuturesSweepsRequest request,
+      CallOptions? options = null)
     {
       return this.Request<ListEntityFuturesSweepsResponse>(
-          HttpMethod.Get,
-          $"/entities/{request.EntityId}/futures/sweeps",
-          [HttpStatusCode.OK],
-          null,
-          options);
+        HttpMethod.Get,
+        $"/entities/{request.EntityId}/futures/sweeps",
+        [HttpStatusCode.OK],
+        null,
+        options);
     }
 
     public Task<ListEntityFuturesSweepsResponse> ListEntityFuturesSweepsAsync(
-        ListEntityFuturesSweepsRequest request,
-        CallOptions? options = null,
-        CancellationToken cancellationToken = default)
+      ListEntityFuturesSweepsRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default)
     {
       return this.RequestAsync<ListEntityFuturesSweepsResponse>(
-          HttpMethod.Get,
-          $"/entities/{request.EntityId}/futures/sweeps",
-          [HttpStatusCode.OK],
-          null,
-          options,
-          cancellationToken);
+        HttpMethod.Get,
+        $"/entities/{request.EntityId}/futures/sweeps",
+        [HttpStatusCode.OK],
+        null,
+        options,
+        cancellationToken);
     }
 
     public ScheduleEntityFuturesSweepResponse ScheduleEntityFuturesSweep(
-        ScheduleEntityFuturesSweepRequest request,
-        CallOptions? options = null)
+      ScheduleEntityFuturesSweepRequest request,
+      CallOptions? options = null)
     {
       return this.Request<ScheduleEntityFuturesSweepResponse>(
-          HttpMethod.Post,
-          $"/entities/{request.EntityId}/futures/sweeps",
-          [HttpStatusCode.OK],
-          request,
-          options);
+        HttpMethod.Post,
+        $"/entities/{request.EntityId}/futures/sweeps",
+        [HttpStatusCode.OK],
+        request,
+        options);
     }
 
     public Task<ScheduleEntityFuturesSweepResponse> ScheduleEntityFuturesSweepAsync(
-        ScheduleEntityFuturesSweepRequest request,
-        CallOptions? options = null,
-        CancellationToken cancellationToken = default)
+      ScheduleEntityFuturesSweepRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default)
     {
       return this.RequestAsync<ScheduleEntityFuturesSweepResponse>(
-          HttpMethod.Post,
-          $"/entities/{request.EntityId}/futures/sweeps",
-          [HttpStatusCode.OK],
-          request,
-          options,
-          cancellationToken);
+        HttpMethod.Post,
+        $"/entities/{request.EntityId}/futures/sweeps",
+        [HttpStatusCode.OK],
+        request,
+        options,
+        cancellationToken);
     }
 
     public SetAutoSweepResponse SetAutoSweep(
-        SetAutoSweepRequest request,
-        CallOptions? options = null)
+      SetAutoSweepRequest request,
+      CallOptions? options = null)
     {
       return this.Request<SetAutoSweepResponse>(
-          HttpMethod.Post,
-          $"/entities/{request.EntityId}/futures/auto_sweep",
-          [HttpStatusCode.OK],
-          request,
-          options);
+        HttpMethod.Post,
+        $"/entities/{request.EntityId}/futures/auto_sweep",
+        [HttpStatusCode.OK],
+        request,
+        options);
     }
 
     public Task<SetAutoSweepResponse> SetAutoSweepAsync(
-        SetAutoSweepRequest request,
-        CallOptions? options = null,
-        CancellationToken cancellationToken = default)
+      SetAutoSweepRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default)
     {
       return this.RequestAsync<SetAutoSweepResponse>(
-          HttpMethod.Post,
-          $"/entities/{request.EntityId}/futures/auto_sweep",
-          [HttpStatusCode.OK],
-          request,
-          options,
-          cancellationToken);
+        HttpMethod.Post,
+        $"/entities/{request.EntityId}/futures/auto_sweep",
+        [HttpStatusCode.OK],
+        request,
+        options,
+        cancellationToken);
     }
   }
 }

@@ -49,8 +49,8 @@ namespace CoinbaseSdk.Prime.Balances
     }
 
     public ListEntityBalancesResponse ListEntityBalances(
-              ListEntityBalancesRequest request,
-              CallOptions? options = null)
+      ListEntityBalancesRequest request,
+      CallOptions? options = null)
     {
       return this.Request<ListEntityBalancesResponse>(
         HttpMethod.Get,

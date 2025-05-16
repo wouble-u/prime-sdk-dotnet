@@ -24,107 +24,107 @@ namespace CoinbaseSdk.Prime.Financing
   public class FinancingService(ICoinbaseClient client) : CoinbaseService(client), IFinancingService
   {
     public CreateNewLocatesResponse CreateNewLocates(
-        CreateNewLocatesRequest request,
-        CallOptions? options = null)
+      CreateNewLocatesRequest request,
+      CallOptions? options = null)
     {
       return this.Request<CreateNewLocatesResponse>(
-          HttpMethod.Post,
-          $"/portfolios/{request.PortfolioId}/locates",
-          [HttpStatusCode.OK],
-          request,
-          options);
+        HttpMethod.Post,
+        $"/portfolios/{request.PortfolioId}/locates",
+        [HttpStatusCode.OK],
+        request,
+        options);
     }
 
     public Task<CreateNewLocatesResponse> CreateNewLocatesAsync(
-        CreateNewLocatesRequest request,
-        CallOptions? options = null,
-        CancellationToken cancellationToken = default)
+      CreateNewLocatesRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default)
     {
       return this.RequestAsync<CreateNewLocatesResponse>(
-          HttpMethod.Get,
-          $"/portfolios/{request.PortfolioId}/locates",
-          [HttpStatusCode.OK],
-          request,
-          options,
-          cancellationToken);
+        HttpMethod.Get,
+        $"/portfolios/{request.PortfolioId}/locates",
+        [HttpStatusCode.OK],
+        request,
+        options,
+        cancellationToken);
     }
 
     public GetEntityLocateAvailabilitiesResponse GetEntityLocateAvailabilities(
-        GetEntityLocateAvailabilitiesRequest request,
-        CallOptions? options = null)
+      GetEntityLocateAvailabilitiesRequest request,
+      CallOptions? options = null)
     {
       return this.Request<GetEntityLocateAvailabilitiesResponse>(
-          HttpMethod.Get,
-          $"/entities/{request.EntityId}/locates_availability",
-          [HttpStatusCode.OK],
-          request,
-          options);
+        HttpMethod.Get,
+        $"/entities/{request.EntityId}/locates_availability",
+        [HttpStatusCode.OK],
+        request,
+        options);
     }
 
     public Task<GetEntityLocateAvailabilitiesResponse> GetEntityLocateAvailabilitiesAsync(
-        GetEntityLocateAvailabilitiesRequest request,
-        CallOptions? options = null,
-        CancellationToken cancellationToken = default)
+      GetEntityLocateAvailabilitiesRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default)
     {
       return this.RequestAsync<GetEntityLocateAvailabilitiesResponse>(
-          HttpMethod.Get,
-          $"/entities/{request.EntityId}/locates_availability",
-          [HttpStatusCode.OK],
-          request,
-          options,
-          cancellationToken);
+        HttpMethod.Get,
+        $"/entities/{request.EntityId}/locates_availability",
+        [HttpStatusCode.OK],
+        request,
+        options,
+        cancellationToken);
     }
 
     public GetMarginInformationResponse GetMarginInformation(
-        GetMarginInformationRequest request,
-        CallOptions? options = null)
+      GetMarginInformationRequest request,
+      CallOptions? options = null)
     {
       return this.Request<GetMarginInformationResponse>(
-          HttpMethod.Get,
-          $"/entities/{request.EntityId}/margin",
-          [HttpStatusCode.OK],
-          request,
-          options);
+        HttpMethod.Get,
+        $"/entities/{request.EntityId}/margin",
+        [HttpStatusCode.OK],
+        request,
+        options);
     }
 
     public Task<GetMarginInformationResponse> GetMarginInformationAsync(
-        GetMarginInformationRequest request,
-        CallOptions? options = null,
-        CancellationToken cancellationToken = default)
+      GetMarginInformationRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default)
     {
       return this.RequestAsync<GetMarginInformationResponse>(
-          HttpMethod.Get,
-          $"/entities/{request.EntityId}/margin",
-          [HttpStatusCode.OK],
-          request,
-          options,
-          cancellationToken);
+        HttpMethod.Get,
+        $"/entities/{request.EntityId}/margin",
+        [HttpStatusCode.OK],
+        request,
+        options,
+        cancellationToken);
     }
 
     public GetPortfolioBuyingPowerResponse GetPortfolioBuyingPower(
-        GetPortfolioBuyingPowerRequest request,
-        CallOptions? options = null)
+      GetPortfolioBuyingPowerRequest request,
+      CallOptions? options = null)
     {
       return this.Request<GetPortfolioBuyingPowerResponse>(
-          HttpMethod.Get,
-          $"/portfolios/{request.PortfolioId}/buying_power",
-          [HttpStatusCode.OK],
-          request,
-          options);
+        HttpMethod.Get,
+        $"/portfolios/{request.PortfolioId}/buying_power",
+        [HttpStatusCode.OK],
+        request,
+        options);
     }
 
     public Task<GetPortfolioBuyingPowerResponse> GetPortfolioBuyingPowerAsync(
-        GetPortfolioBuyingPowerRequest request,
-        CallOptions? options = null,
-        CancellationToken cancellationToken = default)
+      GetPortfolioBuyingPowerRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default)
     {
       return this.RequestAsync<GetPortfolioBuyingPowerResponse>(
-          HttpMethod.Get,
-          $"/portfolios/{request.PortfolioId}/buying_power",
-          [HttpStatusCode.OK],
-          request,
-          options,
-          cancellationToken);
+        HttpMethod.Get,
+        $"/portfolios/{request.PortfolioId}/buying_power",
+        [HttpStatusCode.OK],
+        request,
+        options,
+        cancellationToken);
     }
 
     public GetPortfolioCreditInformationResponse GetPortfolioCreditInformation(
@@ -180,159 +180,159 @@ namespace CoinbaseSdk.Prime.Financing
     }
 
     public GetTradeFinanceTieredPricingFeesResponse GetTradeFinanceTieredPricingFees(
-        GetTradeFinanceTieredPricingFeesRequest request,
-        CallOptions? options = null)
+      GetTradeFinanceTieredPricingFeesRequest request,
+      CallOptions? options = null)
     {
       return this.Request<GetTradeFinanceTieredPricingFeesResponse>(
-          HttpMethod.Get,
-          $"/entities/{request.EntityId}/tf_tiered_fees",
-          [HttpStatusCode.OK],
-          request,
-          options);
+        HttpMethod.Get,
+        $"/entities/{request.EntityId}/tf_tiered_fees",
+        [HttpStatusCode.OK],
+        request,
+        options);
     }
 
     public Task<GetTradeFinanceTieredPricingFeesResponse> GetTradeFinanceTieredPricingFeesAsync(
-        GetTradeFinanceTieredPricingFeesRequest request,
-        CallOptions? options = null,
-        CancellationToken cancellationToken = default)
+      GetTradeFinanceTieredPricingFeesRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default)
     {
       return this.RequestAsync<GetTradeFinanceTieredPricingFeesResponse>(
-          HttpMethod.Get,
-          $"/entities/{request.EntityId}/tf_tiered_fees",
-          [HttpStatusCode.OK],
-          request,
-          options,
-          cancellationToken);
+        HttpMethod.Get,
+        $"/entities/{request.EntityId}/tf_tiered_fees",
+        [HttpStatusCode.OK],
+        request,
+        options,
+        cancellationToken);
     }
 
     public ListExistingLocatesResponse ListExistingLocates(
-        ListExistingLocatesRequest request,
-        CallOptions? options = null)
+      ListExistingLocatesRequest request,
+      CallOptions? options = null)
     {
       return this.Request<ListExistingLocatesResponse>(
-          HttpMethod.Get,
-          $"/portfolios/{request.PortfolioId}/locates",
-          [HttpStatusCode.OK],
-          request,
-          options);
+        HttpMethod.Get,
+        $"/portfolios/{request.PortfolioId}/locates",
+        [HttpStatusCode.OK],
+        request,
+        options);
     }
 
     public Task<ListExistingLocatesResponse> ListExistingLocatesAsync(
-        ListExistingLocatesRequest request,
-        CallOptions? options = null,
-        CancellationToken cancellationToken = default)
+      ListExistingLocatesRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default)
     {
       return this.RequestAsync<ListExistingLocatesResponse>(
-          HttpMethod.Get,
-          $"/portfolios/{request.PortfolioId}/locates",
-          [HttpStatusCode.OK],
-          request,
-          options,
-          cancellationToken);
+        HttpMethod.Get,
+        $"/portfolios/{request.PortfolioId}/locates",
+        [HttpStatusCode.OK],
+        request,
+        options,
+        cancellationToken);
     }
 
     public ListInterestAccrualsResponse ListInterestAccruals(
-        ListInterestAccrualsRequest request,
-        CallOptions? options = null)
+      ListInterestAccrualsRequest request,
+      CallOptions? options = null)
     {
       return this.Request<ListInterestAccrualsResponse>(
-          HttpMethod.Get,
-          $"/entities/{request.EntityId}/accruals",
-          [HttpStatusCode.OK],
-          request,
-          options);
+        HttpMethod.Get,
+        $"/entities/{request.EntityId}/accruals",
+        [HttpStatusCode.OK],
+        request,
+        options);
     }
 
     public Task<ListInterestAccrualsResponse> ListInterestAccrualsAsync(
-        ListInterestAccrualsRequest request,
-        CallOptions? options = null,
-        CancellationToken cancellationToken = default)
+      ListInterestAccrualsRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default)
     {
       return this.RequestAsync<ListInterestAccrualsResponse>(
-          HttpMethod.Get,
-          $"/entities/{request.EntityId}/accruals",
-          [HttpStatusCode.OK],
-          request,
-          options,
-          cancellationToken);
+        HttpMethod.Get,
+        $"/entities/{request.EntityId}/accruals",
+        [HttpStatusCode.OK],
+        request,
+        options,
+        cancellationToken);
     }
 
     public ListInterestAccrualsForPortfolioResponse ListInterestAccrualsForPortfolio(
-        ListInterestAccrualsForPortfolioRequest request,
-        CallOptions? options = null)
+      ListInterestAccrualsForPortfolioRequest request,
+      CallOptions? options = null)
     {
       return this.Request<ListInterestAccrualsForPortfolioResponse>(
-          HttpMethod.Get,
-          $"/portfolios/{request.PortfolioId}/accruals",
-          [HttpStatusCode.OK],
-          request,
-          options);
+        HttpMethod.Get,
+        $"/portfolios/{request.PortfolioId}/accruals",
+        [HttpStatusCode.OK],
+        request,
+        options);
     }
 
     public Task<ListInterestAccrualsForPortfolioResponse> ListInterestAccrualsForPortfolioAsync(
-        ListInterestAccrualsForPortfolioRequest request,
-        CallOptions? options = null,
-        CancellationToken cancellationToken = default)
+      ListInterestAccrualsForPortfolioRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default)
     {
       return this.RequestAsync<ListInterestAccrualsForPortfolioResponse>(
-          HttpMethod.Get,
-          $"/portfolios/{request.PortfolioId}/accruals",
-          [HttpStatusCode.OK],
-          request,
-          options,
-          cancellationToken);
+        HttpMethod.Get,
+        $"/portfolios/{request.PortfolioId}/accruals",
+        [HttpStatusCode.OK],
+        request,
+        options,
+        cancellationToken);
     }
 
     public ListMarginCallSummariesResponse ListMarginCallSummaries(
-        ListMarginCallSummariesRequest request,
-        CallOptions? options = null)
+      ListMarginCallSummariesRequest request,
+      CallOptions? options = null)
     {
       return this.Request<ListMarginCallSummariesResponse>(
-          HttpMethod.Get,
-          $"/entities/{request.EntityId}/margin_summaries",
-          [HttpStatusCode.OK],
-          request,
-          options);
+        HttpMethod.Get,
+        $"/entities/{request.EntityId}/margin_summaries",
+        [HttpStatusCode.OK],
+        request,
+        options);
     }
 
     public Task<ListMarginCallSummariesResponse> ListMarginCallSummariesAsync(
-        ListMarginCallSummariesRequest request,
-        CallOptions? options = null,
-        CancellationToken cancellationToken = default)
+      ListMarginCallSummariesRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default)
     {
       return this.RequestAsync<ListMarginCallSummariesResponse>(
-          HttpMethod.Get,
-          $"/entities/{request.EntityId}/margin_summaries",
-          [HttpStatusCode.OK],
-          request,
-          options,
-          cancellationToken);
+        HttpMethod.Get,
+        $"/entities/{request.EntityId}/margin_summaries",
+        [HttpStatusCode.OK],
+        request,
+        options,
+        cancellationToken);
     }
 
     public ListMarginConversionsResponse ListMarginConversions(
-        ListMarginConversionsRequest request,
-        CallOptions? options = null)
+      ListMarginConversionsRequest request,
+      CallOptions? options = null)
     {
       return this.Request<ListMarginConversionsResponse>(
-          HttpMethod.Get,
-          $"/portfolios/{request.PortfolioId}/margin_conversions",
-          [HttpStatusCode.OK],
-          request,
-          options);
+        HttpMethod.Get,
+        $"/portfolios/{request.PortfolioId}/margin_conversions",
+        [HttpStatusCode.OK],
+        request,
+        options);
     }
 
     public Task<ListMarginConversionsResponse> ListMarginConversionsAsync(
-        ListMarginConversionsRequest request,
-        CallOptions? options = null,
-        CancellationToken cancellationToken = default)
+      ListMarginConversionsRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default)
     {
       return this.RequestAsync<ListMarginConversionsResponse>(
-          HttpMethod.Get,
-          $"/portfolios/{request.PortfolioId}/margin_conversions",
-          [HttpStatusCode.OK],
-          request,
-          options,
-          cancellationToken);
+        HttpMethod.Get,
+        $"/portfolios/{request.PortfolioId}/margin_conversions",
+        [HttpStatusCode.OK],
+        request,
+        options,
+        cancellationToken);
     }
   }
 }
