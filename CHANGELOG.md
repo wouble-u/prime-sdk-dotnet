@@ -13,28 +13,28 @@
   - ListEntityPositions
   - ListAggregateEntityPositions
 - Futures Endpoints
-  - cancelEntityFuturesSweep
-  - getEntityFcmBalance
-  - getEntityPositions
-  - listEntityFuturesSweeps
-  - scheduleEntityFuturesSweeps
-  - setAutoSweep
+  - CancelEntityFuturesSweep
+  - GetEntityFcmBalance
+  - GetEntityPositions
+  - ListEntityFuturesSweeps
+  - ScheduleEntityFuturesSweeps
+  - SetAutoSweep
 - RFQ Endpoints
-  - createQuoteRequest
-  - acceptQuote
+  - CreateQuoteRequest
+  - AcceptQuote
 - Prime Financing Endpoints
-  - listExistingLocations
-  - listInterestAccruals
-  - listPortfolioInterestAccruals
-  - listMarginCallSummaries
-  - listMarginConversions
-  - getEntityLocateAvailabilities
-  - getMarginInformation
-  - getPortfolioBuyingPower
-  - getPortfolioCreditInformation
-  - getPortfolioWithdrawalPower
-  - getTieredPricingFees
-  - createNewLocates
+  - ListExistingLocations
+  - ListInterestAccruals
+  - ListPortfolioInterestAccruals
+  - ListMarginCallSummaries
+  - ListMarginConversions
+  - GetEntityLocateAvailabilities
+  - GetMarginInformation
+  - GetPortfolioBuyingPower
+  - GetPortfolioCreditInformation
+  - GetPortfolioWithdrawalPower
+  - GetTieredPricingFees
+  - CreateNewLocates
 - Prime Staking Endpoints
   - CreateStake
   - CreateUnstake
