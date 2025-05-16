@@ -23,6 +23,9 @@ namespace CoinbaseSdk.Prime.Model
     [JsonPropertyName("disable_dynamic_gas")]
     public bool? DisableDynamicGas { get; set; }
 
+    [JsonPropertyName("disable_dynamic_nonce")]
+    public bool? DisableDynamicNonce { get; set; }
+
     [JsonPropertyName("replaced_transaction_string")]
     public string? ReplacedTransactionString { get; set; }
 

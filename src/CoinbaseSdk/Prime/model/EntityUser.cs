@@ -29,9 +29,6 @@ namespace CoinbaseSdk.Prime.Model
     [JsonPropertyName("entity_id")]
     public string? EntityId { get; set; }
 
-    [JsonPropertyName("portfolio_id")]
-    public string? PortfolioId { get; set; }
-
     public Role? Role { get; set; }
 
     public EntityUser() { }
@@ -42,7 +39,6 @@ namespace CoinbaseSdk.Prime.Model
       private string? Name;
       private string? Email;
       private string? EntityId;
-      private string? PortfolioId;
       private Role? Role;
 
       public UserBuilder() { }
@@ -71,12 +67,6 @@ namespace CoinbaseSdk.Prime.Model
         return this;
       }
 
-      public UserBuilder WithPortfolioId(string portfolioId)
-      {
-        this.PortfolioId = portfolioId;
-        return this;
-      }
-
       public UserBuilder WithRole(Role role)
       {
         this.Role = role;
@@ -91,7 +81,6 @@ namespace CoinbaseSdk.Prime.Model
           Name = this.Name,
           Email = this.Email,
           EntityId = this.EntityId,
-          PortfolioId = this.PortfolioId,
           Role = this.Role,
         };
       }
