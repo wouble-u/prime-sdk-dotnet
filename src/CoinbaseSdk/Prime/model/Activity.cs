@@ -17,7 +17,6 @@
 namespace CoinbaseSdk.Prime.Model
 {
   using System.Text.Json.Serialization;
-  using CoinbaseSdk.Prime.Model;
 
   public class Activity
   {
@@ -44,13 +43,13 @@ namespace CoinbaseSdk.Prime.Model
     public UserAction[] UserActions { get; set; } = [];
 
     [JsonPropertyName("transactions_metadata")]
-    public TransactionsMetadata? TransactionsMetadata { get; set; }
+    public ActivityMetadataTransactions? TransactionsMetadata { get; set; }
 
     [JsonPropertyName("account_metadata")]
-    public AccountMetadata? AccountMetadata { get; set; }
+    public ActivityMetadataAccount? AccountMetadata { get; set; }
 
     [JsonPropertyName("orders_metadata")]
-    public OrdersMetadata? OrdersMetadata { get; set; }
+    public Dictionary<string, string>? OrdersMetadata { get; set; }
 
     public string[] Symbols { get; set; } = [];
 
@@ -74,9 +73,9 @@ namespace CoinbaseSdk.Prime.Model
       private string? _title;
       private string? _description;
       private UserAction[] _userActions = [];
-      private TransactionsMetadata? _transactionsMetadata;
-      private AccountMetadata? _accountMetadata;
-      private OrdersMetadata? _ordersMetadata;
+      private ActivityMetadataTransactions? _transactionsMetadata;
+      private ActivityMetadataAccount? _accountMetadata;
+      private Dictionary<string, string>? _ordersMetadata;
       private string[] _symbols = [];
       private string? _createdAt;
       private string? _updatedAt;
@@ -142,19 +141,19 @@ namespace CoinbaseSdk.Prime.Model
       }
 
       public ActivityBuilder WithTransactionsMetadata(
-          TransactionsMetadata? transactionsMetadata)
+          ActivityMetadataTransactions? transactionsMetadata)
       {
         _transactionsMetadata = transactionsMetadata;
         return this;
       }
 
-      public ActivityBuilder WithAccountMetadata(AccountMetadata? accountMetadata)
+      public ActivityBuilder WithAccountMetadata(ActivityMetadataAccount? accountMetadata)
       {
         _accountMetadata = accountMetadata;
         return this;
       }
 
-      public ActivityBuilder WithOrdersMetadata(OrdersMetadata? ordersMetadata)
+      public ActivityBuilder WithOrdersMetadata(Dictionary<string, string>? ordersMetadata)
       {
         _ordersMetadata = ordersMetadata;
         return this;

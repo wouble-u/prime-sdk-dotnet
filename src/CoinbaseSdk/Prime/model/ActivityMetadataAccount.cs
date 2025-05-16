@@ -16,8 +16,31 @@
 
 namespace CoinbaseSdk.Prime.Model
 {
-  public class OrdersMetadata
+  public class ActivityMetadataAccount
   {
-    public OrdersMetadata() { }
+    public ActivityMetadataConsensus? Consensus { get; set; }
+
+    public ActivityMetadataAccount() { }
+
+    public ActivityMetadataAccount(ActivityMetadataConsensus consensus)
+    {
+      Consensus = consensus;
+    }
+
+    public class Builder
+    {
+      private ActivityMetadataConsensus? _consensus;
+
+      public Builder WithConsensus(ActivityMetadataConsensus consensus)
+      {
+        this._consensus = consensus;
+        return this;
+      }
+
+      public ActivityMetadataAccount Build()
+      {
+        return new ActivityMetadataAccount() { Consensus = this._consensus };
+      }
+    }
   }
 }

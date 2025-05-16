@@ -18,7 +18,7 @@ namespace CoinbaseSdk.Prime.Model
 {
   using System.Text.Json.Serialization;
 
-  public class Consensus
+  public class ActivityMetadataConsensus
   {
     [JsonPropertyName("approval_deadline")]
     public string? ApprovalDeadline { get; set; }
@@ -26,9 +26,9 @@ namespace CoinbaseSdk.Prime.Model
     [JsonPropertyName("has_passed_consensus")]
     public bool? HasPassedConsensus { get; set; }
 
-    public Consensus() { }
+    public ActivityMetadataConsensus() { }
 
-    public Consensus(string approvalDeadline, bool hasPassedConsensus)
+    public ActivityMetadataConsensus(string approvalDeadline, bool hasPassedConsensus)
     {
       ApprovalDeadline = approvalDeadline;
       HasPassedConsensus = hasPassedConsensus;
@@ -51,9 +51,9 @@ namespace CoinbaseSdk.Prime.Model
         return this;
       }
 
-      public Consensus Build()
+      public ActivityMetadataConsensus Build()
       {
-        return new Consensus()
+        return new ActivityMetadataConsensus()
         {
           ApprovalDeadline = _approvalDeadline,
           HasPassedConsensus = _hasPassedConsensus,
