@@ -16,6 +16,7 @@
 
 namespace CoinbaseSdk.Prime.Allocations
 {
+  using CoinbaseSdk.Prime.Model;
   public class GetAllocationsByClientNettingIdResponse
   {
     public Allocation[] Allocations { get; set; } = [];

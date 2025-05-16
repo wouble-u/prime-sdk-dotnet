@@ -34,14 +34,5 @@ namespace CoinbaseSdk.Prime.Portfolios
       GetPortfolioByIdRequest request,
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
-
-    public GetPortfolioCreditInformationResponse GetPortfolioCreditInformation(
-      GetPortfolioCreditInformationRequest request,
-      CallOptions? options = null);
-
-    public Task<GetPortfolioCreditInformationResponse> GetPortfolioCreditInformationAsync(
-      GetPortfolioCreditInformationRequest request,
-      CallOptions? options = null,
-      CancellationToken cancellationToken = default);
   }
 }

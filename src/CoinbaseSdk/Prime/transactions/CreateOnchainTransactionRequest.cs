@@ -16,18 +16,21 @@
 
 namespace CoinbaseSdk.Prime.Transactions
 {
-    using System.Text.Json.Serialization;
-    using CoinbaseSdk.Prime.Common;
+  using System.Text.Json.Serialization;
+  using CoinbaseSdk.Prime.Model;
 
-    public class CreateOnchainTransactionRequest(string portfolioId, string walletId)
-        : BasePrimeRequest(portfolioId, null)
-    {
-        public string WalletId { get; set; } = walletId;
+  public class CreateOnchainTransactionRequest(string portfolioId, string walletId)
+  {
+    [JsonIgnore]
+    public string PortfolioId { get; set; } = portfolioId;
 
-        [JsonPropertyName("evm_params")]
-        public EvmParams? EVMParams { get; set; }
+    [JsonIgnore]
+    public string WalletId { get; set; } = walletId;
 
-        [JsonPropertyName("rpc")]
-        public Rpc? Rpc { get; set; }
-    }
+    [JsonPropertyName("evm_params")]
+    public EvmParams? EVMParams { get; set; }
+
+    [JsonPropertyName("rpc")]
+    public Rpc? Rpc { get; set; }
+  }
 }

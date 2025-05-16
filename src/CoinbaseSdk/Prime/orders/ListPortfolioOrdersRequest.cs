@@ -18,12 +18,13 @@ namespace CoinbaseSdk.Prime.Orders
 {
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
-  using CoinbaseSdk.Prime.Common;
   using CoinbaseSdk.Prime.Model;
 
   public class ListPortfolioOrdersRequest(string portfolioId)
-  : BaseListRequest(portfolioId, null)
   {
+    [JsonIgnore]
+    public string PortfolioId { get; set; } = portfolioId;
+
     [JsonPropertyName("order_statuses")]
     public OrderStatus[]? OrderStatuses { get; set; }
 
@@ -41,6 +42,11 @@ namespace CoinbaseSdk.Prime.Orders
 
     [JsonPropertyName("end_date")]
     public string? EndDate { get; set; }
+
+    public string? Cursor { get; set; }
+    [JsonPropertyName("sort_direction")]
+    public string? SortDirection { get; set; }
+    public int? Limit { get; set; }
 
 
     public class ListPortfolioOrdersRequestBuilder

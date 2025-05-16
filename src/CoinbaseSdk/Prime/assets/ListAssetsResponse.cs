@@ -16,6 +16,7 @@
 
 namespace CoinbaseSdk.Prime.Assets
 {
+  using CoinbaseSdk.Prime.Model;
   public class ListAssetsResponse
   {
     public Asset[] Assets { get; set; } = [];

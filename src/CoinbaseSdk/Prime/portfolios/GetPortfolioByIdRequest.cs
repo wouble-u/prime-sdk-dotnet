@@ -16,12 +16,14 @@
 
 namespace CoinbaseSdk.Prime.Portfolios
 {
+  using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
-  using CoinbaseSdk.Prime.Common;
 
   public class GetPortfolioByIdRequest(string portfolioId)
-  : BasePrimeRequest(portfolioId, null)
   {
+    [JsonIgnore]
+    public string PortfolioId { get; set; } = portfolioId;
+
     public class GetPortfolioByIdRequestBuilder
     {
       private string? _portfolioId;

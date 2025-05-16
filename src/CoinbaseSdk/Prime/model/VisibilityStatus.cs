@@ -21,6 +21,6 @@ namespace CoinbaseSdk.Prime.Model
     UNKNOWN_VISIBILITY_STATUS,
     VISIBLE,
     HIDDEN,
-    SPAM
+    SPAM,
   }
 }

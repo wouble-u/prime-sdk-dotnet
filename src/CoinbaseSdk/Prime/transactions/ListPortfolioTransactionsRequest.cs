@@ -18,12 +18,12 @@ namespace CoinbaseSdk.Prime.Transactions
 {
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
-  using CoinbaseSdk.Prime.Common;
   using CoinbaseSdk.Prime.Model;
 
   public class ListPortfolioTransactionsRequest(string portfolioId)
-  : BaseListRequest(portfolioId, null)
   {
+    [JsonIgnore]
+    public string PortfolioId { get; set; } = portfolioId;
     [JsonPropertyName("symbols")]
     public string[] Symbols { get; set; } = [];
 
@@ -35,6 +35,10 @@ namespace CoinbaseSdk.Prime.Transactions
 
     [JsonPropertyName("end_time")]
     public string? EndTime { get; set; }
+    public string? Cursor { get; set; }
+    [JsonPropertyName("sort_direction")]
+    public string? SortDirection { get; set; }
+    public int? Limit { get; set; }
 
     public class ListPortfolioTransactionsRequestBuilder
     {

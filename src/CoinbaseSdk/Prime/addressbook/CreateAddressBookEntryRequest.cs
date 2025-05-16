@@ -18,11 +18,12 @@ namespace CoinbaseSdk.Prime.AddressBook
 {
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
-  using CoinbaseSdk.Prime.Common;
 
   public class CreateAddressBookEntryRequest(string portfolioId)
-  : BasePrimeRequest(portfolioId, null)
   {
+    [JsonIgnore]
+    public string PortfolioId { get; } = portfolioId;
+
     public string? Address { get; set; }
 
     [JsonPropertyName("currency_symbol")]

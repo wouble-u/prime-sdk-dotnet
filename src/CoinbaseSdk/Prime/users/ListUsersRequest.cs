@@ -16,10 +16,20 @@
 
 namespace CoinbaseSdk.Prime.Users
 {
+  using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
-  using CoinbaseSdk.Prime.Common;
-  public class ListUsersRequest(string entityId) : BaseListRequest(null, entityId)
+  using CoinbaseSdk.Prime.Model;
+
+  public class ListUsersRequest(string entityId)
   {
+    [JsonIgnore]
+    public string EntityId { get; set; } = entityId;
+
+    public string? Cursor { get; set; }
+    [JsonPropertyName("sort_direction")]
+    public string? SortDirection { get; set; }
+    public int? Limit { get; set; }
+
     public class ListUsersRequestBuilder
     {
       private string? _entityId;

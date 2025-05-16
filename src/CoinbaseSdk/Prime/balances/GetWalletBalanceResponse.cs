@@ -16,6 +16,7 @@
 
 namespace CoinbaseSdk.Prime.Balances
 {
+  using CoinbaseSdk.Prime.Model;
   public class GetWalletBalanceResponse
   {
     public Balance? Balance { get; set; }

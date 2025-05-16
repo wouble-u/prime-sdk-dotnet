@@ -21,9 +21,35 @@ namespace CoinbaseSdk.Prime.Orders
   using CoinbaseSdk.Core.Http;
   using CoinbaseSdk.Core.Service;
 
-  public class OrdersService(ICoinbaseClient client) :
-   CoinbaseService(client), IOrdersService
+  public class OrdersService(ICoinbaseClient client)
+    : CoinbaseService(client), IOrdersService
   {
+    public AcceptQuoteResponse AcceptQuote(
+      AcceptQuoteRequest request,
+      CallOptions? options = null)
+    {
+      return this.Request<AcceptQuoteResponse>(
+        HttpMethod.Post,
+        $"/portfolios/{request.PortfolioId}/accept_quote",
+        [HttpStatusCode.OK],
+        request,
+        options);
+    }
+
+    public Task<AcceptQuoteResponse> AcceptQuoteAsync(
+      AcceptQuoteRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default)
+    {
+      return this.RequestAsync<AcceptQuoteResponse>(
+        HttpMethod.Post,
+        $"/portfolios/{request.PortfolioId}/accept_quote",
+        [HttpStatusCode.OK],
+        request,
+        options,
+        cancellationToken);
+    }
+
     public CreateOrderResponse CreateOrder(
       CreateOrderRequest request,
       CallOptions? options = null)
@@ -44,6 +70,32 @@ namespace CoinbaseSdk.Prime.Orders
       return this.RequestAsync<CreateOrderResponse>(
         HttpMethod.Post,
         $"/portfolios/{request.PortfolioId}/order",
+        [HttpStatusCode.Created, HttpStatusCode.OK],
+        request,
+        options,
+        cancellationToken);
+    }
+
+    public CreateQuoteResponse CreateQuote(
+      CreateQuoteRequest request,
+      CallOptions? options = null)
+    {
+      return this.Request<CreateQuoteResponse>(
+        HttpMethod.Post,
+        $"/portfolios/{request.PortfolioId}/rfq",
+        [HttpStatusCode.Created, HttpStatusCode.OK],
+        request,
+        options);
+    }
+
+    public Task<CreateQuoteResponse> CreateQuoteAsync(
+      CreateQuoteRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default)
+    {
+      return this.RequestAsync<CreateQuoteResponse>(
+        HttpMethod.Post,
+        $"/portfolios/{request.PortfolioId}/rfq",
         [HttpStatusCode.Created, HttpStatusCode.OK],
         request,
         options,
@@ -230,5 +282,6 @@ namespace CoinbaseSdk.Prime.Orders
         request,
         options,
         cancellationToken);
+    }
   }
 }

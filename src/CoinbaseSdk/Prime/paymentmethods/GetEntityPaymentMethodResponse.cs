@@ -16,6 +16,7 @@
 
 namespace CoinbaseSdk.Prime.PaymentMethods
 {
+  using CoinbaseSdk.Prime.Model;
   public class GetEntityPaymentMethodResponse
   {
     public EntityPaymentMethod? PaymentMethod { get; set; }

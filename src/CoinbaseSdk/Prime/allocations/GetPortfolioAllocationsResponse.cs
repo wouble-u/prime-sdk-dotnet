@@ -16,7 +16,7 @@
 
 namespace CoinbaseSdk.Prime.Allocations
 {
-  using CoinbaseSdk.Prime.Common;
+  using CoinbaseSdk.Prime.Model;
   public class GetPortfolioAllocationsResponse
   {
     public Allocation[] Allocations { get; set; } = [];

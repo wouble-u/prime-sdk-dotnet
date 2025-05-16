@@ -18,11 +18,12 @@ namespace CoinbaseSdk.Prime.Orders
 {
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
-  using CoinbaseSdk.Prime.Common;
 
   public class CancelOrderRequest(string portfolioId, string orderId)
-  : BasePrimeRequest(portfolioId, null)
   {
+    [JsonIgnore]
+    public string PortfolioId { get; set; } = portfolioId;
+
     [JsonIgnore]
     public string OrderId { get; set; } = orderId;
 

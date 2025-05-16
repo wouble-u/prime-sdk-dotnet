@@ -18,12 +18,13 @@ namespace CoinbaseSdk.Prime.Invoice
 {
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
-  using CoinbaseSdk.Prime.Common;
   using CoinbaseSdk.Prime.Model;
 
   public class ListInvoicesRequest(string entityId)
-  : BasePrimeRequest(null, entityId)
   {
+    [JsonIgnore]
+    public string EntityId { get; set; } = entityId;
+
     public InvoiceState[] States { get; set; } = [];
 
     [JsonPropertyName("billing_month")]
@@ -106,7 +107,7 @@ namespace CoinbaseSdk.Prime.Invoice
           BillingMonth = this._billingMonth,
           BillingYear = this._billingYear,
           Cursor = this._cursor,
-          Limit = this._limit
+          Limit = this._limit,
         };
       }
     }

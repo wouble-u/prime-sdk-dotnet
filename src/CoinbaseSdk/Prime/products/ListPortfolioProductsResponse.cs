@@ -16,7 +16,8 @@
 
 namespace CoinbaseSdk.Prime.Products
 {
-  using CoinbaseSdk.Prime.Common;
+  using CoinbaseSdk.Prime.Model;
+
   public class ListPortfolioProductsResponse
   {
     public Product[] Products { get; set; } = [];

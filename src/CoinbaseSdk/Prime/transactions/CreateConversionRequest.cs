@@ -18,11 +18,12 @@ namespace CoinbaseSdk.Prime.Transactions
 {
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
-  using CoinbaseSdk.Prime.Common;
 
   public class CreateConversionRequest(string portfolioId, string walletId)
-  : BasePrimeRequest(portfolioId, null)
   {
+    [JsonIgnore]
+    public string PortfolioId { get; set; } = portfolioId;
+
     [JsonIgnore]
     public string WalletId { get; set; } = walletId;
     public string? Amount { get; set; }

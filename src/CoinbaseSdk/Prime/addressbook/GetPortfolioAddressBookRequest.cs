@@ -18,14 +18,20 @@ namespace CoinbaseSdk.Prime.AddressBook
 {
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
-  using CoinbaseSdk.Prime.Common;
+  using CoinbaseSdk.Prime.Model;
 
   public class GetPortfolioAddressBookRequest(string portfolioId)
-  : BaseListRequest(portfolioId, null)
   {
+    [JsonIgnore]
+    public string PortfolioId { get; set; } = portfolioId;
+
     [JsonPropertyName("currency_symbol")]
     public string? CurrencySymbol { get; set; }
     public string? Search { get; set; }
+    public string? Cursor { get; set; }
+    [JsonPropertyName("sort_direction")]
+    public string? SortDirection { get; set; }
+    public int? Limit { get; set; }
 
     public class GetPortfolioAddressBookRequestBuilder
     {

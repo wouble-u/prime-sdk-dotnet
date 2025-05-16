@@ -19,6 +19,6 @@ namespace CoinbaseSdk.Prime.Model
   public enum DestinationType
   {
     DESTINATION_PAYMENT_METHOD,
-    DESTINATION_BLOCKCHAIN
+    DESTINATION_BLOCKCHAIN,
   }
 }

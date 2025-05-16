@@ -17,6 +17,8 @@
 namespace CoinbaseSdk.Prime.Wallets
 {
   using System.Text.Json.Serialization;
+  using CoinbaseSdk.Prime.Model;
+
   public class GetWalletDepositInstructionsResponse
   {
     [JsonPropertyName("crypto_instructions")]

@@ -21,6 +21,6 @@ namespace CoinbaseSdk.Prime.Model
     UNKNOWN_PAYMENT_METHOD_TYPE,
     METHOD_WIRE,
     METHOD_SEN,
-    METHOD_SWIFT
+    METHOD_SWIFT,
   }
 }

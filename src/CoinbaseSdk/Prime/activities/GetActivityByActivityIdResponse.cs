@@ -16,6 +16,7 @@
 
 namespace CoinbaseSdk.Prime.Activities
 {
+  using CoinbaseSdk.Prime.Model;
   public class GetActivityByActivityIdResponse
   {
     public Activity? Activity { get; set; }

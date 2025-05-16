@@ -16,7 +16,8 @@
 
 namespace CoinbaseSdk.Prime.Orders
 {
-  using CoinbaseSdk.Prime.Common;
+  using CoinbaseSdk.Prime.Model;
+
   public class ListOrderFillsResponse
   {
     public List<OrderFill> OrderFills { get; set; } = [];

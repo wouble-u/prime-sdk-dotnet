@@ -16,10 +16,10 @@
 
 namespace CoinbaseSdk.Prime.Model
 {
-    public enum NetworkType
-    {
-        NETWORK_TYPE_UNSPECIFIED,
-        NETWORK_TYPE_EVM,
-        NETWORK_TYPE_SOLANA,
-    }
+  public enum NetworkType
+  {
+    NETWORK_TYPE_UNSPECIFIED,
+    NETWORK_TYPE_EVM,
+    NETWORK_TYPE_SOLANA,
+  }
 }

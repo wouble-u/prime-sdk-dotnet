@@ -14,8 +14,10 @@
  *  limitations under the License.
  */
 
+
 namespace CoinbaseSdk.Prime.Allocations
 {
+  using CoinbaseSdk.Prime.Model;
   public class GetAllocationResponse
   {
     public Allocation? Allocation { get; set; }

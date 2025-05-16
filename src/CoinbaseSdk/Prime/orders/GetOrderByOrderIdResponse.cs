@@ -16,6 +16,7 @@
 
 namespace CoinbaseSdk.Prime.Orders
 {
+  using CoinbaseSdk.Prime.Model;
   public class GetOrderByOrderIdResponse
   {
     public Order? Order { get; set; }

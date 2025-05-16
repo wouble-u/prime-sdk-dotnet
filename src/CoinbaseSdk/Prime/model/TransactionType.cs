@@ -50,6 +50,6 @@ namespace CoinbaseSdk.Prime.Model
     CONVERSION,
     CLAIM_REWARDS,
     VOTE_AUTHORIZE,
-    WEB3_TRANSACTION
+    WEB3_TRANSACTION,
   }
 }

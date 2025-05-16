@@ -18,8 +18,11 @@ namespace CoinbaseSdk.Prime.Model
 {
   public enum BalanceType
   {
+    UNKNOWN_BALANCE_TYPE,
     TRADING_BALANCES,
     VAULT_BALANCES,
-    TOTAL_BALANCES
+    TOTAL_BALANCES,
+    PRIME_CUSTODY_BALANCES,
+    UNIFIED_TOTAL_BALANCES,
   }
 }

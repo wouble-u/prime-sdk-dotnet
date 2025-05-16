@@ -16,6 +16,7 @@
 
 namespace CoinbaseSdk.Prime.Wallets
 {
+  using CoinbaseSdk.Prime.Model;
   public class GetWalletByIdResponse
   {
     public Wallet? Wallet { get; set; }

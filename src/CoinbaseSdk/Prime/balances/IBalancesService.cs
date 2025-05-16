@@ -28,6 +28,15 @@ namespace CoinbaseSdk.Prime.Balances
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
+    public ListEntityBalancesResponse ListEntityBalances(
+      ListEntityBalancesRequest request,
+      CallOptions? options = null);
+
+    public Task<ListEntityBalancesResponse> ListEntityBalancesAsync(
+      ListEntityBalancesRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default);
+
     public ListPortfolioBalancesResponse ListPortfolioBalances(
       ListPortfolioBalancesRequest request,
       CallOptions? options = null);

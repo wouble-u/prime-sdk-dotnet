@@ -21,6 +21,6 @@ namespace CoinbaseSdk.Prime.Model
     VAULT,
     TRADING,
     WALLET_TYPE_OTHER,
-    ONCHAIN
+    ONCHAIN,
   }
 }

@@ -16,6 +16,7 @@
 
 namespace CoinbaseSdk.Prime.Portfolios
 {
+  using CoinbaseSdk.Prime.Model;
   public class GetPortfolioByIdResponse
   {
     public Portfolio? Portfolio { get; set; }

@@ -48,6 +48,32 @@ namespace CoinbaseSdk.Prime.Balances
         cancellationToken);
     }
 
+    public ListEntityBalancesResponse ListEntityBalances(
+      ListEntityBalancesRequest request,
+      CallOptions? options = null)
+    {
+      return this.Request<ListEntityBalancesResponse>(
+        HttpMethod.Get,
+        $"/entities/{request.EntityId}/balances",
+        [HttpStatusCode.OK],
+        request,
+        options);
+    }
+
+    public Task<ListEntityBalancesResponse> ListEntityBalancesAsync(
+      ListEntityBalancesRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default)
+    {
+      return this.RequestAsync<ListEntityBalancesResponse>(
+        HttpMethod.Get,
+        $"/entities/{request.EntityId}/balances",
+        [HttpStatusCode.OK],
+        request,
+        options,
+        cancellationToken);
+    }
+
     public ListPortfolioBalancesResponse ListPortfolioBalances(
       ListPortfolioBalancesRequest request,
       CallOptions? options = null)

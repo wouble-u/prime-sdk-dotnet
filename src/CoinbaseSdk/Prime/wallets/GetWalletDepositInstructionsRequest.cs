@@ -18,11 +18,12 @@ namespace CoinbaseSdk.Prime.Wallets
 {
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
-  using CoinbaseSdk.Prime.Common;
 
   public class GetWalletDepositInstructionsRequest(string portfolioId, string walletId)
-  : BasePrimeRequest(portfolioId, null)
   {
+    [JsonIgnore]
+    public string PortfolioId { get; set; } = portfolioId;
+
     [JsonIgnore]
     public string WalletId { get; set; } = walletId;
 

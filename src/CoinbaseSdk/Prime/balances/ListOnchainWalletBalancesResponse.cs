@@ -16,7 +16,7 @@
 
 namespace CoinbaseSdk.Prime.Balances
 {
-  using CoinbaseSdk.Prime.Common;
+  using CoinbaseSdk.Prime.Model;
   public class ListOnchainWalletBalancesResponse
   {
     public OnchainWalletBalance[] Balances { get; set; } = [];

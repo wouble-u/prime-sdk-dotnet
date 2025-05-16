@@ -22,6 +22,6 @@ namespace CoinbaseSdk.Prime.Model
     BalanceApproval,
     ItemTransfer,
     ItemApproval,
-    ItemApprovalAll
+    ItemApprovalAll,
   }
 }

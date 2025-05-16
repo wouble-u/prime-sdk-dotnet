@@ -18,11 +18,13 @@ namespace CoinbaseSdk.Prime.Activities
 {
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
-  using CoinbaseSdk.Prime.Common;
+  using CoinbaseSdk.Prime.Model;
 
   public class ListEntityActivitiesRequest(string entityId)
-  : BaseListRequest(null, entityId)
   {
+    [JsonIgnore]
+    public string EntityId { get; set; } = entityId;
+
     [JsonPropertyName("activity_level")]
     public string? ActivityLevel { get; set; }
     public string[] Symbols { get; set; } = [];
@@ -32,7 +34,10 @@ namespace CoinbaseSdk.Prime.Activities
     public string? StartTime { get; set; }
     [JsonPropertyName("end_time")]
     public string? EndTime { get; set; }
-
+    public string? Cursor { get; set; }
+    [JsonPropertyName("sort_direction")]
+    public string? SortDirection { get; set; }
+    public int? Limit { get; set; }
 
     public class ListEntityActivitiesRequestBuilder
     {
