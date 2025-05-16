@@ -20,6 +20,6 @@ namespace CoinbaseSdk.Prime.Model
   {
     FCM_POSITION_SIDE_UNSPECIFIED,
     LONG,
-    SHORT
+    SHORT,
   }
 }

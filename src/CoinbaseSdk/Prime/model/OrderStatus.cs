@@ -23,6 +23,6 @@ namespace CoinbaseSdk.Prime.Model
     CANCELLED,
     EXPIRED,
     FAILED,
-    PENDING
+    PENDING,
   }
 }

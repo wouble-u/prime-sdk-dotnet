@@ -23,6 +23,6 @@ namespace CoinbaseSdk.Prime.Model
     TWAP,
     BLOCK,
     VWAP,
-    STOP_LIMIT
+    STOP_LIMIT,
   }
 }

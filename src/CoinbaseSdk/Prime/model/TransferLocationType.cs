@@ -22,6 +22,6 @@ namespace CoinbaseSdk.Prime.Model
     WALLET,
     ADDRESS,
     OTHER,
-    MULTIPLE_ADDRESSES
+    MULTIPLE_ADDRESSES,
   }
 }

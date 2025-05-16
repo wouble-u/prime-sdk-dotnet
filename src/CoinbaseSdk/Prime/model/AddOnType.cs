@@ -22,6 +22,6 @@ namespace CoinbaseSdk.Prime.Model
     SINGLE_COIN_STRESS,
     CONCENTRATION_STRESS,
     MACRO_STRESS,
-    SHORT_BIASED_STRESS
+    SHORT_BIASED_STRESS,
   }
 }

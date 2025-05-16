@@ -20,6 +20,6 @@ namespace CoinbaseSdk.Prime.Model
   {
     BASE,
     QUOTE,
-    PERCENT
+    PERCENT,
   }
 }

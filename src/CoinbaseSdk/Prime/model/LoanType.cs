@@ -23,6 +23,6 @@ namespace CoinbaseSdk.Prime.Model
     TRADE_FINANCE,
     PORTFOLIO_MARGIN,
     SHORT_COLLATERAL_LOAN,
-    SHORT_COLLATERAL
+    SHORT_COLLATERAL,
   }
 }

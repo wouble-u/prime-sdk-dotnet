@@ -21,6 +21,6 @@ namespace CoinbaseSdk.Prime.Model
     BENCHMARK_UNSET,
     ZERO,
     SOFR_360,
-    CRYPTO_RFR
+    CRYPTO_RFR,
   }
 }

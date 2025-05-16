@@ -20,6 +20,6 @@ namespace CoinbaseSdk.Prime.Model
   {
     POSITION_REFERENCE_TYPE_UNSPECIFIED,
     ENTITY,
-    PORTFOLIO
+    PORTFOLIO,
   }
 }

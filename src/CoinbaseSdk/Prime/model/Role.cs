@@ -26,6 +26,6 @@ namespace CoinbaseSdk.Prime.Model
     TRADER,
     FULL_TRADER,
     TEAM_MANAGER,
-    APPROVER
+    APPROVER,
   }
 }

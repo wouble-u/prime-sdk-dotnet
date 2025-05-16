@@ -22,6 +22,6 @@ namespace CoinbaseSdk.Prime.Model
     ACTION_APPROVE,
     ACTION_REJECT,
     ACTION_INITIATE,
-    ACTION_CANCEL
+    ACTION_CANCEL,
   }
 }

@@ -22,6 +22,6 @@ namespace CoinbaseSdk.Prime.Model
     BPS,
     APR_360,
     APR_365,
-    APR
+    APR,
   }
 }

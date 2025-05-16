@@ -22,6 +22,6 @@ namespace CoinbaseSdk.Prime.Model
     WIRE,
     SEN,
     SWIFT,
-    UNKNOWN_WALLET_DEPOSIT_TYPE
+    UNKNOWN_WALLET_DEPOSIT_TYPE,
   }
 }
