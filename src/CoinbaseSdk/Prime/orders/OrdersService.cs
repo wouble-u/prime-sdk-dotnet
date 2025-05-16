@@ -21,7 +21,8 @@ namespace CoinbaseSdk.Prime.Orders
   using CoinbaseSdk.Core.Http;
   using CoinbaseSdk.Core.Service;
 
-  public class OrdersService(ICoinbaseClient client) : CoinbaseService(client), IOrdersService
+  public class OrdersService(ICoinbaseClient client)
+    : CoinbaseService(client), IOrdersService
   {
     public AcceptQuoteResponse AcceptQuote(
         AcceptQuoteRequest request,
