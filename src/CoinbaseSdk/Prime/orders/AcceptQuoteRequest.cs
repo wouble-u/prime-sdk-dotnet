@@ -19,75 +19,23 @@ namespace CoinbaseSdk.Prime.Orders
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Prime.Model;
 
-  public class AcceptQuoteRequest(string portfolioId)
+  public class AcceptQuoteRequest(string portfolioId, string productId, string quoteId, string clientQuoteId)
   {
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
 
     [JsonPropertyName("quote_id")]
-    public string? QuoteId { get; set; }
+    public string QuoteId { get; set; } = quoteId;
 
     [JsonPropertyName("product_id")]
-    public string? ProductId { get; set; }
+    public string? ProductId { get; set; } = productId;
 
     [JsonPropertyName("client_order_id")]
-    public string? ClientOrderId { get; set; }
+    public string? ClientOrderId { get; set; } = clientQuoteId;
 
     [JsonPropertyName("settl_currency")]
     public string? SettlCurrency { get; set; }
 
     public OrderSide? Side { get; set; }
-
-    public class AcceptQuoteRequestBuilder(string portfolioId)
-    {
-      private string _portfolioId = portfolioId;
-      private string? _quoteId;
-      private string? _productId;
-      private string? _clientOrderId;
-      private string? _settlCurrency;
-      private OrderSide? _side;
-
-      public AcceptQuoteRequestBuilder WithQuoteId(string quoteId)
-      {
-        this._quoteId = quoteId;
-        return this;
-      }
-
-      public AcceptQuoteRequestBuilder WithProductId(string productId)
-      {
-        this._productId = productId;
-        return this;
-      }
-
-      public AcceptQuoteRequestBuilder WithClientOrderId(string clientOrderId)
-      {
-        this._clientOrderId = clientOrderId;
-        return this;
-      }
-
-      public AcceptQuoteRequestBuilder WithSettlCurrency(string settlCurrency)
-      {
-        this._settlCurrency = settlCurrency;
-        return this;
-      }
-
-      public AcceptQuoteRequestBuilder WithSide(OrderSide side)
-      {
-        this._side = side;
-        return this;
-      }
-
-      public AcceptQuoteRequest Build()
-      {
-        return new AcceptQuoteRequest(_portfolioId)
-        {
-          QuoteId = _quoteId,
-          ProductId = _productId,
-          ClientOrderId = _clientOrderId,
-          SettlCurrency = _settlCurrency,
-          Side = _side
-        };
-      }
-    }
   }
 }
