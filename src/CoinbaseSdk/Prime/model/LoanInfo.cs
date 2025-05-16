@@ -16,74 +16,74 @@
 
 namespace CoinbaseSdk.Prime.Model
 {
-    using System.Text.Json.Serialization;
+  using System.Text.Json.Serialization;
 
-    public class LoanInfo
+  public class LoanInfo
+  {
+    [JsonPropertyName("portfolio_id")]
+    public string? PortfolioId { get; set; }
+
+    public string? Symbol { get; set; }
+
+    public string? Amount { get; set; }
+
+    [JsonPropertyName("notional_amount")]
+    public string? NotionalAmount { get; set; }
+
+    [JsonPropertyName("due_date")]
+    public string? DueDate { get; set; }
+
+    public LoanInfo() { }
+
+    public class LoanInfoBuilder
     {
-        [JsonPropertyName("portfolio_id")]
-        public string? PortfolioId { get; set; }
+      private string? _portfolioId;
+      private string? _symbol;
+      private string? _amount;
+      private string? _notionalAmount;
+      private string? _dueDate;
 
-        public string? Symbol { get; set; }
+      public LoanInfoBuilder WithPortfolioId(string? portfolioId)
+      {
+        this._portfolioId = portfolioId;
+        return this;
+      }
 
-        public string? Amount { get; set; }
+      public LoanInfoBuilder WithSymbol(string? symbol)
+      {
+        this._symbol = symbol;
+        return this;
+      }
 
-        [JsonPropertyName("notional_amount")]
-        public string? NotionalAmount { get; set; }
+      public LoanInfoBuilder WithAmount(string? amount)
+      {
+        this._amount = amount;
+        return this;
+      }
 
-        [JsonPropertyName("due_date")]
-        public string? DueDate { get; set; }
+      public LoanInfoBuilder WithNotionalAmount(string? notionalAmount)
+      {
+        this._notionalAmount = notionalAmount;
+        return this;
+      }
 
-        public LoanInfo() { }
+      public LoanInfoBuilder WithDueDate(string? dueDate)
+      {
+        this._dueDate = dueDate;
+        return this;
+      }
 
-        public class LoanInfoBuilder
+      public LoanInfo Build()
+      {
+        return new LoanInfo
         {
-            private string? _portfolioId;
-            private string? _symbol;
-            private string? _amount;
-            private string? _notionalAmount;
-            private string? _dueDate;
-
-            public LoanInfoBuilder WithPortfolioId(string? portfolioId)
-            {
-                this._portfolioId = portfolioId;
-                return this;
-            }
-
-            public LoanInfoBuilder WithSymbol(string? symbol)
-            {
-                this._symbol = symbol;
-                return this;
-            }
-
-            public LoanInfoBuilder WithAmount(string? amount)
-            {
-                this._amount = amount;
-                return this;
-            }
-
-            public LoanInfoBuilder WithNotionalAmount(string? notionalAmount)
-            {
-                this._notionalAmount = notionalAmount;
-                return this;
-            }
-
-            public LoanInfoBuilder WithDueDate(string? dueDate)
-            {
-                this._dueDate = dueDate;
-                return this;
-            }
-
-            public LoanInfo Build()
-            {
-                return new LoanInfo
-                {
-                    PortfolioId = this._portfolioId,
-                    Symbol = this._symbol,
-                    Amount = this._amount,
-                    NotionalAmount = this._notionalAmount,
-                    DueDate = this._dueDate
-                };
-            }
-        }
+          PortfolioId = this._portfolioId,
+          Symbol = this._symbol,
+          Amount = this._amount,
+          NotionalAmount = this._notionalAmount,
+          DueDate = this._dueDate
+        };
+      }
     }
+  }
 }

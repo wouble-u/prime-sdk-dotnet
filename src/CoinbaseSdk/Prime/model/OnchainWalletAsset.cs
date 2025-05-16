@@ -16,27 +16,27 @@
 
 namespace CoinbaseSdk.Prime.Model
 {
-    using System.Text.Json.Serialization;
-    public class OnchainWalletAsset
+  using System.Text.Json.Serialization;
+  public class OnchainWalletAsset
+  {
+    public string? Network { get; set; }
+
+    [JsonPropertyName("contract_address")]
+    public string? ContractAddress { get; set; }
+
+    public string? Symbol { get; set; }
+
+    [JsonPropertyName("token_id")]
+    public string? TokenId { get; set; }
+
+    public OnchainWalletAsset() { }
+
+    public OnchainWalletAsset(string network, string contractAddress, string symbol, string tokenId)
     {
-        public string? Network { get; set; }
-
-        [JsonPropertyName("contract_address")]
-        public string? ContractAddress { get; set; }
-
-        public string? Symbol { get; set; }
-
-        [JsonPropertyName("token_id")]
-        public string? TokenId { get; set; }
-
-        public OnchainWalletAsset() { }
-
-        public OnchainWalletAsset(string network, string contractAddress, string symbol, string tokenId)
-        {
-            Network = network;
-            ContractAddress = contractAddress;
-            Symbol = symbol;
-            TokenId = tokenId;
-        }
+      Network = network;
+      ContractAddress = contractAddress;
+      Symbol = symbol;
+      TokenId = tokenId;
     }
+  }
 }

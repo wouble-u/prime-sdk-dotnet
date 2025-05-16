@@ -16,30 +16,30 @@
 
 namespace CoinbaseSdk.Prime.Assets
 {
-    using CoinbaseSdk.Prime.Model;
-    public class ListAssetsResponse
+  using CoinbaseSdk.Prime.Model;
+  public class ListAssetsResponse
+  {
+    public Asset[] Assets { get; set; } = [];
+
+    public ListAssetsResponse() { }
+
+    public class ListAssetsResponseBuilder
     {
-        public Asset[] Assets { get; set; } = [];
+      private Asset[] _assets = [];
 
-        public ListAssetsResponse() { }
+      public ListAssetsResponseBuilder WithAssets(Asset[] assets)
+      {
+        this._assets = assets;
+        return this;
+      }
 
-        public class ListAssetsResponseBuilder
+      public ListAssetsResponse Build()
+      {
+        return new ListAssetsResponse
         {
-            private Asset[] _assets = [];
-
-            public ListAssetsResponseBuilder WithAssets(Asset[] assets)
-            {
-                this._assets = assets;
-                return this;
-            }
-
-            public ListAssetsResponse Build()
-            {
-                return new ListAssetsResponse
-                {
-                    Assets = this._assets
-                };
-            }
-        }
+          Assets = this._assets
+        };
+      }
     }
+  }
 }

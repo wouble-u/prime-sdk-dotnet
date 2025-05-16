@@ -16,64 +16,64 @@
 
 namespace CoinbaseSdk.Prime.Allocations
 {
-    using System.Text.Json.Serialization;
+  using System.Text.Json.Serialization;
 
-    public class CreateAllocationResponse
+  public class CreateAllocationResponse
+  {
+    public bool? Success { get; set; }
+
+    [JsonPropertyName("allocation_id")]
+    public string? AllocationId { get; set; }
+
+    [JsonPropertyName("failure_reason")]
+    public string? FailureReason { get; set; }
+
+    [JsonPropertyName("netting_id")]
+    public string? NettingId { get; set; }
+
+    public CreateAllocationResponse() { }
+
+    public class CreateAllocationResponseBuilder
     {
-        public bool? Success { get; set; }
+      private bool? _success;
+      private string? _allocationId;
+      private string? _failureReason;
+      private string? _nettingId;
 
-        [JsonPropertyName("allocation_id")]
-        public string? AllocationId { get; set; }
+      public CreateAllocationResponseBuilder WithSuccess(bool? success)
+      {
+        this._success = success;
+        return this;
+      }
 
-        [JsonPropertyName("failure_reason")]
-        public string? FailureReason { get; set; }
+      public CreateAllocationResponseBuilder WithAllocationId(string? allocationId)
+      {
+        this._allocationId = allocationId;
+        return this;
+      }
 
-        [JsonPropertyName("netting_id")]
-        public string? NettingId { get; set; }
+      public CreateAllocationResponseBuilder WithFailureReason(string? failureReason)
+      {
+        this._failureReason = failureReason;
+        return this;
+      }
 
-        public CreateAllocationResponse() { }
+      public CreateAllocationResponseBuilder WithNettingId(string? nettingId)
+      {
+        this._nettingId = nettingId;
+        return this;
+      }
 
-        public class CreateAllocationResponseBuilder
+      public CreateAllocationResponse Build()
+      {
+        return new CreateAllocationResponse
         {
-            private bool? _success;
-            private string? _allocationId;
-            private string? _failureReason;
-            private string? _nettingId;
-
-            public CreateAllocationResponseBuilder WithSuccess(bool? success)
-            {
-                this._success = success;
-                return this;
-            }
-
-            public CreateAllocationResponseBuilder WithAllocationId(string? allocationId)
-            {
-                this._allocationId = allocationId;
-                return this;
-            }
-
-            public CreateAllocationResponseBuilder WithFailureReason(string? failureReason)
-            {
-                this._failureReason = failureReason;
-                return this;
-            }
-
-            public CreateAllocationResponseBuilder WithNettingId(string? nettingId)
-            {
-                this._nettingId = nettingId;
-                return this;
-            }
-
-            public CreateAllocationResponse Build()
-            {
-                return new CreateAllocationResponse
-                {
-                    Success = this._success,
-                    AllocationId = this._allocationId,
-                    FailureReason = this._failureReason,
-                    NettingId = this._nettingId
-                };
-            }
-        }
+          Success = this._success,
+          AllocationId = this._allocationId,
+          FailureReason = this._failureReason,
+          NettingId = this._nettingId
+        };
+      }
     }
+  }
 }

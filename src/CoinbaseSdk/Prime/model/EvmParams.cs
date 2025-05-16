@@ -16,19 +16,19 @@
 
 namespace CoinbaseSdk.Prime.Model
 {
-    using System.Text.Json.Serialization;
+  using System.Text.Json.Serialization;
 
-    public class EvmParams
-    {
-        [JsonPropertyName("disable_dynamic_gas")]
-        public bool? DisableDynamicGas { get; set; }
+  public class EvmParams
+  {
+    [JsonPropertyName("disable_dynamic_gas")]
+    public bool? DisableDynamicGas { get; set; }
 
-        [JsonPropertyName("replaced_transaction_string")]
-        public string? ReplacedTransactionString { get; set; }
+    [JsonPropertyName("replaced_transaction_string")]
+    public string? ReplacedTransactionString { get; set; }
 
-        [JsonPropertyName("chain_id")]
-        public string? ChainId { get; set; }
+    [JsonPropertyName("chain_id")]
+    public string? ChainId { get; set; }
 
-        public EvmParams() { }
-    }
+    public EvmParams() { }
+  }
 }

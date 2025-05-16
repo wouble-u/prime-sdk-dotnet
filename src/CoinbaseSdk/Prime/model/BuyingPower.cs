@@ -16,75 +16,75 @@
 
 namespace CoinbaseSdk.Prime.Model
 {
-    using System.Text.Json.Serialization;
-    public class BuyingPower
+  using System.Text.Json.Serialization;
+  public class BuyingPower
+  {
+    [JsonPropertyName("portfolio_id")]
+    public string? PortfolioId { get; set; }
+
+    [JsonPropertyName("base_currency")]
+    public string? BaseCurrency { get; set; }
+
+    [JsonPropertyName("quote_currency")]
+    public string? QuoteCurrency { get; set; }
+
+    [JsonPropertyName("base_buying_power")]
+    public string? BaseBuyingPower { get; set; }
+
+    [JsonPropertyName("quote_buying_power")]
+    public string? QuoteBuyingPower { get; set; }
+
+    public BuyingPower() { }
+
+    public class BuyingPowerBuilder
     {
-        [JsonPropertyName("portfolio_id")]
-        public string? PortfolioId { get; set; }
+      private string? _portfolioId;
+      private string? _baseCurrency;
+      private string? _quoteCurrency;
+      private string? _baseBuyingPower;
+      private string? _quoteBuyingPower;
 
-        [JsonPropertyName("base_currency")]
-        public string? BaseCurrency { get; set; }
+      public BuyingPowerBuilder WithPortfolioId(string? portfolioId)
+      {
+        this._portfolioId = portfolioId;
+        return this;
+      }
 
-        [JsonPropertyName("quote_currency")]
-        public string? QuoteCurrency { get; set; }
+      public BuyingPowerBuilder WithBaseCurrency(string? baseCurrency)
+      {
+        this._baseCurrency = baseCurrency;
+        return this;
+      }
 
-        [JsonPropertyName("base_buying_power")]
-        public string? BaseBuyingPower { get; set; }
+      public BuyingPowerBuilder WithQuoteCurrency(string? quoteCurrency)
+      {
+        this._quoteCurrency = quoteCurrency;
+        return this;
+      }
 
-        [JsonPropertyName("quote_buying_power")]
-        public string? QuoteBuyingPower { get; set; }
+      public BuyingPowerBuilder WithBaseBuyingPower(string? baseBuyingPower)
+      {
+        this._baseBuyingPower = baseBuyingPower;
+        return this;
+      }
 
-        public BuyingPower() { }
+      public BuyingPowerBuilder WithQuoteBuyingPower(string? quoteBuyingPower)
+      {
+        this._quoteBuyingPower = quoteBuyingPower;
+        return this;
+      }
 
-        public class BuyingPowerBuilder
+      public BuyingPower Build()
+      {
+        return new BuyingPower
         {
-            private string? _portfolioId;
-            private string? _baseCurrency;
-            private string? _quoteCurrency;
-            private string? _baseBuyingPower;
-            private string? _quoteBuyingPower;
-
-            public BuyingPowerBuilder WithPortfolioId(string? portfolioId)
-            {
-                this._portfolioId = portfolioId;
-                return this;
-            }
-
-            public BuyingPowerBuilder WithBaseCurrency(string? baseCurrency)
-            {
-                this._baseCurrency = baseCurrency;
-                return this;
-            }
-
-            public BuyingPowerBuilder WithQuoteCurrency(string? quoteCurrency)
-            {
-                this._quoteCurrency = quoteCurrency;
-                return this;
-            }
-
-            public BuyingPowerBuilder WithBaseBuyingPower(string? baseBuyingPower)
-            {
-                this._baseBuyingPower = baseBuyingPower;
-                return this;
-            }
-
-            public BuyingPowerBuilder WithQuoteBuyingPower(string? quoteBuyingPower)
-            {
-                this._quoteBuyingPower = quoteBuyingPower;
-                return this;
-            }
-
-            public BuyingPower Build()
-            {
-                return new BuyingPower
-                {
-                    PortfolioId = this._portfolioId,
-                    BaseCurrency = this._baseCurrency,
-                    QuoteCurrency = this._quoteCurrency,
-                    BaseBuyingPower = this._baseBuyingPower,
-                    QuoteBuyingPower = this._quoteBuyingPower
-                };
-            }
-        }
+          PortfolioId = this._portfolioId,
+          BaseCurrency = this._baseCurrency,
+          QuoteCurrency = this._quoteCurrency,
+          BaseBuyingPower = this._baseBuyingPower,
+          QuoteBuyingPower = this._quoteBuyingPower
+        };
+      }
     }
+  }
 }

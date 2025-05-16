@@ -16,31 +16,31 @@
 
 namespace CoinbaseSdk.Prime.Model
 {
-    public class NftCollection
+  public class NftCollection
+  {
+    public string? Name { get; set; }
+
+    public NftCollection() { }
+
+    public class NftCollectionBuilder
     {
-        public string? Name { get; set; }
+      private string? Name;
 
-        public NftCollection() { }
+      public NftCollectionBuilder() { }
 
-        public class NftCollectionBuilder
+      public NftCollectionBuilder WithName(string name)
+      {
+        this.Name = name;
+        return this;
+      }
+
+      public NftCollection Build()
+      {
+        return new NftCollection
         {
-            private string? Name;
-
-            public NftCollectionBuilder() { }
-
-            public NftCollectionBuilder WithName(string name)
-            {
-                this.Name = name;
-                return this;
-            }
-
-            public NftCollection Build()
-            {
-                return new NftCollection
-                {
-                    Name = this.Name
-                };
-            }
-        }
+          Name = this.Name
+        };
+      }
     }
+  }
 }

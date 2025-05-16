@@ -16,73 +16,73 @@
 
 namespace CoinbaseSdk.Prime.Model
 {
-    using System.Text.Json.Serialization;
-    public class FcmFuturesSweep
+  using System.Text.Json.Serialization;
+  public class FcmFuturesSweep
+  {
+    public string? Id { get; set; }
+
+    [JsonPropertyName("requested_amount")]
+    public FcmFuturesSweepRequestAmount? RequestedAmount { get; set; }
+
+    [JsonPropertyName("should_sweep_all")]
+    public bool? ShouldSweepAll { get; set; }
+
+    public FcmFuturesSweepStatus? Status { get; set; }
+
+    [JsonPropertyName("scheduled_time")]
+    public string? ScheduledTime { get; set; }
+
+    public FcmFuturesSweep() { }
+
+    public class FcmFuturesSweepBuilder
     {
-        public string? Id { get; set; }
+      private string? _id;
+      private FcmFuturesSweepRequestAmount? _requestedAmount;
+      private bool? _shouldSweepAll;
+      private FcmFuturesSweepStatus? _status;
+      private string? _scheduledTime;
 
-        [JsonPropertyName("requested_amount")]
-        public FcmFuturesSweepRequestAmount? RequestedAmount { get; set; }
+      public FcmFuturesSweepBuilder WithId(string id)
+      {
+        this._id = id;
+        return this;
+      }
 
-        [JsonPropertyName("should_sweep_all")]
-        public bool? ShouldSweepAll { get; set; }
+      public FcmFuturesSweepBuilder WithRequestedAmount(FcmFuturesSweepRequestAmount requestedAmount)
+      {
+        this._requestedAmount = requestedAmount;
+        return this;
+      }
 
-        public FcmFuturesSweepStatus? Status { get; set; }
+      public FcmFuturesSweepBuilder WithShouldSweepAll(bool shouldSweepAll)
+      {
+        this._shouldSweepAll = shouldSweepAll;
+        return this;
+      }
 
-        [JsonPropertyName("scheduled_time")]
-        public string? ScheduledTime { get; set; }
+      public FcmFuturesSweepBuilder WithStatus(FcmFuturesSweepStatus status)
+      {
+        this._status = status;
+        return this;
+      }
 
-        public FcmFuturesSweep() { }
+      public FcmFuturesSweepBuilder WithScheduledTime(string scheduledTime)
+      {
+        this._scheduledTime = scheduledTime;
+        return this;
+      }
 
-        public class FcmFuturesSweepBuilder
+      public FcmFuturesSweep Build()
+      {
+        return new FcmFuturesSweep
         {
-            private string? _id;
-            private FcmFuturesSweepRequestAmount? _requestedAmount;
-            private bool? _shouldSweepAll;
-            private FcmFuturesSweepStatus? _status;
-            private string? _scheduledTime;
-
-            public FcmFuturesSweepBuilder WithId(string id)
-            {
-                this._id = id;
-                return this;
-            }
-
-            public FcmFuturesSweepBuilder WithRequestedAmount(FcmFuturesSweepRequestAmount requestedAmount)
-            {
-                this._requestedAmount = requestedAmount;
-                return this;
-            }
-
-            public FcmFuturesSweepBuilder WithShouldSweepAll(bool shouldSweepAll)
-            {
-                this._shouldSweepAll = shouldSweepAll;
-                return this;
-            }
-
-            public FcmFuturesSweepBuilder WithStatus(FcmFuturesSweepStatus status)
-            {
-                this._status = status;
-                return this;
-            }
-
-            public FcmFuturesSweepBuilder WithScheduledTime(string scheduledTime)
-            {
-                this._scheduledTime = scheduledTime;
-                return this;
-            }
-
-            public FcmFuturesSweep Build()
-            {
-                return new FcmFuturesSweep
-                {
-                    Id = this._id,
-                    RequestedAmount = this._requestedAmount,
-                    ShouldSweepAll = this._shouldSweepAll,
-                    Status = this._status,
-                    ScheduledTime = this._scheduledTime
-                };
-            }
-        }
+          Id = this._id,
+          RequestedAmount = this._requestedAmount,
+          ShouldSweepAll = this._shouldSweepAll,
+          Status = this._status,
+          ScheduledTime = this._scheduledTime
+        };
+      }
     }
+  }
 }

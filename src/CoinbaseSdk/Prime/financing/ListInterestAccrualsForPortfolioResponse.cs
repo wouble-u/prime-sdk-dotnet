@@ -16,43 +16,43 @@
 
 namespace CoinbaseSdk.Prime.Financing
 {
-    using System.Text.Json.Serialization;
-    using CoinbaseSdk.Prime.Model;
+  using System.Text.Json.Serialization;
+  using CoinbaseSdk.Prime.Model;
 
-    public class ListInterestAccrualsForPortfolioResponse
+  public class ListInterestAccrualsForPortfolioResponse
+  {
+    [JsonPropertyName("total_notional_accrual")]
+    public string? TotalNotionalAccrual { get; set; }
+
+    public Accrual[] Accruals { get; set; } = [];
+
+    public ListInterestAccrualsForPortfolioResponse() { }
+
+    public class ListInterestAccrualsForPortfolioResponseBuilder
     {
-        [JsonPropertyName("total_notional_accrual")]
-        public string? TotalNotionalAccrual { get; set; }
+      private string? _totalNotionalAccrual;
+      private Accrual[] _accruals = [];
 
-        public Accrual[] Accruals { get; set; } = [];
+      public ListInterestAccrualsForPortfolioResponseBuilder WithTotalNotionalAccrual(string totalNotionalAccrual)
+      {
+        _totalNotionalAccrual = totalNotionalAccrual;
+        return this;
+      }
 
-        public ListInterestAccrualsForPortfolioResponse() { }
+      public ListInterestAccrualsForPortfolioResponseBuilder WithAccruals(Accrual[] accruals)
+      {
+        _accruals = accruals;
+        return this;
+      }
 
-        public class ListInterestAccrualsForPortfolioResponseBuilder
+      public ListInterestAccrualsForPortfolioResponse Build()
+      {
+        return new ListInterestAccrualsForPortfolioResponse
         {
-            private string? _totalNotionalAccrual;
-            private Accrual[] _accruals = [];
-
-            public ListInterestAccrualsForPortfolioResponseBuilder WithTotalNotionalAccrual(string totalNotionalAccrual)
-            {
-                _totalNotionalAccrual = totalNotionalAccrual;
-                return this;
-            }
-
-            public ListInterestAccrualsForPortfolioResponseBuilder WithAccruals(Accrual[] accruals)
-            {
-                _accruals = accruals;
-                return this;
-            }
-
-            public ListInterestAccrualsForPortfolioResponse Build()
-            {
-                return new ListInterestAccrualsForPortfolioResponse
-                {
-                    TotalNotionalAccrual = _totalNotionalAccrual,
-                    Accruals = _accruals
-                };
-            }
-        }
+          TotalNotionalAccrual = _totalNotionalAccrual,
+          Accruals = _accruals
+        };
+      }
     }
+  }
 }

@@ -16,73 +16,73 @@
 
 namespace CoinbaseSdk.Prime.Model
 {
-    using System.Text.Json.Serialization;
-    public class AssetBalance
+  using System.Text.Json.Serialization;
+  public class AssetBalance
+  {
+    [JsonPropertyName("portfolio_id")]
+    public string? PortfolioId { get; set; }
+
+    public string? Symbol { get; set; }
+
+    public string? Amount { get; set; }
+
+    [JsonPropertyName("notional_amount")]
+    public string? NotionalAmount { get; set; }
+
+    [JsonPropertyName("converstion_rate")]
+    public string? ConversionRate { get; set; }
+
+    public AssetBalance() { }
+
+    public class AssetBalanceBuilder
     {
-        [JsonPropertyName("portfolio_id")]
-        public string? PortfolioId { get; set; }
+      private string? _portfolioId;
+      private string? _symbol;
+      private string? _amount;
+      private string? _notionalAmount;
+      private string? _conversionRate;
 
-        public string? Symbol { get; set; }
+      public AssetBalanceBuilder WithPortfolioId(string? portfolioId)
+      {
+        this._portfolioId = portfolioId;
+        return this;
+      }
 
-        public string? Amount { get; set; }
+      public AssetBalanceBuilder WithSymbol(string? symbol)
+      {
+        this._symbol = symbol;
+        return this;
+      }
 
-        [JsonPropertyName("notional_amount")]
-        public string? NotionalAmount { get; set; }
+      public AssetBalanceBuilder WithAmount(string? amount)
+      {
+        this._amount = amount;
+        return this;
+      }
 
-        [JsonPropertyName("converstion_rate")]
-        public string? ConversionRate { get; set; }
+      public AssetBalanceBuilder WithNotionalAmount(string? notionalAmount)
+      {
+        this._notionalAmount = notionalAmount;
+        return this;
+      }
 
-        public AssetBalance() { }
+      public AssetBalanceBuilder WithConversionRate(string? conversionRate)
+      {
+        this._conversionRate = conversionRate;
+        return this;
+      }
 
-        public class AssetBalanceBuilder
+      public AssetBalance Build()
+      {
+        return new AssetBalance
         {
-            private string? _portfolioId;
-            private string? _symbol;
-            private string? _amount;
-            private string? _notionalAmount;
-            private string? _conversionRate;
-
-            public AssetBalanceBuilder WithPortfolioId(string? portfolioId)
-            {
-                this._portfolioId = portfolioId;
-                return this;
-            }
-
-            public AssetBalanceBuilder WithSymbol(string? symbol)
-            {
-                this._symbol = symbol;
-                return this;
-            }
-
-            public AssetBalanceBuilder WithAmount(string? amount)
-            {
-                this._amount = amount;
-                return this;
-            }
-
-            public AssetBalanceBuilder WithNotionalAmount(string? notionalAmount)
-            {
-                this._notionalAmount = notionalAmount;
-                return this;
-            }
-
-            public AssetBalanceBuilder WithConversionRate(string? conversionRate)
-            {
-                this._conversionRate = conversionRate;
-                return this;
-            }
-
-            public AssetBalance Build()
-            {
-                return new AssetBalance
-                {
-                    PortfolioId = this._portfolioId,
-                    Symbol = this._symbol,
-                    Amount = this._amount,
-                    NotionalAmount = this._notionalAmount,
-                    ConversionRate = this._conversionRate
-                };
-            }
-        }
+          PortfolioId = this._portfolioId,
+          Symbol = this._symbol,
+          Amount = this._amount,
+          NotionalAmount = this._notionalAmount,
+          ConversionRate = this._conversionRate
+        };
+      }
     }
+  }
 }

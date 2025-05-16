@@ -16,51 +16,51 @@
 
 namespace CoinbaseSdk.Prime.AddressBook
 {
-    using System.Text.Json.Serialization;
-    using CoinbaseSdk.Prime.Model;
+  using System.Text.Json.Serialization;
+  using CoinbaseSdk.Prime.Model;
 
-    public class CreateAddressBookEntryResponse
+  public class CreateAddressBookEntryResponse
+  {
+    [JsonPropertyName("activity_type")]
+    public CustodyActivityType ActivityType { get; set; }
+    [JsonPropertyName("num_approvals_remaining")]
+    public int? NumApprovalsRemaining { get; set; }
+    [JsonPropertyName("activity_id")]
+    public string? ActivityId { get; set; }
+
+    public class CreateAddressBookEntryResponseBuilder
     {
-        [JsonPropertyName("activity_type")]
-        public CustodyActivityType ActivityType { get; set; }
-        [JsonPropertyName("num_approvals_remaining")]
-        public int? NumApprovalsRemaining { get; set; }
-        [JsonPropertyName("activity_id")]
-        public string? ActivityId { get; set; }
+      private CustodyActivityType _activityType;
+      private int? _numApprovalsRemaining;
+      private string? _activityId;
 
-        public class CreateAddressBookEntryResponseBuilder
+      public CreateAddressBookEntryResponseBuilder WithActivityType(CustodyActivityType activityType)
+      {
+        this._activityType = activityType;
+        return this;
+      }
+
+      public CreateAddressBookEntryResponseBuilder WithNumApprovalsRemaining(int? numApprovalsRemaining)
+      {
+        this._numApprovalsRemaining = numApprovalsRemaining;
+        return this;
+      }
+
+      public CreateAddressBookEntryResponseBuilder WithActivityId(string? activityId)
+      {
+        this._activityId = activityId;
+        return this;
+      }
+
+      public CreateAddressBookEntryResponse Build()
+      {
+        return new CreateAddressBookEntryResponse
         {
-            private CustodyActivityType _activityType;
-            private int? _numApprovalsRemaining;
-            private string? _activityId;
-
-            public CreateAddressBookEntryResponseBuilder WithActivityType(CustodyActivityType activityType)
-            {
-                this._activityType = activityType;
-                return this;
-            }
-
-            public CreateAddressBookEntryResponseBuilder WithNumApprovalsRemaining(int? numApprovalsRemaining)
-            {
-                this._numApprovalsRemaining = numApprovalsRemaining;
-                return this;
-            }
-
-            public CreateAddressBookEntryResponseBuilder WithActivityId(string? activityId)
-            {
-                this._activityId = activityId;
-                return this;
-            }
-
-            public CreateAddressBookEntryResponse Build()
-            {
-                return new CreateAddressBookEntryResponse
-                {
-                    ActivityType = this._activityType,
-                    NumApprovalsRemaining = this._numApprovalsRemaining,
-                    ActivityId = this._activityId
-                };
-            }
-        }
+          ActivityType = this._activityType,
+          NumApprovalsRemaining = this._numApprovalsRemaining,
+          ActivityId = this._activityId
+        };
+      }
     }
+  }
 }

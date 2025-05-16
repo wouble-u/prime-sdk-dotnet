@@ -16,11 +16,11 @@
 
 namespace CoinbaseSdk.Prime.Model
 {
-    public enum WalletType
-    {
-        VAULT,
-        TRADING,
-        WALLET_TYPE_OTHER,
-        ONCHAIN,
-    }
+  public enum WalletType
+  {
+    VAULT,
+    TRADING,
+    WALLET_TYPE_OTHER,
+    ONCHAIN,
+  }
 }

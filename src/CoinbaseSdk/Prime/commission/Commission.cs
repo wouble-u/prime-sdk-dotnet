@@ -16,50 +16,50 @@
 
 namespace CoinbaseSdk.Prime.Commission
 {
-    using System.Text.Json.Serialization;
-    public class Commission
+  using System.Text.Json.Serialization;
+  public class Commission
+  {
+    public string? Type { get; set; }
+    public string? Rate { get; set; }
+
+    [JsonPropertyName("trading_volume")]
+    public string? TradingVolume { get; set; }
+
+    public Commission() { }
+
+    public class CommissionBuilder
     {
-        public string? Type { get; set; }
-        public string? Rate { get; set; }
+      private string? _type;
+      private string? _rate;
+      private string? _tradingVolume;
 
-        [JsonPropertyName("trading_volume")]
-        public string? TradingVolume { get; set; }
+      public CommissionBuilder WithType(string? type)
+      {
+        this._type = type;
+        return this;
+      }
 
-        public Commission() { }
+      public CommissionBuilder WithRate(string? rate)
+      {
+        this._rate = rate;
+        return this;
+      }
 
-        public class CommissionBuilder
+      public CommissionBuilder WithTradingVolume(string? tradingVolume)
+      {
+        this._tradingVolume = tradingVolume;
+        return this;
+      }
+
+      public Commission Build()
+      {
+        return new Commission
         {
-            private string? _type;
-            private string? _rate;
-            private string? _tradingVolume;
-
-            public CommissionBuilder WithType(string? type)
-            {
-                this._type = type;
-                return this;
-            }
-
-            public CommissionBuilder WithRate(string? rate)
-            {
-                this._rate = rate;
-                return this;
-            }
-
-            public CommissionBuilder WithTradingVolume(string? tradingVolume)
-            {
-                this._tradingVolume = tradingVolume;
-                return this;
-            }
-
-            public Commission Build()
-            {
-                return new Commission
-                {
-                    Type = this._type,
-                    Rate = this._rate,
-                    TradingVolume = this._tradingVolume
-                };
-            }
-        }
+          Type = this._type,
+          Rate = this._rate,
+          TradingVolume = this._tradingVolume
+        };
+      }
     }
+  }
 }

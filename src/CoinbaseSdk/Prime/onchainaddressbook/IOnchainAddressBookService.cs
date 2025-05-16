@@ -16,44 +16,44 @@
 
 namespace CoinbaseSdk.Prime.OnchainAddressBook
 {
-    using CoinbaseSdk.Core.Http;
+  using CoinbaseSdk.Core.Http;
 
-    public interface IOnchainAddressBookService
-    {
-        public CreateOnchainAddressBookEntryResponse CreateOnchainAddressBookEntry(
-            CreateOnchainAddressBookEntryRequest request,
-            CallOptions? options = null);
+  public interface IOnchainAddressBookService
+  {
+    public CreateOnchainAddressBookEntryResponse CreateOnchainAddressBookEntry(
+        CreateOnchainAddressBookEntryRequest request,
+        CallOptions? options = null);
 
-        public Task<CreateOnchainAddressBookEntryResponse> CreateOnchainAddressBookEntryAsync(
-            CreateOnchainAddressBookEntryRequest request,
-            CallOptions? options = null,
-            CancellationToken cancellationToken = default);
+    public Task<CreateOnchainAddressBookEntryResponse> CreateOnchainAddressBookEntryAsync(
+        CreateOnchainAddressBookEntryRequest request,
+        CallOptions? options = null,
+        CancellationToken cancellationToken = default);
 
-        public UpdateOnchainAddressBookEntryResponse UpdateOnchainAddressBookEntry(
-            UpdateOnchainAddressBookEntryRequest request,
-            CallOptions? options = null);
+    public UpdateOnchainAddressBookEntryResponse UpdateOnchainAddressBookEntry(
+        UpdateOnchainAddressBookEntryRequest request,
+        CallOptions? options = null);
 
-        public Task<UpdateOnchainAddressBookEntryResponse> UpdateOnchainAddressBookEntryAsync(
-            UpdateOnchainAddressBookEntryRequest request,
-            CallOptions? options = null,
-            CancellationToken cancellationToken = default);
+    public Task<UpdateOnchainAddressBookEntryResponse> UpdateOnchainAddressBookEntryAsync(
+        UpdateOnchainAddressBookEntryRequest request,
+        CallOptions? options = null,
+        CancellationToken cancellationToken = default);
 
-        public DeleteOnchainAddressGroupResponse DeleteOnchainAddressGroup(
-            DeleteOnchainAddressGroupRequest request,
-            CallOptions? options = null);
+    public DeleteOnchainAddressGroupResponse DeleteOnchainAddressGroup(
+        DeleteOnchainAddressGroupRequest request,
+        CallOptions? options = null);
 
-        public Task<DeleteOnchainAddressGroupResponse> DeleteOnchainAddressGroupAsync(
-            DeleteOnchainAddressGroupRequest request,
-            CallOptions? options = null,
-            CancellationToken cancellationToken = default);
+    public Task<DeleteOnchainAddressGroupResponse> DeleteOnchainAddressGroupAsync(
+        DeleteOnchainAddressGroupRequest request,
+        CallOptions? options = null,
+        CancellationToken cancellationToken = default);
 
-        public ListOnchainAddressGroupsResponse ListOnchainAddressGroups(
-            ListOnchainAddressGroupsRequest request,
-            CallOptions? options = null);
+    public ListOnchainAddressGroupsResponse ListOnchainAddressGroups(
+        ListOnchainAddressGroupsRequest request,
+        CallOptions? options = null);
 
-        public Task<ListOnchainAddressGroupsResponse> ListOnchainAddressGroupsAsync(
-            ListOnchainAddressGroupsRequest request,
-            CallOptions? options = null,
-            CancellationToken cancellationToken = default);
-    }
+    public Task<ListOnchainAddressGroupsResponse> ListOnchainAddressGroupsAsync(
+        ListOnchainAddressGroupsRequest request,
+        CallOptions? options = null,
+        CancellationToken cancellationToken = default);
+  }
 }

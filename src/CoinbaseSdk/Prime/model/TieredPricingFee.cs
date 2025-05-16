@@ -16,41 +16,41 @@
 
 namespace CoinbaseSdk.Prime.Model
 {
-    public class TieredPricingFee
+  public class TieredPricingFee
+  {
+    public string? Symbol { get; set; }
+
+    public string? Fee { get; set; }
+
+    public TieredPricingFee() { }
+
+    public TieredPricingFee(string? symbol, string? fee)
     {
-        public string? Symbol { get; set; }
-
-        public string? Fee { get; set; }
-
-        public TieredPricingFee() { }
-
-        public TieredPricingFee(string? symbol, string? fee)
-        {
-            Symbol = symbol;
-            Fee = fee;
-        }
-
-        public class TieredPricingFeeBuilder
-        {
-            private string? _symbol;
-            private string? _fee;
-
-            public TieredPricingFeeBuilder WithSymbol(string? symbol)
-            {
-                _symbol = symbol;
-                return this;
-            }
-
-            public TieredPricingFeeBuilder WithFee(string? fee)
-            {
-                _fee = fee;
-                return this;
-            }
-
-            public TieredPricingFee Build()
-            {
-                return new TieredPricingFee(_symbol, _fee);
-            }
-        }
+      Symbol = symbol;
+      Fee = fee;
     }
+
+    public class TieredPricingFeeBuilder
+    {
+      private string? _symbol;
+      private string? _fee;
+
+      public TieredPricingFeeBuilder WithSymbol(string? symbol)
+      {
+        _symbol = symbol;
+        return this;
+      }
+
+      public TieredPricingFeeBuilder WithFee(string? fee)
+      {
+        _fee = fee;
+        return this;
+      }
+
+      public TieredPricingFee Build()
+      {
+        return new TieredPricingFee(_symbol, _fee);
+      }
+    }
+  }
 }

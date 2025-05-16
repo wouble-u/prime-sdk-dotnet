@@ -16,62 +16,62 @@
 
 namespace CoinbaseSdk.Prime.Orders
 {
-    using System.Text.Json.Serialization;
-    using CoinbaseSdk.Core.Error;
+  using System.Text.Json.Serialization;
+  using CoinbaseSdk.Core.Error;
 
-    public class CancelOrderRequest(string portfolioId, string orderId)
+  public class CancelOrderRequest(string portfolioId, string orderId)
+  {
+    [JsonIgnore, JsonPropertyName("portfolio_id")]
+    public string PortfolioId { get; set; } = portfolioId;
+
+    [JsonIgnore, JsonPropertyName("order_id")]
+    public string OrderId { get; set; } = orderId;
+
+    public class CancelOrderRequestBuilder
     {
-        [JsonIgnore, JsonPropertyName("portfolio_id")]
-        public string PortfolioId { get; set; } = portfolioId;
+      private string? _portfolioId;
+      private string? _orderId;
 
-        [JsonIgnore, JsonPropertyName("order_id")]
-        public string OrderId { get; set; } = orderId;
+      public CancelOrderRequestBuilder WithPortfolioId(string portfolioId)
+      {
+        _portfolioId = portfolioId;
+        return this;
+      }
 
-        public class CancelOrderRequestBuilder
+      public CancelOrderRequestBuilder WithOrderId(string orderId)
+      {
+        _orderId = orderId;
+        return this;
+      }
+
+      /// <summary>
+      /// Validate the builder.
+      /// </summary>
+      /// <exception cref="CoinbaseClientException">Thrown when the
+      /// <see cref="_portfolioId"/> or <see cref="_orderId"/> are null, empty
+      /// or whitespace.</exception>
+      private void Validate()
+      {
+        if (string.IsNullOrWhiteSpace(this._portfolioId))
         {
-            private string? _portfolioId;
-            private string? _orderId;
-
-            public CancelOrderRequestBuilder WithPortfolioId(string portfolioId)
-            {
-                _portfolioId = portfolioId;
-                return this;
-            }
-
-            public CancelOrderRequestBuilder WithOrderId(string orderId)
-            {
-                _orderId = orderId;
-                return this;
-            }
-
-            /// <summary>
-            /// Validate the builder.
-            /// </summary>
-            /// <exception cref="CoinbaseClientException">Thrown when the
-            /// <see cref="_portfolioId"/> or <see cref="_orderId"/> are null, empty
-            /// or whitespace.</exception>
-            private void Validate()
-            {
-                if (string.IsNullOrWhiteSpace(this._portfolioId))
-                {
-                    throw new CoinbaseClientException("PortfolioId is required");
-                }
-                if (string.IsNullOrWhiteSpace(this._orderId))
-                {
-                    throw new CoinbaseClientException("OrderId is required");
-                }
-            }
-
-            /// <summary>
-            /// Build the <see cref="CancelOrderRequest"/> object.
-            /// </summary>
-            /// <returns>The <see cref="CancelOrderRequest"/> object.</returns>
-            /// <exception cref="CoinbaseClientException">Thrown when the required fields are not set.</exception>
-            public CancelOrderRequest Build()
-            {
-                this.Validate();
-                return new CancelOrderRequest(this._portfolioId!, this._orderId!);
-            }
+          throw new CoinbaseClientException("PortfolioId is required");
         }
+        if (string.IsNullOrWhiteSpace(this._orderId))
+        {
+          throw new CoinbaseClientException("OrderId is required");
+        }
+      }
+
+      /// <summary>
+      /// Build the <see cref="CancelOrderRequest"/> object.
+      /// </summary>
+      /// <returns>The <see cref="CancelOrderRequest"/> object.</returns>
+      /// <exception cref="CoinbaseClientException">Thrown when the required fields are not set.</exception>
+      public CancelOrderRequest Build()
+      {
+        this.Validate();
+        return new CancelOrderRequest(this._portfolioId!, this._orderId!);
+      }
     }
+  }
 }

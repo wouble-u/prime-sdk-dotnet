@@ -16,38 +16,38 @@
 
 namespace CoinbaseSdk.Prime.Model
 {
-    public class FcmFuturesSweepRequestAmount
+  public class FcmFuturesSweepRequestAmount
+  {
+    public string? Currency { get; set; }
+    public string? Amount { get; set; }
+
+    public FcmFuturesSweepRequestAmount() { }
+
+    public class FcmFuturesSweepRequestAmountBuilder
     {
-        public string? Currency { get; set; }
-        public string? Amount { get; set; }
+      private string? _currency;
+      private string? _amount;
 
-        public FcmFuturesSweepRequestAmount() { }
+      public FcmFuturesSweepRequestAmountBuilder WithCurrency(string currency)
+      {
+        this._currency = currency;
+        return this;
+      }
 
-        public class FcmFuturesSweepRequestAmountBuilder
+      public FcmFuturesSweepRequestAmountBuilder WithAmount(string amount)
+      {
+        this._amount = amount;
+        return this;
+      }
+
+      public FcmFuturesSweepRequestAmount Build()
+      {
+        return new FcmFuturesSweepRequestAmount()
         {
-            private string? _currency;
-            private string? _amount;
-
-            public FcmFuturesSweepRequestAmountBuilder WithCurrency(string currency)
-            {
-                this._currency = currency;
-                return this;
-            }
-
-            public FcmFuturesSweepRequestAmountBuilder WithAmount(string amount)
-            {
-                this._amount = amount;
-                return this;
-            }
-
-            public FcmFuturesSweepRequestAmount Build()
-            {
-                return new FcmFuturesSweepRequestAmount()
-                {
-                    Currency = this._currency,
-                    Amount = this._amount
-                };
-            }
-        }
+          Currency = this._currency,
+          Amount = this._amount
+        };
+      }
     }
+  }
 }

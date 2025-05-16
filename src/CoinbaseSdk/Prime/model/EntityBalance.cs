@@ -16,74 +16,74 @@
 
 namespace CoinbaseSdk.Prime.Model
 {
-    using System.Text.Json.Serialization;
-    public class EntityBalance
+  using System.Text.Json.Serialization;
+  public class EntityBalance
+  {
+    public string? Symbol { get; set; }
+
+    [JsonPropertyName("long_amount")]
+    public string? LongAmount { get; set; }
+
+    [JsonPropertyName("long_notional")]
+    public string? LongNotional { get; set; }
+
+    [JsonPropertyName("short_amount")]
+    public string? ShortAmount { get; set; }
+
+    [JsonPropertyName("short_notional")]
+    public string? ShortNotional { get; set; }
+
+    public EntityBalance() { }
+
+    public class EntityBalanceBuilder
     {
-        public string? Symbol { get; set; }
+      private string? _symbol;
+      private string? _longAmount;
+      private string? _longNotional;
+      private string? _shortAmount;
+      private string? _shortNotional;
 
-        [JsonPropertyName("long_amount")]
-        public string? LongAmount { get; set; }
+      public EntityBalanceBuilder WithSymbol(string symbol)
+      {
+        this._symbol = symbol;
+        return this;
+      }
 
-        [JsonPropertyName("long_notional")]
-        public string? LongNotional { get; set; }
+      public EntityBalanceBuilder WithLongAmount(string longAmount)
+      {
+        this._longAmount = longAmount;
+        return this;
+      }
 
-        [JsonPropertyName("short_amount")]
-        public string? ShortAmount { get; set; }
+      public EntityBalanceBuilder WithLongNotional(string longNotional)
+      {
+        this._longNotional = longNotional;
+        return this;
+      }
 
-        [JsonPropertyName("short_notional")]
-        public string? ShortNotional { get; set; }
+      public EntityBalanceBuilder WithShortAmount(string shortAmount)
+      {
+        this._shortAmount = shortAmount;
+        return this;
+      }
 
-        public EntityBalance() { }
+      public EntityBalanceBuilder WithShortNotional(string shortNotional)
+      {
+        this._shortNotional = shortNotional;
+        return this;
+      }
 
-        public class EntityBalanceBuilder
+      public EntityBalance Build()
+      {
+        return new EntityBalance
         {
-            private string? _symbol;
-            private string? _longAmount;
-            private string? _longNotional;
-            private string? _shortAmount;
-            private string? _shortNotional;
-
-            public EntityBalanceBuilder WithSymbol(string symbol)
-            {
-                this._symbol = symbol;
-                return this;
-            }
-
-            public EntityBalanceBuilder WithLongAmount(string longAmount)
-            {
-                this._longAmount = longAmount;
-                return this;
-            }
-
-            public EntityBalanceBuilder WithLongNotional(string longNotional)
-            {
-                this._longNotional = longNotional;
-                return this;
-            }
-
-            public EntityBalanceBuilder WithShortAmount(string shortAmount)
-            {
-                this._shortAmount = shortAmount;
-                return this;
-            }
-
-            public EntityBalanceBuilder WithShortNotional(string shortNotional)
-            {
-                this._shortNotional = shortNotional;
-                return this;
-            }
-
-            public EntityBalance Build()
-            {
-                return new EntityBalance
-                {
-                    Symbol = this._symbol,
-                    LongAmount = this._longAmount,
-                    LongNotional = this._longNotional,
-                    ShortAmount = this._shortAmount,
-                    ShortNotional = this._shortNotional
-                };
-            }
-        }
+          Symbol = this._symbol,
+          LongAmount = this._longAmount,
+          LongNotional = this._longNotional,
+          ShortAmount = this._shortAmount,
+          ShortNotional = this._shortNotional
+        };
+      }
     }
+  }
 }

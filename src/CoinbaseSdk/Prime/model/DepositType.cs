@@ -16,12 +16,12 @@
 
 namespace CoinbaseSdk.Prime.Model
 {
-    public enum DepositType
-    {
-        CRYPTO,
-        WIRE,
-        SEN,
-        SWIFT,
-        UNKNOWN_WALLET_DEPOSIT_TYPE
-    }
+  public enum DepositType
+  {
+    CRYPTO,
+    WIRE,
+    SEN,
+    SWIFT,
+    UNKNOWN_WALLET_DEPOSIT_TYPE
+  }
 }

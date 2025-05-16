@@ -16,41 +16,41 @@
 
 namespace CoinbaseSdk.Prime.Positions
 {
-    using System.Text.Json.Serialization;
-    public class ListEntityPositionsRequest(string entityId)
+  using System.Text.Json.Serialization;
+  public class ListEntityPositionsRequest(string entityId)
+  {
+    [JsonIgnore, JsonPropertyName("entity_id")]
+    public string EntityId { get; set; } = entityId;
+
+    public string? Cursor { get; set; }
+    public int? Limit { get; set; }
+
+    public class ListEntityPositionsRequestBuilder(string entityId)
     {
-        [JsonIgnore, JsonPropertyName("entity_id")]
-        public string EntityId { get; set; } = entityId;
+      private string _entityId = entityId;
+      private string? _cursor;
+      private int? _limit;
 
-        public string? Cursor { get; set; }
-        public int? Limit { get; set; }
+      public ListEntityPositionsRequestBuilder WithCursor(string? cursor)
+      {
+        this._cursor = cursor;
+        return this;
+      }
 
-        public class ListEntityPositionsRequestBuilder(string entityId)
+      public ListEntityPositionsRequestBuilder WithLimit(int? limit)
+      {
+        this._limit = limit;
+        return this;
+      }
+
+      public ListEntityPositionsRequest Build()
+      {
+        return new ListEntityPositionsRequest(_entityId)
         {
-            private string _entityId = entityId;
-            private string? _cursor;
-            private int? _limit;
-
-            public ListEntityPositionsRequestBuilder WithCursor(string? cursor)
-            {
-                this._cursor = cursor;
-                return this;
-            }
-
-            public ListEntityPositionsRequestBuilder WithLimit(int? limit)
-            {
-                this._limit = limit;
-                return this;
-            }
-
-            public ListEntityPositionsRequest Build()
-            {
-                return new ListEntityPositionsRequest(_entityId)
-                {
-                    Cursor = _cursor,
-                    Limit = _limit
-                };
-            }
-        }
+          Cursor = _cursor,
+          Limit = _limit
+        };
+      }
     }
+  }
 }

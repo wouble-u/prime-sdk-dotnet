@@ -16,43 +16,43 @@
 
 namespace CoinbaseSdk.Prime.Financing
 {
-    using System.Text.Json.Serialization;
-    using CoinbaseSdk.Prime.Model;
-    public class GetMarginInformationResponse
+  using System.Text.Json.Serialization;
+  using CoinbaseSdk.Prime.Model;
+  public class GetMarginInformationResponse
+  {
+    [JsonPropertyName("margin_information")]
+    public MarginInformation? MarginInformation { get; set; }
+
+    [JsonPropertyName("margin_summary")]
+    public MarginSummary? MarginSummary { get; set; }
+
+    public GetMarginInformationResponse() { }
+
+    public class GetMarginInformationResponseBuilder
     {
-        [JsonPropertyName("margin_information")]
-        public MarginInformation? MarginInformation { get; set; }
+      private MarginInformation? _marginInformation;
+      private MarginSummary? _marginSummary;
 
-        [JsonPropertyName("margin_summary")]
-        public MarginSummary? MarginSummary { get; set; }
+      public GetMarginInformationResponseBuilder WithMarginInformation(MarginInformation marginInformation)
+      {
+        this._marginInformation = marginInformation;
+        return this;
+      }
 
-        public GetMarginInformationResponse() { }
+      public GetMarginInformationResponseBuilder WithMarginSummary(MarginSummary marginSummary)
+      {
+        this._marginSummary = marginSummary;
+        return this;
+      }
 
-        public class GetMarginInformationResponseBuilder
+      public GetMarginInformationResponse Build()
+      {
+        return new GetMarginInformationResponse
         {
-            private MarginInformation? _marginInformation;
-            private MarginSummary? _marginSummary;
-
-            public GetMarginInformationResponseBuilder WithMarginInformation(MarginInformation marginInformation)
-            {
-                this._marginInformation = marginInformation;
-                return this;
-            }
-
-            public GetMarginInformationResponseBuilder WithMarginSummary(MarginSummary marginSummary)
-            {
-                this._marginSummary = marginSummary;
-                return this;
-            }
-
-            public GetMarginInformationResponse Build()
-            {
-                return new GetMarginInformationResponse
-                {
-                    MarginInformation = this._marginInformation,
-                    MarginSummary = this._marginSummary
-                };
-            }
-        }
+          MarginInformation = this._marginInformation,
+          MarginSummary = this._marginSummary
+        };
+      }
     }
+  }
 }

@@ -16,11 +16,11 @@
 
 namespace CoinbaseSdk.Prime.Model
 {
-    public enum Benchmark
-    {
-        BENCHMARK_UNSET,
-        ZERO,
-        SOFR_360,
-        CRYPTO_RFR
-    }
+  public enum Benchmark
+  {
+    BENCHMARK_UNSET,
+    ZERO,
+    SOFR_360,
+    CRYPTO_RFR
+  }
 }

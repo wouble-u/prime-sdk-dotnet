@@ -1,27 +1,27 @@
 namespace CoinbaseSdk.Prime.Futures
 {
-    public class SetAutoSweepResponse
+  public class SetAutoSweepResponse
+  {
+    public bool? Success { get; set; }
+
+    public SetAutoSweepResponse() { }
+
+    public class SetAutoSweepResponseBuilder
     {
-        public bool? Success { get; set; }
+      public SetAutoSweepResponseBuilder() { }
 
-        public SetAutoSweepResponse() { }
+      public bool? Success { get; set; }
 
-        public class SetAutoSweepResponseBuilder
-        {
-            public SetAutoSweepResponseBuilder() { }
+      public SetAutoSweepResponseBuilder WithSuccess(bool success)
+      {
+        this.Success = success;
+        return this;
+      }
 
-            public bool? Success { get; set; }
-
-            public SetAutoSweepResponseBuilder WithSuccess(bool success)
-            {
-                this.Success = success;
-                return this;
-            }
-
-            public SetAutoSweepResponse Build()
-            {
-                return new SetAutoSweepResponse { Success = this.Success };
-            }
-        }
+      public SetAutoSweepResponse Build()
+      {
+        return new SetAutoSweepResponse { Success = this.Success };
+      }
     }
+  }
 }

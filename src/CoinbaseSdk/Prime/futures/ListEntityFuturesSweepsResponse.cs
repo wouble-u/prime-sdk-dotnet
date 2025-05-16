@@ -1,41 +1,41 @@
 namespace CoinbaseSdk.Prime.Futures
 {
-    using System.Text.Json.Serialization;
-    using CoinbaseSdk.Prime.Model;
-    public class ListEntityFuturesSweepsResponse
+  using System.Text.Json.Serialization;
+  using CoinbaseSdk.Prime.Model;
+  public class ListEntityFuturesSweepsResponse
+  {
+    public FcmFuturesSweep[] Sweeps { get; set; } = [];
+
+    [JsonPropertyName("auto_sweep")]
+    public bool AutoSweep { get; set; }
+
+    public ListEntityFuturesSweepsResponse() { }
+
+    public class ListEntityFuturesSweepsResponseBuilder
     {
-        public FcmFuturesSweep[] Sweeps { get; set; } = [];
+      private FcmFuturesSweep[] _sweeps = [];
+      private bool _autoSweep;
 
-        [JsonPropertyName("auto_sweep")]
-        public bool AutoSweep { get; set; }
+      public ListEntityFuturesSweepsResponseBuilder WithSweeps(FcmFuturesSweep[] sweeps)
+      {
+        _sweeps = sweeps;
+        return this;
+      }
 
-        public ListEntityFuturesSweepsResponse() { }
+      public ListEntityFuturesSweepsResponseBuilder WithAutoSweep(bool autoSweep)
+      {
+        _autoSweep = autoSweep;
+        return this;
+      }
 
-        public class ListEntityFuturesSweepsResponseBuilder
+      public ListEntityFuturesSweepsResponse Build()
+      {
+        return new ListEntityFuturesSweepsResponse
         {
-            private FcmFuturesSweep[] _sweeps = [];
-            private bool _autoSweep;
-
-            public ListEntityFuturesSweepsResponseBuilder WithSweeps(FcmFuturesSweep[] sweeps)
-            {
-                _sweeps = sweeps;
-                return this;
-            }
-
-            public ListEntityFuturesSweepsResponseBuilder WithAutoSweep(bool autoSweep)
-            {
-                _autoSweep = autoSweep;
-                return this;
-            }
-
-            public ListEntityFuturesSweepsResponse Build()
-            {
-                return new ListEntityFuturesSweepsResponse
-                {
-                    Sweeps = _sweeps,
-                    AutoSweep = _autoSweep,
-                };
-            }
-        }
+          Sweeps = _sweeps,
+          AutoSweep = _autoSweep,
+        };
+      }
     }
+  }
 }

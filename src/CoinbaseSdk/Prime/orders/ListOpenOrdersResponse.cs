@@ -16,40 +16,40 @@
 
 namespace CoinbaseSdk.Prime.Orders
 {
-    using CoinbaseSdk.Prime.Model;
+  using CoinbaseSdk.Prime.Model;
 
-    public class ListOpenOrdersResponse
+  public class ListOpenOrdersResponse
+  {
+    public Order[] Orders { get; set; } = [];
+    public Pagination? Pagination { get; set; }
+
+    public ListOpenOrdersResponse() { }
+
+    public class ListOpenOrdersResponseBuilder
     {
-        public Order[] Orders { get; set; } = [];
-        public Pagination? Pagination { get; set; }
+      private Order[] _orders = [];
+      private Pagination? _pagination;
 
-        public ListOpenOrdersResponse() { }
+      public ListOpenOrdersResponseBuilder WithOrders(Order[] orders)
+      {
+        this._orders = orders;
+        return this;
+      }
 
-        public class ListOpenOrdersResponseBuilder
+      public ListOpenOrdersResponseBuilder WithPagination(Pagination pagination)
+      {
+        this._pagination = pagination;
+        return this;
+      }
+
+      public ListOpenOrdersResponse Build()
+      {
+        return new ListOpenOrdersResponse
         {
-            private Order[] _orders = [];
-            private Pagination? _pagination;
-
-            public ListOpenOrdersResponseBuilder WithOrders(Order[] orders)
-            {
-                this._orders = orders;
-                return this;
-            }
-
-            public ListOpenOrdersResponseBuilder WithPagination(Pagination pagination)
-            {
-                this._pagination = pagination;
-                return this;
-            }
-
-            public ListOpenOrdersResponse Build()
-            {
-                return new ListOpenOrdersResponse
-                {
-                    Orders = this._orders,
-                    Pagination = this._pagination
-                };
-            }
-        }
+          Orders = this._orders,
+          Pagination = this._pagination
+        };
+      }
     }
+  }
 }

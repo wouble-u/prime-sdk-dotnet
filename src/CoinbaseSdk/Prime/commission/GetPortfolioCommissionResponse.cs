@@ -16,34 +16,34 @@
 
 namespace CoinbaseSdk.Prime.Commission
 {
-    public class GetPortfolioCommissionResponse
+  public class GetPortfolioCommissionResponse
+  {
+    public Commission? Commission { get; set; }
+
+    public GetPortfolioCommissionResponse() { }
+
+    public GetPortfolioCommissionResponse(Commission commission)
     {
-        public Commission? Commission { get; set; }
-
-        public GetPortfolioCommissionResponse() { }
-
-        public GetPortfolioCommissionResponse(Commission commission)
-        {
-            Commission = commission;
-        }
-
-        public class GetPortfolioCommissionResponseBuilder
-        {
-            private Commission? _commission;
-
-            public GetPortfolioCommissionResponseBuilder WithCommission(Commission commission)
-            {
-                this._commission = commission;
-                return this;
-            }
-
-            public GetPortfolioCommissionResponse Build()
-            {
-                return new GetPortfolioCommissionResponse
-                {
-                    Commission = this._commission
-                };
-            }
-        }
+      Commission = commission;
     }
+
+    public class GetPortfolioCommissionResponseBuilder
+    {
+      private Commission? _commission;
+
+      public GetPortfolioCommissionResponseBuilder WithCommission(Commission commission)
+      {
+        this._commission = commission;
+        return this;
+      }
+
+      public GetPortfolioCommissionResponse Build()
+      {
+        return new GetPortfolioCommissionResponse
+        {
+          Commission = this._commission
+        };
+      }
+    }
+  }
 }

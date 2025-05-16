@@ -16,30 +16,30 @@
 
 namespace CoinbaseSdk.Prime.Financing
 {
-    using CoinbaseSdk.Prime.Model;
-    public class GetPortfolioCreditInformationResponse
+  using CoinbaseSdk.Prime.Model;
+  public class GetPortfolioCreditInformationResponse
+  {
+    public PostTradeCreditInformation? PostTradeCredit { get; set; }
+
+    public GetPortfolioCreditInformationResponse() { }
+
+    public class GetPortfolioCreditInformationResponseBuilder
     {
-        public PostTradeCreditInformation? PostTradeCredit { get; set; }
+      private PostTradeCreditInformation? _postTradeCredit;
 
-        public GetPortfolioCreditInformationResponse() { }
+      public GetPortfolioCreditInformationResponseBuilder WithPostTradeCredit(PostTradeCreditInformation? postTradeCredit)
+      {
+        this._postTradeCredit = postTradeCredit;
+        return this;
+      }
 
-        public class GetPortfolioCreditInformationResponseBuilder
+      public GetPortfolioCreditInformationResponse Build()
+      {
+        return new GetPortfolioCreditInformationResponse
         {
-            private PostTradeCreditInformation? _postTradeCredit;
-
-            public GetPortfolioCreditInformationResponseBuilder WithPostTradeCredit(PostTradeCreditInformation? postTradeCredit)
-            {
-                this._postTradeCredit = postTradeCredit;
-                return this;
-            }
-
-            public GetPortfolioCreditInformationResponse Build()
-            {
-                return new GetPortfolioCreditInformationResponse
-                {
-                    PostTradeCredit = this._postTradeCredit
-                };
-            }
-        }
+          PostTradeCredit = this._postTradeCredit
+        };
+      }
     }
+  }
 }

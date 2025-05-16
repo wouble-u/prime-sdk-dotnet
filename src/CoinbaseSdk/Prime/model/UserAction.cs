@@ -16,59 +16,59 @@
 
 namespace CoinbaseSdk.Prime.Model
 {
-    using System.Text.Json.Serialization;
+  using System.Text.Json.Serialization;
 
-    public class UserAction
+  public class UserAction
+  {
+    public UserActionType Action { get; set; }
+
+    [JsonPropertyName("user_id")]
+    public string? UserId { get; set; }
+
+    public string? Timestamp { get; set; }
+
+    public UserAction() { }
+
+    public UserAction(UserActionType action, string userId, string timestamp)
     {
-        public UserActionType Action { get; set; }
-
-        [JsonPropertyName("user_id")]
-        public string? UserId { get; set; }
-
-        public string? Timestamp { get; set; }
-
-        public UserAction() { }
-
-        public UserAction(UserActionType action, string userId, string timestamp)
-        {
-            Action = action;
-            UserId = userId;
-            Timestamp = timestamp;
-        }
-
-        public class UserActionBuilder
-        {
-            private UserActionType _action;
-            private string? _userId;
-            private string? _timestamp;
-
-            public UserActionBuilder WithAction(UserActionType action)
-            {
-                _action = action;
-                return this;
-            }
-
-            public UserActionBuilder WithUserId(string? userId)
-            {
-                _userId = userId;
-                return this;
-            }
-
-            public UserActionBuilder WithTimestamp(string? timestamp)
-            {
-                _timestamp = timestamp;
-                return this;
-            }
-
-            public UserAction Build()
-            {
-                return new UserAction
-                {
-                    Action = _action,
-                    UserId = _userId,
-                    Timestamp = _timestamp,
-                };
-            }
-        }
+      Action = action;
+      UserId = userId;
+      Timestamp = timestamp;
     }
+
+    public class UserActionBuilder
+    {
+      private UserActionType _action;
+      private string? _userId;
+      private string? _timestamp;
+
+      public UserActionBuilder WithAction(UserActionType action)
+      {
+        _action = action;
+        return this;
+      }
+
+      public UserActionBuilder WithUserId(string? userId)
+      {
+        _userId = userId;
+        return this;
+      }
+
+      public UserActionBuilder WithTimestamp(string? timestamp)
+      {
+        _timestamp = timestamp;
+        return this;
+      }
+
+      public UserAction Build()
+      {
+        return new UserAction
+        {
+          Action = _action,
+          UserId = _userId,
+          Timestamp = _timestamp,
+        };
+      }
+    }
+  }
 }

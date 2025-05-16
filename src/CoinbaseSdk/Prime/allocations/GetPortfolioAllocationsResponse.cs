@@ -16,39 +16,39 @@
 
 namespace CoinbaseSdk.Prime.Allocations
 {
-    using CoinbaseSdk.Prime.Model;
-    public class GetPortfolioAllocationsResponse
+  using CoinbaseSdk.Prime.Model;
+  public class GetPortfolioAllocationsResponse
+  {
+    public Allocation[] Allocations { get; set; } = [];
+    public Pagination? Pagination { get; set; }
+
+    public GetPortfolioAllocationsResponse() { }
+
+    public class GetPortfolioAllocationsResponseBuilder
     {
-        public Allocation[] Allocations { get; set; } = [];
-        public Pagination? Pagination { get; set; }
+      private Allocation[] _allocations = Array.Empty<Allocation>();
+      private Pagination? _pagination;
 
-        public GetPortfolioAllocationsResponse() { }
+      public GetPortfolioAllocationsResponseBuilder WithAllocations(Allocation[] allocations)
+      {
+        this._allocations = allocations;
+        return this;
+      }
 
-        public class GetPortfolioAllocationsResponseBuilder
+      public GetPortfolioAllocationsResponseBuilder WithPagination(Pagination? pagination)
+      {
+        this._pagination = pagination;
+        return this;
+      }
+
+      public GetPortfolioAllocationsResponse Build()
+      {
+        return new GetPortfolioAllocationsResponse
         {
-            private Allocation[] _allocations = Array.Empty<Allocation>();
-            private Pagination? _pagination;
-
-            public GetPortfolioAllocationsResponseBuilder WithAllocations(Allocation[] allocations)
-            {
-                this._allocations = allocations;
-                return this;
-            }
-
-            public GetPortfolioAllocationsResponseBuilder WithPagination(Pagination? pagination)
-            {
-                this._pagination = pagination;
-                return this;
-            }
-
-            public GetPortfolioAllocationsResponse Build()
-            {
-                return new GetPortfolioAllocationsResponse
-                {
-                    Allocations = this._allocations,
-                    Pagination = this._pagination
-                };
-            }
-        }
+          Allocations = this._allocations,
+          Pagination = this._pagination
+        };
+      }
     }
+  }
 }

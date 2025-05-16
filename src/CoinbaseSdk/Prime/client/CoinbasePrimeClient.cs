@@ -16,66 +16,66 @@
 
 namespace CoinbaseSdk.Prime.Client
 {
-    using System.Net;
-    using CoinbaseSdk.Core.Client;
-    using CoinbaseSdk.Core.Credentials;
-    using CoinbaseSdk.Core.Error;
-    using CoinbaseSdk.Core.Http;
+  using System.Net;
+  using CoinbaseSdk.Core.Client;
+  using CoinbaseSdk.Core.Credentials;
+  using CoinbaseSdk.Core.Error;
+  using CoinbaseSdk.Core.Http;
 
-    public class CoinbasePrimeClient : CoinbaseClient
+  public class CoinbasePrimeClient : CoinbaseClient
+  {
+    private const string DefaultApiBasePath = "api.prime.coinbase.com/v1";
+
+    public CoinbasePrimeClient(CoinbaseCredentials credentials) : base(credentials, DefaultApiBasePath)
     {
-        private const string DefaultApiBasePath = "api.prime.coinbase.com/v1";
-
-        public CoinbasePrimeClient(CoinbaseCredentials credentials) : base(credentials, DefaultApiBasePath)
-        {
-        }
-
-        public CoinbasePrimeClient(CoinbaseCredentials credentials, string apiBasePath) : base(credentials, apiBasePath)
-        {
-        }
-
-        public override async Task<T> SendRequestAsync<T>(
-          HttpMethod method,
-          string path,
-          object options,
-          HttpStatusCode[] expectedStatusCodes,
-          CancellationToken cancellationToken,
-          CallOptions? callOptions = null)
-        {
-            CoinbaseHttpRequest request = new CoinbaseHttpRequest(
-              $"{this.ApiBasePath}{path}",
-              method.Method,
-              this.Credentials,
-              options,
-              this.JsonUtility);
-
-            // Send the HTTP request
-            CoinbaseResponse response;
-            try
-            {
-                response = await this.HttpClient.SendAsyncRequest(request, callOptions, cancellationToken);
-            }
-            catch (Exception ex)
-            {
-                throw new CoinbaseClientException(ex.Message, ex);
-            }
-
-            // If the response is successful return the content as type T
-            if (!expectedStatusCodes.Contains(response.StatusCode))
-            {
-                CoinbasePrimeErrorMessage errorMessage;
-                try
-                {
-                    errorMessage = this.JsonUtility.Deserialize<CoinbasePrimeErrorMessage>(response.Content);
-                }
-                catch (Exception)
-                {
-                    throw new CoinbaseException(response.StatusCode, response.Content);
-                }
-                throw errorMessage.CreateCoinbaseException();
-            }
-
-            return this.JsonUtility.Deserialize<T>(response.Content);
-        }
     }
+
+    public CoinbasePrimeClient(CoinbaseCredentials credentials, string apiBasePath) : base(credentials, apiBasePath)
+    {
+    }
+
+    public override async Task<T> SendRequestAsync<T>(
+      HttpMethod method,
+      string path,
+      object options,
+      HttpStatusCode[] expectedStatusCodes,
+      CancellationToken cancellationToken,
+      CallOptions? callOptions = null)
+    {
+      CoinbaseHttpRequest request = new CoinbaseHttpRequest(
+        $"{this.ApiBasePath}{path}",
+        method.Method,
+        this.Credentials,
+        options,
+        this.JsonUtility);
+
+      // Send the HTTP request
+      CoinbaseResponse response;
+      try
+      {
+        response = await this.HttpClient.SendAsyncRequest(request, callOptions, cancellationToken);
+      }
+      catch (Exception ex)
+      {
+        throw new CoinbaseClientException(ex.Message, ex);
+      }
+
+      // If the response is successful return the content as type T
+      if (!expectedStatusCodes.Contains(response.StatusCode))
+      {
+        CoinbasePrimeErrorMessage errorMessage;
+        try
+        {
+          errorMessage = this.JsonUtility.Deserialize<CoinbasePrimeErrorMessage>(response.Content);
+        }
+        catch (Exception)
+        {
+          throw new CoinbaseException(response.StatusCode, response.Content);
+        }
+        throw errorMessage.CreateCoinbaseException();
+      }
+
+      return this.JsonUtility.Deserialize<T>(response.Content);
+    }
+  }
 }

@@ -16,84 +16,84 @@
 
 namespace CoinbaseSdk.Prime.Model
 {
-    using System.Text.Json.Serialization;
+  using System.Text.Json.Serialization;
 
-    public class Wallet
+  public class Wallet
+  {
+    public string? Id { get; set; }
+
+    public string? Name { get; set; }
+
+    public string? Symbol { get; set; }
+
+    public WalletType Type { get; set; }
+
+    public string? Address { get; set; }
+
+    [JsonPropertyName("created_at")]
+    public string? CreatedAt { get; set; }
+
+    public Wallet() { }
+
+    public class WalletBuilder
     {
-        public string? Id { get; set; }
+      private string? Id;
+      private string? Name;
+      private string? Symbol;
+      private WalletType Type;
+      private string? Address;
+      private string? CreatedAt;
 
-        public string? Name { get; set; }
+      public WalletBuilder() { }
 
-        public string? Symbol { get; set; }
+      public WalletBuilder WithId(string id)
+      {
+        this.Id = id;
+        return this;
+      }
 
-        public WalletType Type { get; set; }
+      public WalletBuilder WithName(string name)
+      {
+        this.Name = name;
+        return this;
+      }
 
-        public string? Address { get; set; }
+      public WalletBuilder WithSymbol(string symbol)
+      {
+        this.Symbol = symbol;
+        return this;
+      }
 
-        [JsonPropertyName("created_at")]
-        public string? CreatedAt { get; set; }
+      public WalletBuilder WithType(WalletType type)
+      {
+        this.Type = type;
+        return this;
+      }
 
-        public Wallet() { }
+      public WalletBuilder WithAddress(string address)
+      {
+        this.Address = address;
+        return this;
+      }
 
-        public class WalletBuilder
+      public WalletBuilder WithCreatedAt(string createdAt)
+      {
+        this.CreatedAt = createdAt;
+        return this;
+      }
+
+      public Wallet Build()
+      {
+        return new Wallet
         {
-            private string? Id;
-            private string? Name;
-            private string? Symbol;
-            private WalletType Type;
-            private string? Address;
-            private string? CreatedAt;
-
-            public WalletBuilder() { }
-
-            public WalletBuilder WithId(string id)
-            {
-                this.Id = id;
-                return this;
-            }
-
-            public WalletBuilder WithName(string name)
-            {
-                this.Name = name;
-                return this;
-            }
-
-            public WalletBuilder WithSymbol(string symbol)
-            {
-                this.Symbol = symbol;
-                return this;
-            }
-
-            public WalletBuilder WithType(WalletType type)
-            {
-                this.Type = type;
-                return this;
-            }
-
-            public WalletBuilder WithAddress(string address)
-            {
-                this.Address = address;
-                return this;
-            }
-
-            public WalletBuilder WithCreatedAt(string createdAt)
-            {
-                this.CreatedAt = createdAt;
-                return this;
-            }
-
-            public Wallet Build()
-            {
-                return new Wallet
-                {
-                    Id = this.Id,
-                    Name = this.Name,
-                    Symbol = this.Symbol,
-                    Type = this.Type,
-                    Address = this.Address,
-                    CreatedAt = this.CreatedAt,
-                };
-            }
-        }
+          Id = this.Id,
+          Name = this.Name,
+          Symbol = this.Symbol,
+          Type = this.Type,
+          Address = this.Address,
+          CreatedAt = this.CreatedAt,
+        };
+      }
     }
+  }
 }

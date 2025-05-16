@@ -16,71 +16,71 @@
 
 namespace CoinbaseSdk.Prime.Transactions
 {
-    using CoinbaseSdk.Core.Http;
+  using CoinbaseSdk.Core.Http;
 
-    public interface ITransactionsService
-    {
-        public CreateConversionResponse CreateConversion(
-            CreateConversionRequest request,
-            CallOptions? options = null);
+  public interface ITransactionsService
+  {
+    public CreateConversionResponse CreateConversion(
+        CreateConversionRequest request,
+        CallOptions? options = null);
 
-        public Task<CreateConversionResponse> CreateConversionAsync(
-            CreateConversionRequest request,
-            CallOptions? options = null,
-            CancellationToken cancellationToken = default);
+    public Task<CreateConversionResponse> CreateConversionAsync(
+        CreateConversionRequest request,
+        CallOptions? options = null,
+        CancellationToken cancellationToken = default);
 
-        public CreateTransferResponse CreateTransfer(
-            CreateTransferRequest request,
-            CallOptions? options = null);
+    public CreateTransferResponse CreateTransfer(
+        CreateTransferRequest request,
+        CallOptions? options = null);
 
-        public Task<CreateTransferResponse> CreateTransferAsync(
-            CreateTransferRequest request,
-            CallOptions? options = null,
-            CancellationToken cancellationToken = default);
+    public Task<CreateTransferResponse> CreateTransferAsync(
+        CreateTransferRequest request,
+        CallOptions? options = null,
+        CancellationToken cancellationToken = default);
 
-        public CreateWithdrawalResponse CreateWithdrawal(
-            CreateWithdrawalRequest request,
-            CallOptions? options = null);
+    public CreateWithdrawalResponse CreateWithdrawal(
+        CreateWithdrawalRequest request,
+        CallOptions? options = null);
 
-        public Task<CreateWithdrawalResponse> CreateWithdrawalAsync(
-            CreateWithdrawalRequest request,
-            CallOptions? options = null,
-            CancellationToken cancellationToken = default);
+    public Task<CreateWithdrawalResponse> CreateWithdrawalAsync(
+        CreateWithdrawalRequest request,
+        CallOptions? options = null,
+        CancellationToken cancellationToken = default);
 
-        public GetTransactionByTransactionIdResponse GetTransactionByTransactionId(
-            GetTransactionByTransactionIdRequest request,
-            CallOptions? options = null);
+    public GetTransactionByTransactionIdResponse GetTransactionByTransactionId(
+        GetTransactionByTransactionIdRequest request,
+        CallOptions? options = null);
 
-        public Task<GetTransactionByTransactionIdResponse> GetTransactionByTransactionIdAsync(
-            GetTransactionByTransactionIdRequest request,
-            CallOptions? options = null,
-            CancellationToken cancellationToken = default);
+    public Task<GetTransactionByTransactionIdResponse> GetTransactionByTransactionIdAsync(
+        GetTransactionByTransactionIdRequest request,
+        CallOptions? options = null,
+        CancellationToken cancellationToken = default);
 
-        public ListPortfolioTransactionsResponse ListPortfolioTransactions(
-            ListPortfolioTransactionsRequest request,
-            CallOptions? options = null);
+    public ListPortfolioTransactionsResponse ListPortfolioTransactions(
+        ListPortfolioTransactionsRequest request,
+        CallOptions? options = null);
 
-        public Task<ListPortfolioTransactionsResponse> ListPortfolioTransactionsAsync(
-            ListPortfolioTransactionsRequest request,
-            CallOptions? options = null,
-            CancellationToken cancellationToken = default);
+    public Task<ListPortfolioTransactionsResponse> ListPortfolioTransactionsAsync(
+        ListPortfolioTransactionsRequest request,
+        CallOptions? options = null,
+        CancellationToken cancellationToken = default);
 
-        public ListWalletTransactionsResponse ListWalletTransactions(
-            ListWalletTransactionsRequest request,
-            CallOptions? options = null);
+    public ListWalletTransactionsResponse ListWalletTransactions(
+        ListWalletTransactionsRequest request,
+        CallOptions? options = null);
 
-        public Task<ListWalletTransactionsResponse> ListWalletTransactionsAsync(
-            ListWalletTransactionsRequest request,
-            CallOptions? options = null,
-            CancellationToken cancellationToken = default);
+    public Task<ListWalletTransactionsResponse> ListWalletTransactionsAsync(
+        ListWalletTransactionsRequest request,
+        CallOptions? options = null,
+        CancellationToken cancellationToken = default);
 
-        public CreateOnchainTransactionResponse CreateOnchainTransaction(
-            CreateOnchainTransactionRequest request,
-            CallOptions? options = null);
+    public CreateOnchainTransactionResponse CreateOnchainTransaction(
+        CreateOnchainTransactionRequest request,
+        CallOptions? options = null);
 
-        public Task<CreateOnchainTransactionResponse> CreateOnchainTransactionAsync(
-            CreateOnchainTransactionRequest request,
-            CallOptions? options = null,
-            CancellationToken cancellationToken = default);
-    }
+    public Task<CreateOnchainTransactionResponse> CreateOnchainTransactionAsync(
+        CreateOnchainTransactionRequest request,
+        CallOptions? options = null,
+        CancellationToken cancellationToken = default);
+  }
 }

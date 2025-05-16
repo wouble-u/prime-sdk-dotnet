@@ -16,44 +16,44 @@
 
 namespace CoinbaseSdk.Prime.Model
 {
-    public class TotalBalance
+  public class TotalBalance
+  {
+    public string? Total { get; set; }
+    public string? Holds { get; set; }
+
+    public TotalBalance() { }
+
+    public TotalBalance(string total, string holds)
     {
-        public string? Total { get; set; }
-        public string? Holds { get; set; }
-
-        public TotalBalance() { }
-
-        public TotalBalance(string total, string holds)
-        {
-            Total = total;
-            Holds = holds;
-        }
-
-        public class TotalBalanceBuilder
-        {
-            private string? _total;
-            private string? _holds;
-
-            public TotalBalanceBuilder WithTotal(string? total)
-            {
-                this._total = total;
-                return this;
-            }
-
-            public TotalBalanceBuilder WithHolds(string? holds)
-            {
-                this._holds = holds;
-                return this;
-            }
-
-            public TotalBalance Build()
-            {
-                return new TotalBalance
-                {
-                    Total = this._total,
-                    Holds = this._holds
-                };
-            }
-        }
+      Total = total;
+      Holds = holds;
     }
+
+    public class TotalBalanceBuilder
+    {
+      private string? _total;
+      private string? _holds;
+
+      public TotalBalanceBuilder WithTotal(string? total)
+      {
+        this._total = total;
+        return this;
+      }
+
+      public TotalBalanceBuilder WithHolds(string? holds)
+      {
+        this._holds = holds;
+        return this;
+      }
+
+      public TotalBalance Build()
+      {
+        return new TotalBalance
+        {
+          Total = this._total,
+          Holds = this._holds
+        };
+      }
+    }
+  }
 }

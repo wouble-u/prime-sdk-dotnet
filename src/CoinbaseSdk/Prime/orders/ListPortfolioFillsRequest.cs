@@ -16,105 +16,105 @@
 
 namespace CoinbaseSdk.Prime.Orders
 {
-    using System.Text.Json.Serialization;
-    using CoinbaseSdk.Core.Error;
+  using System.Text.Json.Serialization;
+  using CoinbaseSdk.Core.Error;
 
-    public class ListPortfolioFillsRequest(string portfolioId)
+  public class ListPortfolioFillsRequest(string portfolioId)
+  {
+    [JsonIgnore, JsonPropertyName("portfolio_id")]
+    public string PortfolioId { get; set; } = portfolioId;
+
+    [JsonPropertyName("start_date")]
+    public string? StartDate { get; set; }
+
+    [JsonPropertyName("end_date")]
+    public string? EndDate { get; set; }
+
+    public string? Cursor { get; set; }
+    [JsonPropertyName("sort_direction")]
+    public string? SortDirection { get; set; }
+    public int? Limit { get; set; }
+
+    public class ListPortfolioFillsRequestBuilder
     {
-        [JsonIgnore, JsonPropertyName("portfolio_id")]
-        public string PortfolioId { get; set; } = portfolioId;
+      private string? _portfolioId;
+      private string? _startDate;
+      private string? _endDate;
+      private string? _cursor;
+      private int? _limit;
+      private string? _sortDirection;
 
-        [JsonPropertyName("start_date")]
-        public string? StartDate { get; set; }
+      public ListPortfolioFillsRequestBuilder WithPortfolioId(string portfolioId)
+      {
+        this._portfolioId = portfolioId;
+        return this;
+      }
 
-        [JsonPropertyName("end_date")]
-        public string? EndDate { get; set; }
+      public ListPortfolioFillsRequestBuilder WithStartDate(string startDate)
+      {
+        this._startDate = startDate;
+        return this;
+      }
 
-        public string? Cursor { get; set; }
-        [JsonPropertyName("sort_direction")]
-        public string? SortDirection { get; set; }
-        public int? Limit { get; set; }
+      public ListPortfolioFillsRequestBuilder WithEndDate(string? endDate)
+      {
+        this._endDate = endDate;
+        return this;
+      }
 
-        public class ListPortfolioFillsRequestBuilder
+      public ListPortfolioFillsRequestBuilder WithCursor(string? cursor)
+      {
+        this._cursor = cursor;
+        return this;
+      }
+
+      public ListPortfolioFillsRequestBuilder WithLimit(int? limit)
+      {
+        this._limit = limit;
+        return this;
+      }
+
+      public ListPortfolioFillsRequestBuilder WithSortDirection(string? sortDirection)
+      {
+        this._sortDirection = sortDirection;
+        return this;
+      }
+
+      /// <summary>
+      /// Validate the builder.
+      /// </summary>
+      /// <exception cref="CoinbaseClientException">Thrown when the
+      /// <see cref="_portfolioId"/> or <see cref="_startDate"/> are null, empty
+      /// or whitespace.</exception>
+      private void Validate()
+      {
+        if (string.IsNullOrWhiteSpace(this._portfolioId))
         {
-            private string? _portfolioId;
-            private string? _startDate;
-            private string? _endDate;
-            private string? _cursor;
-            private int? _limit;
-            private string? _sortDirection;
-
-            public ListPortfolioFillsRequestBuilder WithPortfolioId(string portfolioId)
-            {
-                this._portfolioId = portfolioId;
-                return this;
-            }
-
-            public ListPortfolioFillsRequestBuilder WithStartDate(string startDate)
-            {
-                this._startDate = startDate;
-                return this;
-            }
-
-            public ListPortfolioFillsRequestBuilder WithEndDate(string? endDate)
-            {
-                this._endDate = endDate;
-                return this;
-            }
-
-            public ListPortfolioFillsRequestBuilder WithCursor(string? cursor)
-            {
-                this._cursor = cursor;
-                return this;
-            }
-
-            public ListPortfolioFillsRequestBuilder WithLimit(int? limit)
-            {
-                this._limit = limit;
-                return this;
-            }
-
-            public ListPortfolioFillsRequestBuilder WithSortDirection(string? sortDirection)
-            {
-                this._sortDirection = sortDirection;
-                return this;
-            }
-
-            /// <summary>
-            /// Validate the builder.
-            /// </summary>
-            /// <exception cref="CoinbaseClientException">Thrown when the
-            /// <see cref="_portfolioId"/> or <see cref="_startDate"/> are null, empty
-            /// or whitespace.</exception>
-            private void Validate()
-            {
-                if (string.IsNullOrWhiteSpace(this._portfolioId))
-                {
-                    throw new CoinbaseClientException("PortfolioId is required");
-                }
-                if (string.IsNullOrWhiteSpace(this._startDate))
-                {
-                    throw new CoinbaseClientException("StartDate is required");
-                }
-            }
-
-            /// <summary>
-            /// Build the <see cref="ListPortfolioFillsRequest"/> object.
-            /// </summary>
-            /// <returns>The <see cref="ListPortfolioFillsRequest"/> object.</returns>
-            /// <exception cref="CoinbaseClientException">Thrown when the required fields are not set.</exception>
-            public ListPortfolioFillsRequest Build()
-            {
-                this.Validate();
-                return new ListPortfolioFillsRequest(this._portfolioId!)
-                {
-                    StartDate = this._startDate!,
-                    EndDate = this._endDate,
-                    Cursor = this._cursor,
-                    Limit = this._limit,
-                    SortDirection = this._sortDirection,
-                };
-            }
+          throw new CoinbaseClientException("PortfolioId is required");
         }
+        if (string.IsNullOrWhiteSpace(this._startDate))
+        {
+          throw new CoinbaseClientException("StartDate is required");
+        }
+      }
+
+      /// <summary>
+      /// Build the <see cref="ListPortfolioFillsRequest"/> object.
+      /// </summary>
+      /// <returns>The <see cref="ListPortfolioFillsRequest"/> object.</returns>
+      /// <exception cref="CoinbaseClientException">Thrown when the required fields are not set.</exception>
+      public ListPortfolioFillsRequest Build()
+      {
+        this.Validate();
+        return new ListPortfolioFillsRequest(this._portfolioId!)
+        {
+          StartDate = this._startDate!,
+          EndDate = this._endDate,
+          Cursor = this._cursor,
+          Limit = this._limit,
+          SortDirection = this._sortDirection,
+        };
+      }
     }
+  }
 }

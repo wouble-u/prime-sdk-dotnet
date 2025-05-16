@@ -16,85 +16,85 @@
 
 namespace CoinbaseSdk.Prime.Model
 {
-    using System.Text.Json.Serialization;
+  using System.Text.Json.Serialization;
 
-    public class EntityUser
+  public class EntityUser
+  {
+    public string? Id { get; set; }
+
+    public string? Name { get; set; }
+
+    public string? Email { get; set; }
+
+    [JsonPropertyName("entity_id")]
+    public string? EntityId { get; set; }
+
+    [JsonPropertyName("portfolio_id")]
+    public string? PortfolioId { get; set; }
+
+    public Role? Role { get; set; }
+
+    public EntityUser() { }
+
+    public class UserBuilder
     {
-        public string? Id { get; set; }
+      private string? Id;
+      private string? Name;
+      private string? Email;
+      private string? EntityId;
+      private string? PortfolioId;
+      private Role? Role;
 
-        public string? Name { get; set; }
+      public UserBuilder() { }
 
-        public string? Email { get; set; }
+      public UserBuilder WithId(string id)
+      {
+        this.Id = id;
+        return this;
+      }
 
-        [JsonPropertyName("entity_id")]
-        public string? EntityId { get; set; }
+      public UserBuilder WithName(string name)
+      {
+        this.Name = name;
+        return this;
+      }
 
-        [JsonPropertyName("portfolio_id")]
-        public string? PortfolioId { get; set; }
+      public UserBuilder WithEmail(string email)
+      {
+        this.Email = email;
+        return this;
+      }
 
-        public Role? Role { get; set; }
+      public UserBuilder WithEntityId(string entityId)
+      {
+        this.EntityId = entityId;
+        return this;
+      }
 
-        public EntityUser() { }
+      public UserBuilder WithPortfolioId(string portfolioId)
+      {
+        this.PortfolioId = portfolioId;
+        return this;
+      }
 
-        public class UserBuilder
+      public UserBuilder WithRole(Role role)
+      {
+        this.Role = role;
+        return this;
+      }
+
+      public EntityUser Build()
+      {
+        return new EntityUser
         {
-            private string? Id;
-            private string? Name;
-            private string? Email;
-            private string? EntityId;
-            private string? PortfolioId;
-            private Role? Role;
-
-            public UserBuilder() { }
-
-            public UserBuilder WithId(string id)
-            {
-                this.Id = id;
-                return this;
-            }
-
-            public UserBuilder WithName(string name)
-            {
-                this.Name = name;
-                return this;
-            }
-
-            public UserBuilder WithEmail(string email)
-            {
-                this.Email = email;
-                return this;
-            }
-
-            public UserBuilder WithEntityId(string entityId)
-            {
-                this.EntityId = entityId;
-                return this;
-            }
-
-            public UserBuilder WithPortfolioId(string portfolioId)
-            {
-                this.PortfolioId = portfolioId;
-                return this;
-            }
-
-            public UserBuilder WithRole(Role role)
-            {
-                this.Role = role;
-                return this;
-            }
-
-            public EntityUser Build()
-            {
-                return new EntityUser
-                {
-                    Id = this.Id,
-                    Name = this.Name,
-                    Email = this.Email,
-                    EntityId = this.EntityId,
-                    PortfolioId = this.PortfolioId,
-                    Role = this.Role,
-                };
-            }
-        }
+          Id = this.Id,
+          Name = this.Name,
+          Email = this.Email,
+          EntityId = this.EntityId,
+          PortfolioId = this.PortfolioId,
+          Role = this.Role,
+        };
+      }
     }
+  }
 }

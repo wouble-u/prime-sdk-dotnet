@@ -16,78 +16,78 @@
 
 namespace CoinbaseSdk.Prime.Orders
 {
-    using System.Text.Json.Serialization;
-    using CoinbaseSdk.Prime.Model;
+  using System.Text.Json.Serialization;
+  using CoinbaseSdk.Prime.Model;
 
-    public class AcceptQuoteRequest(string portfolioId)
+  public class AcceptQuoteRequest(string portfolioId)
+  {
+    [JsonIgnore, JsonPropertyName("portfolio_id")]
+    public string PortfolioId { get; set; } = portfolioId;
+
+    [JsonPropertyName("quote_id")]
+    public string? QuoteId { get; set; }
+
+    [JsonPropertyName("product_id")]
+    public string? ProductId { get; set; }
+
+    [JsonPropertyName("client_order_id")]
+    public string? ClientOrderId { get; set; }
+
+    [JsonPropertyName("settl_currency")]
+    public string? SettlCurrency { get; set; }
+
+    public OrderSide? Side { get; set; }
+
+    public class AcceptQuoteRequestBuilder(string portfolioId)
     {
-        [JsonIgnore, JsonPropertyName("portfolio_id")]
-        public string PortfolioId { get; set; } = portfolioId;
+      private string _portfolioId = portfolioId;
+      private string? _quoteId;
+      private string? _productId;
+      private string? _clientOrderId;
+      private string? _settlCurrency;
+      private OrderSide? _side;
 
-        [JsonPropertyName("quote_id")]
-        public string? QuoteId { get; set; }
+      public AcceptQuoteRequestBuilder WithQuoteId(string quoteId)
+      {
+        this._quoteId = quoteId;
+        return this;
+      }
 
-        [JsonPropertyName("product_id")]
-        public string? ProductId { get; set; }
+      public AcceptQuoteRequestBuilder WithProductId(string productId)
+      {
+        this._productId = productId;
+        return this;
+      }
 
-        [JsonPropertyName("client_order_id")]
-        public string? ClientOrderId { get; set; }
+      public AcceptQuoteRequestBuilder WithClientOrderId(string clientOrderId)
+      {
+        this._clientOrderId = clientOrderId;
+        return this;
+      }
 
-        [JsonPropertyName("settl_currency")]
-        public string? SettlCurrency { get; set; }
+      public AcceptQuoteRequestBuilder WithSettlCurrency(string settlCurrency)
+      {
+        this._settlCurrency = settlCurrency;
+        return this;
+      }
 
-        public OrderSide? Side { get; set; }
+      public AcceptQuoteRequestBuilder WithSide(OrderSide side)
+      {
+        this._side = side;
+        return this;
+      }
 
-        public class AcceptQuoteRequestBuilder(string portfolioId)
+      public AcceptQuoteRequest Build()
+      {
+        return new AcceptQuoteRequest(_portfolioId)
         {
-            private string _portfolioId = portfolioId;
-            private string? _quoteId;
-            private string? _productId;
-            private string? _clientOrderId;
-            private string? _settlCurrency;
-            private OrderSide? _side;
-
-            public AcceptQuoteRequestBuilder WithQuoteId(string quoteId)
-            {
-                this._quoteId = quoteId;
-                return this;
-            }
-
-            public AcceptQuoteRequestBuilder WithProductId(string productId)
-            {
-                this._productId = productId;
-                return this;
-            }
-
-            public AcceptQuoteRequestBuilder WithClientOrderId(string clientOrderId)
-            {
-                this._clientOrderId = clientOrderId;
-                return this;
-            }
-
-            public AcceptQuoteRequestBuilder WithSettlCurrency(string settlCurrency)
-            {
-                this._settlCurrency = settlCurrency;
-                return this;
-            }
-
-            public AcceptQuoteRequestBuilder WithSide(OrderSide side)
-            {
-                this._side = side;
-                return this;
-            }
-
-            public AcceptQuoteRequest Build()
-            {
-                return new AcceptQuoteRequest(_portfolioId)
-                {
-                    QuoteId = _quoteId,
-                    ProductId = _productId,
-                    ClientOrderId = _clientOrderId,
-                    SettlCurrency = _settlCurrency,
-                    Side = _side
-                };
-            }
-        }
+          QuoteId = _quoteId,
+          ProductId = _productId,
+          ClientOrderId = _clientOrderId,
+          SettlCurrency = _settlCurrency,
+          Side = _side
+        };
+      }
     }
+  }
 }

@@ -16,54 +16,54 @@
 
 namespace CoinbaseSdk.Prime.Financing
 {
-    using System.Text.Json.Serialization;
-    public class ListExistingLocatesRequest(string portfolioId)
+  using System.Text.Json.Serialization;
+  public class ListExistingLocatesRequest(string portfolioId)
+  {
+    [JsonIgnore, JsonPropertyName("portfolio_id")]
+    public string PortfolioId { get; set; } = portfolioId;
+
+    [JsonPropertyName("locate_ids")]
+    public string[] LocateIds { get; set; } = [];
+
+    [JsonPropertyName("conversion_date")]
+    public string? ConversionDate { get; set; }
+
+    [JsonPropertyName("locate_date")]
+    public string? LocateDate { get; set; }
+
+    public class ListExistingLocatesRequestBuilder
     {
-        [JsonIgnore, JsonPropertyName("portfolio_id")]
-        public string PortfolioId { get; set; } = portfolioId;
+      private string[] _locateIds = [];
+      private string? _conversionDate;
+      private string? _locateDate;
 
-        [JsonPropertyName("locate_ids")]
-        public string[] LocateIds { get; set; } = [];
+      public ListExistingLocatesRequestBuilder WithLocateIds(string[] locateIds)
+      {
+        _locateIds = locateIds;
+        return this;
+      }
 
-        [JsonPropertyName("conversion_date")]
-        public string? ConversionDate { get; set; }
+      public ListExistingLocatesRequestBuilder WithConversionDate(string conversionDate)
+      {
+        _conversionDate = conversionDate;
+        return this;
+      }
 
-        [JsonPropertyName("locate_date")]
-        public string? LocateDate { get; set; }
+      public ListExistingLocatesRequestBuilder WithLocateDate(string locateDate)
+      {
+        _locateDate = locateDate;
+        return this;
+      }
 
-        public class ListExistingLocatesRequestBuilder
+      public ListExistingLocatesRequest Build(string portfolioId)
+      {
+        return new ListExistingLocatesRequest(portfolioId)
         {
-            private string[] _locateIds = [];
-            private string? _conversionDate;
-            private string? _locateDate;
-
-            public ListExistingLocatesRequestBuilder WithLocateIds(string[] locateIds)
-            {
-                _locateIds = locateIds;
-                return this;
-            }
-
-            public ListExistingLocatesRequestBuilder WithConversionDate(string conversionDate)
-            {
-                _conversionDate = conversionDate;
-                return this;
-            }
-
-            public ListExistingLocatesRequestBuilder WithLocateDate(string locateDate)
-            {
-                _locateDate = locateDate;
-                return this;
-            }
-
-            public ListExistingLocatesRequest Build(string portfolioId)
-            {
-                return new ListExistingLocatesRequest(portfolioId)
-                {
-                    LocateIds = _locateIds,
-                    ConversionDate = _conversionDate,
-                    LocateDate = _locateDate
-                };
-            }
-        }
+          LocateIds = _locateIds,
+          ConversionDate = _conversionDate,
+          LocateDate = _locateDate
+        };
+      }
     }
+  }
 }

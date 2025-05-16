@@ -16,159 +16,159 @@
 
 namespace CoinbaseSdk.Prime.Model
 {
-    using System.Text.Json.Serialization;
+  using System.Text.Json.Serialization;
 
-    public class AddressBookEntry
+  public class AddressBookEntry
+  {
+    public string? Id { get; set; }
+
+    [JsonPropertyName("currency_symbol")]
+    public string? CurrencySymbol { get; set; }
+
+    public string? Name { get; set; }
+
+    public string? Address { get; set; }
+
+    [JsonPropertyName("account_identifier")]
+    public string? AccountIdentifier { get; set; }
+
+    [JsonPropertyName("account_identifier_name")]
+    public string? AccountIdentifierName { get; set; }
+
+    public string? State { get; set; }
+
+    [JsonPropertyName("explorer_link")]
+    public string? ExplorerLink { get; set; }
+
+    [JsonPropertyName("last_used_at")]
+    public string? LastUsedAt { get; set; }
+
+    [JsonPropertyName("added_at")]
+    public string? AddedAt { get; set; }
+
+    [JsonPropertyName("added_by")]
+    public DisplayUser? AddedBy { get; set; }
+
+    public AddressBookType Type { get; set; }
+
+    [JsonPropertyName("counterparty_id")]
+    public string? CounterpartyId { get; set; }
+
+    public AddressBookEntry() { }
+
+    public class AddressBookEntryBuilder
     {
-        public string? Id { get; set; }
+      private string? _id;
+      private string? _currencySymbol;
+      private string? _name;
+      private string? _address;
+      private string? _accountIdentifier;
+      private string? _accountIdentifierName;
+      private string? _state;
+      private string? _explorerLink;
+      private string? _lastUsedAt;
+      private string? _addedAt;
+      private DisplayUser? _addedBy;
+      private AddressBookType _type;
+      private string? _counterpartyId;
 
-        [JsonPropertyName("currency_symbol")]
-        public string? CurrencySymbol { get; set; }
+      public AddressBookEntryBuilder WithId(string? id)
+      {
+        this._id = id;
+        return this;
+      }
 
-        public string? Name { get; set; }
+      public AddressBookEntryBuilder WithCurrencySymbol(string? currencySymbol)
+      {
+        this._currencySymbol = currencySymbol;
+        return this;
+      }
 
-        public string? Address { get; set; }
+      public AddressBookEntryBuilder WithName(string? name)
+      {
+        this._name = name;
+        return this;
+      }
 
-        [JsonPropertyName("account_identifier")]
-        public string? AccountIdentifier { get; set; }
+      public AddressBookEntryBuilder WithAddress(string? address)
+      {
+        this._address = address;
+        return this;
+      }
 
-        [JsonPropertyName("account_identifier_name")]
-        public string? AccountIdentifierName { get; set; }
+      public AddressBookEntryBuilder WithAccountIdentifier(string? accountIdentifier)
+      {
+        this._accountIdentifier = accountIdentifier;
+        return this;
+      }
 
-        public string? State { get; set; }
+      public AddressBookEntryBuilder WithAccountIdentifierName(string? accountIdentifierName)
+      {
+        this._accountIdentifierName = accountIdentifierName;
+        return this;
+      }
 
-        [JsonPropertyName("explorer_link")]
-        public string? ExplorerLink { get; set; }
+      public AddressBookEntryBuilder WithState(string? state)
+      {
+        this._state = state;
+        return this;
+      }
 
-        [JsonPropertyName("last_used_at")]
-        public string? LastUsedAt { get; set; }
+      public AddressBookEntryBuilder WithExplorerLink(string? explorerLink)
+      {
+        this._explorerLink = explorerLink;
+        return this;
+      }
 
-        [JsonPropertyName("added_at")]
-        public string? AddedAt { get; set; }
+      public AddressBookEntryBuilder WithLastUsedAt(string? lastUsedAt)
+      {
+        this._lastUsedAt = lastUsedAt;
+        return this;
+      }
 
-        [JsonPropertyName("added_by")]
-        public DisplayUser? AddedBy { get; set; }
+      public AddressBookEntryBuilder WithAddedAt(string? addedAt)
+      {
+        this._addedAt = addedAt;
+        return this;
+      }
 
-        public AddressBookType Type { get; set; }
+      public AddressBookEntryBuilder WithAddedBy(DisplayUser? addedBy)
+      {
+        this._addedBy = addedBy;
+        return this;
+      }
 
-        [JsonPropertyName("counterparty_id")]
-        public string? CounterpartyId { get; set; }
+      public AddressBookEntryBuilder WithType(AddressBookType type)
+      {
+        this._type = type;
+        return this;
+      }
 
-        public AddressBookEntry() { }
+      public AddressBookEntryBuilder WithCounterpartyId(string? counterpartyId)
+      {
+        this._counterpartyId = counterpartyId;
+        return this;
+      }
 
-        public class AddressBookEntryBuilder
+      public AddressBookEntry Build()
+      {
+        return new AddressBookEntry
         {
-            private string? _id;
-            private string? _currencySymbol;
-            private string? _name;
-            private string? _address;
-            private string? _accountIdentifier;
-            private string? _accountIdentifierName;
-            private string? _state;
-            private string? _explorerLink;
-            private string? _lastUsedAt;
-            private string? _addedAt;
-            private DisplayUser? _addedBy;
-            private AddressBookType _type;
-            private string? _counterpartyId;
-
-            public AddressBookEntryBuilder WithId(string? id)
-            {
-                this._id = id;
-                return this;
-            }
-
-            public AddressBookEntryBuilder WithCurrencySymbol(string? currencySymbol)
-            {
-                this._currencySymbol = currencySymbol;
-                return this;
-            }
-
-            public AddressBookEntryBuilder WithName(string? name)
-            {
-                this._name = name;
-                return this;
-            }
-
-            public AddressBookEntryBuilder WithAddress(string? address)
-            {
-                this._address = address;
-                return this;
-            }
-
-            public AddressBookEntryBuilder WithAccountIdentifier(string? accountIdentifier)
-            {
-                this._accountIdentifier = accountIdentifier;
-                return this;
-            }
-
-            public AddressBookEntryBuilder WithAccountIdentifierName(string? accountIdentifierName)
-            {
-                this._accountIdentifierName = accountIdentifierName;
-                return this;
-            }
-
-            public AddressBookEntryBuilder WithState(string? state)
-            {
-                this._state = state;
-                return this;
-            }
-
-            public AddressBookEntryBuilder WithExplorerLink(string? explorerLink)
-            {
-                this._explorerLink = explorerLink;
-                return this;
-            }
-
-            public AddressBookEntryBuilder WithLastUsedAt(string? lastUsedAt)
-            {
-                this._lastUsedAt = lastUsedAt;
-                return this;
-            }
-
-            public AddressBookEntryBuilder WithAddedAt(string? addedAt)
-            {
-                this._addedAt = addedAt;
-                return this;
-            }
-
-            public AddressBookEntryBuilder WithAddedBy(DisplayUser? addedBy)
-            {
-                this._addedBy = addedBy;
-                return this;
-            }
-
-            public AddressBookEntryBuilder WithType(AddressBookType type)
-            {
-                this._type = type;
-                return this;
-            }
-
-            public AddressBookEntryBuilder WithCounterpartyId(string? counterpartyId)
-            {
-                this._counterpartyId = counterpartyId;
-                return this;
-            }
-
-            public AddressBookEntry Build()
-            {
-                return new AddressBookEntry
-                {
-                    Id = this._id,
-                    CurrencySymbol = this._currencySymbol,
-                    Name = this._name,
-                    Address = this._address,
-                    AccountIdentifier = this._accountIdentifier,
-                    AccountIdentifierName = this._accountIdentifierName,
-                    State = this._state,
-                    ExplorerLink = this._explorerLink,
-                    LastUsedAt = this._lastUsedAt,
-                    AddedAt = this._addedAt,
-                    AddedBy = this._addedBy,
-                    Type = this._type,
-                    CounterpartyId = this._counterpartyId,
-                };
-            }
-        }
+          Id = this._id,
+          CurrencySymbol = this._currencySymbol,
+          Name = this._name,
+          Address = this._address,
+          AccountIdentifier = this._accountIdentifier,
+          AccountIdentifierName = this._accountIdentifierName,
+          State = this._state,
+          ExplorerLink = this._explorerLink,
+          LastUsedAt = this._lastUsedAt,
+          AddedAt = this._addedAt,
+          AddedBy = this._addedBy,
+          Type = this._type,
+          CounterpartyId = this._counterpartyId,
+        };
+      }
     }
+  }
 }

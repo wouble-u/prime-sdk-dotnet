@@ -16,19 +16,19 @@
 
 namespace CoinbaseSdk.Prime.Model
 {
-    using System.Text.Json.Serialization;
+  using System.Text.Json.Serialization;
 
-    public class AddressGroup
-    {
-        public string? Id { get; set; }
-        public string? Name { get; set; }
+  public class AddressGroup
+  {
+    public string? Id { get; set; }
+    public string? Name { get; set; }
 
-        [JsonPropertyName("network_type")]
-        public NetworkType? NetworkType { get; set; }
+    [JsonPropertyName("network_type")]
+    public NetworkType? NetworkType { get; set; }
 
-        public OnchainAddress[] Addresses { get; set; } = [];
+    public OnchainAddress[] Addresses { get; set; } = [];
 
-        [JsonPropertyName("added_at")]
-        public DateTime? AddedAt { get; set; }
-    }
+    [JsonPropertyName("added_at")]
+    public DateTime? AddedAt { get; set; }
+  }
 }

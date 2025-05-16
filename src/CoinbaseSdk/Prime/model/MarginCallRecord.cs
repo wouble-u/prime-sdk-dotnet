@@ -16,75 +16,75 @@
 
 namespace CoinbaseSdk.Prime.Model
 {
-    using System.Text.Json.Serialization;
-    public class MarginCallRecord
+  using System.Text.Json.Serialization;
+  public class MarginCallRecord
+  {
+    [JsonPropertyName("margin_call_id")]
+    public string? MarginCallId { get; set; }
+
+    [JsonPropertyName("initial_notional_amount")]
+    public string? InitialNotionalAmount { get; set; }
+
+    [JsonPropertyName("outstanding_notional_amount")]
+    public string? OutstandingNotionalAmount { get; set; }
+
+    [JsonPropertyName("created_at")]
+    public string? CreatedAt { get; set; }
+
+    [JsonPropertyName("due_at")]
+    public string? DueAt { get; set; }
+
+    public MarginCallRecord() { }
+
+    public class MarginCallRecordBuilder
     {
-        [JsonPropertyName("margin_call_id")]
-        public string? MarginCallId { get; set; }
+      private string? _marginCallId;
+      private string? _initialNotionalAmount;
+      private string? _outstandingNotionalAmount;
+      private string? _createdAt;
+      private string? _dueAt;
 
-        [JsonPropertyName("initial_notional_amount")]
-        public string? InitialNotionalAmount { get; set; }
+      public MarginCallRecordBuilder WithMarginCallId(string marginCallId)
+      {
+        this._marginCallId = marginCallId;
+        return this;
+      }
 
-        [JsonPropertyName("outstanding_notional_amount")]
-        public string? OutstandingNotionalAmount { get; set; }
+      public MarginCallRecordBuilder WithInitialNotionalAmount(string initialNotionalAmount)
+      {
+        this._initialNotionalAmount = initialNotionalAmount;
+        return this;
+      }
 
-        [JsonPropertyName("created_at")]
-        public string? CreatedAt { get; set; }
+      public MarginCallRecordBuilder WithOutstandingNotionalAmount(string outstandingNotionalAmount)
+      {
+        this._outstandingNotionalAmount = outstandingNotionalAmount;
+        return this;
+      }
 
-        [JsonPropertyName("due_at")]
-        public string? DueAt { get; set; }
+      public MarginCallRecordBuilder WithCreatedAt(string createdAt)
+      {
+        this._createdAt = createdAt;
+        return this;
+      }
 
-        public MarginCallRecord() { }
+      public MarginCallRecordBuilder WithDueAt(string dueAt)
+      {
+        this._dueAt = dueAt;
+        return this;
+      }
 
-        public class MarginCallRecordBuilder
+      public MarginCallRecord Build()
+      {
+        return new MarginCallRecord
         {
-            private string? _marginCallId;
-            private string? _initialNotionalAmount;
-            private string? _outstandingNotionalAmount;
-            private string? _createdAt;
-            private string? _dueAt;
-
-            public MarginCallRecordBuilder WithMarginCallId(string marginCallId)
-            {
-                this._marginCallId = marginCallId;
-                return this;
-            }
-
-            public MarginCallRecordBuilder WithInitialNotionalAmount(string initialNotionalAmount)
-            {
-                this._initialNotionalAmount = initialNotionalAmount;
-                return this;
-            }
-
-            public MarginCallRecordBuilder WithOutstandingNotionalAmount(string outstandingNotionalAmount)
-            {
-                this._outstandingNotionalAmount = outstandingNotionalAmount;
-                return this;
-            }
-
-            public MarginCallRecordBuilder WithCreatedAt(string createdAt)
-            {
-                this._createdAt = createdAt;
-                return this;
-            }
-
-            public MarginCallRecordBuilder WithDueAt(string dueAt)
-            {
-                this._dueAt = dueAt;
-                return this;
-            }
-
-            public MarginCallRecord Build()
-            {
-                return new MarginCallRecord
-                {
-                    MarginCallId = this._marginCallId,
-                    InitialNotionalAmount = this._initialNotionalAmount,
-                    OutstandingNotionalAmount = this._outstandingNotionalAmount,
-                    CreatedAt = this._createdAt,
-                    DueAt = this._dueAt
-                };
-            }
-        }
+          MarginCallId = this._marginCallId,
+          InitialNotionalAmount = this._initialNotionalAmount,
+          OutstandingNotionalAmount = this._outstandingNotionalAmount,
+          CreatedAt = this._createdAt,
+          DueAt = this._dueAt
+        };
+      }
     }
+  }
 }

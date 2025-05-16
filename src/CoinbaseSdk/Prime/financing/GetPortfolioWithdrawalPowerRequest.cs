@@ -16,31 +16,31 @@
 
 namespace CoinbaseSdk.Prime.Financing
 {
-    using System.Text.Json.Serialization;
-    public class GetPortfolioWithdrawalPowerRequest(string portfolioId)
+  using System.Text.Json.Serialization;
+  public class GetPortfolioWithdrawalPowerRequest(string portfolioId)
+  {
+    [JsonIgnore, JsonPropertyName("portfolio_id")]
+    public string PortfolioId { get; set; } = portfolioId;
+
+    public string? Symbol { get; set; }
+
+    public class GetPortfolioWithdrawalPowerRequestBuilder
     {
-        [JsonIgnore, JsonPropertyName("portfolio_id")]
-        public string PortfolioId { get; set; } = portfolioId;
+      private string? _symbol;
 
-        public string? Symbol { get; set; }
+      public GetPortfolioWithdrawalPowerRequestBuilder WithSymbol(string symbol)
+      {
+        _symbol = symbol;
+        return this;
+      }
 
-        public class GetPortfolioWithdrawalPowerRequestBuilder
+      public GetPortfolioWithdrawalPowerRequest Build(string portfolioId)
+      {
+        return new GetPortfolioWithdrawalPowerRequest(portfolioId)
         {
-            private string? _symbol;
-
-            public GetPortfolioWithdrawalPowerRequestBuilder WithSymbol(string symbol)
-            {
-                _symbol = symbol;
-                return this;
-            }
-
-            public GetPortfolioWithdrawalPowerRequest Build(string portfolioId)
-            {
-                return new GetPortfolioWithdrawalPowerRequest(portfolioId)
-                {
-                    Symbol = _symbol
-                };
-            }
-        }
+          Symbol = _symbol
+        };
+      }
     }
+  }
 }

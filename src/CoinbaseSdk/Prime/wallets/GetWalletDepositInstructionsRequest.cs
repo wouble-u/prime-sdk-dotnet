@@ -16,63 +16,63 @@
 
 namespace CoinbaseSdk.Prime.Wallets
 {
-    using System.Text.Json.Serialization;
-    using CoinbaseSdk.Core.Error;
+  using System.Text.Json.Serialization;
+  using CoinbaseSdk.Core.Error;
 
-    public class GetWalletDepositInstructionsRequest(string portfolioId, string walletId)
+  public class GetWalletDepositInstructionsRequest(string portfolioId, string walletId)
+  {
+    [JsonIgnore, JsonPropertyName("portfolio_id")]
+    public string PortfolioId { get; set; } = portfolioId;
+
+    [JsonIgnore, JsonPropertyName("wallet_id")]
+    public string WalletId { get; set; } = walletId;
+
+    public class GetWalletDepositInstructionsRequestBuilder
     {
-        [JsonIgnore, JsonPropertyName("portfolio_id")]
-        public string PortfolioId { get; set; } = portfolioId;
+      private string? _portfolioId;
+      private string? _walletId;
 
-        [JsonIgnore, JsonPropertyName("wallet_id")]
-        public string WalletId { get; set; } = walletId;
+      public GetWalletDepositInstructionsRequestBuilder WithPortfolioId(string portfolioId)
+      {
+        this._portfolioId = portfolioId;
+        return this;
+      }
 
-        public class GetWalletDepositInstructionsRequestBuilder
+      public GetWalletDepositInstructionsRequestBuilder WithWalletId(string walletId)
+      {
+        this._walletId = walletId;
+        return this;
+      }
+
+      /// <summary>
+      /// Validate the builder.
+      /// </summary>
+      /// <exception cref="CoinbaseClientException">Thrown when the
+      /// <see cref="_portfolioId"/> or <see cref="_walletId"/> are null, empty
+      /// or whitespace.</exception>
+      private void Validate()
+      {
+        if (string.IsNullOrWhiteSpace(this._portfolioId))
         {
-            private string? _portfolioId;
-            private string? _walletId;
-
-            public GetWalletDepositInstructionsRequestBuilder WithPortfolioId(string portfolioId)
-            {
-                this._portfolioId = portfolioId;
-                return this;
-            }
-
-            public GetWalletDepositInstructionsRequestBuilder WithWalletId(string walletId)
-            {
-                this._walletId = walletId;
-                return this;
-            }
-
-            /// <summary>
-            /// Validate the builder.
-            /// </summary>
-            /// <exception cref="CoinbaseClientException">Thrown when the
-            /// <see cref="_portfolioId"/> or <see cref="_walletId"/> are null, empty
-            /// or whitespace.</exception>
-            private void Validate()
-            {
-                if (string.IsNullOrWhiteSpace(this._portfolioId))
-                {
-                    throw new CoinbaseClientException("PortfolioId is required");
-                }
-
-                if (string.IsNullOrWhiteSpace(this._walletId))
-                {
-                    throw new CoinbaseClientException("WalletId is required");
-                }
-            }
-
-            /// <summary>
-            /// Build the <see cref="GetWalletDepositInstructionsRequest"/> object.
-            /// </summary>
-            /// <returns>The <see cref="GetWalletDepositInstructionsRequest"/> object.</returns>
-            /// <exception cref="CoinbaseClientException">Thrown when the required fields are not set.</exception>
-            public GetWalletDepositInstructionsRequest Build()
-            {
-                this.Validate();
-                return new GetWalletDepositInstructionsRequest(this._portfolioId!, this._walletId!);
-            }
+          throw new CoinbaseClientException("PortfolioId is required");
         }
+
+        if (string.IsNullOrWhiteSpace(this._walletId))
+        {
+          throw new CoinbaseClientException("WalletId is required");
+        }
+      }
+
+      /// <summary>
+      /// Build the <see cref="GetWalletDepositInstructionsRequest"/> object.
+      /// </summary>
+      /// <returns>The <see cref="GetWalletDepositInstructionsRequest"/> object.</returns>
+      /// <exception cref="CoinbaseClientException">Thrown when the required fields are not set.</exception>
+      public GetWalletDepositInstructionsRequest Build()
+      {
+        this.Validate();
+        return new GetWalletDepositInstructionsRequest(this._portfolioId!, this._walletId!);
+      }
     }
+  }
 }

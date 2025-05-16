@@ -16,43 +16,43 @@
 
 namespace CoinbaseSdk.Prime.Financing
 {
-    using System.Text.Json.Serialization;
-    using CoinbaseSdk.Prime.Model;
+  using System.Text.Json.Serialization;
+  using CoinbaseSdk.Prime.Model;
 
-    public class ListInterestAccrualsResponse
+  public class ListInterestAccrualsResponse
+  {
+    [JsonPropertyName("total_notional_accrual")]
+    public string? TotalNotionalAccrual { get; set; }
+
+    public Accrual[] Accruals { get; set; } = [];
+
+    public ListInterestAccrualsResponse() { }
+
+    public class ListInterestAccrualsResponseBuilder
     {
-        [JsonPropertyName("total_notional_accrual")]
-        public string? TotalNotionalAccrual { get; set; }
+      private string? _totalNotionalAccrual;
+      private Accrual[] _accruals = [];
 
-        public Accrual[] Accruals { get; set; } = [];
+      public ListInterestAccrualsResponseBuilder WithTotalNotionalAccrual(string totalNotionalAccrual)
+      {
+        _totalNotionalAccrual = totalNotionalAccrual;
+        return this;
+      }
 
-        public ListInterestAccrualsResponse() { }
+      public ListInterestAccrualsResponseBuilder WithAccruals(Accrual[] accruals)
+      {
+        _accruals = accruals;
+        return this;
+      }
 
-        public class ListInterestAccrualsResponseBuilder
+      public ListInterestAccrualsResponse Build()
+      {
+        return new ListInterestAccrualsResponse
         {
-            private string? _totalNotionalAccrual;
-            private Accrual[] _accruals = [];
-
-            public ListInterestAccrualsResponseBuilder WithTotalNotionalAccrual(string totalNotionalAccrual)
-            {
-                _totalNotionalAccrual = totalNotionalAccrual;
-                return this;
-            }
-
-            public ListInterestAccrualsResponseBuilder WithAccruals(Accrual[] accruals)
-            {
-                _accruals = accruals;
-                return this;
-            }
-
-            public ListInterestAccrualsResponse Build()
-            {
-                return new ListInterestAccrualsResponse
-                {
-                    TotalNotionalAccrual = _totalNotionalAccrual,
-                    Accruals = _accruals
-                };
-            }
-        }
+          TotalNotionalAccrual = _totalNotionalAccrual,
+          Accruals = _accruals
+        };
+      }
     }
+  }
 }

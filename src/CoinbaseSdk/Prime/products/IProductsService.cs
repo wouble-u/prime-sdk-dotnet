@@ -16,17 +16,17 @@
 
 namespace CoinbaseSdk.Prime.Products
 {
-    using CoinbaseSdk.Core.Http;
+  using CoinbaseSdk.Core.Http;
 
-    public interface IProductsService
-    {
-        public ListPortfolioProductsResponse ListPortfolioProducts(
-          ListPortfolioProductsRequest request,
-          CallOptions? options = null);
+  public interface IProductsService
+  {
+    public ListPortfolioProductsResponse ListPortfolioProducts(
+      ListPortfolioProductsRequest request,
+      CallOptions? options = null);
 
-        public Task<ListPortfolioProductsResponse> ListPortfolioProductsAsync(
-          ListPortfolioProductsRequest request,
-          CallOptions? options = null,
-          CancellationToken cancellationToken = default);
-    }
+    public Task<ListPortfolioProductsResponse> ListPortfolioProductsAsync(
+      ListPortfolioProductsRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default);
+  }
 }

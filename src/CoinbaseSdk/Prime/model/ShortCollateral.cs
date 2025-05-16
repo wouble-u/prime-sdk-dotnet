@@ -16,64 +16,64 @@
 
 namespace CoinbaseSdk.Prime.Model
 {
-    using System.Text.Json.Serialization;
-    public class ShortCollateral
+  using System.Text.Json.Serialization;
+  public class ShortCollateral
+  {
+    [JsonPropertyName("old_balance")]
+    public string? OldBalance { get; set; }
+
+    [JsonPropertyName("new_balance")]
+    public string? NewBalance { get; set; }
+
+    [JsonPropertyName("loan_interest_rate")]
+    public string? LoanInterestRate { get; set; }
+
+    [JsonPropertyName("collateral_interest_rate")]
+    public string? CollateralInterestRate { get; set; }
+
+    public ShortCollateral() { }
+
+    public class ShortCollateralBuilder
     {
-        [JsonPropertyName("old_balance")]
-        public string? OldBalance { get; set; }
+      private string? _oldBalance;
+      private string? _newBalance;
+      private string? _loanInterestRate;
+      private string? _collateralInterestRate;
 
-        [JsonPropertyName("new_balance")]
-        public string? NewBalance { get; set; }
+      public ShortCollateralBuilder WithOldBalance(string oldBalance)
+      {
+        this._oldBalance = oldBalance;
+        return this;
+      }
 
-        [JsonPropertyName("loan_interest_rate")]
-        public string? LoanInterestRate { get; set; }
+      public ShortCollateralBuilder WithNewBalance(string newBalance)
+      {
+        this._newBalance = newBalance;
+        return this;
+      }
 
-        [JsonPropertyName("collateral_interest_rate")]
-        public string? CollateralInterestRate { get; set; }
+      public ShortCollateralBuilder WithLoanInterestRate(string loanInterestRate)
+      {
+        this._loanInterestRate = loanInterestRate;
+        return this;
+      }
 
-        public ShortCollateral() { }
+      public ShortCollateralBuilder WithCollateralInterestRate(string collateralInterestRate)
+      {
+        this._collateralInterestRate = collateralInterestRate;
+        return this;
+      }
 
-        public class ShortCollateralBuilder
+      public ShortCollateral Build()
+      {
+        return new ShortCollateral
         {
-            private string? _oldBalance;
-            private string? _newBalance;
-            private string? _loanInterestRate;
-            private string? _collateralInterestRate;
-
-            public ShortCollateralBuilder WithOldBalance(string oldBalance)
-            {
-                this._oldBalance = oldBalance;
-                return this;
-            }
-
-            public ShortCollateralBuilder WithNewBalance(string newBalance)
-            {
-                this._newBalance = newBalance;
-                return this;
-            }
-
-            public ShortCollateralBuilder WithLoanInterestRate(string loanInterestRate)
-            {
-                this._loanInterestRate = loanInterestRate;
-                return this;
-            }
-
-            public ShortCollateralBuilder WithCollateralInterestRate(string collateralInterestRate)
-            {
-                this._collateralInterestRate = collateralInterestRate;
-                return this;
-            }
-
-            public ShortCollateral Build()
-            {
-                return new ShortCollateral
-                {
-                    OldBalance = this._oldBalance,
-                    NewBalance = this._newBalance,
-                    LoanInterestRate = this._loanInterestRate,
-                    CollateralInterestRate = this._collateralInterestRate
-                };
-            }
-        }
+          OldBalance = this._oldBalance,
+          NewBalance = this._newBalance,
+          LoanInterestRate = this._loanInterestRate,
+          CollateralInterestRate = this._collateralInterestRate
+        };
+      }
     }
+  }
 }

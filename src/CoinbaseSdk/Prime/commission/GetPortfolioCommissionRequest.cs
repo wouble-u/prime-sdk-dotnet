@@ -16,47 +16,47 @@
 
 namespace CoinbaseSdk.Prime.Commission
 {
-    using System.Text.Json.Serialization;
-    using CoinbaseSdk.Core.Error;
+  using System.Text.Json.Serialization;
+  using CoinbaseSdk.Core.Error;
 
-    public class GetPortfolioCommissionRequest(string portfolioId)
+  public class GetPortfolioCommissionRequest(string portfolioId)
+  {
+    [JsonIgnore, JsonPropertyName("portfolio_id")]
+    public string PortfolioId { get; set; } = portfolioId;
+
+    public class GetPortfolioCommissionRequestBuilder
     {
-        [JsonIgnore, JsonPropertyName("portfolio_id")]
-        public string PortfolioId { get; set; } = portfolioId;
+      private string? _portfolioId;
 
-        public class GetPortfolioCommissionRequestBuilder
+      public GetPortfolioCommissionRequestBuilder WithPortfolioId(string portfolioId)
+      {
+        this._portfolioId = portfolioId;
+        return this;
+      }
+
+      /// <summary>
+      /// Validate the builder.
+      /// </summary>
+      /// <exception cref="CoinbaseClientException">Thrown when the
+      /// <see cref="_portfolioId"/> is null, empty or whitespace.</exception>
+      private void Validate()
+      {
+        if (string.IsNullOrWhiteSpace(_portfolioId))
         {
-            private string? _portfolioId;
-
-            public GetPortfolioCommissionRequestBuilder WithPortfolioId(string portfolioId)
-            {
-                this._portfolioId = portfolioId;
-                return this;
-            }
-
-            /// <summary>
-            /// Validate the builder.
-            /// </summary>
-            /// <exception cref="CoinbaseClientException">Thrown when the
-            /// <see cref="_portfolioId"/> is null, empty or whitespace.</exception>
-            private void Validate()
-            {
-                if (string.IsNullOrWhiteSpace(_portfolioId))
-                {
-                    throw new CoinbaseClientException("PortfolioId is required");
-                }
-            }
-
-            /// <summary>
-            /// Build the <see cref="GetPortfolioCommissionRequest"/>.
-            /// </summary>
-            /// <returns>The <see cref="GetPortfolioCommissionRequest"/>.</returns>
-            /// <exception cref="CoinbaseClientException">Thrown when the required fields are not set.</exception>
-            public GetPortfolioCommissionRequest Build()
-            {
-                this.Validate();
-                return new GetPortfolioCommissionRequest(this._portfolioId!);
-            }
+          throw new CoinbaseClientException("PortfolioId is required");
         }
+      }
+
+      /// <summary>
+      /// Build the <see cref="GetPortfolioCommissionRequest"/>.
+      /// </summary>
+      /// <returns>The <see cref="GetPortfolioCommissionRequest"/>.</returns>
+      /// <exception cref="CoinbaseClientException">Thrown when the required fields are not set.</exception>
+      public GetPortfolioCommissionRequest Build()
+      {
+        this.Validate();
+        return new GetPortfolioCommissionRequest(this._portfolioId!);
+      }
     }
+  }
 }

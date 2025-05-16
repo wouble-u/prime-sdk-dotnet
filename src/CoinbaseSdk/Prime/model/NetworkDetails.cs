@@ -16,15 +16,15 @@
 
 namespace CoinbaseSdk.Prime.Model
 {
-    using System.Text.Json.Serialization;
+  using System.Text.Json.Serialization;
 
-    public class NetworkDetails
-    {
-        [JsonPropertyName("id")]
-        public string? Id { get; set; }
+  public class NetworkDetails
+  {
+    [JsonPropertyName("id")]
+    public string? Id { get; set; }
 
-        [JsonPropertyName("type")]
-        public string? Type { get; set; }
-    }
+    [JsonPropertyName("type")]
+    public string? Type { get; set; }
+  }
 }
 

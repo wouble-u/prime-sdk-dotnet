@@ -16,40 +16,40 @@
 
 namespace CoinbaseSdk.Prime.Products
 {
-    using CoinbaseSdk.Prime.Model;
+  using CoinbaseSdk.Prime.Model;
 
-    public class ListPortfolioProductsResponse
+  public class ListPortfolioProductsResponse
+  {
+    public Product[] Products { get; set; } = [];
+    public Pagination? Pagination { get; set; }
+
+    public ListPortfolioProductsResponse() { }
+
+    public class ListPortfolioProductsResponseBuilder
     {
-        public Product[] Products { get; set; } = [];
-        public Pagination? Pagination { get; set; }
+      private Product[] _products = [];
+      private Pagination? _pagination;
 
-        public ListPortfolioProductsResponse() { }
+      public ListPortfolioProductsResponseBuilder WithProducts(Product[] products)
+      {
+        this._products = products;
+        return this;
+      }
 
-        public class ListPortfolioProductsResponseBuilder
+      public ListPortfolioProductsResponseBuilder WithPagination(Pagination? pagination)
+      {
+        this._pagination = pagination;
+        return this;
+      }
+
+      public ListPortfolioProductsResponse Build()
+      {
+        return new ListPortfolioProductsResponse
         {
-            private Product[] _products = [];
-            private Pagination? _pagination;
-
-            public ListPortfolioProductsResponseBuilder WithProducts(Product[] products)
-            {
-                this._products = products;
-                return this;
-            }
-
-            public ListPortfolioProductsResponseBuilder WithPagination(Pagination? pagination)
-            {
-                this._pagination = pagination;
-                return this;
-            }
-
-            public ListPortfolioProductsResponse Build()
-            {
-                return new ListPortfolioProductsResponse
-                {
-                    Products = this._products,
-                    Pagination = this._pagination
-                };
-            }
-        }
+          Products = this._products,
+          Pagination = this._pagination
+        };
+      }
     }
+  }
 }

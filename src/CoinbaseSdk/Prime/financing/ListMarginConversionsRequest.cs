@@ -16,43 +16,43 @@
 
 namespace CoinbaseSdk.Prime.Financing
 {
-    using System.Text.Json.Serialization;
-    public class ListMarginConversionsRequest(string portfolioId)
+  using System.Text.Json.Serialization;
+  public class ListMarginConversionsRequest(string portfolioId)
+  {
+    [JsonIgnore, JsonPropertyName("portfolio_id")]
+    public string PortfolioId { get; set; } = portfolioId;
+
+    [JsonPropertyName("start_date")]
+    public string? StartDate { get; set; }
+
+    [JsonPropertyName("end_date")]
+    public string? EndDate { get; set; }
+
+    public class ListMarginConversionsRequestBuilder
     {
-        [JsonIgnore, JsonPropertyName("portfolio_id")]
-        public string PortfolioId { get; set; } = portfolioId;
+      private string? _startDate;
+      private string? _endDate;
 
-        [JsonPropertyName("start_date")]
-        public string? StartDate { get; set; }
+      public ListMarginConversionsRequestBuilder WithStartDate(string startDate)
+      {
+        _startDate = startDate;
+        return this;
+      }
 
-        [JsonPropertyName("end_date")]
-        public string? EndDate { get; set; }
+      public ListMarginConversionsRequestBuilder WithEndDate(string endDate)
+      {
+        _endDate = endDate;
+        return this;
+      }
 
-        public class ListMarginConversionsRequestBuilder
+      public ListMarginConversionsRequest Build(string portfolioId)
+      {
+        return new ListMarginConversionsRequest(portfolioId)
         {
-            private string? _startDate;
-            private string? _endDate;
-
-            public ListMarginConversionsRequestBuilder WithStartDate(string startDate)
-            {
-                _startDate = startDate;
-                return this;
-            }
-
-            public ListMarginConversionsRequestBuilder WithEndDate(string endDate)
-            {
-                _endDate = endDate;
-                return this;
-            }
-
-            public ListMarginConversionsRequest Build(string portfolioId)
-            {
-                return new ListMarginConversionsRequest(portfolioId)
-                {
-                    StartDate = _startDate,
-                    EndDate = _endDate
-                };
-            }
-        }
+          StartDate = _startDate,
+          EndDate = _endDate
+        };
+      }
     }
+  }
 }

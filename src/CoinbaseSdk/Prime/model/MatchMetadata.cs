@@ -16,44 +16,44 @@
 
 namespace CoinbaseSdk.Prime.Model
 {
-    using System.Text.Json.Serialization;
-    public class MatchMetadata
+  using System.Text.Json.Serialization;
+  public class MatchMetadata
+  {
+    [JsonPropertyName("reference_id")]
+    public string? ReferenceId { get; set; }
+
+    [JsonPropertyName("settlement_date")]
+    public string? SettlementDate { get; set; }
+
+    public MatchMetadata() { }
+
+    public class MatchMetadataBuilder
     {
-        [JsonPropertyName("reference_id")]
-        public string? ReferenceId { get; set; }
+      private string? ReferenceId;
+      private string? SettlementDate;
 
-        [JsonPropertyName("settlement_date")]
-        public string? SettlementDate { get; set; }
+      public MatchMetadataBuilder() { }
 
-        public MatchMetadata() { }
+      public MatchMetadataBuilder WithReferenceId(string referenceId)
+      {
+        this.ReferenceId = referenceId;
+        return this;
+      }
 
-        public class MatchMetadataBuilder
+      public MatchMetadataBuilder WithSettlementDate(string settlementDate)
+      {
+        this.SettlementDate = settlementDate;
+        return this;
+      }
+
+      public MatchMetadata Build()
+      {
+        return new MatchMetadata
         {
-            private string? ReferenceId;
-            private string? SettlementDate;
-
-            public MatchMetadataBuilder() { }
-
-            public MatchMetadataBuilder WithReferenceId(string referenceId)
-            {
-                this.ReferenceId = referenceId;
-                return this;
-            }
-
-            public MatchMetadataBuilder WithSettlementDate(string settlementDate)
-            {
-                this.SettlementDate = settlementDate;
-                return this;
-            }
-
-            public MatchMetadata Build()
-            {
-                return new MatchMetadata
-                {
-                    ReferenceId = this.ReferenceId,
-                    SettlementDate = this.SettlementDate
-                };
-            }
-        }
+          ReferenceId = this.ReferenceId,
+          SettlementDate = this.SettlementDate
+        };
+      }
     }
+  }
 }

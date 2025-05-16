@@ -16,52 +16,52 @@
 
 namespace CoinbaseSdk.Prime.Model
 {
-    using System.Text.Json.Serialization;
-    public class DisplayUser
+  using System.Text.Json.Serialization;
+  public class DisplayUser
+  {
+    public string? Id { get; set; }
+    public string? Name { get; set; }
+
+    [JsonPropertyName("avatar_url")]
+    public string? AvatarUrl { get; set; }
+
+    public DisplayUser()
     {
-        public string? Id { get; set; }
-        public string? Name { get; set; }
-
-        [JsonPropertyName("avatar_url")]
-        public string? AvatarUrl { get; set; }
-
-        public DisplayUser()
-        {
-        }
-
-        public class UserBuilder
-        {
-            private string? _id;
-            private string? _name;
-            private string? _avatarUrl;
-
-            public UserBuilder WithId(string? id)
-            {
-                this._id = id;
-                return this;
-            }
-
-            public UserBuilder WithName(string? name)
-            {
-                this._name = name;
-                return this;
-            }
-
-            public UserBuilder WithAvatarUrl(string? avatarUrl)
-            {
-                this._avatarUrl = avatarUrl;
-                return this;
-            }
-
-            public DisplayUser Build()
-            {
-                return new DisplayUser
-                {
-                    Id = this._id,
-                    Name = this._name,
-                    AvatarUrl = this._avatarUrl
-                };
-            }
-        }
     }
+
+    public class UserBuilder
+    {
+      private string? _id;
+      private string? _name;
+      private string? _avatarUrl;
+
+      public UserBuilder WithId(string? id)
+      {
+        this._id = id;
+        return this;
+      }
+
+      public UserBuilder WithName(string? name)
+      {
+        this._name = name;
+        return this;
+      }
+
+      public UserBuilder WithAvatarUrl(string? avatarUrl)
+      {
+        this._avatarUrl = avatarUrl;
+        return this;
+      }
+
+      public DisplayUser Build()
+      {
+        return new DisplayUser
+        {
+          Id = this._id,
+          Name = this._name,
+          AvatarUrl = this._avatarUrl
+        };
+      }
+    }
+  }
 }

@@ -16,62 +16,62 @@
 
 namespace CoinbaseSdk.Prime.Transactions
 {
-    using System.Text.Json.Serialization;
-    using CoinbaseSdk.Core.Error;
+  using System.Text.Json.Serialization;
+  using CoinbaseSdk.Core.Error;
 
-    public class GetTransactionByTransactionIdRequest(string portfolioId, string transactionId)
+  public class GetTransactionByTransactionIdRequest(string portfolioId, string transactionId)
+  {
+    [JsonIgnore, JsonPropertyName("portfolio_id")]
+    public string PortfolioId { get; set; } = portfolioId;
+
+    [JsonIgnore, JsonPropertyName("transaction_id")]
+    public string TransactionId { get; set; } = transactionId;
+
+    public class GetTransactionByTransactionIdRequestBuilder
     {
-        [JsonIgnore, JsonPropertyName("portfolio_id")]
-        public string PortfolioId { get; set; } = portfolioId;
+      private string? _portfolioId;
+      private string? _transactionId;
 
-        [JsonIgnore, JsonPropertyName("transaction_id")]
-        public string TransactionId { get; set; } = transactionId;
+      public GetTransactionByTransactionIdRequestBuilder WithPortfolioId(string portfolioId)
+      {
+        this._portfolioId = portfolioId;
+        return this;
+      }
 
-        public class GetTransactionByTransactionIdRequestBuilder
+      public GetTransactionByTransactionIdRequestBuilder WithTransactionId(string transactionId)
+      {
+        this._transactionId = transactionId;
+        return this;
+      }
+
+      /// <summary>
+      /// Validate the builder.
+      /// </summary>
+      /// <exception cref="CoinbaseClientException">Thrown when the
+      /// <see cref="_portfolioId"/> or <see cref="_transactionId"/> are null, empty
+      /// or whitespace.</exception>
+      private void Validate()
+      {
+        if (string.IsNullOrWhiteSpace(this._portfolioId))
         {
-            private string? _portfolioId;
-            private string? _transactionId;
-
-            public GetTransactionByTransactionIdRequestBuilder WithPortfolioId(string portfolioId)
-            {
-                this._portfolioId = portfolioId;
-                return this;
-            }
-
-            public GetTransactionByTransactionIdRequestBuilder WithTransactionId(string transactionId)
-            {
-                this._transactionId = transactionId;
-                return this;
-            }
-
-            /// <summary>
-            /// Validate the builder.
-            /// </summary>
-            /// <exception cref="CoinbaseClientException">Thrown when the
-            /// <see cref="_portfolioId"/> or <see cref="_transactionId"/> are null, empty
-            /// or whitespace.</exception>
-            private void Validate()
-            {
-                if (string.IsNullOrWhiteSpace(this._portfolioId))
-                {
-                    throw new CoinbaseClientException("PortfolioId is required");
-                }
-                if (string.IsNullOrWhiteSpace(this._transactionId))
-                {
-                    throw new CoinbaseClientException("TransactionId is required");
-                }
-            }
-
-            /// <summary>
-            /// Build the <see cref="GetTransactionByTransactionIdRequest"/> object.
-            /// </summary>
-            /// <returns>The <see cref="GetTransactionByTransactionIdRequest"/> object.</returns>
-            /// <exception cref="CoinbaseClientException">Thrown when the required fields are not set.</exception>
-            public GetTransactionByTransactionIdRequest Build()
-            {
-                this.Validate();
-                return new GetTransactionByTransactionIdRequest(_portfolioId!, _transactionId!);
-            }
+          throw new CoinbaseClientException("PortfolioId is required");
         }
+        if (string.IsNullOrWhiteSpace(this._transactionId))
+        {
+          throw new CoinbaseClientException("TransactionId is required");
+        }
+      }
+
+      /// <summary>
+      /// Build the <see cref="GetTransactionByTransactionIdRequest"/> object.
+      /// </summary>
+      /// <returns>The <see cref="GetTransactionByTransactionIdRequest"/> object.</returns>
+      /// <exception cref="CoinbaseClientException">Thrown when the required fields are not set.</exception>
+      public GetTransactionByTransactionIdRequest Build()
+      {
+        this.Validate();
+        return new GetTransactionByTransactionIdRequest(_portfolioId!, _transactionId!);
+      }
     }
+  }
 }

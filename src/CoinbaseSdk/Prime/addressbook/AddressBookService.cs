@@ -16,62 +16,62 @@
 
 namespace CoinbaseSdk.Prime.AddressBook
 {
-    using System.Net;
-    using CoinbaseSdk.Core.Client;
-    using CoinbaseSdk.Core.Http;
-    using CoinbaseSdk.Core.Service;
-    public class AddressBookService(ICoinbaseClient client) : CoinbaseService(client), IAddressBookService
+  using System.Net;
+  using CoinbaseSdk.Core.Client;
+  using CoinbaseSdk.Core.Http;
+  using CoinbaseSdk.Core.Service;
+  public class AddressBookService(ICoinbaseClient client) : CoinbaseService(client), IAddressBookService
+  {
+    public CreateAddressBookEntryResponse CreateAddressBookEntry(
+      CreateAddressBookEntryRequest request,
+      CallOptions? options = null)
     {
-        public CreateAddressBookEntryResponse CreateAddressBookEntry(
-          CreateAddressBookEntryRequest request,
-          CallOptions? options = null)
-        {
-            return this.Request<CreateAddressBookEntryResponse>(
-              HttpMethod.Post,
-              $"/portfolios/{request.PortfolioId}/address_book",
-              [HttpStatusCode.Created, HttpStatusCode.OK],
-              request,
-              options);
-        }
-
-        public Task<CreateAddressBookEntryResponse> CreateAddressBookEntryAsync(
-          CreateAddressBookEntryRequest request,
-          CallOptions? options = null,
-          CancellationToken cancellationToken = default)
-        {
-            return this.RequestAsync<CreateAddressBookEntryResponse>(
-              HttpMethod.Post,
-              $"/portfolios/{request.PortfolioId}/address_book",
-              [HttpStatusCode.Created, HttpStatusCode.OK],
-              request,
-              options,
-              cancellationToken);
-        }
-
-        public GetPortfolioAddressBookResponse GetPortfolioAddressBook(
-          GetPortfolioAddressBookRequest request,
-          CallOptions? options = null)
-        {
-            return this.Request<GetPortfolioAddressBookResponse>(
-              HttpMethod.Get,
-              $"/portfolios/{request.PortfolioId}/address_book",
-              [HttpStatusCode.OK],
-              request,
-              options);
-        }
-
-        public Task<GetPortfolioAddressBookResponse> GetPortfolioAddressBookAsync(
-          GetPortfolioAddressBookRequest request,
-          CallOptions? options = null,
-          CancellationToken cancellationToken = default)
-        {
-            return this.RequestAsync<GetPortfolioAddressBookResponse>(
-              HttpMethod.Get,
-              $"/portfolios/{request.PortfolioId}/address_book",
-              [HttpStatusCode.OK],
-              request,
-              options,
-              cancellationToken);
-        }
+      return this.Request<CreateAddressBookEntryResponse>(
+        HttpMethod.Post,
+        $"/portfolios/{request.PortfolioId}/address_book",
+        [HttpStatusCode.Created, HttpStatusCode.OK],
+        request,
+        options);
     }
+
+    public Task<CreateAddressBookEntryResponse> CreateAddressBookEntryAsync(
+      CreateAddressBookEntryRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default)
+    {
+      return this.RequestAsync<CreateAddressBookEntryResponse>(
+        HttpMethod.Post,
+        $"/portfolios/{request.PortfolioId}/address_book",
+        [HttpStatusCode.Created, HttpStatusCode.OK],
+        request,
+        options,
+        cancellationToken);
+    }
+
+    public GetPortfolioAddressBookResponse GetPortfolioAddressBook(
+      GetPortfolioAddressBookRequest request,
+      CallOptions? options = null)
+    {
+      return this.Request<GetPortfolioAddressBookResponse>(
+        HttpMethod.Get,
+        $"/portfolios/{request.PortfolioId}/address_book",
+        [HttpStatusCode.OK],
+        request,
+        options);
+    }
+
+    public Task<GetPortfolioAddressBookResponse> GetPortfolioAddressBookAsync(
+      GetPortfolioAddressBookRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default)
+    {
+      return this.RequestAsync<GetPortfolioAddressBookResponse>(
+        HttpMethod.Get,
+        $"/portfolios/{request.PortfolioId}/address_book",
+        [HttpStatusCode.OK],
+        request,
+        options,
+        cancellationToken);
+    }
+  }
 }

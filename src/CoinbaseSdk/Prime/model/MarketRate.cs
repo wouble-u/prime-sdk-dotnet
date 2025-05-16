@@ -16,38 +16,38 @@
 
 namespace CoinbaseSdk.Prime.Model
 {
-    public class MarketRate
+  public class MarketRate
+  {
+    public string? Symbol { get; set; }
+    public string? Rate { get; set; }
+
+    public MarketRate() { }
+
+    public class MarketRateBuilder
     {
-        public string? Symbol { get; set; }
-        public string? Rate { get; set; }
+      private string? _symbol;
+      private string? _rate;
 
-        public MarketRate() { }
+      public MarketRateBuilder WithSymbol(string? symbol)
+      {
+        this._symbol = symbol;
+        return this;
+      }
 
-        public class MarketRateBuilder
+      public MarketRateBuilder WithRate(string? rate)
+      {
+        this._rate = rate;
+        return this;
+      }
+
+      public MarketRate Build()
+      {
+        return new MarketRate
         {
-            private string? _symbol;
-            private string? _rate;
-
-            public MarketRateBuilder WithSymbol(string? symbol)
-            {
-                this._symbol = symbol;
-                return this;
-            }
-
-            public MarketRateBuilder WithRate(string? rate)
-            {
-                this._rate = rate;
-                return this;
-            }
-
-            public MarketRate Build()
-            {
-                return new MarketRate
-                {
-                    Symbol = this._symbol,
-                    Rate = this._rate
-                };
-            }
-        }
+          Symbol = this._symbol,
+          Rate = this._rate
+        };
+      }
     }
+  }
 }

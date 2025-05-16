@@ -16,47 +16,47 @@
 
 namespace CoinbaseSdk.Prime.Transactions
 {
-    using System.Text.Json.Serialization;
-    using CoinbaseSdk.Prime.Model;
+  using System.Text.Json.Serialization;
+  using CoinbaseSdk.Prime.Model;
 
-    public class ListWalletTransactionsResponse
+  public class ListWalletTransactionsResponse
+  {
+    [JsonPropertyName("transactions")]
+    public Transaction[] Transactions { get; set; } = [];
+
+    [JsonPropertyName("pagination")]
+    public Pagination? Pagination { get; set; }
+
+    public ListWalletTransactionsResponse() { }
+
+    public class ListWalletTransactionsResponseBuilder
     {
-        [JsonPropertyName("transactions")]
-        public Transaction[] Transactions { get; set; } = [];
+      private Transaction[] Transactions = [];
+      private Pagination? Pagination;
 
-        [JsonPropertyName("pagination")]
-        public Pagination? Pagination { get; set; }
+      public ListWalletTransactionsResponseBuilder() { }
 
-        public ListWalletTransactionsResponse() { }
+      public ListWalletTransactionsResponseBuilder WithTransactions(
+          Transaction[] transactions)
+      {
+        this.Transactions = transactions;
+        return this;
+      }
 
-        public class ListWalletTransactionsResponseBuilder
+      public ListWalletTransactionsResponseBuilder WithPagination(Pagination? pagination)
+      {
+        this.Pagination = pagination;
+        return this;
+      }
+
+      public ListWalletTransactionsResponse Build()
+      {
+        return new ListWalletTransactionsResponse
         {
-            private Transaction[] Transactions = [];
-            private Pagination? Pagination;
-
-            public ListWalletTransactionsResponseBuilder() { }
-
-            public ListWalletTransactionsResponseBuilder WithTransactions(
-                Transaction[] transactions)
-            {
-                this.Transactions = transactions;
-                return this;
-            }
-
-            public ListWalletTransactionsResponseBuilder WithPagination(Pagination? pagination)
-            {
-                this.Pagination = pagination;
-                return this;
-            }
-
-            public ListWalletTransactionsResponse Build()
-            {
-                return new ListWalletTransactionsResponse
-                {
-                    Transactions = this.Transactions,
-                    Pagination = this.Pagination,
-                };
-            }
-        }
+          Transactions = this.Transactions,
+          Pagination = this.Pagination,
+        };
+      }
     }
+  }
 }

@@ -16,49 +16,49 @@
 
 namespace CoinbaseSdk.Prime.Model
 {
-    using System.Text.Json.Serialization;
+  using System.Text.Json.Serialization;
 
-    public class Consensus
+  public class Consensus
+  {
+    [JsonPropertyName("approval_deadline")]
+    public string? ApprovalDeadline { get; set; }
+
+    [JsonPropertyName("has_passed_consensus")]
+    public bool? HasPassedConsensus { get; set; }
+
+    public Consensus() { }
+
+    public Consensus(string approvalDeadline, bool hasPassedConsensus)
     {
-        [JsonPropertyName("approval_deadline")]
-        public string? ApprovalDeadline { get; set; }
-
-        [JsonPropertyName("has_passed_consensus")]
-        public bool? HasPassedConsensus { get; set; }
-
-        public Consensus() { }
-
-        public Consensus(string approvalDeadline, bool hasPassedConsensus)
-        {
-            ApprovalDeadline = approvalDeadline;
-            HasPassedConsensus = hasPassedConsensus;
-        }
-
-        public class ConsensusBuilder
-        {
-            private string? _approvalDeadline;
-            private bool? _hasPassedConsensus;
-
-            public ConsensusBuilder WithApprovalDeadline(string approvalDeadline)
-            {
-                _approvalDeadline = approvalDeadline;
-                return this;
-            }
-
-            public ConsensusBuilder WithHasPassedConsensus(bool hasPassedConsensus)
-            {
-                _hasPassedConsensus = hasPassedConsensus;
-                return this;
-            }
-
-            public Consensus Build()
-            {
-                return new Consensus()
-                {
-                    ApprovalDeadline = _approvalDeadline,
-                    HasPassedConsensus = _hasPassedConsensus,
-                };
-            }
-        }
+      ApprovalDeadline = approvalDeadline;
+      HasPassedConsensus = hasPassedConsensus;
     }
+
+    public class ConsensusBuilder
+    {
+      private string? _approvalDeadline;
+      private bool? _hasPassedConsensus;
+
+      public ConsensusBuilder WithApprovalDeadline(string approvalDeadline)
+      {
+        _approvalDeadline = approvalDeadline;
+        return this;
+      }
+
+      public ConsensusBuilder WithHasPassedConsensus(bool hasPassedConsensus)
+      {
+        _hasPassedConsensus = hasPassedConsensus;
+        return this;
+      }
+
+      public Consensus Build()
+      {
+        return new Consensus()
+        {
+          ApprovalDeadline = _approvalDeadline,
+          HasPassedConsensus = _hasPassedConsensus,
+        };
+      }
+    }
+  }
 }

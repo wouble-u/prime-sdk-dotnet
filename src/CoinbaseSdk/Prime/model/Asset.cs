@@ -16,85 +16,85 @@
 
 namespace CoinbaseSdk.Prime.Model
 {
-    using System.Collections.Generic;
-    using System.Text.Json.Serialization;
+  using System.Collections.Generic;
+  using System.Text.Json.Serialization;
 
-    public class Asset
+  public class Asset
+  {
+    public string? Name { get; set; }
+    public string? Symbol { get; set; }
+
+    [JsonPropertyName("decimal_precision")]
+    public string? DecimalPrecision { get; set; }
+
+    [JsonPropertyName("trading_supported")]
+    public bool? TradingSupported { get; set; }
+
+    [JsonPropertyName("explorer_url")]
+    public string? ExplorerUrl { get; set; }
+
+    [JsonPropertyName("networks")]
+    public List<NetworkInfo>? Networks { get; set; }
+
+    public Asset() { }
+
+    public class AssetBuilder
     {
-        public string? Name { get; set; }
-        public string? Symbol { get; set; }
+      private string? _name;
+      private string? _symbol;
+      private string? _decimalPrecision;
+      private bool? _tradingSupported;
+      private string? _explorerUrl;
+      private List<NetworkInfo>? _networks;
 
-        [JsonPropertyName("decimal_precision")]
-        public string? DecimalPrecision { get; set; }
+      public AssetBuilder WithName(string? name)
+      {
+        this._name = name;
+        return this;
+      }
 
-        [JsonPropertyName("trading_supported")]
-        public bool? TradingSupported { get; set; }
+      public AssetBuilder WithSymbol(string? symbol)
+      {
+        this._symbol = symbol;
+        return this;
+      }
 
-        [JsonPropertyName("explorer_url")]
-        public string? ExplorerUrl { get; set; }
+      public AssetBuilder WithDecimalPrecision(string? decimalPrecision)
+      {
+        this._decimalPrecision = decimalPrecision;
+        return this;
+      }
 
-        [JsonPropertyName("networks")]
-        public List<NetworkInfo>? Networks { get; set; }
+      public AssetBuilder WithTradingSupported(bool? tradingSupported)
+      {
+        this._tradingSupported = tradingSupported;
+        return this;
+      }
 
-        public Asset() { }
+      public AssetBuilder WithExplorerUrl(string? explorerUrl)
+      {
+        this._explorerUrl = explorerUrl;
+        return this;
+      }
 
-        public class AssetBuilder
+      public AssetBuilder WithNetworks(List<NetworkInfo>? networks)
+      {
+        this._networks = networks;
+        return this;
+      }
+
+      public Asset Build()
+      {
+        return new Asset
         {
-            private string? _name;
-            private string? _symbol;
-            private string? _decimalPrecision;
-            private bool? _tradingSupported;
-            private string? _explorerUrl;
-            private List<NetworkInfo>? _networks;
-
-            public AssetBuilder WithName(string? name)
-            {
-                this._name = name;
-                return this;
-            }
-
-            public AssetBuilder WithSymbol(string? symbol)
-            {
-                this._symbol = symbol;
-                return this;
-            }
-
-            public AssetBuilder WithDecimalPrecision(string? decimalPrecision)
-            {
-                this._decimalPrecision = decimalPrecision;
-                return this;
-            }
-
-            public AssetBuilder WithTradingSupported(bool? tradingSupported)
-            {
-                this._tradingSupported = tradingSupported;
-                return this;
-            }
-
-            public AssetBuilder WithExplorerUrl(string? explorerUrl)
-            {
-                this._explorerUrl = explorerUrl;
-                return this;
-            }
-
-            public AssetBuilder WithNetworks(List<NetworkInfo>? networks)
-            {
-                this._networks = networks;
-                return this;
-            }
-
-            public Asset Build()
-            {
-                return new Asset
-                {
-                    Name = this._name,
-                    Symbol = this._symbol,
-                    DecimalPrecision = this._decimalPrecision,
-                    TradingSupported = this._tradingSupported,
-                    ExplorerUrl = this._explorerUrl,
-                    Networks = this._networks
-                };
-            }
-        }
+          Name = this._name,
+          Symbol = this._symbol,
+          DecimalPrecision = this._decimalPrecision,
+          TradingSupported = this._tradingSupported,
+          ExplorerUrl = this._explorerUrl,
+          Networks = this._networks
+        };
+      }
     }
+  }
 }

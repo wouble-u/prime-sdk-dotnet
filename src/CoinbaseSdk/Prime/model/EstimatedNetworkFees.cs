@@ -16,44 +16,44 @@
 
 namespace CoinbaseSdk.Prime.Model
 {
-    using System.Text.Json.Serialization;
-    public class EstimatedNetworkFees
+  using System.Text.Json.Serialization;
+  public class EstimatedNetworkFees
+  {
+    [JsonPropertyName("lower_bound")]
+    public string? LowerBound { get; set; }
+
+    [JsonPropertyName("upper_bound")]
+    public string? UpperBound { get; set; }
+
+    public EstimatedNetworkFees() { }
+
+    public class EstimatedNetworkFeesBuilder
     {
-        [JsonPropertyName("lower_bound")]
-        public string? LowerBound { get; set; }
+      private string? LowerBound;
+      private string? UpperBound;
 
-        [JsonPropertyName("upper_bound")]
-        public string? UpperBound { get; set; }
+      public EstimatedNetworkFeesBuilder() { }
 
-        public EstimatedNetworkFees() { }
+      public EstimatedNetworkFeesBuilder WithLowerBound(string lowerBound)
+      {
+        this.LowerBound = lowerBound;
+        return this;
+      }
 
-        public class EstimatedNetworkFeesBuilder
+      public EstimatedNetworkFeesBuilder WithUpperBound(string upperBound)
+      {
+        this.UpperBound = upperBound;
+        return this;
+      }
+
+      public EstimatedNetworkFees Build()
+      {
+        return new EstimatedNetworkFees
         {
-            private string? LowerBound;
-            private string? UpperBound;
-
-            public EstimatedNetworkFeesBuilder() { }
-
-            public EstimatedNetworkFeesBuilder WithLowerBound(string lowerBound)
-            {
-                this.LowerBound = lowerBound;
-                return this;
-            }
-
-            public EstimatedNetworkFeesBuilder WithUpperBound(string upperBound)
-            {
-                this.UpperBound = upperBound;
-                return this;
-            }
-
-            public EstimatedNetworkFees Build()
-            {
-                return new EstimatedNetworkFees
-                {
-                    LowerBound = this.LowerBound,
-                    UpperBound = this.UpperBound
-                };
-            }
-        }
+          LowerBound = this.LowerBound,
+          UpperBound = this.UpperBound
+        };
+      }
     }
+  }
 }

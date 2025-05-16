@@ -16,32 +16,32 @@
 
 namespace CoinbaseSdk.Prime.Financing
 {
-    using System.Text.Json.Serialization;
-    using CoinbaseSdk.Prime.Model;
-    public class ListMarginCallSummariesResponse
+  using System.Text.Json.Serialization;
+  using CoinbaseSdk.Prime.Model;
+  public class ListMarginCallSummariesResponse
+  {
+    [JsonPropertyName("margin_summaries")]
+    public MarginSummaryHistorical[] MarginSummaries { get; set; } = [];
+
+    public ListMarginCallSummariesResponse() { }
+
+    public class ListMarginCallSummariesResponseBuilder
     {
-        [JsonPropertyName("margin_summaries")]
-        public MarginSummaryHistorical[] MarginSummaries { get; set; } = [];
+      private MarginSummaryHistorical[] _marginSummaries = [];
 
-        public ListMarginCallSummariesResponse() { }
+      public ListMarginCallSummariesResponseBuilder WithMarginSummaries(MarginSummaryHistorical[] marginSummaries)
+      {
+        _marginSummaries = marginSummaries;
+        return this;
+      }
 
-        public class ListMarginCallSummariesResponseBuilder
+      public ListMarginCallSummariesResponse Build()
+      {
+        return new ListMarginCallSummariesResponse
         {
-            private MarginSummaryHistorical[] _marginSummaries = [];
-
-            public ListMarginCallSummariesResponseBuilder WithMarginSummaries(MarginSummaryHistorical[] marginSummaries)
-            {
-                _marginSummaries = marginSummaries;
-                return this;
-            }
-
-            public ListMarginCallSummariesResponse Build()
-            {
-                return new ListMarginCallSummariesResponse
-                {
-                    MarginSummaries = _marginSummaries
-                };
-            }
-        }
+          MarginSummaries = _marginSummaries
+        };
+      }
     }
+  }
 }

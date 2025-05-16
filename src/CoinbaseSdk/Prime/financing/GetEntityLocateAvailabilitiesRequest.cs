@@ -16,44 +16,44 @@
 
 namespace CoinbaseSdk.Prime.Financing
 {
-    using System.Text.Json.Serialization;
+  using System.Text.Json.Serialization;
 
-    public class GetEntityLocateAvailabilitiesRequest(string entityId)
+  public class GetEntityLocateAvailabilitiesRequest(string entityId)
+  {
+    [JsonIgnore, JsonPropertyName("entity_id")]
+    public string EntityId { get; set; } = entityId;
+
+    [JsonPropertyName("conversion_date")]
+    public string? ConversionDate { get; set; }
+
+    [JsonPropertyName("locate_date")]
+    public string? LocateDate { get; set; }
+
+    public class GetEntityLocateAvailabilitiesRequestBuilder
     {
-        [JsonIgnore, JsonPropertyName("entity_id")]
-        public string EntityId { get; set; } = entityId;
+      private string? _conversionDate;
+      private string? _locateDate;
 
-        [JsonPropertyName("conversion_date")]
-        public string? ConversionDate { get; set; }
+      public GetEntityLocateAvailabilitiesRequestBuilder WithConversionDate(string? conversionDate)
+      {
+        this._conversionDate = conversionDate;
+        return this;
+      }
 
-        [JsonPropertyName("locate_date")]
-        public string? LocateDate { get; set; }
+      public GetEntityLocateAvailabilitiesRequestBuilder WithLocateDate(string? locateDate)
+      {
+        this._locateDate = locateDate;
+        return this;
+      }
 
-        public class GetEntityLocateAvailabilitiesRequestBuilder
+      public GetEntityLocateAvailabilitiesRequest Build(string entityId)
+      {
+        return new GetEntityLocateAvailabilitiesRequest(entityId)
         {
-            private string? _conversionDate;
-            private string? _locateDate;
-
-            public GetEntityLocateAvailabilitiesRequestBuilder WithConversionDate(string? conversionDate)
-            {
-                this._conversionDate = conversionDate;
-                return this;
-            }
-
-            public GetEntityLocateAvailabilitiesRequestBuilder WithLocateDate(string? locateDate)
-            {
-                this._locateDate = locateDate;
-                return this;
-            }
-
-            public GetEntityLocateAvailabilitiesRequest Build(string entityId)
-            {
-                return new GetEntityLocateAvailabilitiesRequest(entityId)
-                {
-                    ConversionDate = this._conversionDate,
-                    LocateDate = this._locateDate
-                };
-            }
-        }
+          ConversionDate = this._conversionDate,
+          LocateDate = this._locateDate
+        };
+      }
     }
+  }
 }

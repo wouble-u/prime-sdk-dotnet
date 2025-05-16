@@ -16,16 +16,16 @@
 
 namespace CoinbaseSdk.Prime.Model
 {
-    public enum Role
-    {
-        AUDITOR,
-        SIGNATORY,
-        ADMIN,
-        INITIATOR,
-        REVIEWER,
-        TRADER,
-        FULL_TRADER,
-        TEAM_MANAGER,
-        APPROVER
-    }
+  public enum Role
+  {
+    AUDITOR,
+    SIGNATORY,
+    ADMIN,
+    INITIATOR,
+    REVIEWER,
+    TRADER,
+    FULL_TRADER,
+    TEAM_MANAGER,
+    APPROVER
+  }
 }

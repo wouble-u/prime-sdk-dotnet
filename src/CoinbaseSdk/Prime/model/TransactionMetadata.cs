@@ -16,33 +16,33 @@
 
 namespace CoinbaseSdk.Prime.Model
 {
-    using System.Text.Json.Serialization;
-    public class TransactionMetadata
+  using System.Text.Json.Serialization;
+  public class TransactionMetadata
+  {
+    [JsonPropertyName("match_metadata")]
+    public MatchMetadata? MatchMetadata { get; set; }
+
+    public TransactionMetadata() { }
+
+    public class TransactionMetadataBuilder
     {
-        [JsonPropertyName("match_metadata")]
-        public MatchMetadata? MatchMetadata { get; set; }
+      private MatchMetadata? _matchMetadata;
 
-        public TransactionMetadata() { }
+      public TransactionMetadataBuilder() { }
 
-        public class TransactionMetadataBuilder
+      public TransactionMetadataBuilder WithMatchMetadata(MatchMetadata matchMetadata)
+      {
+        this._matchMetadata = matchMetadata;
+        return this;
+      }
+
+      public TransactionMetadata Build()
+      {
+        return new TransactionMetadata
         {
-            private MatchMetadata? _matchMetadata;
-
-            public TransactionMetadataBuilder() { }
-
-            public TransactionMetadataBuilder WithMatchMetadata(MatchMetadata matchMetadata)
-            {
-                this._matchMetadata = matchMetadata;
-                return this;
-            }
-
-            public TransactionMetadata Build()
-            {
-                return new TransactionMetadata
-                {
-                    MatchMetadata = this._matchMetadata
-                };
-            }
-        }
+          MatchMetadata = this._matchMetadata
+        };
+      }
     }
+  }
 }

@@ -16,26 +16,26 @@
 
 namespace CoinbaseSdk.Prime.Staking
 {
-    using CoinbaseSdk.Core.Http;
+  using CoinbaseSdk.Core.Http;
 
-    public interface IStakingService
-    {
-        public CreateStakeResponse CreateStake(
-            CreateStakeRequest request,
-            CallOptions? options = null);
+  public interface IStakingService
+  {
+    public CreateStakeResponse CreateStake(
+        CreateStakeRequest request,
+        CallOptions? options = null);
 
-        public Task<CreateStakeResponse> CreateStakeAsync(
-            CreateStakeRequest request,
-            CallOptions? options = null,
-            CancellationToken cancellationToken = default);
+    public Task<CreateStakeResponse> CreateStakeAsync(
+        CreateStakeRequest request,
+        CallOptions? options = null,
+        CancellationToken cancellationToken = default);
 
-        public CreateUnstakeResponse CreateUnstake(
-            CreateUnstakeRequest request,
-            CallOptions? options = null);
+    public CreateUnstakeResponse CreateUnstake(
+        CreateUnstakeRequest request,
+        CallOptions? options = null);
 
-        public Task<CreateUnstakeResponse> CreateUnstakeAsync(
-            CreateUnstakeRequest request,
-            CallOptions? options = null,
-            CancellationToken cancellationToken = default);
-    }
+    public Task<CreateUnstakeResponse> CreateUnstakeAsync(
+        CreateUnstakeRequest request,
+        CallOptions? options = null,
+        CancellationToken cancellationToken = default);
+  }
 }

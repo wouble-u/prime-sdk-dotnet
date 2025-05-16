@@ -16,43 +16,43 @@
 
 namespace CoinbaseSdk.Prime.Financing
 {
-    using System.Text.Json.Serialization;
-    public class ListInterestAccrualsForPortfolioRequest(string portfolioId)
+  using System.Text.Json.Serialization;
+  public class ListInterestAccrualsForPortfolioRequest(string portfolioId)
+  {
+    [JsonIgnore, JsonPropertyName("portfolio_id")]
+    public string PortfolioId { get; set; } = portfolioId;
+
+    [JsonPropertyName("start_date")]
+    public string? StartDate { get; set; }
+
+    [JsonPropertyName("end_date")]
+    public string? EndDate { get; set; }
+
+    public class ListInterestAccrualsForPortfolioRequestBuilder
     {
-        [JsonIgnore, JsonPropertyName("portfolio_id")]
-        public string PortfolioId { get; set; } = portfolioId;
+      private string? _startDate;
+      private string? _endDate;
 
-        [JsonPropertyName("start_date")]
-        public string? StartDate { get; set; }
+      public ListInterestAccrualsForPortfolioRequestBuilder WithStartDate(string startDate)
+      {
+        _startDate = startDate;
+        return this;
+      }
 
-        [JsonPropertyName("end_date")]
-        public string? EndDate { get; set; }
+      public ListInterestAccrualsForPortfolioRequestBuilder WithEndDate(string endDate)
+      {
+        _endDate = endDate;
+        return this;
+      }
 
-        public class ListInterestAccrualsForPortfolioRequestBuilder
+      public ListInterestAccrualsForPortfolioRequest Build(string portfolioId)
+      {
+        return new ListInterestAccrualsForPortfolioRequest(portfolioId)
         {
-            private string? _startDate;
-            private string? _endDate;
-
-            public ListInterestAccrualsForPortfolioRequestBuilder WithStartDate(string startDate)
-            {
-                _startDate = startDate;
-                return this;
-            }
-
-            public ListInterestAccrualsForPortfolioRequestBuilder WithEndDate(string endDate)
-            {
-                _endDate = endDate;
-                return this;
-            }
-
-            public ListInterestAccrualsForPortfolioRequest Build(string portfolioId)
-            {
-                return new ListInterestAccrualsForPortfolioRequest(portfolioId)
-                {
-                    StartDate = _startDate,
-                    EndDate = _endDate
-                };
-            }
-        }
+          StartDate = _startDate,
+          EndDate = _endDate
+        };
+      }
     }
+  }
 }

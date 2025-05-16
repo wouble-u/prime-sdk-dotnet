@@ -16,52 +16,52 @@
 
 namespace CoinbaseSdk.Prime.Model
 {
-    using System.Text.Json.Serialization;
-    public class AllocationLeg
+  using System.Text.Json.Serialization;
+  public class AllocationLeg
+  {
+    [JsonPropertyName("allocation_leg_id")]
+    public string? AllocationLegId { get; set; }
+
+    [JsonPropertyName("destination_portfolio_id")]
+    public string? DestinationPortfolioId { get; set; }
+
+    public string? Amount { get; set; }
+
+    public AllocationLeg() { }
+
+    public class AllocationLegBuilder
     {
-        [JsonPropertyName("allocation_leg_id")]
-        public string? AllocationLegId { get; set; }
+      private string? _allocationLegId;
+      private string? _destinationPortfolioId;
+      private string? _amount;
 
-        [JsonPropertyName("destination_portfolio_id")]
-        public string? DestinationPortfolioId { get; set; }
+      public AllocationLegBuilder WithAllocationLegId(string? allocationLegId)
+      {
+        this._allocationLegId = allocationLegId;
+        return this;
+      }
 
-        public string? Amount { get; set; }
+      public AllocationLegBuilder WithDestinationPortfolioId(string? destinationPortfolioId)
+      {
+        this._destinationPortfolioId = destinationPortfolioId;
+        return this;
+      }
 
-        public AllocationLeg() { }
+      public AllocationLegBuilder WithAmount(string? amount)
+      {
+        this._amount = amount;
+        return this;
+      }
 
-        public class AllocationLegBuilder
+      public AllocationLeg Build()
+      {
+        return new AllocationLeg
         {
-            private string? _allocationLegId;
-            private string? _destinationPortfolioId;
-            private string? _amount;
-
-            public AllocationLegBuilder WithAllocationLegId(string? allocationLegId)
-            {
-                this._allocationLegId = allocationLegId;
-                return this;
-            }
-
-            public AllocationLegBuilder WithDestinationPortfolioId(string? destinationPortfolioId)
-            {
-                this._destinationPortfolioId = destinationPortfolioId;
-                return this;
-            }
-
-            public AllocationLegBuilder WithAmount(string? amount)
-            {
-                this._amount = amount;
-                return this;
-            }
-
-            public AllocationLeg Build()
-            {
-                return new AllocationLeg
-                {
-                    AllocationLegId = this._allocationLegId,
-                    DestinationPortfolioId = this._destinationPortfolioId,
-                    Amount = this._amount
-                };
-            }
-        }
+          AllocationLegId = this._allocationLegId,
+          DestinationPortfolioId = this._destinationPortfolioId,
+          Amount = this._amount
+        };
+      }
     }
+  }
 }

@@ -16,10 +16,10 @@
 
 namespace CoinbaseSdk.Prime.Model
 {
-    public enum FcmPositionSide
-    {
-        FCM_POSITION_SIDE_UNSPECIFIED,
-        LONG,
-        SHORT
-    }
+  public enum FcmPositionSide
+  {
+    FCM_POSITION_SIDE_UNSPECIFIED,
+    LONG,
+    SHORT
+  }
 }

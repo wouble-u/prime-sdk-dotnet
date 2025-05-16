@@ -16,50 +16,50 @@
 
 namespace CoinbaseSdk.Prime.Financing
 {
-    using System.Text.Json.Serialization;
-    public class CreateNewLocatesRequest(string portfolioId)
+  using System.Text.Json.Serialization;
+  public class CreateNewLocatesRequest(string portfolioId)
+  {
+    [JsonIgnore, JsonPropertyName("portfolio_id")]
+    public string PortfolioId { get; set; } = portfolioId;
+
+    public string? Symbol { get; set; }
+    public string? Amount { get; set; }
+    [JsonPropertyName("locate_date")]
+    public string? LocateDate { get; set; }
+
+    public class CreateNewLocatesRequestBuilder
     {
-        [JsonIgnore, JsonPropertyName("portfolio_id")]
-        public string PortfolioId { get; set; } = portfolioId;
+      private string? _symbol;
+      private string? _amount;
+      private string? _locateDate;
 
-        public string? Symbol { get; set; }
-        public string? Amount { get; set; }
-        [JsonPropertyName("locate_date")]
-        public string? LocateDate { get; set; }
+      public CreateNewLocatesRequestBuilder WithSymbol(string? symbol)
+      {
+        this._symbol = symbol;
+        return this;
+      }
 
-        public class CreateNewLocatesRequestBuilder
+      public CreateNewLocatesRequestBuilder WithAmount(string? amount)
+      {
+        this._amount = amount;
+        return this;
+      }
+
+      public CreateNewLocatesRequestBuilder WithLocateDate(string? locateDate)
+      {
+        this._locateDate = locateDate;
+        return this;
+      }
+
+      public CreateNewLocatesRequest Build(string portfolioId)
+      {
+        return new CreateNewLocatesRequest(portfolioId)
         {
-            private string? _symbol;
-            private string? _amount;
-            private string? _locateDate;
-
-            public CreateNewLocatesRequestBuilder WithSymbol(string? symbol)
-            {
-                this._symbol = symbol;
-                return this;
-            }
-
-            public CreateNewLocatesRequestBuilder WithAmount(string? amount)
-            {
-                this._amount = amount;
-                return this;
-            }
-
-            public CreateNewLocatesRequestBuilder WithLocateDate(string? locateDate)
-            {
-                this._locateDate = locateDate;
-                return this;
-            }
-
-            public CreateNewLocatesRequest Build(string portfolioId)
-            {
-                return new CreateNewLocatesRequest(portfolioId)
-                {
-                    Symbol = this._symbol,
-                    Amount = this._amount,
-                    LocateDate = this._locateDate
-                };
-            }
-        }
+          Symbol = this._symbol,
+          Amount = this._amount,
+          LocateDate = this._locateDate
+        };
+      }
     }
+  }
 }

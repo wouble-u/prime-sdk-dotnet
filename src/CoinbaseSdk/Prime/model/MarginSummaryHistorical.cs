@@ -16,53 +16,53 @@
 
 namespace CoinbaseSdk.Prime.Model
 {
-    using System.Text.Json.Serialization;
-    public class MarginSummaryHistorical
+  using System.Text.Json.Serialization;
+  public class MarginSummaryHistorical
+  {
+    [JsonPropertyName("conversion_datetime")]
+    public string? ConversionDatetime { get; set; }
+
+    [JsonPropertyName("conversion_date")]
+    public string? ConversionDate { get; set; }
+
+    [JsonPropertyName("margin_summary")]
+    public MarginSummary? MarginSummary { get; set; }
+
+    public MarginSummaryHistorical() { }
+
+    public class MarginSummaryHistoricalBuilder
     {
-        [JsonPropertyName("conversion_datetime")]
-        public string? ConversionDatetime { get; set; }
+      private string? _conversionDatetime;
+      private string? _conversionDate;
+      private MarginSummary? _marginSummary;
 
-        [JsonPropertyName("conversion_date")]
-        public string? ConversionDate { get; set; }
+      public MarginSummaryHistoricalBuilder WithConversionDatetime(string conversionDatetime)
+      {
+        this._conversionDatetime = conversionDatetime;
+        return this;
+      }
 
-        [JsonPropertyName("margin_summary")]
-        public MarginSummary? MarginSummary { get; set; }
+      public MarginSummaryHistoricalBuilder WithConversionDate(string conversionDate)
+      {
+        this._conversionDate = conversionDate;
+        return this;
+      }
 
-        public MarginSummaryHistorical() { }
+      public MarginSummaryHistoricalBuilder WithMarginSummary(MarginSummary marginSummary)
+      {
+        this._marginSummary = marginSummary;
+        return this;
+      }
 
-        public class MarginSummaryHistoricalBuilder
+      public MarginSummaryHistorical Build()
+      {
+        return new MarginSummaryHistorical
         {
-            private string? _conversionDatetime;
-            private string? _conversionDate;
-            private MarginSummary? _marginSummary;
-
-            public MarginSummaryHistoricalBuilder WithConversionDatetime(string conversionDatetime)
-            {
-                this._conversionDatetime = conversionDatetime;
-                return this;
-            }
-
-            public MarginSummaryHistoricalBuilder WithConversionDate(string conversionDate)
-            {
-                this._conversionDate = conversionDate;
-                return this;
-            }
-
-            public MarginSummaryHistoricalBuilder WithMarginSummary(MarginSummary marginSummary)
-            {
-                this._marginSummary = marginSummary;
-                return this;
-            }
-
-            public MarginSummaryHistorical Build()
-            {
-                return new MarginSummaryHistorical
-                {
-                    ConversionDatetime = this._conversionDatetime,
-                    ConversionDate = this._conversionDate,
-                    MarginSummary = this._marginSummary
-                };
-            }
-        }
+          ConversionDatetime = this._conversionDatetime,
+          ConversionDate = this._conversionDate,
+          MarginSummary = this._marginSummary
+        };
+      }
     }
+  }
 }

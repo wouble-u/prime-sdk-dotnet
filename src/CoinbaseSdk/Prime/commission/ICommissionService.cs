@@ -16,16 +16,16 @@
 
 namespace CoinbaseSdk.Prime.Commission
 {
-    using CoinbaseSdk.Core.Http;
-    public interface ICommissionService
-    {
-        public GetPortfolioCommissionResponse GetPortfolioCommission(
-          GetPortfolioCommissionRequest request,
-          CallOptions? options = null);
+  using CoinbaseSdk.Core.Http;
+  public interface ICommissionService
+  {
+    public GetPortfolioCommissionResponse GetPortfolioCommission(
+      GetPortfolioCommissionRequest request,
+      CallOptions? options = null);
 
-        public Task<GetPortfolioCommissionResponse> GetPortfolioCommissionAsync(
-          GetPortfolioCommissionRequest request,
-          CallOptions? options = null,
-          CancellationToken cancellationToken = default);
-    }
+    public Task<GetPortfolioCommissionResponse> GetPortfolioCommissionAsync(
+      GetPortfolioCommissionRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default);
+  }
 }

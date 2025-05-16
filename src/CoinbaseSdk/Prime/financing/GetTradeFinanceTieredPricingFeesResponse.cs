@@ -16,9 +16,9 @@
 
 namespace CoinbaseSdk.Prime.Financing
 {
-    using CoinbaseSdk.Prime.Model;
-    public class GetTradeFinanceTieredPricingFeesResponse
-    {
-        public TieredPricingFee[] Fees { get; set; } = [];
-    }
+  using CoinbaseSdk.Prime.Model;
+  public class GetTradeFinanceTieredPricingFeesResponse
+  {
+    public TieredPricingFee[] Fees { get; set; } = [];
+  }
 }

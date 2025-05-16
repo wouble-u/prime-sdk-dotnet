@@ -16,26 +16,26 @@
 
 namespace CoinbaseSdk.Prime.Users
 {
-    using CoinbaseSdk.Core.Http;
+  using CoinbaseSdk.Core.Http;
 
-    public interface IUsersService
-    {
-        public ListPortfolioUsersResponse ListPortfolioUsers(
-          ListPortfolioUsersRequest request,
-          CallOptions? options = null);
+  public interface IUsersService
+  {
+    public ListPortfolioUsersResponse ListPortfolioUsers(
+      ListPortfolioUsersRequest request,
+      CallOptions? options = null);
 
-        public Task<ListPortfolioUsersResponse> ListPortfolioUsersAsync(
-          ListPortfolioUsersRequest request,
-          CallOptions? options = null,
-          CancellationToken cancellationToken = default);
+    public Task<ListPortfolioUsersResponse> ListPortfolioUsersAsync(
+      ListPortfolioUsersRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default);
 
-        public ListUsersResponse ListUsers(
-          ListUsersRequest request,
-          CallOptions? options = null);
+    public ListUsersResponse ListUsers(
+      ListUsersRequest request,
+      CallOptions? options = null);
 
-        public Task<ListUsersResponse> ListUsersAsync(
-          ListUsersRequest request,
-          CallOptions? options = null,
-          CancellationToken cancellationToken = default);
-    }
+    public Task<ListUsersResponse> ListUsersAsync(
+      ListUsersRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default);
+  }
 }

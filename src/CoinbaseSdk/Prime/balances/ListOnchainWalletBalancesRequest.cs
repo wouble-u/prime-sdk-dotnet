@@ -16,22 +16,22 @@
 
 namespace CoinbaseSdk.Prime.Balances
 {
-    using System.Text.Json.Serialization;
-    using CoinbaseSdk.Prime.Model;
+  using System.Text.Json.Serialization;
+  using CoinbaseSdk.Prime.Model;
 
-    public class ListOnchainWalletBalancesRequest(string portfolioId, string walletId)
-    {
-        [JsonIgnore]
-        public string PortfolioId { get; set; } = portfolioId;
+  public class ListOnchainWalletBalancesRequest(string portfolioId, string walletId)
+  {
+    [JsonIgnore]
+    public string PortfolioId { get; set; } = portfolioId;
 
-        [JsonIgnore]
-        public string WalletId { get; set; } = walletId;
+    [JsonIgnore]
+    public string WalletId { get; set; } = walletId;
 
-        [JsonPropertyName("visibility_statuses")]
-        public VisibilityStatus[] VisibilityStatuses { get; set; } = [];
+    [JsonPropertyName("visibility_statuses")]
+    public VisibilityStatus[] VisibilityStatuses { get; set; } = [];
 
-        public string? Cursor { get; set; }
+    public string? Cursor { get; set; }
 
-        public int? Limit { get; set; }
-    }
+    public int? Limit { get; set; }
+  }
 }

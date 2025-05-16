@@ -16,63 +16,63 @@
 
 namespace CoinbaseSdk.Prime.Staking
 {
-    using System.Net;
-    using CoinbaseSdk.Core.Client;
-    using CoinbaseSdk.Core.Http;
-    using CoinbaseSdk.Core.Service;
+  using System.Net;
+  using CoinbaseSdk.Core.Client;
+  using CoinbaseSdk.Core.Http;
+  using CoinbaseSdk.Core.Service;
 
-    public class StakingService(ICoinbaseClient client) : CoinbaseService(client), IStakingService
+  public class StakingService(ICoinbaseClient client) : CoinbaseService(client), IStakingService
+  {
+    public CreateStakeResponse CreateStake(
+        CreateStakeRequest request,
+        CallOptions? options = null)
     {
-        public CreateStakeResponse CreateStake(
-            CreateStakeRequest request,
-            CallOptions? options = null)
-        {
-            return this.Request<CreateStakeResponse>(
-                HttpMethod.Post,
-                $"/portfolios/{request.PortfolioId}/wallets/{request.WalletId}/staking/initiate",
-                [HttpStatusCode.OK],
-                request,
-                options);
-        }
-
-        public Task<CreateStakeResponse> CreateStakeAsync(
-            CreateStakeRequest request,
-            CallOptions? options = null,
-            CancellationToken cancellationToken = default)
-        {
-            return this.RequestAsync<CreateStakeResponse>(
-                HttpMethod.Post,
-                $"/portfolios/{request.PortfolioId}/wallets/{request.WalletId}/staking/initiate",
-                [HttpStatusCode.OK],
-                request,
-                options,
-                cancellationToken);
-        }
-
-        public CreateUnstakeResponse CreateUnstake(
-            CreateUnstakeRequest request,
-            CallOptions? options = null)
-        {
-            return this.Request<CreateUnstakeResponse>(
-                HttpMethod.Post,
-                $"/portfolios/{request.PortfolioId}/wallets/{request.WalletId}/staking/unstake",
-                [HttpStatusCode.OK],
-                request,
-                options);
-        }
-
-        public Task<CreateUnstakeResponse> CreateUnstakeAsync(
-            CreateUnstakeRequest request,
-            CallOptions? options = null,
-            CancellationToken cancellationToken = default)
-        {
-            return this.RequestAsync<CreateUnstakeResponse>(
-                HttpMethod.Post,
-                $"/portfolios/{request.PortfolioId}/wallets/{request.WalletId}/staking/unstake",
-                [HttpStatusCode.OK],
-                request,
-                options,
-                cancellationToken);
-        }
+      return this.Request<CreateStakeResponse>(
+          HttpMethod.Post,
+          $"/portfolios/{request.PortfolioId}/wallets/{request.WalletId}/staking/initiate",
+          [HttpStatusCode.OK],
+          request,
+          options);
     }
+
+    public Task<CreateStakeResponse> CreateStakeAsync(
+        CreateStakeRequest request,
+        CallOptions? options = null,
+        CancellationToken cancellationToken = default)
+    {
+      return this.RequestAsync<CreateStakeResponse>(
+          HttpMethod.Post,
+          $"/portfolios/{request.PortfolioId}/wallets/{request.WalletId}/staking/initiate",
+          [HttpStatusCode.OK],
+          request,
+          options,
+          cancellationToken);
+    }
+
+    public CreateUnstakeResponse CreateUnstake(
+        CreateUnstakeRequest request,
+        CallOptions? options = null)
+    {
+      return this.Request<CreateUnstakeResponse>(
+          HttpMethod.Post,
+          $"/portfolios/{request.PortfolioId}/wallets/{request.WalletId}/staking/unstake",
+          [HttpStatusCode.OK],
+          request,
+          options);
+    }
+
+    public Task<CreateUnstakeResponse> CreateUnstakeAsync(
+        CreateUnstakeRequest request,
+        CallOptions? options = null,
+        CancellationToken cancellationToken = default)
+    {
+      return this.RequestAsync<CreateUnstakeResponse>(
+          HttpMethod.Post,
+          $"/portfolios/{request.PortfolioId}/wallets/{request.WalletId}/staking/unstake",
+          [HttpStatusCode.OK],
+          request,
+          options,
+          cancellationToken);
+    }
+  }
 }

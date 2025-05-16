@@ -16,77 +16,77 @@
 
 namespace CoinbaseSdk.Prime.Orders
 {
-    using System.Text.Json.Serialization;
+  using System.Text.Json.Serialization;
 
-    public class CreateQuoteResponse
+  public class CreateQuoteResponse
+  {
+    [JsonPropertyName("quote_id")]
+    public string? QuoteId { get; set; }
+
+    [JsonPropertyName("expiration_time")]
+    public string? ExpirationTime { get; set; }
+
+    [JsonPropertyName("best_price")]
+    public string? BestPrice { get; set; }
+
+    [JsonPropertyName("order_total")]
+    public string? OrderTotal { get; set; }
+
+    [JsonPropertyName("price_inclusive_of_fees")]
+    public bool PriceInclusiveOfFees { get; set; }
+
+    public CreateQuoteResponse() { }
+
+    public class CreateQuoteResponseBuilder
     {
-        [JsonPropertyName("quote_id")]
-        public string? QuoteId { get; set; }
+      private string? _quoteId;
+      private string? _expirationTime;
+      private string? _bestPrice;
+      private string? _orderTotal;
+      private bool _priceInclusiveOfFees;
+      public CreateQuoteResponseBuilder() { }
 
-        [JsonPropertyName("expiration_time")]
-        public string? ExpirationTime { get; set; }
+      public CreateQuoteResponseBuilder WithQuoteId(string quoteId)
+      {
+        _quoteId = quoteId;
+        return this;
+      }
 
-        [JsonPropertyName("best_price")]
-        public string? BestPrice { get; set; }
+      public CreateQuoteResponseBuilder WithExpirationTime(string expirationTime)
+      {
+        _expirationTime = expirationTime;
+        return this;
+      }
 
-        [JsonPropertyName("order_total")]
-        public string? OrderTotal { get; set; }
+      public CreateQuoteResponseBuilder WithBestPrice(string bestPrice)
+      {
+        _bestPrice = bestPrice;
+        return this;
+      }
 
-        [JsonPropertyName("price_inclusive_of_fees")]
-        public bool PriceInclusiveOfFees { get; set; }
+      public CreateQuoteResponseBuilder WithOrderTotal(string orderTotal)
+      {
+        _orderTotal = orderTotal;
+        return this;
+      }
 
-        public CreateQuoteResponse() { }
+      public CreateQuoteResponseBuilder WithPriceInclusiveOfFees(bool priceInclusiveOfFees)
+      {
+        _priceInclusiveOfFees = priceInclusiveOfFees;
+        return this;
+      }
 
-        public class CreateQuoteResponseBuilder
+      public CreateQuoteResponse Build()
+      {
+        return new CreateQuoteResponse
         {
-            private string? _quoteId;
-            private string? _expirationTime;
-            private string? _bestPrice;
-            private string? _orderTotal;
-            private bool _priceInclusiveOfFees;
-            public CreateQuoteResponseBuilder() { }
-
-            public CreateQuoteResponseBuilder WithQuoteId(string quoteId)
-            {
-                _quoteId = quoteId;
-                return this;
-            }
-
-            public CreateQuoteResponseBuilder WithExpirationTime(string expirationTime)
-            {
-                _expirationTime = expirationTime;
-                return this;
-            }
-
-            public CreateQuoteResponseBuilder WithBestPrice(string bestPrice)
-            {
-                _bestPrice = bestPrice;
-                return this;
-            }
-
-            public CreateQuoteResponseBuilder WithOrderTotal(string orderTotal)
-            {
-                _orderTotal = orderTotal;
-                return this;
-            }
-
-            public CreateQuoteResponseBuilder WithPriceInclusiveOfFees(bool priceInclusiveOfFees)
-            {
-                _priceInclusiveOfFees = priceInclusiveOfFees;
-                return this;
-            }
-
-            public CreateQuoteResponse Build()
-            {
-                return new CreateQuoteResponse
-                {
-                    QuoteId = _quoteId,
-                    ExpirationTime = _expirationTime,
-                    BestPrice = _bestPrice,
-                    OrderTotal = _orderTotal,
-                    PriceInclusiveOfFees = _priceInclusiveOfFees
-                };
-            }
-        }
+          QuoteId = _quoteId,
+          ExpirationTime = _expirationTime,
+          BestPrice = _bestPrice,
+          OrderTotal = _orderTotal,
+          PriceInclusiveOfFees = _priceInclusiveOfFees
+        };
+      }
     }
+  }
 }

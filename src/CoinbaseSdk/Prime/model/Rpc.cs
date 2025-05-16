@@ -16,15 +16,15 @@
 
 namespace CoinbaseSdk.Prime.Model
 {
-    using System.Text.Json.Serialization;
+  using System.Text.Json.Serialization;
 
-    public class Rpc
-    {
-        [JsonPropertyName("skip_broadcast")]
-        public bool? SkipBroadcast { get; set; }
+  public class Rpc
+  {
+    [JsonPropertyName("skip_broadcast")]
+    public bool? SkipBroadcast { get; set; }
 
-        public string? Url { get; set; }
+    public string? Url { get; set; }
 
-        public Rpc() { }
-    }
+    public Rpc() { }
+  }
 }

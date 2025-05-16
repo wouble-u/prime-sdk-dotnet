@@ -16,14 +16,14 @@
 
 namespace CoinbaseSdk.Prime.Model
 {
-    using System.Text.Json.Serialization;
+  using System.Text.Json.Serialization;
 
-    public class OnchainAddress
-    {
-        public string? Name { get; set; }
-        public string? Address { get; set; }
+  public class OnchainAddress
+  {
+    public string? Name { get; set; }
+    public string? Address { get; set; }
 
-        [JsonPropertyName("chain_ids")]
-        public string[] ChainIds { get; set; } = ["1"];
-    }
+    [JsonPropertyName("chain_ids")]
+    public string[] ChainIds { get; set; } = ["1"];
+  }
 }

@@ -16,25 +16,25 @@
 
 namespace CoinbaseSdk.Prime.AddressBook
 {
-    using CoinbaseSdk.Core.Http;
-    public interface IAddressBookService
-    {
-        public CreateAddressBookEntryResponse CreateAddressBookEntry(
-          CreateAddressBookEntryRequest request,
-          CallOptions? options = null);
+  using CoinbaseSdk.Core.Http;
+  public interface IAddressBookService
+  {
+    public CreateAddressBookEntryResponse CreateAddressBookEntry(
+      CreateAddressBookEntryRequest request,
+      CallOptions? options = null);
 
-        public Task<CreateAddressBookEntryResponse> CreateAddressBookEntryAsync(
-          CreateAddressBookEntryRequest request,
-          CallOptions? options = null,
-          CancellationToken cancellationToken = default);
+    public Task<CreateAddressBookEntryResponse> CreateAddressBookEntryAsync(
+      CreateAddressBookEntryRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default);
 
-        public GetPortfolioAddressBookResponse GetPortfolioAddressBook(
-          GetPortfolioAddressBookRequest request,
-          CallOptions? options = null);
+    public GetPortfolioAddressBookResponse GetPortfolioAddressBook(
+      GetPortfolioAddressBookRequest request,
+      CallOptions? options = null);
 
-        public Task<GetPortfolioAddressBookResponse> GetPortfolioAddressBookAsync(
-          GetPortfolioAddressBookRequest request,
-          CallOptions? options = null,
-          CancellationToken cancellationToken = default);
-    }
+    public Task<GetPortfolioAddressBookResponse> GetPortfolioAddressBookAsync(
+      GetPortfolioAddressBookRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default);
+  }
 }

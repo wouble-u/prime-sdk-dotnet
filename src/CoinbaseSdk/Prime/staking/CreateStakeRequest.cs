@@ -17,47 +17,47 @@
 
 namespace CoinbaseSdk.Prime.Staking
 {
-    using System.Text.Json.Serialization;
-    using CoinbaseSdk.Prime.Model;
+  using System.Text.Json.Serialization;
+  using CoinbaseSdk.Prime.Model;
 
-    public class CreateStakeRequest(string portfolioId, string walletId)
+  public class CreateStakeRequest(string portfolioId, string walletId)
+  {
+    [JsonIgnore, JsonPropertyName("portfolio_id")]
+    public string PortfolioId { get; set; } = portfolioId;
+
+    [JsonIgnore, JsonPropertyName("wallet_id")]
+    public string WalletId { get; set; } = walletId;
+
+    [JsonPropertyName("idempotency_key")]
+    public string? IdempotencyKey { get; set; }
+
+    public StakingInputs? Inputs { get; set; }
+
+    public class CreateStakeRequestBuilder
     {
-        [JsonIgnore, JsonPropertyName("portfolio_id")]
-        public string PortfolioId { get; set; } = portfolioId;
+      private string? _idempotencyKey;
+      private StakingInputs? _inputs;
 
-        [JsonIgnore, JsonPropertyName("wallet_id")]
-        public string WalletId { get; set; } = walletId;
+      public CreateStakeRequestBuilder WithIdempotencyKey(string? idempotencyKey)
+      {
+        this._idempotencyKey = idempotencyKey;
+        return this;
+      }
 
-        [JsonPropertyName("idempotency_key")]
-        public string? IdempotencyKey { get; set; }
+      public CreateStakeRequestBuilder WithInputs(StakingInputs? inputs)
+      {
+        this._inputs = inputs;
+        return this;
+      }
 
-        public StakingInputs? Inputs { get; set; }
-
-        public class CreateStakeRequestBuilder
+      public CreateStakeRequest Build(string portfolioId, string walletId)
+      {
+        return new CreateStakeRequest(portfolioId, walletId)
         {
-            private string? _idempotencyKey;
-            private StakingInputs? _inputs;
-
-            public CreateStakeRequestBuilder WithIdempotencyKey(string? idempotencyKey)
-            {
-                this._idempotencyKey = idempotencyKey;
-                return this;
-            }
-
-            public CreateStakeRequestBuilder WithInputs(StakingInputs? inputs)
-            {
-                this._inputs = inputs;
-                return this;
-            }
-
-            public CreateStakeRequest Build(string portfolioId, string walletId)
-            {
-                return new CreateStakeRequest(portfolioId, walletId)
-                {
-                    IdempotencyKey = this._idempotencyKey,
-                    Inputs = this._inputs
-                };
-            }
-        }
+          IdempotencyKey = this._idempotencyKey,
+          Inputs = this._inputs
+        };
+      }
     }
+  }
 }

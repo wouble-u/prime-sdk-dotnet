@@ -16,32 +16,32 @@
 
 namespace CoinbaseSdk.Prime.Financing
 {
-    using System.Text.Json.Serialization;
-    public class GetTradeFinanceTieredPricingFeesRequest(string entityId)
+  using System.Text.Json.Serialization;
+  public class GetTradeFinanceTieredPricingFeesRequest(string entityId)
+  {
+    [JsonIgnore, JsonPropertyName("entity_id")]
+    public string EntityId { get; set; } = entityId;
+
+    [JsonPropertyName("effective_at")]
+    public string? EffectiveAt { get; set; }
+
+    public class GetTradeFinanceTieredPricingFeesRequestBuilder
     {
-        [JsonIgnore, JsonPropertyName("entity_id")]
-        public string EntityId { get; set; } = entityId;
+      private string? _effectiveAt;
 
-        [JsonPropertyName("effective_at")]
-        public string? EffectiveAt { get; set; }
+      public GetTradeFinanceTieredPricingFeesRequestBuilder WithEffectiveAt(string effectiveAt)
+      {
+        _effectiveAt = effectiveAt;
+        return this;
+      }
 
-        public class GetTradeFinanceTieredPricingFeesRequestBuilder
+      public GetTradeFinanceTieredPricingFeesRequest Build(string entityId)
+      {
+        return new GetTradeFinanceTieredPricingFeesRequest(entityId)
         {
-            private string? _effectiveAt;
-
-            public GetTradeFinanceTieredPricingFeesRequestBuilder WithEffectiveAt(string effectiveAt)
-            {
-                _effectiveAt = effectiveAt;
-                return this;
-            }
-
-            public GetTradeFinanceTieredPricingFeesRequest Build(string entityId)
-            {
-                return new GetTradeFinanceTieredPricingFeesRequest(entityId)
-                {
-                    EffectiveAt = _effectiveAt
-                };
-            }
-        }
+          EffectiveAt = _effectiveAt
+        };
+      }
     }
+  }
 }

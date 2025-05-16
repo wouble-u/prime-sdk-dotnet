@@ -16,31 +16,31 @@
 
 namespace CoinbaseSdk.Prime.Model
 {
-    public class TransactionsMetadata
+  public class TransactionsMetadata
+  {
+    public Consensus? Consensus { get; set; }
+
+    public TransactionsMetadata() { }
+
+    public TransactionsMetadata(Consensus consensus)
     {
-        public Consensus? Consensus { get; set; }
-
-        public TransactionsMetadata() { }
-
-        public TransactionsMetadata(Consensus consensus)
-        {
-            Consensus = consensus;
-        }
-
-        public class TransactionsMetadataBuilder
-        {
-            private Consensus? _consensus;
-
-            public TransactionsMetadataBuilder WithConsensus(Consensus consensus)
-            {
-                this._consensus = consensus;
-                return this;
-            }
-
-            public TransactionsMetadata Build()
-            {
-                return new TransactionsMetadata() { Consensus = this._consensus };
-            }
-        }
+      Consensus = consensus;
     }
+
+    public class TransactionsMetadataBuilder
+    {
+      private Consensus? _consensus;
+
+      public TransactionsMetadataBuilder WithConsensus(Consensus consensus)
+      {
+        this._consensus = consensus;
+        return this;
+      }
+
+      public TransactionsMetadata Build()
+      {
+        return new TransactionsMetadata() { Consensus = this._consensus };
+      }
+    }
+  }
 }

@@ -16,10 +16,10 @@
 
 namespace CoinbaseSdk.Prime.Model
 {
-    public enum SizeType
-    {
-        BASE,
-        QUOTE,
-        PERCENT
-    }
+  public enum SizeType
+  {
+    BASE,
+    QUOTE,
+    PERCENT
+  }
 }

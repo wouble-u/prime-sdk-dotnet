@@ -16,28 +16,28 @@
 
 namespace CoinbaseSdk.Prime.Financing
 {
-    using CoinbaseSdk.Prime.Model;
-    public class ListMarginConversionsResponse
+  using CoinbaseSdk.Prime.Model;
+  public class ListMarginConversionsResponse
+  {
+    public Conversion[] Conversions { get; set; } = [];
+
+    public class ListMarginConversionsResponseBuilder
     {
-        public Conversion[] Conversions { get; set; } = [];
+      private Conversion[] _conversions = [];
 
-        public class ListMarginConversionsResponseBuilder
+      public ListMarginConversionsResponseBuilder WithConversions(Conversion[] conversions)
+      {
+        _conversions = conversions;
+        return this;
+      }
+
+      public ListMarginConversionsResponse Build()
+      {
+        return new ListMarginConversionsResponse()
         {
-            private Conversion[] _conversions = [];
-
-            public ListMarginConversionsResponseBuilder WithConversions(Conversion[] conversions)
-            {
-                _conversions = conversions;
-                return this;
-            }
-
-            public ListMarginConversionsResponse Build()
-            {
-                return new ListMarginConversionsResponse()
-                {
-                    Conversions = _conversions
-                };
-            }
-        }
+          Conversions = _conversions
+        };
+      }
     }
+  }
 }

@@ -16,64 +16,64 @@
 
 namespace CoinbaseSdk.Prime.Balances
 {
-    using System.Text.Json.Serialization;
-    using CoinbaseSdk.Prime.Model;
+  using System.Text.Json.Serialization;
+  using CoinbaseSdk.Prime.Model;
 
-    public class ListPortfolioBalancesResponse
+  public class ListPortfolioBalancesResponse
+  {
+    public Balance[] Balances { get; set; } = [];
+
+    public BalanceType Type { get; set; }
+
+    [JsonPropertyName("trading_balances")]
+    public TotalBalance? TradingBalances { get; set; }
+
+    [JsonPropertyName("vault_balances")]
+    public TotalBalance? VaultBalances { get; set; }
+
+    public ListPortfolioBalancesResponse() { }
+
+    public class ListPortfolioBalancesResponseBuilder
     {
-        public Balance[] Balances { get; set; } = [];
+      private Balance[] _balances = Array.Empty<Balance>();
+      private BalanceType _type;
+      private TotalBalance? _tradingBalances;
+      private TotalBalance? _vaultBalances;
 
-        public BalanceType Type { get; set; }
+      public ListPortfolioBalancesResponseBuilder WithBalances(Balance[] balances)
+      {
+        this._balances = balances;
+        return this;
+      }
 
-        [JsonPropertyName("trading_balances")]
-        public TotalBalance? TradingBalances { get; set; }
+      public ListPortfolioBalancesResponseBuilder WithType(BalanceType type)
+      {
+        this._type = type;
+        return this;
+      }
 
-        [JsonPropertyName("vault_balances")]
-        public TotalBalance? VaultBalances { get; set; }
+      public ListPortfolioBalancesResponseBuilder WithTradingBalances(TotalBalance? tradingBalances)
+      {
+        this._tradingBalances = tradingBalances;
+        return this;
+      }
 
-        public ListPortfolioBalancesResponse() { }
+      public ListPortfolioBalancesResponseBuilder WithVaultBalances(TotalBalance? vaultBalances)
+      {
+        this._vaultBalances = vaultBalances;
+        return this;
+      }
 
-        public class ListPortfolioBalancesResponseBuilder
+      public ListPortfolioBalancesResponse Build()
+      {
+        return new ListPortfolioBalancesResponse
         {
-            private Balance[] _balances = Array.Empty<Balance>();
-            private BalanceType _type;
-            private TotalBalance? _tradingBalances;
-            private TotalBalance? _vaultBalances;
-
-            public ListPortfolioBalancesResponseBuilder WithBalances(Balance[] balances)
-            {
-                this._balances = balances;
-                return this;
-            }
-
-            public ListPortfolioBalancesResponseBuilder WithType(BalanceType type)
-            {
-                this._type = type;
-                return this;
-            }
-
-            public ListPortfolioBalancesResponseBuilder WithTradingBalances(TotalBalance? tradingBalances)
-            {
-                this._tradingBalances = tradingBalances;
-                return this;
-            }
-
-            public ListPortfolioBalancesResponseBuilder WithVaultBalances(TotalBalance? vaultBalances)
-            {
-                this._vaultBalances = vaultBalances;
-                return this;
-            }
-
-            public ListPortfolioBalancesResponse Build()
-            {
-                return new ListPortfolioBalancesResponse
-                {
-                    Balances = this._balances,
-                    Type = this._type,
-                    TradingBalances = this._tradingBalances,
-                    VaultBalances = this._vaultBalances
-                };
-            }
-        }
+          Balances = this._balances,
+          Type = this._type,
+          TradingBalances = this._tradingBalances,
+          VaultBalances = this._vaultBalances
+        };
+      }
     }
+  }
 }

@@ -16,8 +16,8 @@
 
 namespace CoinbaseSdk.Prime.Model
 {
-    public class OrdersMetadata
-    {
-        public OrdersMetadata() { }
-    }
+  public class OrdersMetadata
+  {
+    public OrdersMetadata() { }
+  }
 }

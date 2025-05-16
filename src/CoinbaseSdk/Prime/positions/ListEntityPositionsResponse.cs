@@ -16,42 +16,42 @@
 
 namespace CoinbaseSdk.Prime.Positions
 {
-    using CoinbaseSdk.Prime.Model;
-    public class ListEntityPositionsResponse
+  using CoinbaseSdk.Prime.Model;
+  public class ListEntityPositionsResponse
+  {
+    public Position[] Positions { get; set; } = [];
+
+    public Pagination? Pagination { get; set; }
+
+    public ListEntityPositionsResponse() { }
+
+    public class ListEntityPositionsResponseBuilder
     {
-        public Position[] Positions { get; set; } = [];
+      public Position[] Positions { get; set; } = [];
+      public Pagination? Pagination { get; set; }
 
-        public Pagination? Pagination { get; set; }
+      public ListEntityPositionsResponseBuilder() { }
 
-        public ListEntityPositionsResponse() { }
+      public ListEntityPositionsResponseBuilder WithPositions(Position[] positions)
+      {
+        Positions = positions;
+        return this;
+      }
 
-        public class ListEntityPositionsResponseBuilder
+      public ListEntityPositionsResponseBuilder WithPagination(Pagination? pagination)
+      {
+        Pagination = pagination;
+        return this;
+      }
+
+      public ListEntityPositionsResponse Build()
+      {
+        return new ListEntityPositionsResponse
         {
-            public Position[] Positions { get; set; } = [];
-            public Pagination? Pagination { get; set; }
-
-            public ListEntityPositionsResponseBuilder() { }
-
-            public ListEntityPositionsResponseBuilder WithPositions(Position[] positions)
-            {
-                Positions = positions;
-                return this;
-            }
-
-            public ListEntityPositionsResponseBuilder WithPagination(Pagination? pagination)
-            {
-                Pagination = pagination;
-                return this;
-            }
-
-            public ListEntityPositionsResponse Build()
-            {
-                return new ListEntityPositionsResponse
-                {
-                    Positions = Positions,
-                    Pagination = Pagination
-                };
-            }
-        }
+          Positions = Positions,
+          Pagination = Pagination
+        };
+      }
     }
+  }
 }

@@ -16,85 +16,85 @@
 
 namespace CoinbaseSdk.Prime.Users
 {
-    using System.Text.Json.Serialization;
-    using CoinbaseSdk.Core.Error;
-    using CoinbaseSdk.Prime.Model;
+  using System.Text.Json.Serialization;
+  using CoinbaseSdk.Core.Error;
+  using CoinbaseSdk.Prime.Model;
 
-    public class ListPortfolioUsersRequest(string portfolioId)
+  public class ListPortfolioUsersRequest(string portfolioId)
+  {
+    [JsonIgnore, JsonPropertyName("portfolio_id")]
+    public string PortfolioId { get; set; } = portfolioId;
+
+    public string? Cursor { get; set; }
+    [JsonPropertyName("sort_direction")]
+    public string? SortDirection { get; set; }
+    public int? Limit { get; set; }
+
+    public class ListPortfolioUsersRequestBuilder
     {
-        [JsonIgnore, JsonPropertyName("portfolio_id")]
-        public string PortfolioId { get; set; } = portfolioId;
+      private string? _portfolioId;
+      private string? _cursor;
+      private string? _sortDirection;
+      private int? _limit;
 
-        public string? Cursor { get; set; }
-        [JsonPropertyName("sort_direction")]
-        public string? SortDirection { get; set; }
-        public int? Limit { get; set; }
+      public ListPortfolioUsersRequestBuilder WithPortfolioId(string portfolioId)
+      {
+        this._portfolioId = portfolioId;
+        return this;
+      }
 
-        public class ListPortfolioUsersRequestBuilder
+      public ListPortfolioUsersRequestBuilder WithCursor(string? cursor)
+      {
+        this._cursor = cursor;
+        return this;
+      }
+
+      public ListPortfolioUsersRequestBuilder WithSortDirection(string? sortDirection)
+      {
+        this._sortDirection = sortDirection;
+        return this;
+      }
+
+      public ListPortfolioUsersRequestBuilder WithLimit(int? limit)
+      {
+        this._limit = limit;
+        return this;
+      }
+
+      public ListPortfolioUsersRequestBuilder WithPagination(Pagination pagination)
+      {
+        this._cursor = pagination.NextCursor;
+        this._sortDirection = pagination.SortDirection;
+        return this;
+      }
+
+      /// <summary>
+      /// Validates the builder.
+      /// </summary>
+      /// <exception cref="CoinbaseClientException">Thrown when the <see cref="_portfolioId"/> is null, empty or whitespace.</exception>
+      private void Validate()
+      {
+        if (string.IsNullOrWhiteSpace(this._portfolioId))
         {
-            private string? _portfolioId;
-            private string? _cursor;
-            private string? _sortDirection;
-            private int? _limit;
-
-            public ListPortfolioUsersRequestBuilder WithPortfolioId(string portfolioId)
-            {
-                this._portfolioId = portfolioId;
-                return this;
-            }
-
-            public ListPortfolioUsersRequestBuilder WithCursor(string? cursor)
-            {
-                this._cursor = cursor;
-                return this;
-            }
-
-            public ListPortfolioUsersRequestBuilder WithSortDirection(string? sortDirection)
-            {
-                this._sortDirection = sortDirection;
-                return this;
-            }
-
-            public ListPortfolioUsersRequestBuilder WithLimit(int? limit)
-            {
-                this._limit = limit;
-                return this;
-            }
-
-            public ListPortfolioUsersRequestBuilder WithPagination(Pagination pagination)
-            {
-                this._cursor = pagination.NextCursor;
-                this._sortDirection = pagination.SortDirection;
-                return this;
-            }
-
-            /// <summary>
-            /// Validates the builder.
-            /// </summary>
-            /// <exception cref="CoinbaseClientException">Thrown when the <see cref="_portfolioId"/> is null, empty or whitespace.</exception>
-            private void Validate()
-            {
-                if (string.IsNullOrWhiteSpace(this._portfolioId))
-                {
-                    throw new CoinbaseClientException("PortfolioId is required");
-                }
-            }
-
-            /// <summary>
-            /// Builds the <see cref="ListPortfolioUsersRequest"/> object.
-            /// </summary>
-            /// <returns>The <see cref="ListPortfolioUsersRequest"/> object.</returns>
-            /// <exception cref="CoinbaseClientException">Thrown when the required fields are not set.</exception>
-            public ListPortfolioUsersRequest Build()
-            {
-                this.Validate();
-                return new ListPortfolioUsersRequest(this._portfolioId!)
-                {
-                    Cursor = this._cursor,
-                    SortDirection = this._sortDirection,
-                    Limit = this._limit
-                };
-            }
+          throw new CoinbaseClientException("PortfolioId is required");
         }
+      }
+
+      /// <summary>
+      /// Builds the <see cref="ListPortfolioUsersRequest"/> object.
+      /// </summary>
+      /// <returns>The <see cref="ListPortfolioUsersRequest"/> object.</returns>
+      /// <exception cref="CoinbaseClientException">Thrown when the required fields are not set.</exception>
+      public ListPortfolioUsersRequest Build()
+      {
+        this.Validate();
+        return new ListPortfolioUsersRequest(this._portfolioId!)
+        {
+          Cursor = this._cursor,
+          SortDirection = this._sortDirection,
+          Limit = this._limit
+        };
+      }
     }
+  }
 }

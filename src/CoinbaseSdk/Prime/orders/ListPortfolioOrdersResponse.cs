@@ -16,40 +16,40 @@
 
 namespace CoinbaseSdk.Prime.Orders
 {
-    using CoinbaseSdk.Prime.Model;
+  using CoinbaseSdk.Prime.Model;
 
-    public class ListPortfolioOrdersResponse
+  public class ListPortfolioOrdersResponse
+  {
+    public Order[] Orders { get; set; } = [];
+    public Pagination? Pagination { get; set; }
+
+    public ListPortfolioOrdersResponse() { }
+
+    public class ListPortfolioOrdersResponseBuilder
     {
-        public Order[] Orders { get; set; } = [];
-        public Pagination? Pagination { get; set; }
+      private Order[] _orders = [];
+      private Pagination? _pagination;
 
-        public ListPortfolioOrdersResponse() { }
+      public ListPortfolioOrdersResponseBuilder WithOrders(Order[] orders)
+      {
+        this._orders = orders;
+        return this;
+      }
 
-        public class ListPortfolioOrdersResponseBuilder
+      public ListPortfolioOrdersResponseBuilder WithPagination(Pagination pagination)
+      {
+        this._pagination = pagination;
+        return this;
+      }
+
+      public ListPortfolioOrdersResponse Build()
+      {
+        return new ListPortfolioOrdersResponse
         {
-            private Order[] _orders = [];
-            private Pagination? _pagination;
-
-            public ListPortfolioOrdersResponseBuilder WithOrders(Order[] orders)
-            {
-                this._orders = orders;
-                return this;
-            }
-
-            public ListPortfolioOrdersResponseBuilder WithPagination(Pagination pagination)
-            {
-                this._pagination = pagination;
-                return this;
-            }
-
-            public ListPortfolioOrdersResponse Build()
-            {
-                return new ListPortfolioOrdersResponse
-                {
-                    Orders = this._orders,
-                    Pagination = this._pagination
-                };
-            }
-        }
+          Orders = this._orders,
+          Pagination = this._pagination
+        };
+      }
     }
+  }
 }

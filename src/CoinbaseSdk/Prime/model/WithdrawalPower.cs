@@ -16,41 +16,41 @@
 
 namespace CoinbaseSdk.Prime.Model
 {
-    public class WithdrawalPower
+  public class WithdrawalPower
+  {
+    public string? Symbol { get; set; }
+
+    public string? Amount { get; set; }
+
+    public WithdrawalPower() { }
+
+    public WithdrawalPower(string? symbol, string? amount)
     {
-        public string? Symbol { get; set; }
-
-        public string? Amount { get; set; }
-
-        public WithdrawalPower() { }
-
-        public WithdrawalPower(string? symbol, string? amount)
-        {
-            Symbol = symbol;
-            Amount = amount;
-        }
-
-        public class WithdrawalPowerBuilder
-        {
-            private string? _symbol;
-            private string? _amount;
-
-            public WithdrawalPowerBuilder WithSymbol(string? symbol)
-            {
-                _symbol = symbol;
-                return this;
-            }
-
-            public WithdrawalPowerBuilder WithAmount(string? amount)
-            {
-                _amount = amount;
-                return this;
-            }
-
-            public WithdrawalPower Build()
-            {
-                return new WithdrawalPower(_symbol, _amount);
-            }
-        }
+      Symbol = symbol;
+      Amount = amount;
     }
+
+    public class WithdrawalPowerBuilder
+    {
+      private string? _symbol;
+      private string? _amount;
+
+      public WithdrawalPowerBuilder WithSymbol(string? symbol)
+      {
+        _symbol = symbol;
+        return this;
+      }
+
+      public WithdrawalPowerBuilder WithAmount(string? amount)
+      {
+        _amount = amount;
+        return this;
+      }
+
+      public WithdrawalPower Build()
+      {
+        return new WithdrawalPower(_symbol, _amount);
+      }
+    }
+  }
 }

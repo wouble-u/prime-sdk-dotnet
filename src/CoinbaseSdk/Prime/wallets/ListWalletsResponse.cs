@@ -16,42 +16,42 @@
 
 namespace CoinbaseSdk.Prime.Wallets
 {
-    using CoinbaseSdk.Prime.Model;
+  using CoinbaseSdk.Prime.Model;
 
-    public class ListWalletsResponse
+  public class ListWalletsResponse
+  {
+    public Wallet[] Wallets { get; set; } = [];
+    public Pagination? Pagination { get; set; }
+
+    public ListWalletsResponse() { }
+
+    public class ListWalletsResponseBuilder
     {
-        public Wallet[] Wallets { get; set; } = [];
-        public Pagination? Pagination { get; set; }
+      private Wallet[] _wallets = [];
+      private Pagination? _pagination;
 
-        public ListWalletsResponse() { }
+      public ListWalletsResponseBuilder() { }
 
-        public class ListWalletsResponseBuilder
+      public ListWalletsResponseBuilder WithWallets(Wallet[] wallets)
+      {
+        this._wallets = wallets;
+        return this;
+      }
+
+      public ListWalletsResponseBuilder WithPagination(Pagination pagination)
+      {
+        this._pagination = pagination;
+        return this;
+      }
+
+      public ListWalletsResponse Build()
+      {
+        return new ListWalletsResponse
         {
-            private Wallet[] _wallets = [];
-            private Pagination? _pagination;
-
-            public ListWalletsResponseBuilder() { }
-
-            public ListWalletsResponseBuilder WithWallets(Wallet[] wallets)
-            {
-                this._wallets = wallets;
-                return this;
-            }
-
-            public ListWalletsResponseBuilder WithPagination(Pagination pagination)
-            {
-                this._pagination = pagination;
-                return this;
-            }
-
-            public ListWalletsResponse Build()
-            {
-                return new ListWalletsResponse
-                {
-                    Wallets = this._wallets,
-                    Pagination = this._pagination
-                };
-            }
-        }
+          Wallets = this._wallets,
+          Pagination = this._pagination
+        };
+      }
     }
+  }
 }

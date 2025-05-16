@@ -16,51 +16,51 @@
 
 namespace CoinbaseSdk.Prime.Model
 {
-    public class Locate
+  public class Locate
+  {
+    public string? Symbol { get; set; }
+
+    public string? Quantity { get; set; }
+
+    public string? Rate { get; set; }
+
+    public Locate()
     {
-        public string? Symbol { get; set; }
-
-        public string? Quantity { get; set; }
-
-        public string? Rate { get; set; }
-
-        public Locate()
-        {
-        }
-
-        public class LocateBuilder
-        {
-            private string? _symbol;
-            private string? _quantity;
-            private string? _rate;
-
-            public LocateBuilder WithSymbol(string symbol)
-            {
-                _symbol = symbol;
-                return this;
-            }
-
-            public LocateBuilder WithQuantity(string quantity)
-            {
-                _quantity = quantity;
-                return this;
-            }
-
-            public LocateBuilder WithRate(string rate)
-            {
-                _rate = rate;
-                return this;
-            }
-
-            public Locate Build()
-            {
-                return new Locate()
-                {
-                    Symbol = _symbol,
-                    Quantity = _quantity,
-                    Rate = _rate
-                };
-            }
-        }
     }
+
+    public class LocateBuilder
+    {
+      private string? _symbol;
+      private string? _quantity;
+      private string? _rate;
+
+      public LocateBuilder WithSymbol(string symbol)
+      {
+        _symbol = symbol;
+        return this;
+      }
+
+      public LocateBuilder WithQuantity(string quantity)
+      {
+        _quantity = quantity;
+        return this;
+      }
+
+      public LocateBuilder WithRate(string rate)
+      {
+        _rate = rate;
+        return this;
+      }
+
+      public Locate Build()
+      {
+        return new Locate()
+        {
+          Symbol = _symbol,
+          Quantity = _quantity,
+          Rate = _rate
+        };
+      }
+    }
+  }
 }

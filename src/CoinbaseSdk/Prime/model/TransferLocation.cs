@@ -16,36 +16,36 @@
 
 namespace CoinbaseSdk.Prime.Model
 {
-    public class TransferLocation
+  public class TransferLocation
+  {
+    public TransferLocationType Type { get; set; }
+    public string? Value { get; set; }
+
+    public TransferLocation() { }
+
+    public class TransferLocationBuilder
     {
-        public TransferLocationType Type { get; set; }
-        public string? Value { get; set; }
+      private TransferLocationType _type;
+      private string? _value;
 
-        public TransferLocation() { }
+      public TransferLocationBuilder() { }
 
-        public class TransferLocationBuilder
-        {
-            private TransferLocationType _type;
-            private string? _value;
+      public TransferLocationBuilder WithType(TransferLocationType type)
+      {
+        this._type = type;
+        return this;
+      }
 
-            public TransferLocationBuilder() { }
+      public TransferLocationBuilder WithValue(string value)
+      {
+        this._value = value;
+        return this;
+      }
 
-            public TransferLocationBuilder WithType(TransferLocationType type)
-            {
-                this._type = type;
-                return this;
-            }
-
-            public TransferLocationBuilder WithValue(string value)
-            {
-                this._value = value;
-                return this;
-            }
-
-            public TransferLocation Build()
-            {
-                return new TransferLocation { Type = this._type, Value = this._value };
-            }
-        }
+      public TransferLocation Build()
+      {
+        return new TransferLocation { Type = this._type, Value = this._value };
+      }
     }
+  }
 }

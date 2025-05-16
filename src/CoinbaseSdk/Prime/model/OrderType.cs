@@ -16,13 +16,13 @@
 
 namespace CoinbaseSdk.Prime.Model
 {
-    public enum OrderType
-    {
-        MARKET,
-        LIMIT,
-        TWAP,
-        BLOCK,
-        VWAP,
-        STOP_LIMIT
-    }
+  public enum OrderType
+  {
+    MARKET,
+    LIMIT,
+    TWAP,
+    BLOCK,
+    VWAP,
+    STOP_LIMIT
+  }
 }

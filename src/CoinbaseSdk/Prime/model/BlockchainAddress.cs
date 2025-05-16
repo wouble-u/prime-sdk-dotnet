@@ -16,41 +16,41 @@
 
 namespace CoinbaseSdk.Prime.Model
 {
-    using System.Text.Json.Serialization;
-    public class BlockchainAddress
+  using System.Text.Json.Serialization;
+  public class BlockchainAddress
+  {
+    public string? Address { get; set; }
+
+    [JsonPropertyName("account_identifier")]
+    public string? AccountIdentifier { get; set; }
+
+    public BlockchainAddress() { }
+
+    public class BlockchainAddressBuilder
     {
-        public string? Address { get; set; }
+      private string? _address;
+      private string? _accountIdentifier;
 
-        [JsonPropertyName("account_identifier")]
-        public string? AccountIdentifier { get; set; }
+      public BlockchainAddressBuilder WithAddress(string? address)
+      {
+        this._address = address;
+        return this;
+      }
 
-        public BlockchainAddress() { }
+      public BlockchainAddressBuilder WithAccountIdentifier(string? accountIdentifier)
+      {
+        this._accountIdentifier = accountIdentifier;
+        return this;
+      }
 
-        public class BlockchainAddressBuilder
+      public BlockchainAddress Build()
+      {
+        return new BlockchainAddress
         {
-            private string? _address;
-            private string? _accountIdentifier;
-
-            public BlockchainAddressBuilder WithAddress(string? address)
-            {
-                this._address = address;
-                return this;
-            }
-
-            public BlockchainAddressBuilder WithAccountIdentifier(string? accountIdentifier)
-            {
-                this._accountIdentifier = accountIdentifier;
-                return this;
-            }
-
-            public BlockchainAddress Build()
-            {
-                return new BlockchainAddress
-                {
-                    Address = this._address,
-                    AccountIdentifier = this._accountIdentifier
-                };
-            }
-        }
+          Address = this._address,
+          AccountIdentifier = this._accountIdentifier
+        };
+      }
     }
+  }
 }

@@ -16,42 +16,42 @@
 
 namespace CoinbaseSdk.Prime.Model
 {
-    using System.Text.Json.Serialization;
-    public class MarginInformation
+  using System.Text.Json.Serialization;
+  public class MarginInformation
+  {
+    [JsonPropertyName("margin_call_records")]
+    public MarginCallRecord[] MarginCallRecords { get; set; } = [];
+
+    [JsonPropertyName("margin_summary")]
+    public MarginSummary? MarginSummary { get; set; }
+
+    public MarginInformation() { }
+
+    public class MarginInformationBuilder
     {
-        [JsonPropertyName("margin_call_records")]
-        public MarginCallRecord[] MarginCallRecords { get; set; } = [];
+      private MarginCallRecord[] _marginCallRecords = [];
+      private MarginSummary? _marginSummary;
 
-        [JsonPropertyName("margin_summary")]
-        public MarginSummary? MarginSummary { get; set; }
+      public MarginInformationBuilder WithMarginCallRecords(MarginCallRecord[] marginCallRecords)
+      {
+        this._marginCallRecords = marginCallRecords;
+        return this;
+      }
 
-        public MarginInformation() { }
+      public MarginInformationBuilder WithMarginSummary(MarginSummary marginSummary)
+      {
+        this._marginSummary = marginSummary;
+        return this;
+      }
 
-        public class MarginInformationBuilder
+      public MarginInformation Build()
+      {
+        return new MarginInformation
         {
-            private MarginCallRecord[] _marginCallRecords = [];
-            private MarginSummary? _marginSummary;
-
-            public MarginInformationBuilder WithMarginCallRecords(MarginCallRecord[] marginCallRecords)
-            {
-                this._marginCallRecords = marginCallRecords;
-                return this;
-            }
-
-            public MarginInformationBuilder WithMarginSummary(MarginSummary marginSummary)
-            {
-                this._marginSummary = marginSummary;
-                return this;
-            }
-
-            public MarginInformation Build()
-            {
-                return new MarginInformation
-                {
-                    MarginCallRecords = this._marginCallRecords,
-                    MarginSummary = this._marginSummary
-                };
-            }
-        }
+          MarginCallRecords = this._marginCallRecords,
+          MarginSummary = this._marginSummary
+        };
+      }
     }
+  }
 }

@@ -16,75 +16,75 @@
 
 namespace CoinbaseSdk.Prime.Allocations
 {
-    using System.Text.Json.Serialization;
+  using System.Text.Json.Serialization;
 
-    public class CreateNetAllocationResponse
+  public class CreateNetAllocationResponse
+  {
+    public bool? Success { get; set; }
+
+    [JsonPropertyName("netting_id")]
+    public string? NettingId { get; set; }
+
+    [JsonPropertyName("buy_allocation_id")]
+    public string? BuyAllocationId { get; set; }
+
+    [JsonPropertyName("sell_allocation_id")]
+    public string? SellAllocationId { get; set; }
+
+    [JsonPropertyName("failure_reason")]
+    public string? FailureReason { get; set; }
+
+    public CreateNetAllocationResponse() { }
+
+    public class CreateNetAllocationResponseBuilder
     {
-        public bool? Success { get; set; }
+      private bool? _success;
+      private string? _nettingId;
+      private string? _buyAllocationId;
+      private string? _sellAllocationId;
+      private string? _failureReason;
 
-        [JsonPropertyName("netting_id")]
-        public string? NettingId { get; set; }
+      public CreateNetAllocationResponseBuilder WithSuccess(bool? success)
+      {
+        this._success = success;
+        return this;
+      }
 
-        [JsonPropertyName("buy_allocation_id")]
-        public string? BuyAllocationId { get; set; }
+      public CreateNetAllocationResponseBuilder WithNettingId(string? nettingId)
+      {
+        this._nettingId = nettingId;
+        return this;
+      }
 
-        [JsonPropertyName("sell_allocation_id")]
-        public string? SellAllocationId { get; set; }
+      public CreateNetAllocationResponseBuilder WithBuyAllocationId(string? buyAllocationId)
+      {
+        this._buyAllocationId = buyAllocationId;
+        return this;
+      }
 
-        [JsonPropertyName("failure_reason")]
-        public string? FailureReason { get; set; }
+      public CreateNetAllocationResponseBuilder WithSellAllocationId(string? sellAllocationId)
+      {
+        this._sellAllocationId = sellAllocationId;
+        return this;
+      }
 
-        public CreateNetAllocationResponse() { }
+      public CreateNetAllocationResponseBuilder WithFailureReason(string? failureReason)
+      {
+        this._failureReason = failureReason;
+        return this;
+      }
 
-        public class CreateNetAllocationResponseBuilder
+      public CreateNetAllocationResponse Build()
+      {
+        return new CreateNetAllocationResponse
         {
-            private bool? _success;
-            private string? _nettingId;
-            private string? _buyAllocationId;
-            private string? _sellAllocationId;
-            private string? _failureReason;
-
-            public CreateNetAllocationResponseBuilder WithSuccess(bool? success)
-            {
-                this._success = success;
-                return this;
-            }
-
-            public CreateNetAllocationResponseBuilder WithNettingId(string? nettingId)
-            {
-                this._nettingId = nettingId;
-                return this;
-            }
-
-            public CreateNetAllocationResponseBuilder WithBuyAllocationId(string? buyAllocationId)
-            {
-                this._buyAllocationId = buyAllocationId;
-                return this;
-            }
-
-            public CreateNetAllocationResponseBuilder WithSellAllocationId(string? sellAllocationId)
-            {
-                this._sellAllocationId = sellAllocationId;
-                return this;
-            }
-
-            public CreateNetAllocationResponseBuilder WithFailureReason(string? failureReason)
-            {
-                this._failureReason = failureReason;
-                return this;
-            }
-
-            public CreateNetAllocationResponse Build()
-            {
-                return new CreateNetAllocationResponse
-                {
-                    Success = this._success,
-                    NettingId = this._nettingId,
-                    BuyAllocationId = this._buyAllocationId,
-                    SellAllocationId = this._sellAllocationId,
-                    FailureReason = this._failureReason
-                };
-            }
-        }
+          Success = this._success,
+          NettingId = this._nettingId,
+          BuyAllocationId = this._buyAllocationId,
+          SellAllocationId = this._sellAllocationId,
+          FailureReason = this._failureReason
+        };
+      }
     }
+  }
 }

@@ -16,103 +16,103 @@
 
 namespace CoinbaseSdk.Prime.Transactions
 {
-    using System.Text.Json.Serialization;
-    using CoinbaseSdk.Core.Error;
+  using System.Text.Json.Serialization;
+  using CoinbaseSdk.Core.Error;
 
-    public class CreateTransferRequest(string portfolioId, string walletId)
+  public class CreateTransferRequest(string portfolioId, string walletId)
+  {
+    [JsonIgnore, JsonPropertyName("portfolio_id")]
+    public string PortfolioId { get; set; } = portfolioId;
+
+    [JsonIgnore, JsonPropertyName("wallet_id")]
+    public string WalletId { get; set; } = walletId;
+    public string? Amount { get; set; }
+    public string? Destination { get; set; }
+
+    [JsonPropertyName("idempotency_key")]
+    public string? IdempotencyKey { get; set; }
+
+    [JsonPropertyName("currency_symbol")]
+    public string? CurrencySymbol { get; set; }
+
+    public class CreateTransferRequestBuilder
     {
-        [JsonIgnore, JsonPropertyName("portfolio_id")]
-        public string PortfolioId { get; set; } = portfolioId;
+      private string? _portfolioId;
+      private string? _walletId;
+      private string? _amount;
+      private string? _destination;
+      private string? _idempotencyKey;
+      private string? _currencySymbol;
 
-        [JsonIgnore, JsonPropertyName("wallet_id")]
-        public string WalletId { get; set; } = walletId;
-        public string? Amount { get; set; }
-        public string? Destination { get; set; }
+      public CreateTransferRequestBuilder WithPortfolioId(string portfolioId)
+      {
+        this._portfolioId = portfolioId;
+        return this;
+      }
 
-        [JsonPropertyName("idempotency_key")]
-        public string? IdempotencyKey { get; set; }
+      public CreateTransferRequestBuilder WithWalletId(string walletId)
+      {
+        this._walletId = walletId;
+        return this;
+      }
 
-        [JsonPropertyName("currency_symbol")]
-        public string? CurrencySymbol { get; set; }
+      public CreateTransferRequestBuilder WithAmount(string amount)
+      {
+        this._amount = amount;
+        return this;
+      }
 
-        public class CreateTransferRequestBuilder
+      public CreateTransferRequestBuilder WithDestination(string destination)
+      {
+        this._destination = destination;
+        return this;
+      }
+
+      public CreateTransferRequestBuilder WithIdempotencyKey(string idempotencyKey)
+      {
+        this._idempotencyKey = idempotencyKey;
+        return this;
+      }
+
+      public CreateTransferRequestBuilder WithCurrencySymbol(string currencySymbol)
+      {
+        this._currencySymbol = currencySymbol;
+        return this;
+      }
+
+      /// <summary>
+      /// Validate the builder.
+      /// </summary>
+      /// <exception cref="CoinbaseClientException">Thrown when the
+      /// <see cref="_portfolioId"/> is null, empty or whitespace.</exception>
+      private void Validate()
+      {
+        if (string.IsNullOrWhiteSpace(this._portfolioId))
         {
-            private string? _portfolioId;
-            private string? _walletId;
-            private string? _amount;
-            private string? _destination;
-            private string? _idempotencyKey;
-            private string? _currencySymbol;
-
-            public CreateTransferRequestBuilder WithPortfolioId(string portfolioId)
-            {
-                this._portfolioId = portfolioId;
-                return this;
-            }
-
-            public CreateTransferRequestBuilder WithWalletId(string walletId)
-            {
-                this._walletId = walletId;
-                return this;
-            }
-
-            public CreateTransferRequestBuilder WithAmount(string amount)
-            {
-                this._amount = amount;
-                return this;
-            }
-
-            public CreateTransferRequestBuilder WithDestination(string destination)
-            {
-                this._destination = destination;
-                return this;
-            }
-
-            public CreateTransferRequestBuilder WithIdempotencyKey(string idempotencyKey)
-            {
-                this._idempotencyKey = idempotencyKey;
-                return this;
-            }
-
-            public CreateTransferRequestBuilder WithCurrencySymbol(string currencySymbol)
-            {
-                this._currencySymbol = currencySymbol;
-                return this;
-            }
-
-            /// <summary>
-            /// Validate the builder.
-            /// </summary>
-            /// <exception cref="CoinbaseClientException">Thrown when the
-            /// <see cref="_portfolioId"/> is null, empty or whitespace.</exception>
-            private void Validate()
-            {
-                if (string.IsNullOrWhiteSpace(this._portfolioId))
-                {
-                    throw new CoinbaseClientException("PortfolioId is required");
-                }
-                if (string.IsNullOrWhiteSpace(this._walletId))
-                {
-                    throw new CoinbaseClientException("WalletId is required");
-                }
-            }
-
-            /// <summary>
-            /// Build the <see cref="CreateTransferRequest"/> object.
-            /// </summary>
-            /// <returns>The <see cref="CreateTransferRequest"/> object.</returns>
-            /// <exception cref="CoinbaseClientException">Thrown when the required fields are not set.</exception>
-            public CreateTransferRequest Build()
-            {
-                this.Validate();
-                return new CreateTransferRequest(this._portfolioId!, this._walletId!)
-                {
-                    Amount = this._amount,
-                    Destination = this._destination,
-                    IdempotencyKey = this._idempotencyKey,
-                    CurrencySymbol = this._currencySymbol
-                };
-            }
+          throw new CoinbaseClientException("PortfolioId is required");
         }
+        if (string.IsNullOrWhiteSpace(this._walletId))
+        {
+          throw new CoinbaseClientException("WalletId is required");
+        }
+      }
+
+      /// <summary>
+      /// Build the <see cref="CreateTransferRequest"/> object.
+      /// </summary>
+      /// <returns>The <see cref="CreateTransferRequest"/> object.</returns>
+      /// <exception cref="CoinbaseClientException">Thrown when the required fields are not set.</exception>
+      public CreateTransferRequest Build()
+      {
+        this.Validate();
+        return new CreateTransferRequest(this._portfolioId!, this._walletId!)
+        {
+          Amount = this._amount,
+          Destination = this._destination,
+          IdempotencyKey = this._idempotencyKey,
+          CurrencySymbol = this._currencySymbol
+        };
+      }
     }
+  }
 }

@@ -16,11 +16,11 @@
 
 namespace CoinbaseSdk.Prime.Model
 {
-    public enum VisibilityStatus
-    {
-        UNKNOWN_VISIBILITY_STATUS,
-        VISIBLE,
-        HIDDEN,
-        SPAM
-    }
+  public enum VisibilityStatus
+  {
+    UNKNOWN_VISIBILITY_STATUS,
+    VISIBLE,
+    HIDDEN,
+    SPAM
+  }
 }

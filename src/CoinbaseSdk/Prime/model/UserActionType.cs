@@ -16,12 +16,12 @@
 
 namespace CoinbaseSdk.Prime.Model
 {
-    public enum UserActionType
-    {
-        OTHER_ACTION,
-        ACTION_APPROVE,
-        ACTION_REJECT,
-        ACTION_INITIATE,
-        ACTION_CANCEL
-    }
+  public enum UserActionType
+  {
+    OTHER_ACTION,
+    ACTION_APPROVE,
+    ACTION_REJECT,
+    ACTION_INITIATE,
+    ACTION_CANCEL
+  }
 }

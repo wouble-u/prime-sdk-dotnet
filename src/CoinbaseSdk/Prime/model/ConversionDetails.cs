@@ -16,96 +16,96 @@
 
 namespace CoinbaseSdk.Prime.Model
 {
-    using System.Text.Json.Serialization;
-    public class ConversionDetails
+  using System.Text.Json.Serialization;
+  public class ConversionDetails
+  {
+    public string? Symbol { get; set; }
+
+    [JsonPropertyName("tf_balance")]
+    public string? TfBalance { get; set; }
+
+    [JsonPropertyName("notional_tf_balance")]
+    public string? NotionalTfBalance { get; set; }
+
+    [JsonPropertyName("converted_balance")]
+    public string? ConvertedBalance { get; set; }
+
+    [JsonPropertyName("notional_converted_balance")]
+    public string? NotionalConvertedBalance { get; set; }
+
+    [JsonPropertyName("interest_rate")]
+    public string? InterestRate { get; set; }
+
+    [JsonPropertyName("conversion_rate")]
+    public string? ConversionRate { get; set; }
+
+    public ConversionDetails() { }
+
+    public class ConversionDetailsBuilder
     {
-        public string? Symbol { get; set; }
+      private string? _symbol;
+      private string? _tfBalance;
+      private string? _notionalTfBalance;
+      private string? _convertedBalance;
+      private string? _notionalConvertedBalance;
+      private string? _interestRate;
+      private string? _conversionRate;
 
-        [JsonPropertyName("tf_balance")]
-        public string? TfBalance { get; set; }
+      public ConversionDetailsBuilder WithSymbol(string symbol)
+      {
+        this._symbol = symbol;
+        return this;
+      }
 
-        [JsonPropertyName("notional_tf_balance")]
-        public string? NotionalTfBalance { get; set; }
+      public ConversionDetailsBuilder WithTfBalance(string tfBalance)
+      {
+        this._tfBalance = tfBalance;
+        return this;
+      }
 
-        [JsonPropertyName("converted_balance")]
-        public string? ConvertedBalance { get; set; }
+      public ConversionDetailsBuilder WithNotionalTfBalance(string notionalTfBalance)
+      {
+        this._notionalTfBalance = notionalTfBalance;
+        return this;
+      }
 
-        [JsonPropertyName("notional_converted_balance")]
-        public string? NotionalConvertedBalance { get; set; }
+      public ConversionDetailsBuilder WithConvertedBalance(string convertedBalance)
+      {
+        this._convertedBalance = convertedBalance;
+        return this;
+      }
 
-        [JsonPropertyName("interest_rate")]
-        public string? InterestRate { get; set; }
+      public ConversionDetailsBuilder WithNotionalConvertedBalance(string notionalConvertedBalance)
+      {
+        this._notionalConvertedBalance = notionalConvertedBalance;
+        return this;
+      }
 
-        [JsonPropertyName("conversion_rate")]
-        public string? ConversionRate { get; set; }
+      public ConversionDetailsBuilder WithInterestRate(string interestRate)
+      {
+        this._interestRate = interestRate;
+        return this;
+      }
 
-        public ConversionDetails() { }
+      public ConversionDetailsBuilder WithConversionRate(string conversionRate)
+      {
+        this._conversionRate = conversionRate;
+        return this;
+      }
 
-        public class ConversionDetailsBuilder
+      public ConversionDetails Build()
+      {
+        return new ConversionDetails
         {
-            private string? _symbol;
-            private string? _tfBalance;
-            private string? _notionalTfBalance;
-            private string? _convertedBalance;
-            private string? _notionalConvertedBalance;
-            private string? _interestRate;
-            private string? _conversionRate;
-
-            public ConversionDetailsBuilder WithSymbol(string symbol)
-            {
-                this._symbol = symbol;
-                return this;
-            }
-
-            public ConversionDetailsBuilder WithTfBalance(string tfBalance)
-            {
-                this._tfBalance = tfBalance;
-                return this;
-            }
-
-            public ConversionDetailsBuilder WithNotionalTfBalance(string notionalTfBalance)
-            {
-                this._notionalTfBalance = notionalTfBalance;
-                return this;
-            }
-
-            public ConversionDetailsBuilder WithConvertedBalance(string convertedBalance)
-            {
-                this._convertedBalance = convertedBalance;
-                return this;
-            }
-
-            public ConversionDetailsBuilder WithNotionalConvertedBalance(string notionalConvertedBalance)
-            {
-                this._notionalConvertedBalance = notionalConvertedBalance;
-                return this;
-            }
-
-            public ConversionDetailsBuilder WithInterestRate(string interestRate)
-            {
-                this._interestRate = interestRate;
-                return this;
-            }
-
-            public ConversionDetailsBuilder WithConversionRate(string conversionRate)
-            {
-                this._conversionRate = conversionRate;
-                return this;
-            }
-
-            public ConversionDetails Build()
-            {
-                return new ConversionDetails
-                {
-                    Symbol = this._symbol,
-                    TfBalance = this._tfBalance,
-                    NotionalTfBalance = this._notionalTfBalance,
-                    ConvertedBalance = this._convertedBalance,
-                    NotionalConvertedBalance = this._notionalConvertedBalance,
-                    InterestRate = this._interestRate,
-                    ConversionRate = this._conversionRate
-                };
-            }
-        }
+          Symbol = this._symbol,
+          TfBalance = this._tfBalance,
+          NotionalTfBalance = this._notionalTfBalance,
+          ConvertedBalance = this._convertedBalance,
+          NotionalConvertedBalance = this._notionalConvertedBalance,
+          InterestRate = this._interestRate,
+          ConversionRate = this._conversionRate
+        };
+      }
     }
+  }
 }

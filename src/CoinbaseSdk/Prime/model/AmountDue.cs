@@ -16,50 +16,50 @@
 
 namespace CoinbaseSdk.Prime.Model
 {
-    using System.Text.Json.Serialization;
-    public class AmountDue
+  using System.Text.Json.Serialization;
+  public class AmountDue
+  {
+    public string? Currency { get; set; }
+    public string? Amount { get; set; }
+
+    [JsonPropertyName("due_date")]
+    public DateTime? DueDate { get; set; }
+
+    public AmountDue() { }
+
+    public class PostTradeCreditAmountDueBuilder
     {
-        public string? Currency { get; set; }
-        public string? Amount { get; set; }
+      private string? _currency;
+      private string? _amount;
+      private DateTime? _dueDate;
 
-        [JsonPropertyName("due_date")]
-        public DateTime? DueDate { get; set; }
+      public PostTradeCreditAmountDueBuilder WithCurrency(string currency)
+      {
+        this._currency = currency;
+        return this;
+      }
 
-        public AmountDue() { }
+      public PostTradeCreditAmountDueBuilder WithAmount(string amount)
+      {
+        this._amount = amount;
+        return this;
+      }
 
-        public class PostTradeCreditAmountDueBuilder
+      public PostTradeCreditAmountDueBuilder WithDueDate(DateTime dueDate)
+      {
+        this._dueDate = dueDate;
+        return this;
+      }
+
+      public AmountDue Build()
+      {
+        return new AmountDue
         {
-            private string? _currency;
-            private string? _amount;
-            private DateTime? _dueDate;
-
-            public PostTradeCreditAmountDueBuilder WithCurrency(string currency)
-            {
-                this._currency = currency;
-                return this;
-            }
-
-            public PostTradeCreditAmountDueBuilder WithAmount(string amount)
-            {
-                this._amount = amount;
-                return this;
-            }
-
-            public PostTradeCreditAmountDueBuilder WithDueDate(DateTime dueDate)
-            {
-                this._dueDate = dueDate;
-                return this;
-            }
-
-            public AmountDue Build()
-            {
-                return new AmountDue
-                {
-                    Currency = this._currency,
-                    Amount = this._amount,
-                    DueDate = this._dueDate
-                };
-            }
-        }
+          Currency = this._currency,
+          Amount = this._amount,
+          DueDate = this._dueDate
+        };
+      }
     }
+  }
 }

@@ -16,28 +16,28 @@
 
 namespace CoinbaseSdk.Prime.Activities
 {
-    using CoinbaseSdk.Prime.Model;
-    public class GetActivityByActivityIdResponse
+  using CoinbaseSdk.Prime.Model;
+  public class GetActivityByActivityIdResponse
+  {
+    public Activity? Activity { get; set; }
+
+    public class GetActivityByActivityIdResponseBuilder
     {
-        public Activity? Activity { get; set; }
+      private Activity? _activity;
 
-        public class GetActivityByActivityIdResponseBuilder
+      public GetActivityByActivityIdResponseBuilder WithActivity(Activity activity)
+      {
+        _activity = activity;
+        return this;
+      }
+
+      public GetActivityByActivityIdResponse Build()
+      {
+        return new GetActivityByActivityIdResponse()
         {
-            private Activity? _activity;
-
-            public GetActivityByActivityIdResponseBuilder WithActivity(Activity activity)
-            {
-                _activity = activity;
-                return this;
-            }
-
-            public GetActivityByActivityIdResponse Build()
-            {
-                return new GetActivityByActivityIdResponse()
-                {
-                    Activity = _activity
-                };
-            }
-        }
+          Activity = _activity
+        };
+      }
     }
+  }
 }

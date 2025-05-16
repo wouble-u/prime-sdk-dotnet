@@ -1,31 +1,31 @@
 namespace CoinbaseSdk.Prime.Futures
 {
-    using System.Text.Json.Serialization;
-    public class GetPositionsRequest(string entityId)
+  using System.Text.Json.Serialization;
+  public class GetPositionsRequest(string entityId)
+  {
+    [JsonIgnore, JsonPropertyName("entity_id")]
+    public string EntityId { get; set; } = entityId;
+
+    [JsonPropertyName("product_id")]
+    public string? ProductId { get; set; }
+
+    public class GetPositionsRequestBuilder
     {
-        [JsonIgnore, JsonPropertyName("entity_id")]
-        public string EntityId { get; set; } = entityId;
+      private string? _productId;
 
-        [JsonPropertyName("product_id")]
-        public string? ProductId { get; set; }
+      public GetPositionsRequestBuilder WithProductId(string productId)
+      {
+        _productId = productId;
+        return this;
+      }
 
-        public class GetPositionsRequestBuilder
+      public GetPositionsRequest Build(string entityId)
+      {
+        return new GetPositionsRequest(entityId)
         {
-            private string? _productId;
-
-            public GetPositionsRequestBuilder WithProductId(string productId)
-            {
-                _productId = productId;
-                return this;
-            }
-
-            public GetPositionsRequest Build(string entityId)
-            {
-                return new GetPositionsRequest(entityId)
-                {
-                    ProductId = _productId,
-                };
-            }
-        }
+          ProductId = _productId,
+        };
+      }
     }
+  }
 }

@@ -16,147 +16,147 @@
 
 namespace CoinbaseSdk.Prime.Model
 {
-    using System.Text.Json.Serialization;
-    public class Balance
+  using System.Text.Json.Serialization;
+  public class Balance
+  {
+    public string? Symbol { get; set; }
+    public string? Amount { get; set; }
+    public string? Holds { get; set; }
+
+    [JsonPropertyName("bonded_amount")]
+    public string? BondedAmount { get; set; }
+
+    [JsonPropertyName("reserved_amount")]
+    public string? ReservedAmount { get; set; }
+
+    [JsonPropertyName("unbonding_amount")]
+    public string? UnbondingAmount { get; set; }
+
+    [JsonPropertyName("unvested_amount")]
+    public string? UnvestedAmount { get; set; }
+
+    [JsonPropertyName("pending_rewards_amount")]
+    public string? PendingRewardsAmount { get; set; }
+
+    [JsonPropertyName("past_rewards_amount")]
+    public string? PastRewardsAmount { get; set; }
+
+    [JsonPropertyName("bondable_amount")]
+    public string? BondableAmount { get; set; }
+
+    [JsonPropertyName("withdrawable_amount")]
+    public string? WithdrawableAmount { get; set; }
+
+    [JsonPropertyName("fiat_amount")]
+    public string? FiatAmount { get; set; }
+
+    public Balance() { }
+
+    public class BalanceBuilder
     {
-        public string? Symbol { get; set; }
-        public string? Amount { get; set; }
-        public string? Holds { get; set; }
+      private string? _symbol;
+      private string? _amount;
+      private string? _holds;
+      private string? _bondedAmount;
+      private string? _reservedAmount;
+      private string? _unbondingAmount;
+      private string? _unvestedAmount;
+      private string? _pendingRewardsAmount;
+      private string? _pastRewardsAmount;
+      private string? _bondableAmount;
+      private string? _withdrawableAmount;
+      private string? _fiatAmount;
 
-        [JsonPropertyName("bonded_amount")]
-        public string? BondedAmount { get; set; }
+      public BalanceBuilder WithSymbol(string? symbol)
+      {
+        this._symbol = symbol;
+        return this;
+      }
 
-        [JsonPropertyName("reserved_amount")]
-        public string? ReservedAmount { get; set; }
+      public BalanceBuilder WithAmount(string? amount)
+      {
+        this._amount = amount;
+        return this;
+      }
 
-        [JsonPropertyName("unbonding_amount")]
-        public string? UnbondingAmount { get; set; }
+      public BalanceBuilder WithHolds(string? holds)
+      {
+        this._holds = holds;
+        return this;
+      }
 
-        [JsonPropertyName("unvested_amount")]
-        public string? UnvestedAmount { get; set; }
+      public BalanceBuilder WithBondedAmount(string? bondedAmount)
+      {
+        this._bondedAmount = bondedAmount;
+        return this;
+      }
 
-        [JsonPropertyName("pending_rewards_amount")]
-        public string? PendingRewardsAmount { get; set; }
+      public BalanceBuilder WithReservedAmount(string? reservedAmount)
+      {
+        this._reservedAmount = reservedAmount;
+        return this;
+      }
 
-        [JsonPropertyName("past_rewards_amount")]
-        public string? PastRewardsAmount { get; set; }
+      public BalanceBuilder WithUnbondingAmount(string? unbondingAmount)
+      {
+        this._unbondingAmount = unbondingAmount;
+        return this;
+      }
 
-        [JsonPropertyName("bondable_amount")]
-        public string? BondableAmount { get; set; }
+      public BalanceBuilder WithUnvestedAmount(string? unvestedAmount)
+      {
+        this._unvestedAmount = unvestedAmount;
+        return this;
+      }
 
-        [JsonPropertyName("withdrawable_amount")]
-        public string? WithdrawableAmount { get; set; }
+      public BalanceBuilder WithPendingRewardsAmount(string? pendingRewardsAmount)
+      {
+        this._pendingRewardsAmount = pendingRewardsAmount;
+        return this;
+      }
 
-        [JsonPropertyName("fiat_amount")]
-        public string? FiatAmount { get; set; }
+      public BalanceBuilder WithPastRewardsAmount(string? pastRewardsAmount)
+      {
+        this._pastRewardsAmount = pastRewardsAmount;
+        return this;
+      }
 
-        public Balance() { }
+      public BalanceBuilder WithBondableAmount(string? bondableAmount)
+      {
+        this._bondableAmount = bondableAmount;
+        return this;
+      }
 
-        public class BalanceBuilder
+      public BalanceBuilder WithWithdrawableAmount(string? withdrawableAmount)
+      {
+        this._withdrawableAmount = withdrawableAmount;
+        return this;
+      }
+
+      public BalanceBuilder WithFiatAmount(string? fiatAmount)
+      {
+        this._fiatAmount = fiatAmount;
+        return this;
+      }
+
+      public Balance Build()
+      {
+        return new Balance
         {
-            private string? _symbol;
-            private string? _amount;
-            private string? _holds;
-            private string? _bondedAmount;
-            private string? _reservedAmount;
-            private string? _unbondingAmount;
-            private string? _unvestedAmount;
-            private string? _pendingRewardsAmount;
-            private string? _pastRewardsAmount;
-            private string? _bondableAmount;
-            private string? _withdrawableAmount;
-            private string? _fiatAmount;
-
-            public BalanceBuilder WithSymbol(string? symbol)
-            {
-                this._symbol = symbol;
-                return this;
-            }
-
-            public BalanceBuilder WithAmount(string? amount)
-            {
-                this._amount = amount;
-                return this;
-            }
-
-            public BalanceBuilder WithHolds(string? holds)
-            {
-                this._holds = holds;
-                return this;
-            }
-
-            public BalanceBuilder WithBondedAmount(string? bondedAmount)
-            {
-                this._bondedAmount = bondedAmount;
-                return this;
-            }
-
-            public BalanceBuilder WithReservedAmount(string? reservedAmount)
-            {
-                this._reservedAmount = reservedAmount;
-                return this;
-            }
-
-            public BalanceBuilder WithUnbondingAmount(string? unbondingAmount)
-            {
-                this._unbondingAmount = unbondingAmount;
-                return this;
-            }
-
-            public BalanceBuilder WithUnvestedAmount(string? unvestedAmount)
-            {
-                this._unvestedAmount = unvestedAmount;
-                return this;
-            }
-
-            public BalanceBuilder WithPendingRewardsAmount(string? pendingRewardsAmount)
-            {
-                this._pendingRewardsAmount = pendingRewardsAmount;
-                return this;
-            }
-
-            public BalanceBuilder WithPastRewardsAmount(string? pastRewardsAmount)
-            {
-                this._pastRewardsAmount = pastRewardsAmount;
-                return this;
-            }
-
-            public BalanceBuilder WithBondableAmount(string? bondableAmount)
-            {
-                this._bondableAmount = bondableAmount;
-                return this;
-            }
-
-            public BalanceBuilder WithWithdrawableAmount(string? withdrawableAmount)
-            {
-                this._withdrawableAmount = withdrawableAmount;
-                return this;
-            }
-
-            public BalanceBuilder WithFiatAmount(string? fiatAmount)
-            {
-                this._fiatAmount = fiatAmount;
-                return this;
-            }
-
-            public Balance Build()
-            {
-                return new Balance
-                {
-                    Symbol = this._symbol,
-                    Amount = this._amount,
-                    Holds = this._holds,
-                    BondedAmount = this._bondedAmount,
-                    ReservedAmount = this._reservedAmount,
-                    UnbondingAmount = this._unbondingAmount,
-                    UnvestedAmount = this._unvestedAmount,
-                    PendingRewardsAmount = this._pendingRewardsAmount,
-                    PastRewardsAmount = this._pastRewardsAmount,
-                    BondableAmount = this._bondableAmount,
-                    WithdrawableAmount = this._withdrawableAmount,
-                    FiatAmount = this._fiatAmount
-                };
-            }
-        }
+          Symbol = this._symbol,
+          Amount = this._amount,
+          Holds = this._holds,
+          BondedAmount = this._bondedAmount,
+          ReservedAmount = this._reservedAmount,
+          UnbondingAmount = this._unbondingAmount,
+          UnvestedAmount = this._unvestedAmount,
+          PendingRewardsAmount = this._pendingRewardsAmount,
+          PastRewardsAmount = this._pastRewardsAmount,
+          BondableAmount = this._bondableAmount,
+          WithdrawableAmount = this._withdrawableAmount,
+          FiatAmount = this._fiatAmount
+        };
+      }
     }
+  }
 }

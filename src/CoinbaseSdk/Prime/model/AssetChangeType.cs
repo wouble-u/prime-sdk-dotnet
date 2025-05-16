@@ -16,12 +16,12 @@
 
 namespace CoinbaseSdk.Prime.Model
 {
-    public enum AssetChangeType
-    {
-        BalanceTransfer,
-        BalanceApproval,
-        ItemTransfer,
-        ItemApproval,
-        ItemApprovalAll,
-    }
+  public enum AssetChangeType
+  {
+    BalanceTransfer,
+    BalanceApproval,
+    ItemTransfer,
+    ItemApproval,
+    ItemApprovalAll,
+  }
 }

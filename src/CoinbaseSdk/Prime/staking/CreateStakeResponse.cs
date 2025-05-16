@@ -16,54 +16,54 @@
 
 namespace CoinbaseSdk.Prime.Staking
 {
-    using System.Text.Json.Serialization;
+  using System.Text.Json.Serialization;
 
-    public class CreateStakeResponse
+  public class CreateStakeResponse
+  {
+    [JsonPropertyName("wallet_id")]
+    public string? WalletId { get; set; }
+
+    [JsonPropertyName("transaction_id")]
+    public string? TransactionId { get; set; }
+
+    [JsonPropertyName("activity_id")]
+    public string? ActivityId { get; set; }
+
+    public CreateStakeResponse() { }
+
+    public class CreateStakeResponseBuilder
     {
-        [JsonPropertyName("wallet_id")]
-        public string? WalletId { get; set; }
+      private string? _walletId;
+      private string? _transactionId;
+      private string? _activityId;
 
-        [JsonPropertyName("transaction_id")]
-        public string? TransactionId { get; set; }
+      public CreateStakeResponseBuilder WithWalletId(string? walletId)
+      {
+        this._walletId = walletId;
+        return this;
+      }
 
-        [JsonPropertyName("activity_id")]
-        public string? ActivityId { get; set; }
+      public CreateStakeResponseBuilder WithTransactionId(string? transactionId)
+      {
+        this._transactionId = transactionId;
+        return this;
+      }
 
-        public CreateStakeResponse() { }
+      public CreateStakeResponseBuilder WithActivityId(string? activityId)
+      {
+        this._activityId = activityId;
+        return this;
+      }
 
-        public class CreateStakeResponseBuilder
+      public CreateStakeResponse Build()
+      {
+        return new CreateStakeResponse
         {
-            private string? _walletId;
-            private string? _transactionId;
-            private string? _activityId;
-
-            public CreateStakeResponseBuilder WithWalletId(string? walletId)
-            {
-                this._walletId = walletId;
-                return this;
-            }
-
-            public CreateStakeResponseBuilder WithTransactionId(string? transactionId)
-            {
-                this._transactionId = transactionId;
-                return this;
-            }
-
-            public CreateStakeResponseBuilder WithActivityId(string? activityId)
-            {
-                this._activityId = activityId;
-                return this;
-            }
-
-            public CreateStakeResponse Build()
-            {
-                return new CreateStakeResponse
-                {
-                    WalletId = this._walletId,
-                    TransactionId = this._transactionId,
-                    ActivityId = this._activityId
-                };
-            }
-        }
+          WalletId = this._walletId,
+          TransactionId = this._transactionId,
+          ActivityId = this._activityId
+        };
+      }
     }
+  }
 }

@@ -16,61 +16,61 @@
 
 namespace CoinbaseSdk.Prime.Model
 {
-    using System.Text.Json.Serialization;
-    public class Position
+  using System.Text.Json.Serialization;
+  public class Position
+  {
+    public string? Symbol { get; set; }
+
+    public string? Long { get; set; }
+
+    public string? Short { get; set; }
+
+    [JsonPropertyName("position_reference")]
+    public PositionReference? PositionReference { get; set; }
+
+    public Position() { }
+
+    public class PositionBuilder
     {
-        public string? Symbol { get; set; }
+      private string? _symbol;
+      private string? _long;
+      private string? _short;
+      private PositionReference? _positionReference;
 
-        public string? Long { get; set; }
+      public PositionBuilder WithSymbol(string symbol)
+      {
+        this._symbol = symbol;
+        return this;
+      }
 
-        public string? Short { get; set; }
+      public PositionBuilder WithLong(string longPosition)
+      {
+        this._long = longPosition;
+        return this;
+      }
 
-        [JsonPropertyName("position_reference")]
-        public PositionReference? PositionReference { get; set; }
+      public PositionBuilder WithShort(string shortPosition)
+      {
+        this._short = shortPosition;
+        return this;
+      }
 
-        public Position() { }
+      public PositionBuilder WithPositionReference(PositionReference positionReference)
+      {
+        this._positionReference = positionReference;
+        return this;
+      }
 
-        public class PositionBuilder
+      public Position Build()
+      {
+        return new Position
         {
-            private string? _symbol;
-            private string? _long;
-            private string? _short;
-            private PositionReference? _positionReference;
-
-            public PositionBuilder WithSymbol(string symbol)
-            {
-                this._symbol = symbol;
-                return this;
-            }
-
-            public PositionBuilder WithLong(string longPosition)
-            {
-                this._long = longPosition;
-                return this;
-            }
-
-            public PositionBuilder WithShort(string shortPosition)
-            {
-                this._short = shortPosition;
-                return this;
-            }
-
-            public PositionBuilder WithPositionReference(PositionReference positionReference)
-            {
-                this._positionReference = positionReference;
-                return this;
-            }
-
-            public Position Build()
-            {
-                return new Position
-                {
-                    Symbol = this._symbol,
-                    Long = this._long,
-                    Short = this._short,
-                    PositionReference = this._positionReference
-                };
-            }
-        }
+          Symbol = this._symbol,
+          Long = this._long,
+          Short = this._short,
+          PositionReference = this._positionReference
+        };
+      }
     }
+  }
 }

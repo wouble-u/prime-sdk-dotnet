@@ -16,61 +16,61 @@
 
 namespace CoinbaseSdk.Prime.Activities
 {
-    using System.Text.Json.Serialization;
-    using CoinbaseSdk.Core.Error;
-    public class GetActivityByActivityIdRequest(string portfolioId, string activityId)
+  using System.Text.Json.Serialization;
+  using CoinbaseSdk.Core.Error;
+  public class GetActivityByActivityIdRequest(string portfolioId, string activityId)
+  {
+    [JsonIgnore, JsonPropertyName("portfolio_id")]
+    public string PortfolioId { get; set; } = portfolioId;
+
+    [JsonIgnore, JsonPropertyName("activity_id")]
+    public string ActivityId { get; set; } = activityId;
+
+    public class GetActivityByActivityIdRequestBuilder
     {
-        [JsonIgnore, JsonPropertyName("portfolio_id")]
-        public string PortfolioId { get; set; } = portfolioId;
+      private string? _portfolioId;
+      private string? _activityId;
 
-        [JsonIgnore, JsonPropertyName("activity_id")]
-        public string ActivityId { get; set; } = activityId;
+      public GetActivityByActivityIdRequestBuilder WithPortfolioId(string portfolioId)
+      {
+        _portfolioId = portfolioId;
+        return this;
+      }
 
-        public class GetActivityByActivityIdRequestBuilder
+      public GetActivityByActivityIdRequestBuilder WithActivityId(string activityId)
+      {
+        _activityId = activityId;
+        return this;
+      }
+
+      /// <summary>
+      /// Validates the input fields.
+      /// </summary>
+      /// <exception cref="CoinbaseClientException">
+      /// If <see cref="_portfolioId"/> or <see cref="_activityId"/> are null, empty, or whitespace.
+      /// </exception>
+      private void Validate()
+      {
+        if (string.IsNullOrWhiteSpace(_portfolioId))
         {
-            private string? _portfolioId;
-            private string? _activityId;
-
-            public GetActivityByActivityIdRequestBuilder WithPortfolioId(string portfolioId)
-            {
-                _portfolioId = portfolioId;
-                return this;
-            }
-
-            public GetActivityByActivityIdRequestBuilder WithActivityId(string activityId)
-            {
-                _activityId = activityId;
-                return this;
-            }
-
-            /// <summary>
-            /// Validates the input fields.
-            /// </summary>
-            /// <exception cref="CoinbaseClientException">
-            /// If <see cref="_portfolioId"/> or <see cref="_activityId"/> are null, empty, or whitespace.
-            /// </exception>
-            private void Validate()
-            {
-                if (string.IsNullOrWhiteSpace(_portfolioId))
-                {
-                    throw new CoinbaseClientException("PortfolioId is required");
-                }
-                if (string.IsNullOrWhiteSpace(_activityId))
-                {
-                    throw new CoinbaseClientException("ActivityId is required");
-                }
-            }
-
-            /// <summary>
-            /// Builds the <see cref="GetActivityByActivityIdRequest"/>.
-            /// </summary>
-            /// <returns>The new <see cref="GetActivityByActivityIdRequest"/>.</returns>
-            /// <exception cref="CoinbaseClientException"> If the required fields are not set.</exception>
-            public GetActivityByActivityIdRequest Build()
-            {
-                this.Validate();
-                return new GetActivityByActivityIdRequest(_portfolioId!, _activityId!);
-            }
+          throw new CoinbaseClientException("PortfolioId is required");
         }
+        if (string.IsNullOrWhiteSpace(_activityId))
+        {
+          throw new CoinbaseClientException("ActivityId is required");
+        }
+      }
+
+      /// <summary>
+      /// Builds the <see cref="GetActivityByActivityIdRequest"/>.
+      /// </summary>
+      /// <returns>The new <see cref="GetActivityByActivityIdRequest"/>.</returns>
+      /// <exception cref="CoinbaseClientException"> If the required fields are not set.</exception>
+      public GetActivityByActivityIdRequest Build()
+      {
+        this.Validate();
+        return new GetActivityByActivityIdRequest(_portfolioId!, _activityId!);
+      }
     }
+  }
 }

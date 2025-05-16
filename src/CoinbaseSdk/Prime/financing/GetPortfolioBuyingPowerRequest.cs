@@ -16,43 +16,43 @@
 
 namespace CoinbaseSdk.Prime.Financing
 {
-    using System.Text.Json.Serialization;
-    public class GetPortfolioBuyingPowerRequest(string portfolioId)
+  using System.Text.Json.Serialization;
+  public class GetPortfolioBuyingPowerRequest(string portfolioId)
+  {
+    [JsonIgnore, JsonPropertyName("portfolio_id")]
+    public string PortfolioId { get; set; } = portfolioId;
+
+    [JsonPropertyName("base_currency")]
+    public string? BaseCurrency { get; set; }
+
+    [JsonPropertyName("quote_currency")]
+    public string? QuoteCurrency { get; set; }
+
+    public class GetPortfolioBuyingPowerRequestBuilder
     {
-        [JsonIgnore, JsonPropertyName("portfolio_id")]
-        public string PortfolioId { get; set; } = portfolioId;
+      private string? _baseCurrency;
+      private string? _quoteCurrency;
 
-        [JsonPropertyName("base_currency")]
-        public string? BaseCurrency { get; set; }
+      public GetPortfolioBuyingPowerRequestBuilder WithBaseCurrency(string baseCurrency)
+      {
+        _baseCurrency = baseCurrency;
+        return this;
+      }
 
-        [JsonPropertyName("quote_currency")]
-        public string? QuoteCurrency { get; set; }
+      public GetPortfolioBuyingPowerRequestBuilder WithQuoteCurrency(string quoteCurrency)
+      {
+        _quoteCurrency = quoteCurrency;
+        return this;
+      }
 
-        public class GetPortfolioBuyingPowerRequestBuilder
+      public GetPortfolioBuyingPowerRequest Build(string portfolioId)
+      {
+        return new GetPortfolioBuyingPowerRequest(portfolioId)
         {
-            private string? _baseCurrency;
-            private string? _quoteCurrency;
-
-            public GetPortfolioBuyingPowerRequestBuilder WithBaseCurrency(string baseCurrency)
-            {
-                _baseCurrency = baseCurrency;
-                return this;
-            }
-
-            public GetPortfolioBuyingPowerRequestBuilder WithQuoteCurrency(string quoteCurrency)
-            {
-                _quoteCurrency = quoteCurrency;
-                return this;
-            }
-
-            public GetPortfolioBuyingPowerRequest Build(string portfolioId)
-            {
-                return new GetPortfolioBuyingPowerRequest(portfolioId)
-                {
-                    BaseCurrency = _baseCurrency,
-                    QuoteCurrency = _quoteCurrency
-                };
-            }
-        }
+          BaseCurrency = _baseCurrency,
+          QuoteCurrency = _quoteCurrency
+        };
+      }
     }
+  }
 }

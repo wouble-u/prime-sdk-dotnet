@@ -16,39 +16,39 @@
 
 namespace CoinbaseSdk.Prime.Model
 {
-    using System.Text.Json.Serialization;
+  using System.Text.Json.Serialization;
 
-    public class MarginAddOn
+  public class MarginAddOn
+  {
+    public string? Amount { get; set; }
+
+    [JsonPropertyName("add_on_type")]
+    public AddOnType? AddOnType { get; set; }
+
+    public MarginAddOn() { }
+
+    public class MarginAddOnBuilder
     {
-        public string? Amount { get; set; }
+      private string? _amount;
+      private AddOnType? _addOnType;
 
-        [JsonPropertyName("add_on_type")]
-        public AddOnType? AddOnType { get; set; }
+      public MarginAddOnBuilder WithAmount(string amount)
+      {
+        this._amount = amount;
+        return this;
+      }
 
-        public MarginAddOn() { }
+      public MarginAddOnBuilder WithAddOnType(AddOnType addOnType)
+      {
+        this._addOnType = addOnType;
+        return this;
+      }
 
-        public class MarginAddOnBuilder
-        {
-            private string? _amount;
-            private AddOnType? _addOnType;
-
-            public MarginAddOnBuilder WithAmount(string amount)
-            {
-                this._amount = amount;
-                return this;
-            }
-
-            public MarginAddOnBuilder WithAddOnType(AddOnType addOnType)
-            {
-                this._addOnType = addOnType;
-                return this;
-            }
-
-            public MarginAddOn Build()
-            {
-                return new MarginAddOn { Amount = this._amount, AddOnType = this._addOnType };
-            }
-        }
+      public MarginAddOn Build()
+      {
+        return new MarginAddOn { Amount = this._amount, AddOnType = this._addOnType };
+      }
     }
+  }
 }
 

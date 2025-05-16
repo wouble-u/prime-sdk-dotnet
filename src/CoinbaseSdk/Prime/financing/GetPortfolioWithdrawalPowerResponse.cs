@@ -17,30 +17,30 @@
 
 namespace CoinbaseSdk.Prime.Financing
 {
-    using CoinbaseSdk.Prime.Model;
-    public class GetPortfolioWithdrawalPowerResponse
+  using CoinbaseSdk.Prime.Model;
+  public class GetPortfolioWithdrawalPowerResponse
+  {
+    public WithdrawalPower? WithdrawalPower { get; set; }
+
+    public GetPortfolioWithdrawalPowerResponse() { }
+
+    public class GetPortfolioWithdrawalPowerResponseBuilder
     {
-        public WithdrawalPower? WithdrawalPower { get; set; }
+      private WithdrawalPower? withdrawalPower;
 
-        public GetPortfolioWithdrawalPowerResponse() { }
+      public GetPortfolioWithdrawalPowerResponseBuilder WithWithdrawalPower(WithdrawalPower? withdrawalPower)
+      {
+        this.withdrawalPower = withdrawalPower;
+        return this;
+      }
 
-        public class GetPortfolioWithdrawalPowerResponseBuilder
+      public GetPortfolioWithdrawalPowerResponse Build()
+      {
+        return new GetPortfolioWithdrawalPowerResponse
         {
-            private WithdrawalPower? withdrawalPower;
-
-            public GetPortfolioWithdrawalPowerResponseBuilder WithWithdrawalPower(WithdrawalPower? withdrawalPower)
-            {
-                this.withdrawalPower = withdrawalPower;
-                return this;
-            }
-
-            public GetPortfolioWithdrawalPowerResponse Build()
-            {
-                return new GetPortfolioWithdrawalPowerResponse
-                {
-                    WithdrawalPower = withdrawalPower
-                };
-            }
-        }
+          WithdrawalPower = withdrawalPower
+        };
+      }
     }
+  }
 }

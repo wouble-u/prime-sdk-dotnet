@@ -16,39 +16,39 @@
 
 namespace CoinbaseSdk.Prime.Model
 {
-    public class PositionReference
+  public class PositionReference
+  {
+    public string? Id { get; set; }
+
+    public PositionReferenceType? Type { get; set; }
+
+    public PositionReference() { }
+
+    public class PositionReferenceBuilder
     {
-        public string? Id { get; set; }
+      private string? _id;
+      private PositionReferenceType? _type;
 
-        public PositionReferenceType? Type { get; set; }
+      public PositionReferenceBuilder WithId(string id)
+      {
+        this._id = id;
+        return this;
+      }
 
-        public PositionReference() { }
+      public PositionReferenceBuilder WithType(PositionReferenceType type)
+      {
+        this._type = type;
+        return this;
+      }
 
-        public class PositionReferenceBuilder
+      public PositionReference Build()
+      {
+        return new PositionReference
         {
-            private string? _id;
-            private PositionReferenceType? _type;
-
-            public PositionReferenceBuilder WithId(string id)
-            {
-                this._id = id;
-                return this;
-            }
-
-            public PositionReferenceBuilder WithType(PositionReferenceType type)
-            {
-                this._type = type;
-                return this;
-            }
-
-            public PositionReference Build()
-            {
-                return new PositionReference
-                {
-                    Id = this._id,
-                    Type = this._type
-                };
-            }
-        }
+          Id = this._id,
+          Type = this._type
+        };
+      }
     }
+  }
 }

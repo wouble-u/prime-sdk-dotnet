@@ -16,105 +16,105 @@
 
 namespace CoinbaseSdk.Prime.AddressBook
 {
-    using System.Text.Json.Serialization;
-    using CoinbaseSdk.Core.Error;
-    using CoinbaseSdk.Prime.Model;
+  using System.Text.Json.Serialization;
+  using CoinbaseSdk.Core.Error;
+  using CoinbaseSdk.Prime.Model;
 
-    public class GetPortfolioAddressBookRequest(string portfolioId)
+  public class GetPortfolioAddressBookRequest(string portfolioId)
+  {
+    [JsonIgnore, JsonPropertyName("portfolio_id")]
+    public string PortfolioId { get; set; } = portfolioId;
+
+    [JsonPropertyName("currency_symbol")]
+    public string? CurrencySymbol { get; set; }
+    public string? Search { get; set; }
+    public string? Cursor { get; set; }
+    [JsonPropertyName("sort_direction")]
+    public string? SortDirection { get; set; }
+    public int? Limit { get; set; }
+
+    public class GetPortfolioAddressBookRequestBuilder
     {
-        [JsonIgnore, JsonPropertyName("portfolio_id")]
-        public string PortfolioId { get; set; } = portfolioId;
+      private string? _portfolioId;
+      private string? _currencySymbol;
+      private string? _search;
+      private string? _cursor;
+      private string? _sortDirection;
+      private int? _limit;
 
-        [JsonPropertyName("currency_symbol")]
-        public string? CurrencySymbol { get; set; }
-        public string? Search { get; set; }
-        public string? Cursor { get; set; }
-        [JsonPropertyName("sort_direction")]
-        public string? SortDirection { get; set; }
-        public int? Limit { get; set; }
+      public GetPortfolioAddressBookRequestBuilder WithPortfolioId(string portfolioId)
+      {
+        this._portfolioId = portfolioId;
+        return this;
+      }
 
-        public class GetPortfolioAddressBookRequestBuilder
+      public GetPortfolioAddressBookRequestBuilder WithCurrencySymbol(string? currencySymbol)
+      {
+        this._currencySymbol = currencySymbol;
+        return this;
+      }
+
+      public GetPortfolioAddressBookRequestBuilder WithSearch(string? search)
+      {
+        this._search = search;
+        return this;
+      }
+
+      public GetPortfolioAddressBookRequestBuilder WithCursor(string? cursor)
+      {
+        this._cursor = cursor;
+        return this;
+      }
+
+      public GetPortfolioAddressBookRequestBuilder WithSortDirection(string? sortDirection)
+      {
+        this._sortDirection = sortDirection;
+        return this;
+      }
+
+      public GetPortfolioAddressBookRequestBuilder WithLimit(int? limit)
+      {
+        this._limit = limit;
+        return this;
+      }
+
+      public GetPortfolioAddressBookRequestBuilder WithPagination(Pagination pagination)
+      {
+        this._cursor = pagination.NextCursor;
+        this._sortDirection = pagination.SortDirection;
+        return this;
+      }
+
+      /// <summary>
+      /// Validate the builder.
+      /// </summary>
+      /// <exception cref="CoinbaseClientException">Thrown when the
+      /// <see cref="_portfolioId"/> is null, empty or whitespace.</exception>
+      private void Validate()
+      {
+        if (string.IsNullOrWhiteSpace(_portfolioId))
         {
-            private string? _portfolioId;
-            private string? _currencySymbol;
-            private string? _search;
-            private string? _cursor;
-            private string? _sortDirection;
-            private int? _limit;
-
-            public GetPortfolioAddressBookRequestBuilder WithPortfolioId(string portfolioId)
-            {
-                this._portfolioId = portfolioId;
-                return this;
-            }
-
-            public GetPortfolioAddressBookRequestBuilder WithCurrencySymbol(string? currencySymbol)
-            {
-                this._currencySymbol = currencySymbol;
-                return this;
-            }
-
-            public GetPortfolioAddressBookRequestBuilder WithSearch(string? search)
-            {
-                this._search = search;
-                return this;
-            }
-
-            public GetPortfolioAddressBookRequestBuilder WithCursor(string? cursor)
-            {
-                this._cursor = cursor;
-                return this;
-            }
-
-            public GetPortfolioAddressBookRequestBuilder WithSortDirection(string? sortDirection)
-            {
-                this._sortDirection = sortDirection;
-                return this;
-            }
-
-            public GetPortfolioAddressBookRequestBuilder WithLimit(int? limit)
-            {
-                this._limit = limit;
-                return this;
-            }
-
-            public GetPortfolioAddressBookRequestBuilder WithPagination(Pagination pagination)
-            {
-                this._cursor = pagination.NextCursor;
-                this._sortDirection = pagination.SortDirection;
-                return this;
-            }
-
-            /// <summary>
-            /// Validate the builder.
-            /// </summary>
-            /// <exception cref="CoinbaseClientException">Thrown when the
-            /// <see cref="_portfolioId"/> is null, empty or whitespace.</exception>
-            private void Validate()
-            {
-                if (string.IsNullOrWhiteSpace(_portfolioId))
-                {
-                    throw new CoinbaseClientException("PortfolioId is required");
-                }
-            }
-
-            /// <summary>
-            /// Build the <see cref="GetPortfolioAddressBookRequest"/>.
-            /// </summary>
-            /// <returns>The <see cref="GetPortfolioAddressBookRequest"/>.</returns>
-            /// <exception cref="CoinbaseClientException">Thrown when the required fields are not set.</exception>
-            public GetPortfolioAddressBookRequest Build()
-            {
-                this.Validate();
-                return new GetPortfolioAddressBookRequest(_portfolioId!)
-                {
-                    CurrencySymbol = this._currencySymbol,
-                    Search = this._search,
-                    Cursor = this._cursor,
-                    SortDirection = this._sortDirection,
-                    Limit = this._limit
-                };
-            }
+          throw new CoinbaseClientException("PortfolioId is required");
         }
+      }
+
+      /// <summary>
+      /// Build the <see cref="GetPortfolioAddressBookRequest"/>.
+      /// </summary>
+      /// <returns>The <see cref="GetPortfolioAddressBookRequest"/>.</returns>
+      /// <exception cref="CoinbaseClientException">Thrown when the required fields are not set.</exception>
+      public GetPortfolioAddressBookRequest Build()
+      {
+        this.Validate();
+        return new GetPortfolioAddressBookRequest(_portfolioId!)
+        {
+          CurrencySymbol = this._currencySymbol,
+          Search = this._search,
+          Cursor = this._cursor,
+          SortDirection = this._sortDirection,
+          Limit = this._limit
+        };
+      }
     }
+  }
 }

@@ -16,43 +16,43 @@
 
 namespace CoinbaseSdk.Prime.Financing
 {
-    using System.Text.Json.Serialization;
-    public class ListMarginCallSummariesRequest(string entityId)
+  using System.Text.Json.Serialization;
+  public class ListMarginCallSummariesRequest(string entityId)
+  {
+    [JsonIgnore, JsonPropertyName("entity_id")]
+    public string EntityId { get; set; } = entityId;
+
+    [JsonPropertyName("start_date")]
+    public string? StartDate { get; set; }
+
+    [JsonPropertyName("end_date")]
+    public string? EndDate { get; set; }
+
+    public class ListMarginCallSummariesRequestBuilder
     {
-        [JsonIgnore, JsonPropertyName("entity_id")]
-        public string EntityId { get; set; } = entityId;
+      private string? _startDate;
+      private string? _endDate;
 
-        [JsonPropertyName("start_date")]
-        public string? StartDate { get; set; }
+      public ListMarginCallSummariesRequestBuilder WithStartDate(string startDate)
+      {
+        _startDate = startDate;
+        return this;
+      }
 
-        [JsonPropertyName("end_date")]
-        public string? EndDate { get; set; }
+      public ListMarginCallSummariesRequestBuilder WithEndDate(string endDate)
+      {
+        _endDate = endDate;
+        return this;
+      }
 
-        public class ListMarginCallSummariesRequestBuilder
+      public ListMarginCallSummariesRequest Build(string entityId)
+      {
+        return new ListMarginCallSummariesRequest(entityId)
         {
-            private string? _startDate;
-            private string? _endDate;
-
-            public ListMarginCallSummariesRequestBuilder WithStartDate(string startDate)
-            {
-                _startDate = startDate;
-                return this;
-            }
-
-            public ListMarginCallSummariesRequestBuilder WithEndDate(string endDate)
-            {
-                _endDate = endDate;
-                return this;
-            }
-
-            public ListMarginCallSummariesRequest Build(string entityId)
-            {
-                return new ListMarginCallSummariesRequest(entityId)
-                {
-                    StartDate = _startDate,
-                    EndDate = _endDate
-                };
-            }
-        }
+          StartDate = _startDate,
+          EndDate = _endDate
+        };
+      }
     }
+  }
 }

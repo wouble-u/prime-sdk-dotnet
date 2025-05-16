@@ -16,32 +16,32 @@
 
 namespace CoinbaseSdk.Prime.Financing
 {
-    using System.Text.Json.Serialization;
-    using CoinbaseSdk.Prime.Model;
-    public class GetPortfolioBuyingPowerResponse
+  using System.Text.Json.Serialization;
+  using CoinbaseSdk.Prime.Model;
+  public class GetPortfolioBuyingPowerResponse
+  {
+    [JsonPropertyName("buying_power")]
+    public BuyingPower? BuyingPower { get; set; }
+
+    public GetPortfolioBuyingPowerResponse() { }
+
+    public class GetPortfolioBuyingPowerResponseBuilder
     {
-        [JsonPropertyName("buying_power")]
-        public BuyingPower? BuyingPower { get; set; }
+      private BuyingPower? _buyingPower;
 
-        public GetPortfolioBuyingPowerResponse() { }
+      public GetPortfolioBuyingPowerResponseBuilder WithBuyingPower(BuyingPower? buyingPower)
+      {
+        _buyingPower = buyingPower;
+        return this;
+      }
 
-        public class GetPortfolioBuyingPowerResponseBuilder
+      public GetPortfolioBuyingPowerResponse Build()
+      {
+        return new GetPortfolioBuyingPowerResponse
         {
-            private BuyingPower? _buyingPower;
-
-            public GetPortfolioBuyingPowerResponseBuilder WithBuyingPower(BuyingPower? buyingPower)
-            {
-                _buyingPower = buyingPower;
-                return this;
-            }
-
-            public GetPortfolioBuyingPowerResponse Build()
-            {
-                return new GetPortfolioBuyingPowerResponse
-                {
-                    BuyingPower = _buyingPower
-                };
-            }
-        }
+          BuyingPower = _buyingPower
+        };
+      }
     }
+  }
 }

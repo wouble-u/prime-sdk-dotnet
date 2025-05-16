@@ -16,13 +16,13 @@
 
 namespace CoinbaseSdk.Prime.Model
 {
-    public enum OrderStatus
-    {
-        OPEN,
-        FILLED,
-        CANCELLED,
-        EXPIRED,
-        FAILED,
-        PENDING
-    }
+  public enum OrderStatus
+  {
+    OPEN,
+    FILLED,
+    CANCELLED,
+    EXPIRED,
+    FAILED,
+    PENDING
+  }
 }

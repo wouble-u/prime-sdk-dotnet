@@ -1,26 +1,26 @@
 namespace CoinbaseSdk.Prime.Futures
 {
-    using System.Text.Json.Serialization;
+  using System.Text.Json.Serialization;
 
-    public class GetFcmBalanceRequest(string entityId)
+  public class GetFcmBalanceRequest(string entityId)
+  {
+    [JsonIgnore, JsonPropertyName("entity_id")]
+    public string EntityId { get; set; } = entityId;
+
+    public class GetEntityFcmBalanceRequestBuilder
     {
-        [JsonIgnore, JsonPropertyName("entity_id")]
-        public string EntityId { get; set; } = entityId;
+      private string _entityId = string.Empty;
 
-        public class GetEntityFcmBalanceRequestBuilder
-        {
-            private string _entityId = string.Empty;
+      public GetEntityFcmBalanceRequestBuilder WithEntityId(string entityId)
+      {
+        this._entityId = entityId;
+        return this;
+      }
 
-            public GetEntityFcmBalanceRequestBuilder WithEntityId(string entityId)
-            {
-                this._entityId = entityId;
-                return this;
-            }
-
-            public GetFcmBalanceRequest Build()
-            {
-                return new GetFcmBalanceRequest(_entityId);
-            }
-        }
+      public GetFcmBalanceRequest Build()
+      {
+        return new GetFcmBalanceRequest(_entityId);
+      }
     }
+  }
 }

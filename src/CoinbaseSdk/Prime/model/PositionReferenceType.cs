@@ -16,10 +16,10 @@
 
 namespace CoinbaseSdk.Prime.Model
 {
-    public enum PositionReferenceType
-    {
-        POSITION_REFERENCE_TYPE_UNSPECIFIED,
-        ENTITY,
-        PORTFOLIO
-    }
+  public enum PositionReferenceType
+  {
+    POSITION_REFERENCE_TYPE_UNSPECIFIED,
+    ENTITY,
+    PORTFOLIO
+  }
 }

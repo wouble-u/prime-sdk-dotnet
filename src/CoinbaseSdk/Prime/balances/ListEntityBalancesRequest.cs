@@ -16,83 +16,83 @@
 
 namespace CoinbaseSdk.Prime.Balances
 {
-    using System.Text.Json.Serialization;
-    using CoinbaseSdk.Prime.Model;
+  using System.Text.Json.Serialization;
+  using CoinbaseSdk.Prime.Model;
 
-    public class ListEntityBalancesRequest(string entityId)
+  public class ListEntityBalancesRequest(string entityId)
+  {
+    [JsonIgnore]
+    public string EntityId { get; set; } = entityId;
+
+    public string? Symbol { get; set; }
+
+    public string? Cursor { get; set; }
+
+    [JsonPropertyName("sort_direction")]
+    public string? SortDirection { get; set; }
+
+    public int? Limit { get; set; }
+
+    [JsonPropertyName("aggregation_type")]
+    public BalanceType? AggregationType { get; set; }
+
+    public class ListEntityBalancesRequestBuilder(string entityId)
     {
-        [JsonIgnore]
-        public string EntityId { get; set; } = entityId;
+      private string _entityId = entityId;
+      private string? _symbol;
+      private string? _cursor;
+      private string? _sortDirection;
+      private int? _limit;
+      private BalanceType? _aggregationType;
 
-        public string? Symbol { get; set; }
+      public ListEntityBalancesRequestBuilder WithSymbol(string? symbol)
+      {
+        this._symbol = symbol;
+        return this;
+      }
 
-        public string? Cursor { get; set; }
+      public ListEntityBalancesRequestBuilder WithCursor(string? cursor)
+      {
+        this._cursor = cursor;
+        return this;
+      }
 
-        [JsonPropertyName("sort_direction")]
-        public string? SortDirection { get; set; }
+      public ListEntityBalancesRequestBuilder WithSortDirection(string? sortDirection)
+      {
+        this._sortDirection = sortDirection;
+        return this;
+      }
 
-        public int? Limit { get; set; }
+      public ListEntityBalancesRequestBuilder WithLimit(int? limit)
+      {
+        this._limit = limit;
+        return this;
+      }
 
-        [JsonPropertyName("aggregation_type")]
-        public BalanceType? AggregationType { get; set; }
+      public ListEntityBalancesRequestBuilder WithAggregationType(BalanceType? aggregationType)
+      {
+        this._aggregationType = aggregationType;
+        return this;
+      }
 
-        public class ListEntityBalancesRequestBuilder(string entityId)
+      public ListEntityBalancesRequestBuilder WithPagination(Pagination pagination)
+      {
+        this._cursor = pagination.NextCursor;
+        this._sortDirection = pagination.SortDirection;
+        return this;
+      }
+
+      public ListEntityBalancesRequest Build()
+      {
+        return new ListEntityBalancesRequest(this._entityId)
         {
-            private string _entityId = entityId;
-            private string? _symbol;
-            private string? _cursor;
-            private string? _sortDirection;
-            private int? _limit;
-            private BalanceType? _aggregationType;
-
-            public ListEntityBalancesRequestBuilder WithSymbol(string? symbol)
-            {
-                this._symbol = symbol;
-                return this;
-            }
-
-            public ListEntityBalancesRequestBuilder WithCursor(string? cursor)
-            {
-                this._cursor = cursor;
-                return this;
-            }
-
-            public ListEntityBalancesRequestBuilder WithSortDirection(string? sortDirection)
-            {
-                this._sortDirection = sortDirection;
-                return this;
-            }
-
-            public ListEntityBalancesRequestBuilder WithLimit(int? limit)
-            {
-                this._limit = limit;
-                return this;
-            }
-
-            public ListEntityBalancesRequestBuilder WithAggregationType(BalanceType? aggregationType)
-            {
-                this._aggregationType = aggregationType;
-                return this;
-            }
-
-            public ListEntityBalancesRequestBuilder WithPagination(Pagination pagination)
-            {
-                this._cursor = pagination.NextCursor;
-                this._sortDirection = pagination.SortDirection;
-                return this;
-            }
-
-            public ListEntityBalancesRequest Build()
-            {
-                return new ListEntityBalancesRequest(this._entityId)
-                {
-                    Symbol = this._symbol,
-                    Cursor = this._cursor,
-                    SortDirection = this._sortDirection,
-                    Limit = this._limit,
-                    AggregationType = this._aggregationType
-                };
-            }
-        }
+          Symbol = this._symbol,
+          Cursor = this._cursor,
+          SortDirection = this._sortDirection,
+          Limit = this._limit,
+          AggregationType = this._aggregationType
+        };
+      }
     }
+  }
 }

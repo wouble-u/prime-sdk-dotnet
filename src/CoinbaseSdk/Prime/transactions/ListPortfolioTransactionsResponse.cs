@@ -16,46 +16,46 @@
 
 namespace CoinbaseSdk.Prime.Transactions
 {
-    using System.Text.Json.Serialization;
-    using CoinbaseSdk.Prime.Model;
+  using System.Text.Json.Serialization;
+  using CoinbaseSdk.Prime.Model;
 
-    public class ListPortfolioTransactionsResponse
+  public class ListPortfolioTransactionsResponse
+  {
+    [JsonPropertyName("transactions")]
+    public Transaction[] Transactions { get; set; } = [];
+
+    [JsonPropertyName("pagination")]
+    public Pagination? Pagination { get; set; }
+
+    public ListPortfolioTransactionsResponse() { }
+
+    public class ListPortfolioTransactionsResponseBuilder
     {
-        [JsonPropertyName("transactions")]
-        public Transaction[] Transactions { get; set; } = [];
+      private Transaction[] _transactions = [];
+      private Pagination? _pagination;
 
-        [JsonPropertyName("pagination")]
-        public Pagination? Pagination { get; set; }
+      public ListPortfolioTransactionsResponseBuilder() { }
 
-        public ListPortfolioTransactionsResponse() { }
+      public ListPortfolioTransactionsResponseBuilder WithTransactions(Transaction[] transactions)
+      {
+        this._transactions = transactions;
+        return this;
+      }
 
-        public class ListPortfolioTransactionsResponseBuilder
+      public ListPortfolioTransactionsResponseBuilder WithPagination(Pagination? pagination)
+      {
+        this._pagination = pagination;
+        return this;
+      }
+
+      public ListPortfolioTransactionsResponse Build()
+      {
+        return new ListPortfolioTransactionsResponse
         {
-            private Transaction[] _transactions = [];
-            private Pagination? _pagination;
-
-            public ListPortfolioTransactionsResponseBuilder() { }
-
-            public ListPortfolioTransactionsResponseBuilder WithTransactions(Transaction[] transactions)
-            {
-                this._transactions = transactions;
-                return this;
-            }
-
-            public ListPortfolioTransactionsResponseBuilder WithPagination(Pagination? pagination)
-            {
-                this._pagination = pagination;
-                return this;
-            }
-
-            public ListPortfolioTransactionsResponse Build()
-            {
-                return new ListPortfolioTransactionsResponse
-                {
-                    Transactions = this._transactions,
-                    Pagination = this._pagination
-                };
-            }
-        }
+          Transactions = this._transactions,
+          Pagination = this._pagination
+        };
+      }
     }
+  }
 }

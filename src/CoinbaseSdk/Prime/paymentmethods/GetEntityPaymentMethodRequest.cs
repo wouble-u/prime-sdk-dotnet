@@ -16,63 +16,63 @@
 
 namespace CoinbaseSdk.Prime.PaymentMethods
 {
-    using System.Text.Json.Serialization;
-    using CoinbaseSdk.Core.Error;
+  using System.Text.Json.Serialization;
+  using CoinbaseSdk.Core.Error;
 
-    public class GetEntityPaymentMethodRequest(string entityId, string paymentMethodId)
+  public class GetEntityPaymentMethodRequest(string entityId, string paymentMethodId)
+  {
+    [JsonIgnore, JsonPropertyName("entity_id")]
+    public string EntityId { get; set; } = entityId;
+
+    [JsonIgnore, JsonPropertyName("payment_method_id")]
+    public string PaymentMethodId { get; set; } = paymentMethodId;
+
+    public class GetEntityPaymentMethodRequestBuilder
     {
-        [JsonIgnore, JsonPropertyName("entity_id")]
-        public string EntityId { get; set; } = entityId;
+      private string? _entityId;
+      private string? _paymentMethodId;
 
-        [JsonIgnore, JsonPropertyName("payment_method_id")]
-        public string PaymentMethodId { get; set; } = paymentMethodId;
+      public GetEntityPaymentMethodRequestBuilder WithEntityId(string entityId)
+      {
+        this._entityId = entityId;
+        return this;
+      }
 
-        public class GetEntityPaymentMethodRequestBuilder
+      public GetEntityPaymentMethodRequestBuilder WithPaymentMethodId(string paymentMethodId)
+      {
+        this._paymentMethodId = paymentMethodId;
+        return this;
+      }
+
+      /// <summary>
+      /// Validate the builder.
+      /// </summary>
+      /// <exception cref="CoinbaseClientException">Thrown when the
+      /// <see cref="_entityId"/> or <see cref="_paymentMethodId"/> are null, empty
+      /// or whitespace.</exception>
+      private void Validate()
+      {
+        if (string.IsNullOrWhiteSpace(this._entityId))
         {
-            private string? _entityId;
-            private string? _paymentMethodId;
-
-            public GetEntityPaymentMethodRequestBuilder WithEntityId(string entityId)
-            {
-                this._entityId = entityId;
-                return this;
-            }
-
-            public GetEntityPaymentMethodRequestBuilder WithPaymentMethodId(string paymentMethodId)
-            {
-                this._paymentMethodId = paymentMethodId;
-                return this;
-            }
-
-            /// <summary>
-            /// Validate the builder.
-            /// </summary>
-            /// <exception cref="CoinbaseClientException">Thrown when the
-            /// <see cref="_entityId"/> or <see cref="_paymentMethodId"/> are null, empty
-            /// or whitespace.</exception>
-            private void Validate()
-            {
-                if (string.IsNullOrWhiteSpace(this._entityId))
-                {
-                    throw new CoinbaseClientException("EntityId is required");
-                }
-
-                if (string.IsNullOrWhiteSpace(this._paymentMethodId))
-                {
-                    throw new CoinbaseClientException("PaymentMethodId is required");
-                }
-            }
-
-            /// <summary>
-            /// Build the <see cref="GetEntityPaymentMethodRequest"/> object.
-            /// </summary>
-            /// <returns>The <see cref="GetEntityPaymentMethodRequest"/> object.</returns>
-            /// <exception cref="CoinbaseClientException">Thrown when the required fields are not set.</exception>
-            public GetEntityPaymentMethodRequest Build()
-            {
-                this.Validate();
-                return new GetEntityPaymentMethodRequest(this._entityId!, this._paymentMethodId!);
-            }
+          throw new CoinbaseClientException("EntityId is required");
         }
+
+        if (string.IsNullOrWhiteSpace(this._paymentMethodId))
+        {
+          throw new CoinbaseClientException("PaymentMethodId is required");
+        }
+      }
+
+      /// <summary>
+      /// Build the <see cref="GetEntityPaymentMethodRequest"/> object.
+      /// </summary>
+      /// <returns>The <see cref="GetEntityPaymentMethodRequest"/> object.</returns>
+      /// <exception cref="CoinbaseClientException">Thrown when the required fields are not set.</exception>
+      public GetEntityPaymentMethodRequest Build()
+      {
+        this.Validate();
+        return new GetEntityPaymentMethodRequest(this._entityId!, this._paymentMethodId!);
+      }
     }
+  }
 }

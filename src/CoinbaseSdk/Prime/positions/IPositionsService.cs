@@ -16,25 +16,25 @@
 
 namespace CoinbaseSdk.Prime.Positions
 {
-    using CoinbaseSdk.Core.Http;
-    public interface IPositionsService
-    {
-        ListAggregateEntityPositionsResponse ListAggregateEntityPositions(
-            ListAggregateEntityPositionsRequest request,
-            CallOptions? callOptions = null);
+  using CoinbaseSdk.Core.Http;
+  public interface IPositionsService
+  {
+    ListAggregateEntityPositionsResponse ListAggregateEntityPositions(
+        ListAggregateEntityPositionsRequest request,
+        CallOptions? callOptions = null);
 
-        Task<ListAggregateEntityPositionsResponse> ListAggregateEntityPositionsAsync(
-            ListAggregateEntityPositionsRequest request,
-            CallOptions? callOptions = null,
-            CancellationToken cancellationToken = default);
+    Task<ListAggregateEntityPositionsResponse> ListAggregateEntityPositionsAsync(
+        ListAggregateEntityPositionsRequest request,
+        CallOptions? callOptions = null,
+        CancellationToken cancellationToken = default);
 
-        ListEntityPositionsResponse ListEntityPositions(
-            ListEntityPositionsRequest request,
-            CallOptions? callOptions = null);
+    ListEntityPositionsResponse ListEntityPositions(
+        ListEntityPositionsRequest request,
+        CallOptions? callOptions = null);
 
-        Task<ListEntityPositionsResponse> ListEntityPositionsAsync(
-            ListEntityPositionsRequest request,
-            CallOptions? callOptions = null,
-            CancellationToken cancellationToken = default);
-    }
+    Task<ListEntityPositionsResponse> ListEntityPositionsAsync(
+        ListEntityPositionsRequest request,
+        CallOptions? callOptions = null,
+        CancellationToken cancellationToken = default);
+  }
 }

@@ -16,9 +16,9 @@
 
 namespace CoinbaseSdk.Prime.Model
 {
-    public enum OrderSide
-    {
-        BUY,
-        SELL
-    }
+  public enum OrderSide
+  {
+    BUY,
+    SELL
+  }
 }

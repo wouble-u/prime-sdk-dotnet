@@ -16,33 +16,33 @@
 
 namespace CoinbaseSdk.Prime.Model
 {
-    using System.Text.Json.Serialization;
-    public class PaymentMethod
+  using System.Text.Json.Serialization;
+  public class PaymentMethod
+  {
+    [JsonPropertyName("payment_method_id")]
+    public string? PaymentMethodId { get; set; }
+
+    public PaymentMethod() { }
+
+    public class PaymentMethodBuilder
     {
-        [JsonPropertyName("payment_method_id")]
-        public string? PaymentMethodId { get; set; }
+      private string? _paymentMethodId;
 
-        public PaymentMethod() { }
+      public PaymentMethodBuilder() { }
 
-        public class PaymentMethodBuilder
+      public PaymentMethodBuilder WithPaymentMethodId(string paymentMethodId)
+      {
+        this._paymentMethodId = paymentMethodId;
+        return this;
+      }
+
+      public PaymentMethod Build()
+      {
+        return new PaymentMethod
         {
-            private string? _paymentMethodId;
-
-            public PaymentMethodBuilder() { }
-
-            public PaymentMethodBuilder WithPaymentMethodId(string paymentMethodId)
-            {
-                this._paymentMethodId = paymentMethodId;
-                return this;
-            }
-
-            public PaymentMethod Build()
-            {
-                return new PaymentMethod
-                {
-                    PaymentMethodId = this._paymentMethodId
-                };
-            }
-        }
+          PaymentMethodId = this._paymentMethodId
+        };
+      }
     }
+  }
 }

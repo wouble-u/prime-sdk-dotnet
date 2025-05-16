@@ -16,75 +16,75 @@
 
 namespace CoinbaseSdk.Prime.Model
 {
-    using System.Text.Json.Serialization;
-    public class AllocationDestination
+  using System.Text.Json.Serialization;
+  public class AllocationDestination
+  {
+    [JsonPropertyName("leg_id")]
+    public string? LegId { get; set; }
+
+    [JsonPropertyName("portfolio_id")]
+    public string? PortfolioId { get; set; }
+
+    [JsonPropertyName("allocation_base")]
+    public string? AllocationBase { get; set; }
+
+    [JsonPropertyName("allocation_quote")]
+    public string? AllocationQuote { get; set; }
+
+    [JsonPropertyName("fees_allocated_leg")]
+    public string? FeesAllocatedLeg { get; set; }
+
+    public AllocationDestination() { }
+
+    public class AllocationDestinationBuilder
     {
-        [JsonPropertyName("leg_id")]
-        public string? LegId { get; set; }
+      private string? _legId;
+      private string? _portfolioId;
+      private string? _allocationBase;
+      private string? _allocationQuote;
+      private string? _feesAllocatedLeg;
 
-        [JsonPropertyName("portfolio_id")]
-        public string? PortfolioId { get; set; }
+      public AllocationDestinationBuilder WithLegId(string? legId)
+      {
+        this._legId = legId;
+        return this;
+      }
 
-        [JsonPropertyName("allocation_base")]
-        public string? AllocationBase { get; set; }
+      public AllocationDestinationBuilder WithPortfolioId(string? portfolioId)
+      {
+        this._portfolioId = portfolioId;
+        return this;
+      }
 
-        [JsonPropertyName("allocation_quote")]
-        public string? AllocationQuote { get; set; }
+      public AllocationDestinationBuilder WithAllocationBase(string? allocationBase)
+      {
+        this._allocationBase = allocationBase;
+        return this;
+      }
 
-        [JsonPropertyName("fees_allocated_leg")]
-        public string? FeesAllocatedLeg { get; set; }
+      public AllocationDestinationBuilder WithAllocationQuote(string? allocationQuote)
+      {
+        this._allocationQuote = allocationQuote;
+        return this;
+      }
 
-        public AllocationDestination() { }
+      public AllocationDestinationBuilder WithFeesAllocatedLeg(string? feesAllocatedLeg)
+      {
+        this._feesAllocatedLeg = feesAllocatedLeg;
+        return this;
+      }
 
-        public class AllocationDestinationBuilder
+      public AllocationDestination Build()
+      {
+        return new AllocationDestination
         {
-            private string? _legId;
-            private string? _portfolioId;
-            private string? _allocationBase;
-            private string? _allocationQuote;
-            private string? _feesAllocatedLeg;
-
-            public AllocationDestinationBuilder WithLegId(string? legId)
-            {
-                this._legId = legId;
-                return this;
-            }
-
-            public AllocationDestinationBuilder WithPortfolioId(string? portfolioId)
-            {
-                this._portfolioId = portfolioId;
-                return this;
-            }
-
-            public AllocationDestinationBuilder WithAllocationBase(string? allocationBase)
-            {
-                this._allocationBase = allocationBase;
-                return this;
-            }
-
-            public AllocationDestinationBuilder WithAllocationQuote(string? allocationQuote)
-            {
-                this._allocationQuote = allocationQuote;
-                return this;
-            }
-
-            public AllocationDestinationBuilder WithFeesAllocatedLeg(string? feesAllocatedLeg)
-            {
-                this._feesAllocatedLeg = feesAllocatedLeg;
-                return this;
-            }
-
-            public AllocationDestination Build()
-            {
-                return new AllocationDestination
-                {
-                    LegId = this._legId,
-                    PortfolioId = this._portfolioId,
-                    AllocationBase = this._allocationBase,
-                    AllocationQuote = this._allocationQuote,
-                    FeesAllocatedLeg = this._feesAllocatedLeg
-                };
-            }
-        }
+          LegId = this._legId,
+          PortfolioId = this._portfolioId,
+          AllocationBase = this._allocationBase,
+          AllocationQuote = this._allocationQuote,
+          FeesAllocatedLeg = this._feesAllocatedLeg
+        };
+      }
     }
+  }
 }

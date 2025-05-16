@@ -16,29 +16,29 @@
 
 namespace CoinbaseSdk.Prime.Model
 {
-    public class StakingInputs
+  public class StakingInputs
+  {
+    public string? Amount { get; set; }
+
+    public StakingInputs() { }
+
+    public class StakingInputsBuilder
     {
-        public string? Amount { get; set; }
+      private string? _amount;
 
-        public StakingInputs() { }
+      public StakingInputsBuilder WithAmount(string amount)
+      {
+        _amount = amount;
+        return this;
+      }
 
-        public class StakingInputsBuilder
+      public StakingInputs Build()
+      {
+        return new StakingInputs()
         {
-            private string? _amount;
-
-            public StakingInputsBuilder WithAmount(string amount)
-            {
-                _amount = amount;
-                return this;
-            }
-
-            public StakingInputs Build()
-            {
-                return new StakingInputs()
-                {
-                    Amount = _amount
-                };
-            }
-        }
+          Amount = _amount
+        };
+      }
     }
+  }
 }

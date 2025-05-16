@@ -16,13 +16,13 @@
 
 namespace CoinbaseSdk.Prime.Model
 {
-    public enum LoanType
-    {
-        LOAN_TYPE_UNSET,
-        BILATERAL_LENDING,
-        TRADE_FINANCE,
-        PORTFOLIO_MARGIN,
-        SHORT_COLLATERAL_LOAN,
-        SHORT_COLLATERAL
-    }
+  public enum LoanType
+  {
+    LOAN_TYPE_UNSET,
+    BILATERAL_LENDING,
+    TRADE_FINANCE,
+    PORTFOLIO_MARGIN,
+    SHORT_COLLATERAL_LOAN,
+    SHORT_COLLATERAL
+  }
 }

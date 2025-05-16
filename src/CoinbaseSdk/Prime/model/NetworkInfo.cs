@@ -16,35 +16,35 @@
 
 namespace CoinbaseSdk.Prime.Model
 {
-    using System.Text.Json.Serialization;
+  using System.Text.Json.Serialization;
 
-    public class NetworkInfo
-    {
-        [JsonPropertyName("network")]
-        public NetworkDetails? Network { get; set; }
+  public class NetworkInfo
+  {
+    [JsonPropertyName("network")]
+    public NetworkDetails? Network { get; set; }
 
-        [JsonPropertyName("name")]
-        public string? Name { get; set; }
+    [JsonPropertyName("name")]
+    public string? Name { get; set; }
 
-        [JsonPropertyName("max_decimals")]
-        public string? MaxDecimals { get; set; }
+    [JsonPropertyName("max_decimals")]
+    public string? MaxDecimals { get; set; }
 
-        [JsonPropertyName("default")]
-        public bool? Default { get; set; }
+    [JsonPropertyName("default")]
+    public bool? Default { get; set; }
 
-        [JsonPropertyName("trading_supported")]
-        public bool? TradingSupported { get; set; }
+    [JsonPropertyName("trading_supported")]
+    public bool? TradingSupported { get; set; }
 
-        [JsonPropertyName("vault_supported")]
-        public bool? VaultSupported { get; set; }
+    [JsonPropertyName("vault_supported")]
+    public bool? VaultSupported { get; set; }
 
-        [JsonPropertyName("prime_custody_supported")]
-        public bool? PrimeCustodySupported { get; set; }
+    [JsonPropertyName("prime_custody_supported")]
+    public bool? PrimeCustodySupported { get; set; }
 
-        [JsonPropertyName("destination_tag_required")]
-        public bool? DestinationTagRequired { get; set; }
+    [JsonPropertyName("destination_tag_required")]
+    public bool? DestinationTagRequired { get; set; }
 
-        [JsonPropertyName("network_link")]
-        public string? NetworkLink { get; set; }
-    }
+    [JsonPropertyName("network_link")]
+    public string? NetworkLink { get; set; }
+  }
 }
