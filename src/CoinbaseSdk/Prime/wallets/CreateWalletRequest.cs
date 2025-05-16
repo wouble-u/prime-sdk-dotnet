@@ -22,7 +22,7 @@ namespace CoinbaseSdk.Prime.Wallets
 
   public class CreateWalletRequest(string portfolioId)
   {
-    [JsonIgnore, JsonPropertyName("portfolio_id")]
+    [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
 
     public string? Name { get; set; }

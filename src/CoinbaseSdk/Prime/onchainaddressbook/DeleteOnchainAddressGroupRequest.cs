@@ -20,10 +20,10 @@ namespace CoinbaseSdk.Prime.OnchainAddressBook
 
   public class DeleteOnchainAddressGroupRequest(string portfolioId, string addressGroupId)
   {
-    [JsonIgnore, JsonPropertyName("portfolio_id")]
+    [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
 
-    [JsonIgnore, JsonPropertyName("address_group_id")]
+    [JsonIgnore]
     public string AddressGroupId { get; set; } = addressGroupId;
   }
 }

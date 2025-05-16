@@ -22,10 +22,10 @@ namespace CoinbaseSdk.Prime.Transactions
 
   public class CreateWithdrawalRequest(string portfolioId, string walletId)
   {
-    [JsonIgnore, JsonPropertyName("portfolio_id")]
+    [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
 
-    [JsonIgnore, JsonPropertyName("wallet_id")]
+    [JsonIgnore]
     public string WalletId { get; set; } = walletId;
 
     public string? Amount { get; set; }

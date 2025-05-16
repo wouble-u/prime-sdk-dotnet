@@ -4,7 +4,7 @@ namespace CoinbaseSdk.Prime.Futures
 
   public class GetFcmBalanceRequest(string entityId)
   {
-    [JsonIgnore, JsonPropertyName("entity_id")]
+    [JsonIgnore]
     public string EntityId { get; set; } = entityId;
 
     public class GetEntityFcmBalanceRequestBuilder

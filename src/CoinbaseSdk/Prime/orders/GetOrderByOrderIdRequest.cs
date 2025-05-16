@@ -21,10 +21,10 @@ namespace CoinbaseSdk.Prime.Orders
 
   public class GetOrderByOrderIdRequest(string portfolioId, string orderId)
   {
-    [JsonIgnore, JsonPropertyName("portfolio_id")]
+    [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
 
-    [JsonIgnore, JsonPropertyName("order_id")]
+    [JsonIgnore]
     public string OrderId { get; set; } = orderId;
 
     public class GetOrderByOrderIdRequestBuilder

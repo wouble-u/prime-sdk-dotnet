@@ -19,7 +19,7 @@ namespace CoinbaseSdk.Prime.Financing
   using System.Text.Json.Serialization;
   public class ListInterestAccrualsForPortfolioRequest(string portfolioId)
   {
-    [JsonIgnore, JsonPropertyName("portfolio_id")]
+    [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
 
     [JsonPropertyName("start_date")]

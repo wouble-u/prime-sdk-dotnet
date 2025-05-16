@@ -20,7 +20,7 @@ namespace CoinbaseSdk.Prime.Financing
 
   public class GetMarginInformationRequest(string entityId)
   {
-    [JsonIgnore, JsonPropertyName("entity_id")]
+    [JsonIgnore]
     public string EntityId { get; set; } = entityId;
   }
 }

@@ -22,7 +22,7 @@ namespace CoinbaseSdk.Prime.Invoice
 
   public class ListInvoicesRequest(string entityId)
   {
-    [JsonIgnore, JsonPropertyName("entity_id")]
+    [JsonIgnore]
     public string EntityId { get; set; } = entityId;
 
     public InvoiceState[] States { get; set; } = [];

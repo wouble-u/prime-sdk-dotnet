@@ -21,7 +21,7 @@ namespace CoinbaseSdk.Prime.OnchainAddressBook
 
   public class CreateOnchainAddressBookEntryRequest(string portfolioId, AddressGroup addressGroup)
   {
-    [JsonIgnore, JsonPropertyName("portfolio_id")]
+    [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
 
     [JsonPropertyName("address_group")]

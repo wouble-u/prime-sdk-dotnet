@@ -19,7 +19,7 @@ namespace CoinbaseSdk.Prime.Financing
   using System.Text.Json.Serialization;
   public class ListMarginCallSummariesRequest(string entityId)
   {
-    [JsonIgnore, JsonPropertyName("entity_id")]
+    [JsonIgnore]
     public string EntityId { get; set; } = entityId;
 
     [JsonPropertyName("start_date")]

@@ -16,106 +16,106 @@
 
 namespace CoinbaseSdk.Prime.Balances
 {
-  using System.Text.Json.Serialization;
-  using CoinbaseSdk.Core.Error;
-  using CoinbaseSdk.Prime.Model;
+    using System.Text.Json.Serialization;
+    using CoinbaseSdk.Core.Error;
+    using CoinbaseSdk.Prime.Model;
 
-  public class ListPortfolioBalancesRequest(string portfolioId)
-  {
-    [JsonIgnore, JsonPropertyName("portfolio_id")]
-    public string PortfolioId { get; set; } = portfolioId;
-
-    public string[] Symbols { get; set; } = [];
-
-    [JsonPropertyName("balance_type")]
-    public BalanceType? BalanceType { get; set; }
-
-    public string? Cursor { get; set; }
-    [JsonPropertyName("sort_direction")]
-    public string? SortDirection { get; set; }
-    public int? Limit { get; set; }
-
-    public class ListPortfolioBalancesRequestBuilder
+    public class ListPortfolioBalancesRequest(string portfolioId)
     {
-      private string? _portfolioId;
-      private string[] _symbols = [];
-      private BalanceType _balanceType;
-      private string? _cursor;
-      private string? _sortDirection;
-      private int? _limit;
+        [JsonIgnore]
+        public string PortfolioId { get; set; } = portfolioId;
 
-      public ListPortfolioBalancesRequestBuilder WithPortfolioId(string portfolioId)
-      {
-        this._portfolioId = portfolioId;
-        return this;
-      }
+        public string[] Symbols { get; set; } = [];
 
-      public ListPortfolioBalancesRequestBuilder WithSymbols(string[] symbols)
-      {
-        this._symbols = symbols;
-        return this;
-      }
+        [JsonPropertyName("balance_type")]
+        public BalanceType? BalanceType { get; set; }
 
-      public ListPortfolioBalancesRequestBuilder WithBalanceType(BalanceType balanceType)
-      {
-        this._balanceType = balanceType;
-        return this;
-      }
+        public string? Cursor { get; set; }
+        [JsonPropertyName("sort_direction")]
+        public string? SortDirection { get; set; }
+        public int? Limit { get; set; }
 
-      public ListPortfolioBalancesRequestBuilder WithCursor(string cursor)
-      {
-        this._cursor = cursor;
-        return this;
-      }
-
-      public ListPortfolioBalancesRequestBuilder WithSortDirection(string sortDirection)
-      {
-        this._sortDirection = sortDirection;
-        return this;
-      }
-
-      public ListPortfolioBalancesRequestBuilder WithLimit(int limit)
-      {
-        this._limit = limit;
-        return this;
-      }
-
-      public ListPortfolioBalancesRequestBuilder WithPagination(Pagination pagination)
-      {
-        this._cursor = pagination.NextCursor;
-        this._sortDirection = pagination.SortDirection;
-        return this;
-      }
-
-      /// <summary>
-      /// Validates the request.
-      /// </summary>
-      /// <exception cref="CoinbaseClientException">Thrown when <see cref="_portfolioId" /> is null, empty, or whitespace.</exception>
-      private void Validate()
-      {
-        if (string.IsNullOrWhiteSpace(_portfolioId))
+        public class ListPortfolioBalancesRequestBuilder
         {
-          throw new CoinbaseClientException("PortfolioId is required");
+            private string? _portfolioId;
+            private string[] _symbols = [];
+            private BalanceType _balanceType;
+            private string? _cursor;
+            private string? _sortDirection;
+            private int? _limit;
+
+            public ListPortfolioBalancesRequestBuilder WithPortfolioId(string portfolioId)
+            {
+                this._portfolioId = portfolioId;
+                return this;
+            }
+
+            public ListPortfolioBalancesRequestBuilder WithSymbols(string[] symbols)
+            {
+                this._symbols = symbols;
+                return this;
+            }
+
+            public ListPortfolioBalancesRequestBuilder WithBalanceType(BalanceType balanceType)
+            {
+                this._balanceType = balanceType;
+                return this;
+            }
+
+            public ListPortfolioBalancesRequestBuilder WithCursor(string cursor)
+            {
+                this._cursor = cursor;
+                return this;
+            }
+
+            public ListPortfolioBalancesRequestBuilder WithSortDirection(string sortDirection)
+            {
+                this._sortDirection = sortDirection;
+                return this;
+            }
+
+            public ListPortfolioBalancesRequestBuilder WithLimit(int limit)
+            {
+                this._limit = limit;
+                return this;
+            }
+
+            public ListPortfolioBalancesRequestBuilder WithPagination(Pagination pagination)
+            {
+                this._cursor = pagination.NextCursor;
+                this._sortDirection = pagination.SortDirection;
+                return this;
+            }
+
+            /// <summary>
+            /// Validates the request.
+            /// </summary>
+            /// <exception cref="CoinbaseClientException">Thrown when <see cref="_portfolioId" /> is null, empty, or whitespace.</exception>
+            private void Validate()
+            {
+                if (string.IsNullOrWhiteSpace(_portfolioId))
+                {
+                    throw new CoinbaseClientException("PortfolioId is required");
+                }
+            }
+
+            /// <summary>
+            /// Builds the <see cref="ListPortfolioBalancesRequest"/>.
+            /// </summary>
+            /// <returns>The <see cref="ListPortfolioBalancesRequest"/>.</returns>
+            /// <exception cref="CoinbaseClientException">Thrown when <see cref="_portfolioId" /> is null, empty, or whitespace.</exception>
+            public ListPortfolioBalancesRequest Build()
+            {
+                Validate();
+                return new ListPortfolioBalancesRequest(_portfolioId!)
+                {
+                    Symbols = this._symbols,
+                    BalanceType = this._balanceType,
+                    Cursor = this._cursor,
+                    SortDirection = this._sortDirection,
+                    Limit = this._limit
+                };
+            }
         }
-      }
-
-      /// <summary>
-      /// Builds the <see cref="ListPortfolioBalancesRequest"/>.
-      /// </summary>
-      /// <returns>The <see cref="ListPortfolioBalancesRequest"/>.</returns>
-      /// <exception cref="CoinbaseClientException">Thrown when <see cref="_portfolioId" /> is null, empty, or whitespace.</exception>
-      public ListPortfolioBalancesRequest Build()
-      {
-        Validate();
-        return new ListPortfolioBalancesRequest(_portfolioId!)
-        {
-          Symbols = this._symbols,
-          BalanceType = this._balanceType,
-          Cursor = this._cursor,
-          SortDirection = this._sortDirection,
-          Limit = this._limit
-        };
-      }
     }
-  }
 }

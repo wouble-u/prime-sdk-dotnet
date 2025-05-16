@@ -21,7 +21,7 @@ namespace CoinbaseSdk.Prime.AddressBook
 
   public class CreateAddressBookEntryRequest(string portfolioId)
   {
-    [JsonIgnore, JsonPropertyName("portfolio_id")]
+    [JsonIgnore]
     public string PortfolioId { get; } = portfolioId;
 
     public string? Address { get; set; }

@@ -16,126 +16,126 @@
 
 namespace CoinbaseSdk.Prime.Transactions
 {
-  using System.Text.Json.Serialization;
-  using CoinbaseSdk.Core.Error;
-  using CoinbaseSdk.Prime.Model;
+    using System.Text.Json.Serialization;
+    using CoinbaseSdk.Core.Error;
+    using CoinbaseSdk.Prime.Model;
 
-  public class ListPortfolioTransactionsRequest(string portfolioId)
-  {
-    [JsonIgnore, JsonPropertyName("portfolio_id")]
-    public string PortfolioId { get; set; } = portfolioId;
-    [JsonPropertyName("symbols")]
-    public string[] Symbols { get; set; } = [];
-
-    [JsonPropertyName("types")]
-    public TransactionType[] Types { get; set; } = [];
-
-    [JsonPropertyName("start_time")]
-    public string? StartTime { get; set; }
-
-    [JsonPropertyName("end_time")]
-    public string? EndTime { get; set; }
-    public string? Cursor { get; set; }
-    [JsonPropertyName("sort_direction")]
-    public string? SortDirection { get; set; }
-    public int? Limit { get; set; }
-
-    public class ListPortfolioTransactionsRequestBuilder
+    public class ListPortfolioTransactionsRequest(string portfolioId)
     {
-      private string? _portfolioId;
-      private string[] _symbols = [];
-      private TransactionType[] _types = [];
-      private string? _startTime;
-      private string? _endTime;
-      private string? _cursor;
-      private string? _sortDirection;
-      private int? _limit;
+        [JsonIgnore]
+        public string PortfolioId { get; set; } = portfolioId;
+        [JsonPropertyName("symbols")]
+        public string[] Symbols { get; set; } = [];
 
-      public ListPortfolioTransactionsRequestBuilder WithPortfolioId(string portfolioId)
-      {
-        _portfolioId = portfolioId;
-        return this;
-      }
+        [JsonPropertyName("types")]
+        public TransactionType[] Types { get; set; } = [];
 
-      public ListPortfolioTransactionsRequestBuilder WithSymbols(string[] symbols)
-      {
-        _symbols = symbols;
-        return this;
-      }
+        [JsonPropertyName("start_time")]
+        public string? StartTime { get; set; }
 
-      public ListPortfolioTransactionsRequestBuilder WithTypes(TransactionType[] types)
-      {
-        _types = types;
-        return this;
-      }
+        [JsonPropertyName("end_time")]
+        public string? EndTime { get; set; }
+        public string? Cursor { get; set; }
+        [JsonPropertyName("sort_direction")]
+        public string? SortDirection { get; set; }
+        public int? Limit { get; set; }
 
-      public ListPortfolioTransactionsRequestBuilder WithStartTime(string startTime)
-      {
-        _startTime = startTime;
-        return this;
-      }
-
-      public ListPortfolioTransactionsRequestBuilder WithEndTime(string endTime)
-      {
-        _endTime = endTime;
-        return this;
-      }
-
-      public ListPortfolioTransactionsRequestBuilder WithCursor(string cursor)
-      {
-        _cursor = cursor;
-        return this;
-      }
-
-      public ListPortfolioTransactionsRequestBuilder WithSortDirection(string sortDirection)
-      {
-        _sortDirection = sortDirection;
-        return this;
-      }
-
-      public ListPortfolioTransactionsRequestBuilder WithLimit(int limit)
-      {
-        _limit = limit;
-        return this;
-      }
-
-      public ListPortfolioTransactionsRequestBuilder WithPagination(Pagination pagination)
-      {
-        _cursor = pagination.NextCursor;
-        _sortDirection = pagination.SortDirection;
-        return this;
-      }
-
-      /// <summary>
-      /// Validates the request.
-      /// </summary>
-      /// <exception cref="CoinbaseClientException">Thrown when <see cref="_portfolioId" /> is null, empty, or whitespace.</exception>
-      private void Validate()
-      {
-        if (string.IsNullOrWhiteSpace(this._portfolioId))
+        public class ListPortfolioTransactionsRequestBuilder
         {
-          throw new CoinbaseClientException("PortfolioId cannot be null or empty");
+            private string? _portfolioId;
+            private string[] _symbols = [];
+            private TransactionType[] _types = [];
+            private string? _startTime;
+            private string? _endTime;
+            private string? _cursor;
+            private string? _sortDirection;
+            private int? _limit;
+
+            public ListPortfolioTransactionsRequestBuilder WithPortfolioId(string portfolioId)
+            {
+                _portfolioId = portfolioId;
+                return this;
+            }
+
+            public ListPortfolioTransactionsRequestBuilder WithSymbols(string[] symbols)
+            {
+                _symbols = symbols;
+                return this;
+            }
+
+            public ListPortfolioTransactionsRequestBuilder WithTypes(TransactionType[] types)
+            {
+                _types = types;
+                return this;
+            }
+
+            public ListPortfolioTransactionsRequestBuilder WithStartTime(string startTime)
+            {
+                _startTime = startTime;
+                return this;
+            }
+
+            public ListPortfolioTransactionsRequestBuilder WithEndTime(string endTime)
+            {
+                _endTime = endTime;
+                return this;
+            }
+
+            public ListPortfolioTransactionsRequestBuilder WithCursor(string cursor)
+            {
+                _cursor = cursor;
+                return this;
+            }
+
+            public ListPortfolioTransactionsRequestBuilder WithSortDirection(string sortDirection)
+            {
+                _sortDirection = sortDirection;
+                return this;
+            }
+
+            public ListPortfolioTransactionsRequestBuilder WithLimit(int limit)
+            {
+                _limit = limit;
+                return this;
+            }
+
+            public ListPortfolioTransactionsRequestBuilder WithPagination(Pagination pagination)
+            {
+                _cursor = pagination.NextCursor;
+                _sortDirection = pagination.SortDirection;
+                return this;
+            }
+
+            /// <summary>
+            /// Validates the request.
+            /// </summary>
+            /// <exception cref="CoinbaseClientException">Thrown when <see cref="_portfolioId" /> is null, empty, or whitespace.</exception>
+            private void Validate()
+            {
+                if (string.IsNullOrWhiteSpace(this._portfolioId))
+                {
+                    throw new CoinbaseClientException("PortfolioId cannot be null or empty");
+                }
+            }
+
+            /// <summary>
+            /// Builds the <see cref="ListPortfolioTransactionsRequest"/> object.
+            /// </summary>
+            /// <returns>The <see cref="ListPortfolioTransactionsRequest"/> object.</returns>
+            /// <exception cref="CoinbaseClientException">Thrown when the required fields are not set.</exception>
+            public ListPortfolioTransactionsRequest Build()
+            {
+                return new ListPortfolioTransactionsRequest(this._portfolioId!)
+                {
+                    Symbols = _symbols,
+                    Types = _types,
+                    StartTime = _startTime,
+                    EndTime = _endTime,
+                    Cursor = _cursor,
+                    SortDirection = _sortDirection,
+                    Limit = _limit
+                };
+            }
         }
-      }
-
-      /// <summary>
-      /// Builds the <see cref="ListPortfolioTransactionsRequest"/> object.
-      /// </summary>
-      /// <returns>The <see cref="ListPortfolioTransactionsRequest"/> object.</returns>
-      /// <exception cref="CoinbaseClientException">Thrown when the required fields are not set.</exception>
-      public ListPortfolioTransactionsRequest Build()
-      {
-        return new ListPortfolioTransactionsRequest(this._portfolioId!)
-        {
-          Symbols = _symbols,
-          Types = _types,
-          StartTime = _startTime,
-          EndTime = _endTime,
-          Cursor = _cursor,
-          SortDirection = _sortDirection,
-          Limit = _limit
-        };
-      }
     }
-  }
 }

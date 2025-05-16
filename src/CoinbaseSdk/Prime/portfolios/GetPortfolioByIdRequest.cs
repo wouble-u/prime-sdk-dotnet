@@ -21,7 +21,7 @@ namespace CoinbaseSdk.Prime.Portfolios
 
   public class GetPortfolioByIdRequest(string portfolioId)
   {
-    [JsonIgnore, JsonPropertyName("portfolio_id")]
+    [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
 
     public class GetPortfolioByIdRequestBuilder

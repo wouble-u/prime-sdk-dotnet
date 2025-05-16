@@ -22,10 +22,10 @@ namespace CoinbaseSdk.Prime.Staking
 
   public class CreateStakeRequest(string portfolioId, string walletId)
   {
-    [JsonIgnore, JsonPropertyName("portfolio_id")]
+    [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
 
-    [JsonIgnore, JsonPropertyName("wallet_id")]
+    [JsonIgnore]
     public string WalletId { get; set; } = walletId;
 
     [JsonPropertyName("idempotency_key")]

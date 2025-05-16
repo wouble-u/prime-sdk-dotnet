@@ -21,10 +21,10 @@ namespace CoinbaseSdk.Prime.Transactions
 
   public class GetTransactionByTransactionIdRequest(string portfolioId, string transactionId)
   {
-    [JsonIgnore, JsonPropertyName("portfolio_id")]
+    [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
 
-    [JsonIgnore, JsonPropertyName("transaction_id")]
+    [JsonIgnore]
     public string TransactionId { get; set; } = transactionId;
 
     public class GetTransactionByTransactionIdRequestBuilder

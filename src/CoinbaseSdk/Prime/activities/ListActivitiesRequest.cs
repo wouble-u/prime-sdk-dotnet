@@ -22,7 +22,7 @@ namespace CoinbaseSdk.Prime.Activities
 
   public class ListActivitiesRequest(string portfolioId)
   {
-    [JsonIgnore, JsonPropertyName("portfolio_id")]
+    [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
 
     public string[] Symbols { get; set; } = [];

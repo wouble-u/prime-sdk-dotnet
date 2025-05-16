@@ -20,10 +20,10 @@ namespace CoinbaseSdk.Prime.Activities
   using CoinbaseSdk.Core.Error;
   public class GetActivityByActivityIdRequest(string portfolioId, string activityId)
   {
-    [JsonIgnore, JsonPropertyName("portfolio_id")]
+    [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
 
-    [JsonIgnore, JsonPropertyName("activity_id")]
+    [JsonIgnore]
     public string ActivityId { get; set; } = activityId;
 
     public class GetActivityByActivityIdRequestBuilder

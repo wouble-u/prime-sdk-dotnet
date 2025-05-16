@@ -21,7 +21,7 @@ namespace CoinbaseSdk.Prime.Financing
 
   public class GetPortfolioCreditInformationRequest(string portfolioId)
   {
-    [JsonIgnore, JsonPropertyName("portfolio_id")]
+    [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
 
     public class GetPortfolioCreditInformationRequestBuilder

@@ -22,7 +22,7 @@ namespace CoinbaseSdk.Prime.AddressBook
 
   public class GetPortfolioAddressBookRequest(string portfolioId)
   {
-    [JsonIgnore, JsonPropertyName("portfolio_id")]
+    [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
 
     [JsonPropertyName("currency_symbol")]

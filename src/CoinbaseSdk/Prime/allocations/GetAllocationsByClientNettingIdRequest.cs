@@ -20,10 +20,10 @@ namespace CoinbaseSdk.Prime.Allocations
   using CoinbaseSdk.Core.Error;
   public class GetAllocationsByClientNettingIdRequest(string portfolioId, string clientNettingId)
   {
-    [JsonIgnore, JsonPropertyName("portfolio_id")]
+    [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
 
-    [JsonIgnore, JsonPropertyName("client_netting_id")]
+    [JsonIgnore]
     public string ClientNettingId { get; set; } = clientNettingId;
 
     public class GetAllocationsByClientNettingIdRequestBuilder

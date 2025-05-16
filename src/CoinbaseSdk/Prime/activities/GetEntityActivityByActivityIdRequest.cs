@@ -21,7 +21,7 @@ namespace CoinbaseSdk.Prime.Activities
 
   public class GetEntityActivityByActivityIdRequest(string activityId)
   {
-    [JsonIgnore, JsonPropertyName("activity_id")]
+    [JsonIgnore]
     public string ActivityId { get; set; } = activityId;
 
     public class GetActivityByActivityIdRequestBuilder

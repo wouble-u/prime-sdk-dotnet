@@ -20,7 +20,7 @@ namespace CoinbaseSdk.Prime.Assets
   using CoinbaseSdk.Core.Error;
   public class ListAssetsRequest(string entityId)
   {
-    [JsonIgnore, JsonPropertyName("entity_id")]
+    [JsonIgnore]
     public string EntityId { get; } = entityId;
 
     public class ListAssetsRequestBuilder
