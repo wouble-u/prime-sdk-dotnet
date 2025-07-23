@@ -118,6 +118,28 @@ Tags in OpenAPI spec map directly to service domains:
 - `Transactions` → `TransactionsService`
 - `Wallets` → `WalletsService`
 
+#### SDK Naming Conventions vs OpenAPI Spec
+The SDK uses intentional naming differences from the OpenAPI specification for better .NET conventions:
+
+**Collection Operations - "List" vs "Get"**:
+- OpenAPI: `PrimeRESTAPI_GetPortfolios` → SDK: `ListPortfolios`
+- OpenAPI: `PrimeRESTAPI_GetEntityActivities` → SDK: `ListEntityActivities`  
+- OpenAPI: `PrimeRESTAPI_GetPortfolioActivities` → SDK: `ListActivities`
+- OpenAPI: `PrimeRESTAPI_GetEntityAssets` → SDK: `ListAssets`
+- OpenAPI: `PrimeRESTAPI_GetEntityBalances` → SDK: `ListEntityBalances`
+- OpenAPI: `PrimeRESTAPI_GetPortfolioProducts` → SDK: `ListPortfolioProducts`
+
+**Individual Resource Operations - Simplified Names**:
+- OpenAPI: `PrimeRESTAPI_GetOrderByOrderId` → SDK: `GetOrder`
+- OpenAPI: `PrimeRESTAPI_GetWalletById` → SDK: `GetWallet`
+- OpenAPI: `PrimeRESTAPI_GetPortfolioByPortfolioId` → SDK: `GetPortfolio`
+
+**Rationale**:
+- **"List" prefix**: Clearly indicates collection/array returns, following .NET conventions
+- **Simplified individual resource names**: Removes redundant "ById" suffixes since the parameter context makes it clear
+- **Consistency**: All collection operations use "List", all individual operations use "Get"
+- **Backwards compatibility**: Old method names remain as deprecated alternatives
+
 ### Code Generation Guidelines
 
 #### Service Method Generation

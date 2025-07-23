@@ -50,6 +50,48 @@ The project enforces StyleCop rules with `TreatWarningsAsErrors=true`. Ensure al
 - Models go in shared `model/` folder
 - Request/Response classes in domain folders with descriptive names
 
+## SDK Naming Conventions vs OpenAPI Specification
+
+The SDK intentionally deviates from OpenAPI operation names to follow .NET conventions:
+
+### Collection Operations - "List" vs "Get"
+- OpenAPI: `PrimeRESTAPI_GetPortfolios` → SDK: `ListPortfolios`
+- OpenAPI: `PrimeRESTAPI_GetEntityActivities` → SDK: `ListEntityActivities`  
+- OpenAPI: `PrimeRESTAPI_GetPortfolioActivities` → SDK: `ListActivities`
+- OpenAPI: `PrimeRESTAPI_GetEntityAssets` → SDK: `ListAssets`
+- OpenAPI: `PrimeRESTAPI_GetEntityBalances` → SDK: `ListEntityBalances`
+- OpenAPI: `PrimeRESTAPI_GetWallets` → SDK: `ListWallets`
+- OpenAPI: `PrimeRESTAPI_GetPortfolioProducts` → SDK: `ListPortfolioProducts`
+
+### Individual Resource Operations - Simplified Names
+- OpenAPI: `PrimeRESTAPI_GetOrderByOrderId` → SDK: `GetOrder`
+- OpenAPI: `PrimeRESTAPI_GetWalletById` → SDK: `GetWallet`
+- OpenAPI: `PrimeRESTAPI_GetPortfolioByPortfolioId` → SDK: `GetPortfolio`
+
+### Rationale
+- **"List" prefix**: Clearly indicates collection/array returns, following .NET conventions
+- **Simplified individual resource names**: Removes redundant "ById" suffixes since parameter context makes it clear
+- **Consistency**: All collection operations use "List", all individual operations use "Get"
+- **Backwards compatibility**: Old method names remain as deprecated alternatives where applicable
+
+### AI Code Generation Guidelines for Naming
+When generating SDK methods from OpenAPI specifications:
+
+1. **Apply "List" prefix** for operations that return collections/arrays:
+   - If OpenAPI operationId starts with `Get` and returns an array → use `List` prefix
+   - Example: `PrimeRESTAPI_GetPortfolios` → `ListPortfolios`
+
+2. **Simplify individual resource operations**:
+   - Remove redundant "ById", "ByPortfolioId", etc. suffixes
+   - Example: `PrimeRESTAPI_GetOrderByOrderId` → `GetOrder`
+
+3. **Maintain consistency**:
+   - All collection operations: `List{Resource}` or `List{Scope}{Resource}`
+   - All individual operations: `Get{Resource}`
+   - All creation operations: `Create{Resource}`
+   - All update operations: `Update{Resource}`
+   - All deletion operations: `Delete{Resource}` or `Cancel{Resource}`
+
 ## Architecture Patterns
 
 ### Dependency Injection
