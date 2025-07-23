@@ -17,10 +17,10 @@
 namespace CoinbaseSdk.Prime.Invoice
 {
   using System.Text.Json.Serialization;
-  using CoinbaseSdk.Core.Error;
-  using CoinbaseSdk.Prime.Model;
+  using CoinbaseSdk.Prime.Common;
+  using CoinbaseSdk.Prime.Model.Enums;
 
-  public class ListInvoicesRequest(string entityId)
+  public class ListInvoicesRequest(string entityId) : PaginatedRequest
   {
     [JsonIgnore]
     public string EntityId { get; set; } = entityId;
@@ -32,84 +32,5 @@ namespace CoinbaseSdk.Prime.Invoice
 
     [JsonPropertyName("billing_year")]
     public int? BillingYear { get; set; }
-
-    public int? Cursor { get; set; }
-    public int? Limit { get; set; }
-
-    public class ListInvoicesRequestBuilder
-    {
-      private string? _entityId;
-      private InvoiceState[] _states = [];
-      private int? _billingMonth;
-      private int? _billingYear;
-      private int? _cursor;
-      private int? _limit;
-
-      public ListInvoicesRequestBuilder WithEntityId(string entityId)
-      {
-        this._entityId = entityId;
-        return this;
-      }
-
-      public ListInvoicesRequestBuilder WithStates(InvoiceState[] states)
-      {
-        this._states = states;
-        return this;
-      }
-
-      public ListInvoicesRequestBuilder WithBillingMonth(int billingMonth)
-      {
-        this._billingMonth = billingMonth;
-        return this;
-      }
-
-      public ListInvoicesRequestBuilder WithBillingYear(int billingYear)
-      {
-        this._billingYear = billingYear;
-        return this;
-      }
-
-      public ListInvoicesRequestBuilder WithCursor(int cursor)
-      {
-        this._cursor = cursor;
-        return this;
-      }
-
-      public ListInvoicesRequestBuilder WithLimit(int limit)
-      {
-        this._limit = limit;
-        return this;
-      }
-
-      /// <summary>
-      /// Validates the builder.
-      /// </summary>
-      /// <exception cref="CoinbaseClientException">Thrown when <see cref="_entityId" /> is null, empty, or whitespace.</exception>
-      private void Validate()
-      {
-        if (string.IsNullOrWhiteSpace(_entityId))
-        {
-          throw new CoinbaseClientException("EntityId is required");
-        }
-      }
-
-      /// <summary>
-      /// Builds the <see cref="ListInvoicesRequest"/>.
-      /// </summary>
-      /// <returns>The <see cref="ListInvoicesRequest"/>.</returns>
-      /// <exception cref="CoinbaseClientException">Thrown when <see cref="_entityId" /> is null, empty or whitespace.</exception>
-      public ListInvoicesRequest Build()
-      {
-        Validate();
-        return new ListInvoicesRequest(this._entityId!)
-        {
-          States = this._states,
-          BillingMonth = this._billingMonth,
-          BillingYear = this._billingYear,
-          Cursor = this._cursor,
-          Limit = this._limit,
-        };
-      }
-    }
   }
 }

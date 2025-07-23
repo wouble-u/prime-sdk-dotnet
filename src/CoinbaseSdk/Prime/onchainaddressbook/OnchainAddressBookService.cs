@@ -1,5 +1,5 @@
 /*
- * Copyright 2024-present Coinbase Global, Inc.
+ * Copyright 2025-present Coinbase Global, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,13 +21,15 @@ namespace CoinbaseSdk.Prime.OnchainAddressBook
   using CoinbaseSdk.Core.Http;
   using CoinbaseSdk.Core.Service;
 
-  public class OnchainAddressBookService(ICoinbaseClient client) : CoinbaseService(client), IOnchainAddressBookService
+  public class OnchainAddressBookService(ICoinbaseClient client)
+    : CoinbaseService(client),
+      IOnchainAddressBookService
   {
-    public CreateOnchainAddressBookEntryResponse CreateOnchainAddressBookEntry(
+    public ActivityCreationResponse CreateOnchainAddressBookEntry(
       CreateOnchainAddressBookEntryRequest request,
       CallOptions? options = null)
     {
-      return this.Request<CreateOnchainAddressBookEntryResponse>(
+      return Request<ActivityCreationResponse>(
         HttpMethod.Post,
         $"/portfolios/{request.PortfolioId}/onchain_address_group",
         [HttpStatusCode.OK],
@@ -35,12 +37,12 @@ namespace CoinbaseSdk.Prime.OnchainAddressBook
         options);
     }
 
-    public Task<CreateOnchainAddressBookEntryResponse> CreateOnchainAddressBookEntryAsync(
+    public Task<ActivityCreationResponse> CreateOnchainAddressBookEntryAsync(
       CreateOnchainAddressBookEntryRequest request,
       CallOptions? options = null,
       CancellationToken cancellationToken = default)
     {
-      return this.RequestAsync<CreateOnchainAddressBookEntryResponse>(
+      return RequestAsync<ActivityCreationResponse>(
         HttpMethod.Post,
         $"/portfolios/{request.PortfolioId}/onchain_address_group",
         [HttpStatusCode.OK],
@@ -49,11 +51,11 @@ namespace CoinbaseSdk.Prime.OnchainAddressBook
         cancellationToken);
     }
 
-    public UpdateOnchainAddressBookEntryResponse UpdateOnchainAddressBookEntry(
+    public ActivityCreationResponse UpdateOnchainAddressBookEntry(
       UpdateOnchainAddressBookEntryRequest request,
       CallOptions? options = null)
     {
-      return this.Request<UpdateOnchainAddressBookEntryResponse>(
+      return Request<ActivityCreationResponse>(
         HttpMethod.Put,
         $"/portfolios/{request.PortfolioId}/onchain_address_group",
         [HttpStatusCode.OK],
@@ -61,25 +63,25 @@ namespace CoinbaseSdk.Prime.OnchainAddressBook
         options);
     }
 
-    public Task<UpdateOnchainAddressBookEntryResponse> UpdateOnchainAddressBookEntryAsync(
-        UpdateOnchainAddressBookEntryRequest request,
-        CallOptions? options = null,
-        CancellationToken cancellationToken = default)
+    public Task<ActivityCreationResponse> UpdateOnchainAddressBookEntryAsync(
+      UpdateOnchainAddressBookEntryRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default)
     {
-      return this.RequestAsync<UpdateOnchainAddressBookEntryResponse>(
-      HttpMethod.Put,
-      $"/portfolios/{request.PortfolioId}/onchain_address_group",
-      [HttpStatusCode.OK],
-      request,
-      options,
-      cancellationToken);
+      return RequestAsync<ActivityCreationResponse>(
+        HttpMethod.Put,
+        $"/portfolios/{request.PortfolioId}/onchain_address_group",
+        [HttpStatusCode.OK],
+        request,
+        options,
+        cancellationToken);
     }
 
-    public DeleteOnchainAddressGroupResponse DeleteOnchainAddressGroup(
-        DeleteOnchainAddressGroupRequest request,
-        CallOptions? options = null)
+    public ActivityCreationResponse DeleteOnchainAddressGroup(
+      DeleteOnchainAddressGroupRequest request,
+      CallOptions? options = null)
     {
-      return this.Request<DeleteOnchainAddressGroupResponse>(
+      return Request<ActivityCreationResponse>(
         HttpMethod.Delete,
         $"/portfolios/{request.PortfolioId}/onchain_address_group/{request.AddressGroupId}",
         [HttpStatusCode.OK],
@@ -87,12 +89,12 @@ namespace CoinbaseSdk.Prime.OnchainAddressBook
         options);
     }
 
-    public Task<DeleteOnchainAddressGroupResponse> DeleteOnchainAddressGroupAsync(
-        DeleteOnchainAddressGroupRequest request,
-        CallOptions? options = null,
-        CancellationToken cancellationToken = default)
+    public Task<ActivityCreationResponse> DeleteOnchainAddressGroupAsync(
+      DeleteOnchainAddressGroupRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default)
     {
-      return this.RequestAsync<DeleteOnchainAddressGroupResponse>(
+      return RequestAsync<ActivityCreationResponse>(
         HttpMethod.Delete,
         $"/portfolios/{request.PortfolioId}/onchain_address_group/{request.AddressGroupId}",
         [HttpStatusCode.OK],
@@ -102,27 +104,27 @@ namespace CoinbaseSdk.Prime.OnchainAddressBook
     }
 
     public ListOnchainAddressGroupsResponse ListOnchainAddressGroups(
-        ListOnchainAddressGroupsRequest request,
-        CallOptions? options = null)
+      ListOnchainAddressGroupsRequest request,
+      CallOptions? options = null)
     {
-      return this.Request<ListOnchainAddressGroupsResponse>(
+      return Request<ListOnchainAddressGroupsResponse>(
         HttpMethod.Get,
         $"/portfolios/{request.PortfolioId}/onchain_address_groups",
         [HttpStatusCode.OK],
-        request,
+        null,
         options);
     }
 
     public Task<ListOnchainAddressGroupsResponse> ListOnchainAddressGroupsAsync(
-        ListOnchainAddressGroupsRequest request,
-        CallOptions? options = null,
-        CancellationToken cancellationToken = default)
+      ListOnchainAddressGroupsRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default)
     {
-      return this.RequestAsync<ListOnchainAddressGroupsResponse>(
+      return RequestAsync<ListOnchainAddressGroupsResponse>(
         HttpMethod.Get,
         $"/portfolios/{request.PortfolioId}/onchain_address_groups",
         [HttpStatusCode.OK],
-        request,
+        null,
         options,
         cancellationToken);
     }

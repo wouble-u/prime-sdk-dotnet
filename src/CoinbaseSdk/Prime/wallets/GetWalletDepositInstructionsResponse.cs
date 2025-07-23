@@ -22,39 +22,10 @@ namespace CoinbaseSdk.Prime.Wallets
   public class GetWalletDepositInstructionsResponse
   {
     [JsonPropertyName("crypto_instructions")]
-    public CryptoDepositInstructions? CryptoDepositInstructions { get; set; }
+    public WalletCryptoDepositInstructions? CryptoDepositInstructions { get; set; }
     [JsonPropertyName("fiat_instructions")]
-    public FiatDepositInstructions? FiatDepositInstructions { get; set; }
+    public WalletFiatDepositInstructions? FiatDepositInstructions { get; set; }
 
     public GetWalletDepositInstructionsResponse() { }
-
-    public class GetWalletDepositInstructionsResponseBuilder
-    {
-      private CryptoDepositInstructions? _cryptoDepositInstructions;
-      private FiatDepositInstructions? _fiatDepositInstructions;
-
-      public GetWalletDepositInstructionsResponseBuilder() { }
-
-      public GetWalletDepositInstructionsResponseBuilder WithCryptoDepositInstructions(CryptoDepositInstructions cryptoDepositInstructions)
-      {
-        this._cryptoDepositInstructions = cryptoDepositInstructions;
-        return this;
-      }
-
-      public GetWalletDepositInstructionsResponseBuilder WithFiatDepositInstructions(FiatDepositInstructions fiatDepositInstructions)
-      {
-        this._fiatDepositInstructions = fiatDepositInstructions;
-        return this;
-      }
-
-      public GetWalletDepositInstructionsResponse Build()
-      {
-        return new GetWalletDepositInstructionsResponse
-        {
-          CryptoDepositInstructions = this._cryptoDepositInstructions,
-          FiatDepositInstructions = this._fiatDepositInstructions
-        };
-      }
-    }
   }
 }

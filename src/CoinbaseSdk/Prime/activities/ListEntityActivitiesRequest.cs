@@ -18,104 +18,94 @@ namespace CoinbaseSdk.Prime.Activities
 {
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
-  using CoinbaseSdk.Prime.Model;
+  using CoinbaseSdk.Prime.Common;
+  using CoinbaseSdk.Prime.Model.Enums;
 
-  public class ListEntityActivitiesRequest(string entityId)
+  public class ListEntityActivitiesRequest(string entityId) : PaginatedRequest
   {
     [JsonIgnore]
     public string EntityId { get; set; } = entityId;
 
     [JsonPropertyName("activity_level")]
-    public string? ActivityLevel { get; set; }
+    public ActivityLevel? ActivityLevel { get; set; }
     public string[] Symbols { get; set; } = [];
-    public string[] Categories { get; set; } = [];
-    public string[] Statuses { get; set; } = [];
+    public ActivityCategory?[] Categories { get; set; } = [];
+    public ActivityStatus?[] Statuses { get; set; } = [];
     [JsonPropertyName("start_time")]
     public string? StartTime { get; set; }
     [JsonPropertyName("end_time")]
     public string? EndTime { get; set; }
-    public string? Cursor { get; set; }
-    [JsonPropertyName("sort_direction")]
-    public string? SortDirection { get; set; }
-    public int? Limit { get; set; }
 
-    public class ListEntityActivitiesRequestBuilder
+    public class Builder
     {
       private string? _entityId;
-      private string? _activityLevel;
+      private ActivityLevel? _activityLevel;
       private string[]? _symbols;
-      private string[]? _categories;
-      private string[]? _statuses;
+      private ActivityCategory?[]? _categories;
+      private ActivityStatus?[]? _statuses;
       private string? _startTime;
       private string? _endTime;
       private string? _cursor;
-      private string? _sortDirection;
+      private SortDirection? _sortDirection;
       private int? _limit;
 
-      public ListEntityActivitiesRequestBuilder WithEntityId(string entityId)
+      public Builder WithEntityId(string entityId)
       {
         _entityId = entityId;
         return this;
       }
 
-      public ListEntityActivitiesRequestBuilder WithActivityLevel(string activityLevel)
+      public Builder WithActivityLevel(ActivityLevel activityLevel)
       {
         _activityLevel = activityLevel;
         return this;
       }
 
-      public ListEntityActivitiesRequestBuilder WithSymbols(string[] symbols)
+      public Builder WithSymbols(string[] symbols)
       {
         _symbols = symbols;
         return this;
       }
 
-      public ListEntityActivitiesRequestBuilder WithCategories(string[] categories)
+      public Builder WithCategories(ActivityCategory?[] categories)
       {
         _categories = categories;
         return this;
       }
 
-      public ListEntityActivitiesRequestBuilder WithStatuses(string[] statuses)
+      public Builder WithStatuses(ActivityStatus?[] statuses)
       {
         _statuses = statuses;
         return this;
       }
 
-      public ListEntityActivitiesRequestBuilder WithStartTime(string startTime)
+      public Builder WithStartTime(string startTime)
       {
         _startTime = startTime;
         return this;
       }
 
-      public ListEntityActivitiesRequestBuilder WithEndTime(string endTime)
+      public Builder WithEndTime(string endTime)
       {
         _endTime = endTime;
         return this;
       }
 
-      public ListEntityActivitiesRequestBuilder WithCursor(string cursor)
+      public Builder WithCursor(string cursor)
       {
         _cursor = cursor;
         return this;
       }
 
-      public ListEntityActivitiesRequestBuilder WithSortDirection(string sortDirection)
+      public Builder WithSortDirection(SortDirection sortDirection)
       {
         _sortDirection = sortDirection;
         return this;
       }
 
-      public ListEntityActivitiesRequestBuilder WithLimit(int limit)
+      public Builder WithLimit(int limit)
       {
         _limit = limit;
-        return this;
-      }
-
-      public ListEntityActivitiesRequestBuilder WithPagination(Pagination pagination)
-      {
-        _cursor = pagination.NextCursor;
-        _sortDirection = pagination.SortDirection;
         return this;
       }
 
@@ -138,19 +128,20 @@ namespace CoinbaseSdk.Prime.Activities
       /// <exception cref="CoinbaseClientException">Thrown when <see cref="_entityId" /> is null, empty, or whitespace.</exception>
       public ListEntityActivitiesRequest Build()
       {
-        this.Validate();
-        return new ListEntityActivitiesRequest(_entityId!)
+        Validate();
+        var request = new ListEntityActivitiesRequest(_entityId!)
         {
           ActivityLevel = _activityLevel,
-          Symbols = _symbols ?? new string[] { },
-          Categories = _categories ?? new string[] { },
-          Statuses = _statuses ?? new string[] { },
+          Symbols = _symbols ?? [],
+          Categories = _categories ?? [],
+          Statuses = _statuses ?? [],
           StartTime = _startTime,
           EndTime = _endTime,
           Cursor = _cursor,
           SortDirection = _sortDirection,
           Limit = _limit
         };
+        return request;
       }
     }
   }

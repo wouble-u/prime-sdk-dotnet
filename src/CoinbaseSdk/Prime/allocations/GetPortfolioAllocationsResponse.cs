@@ -16,39 +16,15 @@
 
 namespace CoinbaseSdk.Prime.Allocations
 {
+  using CoinbaseSdk.Prime.Common;
   using CoinbaseSdk.Prime.Model;
+
   public class GetPortfolioAllocationsResponse
   {
     public Allocation[] Allocations { get; set; } = [];
     public Pagination? Pagination { get; set; }
 
     public GetPortfolioAllocationsResponse() { }
-
-    public class GetPortfolioAllocationsResponseBuilder
-    {
-      private Allocation[] _allocations = Array.Empty<Allocation>();
-      private Pagination? _pagination;
-
-      public GetPortfolioAllocationsResponseBuilder WithAllocations(Allocation[] allocations)
-      {
-        this._allocations = allocations;
-        return this;
-      }
-
-      public GetPortfolioAllocationsResponseBuilder WithPagination(Pagination? pagination)
-      {
-        this._pagination = pagination;
-        return this;
-      }
-
-      public GetPortfolioAllocationsResponse Build()
-      {
-        return new GetPortfolioAllocationsResponse
-        {
-          Allocations = this._allocations,
-          Pagination = this._pagination
-        };
-      }
-    }
   }
 }
+

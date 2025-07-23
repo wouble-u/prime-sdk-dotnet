@@ -31,6 +31,6 @@ namespace CoinbaseSdk.Prime.Transactions
     public EvmParams? EVMParams { get; set; }
 
     [JsonPropertyName("rpc")]
-    public Rpc? Rpc { get; set; }
+    public RpcConfig? Rpc { get; set; }
   }
 }

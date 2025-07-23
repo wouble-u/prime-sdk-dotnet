@@ -26,7 +26,7 @@ namespace CoinbaseSdk.Prime.Portfolios
   {
     public ListPortfoliosResponse ListPortfolios(CallOptions? options = null)
     {
-      return this.Request<ListPortfoliosResponse>(
+      return Request<ListPortfoliosResponse>(
         HttpMethod.Get,
         "/portfolios",
         [HttpStatusCode.OK],
@@ -38,7 +38,7 @@ namespace CoinbaseSdk.Prime.Portfolios
       CallOptions? options = null,
       CancellationToken cancellationToken = default)
     {
-      return this.RequestAsync<ListPortfoliosResponse>(
+      return RequestAsync<ListPortfoliosResponse>(
         HttpMethod.Get,
         "/portfolios",
         [HttpStatusCode.OK],
@@ -47,11 +47,11 @@ namespace CoinbaseSdk.Prime.Portfolios
         cancellationToken);
     }
 
-    public GetPortfolioByIdResponse GetPortfolioById(
-      GetPortfolioByIdRequest request,
+    public GetPortfolioResponse GetPortfolio(
+      GetPortfolioRequest request,
       CallOptions? options = null)
     {
-      return this.Request<GetPortfolioByIdResponse>(
+      return Request<GetPortfolioResponse>(
         HttpMethod.Get,
         $"/portfolios/{request.PortfolioId}",
         [HttpStatusCode.OK],
@@ -59,14 +59,40 @@ namespace CoinbaseSdk.Prime.Portfolios
         options);
     }
 
-    public Task<GetPortfolioByIdResponse> GetPortfolioByIdAsync(
-      GetPortfolioByIdRequest request,
+    public Task<GetPortfolioResponse> GetPortfolioAsync(
+      GetPortfolioRequest request,
       CallOptions? options = null,
       CancellationToken cancellationToken = default)
     {
-      return this.RequestAsync<GetPortfolioByIdResponse>(
+      return RequestAsync<GetPortfolioResponse>(
         HttpMethod.Get,
         $"/portfolios/{request.PortfolioId}",
+        [HttpStatusCode.OK],
+        null,
+        options,
+        cancellationToken);
+    }
+
+    public GetPortfolioCounterpartyResponse GetPortfolioCounterparty(
+      GetPortfolioCounterpartyRequest request,
+      CallOptions? options = null)
+    {
+      return Request<GetPortfolioCounterpartyResponse>(
+        HttpMethod.Get,
+        $"/portfolios/{request.PortfolioId}/counterparty",
+        [HttpStatusCode.OK],
+        null,
+        options);
+    }
+
+    public Task<GetPortfolioCounterpartyResponse> GetPortfolioCounterpartyAsync(
+      GetPortfolioCounterpartyRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default)
+    {
+      return RequestAsync<GetPortfolioCounterpartyResponse>(
+        HttpMethod.Get,
+        $"/portfolios/{request.PortfolioId}/counterparty",
         [HttpStatusCode.OK],
         null,
         options,

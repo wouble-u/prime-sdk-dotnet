@@ -18,9 +18,10 @@ namespace CoinbaseSdk.Prime.Transactions
 {
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
-  using CoinbaseSdk.Prime.Model;
+  using CoinbaseSdk.Prime.Common;
+  using CoinbaseSdk.Prime.Model.Enums;
 
-  public class ListWalletTransactionsRequest(string portfolioId, string walletId)
+  public class ListWalletTransactionsRequest(string portfolioId, string walletId) : PaginatedRequest
   {
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
@@ -37,12 +38,7 @@ namespace CoinbaseSdk.Prime.Transactions
     [JsonPropertyName("end_time")]
     public string? EndTime { get; set; }
 
-    public string? Cursor { get; set; }
-    [JsonPropertyName("sort_direction")]
-    public string? SortDirection { get; set; }
-    public int? Limit { get; set; }
-
-    public class ListWalletTransactionsRequestBuilder
+    public class Builder
     {
       private string? _portfolioId;
       private string? _walletId;
@@ -50,61 +46,54 @@ namespace CoinbaseSdk.Prime.Transactions
       private string? _startTime;
       private string? _endTime;
       private string? _cursor;
-      private string? _sortDirection;
+      private SortDirection? _sortDirection;
       private int? _limit;
 
-      public ListWalletTransactionsRequestBuilder WithPortfolioId(string portfolioId)
+      public Builder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      public ListWalletTransactionsRequestBuilder WithWalletId(string walletId)
+      public Builder WithWalletId(string walletId)
       {
         _walletId = walletId;
         return this;
       }
 
-      public ListWalletTransactionsRequestBuilder WithType(TransactionType type)
+      public Builder WithType(TransactionType type)
       {
         _type = type;
         return this;
       }
 
-      public ListWalletTransactionsRequestBuilder WithStartTime(string startTime)
+      public Builder WithStartTime(string startTime)
       {
         _startTime = startTime;
         return this;
       }
 
-      public ListWalletTransactionsRequestBuilder WithEndTime(string endTime)
+      public Builder WithEndTime(string endTime)
       {
         _endTime = endTime;
         return this;
       }
 
-      public ListWalletTransactionsRequestBuilder WithCursor(string cursor)
+      public Builder WithCursor(string cursor)
       {
         _cursor = cursor;
         return this;
       }
 
-      public ListWalletTransactionsRequestBuilder WithSortDirection(string sortDirection)
+      public Builder WithSortDirection(SortDirection sortDirection)
       {
         _sortDirection = sortDirection;
         return this;
       }
 
-      public ListWalletTransactionsRequestBuilder WithLimit(int limit)
+      public Builder WithLimit(int limit)
       {
         _limit = limit;
-        return this;
-      }
-
-      public ListWalletTransactionsRequestBuilder WithPagination(Pagination pagination)
-      {
-        _cursor = pagination.NextCursor;
-        _sortDirection = pagination.SortDirection;
         return this;
       }
 
@@ -114,11 +103,11 @@ namespace CoinbaseSdk.Prime.Transactions
       /// <exception cref="CoinbaseClientException">Thrown when <see cref="_portfolioId" /> is null, empty, or whitespace.</exception>
       private void Validate()
       {
-        if (string.IsNullOrWhiteSpace(this._portfolioId))
+        if (string.IsNullOrWhiteSpace(_portfolioId))
         {
           throw new CoinbaseClientException("PortfolioId is required");
         }
-        if (string.IsNullOrWhiteSpace(this._walletId))
+        if (string.IsNullOrWhiteSpace(_walletId))
         {
           throw new CoinbaseClientException("WalletId is required");
         }
@@ -131,16 +120,17 @@ namespace CoinbaseSdk.Prime.Transactions
       /// <exception cref="CoinbaseClientException">Thrown when the required fields are not set.</exception>
       public ListWalletTransactionsRequest Build()
       {
-        this.Validate();
-        return new ListWalletTransactionsRequest(this._portfolioId!, this._walletId!)
+        Validate();
+        var request = new ListWalletTransactionsRequest(_portfolioId!, _walletId!)
         {
-          Type = this._type,
-          StartTime = this._startTime,
-          EndTime = this._endTime,
-          Cursor = this._cursor,
-          SortDirection = this._sortDirection,
-          Limit = this._limit
+          Type = _type,
+          StartTime = _startTime,
+          EndTime = _endTime,
+          Cursor = _cursor,
+          SortDirection = _sortDirection,
+          Limit = _limit,
         };
+        return request;
       }
     }
   }

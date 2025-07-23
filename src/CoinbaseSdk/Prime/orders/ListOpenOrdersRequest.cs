@@ -17,9 +17,10 @@
 namespace CoinbaseSdk.Prime.Orders
 {
   using System.Text.Json.Serialization;
-  using CoinbaseSdk.Prime.Model;
+  using CoinbaseSdk.Prime.Common;
+  using CoinbaseSdk.Prime.Model.Enums;
 
-  public class ListOpenOrdersRequest(string portfolioId)
+  public class ListOpenOrdersRequest(string portfolioId) : PaginatedRequest
   {
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
@@ -30,7 +31,7 @@ namespace CoinbaseSdk.Prime.Orders
     [JsonPropertyName("order_type")]
     public OrderType? OrderType { get; set; }
 
-    [JsonPropertyName("start_date"), JsonRequired]
+    [JsonPropertyName("start_date")]
     public DateTime? StartDate { get; set; }
 
     [JsonPropertyName("order_side")]
@@ -39,12 +40,7 @@ namespace CoinbaseSdk.Prime.Orders
     [JsonPropertyName("end_date")]
     public DateTime? EndDate { get; set; }
 
-    public string? Cursor { get; set; }
-    [JsonPropertyName("sort_direction")]
-    public string? SortDirection { get; set; }
-    public int? Limit { get; set; }
-
-    public class ListOpenOrdersRequestBuilder
+    public class Builder
     {
       private string? _portfolioId;
       private string[]? _productIds;
@@ -53,83 +49,77 @@ namespace CoinbaseSdk.Prime.Orders
       private OrderSide? _orderSide;
       private DateTime? _endDate;
       private string? _cursor;
-      private string? _sortDirection;
+      private SortDirection? _sortDirection;
       private int? _limit;
 
-      public ListOpenOrdersRequestBuilder WithPortfolioId(string portfolioId)
+      public Builder WithPortfolioId(string portfolioId)
       {
-        this._portfolioId = portfolioId;
+        _portfolioId = portfolioId;
         return this;
       }
 
-      public ListOpenOrdersRequestBuilder WithProductIds(string[] productIds)
+      public Builder WithProductIds(string[] productIds)
       {
-        this._productIds = productIds;
+        _productIds = productIds;
         return this;
       }
 
-      public ListOpenOrdersRequestBuilder WithOrderType(OrderType orderType)
+      public Builder WithOrderType(OrderType orderType)
       {
-        this._orderType = orderType;
+        _orderType = orderType;
         return this;
       }
 
-      public ListOpenOrdersRequestBuilder WithStartDate(DateTime startDate)
+      public Builder WithStartDate(DateTime startDate)
       {
-        this._startDate = startDate;
+        _startDate = startDate;
         return this;
       }
 
-      public ListOpenOrdersRequestBuilder WithOrderSide(OrderSide orderSide)
+      public Builder WithOrderSide(OrderSide orderSide)
       {
-        this._orderSide = orderSide;
+        _orderSide = orderSide;
         return this;
       }
 
-      public ListOpenOrdersRequestBuilder WithEndDate(DateTime endDate)
+      public Builder WithEndDate(DateTime endDate)
       {
-        this._endDate = endDate;
+        _endDate = endDate;
         return this;
       }
 
-      public ListOpenOrdersRequestBuilder WithCursor(string cursor)
+      public Builder WithCursor(string cursor)
       {
-        this._cursor = cursor;
+        _cursor = cursor;
         return this;
       }
 
-      public ListOpenOrdersRequestBuilder WithSortDirection(string sortDirection)
+      public Builder WithSortDirection(SortDirection sortDirection)
       {
-        this._sortDirection = sortDirection;
+        _sortDirection = sortDirection;
         return this;
       }
 
-      public ListOpenOrdersRequestBuilder WithLimit(int limit)
+      public Builder WithLimit(int limit)
       {
-        this._limit = limit;
-        return this;
-      }
-
-      public ListOpenOrdersRequestBuilder WithPagination(Pagination pagination)
-      {
-        this._cursor = pagination.NextCursor;
-        this._sortDirection = pagination.SortDirection;
+        _limit = limit;
         return this;
       }
 
       public ListOpenOrdersRequest Build()
       {
-        return new ListOpenOrdersRequest(this._portfolioId!)
+        var request = new ListOpenOrdersRequest(_portfolioId!)
         {
-          ProductIds = this._productIds,
-          OrderType = this._orderType,
-          StartDate = this._startDate,
-          OrderSide = this._orderSide,
-          EndDate = this._endDate,
-          Cursor = this._cursor,
-          SortDirection = this._sortDirection,
-          Limit = this._limit
+          ProductIds = _productIds,
+          OrderType = _orderType,
+          StartDate = _startDate,
+          OrderSide = _orderSide,
+          EndDate = _endDate,
+          Cursor = _cursor,
+          SortDirection = _sortDirection,
+          Limit = _limit,
         };
+        return request;
       }
     }
   }
