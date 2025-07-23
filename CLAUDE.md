@@ -81,14 +81,11 @@ All services follow consistent patterns:
 - **Server**: https://api.prime.coinbase.com/
 - **Version**: 0.1
 
-### Code Generation Tools
-- **Endpoint Analysis**: `tools/code-generation/extract_endpoints_v2.py`
-  - Catalogs all 77 OpenAPI endpoints with complete metadata
-  - Use for gap analysis and implementation planning
-  - Run: `python3 tools/code-generation/extract_endpoints_v2.py`
-- **Tool Documentation**: `tools/README.md`
-  - Instructions for using generation tools
-  - Maintenance guidelines for spec updates
+### AI Agent Code Generation
+- **Runtime Analysis**: AI agents analyze the OpenAPI specification directly at runtime
+- **Tag-Based Generation**: Endpoints are processed by OpenAPI tags to generate corresponding service methods and models
+- **Dynamic Approach**: No static analysis tools needed - AI agents work directly with the specification
+- **Guidelines**: All AI agent workflows and code generation patterns are documented in this file
 
 ### API Structure Analysis
 The OpenAPI spec defines endpoints across multiple domains with consistent patterns:
@@ -169,17 +166,28 @@ Each OpenAPI operation should generate:
 - **Models**: `src/CoinbaseSdk/Prime/{domain}/{ModelName}.cs` or `src/CoinbaseSdk/Prime/model/{ModelName}.cs`
 - **Requests/Responses**: Co-located with service or in dedicated folders
 
-### SDK Development Workflow
-For adding new endpoints or updating existing ones:
+### AI Agent Development Workflow
+For adding new endpoints or updating existing ones using AI agents:
 
-1. **Analyze Current State**: Run `python3 tools/code-generation/extract_endpoints_v2.py` to catalog all OpenAPI endpoints
-2. **Identify Gaps**: Compare tool output against existing service files in `src/CoinbaseSdk/Prime/`
-3. **Follow Patterns**: Use the code generation guidelines below for consistent implementation
-4. **Validate**: Ensure `dotnet build prime-sdk-dotnet.sln` passes after changes
+1. **Analyze OpenAPI Specification**: AI agent reads `apiSpec/prime-public-spec.yaml` directly
+2. **Process by Tags**: Group endpoints by OpenAPI tags (e.g., Activities, Wallets, Orders)
+3. **Generate Service Methods**: Create methods following SDK naming conventions (List vs Get)
+4. **Generate Models**: Extract and create request/response models from OpenAPI schemas
+5. **Apply Patterns**: Use established SDK patterns for consistency
+6. **Validate**: Ensure `dotnet build prime-sdk-dotnet.sln` passes after generation
 
-### Missing Endpoints (Potential Generation Targets)
-Use the endpoint analysis tool to identify:
-- Missing CRUD operations not yet implemented
-- New API endpoints added to the OpenAPI spec
-- Parameter variations or new request/response models
-- Endpoints with implementation discrepancies
+### AI Agent Code Generation Guidelines
+
+#### Tag-Based Endpoint Processing
+- **Read OpenAPI tags**: Each tag represents a service domain
+- **Extract operations**: Get all operations for each tag
+- **Apply naming conventions**: Transform OpenAPI operation names to SDK method names
+- **Generate service interface**: Create I{Service}Service interface
+- **Generate service implementation**: Create {Service}Service class
+
+#### Model Generation from Schemas
+- **Extract schemas**: Process `components.schemas` from OpenAPI spec
+- **Generate model classes**: Create C# classes with proper JSON property mapping
+- **Handle enums**: Convert OpenAPI enums to C# enums with JsonStringEnumConverter
+- **Builder patterns**: Add builder classes for complex models
+- **Validation**: Include required field validation and proper nullable types
