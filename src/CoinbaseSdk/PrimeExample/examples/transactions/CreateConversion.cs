@@ -49,11 +49,11 @@ var amountOption = new Option<string?>(
 
 var destinationOption = new Option<string?>(
     name: "--destination",
-    description: "The destination wallet ID (optional)");
+    description: "The destination wallet ID");
 
 var idempotencyKeyOption = new Option<string?>(
     name: "--idempotencyKey",
-    description: "Idempotency key (auto-generated if not provided)");
+    description: "Idempotency key");
 
 var rootCommand = new RootCommand("Create a currency conversion")
 {
