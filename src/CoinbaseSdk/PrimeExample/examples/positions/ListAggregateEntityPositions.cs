@@ -19,7 +19,7 @@
 #:project ../../
 #:package Newtonsoft.Json@13.0.3
 
-using CoinbaseSdk.Prime.Portfolios;
+using CoinbaseSdk.Prime.Positions;
 using CoinbaseSdk.Prime.Client;
 using CoinbaseSdk.Prime.Common;
 using System.CommandLine;
@@ -27,54 +27,52 @@ using System.CommandLine;
 // Load environment variables
 DotNetEnv.Env.TraversePath().Load();
 
-var portfolioIdOption = new Option<string?>(
-    name: "--portfolioId",
-    description: "The Portfolio ID");
+var entityIdOption = new Option<string?>(
+    name: "--entityId",
+    description: "The Entity ID");
 
-var rootCommand = new RootCommand("Get portfolio by ID")
+var rootCommand = new RootCommand("List aggregate positions for an entity")
 {
-    portfolioIdOption
+    entityIdOption
 };
 
-rootCommand.SetHandler((portfolioId) =>
+rootCommand.SetHandler((entityId) =>
 {
-    // Fallback to environment variable for portfolioId
-    if (string.IsNullOrEmpty(portfolioId))
-    {
-        portfolioId = Environment.GetEnvironmentVariable("PRIME_PORTFOLIO_ID");
-    }
+    entityId ??= Environment.GetEnvironmentVariable("PRIME_ENTITY_ID");
 
-    if (string.IsNullOrEmpty(portfolioId))
+    if (string.IsNullOrEmpty(entityId))
     {
-        Console.Error.WriteLine("Error: --portfolioId is required (or set PRIME_PORTFOLIO_ID env var).");
+        Console.Error.WriteLine("Error: --entityId is required (or set PRIME_ENTITY_ID env var).");
         Environment.ExitCode = 1;
         return;
     }
 
     try
     {
-        Console.WriteLine($"Using Portfolio ID: {portfolioId}");
+        Console.WriteLine($"Using Entity ID: {entityId}");
 
         // Create client and service
         var client = CoinbasePrimeClient.FromEnv();
-        var portfoliosService = new PortfoliosService(client);
+        var positionsService = new PositionsService(client);
 
         // Build request
-        var request = new GetPortfolioRequest(portfolioId);
+        var request = new ListAggregateEntityPositionsRequest(entityId);
+
+        PrettyPrinter.PrintResponse("ListAggregateEntityPositionsRequest", request);
 
         // Execute request
-        var response = portfoliosService.GetPortfolio(request);
+        var response = positionsService.ListAggregateEntityPositions(request);
 
         // Print response
-        PrettyPrinter.PrintResponse("GetPortfolioResponse", response);
+        PrettyPrinter.PrintResponse("ListAggregateEntityPositionsResponse", response);
 
         Environment.ExitCode = 0;
     }
     catch (Exception ex)
     {
-        PrettyPrinter.PrintError("Error retrieving portfolio", ex);
+        PrettyPrinter.PrintError("Error listing aggregate positions", ex);
         Environment.ExitCode = 1;
     }
-}, portfolioIdOption);
+}, entityIdOption);
 
 return rootCommand.Invoke(args);

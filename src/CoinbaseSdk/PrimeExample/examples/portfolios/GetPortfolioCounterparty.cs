@@ -31,7 +31,7 @@ var portfolioIdOption = new Option<string?>(
     name: "--portfolioId",
     description: "The Portfolio ID");
 
-var rootCommand = new RootCommand("Get portfolio by ID")
+var rootCommand = new RootCommand("Get portfolio counterparty information")
 {
     portfolioIdOption
 };
@@ -60,19 +60,19 @@ rootCommand.SetHandler((portfolioId) =>
         var portfoliosService = new PortfoliosService(client);
 
         // Build request
-        var request = new GetPortfolioRequest(portfolioId);
+        var request = new GetPortfolioCounterpartyRequest(portfolioId);
 
         // Execute request
-        var response = portfoliosService.GetPortfolio(request);
+        var response = portfoliosService.GetPortfolioCounterparty(request);
 
         // Print response
-        PrettyPrinter.PrintResponse("GetPortfolioResponse", response);
+        PrettyPrinter.PrintResponse("GetPortfolioCounterpartyResponse", response);
 
         Environment.ExitCode = 0;
     }
     catch (Exception ex)
     {
-        PrettyPrinter.PrintError("Error retrieving portfolio", ex);
+        PrettyPrinter.PrintError("Error retrieving portfolio counterparty", ex);
         Environment.ExitCode = 1;
     }
 }, portfolioIdOption);
