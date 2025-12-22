@@ -109,7 +109,7 @@ namespace CoinbaseSdk.Prime.Wallets
         HttpMethod.Get,
         $"/portfolios/{request.PortfolioId}/wallets/{request.WalletId}/deposit_instructions",
         [HttpStatusCode.OK],
-        null,
+        request,
         options);
     }
 
@@ -122,7 +122,7 @@ namespace CoinbaseSdk.Prime.Wallets
         HttpMethod.Get,
         $"/portfolios/{request.PortfolioId}/wallets/{request.WalletId}/deposit_instructions",
         [HttpStatusCode.OK],
-        null,
+        request,
         options,
         cancellationToken);
     }
