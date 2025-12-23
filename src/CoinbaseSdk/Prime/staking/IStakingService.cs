@@ -64,5 +64,14 @@ namespace CoinbaseSdk.Prime.Staking
         ClaimStakingRewardsRequest request,
         CallOptions? options = null,
         CancellationToken cancellationToken = default);
+
+    public ListTransactionValidatorsResponse ListTransactionValidators(
+        ListTransactionValidatorsRequest request,
+        CallOptions? options = null);
+
+    public Task<ListTransactionValidatorsResponse> ListTransactionValidatorsAsync(
+        ListTransactionValidatorsRequest request,
+        CallOptions? options = null,
+        CancellationToken cancellationToken = default);
   }
 }
