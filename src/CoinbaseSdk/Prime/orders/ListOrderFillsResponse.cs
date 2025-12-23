@@ -21,7 +21,7 @@ namespace CoinbaseSdk.Prime.Orders
 
   public class ListOrderFillsResponse
   {
-    public List<Fill> OrderFills { get; set; } = [];
+    public List<Fill> Fills { get; set; } = [];
 
     public Pagination? Pagination { get; set; }
   }
