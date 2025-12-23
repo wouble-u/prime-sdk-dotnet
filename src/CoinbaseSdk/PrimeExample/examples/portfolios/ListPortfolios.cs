@@ -1,3 +1,4 @@
+#!/usr/bin/env -S dotnet run --file
 /*
  * Copyright 2025-present Coinbase Global, Inc.
  *
@@ -14,42 +15,41 @@
  * limitations under the License.
  */
 
-using CoinbaseSdk.Prime.Client;
+#:project ../../../Prime
+#:project ../../
+#:package Newtonsoft.Json@13.0.3
+
 using CoinbaseSdk.Prime.Portfolios;
+using CoinbaseSdk.Prime.Client;
 using CoinbaseSdk.Prime.Common;
+using System.CommandLine;
 
-namespace CoinbaseSdk.PrimeExample.Examples.Portfolios;
+// Load environment variables
+DotNetEnv.Env.TraversePath().Load();
 
-/// <summary>
-/// Example demonstrating how to list all portfolios
-/// </summary>
-public static class ListPortfolios
+var rootCommand = new RootCommand("List all portfolios");
+
+rootCommand.SetHandler(() =>
 {
-  /// <summary>
-  /// Lists all portfolios for the authenticated user
-  /// </summary>
-  /// <returns>True if successful, false otherwise</returns>
-  public static bool Run()
-  {
     try
     {
-      // Create client and service
-      var client = CoinbasePrimeClient.FromEnv();
-      var portfoliosService = new PortfoliosService(client);
+        // Create client and service
+        var client = CoinbasePrimeClient.FromEnv();
+        var portfoliosService = new PortfoliosService(client);
 
-      // Execute request
-      var response = portfoliosService.ListPortfolios();
+        // Execute request
+        var response = portfoliosService.ListPortfolios();
 
-      // Print response
-      PrettyPrinter.PrintResponse("ListPortfoliosResponse", response);
+        // Print response
+        PrettyPrinter.PrintResponse("ListPortfoliosResponse", response);
 
-      return true;
+        Environment.ExitCode = 0;
     }
     catch (Exception ex)
     {
-      PrettyPrinter.PrintError("Error listing portfolios", ex);
-      return false;
+        PrettyPrinter.PrintError("Error listing portfolios", ex);
+        Environment.ExitCode = 1;
     }
-  }
-}
+});
 
+return rootCommand.Invoke(args);

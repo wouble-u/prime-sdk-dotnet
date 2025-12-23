@@ -19,7 +19,7 @@
 #:project ../../
 #:package Newtonsoft.Json@13.0.3
 
-using CoinbaseSdk.Prime.Assets;
+using CoinbaseSdk.Prime.PaymentMethods;
 using CoinbaseSdk.Prime.Client;
 using CoinbaseSdk.Prime.Common;
 using System.CommandLine;
@@ -31,12 +31,17 @@ var entityIdOption = new Option<string?>(
     name: "--entityId",
     description: "The Entity ID");
 
-var rootCommand = new RootCommand("List assets for an entity")
+var paymentMethodIdOption = new Option<string?>(
+    name: "--paymentMethodId",
+    description: "The Payment Method ID");
+
+var rootCommand = new RootCommand("Get payment method details by ID")
 {
-    entityIdOption
+    entityIdOption,
+    paymentMethodIdOption
 };
 
-rootCommand.SetHandler((entityId) =>
+rootCommand.SetHandler((entityId, paymentMethodId) =>
 {
     entityId ??= Environment.GetEnvironmentVariable("PRIME_ENTITY_ID");
 
@@ -47,32 +52,40 @@ rootCommand.SetHandler((entityId) =>
         return;
     }
 
+    if (string.IsNullOrEmpty(paymentMethodId))
+    {
+        Console.Error.WriteLine("Error: --paymentMethodId is required.");
+        Environment.ExitCode = 1;
+        return;
+    }
+
     try
     {
         Console.WriteLine($"Using Entity ID: {entityId}");
+        Console.WriteLine($"Using Payment Method ID: {paymentMethodId}");
 
         // Create client and service
         var client = CoinbasePrimeClient.FromEnv();
-        var assetsService = new AssetsService(client);
+        var paymentMethodsService = new PaymentMethodsService(client);
 
         // Build request
-        var request = new ListAssetsRequest(entityId);
+        var request = new GetEntityPaymentMethodRequest(entityId, paymentMethodId);
 
-        PrettyPrinter.PrintResponse("ListAssetsRequest", request);
+        PrettyPrinter.PrintResponse("GetEntityPaymentMethodRequest", request);
 
         // Execute request
-        var response = assetsService.ListAssets(request);
+        var response = paymentMethodsService.GetEntityPaymentMethod(request);
 
         // Print response
-        PrettyPrinter.PrintResponse("ListAssetsResponse", response);
+        PrettyPrinter.PrintResponse("GetEntityPaymentMethodResponse", response);
 
         Environment.ExitCode = 0;
     }
     catch (Exception ex)
     {
-        PrettyPrinter.PrintError("Error listing assets", ex);
+        PrettyPrinter.PrintError("Error getting payment method", ex);
         Environment.ExitCode = 1;
     }
-}, entityIdOption);
+}, entityIdOption, paymentMethodIdOption);
 
 return rootCommand.Invoke(args);

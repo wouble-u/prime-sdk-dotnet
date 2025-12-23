@@ -19,7 +19,7 @@
 #:project ../../
 #:package Newtonsoft.Json@13.0.3
 
-using CoinbaseSdk.Prime.Portfolios;
+using CoinbaseSdk.Prime.Products;
 using CoinbaseSdk.Prime.Client;
 using CoinbaseSdk.Prime.Common;
 using System.CommandLine;
@@ -31,18 +31,14 @@ var portfolioIdOption = new Option<string?>(
     name: "--portfolioId",
     description: "The Portfolio ID");
 
-var rootCommand = new RootCommand("Get portfolio by ID")
+var rootCommand = new RootCommand("List tradable products for a portfolio")
 {
     portfolioIdOption
 };
 
 rootCommand.SetHandler((portfolioId) =>
 {
-    // Fallback to environment variable for portfolioId
-    if (string.IsNullOrEmpty(portfolioId))
-    {
-        portfolioId = Environment.GetEnvironmentVariable("PRIME_PORTFOLIO_ID");
-    }
+    portfolioId ??= Environment.GetEnvironmentVariable("PRIME_PORTFOLIO_ID");
 
     if (string.IsNullOrEmpty(portfolioId))
     {
@@ -57,22 +53,24 @@ rootCommand.SetHandler((portfolioId) =>
 
         // Create client and service
         var client = CoinbasePrimeClient.FromEnv();
-        var portfoliosService = new PortfoliosService(client);
+        var productsService = new ProductsService(client);
 
         // Build request
-        var request = new GetPortfolioRequest(portfolioId);
+        var request = new ListPortfolioProductsRequest(portfolioId);
+
+        PrettyPrinter.PrintResponse("ListPortfolioProductsRequest", request);
 
         // Execute request
-        var response = portfoliosService.GetPortfolio(request);
+        var response = productsService.ListPortfolioProducts(request);
 
         // Print response
-        PrettyPrinter.PrintResponse("GetPortfolioResponse", response);
+        PrettyPrinter.PrintResponse("ListPortfolioProductsResponse", response);
 
         Environment.ExitCode = 0;
     }
     catch (Exception ex)
     {
-        PrettyPrinter.PrintError("Error retrieving portfolio", ex);
+        PrettyPrinter.PrintError("Error listing portfolio products", ex);
         Environment.ExitCode = 1;
     }
 }, portfolioIdOption);
