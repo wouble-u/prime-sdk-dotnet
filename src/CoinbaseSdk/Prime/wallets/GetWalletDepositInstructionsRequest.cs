@@ -17,6 +17,7 @@
 namespace CoinbaseSdk.Prime.Wallets
 {
   using System.Text.Json.Serialization;
+  using CoinbaseSdk.Prime.Model;
   using CoinbaseSdk.Prime.Model.Enums;
 
   public class GetWalletDepositInstructionsRequest(string portfolioId, string walletId)
@@ -28,6 +29,8 @@ namespace CoinbaseSdk.Prime.Wallets
     public string WalletId { get; set; } = walletId;
 
     [JsonPropertyName("deposit_type")]
-    public WalletDepositInstructionType? DepositType { get; set; }
+    public WalletDepositInstructionType DepositType { get; set; }
+
+    public Network? Network { get; set; }
   }
 }
