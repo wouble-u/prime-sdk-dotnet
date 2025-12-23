@@ -126,11 +126,11 @@ namespace CoinbaseSdk.Prime.Allocations
         cancellationToken);
     }
 
-    public GetPortfolioAllocationsResponse GetPortfolioAllocations(
-      GetPortfolioAllocationsRequest request,
+    public ListPortfolioAllocationsResponse ListPortfolioAllocations(
+      ListPortfolioAllocationsRequest request,
       CallOptions? options = null)
     {
-      return Request<GetPortfolioAllocationsResponse>(
+      return Request<ListPortfolioAllocationsResponse>(
         HttpMethod.Get,
         $"/portfolios/{request.PortfolioId}/allocations",
         [HttpStatusCode.OK],
@@ -138,12 +138,12 @@ namespace CoinbaseSdk.Prime.Allocations
         options);
     }
 
-    public Task<GetPortfolioAllocationsResponse> GetPortfolioAllocationsAsync(
-      GetPortfolioAllocationsRequest request,
+    public Task<ListPortfolioAllocationsResponse> ListPortfolioAllocationsAsync(
+      ListPortfolioAllocationsRequest request,
       CallOptions? options = null,
       CancellationToken cancellationToken = default)
     {
-      return RequestAsync<GetPortfolioAllocationsResponse>(
+      return RequestAsync<ListPortfolioAllocationsResponse>(
         HttpMethod.Get,
         $"/portfolios/{request.PortfolioId}/allocations",
         [HttpStatusCode.OK],

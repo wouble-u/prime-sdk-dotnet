@@ -55,12 +55,12 @@ namespace CoinbaseSdk.Prime.Allocations
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
-    public GetPortfolioAllocationsResponse GetPortfolioAllocations(
-      GetPortfolioAllocationsRequest request,
+    public ListPortfolioAllocationsResponse ListPortfolioAllocations(
+      ListPortfolioAllocationsRequest request,
       CallOptions? options = null);
 
-    public Task<GetPortfolioAllocationsResponse> GetPortfolioAllocationsAsync(
-      GetPortfolioAllocationsRequest request,
+    public Task<ListPortfolioAllocationsResponse> ListPortfolioAllocationsAsync(
+      ListPortfolioAllocationsRequest request,
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
   }

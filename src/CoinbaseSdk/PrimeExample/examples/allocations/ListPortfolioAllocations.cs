@@ -82,7 +82,7 @@ rootCommand.SetHandler((portfolioId, productIdsStr, startDate, endDate, orderSid
         var client = CoinbasePrimeClient.FromEnv();
         var allocationsService = new AllocationsService(client);
 
-        var requestBuilder = new GetPortfolioAllocationsRequest.Builder()
+        var requestBuilder = new ListPortfolioAllocationsRequest.Builder()
             .WithPortfolioId(portfolioId)
             .WithStartDate(startDate);
 
@@ -113,11 +113,11 @@ rootCommand.SetHandler((portfolioId, productIdsStr, startDate, endDate, orderSid
 
         var request = requestBuilder.Build();
 
-        PrettyPrinter.PrintResponse("GetPortfolioAllocationsRequest", request);
+        PrettyPrinter.PrintResponse("ListPortfolioAllocationsRequest", request);
 
-        var response = allocationsService.GetPortfolioAllocations(request);
+        var response = allocationsService.ListPortfolioAllocations(request);
 
-        PrettyPrinter.PrintResponse("GetPortfolioAllocationsResponse", response);
+        PrettyPrinter.PrintResponse("ListPortfolioAllocationsResponse", response);
 
         Environment.ExitCode = 0;
     }
