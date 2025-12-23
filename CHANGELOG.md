@@ -1,20 +1,40 @@
 # Changelog
 
-## [0.4.0] - 2025-SEP-29
+## [0.4.0] - 2025-DEC-23
 
 ### Added
 
 - **New API Endpoints**
+  - `FinancingService.GetCrossMarginOverview`
+  - `FinancingService.ListFinancingEligibleAssets`
+  - `FinancingService.ListTradeFinanceObligations`
   - `FuturesService.GetFcmMarginCallDetails`
   - `FuturesService.GetFcmRiskLimits`
+  - `FuturesService.GetFcmSettings`
+  - `FuturesService.SetFcmSettings`
   - `OrdersService.EditOrder`
   - `OrdersService.ListOrderEditHistory`
+  - `OrdersService.ListPortfolioFills`
   - `PortfoliosService.GetPortfolioCounterparty`
   - `StakingService.ClaimStakingRewards`
   - `StakingService.CreatePortfolioStake`
   - `StakingService.CreatePortfolioUnstake`
+  - `StakingService.ListTransactionValidators`
   - `WalletsService.CreateWalletDepositAddress`
   - `WalletsService.ListWalletAddresses`
+
+- **Comprehensive Examples**
+  - Added examples for all SDK service methods across 19 categories:
+    activities, addressbook, allocations, assets, balances, commission,
+    financing, futures, invoice, onchainaddressbook, orders, paymentmethods,
+    portfolios, positions, products, staking, transactions, users, wallets
+
+- **Unit Tests**
+  - `CoinbasePrimeClientTests`
+  - `PaginatedRequestBuilderTests`
+  - `PaginatedRequestTests`
+  - `PrimeJsonSerializerOptionsFactoryTests`
+  - `PrimeSerializationSmokeTests`
 
 - **New Domain Models**
   - `Action`, `Activity`, `ActivityCreationResponse`, `ActivityLevel`
@@ -55,6 +75,8 @@
   - `GetActivityByActivityId` → `GetActivity`
   - `GetEntityActivityByActivityId` → `GetPortfolioActivity`
   - `GetPortfolioAddressBook` → `ListAddressBookEntries`
+  - `GetPortfolioAllocations` → `ListPortfolioAllocations`
+  - `GetAllocationsByClientNettingId` → `ListAllocationsByClientNettingId`
   - `GetOrderByOrderId` → `GetOrder`
   - `GetPortfolioById` → `GetPortfolio`
   - `GetTransactionByTransactionId` → `GetTransaction`
