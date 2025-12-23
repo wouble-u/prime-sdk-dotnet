@@ -18,7 +18,7 @@ namespace CoinbaseSdk.Prime.Allocations
 {
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
-  public class GetAllocationsByClientNettingIdRequest(string portfolioId, string clientNettingId)
+  public class ListAllocationsByClientNettingIdRequest(string portfolioId, string clientNettingId)
   {
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
@@ -62,14 +62,14 @@ namespace CoinbaseSdk.Prime.Allocations
       }
 
       /// <summary>
-      /// Build the <see cref="GetAllocationsByClientNettingIdRequest"/> object.
+      /// Build the <see cref="ListAllocationsByClientNettingIdRequest"/> object.
       /// </summary>
-      /// <returns>The <see cref="GetAllocationsByClientNettingIdRequest"/> object.</returns>
+      /// <returns>The <see cref="ListAllocationsByClientNettingIdRequest"/> object.</returns>
       /// <exception cref="CoinbaseClientException">Thrown when the required fields are not set.</exception>
-      public GetAllocationsByClientNettingIdRequest Build()
+      public ListAllocationsByClientNettingIdRequest Build()
       {
         Validate();
-        return new GetAllocationsByClientNettingIdRequest(_portfolioId!, _clientNettingId!);
+        return new ListAllocationsByClientNettingIdRequest(_portfolioId!, _clientNettingId!);
       }
     }
   }

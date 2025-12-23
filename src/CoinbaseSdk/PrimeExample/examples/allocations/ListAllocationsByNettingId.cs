@@ -66,13 +66,13 @@ rootCommand.SetHandler((portfolioId, nettingId) =>
         var client = CoinbasePrimeClient.FromEnv();
         var allocationsService = new AllocationsService(client);
 
-        var request = new GetAllocationsByClientNettingIdRequest(portfolioId, nettingId);
+        var request = new ListAllocationsByClientNettingIdRequest(portfolioId, nettingId);
 
-        PrettyPrinter.PrintResponse("GetAllocationsByClientNettingIdRequest", request);
+        PrettyPrinter.PrintResponse("ListAllocationsByClientNettingIdRequest", request);
 
-        var response = allocationsService.GetAllocationsByClientNettingId(request);
+        var response = allocationsService.ListAllocationsByClientNettingId(request);
 
-        PrettyPrinter.PrintResponse("GetAllocationsByClientNettingIdResponse", response);
+        PrettyPrinter.PrintResponse("ListAllocationsByClientNettingIdResponse", response);
 
         Environment.ExitCode = 0;
     }
