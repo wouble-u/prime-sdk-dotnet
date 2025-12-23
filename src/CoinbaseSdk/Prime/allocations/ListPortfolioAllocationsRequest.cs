@@ -21,7 +21,7 @@ namespace CoinbaseSdk.Prime.Allocations
   using CoinbaseSdk.Prime.Common;
   using CoinbaseSdk.Prime.Model.Enums;
 
-  public class GetPortfolioAllocationsRequest(string portfolioId) : PaginatedRequest
+  public class ListPortfolioAllocationsRequest(string portfolioId) : PaginatedRequest
   {
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
@@ -116,14 +116,14 @@ namespace CoinbaseSdk.Prime.Allocations
       }
 
       /// <summary>
-      /// Builds the <see cref="GetPortfolioAllocationsRequest"/>.
+      /// Builds the <see cref="ListPortfolioAllocationsRequest"/>.
       /// </summary>
-      /// <returns>The <see cref="GetPortfolioAllocationsRequest"/>.</returns>
+      /// <returns>The <see cref="ListPortfolioAllocationsRequest"/>.</returns>
       /// <exception cref="CoinbaseClientException">Thrown when the required fields are not set.</exception>
-      public GetPortfolioAllocationsRequest Build()
+      public ListPortfolioAllocationsRequest Build()
       {
         Validate();
-        var request = new GetPortfolioAllocationsRequest(_portfolioId!)
+        var request = new ListPortfolioAllocationsRequest(_portfolioId!)
         {
           ProductIds = _productIds,
           OrderSide = _orderSide,

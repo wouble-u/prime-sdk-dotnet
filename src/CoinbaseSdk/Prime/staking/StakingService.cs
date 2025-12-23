@@ -152,5 +152,31 @@ namespace CoinbaseSdk.Prime.Staking
         options,
         cancellationToken);
     }
+
+    public ListTransactionValidatorsResponse ListTransactionValidators(
+      ListTransactionValidatorsRequest request,
+      CallOptions? options = null)
+    {
+      return Request<ListTransactionValidatorsResponse>(
+        HttpMethod.Post,
+        $"/portfolios/{request.PortfolioId}/staking/transaction-validators/query",
+        [HttpStatusCode.OK],
+        request,
+        options);
+    }
+
+    public Task<ListTransactionValidatorsResponse> ListTransactionValidatorsAsync(
+      ListTransactionValidatorsRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default)
+    {
+      return RequestAsync<ListTransactionValidatorsResponse>(
+        HttpMethod.Post,
+        $"/portfolios/{request.PortfolioId}/staking/transaction-validators/query",
+        [HttpStatusCode.OK],
+        request,
+        options,
+        cancellationToken);
+    }
   }
 }

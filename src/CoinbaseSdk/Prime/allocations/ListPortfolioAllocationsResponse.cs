@@ -19,12 +19,12 @@ namespace CoinbaseSdk.Prime.Allocations
   using CoinbaseSdk.Prime.Common;
   using CoinbaseSdk.Prime.Model;
 
-  public class GetPortfolioAllocationsResponse
+  public class ListPortfolioAllocationsResponse
   {
     public Allocation[] Allocations { get; set; } = [];
     public Pagination? Pagination { get; set; }
 
-    public GetPortfolioAllocationsResponse() { }
+    public ListPortfolioAllocationsResponse() { }
   }
 }
 
