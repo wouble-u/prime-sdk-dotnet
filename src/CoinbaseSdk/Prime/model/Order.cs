@@ -177,6 +177,21 @@ namespace CoinbaseSdk.Prime.Model
     /// </summary>
     [JsonPropertyName("display_base_size")]
     public string? DisplayBaseSize { get; set; }
+    /// <summary>
+    /// The peg offset type for PEG orders (PRICE, BASIS_POINTS, or CUMULATIVE_DEPTH_IN_BASE_UNITS)
+    /// </summary>
+    [JsonPropertyName("peg_offset_type")]
+    public string? PegOffsetType { get; set; }
+    /// <summary>
+    /// The offset value for PEG orders
+    /// </summary>
+    [JsonPropertyName("offset")]
+    public string? Offset { get; set; }
+    /// <summary>
+    /// The wig (would if good) level for PEG orders - best price opposite to limit_price
+    /// </summary>
+    [JsonPropertyName("wig_level")]
+    public string? WigLevel { get; set; }
     public Order() { }
 
     public Order(Builder builder)
@@ -213,6 +228,9 @@ namespace CoinbaseSdk.Prime.Model
       this.EditHistory = builder.editHistory;
       this.DisplayQuoteSize = builder.displayQuoteSize;
       this.DisplayBaseSize = builder.displayBaseSize;
+      this.PegOffsetType = builder.pegOffsetType;
+      this.Offset = builder.offset;
+      this.WigLevel = builder.wigLevel;
     }
 
     public class Builder
@@ -250,6 +268,9 @@ namespace CoinbaseSdk.Prime.Model
       internal List<OrderEdit>? editHistory;
       internal string? displayQuoteSize;
       internal string? displayBaseSize;
+      internal string? pegOffsetType;
+      internal string? offset;
+      internal string? wigLevel;
 #pragma warning restore SA1307, SA1401
       public Builder WithId(string? id)
       {
@@ -409,6 +430,21 @@ namespace CoinbaseSdk.Prime.Model
       public Builder WithDisplayBaseSize(string? displayBaseSize)
       {
         this.displayBaseSize = displayBaseSize;
+        return this;
+      }
+      public Builder WithPegOffsetType(string? pegOffsetType)
+      {
+        this.pegOffsetType = pegOffsetType;
+        return this;
+      }
+      public Builder WithOffset(string? offset)
+      {
+        this.offset = offset;
+        return this;
+      }
+      public Builder WithWigLevel(string? wigLevel)
+      {
+        this.wigLevel = wigLevel;
         return this;
       }
       public Order Build()

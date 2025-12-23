@@ -26,12 +26,11 @@ namespace CoinbaseSdk.Prime.Model.Enums
 {
   using System.Text.Json.Serialization;
 
-  [JsonConverter(typeof(JsonStringEnumConverter<XmCallType>) )]
-  public enum XmCallType
+  [JsonConverter(typeof(JsonStringEnumConverter<TravelRuleStatus>) )]
+  public enum TravelRuleStatus
   {
-    XM_CALL_TYPE_UNSPECIFIED,
-    CALL_TYPE_STANDARD,
-    CALL_TYPE_URGENT,
-    CALL_TYPE_DEBIT
+    TRAVEL_RULE_STATUS_UNSPECIFIED,
+    TRAVEL_RULE_STATUS_PENDING,
+    TRAVEL_RULE_STATUS_SUBMITTED
   }
 }

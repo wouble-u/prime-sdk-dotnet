@@ -125,6 +125,8 @@ namespace CoinbaseSdk.Prime.Model
     public OnchainTransactionDetails? OnchainDetails { get; set; }
     [JsonPropertyName("network_info")]
     public Network? NetworkInfo { get; set; }
+    [JsonPropertyName("process_requirements")]
+    public ProcessRequirements? ProcessRequirements { get; set; }
     public Transaction() { }
 
     public Transaction(Builder builder)
@@ -153,6 +155,7 @@ namespace CoinbaseSdk.Prime.Model
       this.IdempotencyKey = builder.idempotencyKey;
       this.OnchainDetails = builder.onchainDetails;
       this.NetworkInfo = builder.networkInfo;
+      this.ProcessRequirements = builder.processRequirements;
     }
 
     public class Builder
@@ -182,6 +185,7 @@ namespace CoinbaseSdk.Prime.Model
       internal string? idempotencyKey;
       internal OnchainTransactionDetails? onchainDetails;
       internal Network? networkInfo;
+      internal ProcessRequirements? processRequirements;
 #pragma warning restore SA1307, SA1401
       public Builder WithId(string? id)
       {
@@ -301,6 +305,11 @@ namespace CoinbaseSdk.Prime.Model
       public Builder WithNetworkInfo(Network? networkInfo)
       {
         this.networkInfo = networkInfo;
+        return this;
+      }
+      public Builder WithProcessRequirements(ProcessRequirements? processRequirements)
+      {
+        this.processRequirements = processRequirements;
         return this;
       }
       public Transaction Build()

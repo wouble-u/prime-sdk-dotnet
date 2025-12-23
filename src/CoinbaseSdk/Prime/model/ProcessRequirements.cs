@@ -22,16 +22,37 @@
  */
 
 
-namespace CoinbaseSdk.Prime.Model.Enums
+namespace CoinbaseSdk.Prime.Model
 {
   using System.Text.Json.Serialization;
+  using CoinbaseSdk.Prime.Model.Enums;
 
-  [JsonConverter(typeof(JsonStringEnumConverter<XmCallType>) )]
-  public enum XmCallType
+  public class ProcessRequirements
   {
-    XM_CALL_TYPE_UNSPECIFIED,
-    CALL_TYPE_STANDARD,
-    CALL_TYPE_URGENT,
-    CALL_TYPE_DEBIT
+    [JsonPropertyName("travel_rule_status")]
+    public TravelRuleStatus? TravelRuleStatus { get; set; }
+    public ProcessRequirements() { }
+
+    public ProcessRequirements(Builder builder)
+    {
+      this.TravelRuleStatus = builder.travelRuleStatus;
+    }
+
+    public class Builder
+    {
+#pragma warning disable SA1307, SA1401
+      internal TravelRuleStatus? travelRuleStatus;
+#pragma warning restore SA1307, SA1401
+      public Builder WithTravelRuleStatus(TravelRuleStatus? travelRuleStatus)
+      {
+        this.travelRuleStatus = travelRuleStatus;
+        return this;
+      }
+      public ProcessRequirements Build()
+      {
+        return new ProcessRequirements(this);
+      }
+    }
   }
+
 }
