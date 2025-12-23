@@ -230,5 +230,57 @@ namespace CoinbaseSdk.Prime.Futures
         options,
         cancellationToken);
     }
+
+    public GetFcmSettingsResponse GetFcmSettings(
+      GetFcmSettingsRequest request,
+      CallOptions? options = null)
+    {
+      return Request<GetFcmSettingsResponse>(
+        HttpMethod.Get,
+        $"/entities/{request.EntityId}/futures/settings",
+        [HttpStatusCode.OK],
+        null,
+        options);
+    }
+
+    public Task<GetFcmSettingsResponse> GetFcmSettingsAsync(
+      GetFcmSettingsRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default)
+    {
+      return RequestAsync<GetFcmSettingsResponse>(
+        HttpMethod.Get,
+        $"/entities/{request.EntityId}/futures/settings",
+        [HttpStatusCode.OK],
+        null,
+        options,
+        cancellationToken);
+    }
+
+    public SetFcmSettingsResponse SetFcmSettings(
+      SetFcmSettingsRequest request,
+      CallOptions? options = null)
+    {
+      return Request<SetFcmSettingsResponse>(
+        HttpMethod.Post,
+        $"/entities/{request.EntityId}/futures/settings",
+        [HttpStatusCode.OK],
+        request,
+        options);
+    }
+
+    public Task<SetFcmSettingsResponse> SetFcmSettingsAsync(
+      SetFcmSettingsRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default)
+    {
+      return RequestAsync<SetFcmSettingsResponse>(
+        HttpMethod.Post,
+        $"/entities/{request.EntityId}/futures/settings",
+        [HttpStatusCode.OK],
+        request,
+        options,
+        cancellationToken);
+    }
   }
 }

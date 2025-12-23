@@ -334,5 +334,83 @@ namespace CoinbaseSdk.Prime.Financing
         options,
         cancellationToken);
     }
+
+    public GetCrossMarginOverviewResponse GetCrossMarginOverview(
+      GetCrossMarginOverviewRequest request,
+      CallOptions? options = null)
+    {
+      return Request<GetCrossMarginOverviewResponse>(
+        HttpMethod.Get,
+        $"/entities/{request.EntityId}/cross_margin",
+        [HttpStatusCode.OK],
+        null,
+        options);
+    }
+
+    public Task<GetCrossMarginOverviewResponse> GetCrossMarginOverviewAsync(
+      GetCrossMarginOverviewRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default)
+    {
+      return RequestAsync<GetCrossMarginOverviewResponse>(
+        HttpMethod.Get,
+        $"/entities/{request.EntityId}/cross_margin",
+        [HttpStatusCode.OK],
+        null,
+        options,
+        cancellationToken);
+    }
+
+    public ListTradeFinanceObligationsResponse ListTradeFinanceObligations(
+      ListTradeFinanceObligationsRequest request,
+      CallOptions? options = null)
+    {
+      return Request<ListTradeFinanceObligationsResponse>(
+        HttpMethod.Get,
+        $"/entities/{request.EntityId}/tf_obligations",
+        [HttpStatusCode.OK],
+        null,
+        options);
+    }
+
+    public Task<ListTradeFinanceObligationsResponse> ListTradeFinanceObligationsAsync(
+      ListTradeFinanceObligationsRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default)
+    {
+      return RequestAsync<ListTradeFinanceObligationsResponse>(
+        HttpMethod.Get,
+        $"/entities/{request.EntityId}/tf_obligations",
+        [HttpStatusCode.OK],
+        null,
+        options,
+        cancellationToken);
+    }
+
+    public ListFinancingEligibleAssetsResponse ListFinancingEligibleAssets(
+      ListFinancingEligibleAssetsRequest request,
+      CallOptions? options = null)
+    {
+      return Request<ListFinancingEligibleAssetsResponse>(
+        HttpMethod.Get,
+        "/financing/eligible-assets",
+        [HttpStatusCode.OK],
+        null,
+        options);
+    }
+
+    public Task<ListFinancingEligibleAssetsResponse> ListFinancingEligibleAssetsAsync(
+      ListFinancingEligibleAssetsRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default)
+    {
+      return RequestAsync<ListFinancingEligibleAssetsResponse>(
+        HttpMethod.Get,
+        "/financing/eligible-assets",
+        [HttpStatusCode.OK],
+        null,
+        options,
+        cancellationToken);
+    }
   }
 }
