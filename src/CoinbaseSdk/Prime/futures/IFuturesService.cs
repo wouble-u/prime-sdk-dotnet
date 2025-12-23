@@ -89,5 +89,23 @@ namespace CoinbaseSdk.Prime.Futures
         GetFcmRiskLimitsRequest request,
         CallOptions? options = null,
         CancellationToken cancellationToken = default);
+
+    GetFcmSettingsResponse GetFcmSettings(
+        GetFcmSettingsRequest request,
+        CallOptions? options = null);
+
+    Task<GetFcmSettingsResponse> GetFcmSettingsAsync(
+        GetFcmSettingsRequest request,
+        CallOptions? options = null,
+        CancellationToken cancellationToken = default);
+
+    SetFcmSettingsResponse SetFcmSettings(
+        SetFcmSettingsRequest request,
+        CallOptions? options = null);
+
+    Task<SetFcmSettingsResponse> SetFcmSettingsAsync(
+        SetFcmSettingsRequest request,
+        CallOptions? options = null,
+        CancellationToken cancellationToken = default);
   }
 }

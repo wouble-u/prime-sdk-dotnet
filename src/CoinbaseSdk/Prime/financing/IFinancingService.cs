@@ -127,5 +127,32 @@ namespace CoinbaseSdk.Prime.Financing
         ListMarginConversionsRequest request,
         CallOptions? options = null,
         CancellationToken cancellationToken = default);
+
+    public GetCrossMarginOverviewResponse GetCrossMarginOverview(
+        GetCrossMarginOverviewRequest request,
+        CallOptions? options = null);
+
+    public Task<GetCrossMarginOverviewResponse> GetCrossMarginOverviewAsync(
+        GetCrossMarginOverviewRequest request,
+        CallOptions? options = null,
+        CancellationToken cancellationToken = default);
+
+    public ListTradeFinanceObligationsResponse ListTradeFinanceObligations(
+        ListTradeFinanceObligationsRequest request,
+        CallOptions? options = null);
+
+    public Task<ListTradeFinanceObligationsResponse> ListTradeFinanceObligationsAsync(
+        ListTradeFinanceObligationsRequest request,
+        CallOptions? options = null,
+        CancellationToken cancellationToken = default);
+
+    public ListFinancingEligibleAssetsResponse ListFinancingEligibleAssets(
+        ListFinancingEligibleAssetsRequest request,
+        CallOptions? options = null);
+
+    public Task<ListFinancingEligibleAssetsResponse> ListFinancingEligibleAssetsAsync(
+        ListFinancingEligibleAssetsRequest request,
+        CallOptions? options = null,
+        CancellationToken cancellationToken = default);
   }
 }
