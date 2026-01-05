@@ -16,6 +16,7 @@
 
 namespace CoinbaseSdk.Prime.Users
 {
+  using CoinbaseSdk.Prime.Common;
   using CoinbaseSdk.Prime.Model;
 
   public class ListPortfolioUsersResponse
@@ -24,34 +25,5 @@ namespace CoinbaseSdk.Prime.Users
     public Pagination? Pagination { get; set; }
 
     public ListPortfolioUsersResponse() { }
-
-    public class ListPortfolioUsersResponseBuilder
-    {
-      private EntityUser[] _users = [];
-      private Pagination? _pagination;
-
-      public ListPortfolioUsersResponseBuilder() { }
-
-      public ListPortfolioUsersResponseBuilder WithUsers(EntityUser[] users)
-      {
-        this._users = users;
-        return this;
-      }
-
-      public ListPortfolioUsersResponseBuilder WithPagination(Pagination pagination)
-      {
-        this._pagination = pagination;
-        return this;
-      }
-
-      public ListPortfolioUsersResponse Build()
-      {
-        return new ListPortfolioUsersResponse
-        {
-          Users = this._users,
-          Pagination = this._pagination
-        };
-      }
-    }
   }
 }

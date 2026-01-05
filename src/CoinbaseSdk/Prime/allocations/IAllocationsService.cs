@@ -46,21 +46,21 @@ namespace CoinbaseSdk.Prime.Allocations
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
-    public GetAllocationsByClientNettingIdResponse GetAllocationsByClientNettingId(
-      GetAllocationsByClientNettingIdRequest request,
+    public ListAllocationsByClientNettingIdResponse ListAllocationsByClientNettingId(
+      ListAllocationsByClientNettingIdRequest request,
       CallOptions? options = null);
 
-    public Task<GetAllocationsByClientNettingIdResponse> GetAllocationsByClientNettingIdAsync(
-      GetAllocationsByClientNettingIdRequest request,
+    public Task<ListAllocationsByClientNettingIdResponse> ListAllocationsByClientNettingIdAsync(
+      ListAllocationsByClientNettingIdRequest request,
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
-    public GetPortfolioAllocationsResponse GetPortfolioAllocations(
-      GetPortfolioAllocationsRequest request,
+    public ListPortfolioAllocationsResponse ListPortfolioAllocations(
+      ListPortfolioAllocationsRequest request,
       CallOptions? options = null);
 
-    public Task<GetPortfolioAllocationsResponse> GetPortfolioAllocationsAsync(
-      GetPortfolioAllocationsRequest request,
+    public Task<ListPortfolioAllocationsResponse> ListPortfolioAllocationsAsync(
+      ListPortfolioAllocationsRequest request,
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
   }

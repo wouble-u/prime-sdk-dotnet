@@ -17,6 +17,7 @@
 namespace CoinbaseSdk.Prime.Transactions
 {
   using System.Text.Json.Serialization;
+  using CoinbaseSdk.Prime.Common;
   using CoinbaseSdk.Prime.Model;
 
   public class ListWalletTransactionsResponse
@@ -28,35 +29,5 @@ namespace CoinbaseSdk.Prime.Transactions
     public Pagination? Pagination { get; set; }
 
     public ListWalletTransactionsResponse() { }
-
-    public class ListWalletTransactionsResponseBuilder
-    {
-      private Transaction[] Transactions = [];
-      private Pagination? Pagination;
-
-      public ListWalletTransactionsResponseBuilder() { }
-
-      public ListWalletTransactionsResponseBuilder WithTransactions(
-          Transaction[] transactions)
-      {
-        this.Transactions = transactions;
-        return this;
-      }
-
-      public ListWalletTransactionsResponseBuilder WithPagination(Pagination? pagination)
-      {
-        this.Pagination = pagination;
-        return this;
-      }
-
-      public ListWalletTransactionsResponse Build()
-      {
-        return new ListWalletTransactionsResponse
-        {
-          Transactions = this.Transactions,
-          Pagination = this.Pagination,
-        };
-      }
-    }
   }
 }

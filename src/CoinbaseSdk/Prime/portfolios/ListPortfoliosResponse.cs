@@ -21,30 +21,11 @@ namespace CoinbaseSdk.Prime.Portfolios
   {
     public ListPortfoliosResponse(Portfolio[] portfolios)
     {
-      this.Portfolios = portfolios;
+      Portfolios = portfolios;
     }
 
     public ListPortfoliosResponse() { }
 
     public Portfolio[]? Portfolios { get; set; }
-
-    public class ListPortfoliosResponseBuilder
-    {
-      private Portfolio[]? _portfolios;
-
-      public ListPortfoliosResponseBuilder WithPortfolios(Portfolio[]? portfolios)
-      {
-        this._portfolios = portfolios;
-        return this;
-      }
-
-      public ListPortfoliosResponse Build()
-      {
-        return new ListPortfoliosResponse
-        {
-          Portfolios = this._portfolios
-        };
-      }
-    }
   }
 }

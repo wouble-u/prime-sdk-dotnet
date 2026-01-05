@@ -17,7 +17,8 @@
 namespace CoinbaseSdk.Prime.Wallets
 {
   using System.Text.Json.Serialization;
-  using CoinbaseSdk.Core.Error;
+  using CoinbaseSdk.Prime.Model;
+  using CoinbaseSdk.Prime.Model.Enums;
 
   public class GetWalletDepositInstructionsRequest(string portfolioId, string walletId)
   {
@@ -27,52 +28,9 @@ namespace CoinbaseSdk.Prime.Wallets
     [JsonIgnore]
     public string WalletId { get; set; } = walletId;
 
-    public class GetWalletDepositInstructionsRequestBuilder
-    {
-      private string? _portfolioId;
-      private string? _walletId;
+    [JsonPropertyName("deposit_type")]
+    public WalletDepositInstructionType DepositType { get; set; }
 
-      public GetWalletDepositInstructionsRequestBuilder WithPortfolioId(string portfolioId)
-      {
-        this._portfolioId = portfolioId;
-        return this;
-      }
-
-      public GetWalletDepositInstructionsRequestBuilder WithWalletId(string walletId)
-      {
-        this._walletId = walletId;
-        return this;
-      }
-
-      /// <summary>
-      /// Validate the builder.
-      /// </summary>
-      /// <exception cref="CoinbaseClientException">Thrown when the
-      /// <see cref="_portfolioId"/> or <see cref="_walletId"/> are null, empty
-      /// or whitespace.</exception>
-      private void Validate()
-      {
-        if (string.IsNullOrWhiteSpace(this._portfolioId))
-        {
-          throw new CoinbaseClientException("PortfolioId is required");
-        }
-
-        if (string.IsNullOrWhiteSpace(this._walletId))
-        {
-          throw new CoinbaseClientException("WalletId is required");
-        }
-      }
-
-      /// <summary>
-      /// Build the <see cref="GetWalletDepositInstructionsRequest"/> object.
-      /// </summary>
-      /// <returns>The <see cref="GetWalletDepositInstructionsRequest"/> object.</returns>
-      /// <exception cref="CoinbaseClientException">Thrown when the required fields are not set.</exception>
-      public GetWalletDepositInstructionsRequest Build()
-      {
-        this.Validate();
-        return new GetWalletDepositInstructionsRequest(this._portfolioId!, this._walletId!);
-      }
-    }
+    public Network? Network { get; set; }
   }
 }

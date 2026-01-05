@@ -18,95 +18,89 @@ namespace CoinbaseSdk.Prime.Activities
 {
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
-  using CoinbaseSdk.Prime.Model;
+  using CoinbaseSdk.Prime.Common;
+  using CoinbaseSdk.Prime.Model.Enums;
 
-  public class ListActivitiesRequest(string portfolioId)
+  public class ListActivitiesRequest(string portfolioId) : PaginatedRequest
   {
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
 
     public string[] Symbols { get; set; } = [];
-    public string[] Categories { get; set; } = [];
-    public string[] Statuses { get; set; } = [];
+
+    public ActivityCategory?[] Categories { get; set; } = [];
+
+    public ActivityStatus?[] Statuses { get; set; } = [];
+
     [JsonPropertyName("start_time")]
     public string? StartTime { get; set; }
+
     [JsonPropertyName("end_time")]
     public string? EndTime { get; set; }
-    public string? Cursor { get; set; }
-    [JsonPropertyName("sort_direction")]
-    public string? SortDirection { get; set; }
-    public int? Limit { get; set; }
 
-    public class ListActivitiesRequestBuilder
+    public class Builder
     {
       private string? _portfolioId;
-      private string[]? _symbols;
-      private string[]? _categories;
-      private string[]? _statuses;
+      private string[] _symbols = [];
+      private ActivityCategory?[] _categories = [];
+      private ActivityStatus?[] _statuses = [];
       private string? _startTime;
       private string? _endTime;
       private string? _cursor;
-      private string? _sortDirection;
+      private SortDirection? _sortDirection;
       private int? _limit;
 
-      public ListActivitiesRequestBuilder WithPortfolioId(string portfolioId)
+      public Builder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      public ListActivitiesRequestBuilder WithSymbols(string[] symbols)
+      public Builder WithSymbols(string[] symbols)
       {
         _symbols = symbols;
         return this;
       }
 
-      public ListActivitiesRequestBuilder WithCategories(string[] categories)
+      public Builder WithCategories(ActivityCategory?[] categories)
       {
         _categories = categories;
         return this;
       }
 
-      public ListActivitiesRequestBuilder WithStatuses(string[] statuses)
+      public Builder WithStatuses(ActivityStatus?[] statuses)
       {
         _statuses = statuses;
         return this;
       }
 
-      public ListActivitiesRequestBuilder WithStartTime(string startTime)
+      public Builder WithStartTime(string startTime)
       {
         _startTime = startTime;
         return this;
       }
 
-      public ListActivitiesRequestBuilder WithEndTime(string endTime)
+      public Builder WithEndTime(string endTime)
       {
         _endTime = endTime;
         return this;
       }
 
-      public ListActivitiesRequestBuilder WithCursor(string cursor)
-      {
-        _cursor = cursor;
-        return this;
-      }
-
-      public ListActivitiesRequestBuilder WithSortDirection(string sortDirection)
+      public Builder WithSortDirection(SortDirection sortDirection)
       {
         _sortDirection = sortDirection;
         return this;
       }
 
-      public ListActivitiesRequestBuilder WithLimit(int limit)
+      public Builder WithCursor(string cursor)
       {
-        _limit = limit;
+        _cursor = cursor;
         return this;
       }
 
-      public ListActivitiesRequestBuilder WithPagination(Pagination pagination)
+      public Builder WithLimit(int limit)
       {
-        _cursor = pagination.NextCursor;
-        _sortDirection = pagination.SortDirection;
+        _limit = limit;
         return this;
       }
 
@@ -129,18 +123,19 @@ namespace CoinbaseSdk.Prime.Activities
       /// <exception cref="CoinbaseClientException">Thrown when <see cref="_portfolioId" /> is null, empty, or whitespace.</exception>
       public ListActivitiesRequest Build()
       {
-        this.Validate();
-        return new ListActivitiesRequest(_portfolioId!)
+        Validate();
+        var request = new ListActivitiesRequest(_portfolioId!)
         {
-          Symbols = _symbols ?? new string[] { },
-          Categories = _categories ?? new string[] { },
-          Statuses = _statuses ?? new string[] { },
+          Symbols = _symbols ?? [],
+          Categories = _categories ?? [],
+          Statuses = _statuses ?? [],
           StartTime = _startTime,
           EndTime = _endTime,
           Cursor = _cursor,
           SortDirection = _sortDirection,
-          Limit = _limit
+          Limit = _limit,
         };
+        return request;
       }
     }
   }
