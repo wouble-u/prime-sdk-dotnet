@@ -20,15 +20,8 @@ namespace CoinbaseSdk.Prime.Orders
   using CoinbaseSdk.Core.Error;
   using CoinbaseSdk.Prime.Model.Enums;
 
-  /// <summary>
-  /// Get Order Preview
-  /// Retrieve an order preview.
-  /// </summary>
   public class GetOrderPreviewRequest(string portfolioId)
   {
-    /// <summary>
-    /// The ID of the portfolio that owns the order
-    /// </summary>
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
 
@@ -71,21 +64,12 @@ namespace CoinbaseSdk.Prime.Orders
     [JsonPropertyName("settl_currency")]
     public string? SettlCurrency { get; set; }
 
-    /// <summary>
-    /// Specifies whether the order is treated as a post only order.
-    /// </summary>
     [JsonPropertyName("postOnly")]
     public bool? PostOnly { get; set; }
 
-    /// <summary>
-    /// The maximum order size that will show up on venue order books (in quote currency).
-    /// </summary>
     [JsonPropertyName("display_quote_size")]
     public string? DisplayQuoteSize { get; set; }
 
-    /// <summary>
-    /// The maximum order size that will show up on venue order books (in base currency).
-    /// </summary>
     [JsonPropertyName("display_base_size")]
     public string? DisplayBaseSize { get; set; }
 
@@ -95,9 +79,6 @@ namespace CoinbaseSdk.Prime.Orders
     [JsonPropertyName("offset")]
     public string? Offset { get; set; }
 
-    /// <summary>
-    /// next: 21
-    /// </summary>
     [JsonPropertyName("wig_level")]
     public string? WigLevel { get; set; }
 
@@ -124,9 +105,6 @@ namespace CoinbaseSdk.Prime.Orders
       private string? _offset;
       private string? _wigLevel;
 
-      /// <summary>
-      /// The ID of the portfolio that owns the order
-      /// </summary>
       public Builder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
@@ -211,27 +189,18 @@ namespace CoinbaseSdk.Prime.Orders
         return this;
       }
 
-      /// <summary>
-      /// Specifies whether the order is treated as a post only order.
-      /// </summary>
       public Builder WithPostOnly(bool? postOnly)
       {
         _postOnly = postOnly;
         return this;
       }
 
-      /// <summary>
-      /// The maximum order size that will show up on venue order books (in quote currency).
-      /// </summary>
       public Builder WithDisplayQuoteSize(string? displayQuoteSize)
       {
         _displayQuoteSize = displayQuoteSize;
         return this;
       }
 
-      /// <summary>
-      /// The maximum order size that will show up on venue order books (in base currency).
-      /// </summary>
       public Builder WithDisplayBaseSize(string? displayBaseSize)
       {
         _displayBaseSize = displayBaseSize;
@@ -250,18 +219,12 @@ namespace CoinbaseSdk.Prime.Orders
         return this;
       }
 
-      /// <summary>
-      /// next: 21
-      /// </summary>
       public Builder WithWigLevel(string? wigLevel)
       {
         _wigLevel = wigLevel;
         return this;
       }
 
-      /// <summary>
-      /// Validates required path parameters before building the request.
-      /// </summary>
       private void Validate()
       {
         if (string.IsNullOrWhiteSpace(_portfolioId))
@@ -270,9 +233,6 @@ namespace CoinbaseSdk.Prime.Orders
         }
       }
 
-      /// <summary>
-      /// Builds a new <see cref="GetOrderPreviewRequest"/>.
-      /// </summary>
       public GetOrderPreviewRequest Build()
       {
         Validate();

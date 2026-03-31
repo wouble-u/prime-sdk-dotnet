@@ -19,27 +19,14 @@ namespace CoinbaseSdk.Prime.Staking
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
 
-  /// <summary>
-  /// Preview Unstake
-  /// Previews an unstaking request with the given amount and returns the estimated amount that would be unstaked. This feature currently only supports ETH.
-  /// </summary>
   public class PreviewUnstakeRequest(string portfolioId, string walletId)
   {
-    /// <summary>
-    /// The portfolio ID
-    /// </summary>
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
 
-    /// <summary>
-    /// The wallet ID
-    /// </summary>
     [JsonIgnore]
     public string WalletId { get; set; } = walletId;
 
-    /// <summary>
-    /// Amount to preview unstaking
-    /// </summary>
     [JsonPropertyName("amount")]
     public string? Amount { get; set; }
 
@@ -49,36 +36,24 @@ namespace CoinbaseSdk.Prime.Staking
       private string? _walletId;
       private string? _amount;
 
-      /// <summary>
-      /// The portfolio ID
-      /// </summary>
       public Builder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      /// <summary>
-      /// The wallet ID
-      /// </summary>
       public Builder WithWalletId(string walletId)
       {
         _walletId = walletId;
         return this;
       }
 
-      /// <summary>
-      /// Amount to preview unstaking
-      /// </summary>
       public Builder WithAmount(string? amount)
       {
         _amount = amount;
         return this;
       }
 
-      /// <summary>
-      /// Validates required path parameters before building the request.
-      /// </summary>
       private void Validate()
       {
         if (string.IsNullOrWhiteSpace(_portfolioId))
@@ -91,9 +66,6 @@ namespace CoinbaseSdk.Prime.Staking
         }
       }
 
-      /// <summary>
-      /// Builds a new <see cref="PreviewUnstakeRequest"/>.
-      /// </summary>
       public PreviewUnstakeRequest Build()
       {
         Validate();

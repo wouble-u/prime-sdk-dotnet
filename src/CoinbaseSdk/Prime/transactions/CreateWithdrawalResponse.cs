@@ -19,50 +19,26 @@ namespace CoinbaseSdk.Prime.Transactions
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Prime.Model;
 
-  /// <summary>
-  /// A successful response.
-  /// </summary>
   public class CreateWithdrawalResponse
   {
-    /// <summary>
-    /// The activity ID associated with the withdrawal
-    /// </summary>
     [JsonPropertyName("activity_id")]
     public string? ActivityId { get; set; }
 
-    /// <summary>
-    /// A URL to the activity in the Prime application
-    /// </summary>
     [JsonPropertyName("approval_url")]
     public string? ApprovalUrl { get; set; }
 
-    /// <summary>
-    /// The currency symbol associated with the withdrawal
-    /// </summary>
     [JsonPropertyName("symbol")]
     public string? Symbol { get; set; }
 
-    /// <summary>
-    /// The amount of the withdrawal
-    /// </summary>
     [JsonPropertyName("amount")]
     public string? Amount { get; set; }
 
-    /// <summary>
-    /// The network fee associated with the withdrawal
-    /// </summary>
     [JsonPropertyName("fee")]
     public string? Fee { get; set; }
 
-    /// <summary>
-    /// The destination type used for the withdrawal
-    /// </summary>
     [JsonPropertyName("destination_type")]
     public string? DestinationType { get; set; }
 
-    /// <summary>
-    /// The source type used for the withdrawal
-    /// </summary>
     [JsonPropertyName("source_type")]
     public string? SourceType { get; set; }
 
@@ -75,9 +51,6 @@ namespace CoinbaseSdk.Prime.Transactions
     [JsonPropertyName("blockchain_source")]
     public BlockchainAddress BlockchainSource { get; set; }
 
-    /// <summary>
-    /// The id of the just created transaction
-    /// </summary>
     [JsonPropertyName("transaction_id")]
     public string? TransactionId { get; set; }
 

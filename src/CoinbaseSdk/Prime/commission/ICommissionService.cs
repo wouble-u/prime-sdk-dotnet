@@ -20,18 +20,10 @@ namespace CoinbaseSdk.Prime.Commission
 
   public interface ICommissionService
   {
-    /// <summary>
-    /// Get Portfolio Commission
-    /// Retrieve commission associated with a given portfolio.
-    /// </summary>
     public GetPortfolioCommissionResponse GetPortfolioCommission(
       GetPortfolioCommissionRequest request,
       CallOptions? options = null);
 
-    /// <summary>
-    /// Get Portfolio Commission
-    /// Retrieve commission associated with a given portfolio.
-    /// </summary>
     public Task<GetPortfolioCommissionResponse> GetPortfolioCommissionAsync(
       GetPortfolioCommissionRequest request,
       CallOptions? options = null,

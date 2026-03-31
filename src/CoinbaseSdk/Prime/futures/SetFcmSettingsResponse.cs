@@ -18,14 +18,8 @@ namespace CoinbaseSdk.Prime.Futures
 {
   using System.Text.Json.Serialization;
 
-  /// <summary>
-  /// A successful response.
-  /// </summary>
   public class SetFcmSettingsResponse
   {
-    /// <summary>
-    /// Success
-    /// </summary>
     [JsonPropertyName("success")]
     public bool? Success { get; set; }
 

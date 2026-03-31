@@ -21,42 +21,20 @@ namespace CoinbaseSdk.Prime.Allocations
   using CoinbaseSdk.Prime.Common;
   using CoinbaseSdk.Prime.Model.Enums;
 
-  /// <summary>
-  /// List Portfolio Allocations
-  /// List historical allocations for a given portfolio.
-  /// </summary>
   public class ListPortfolioAllocationsRequest(string portfolioId) : PaginatedRequest
   {
-    /// <summary>
-    /// Portfolio to retrieve allocations for.
-    /// </summary>
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
 
-    /// <summary>
-    /// List of products by which to filter the response.
-    /// </summary>
     [JsonPropertyName("product_ids")]
     public string?[] ProductIds { get; set; } = [];
 
-    /// <summary>
-    /// An order side to filter allocations on.
-    /// - UNKNOWN_ORDER_SIDE: nil value
-    /// - BUY: Buy order
-    /// - SELL: Sell order
-    /// </summary>
     [JsonPropertyName("order_side")]
     public OrderSide? OrderSide { get; set; }
 
-    /// <summary>
-    /// A start date for the allocations to be queried from.
-    /// </summary>
     [JsonPropertyName("start_date")]
     public string? StartDate { get; set; }
 
-    /// <summary>
-    /// An end date for the orders to be queried from.
-    /// </summary>
     [JsonPropertyName("end_date")]
     public string? EndDate { get; set; }
 
@@ -71,48 +49,30 @@ namespace CoinbaseSdk.Prime.Allocations
       private SortDirection? _sortDirection;
       private int? _limit;
 
-      /// <summary>
-      /// Portfolio to retrieve allocations for.
-      /// </summary>
       public Builder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      /// <summary>
-      /// List of products by which to filter the response.
-      /// </summary>
       public Builder WithProductIds(string?[] productIds)
       {
         _productIds = productIds;
         return this;
       }
 
-      /// <summary>
-      /// An order side to filter allocations on.
-      /// - UNKNOWN_ORDER_SIDE: nil value
-      /// - BUY: Buy order
-      /// - SELL: Sell order
-      /// </summary>
       public Builder WithOrderSide(OrderSide? orderSide)
       {
         _orderSide = orderSide;
         return this;
       }
 
-      /// <summary>
-      /// A start date for the allocations to be queried from.
-      /// </summary>
       public Builder WithStartDate(string? startDate)
       {
         _startDate = startDate;
         return this;
       }
 
-      /// <summary>
-      /// An end date for the orders to be queried from.
-      /// </summary>
       public Builder WithEndDate(string? endDate)
       {
         _endDate = endDate;
@@ -137,9 +97,6 @@ namespace CoinbaseSdk.Prime.Allocations
         return this;
       }
 
-      /// <summary>
-      /// Validates required path parameters before building the request.
-      /// </summary>
       private void Validate()
       {
         if (string.IsNullOrWhiteSpace(_portfolioId))
@@ -148,9 +105,6 @@ namespace CoinbaseSdk.Prime.Allocations
         }
       }
 
-      /// <summary>
-      /// Builds a new <see cref="ListPortfolioAllocationsRequest"/>.
-      /// </summary>
       public ListPortfolioAllocationsRequest Build()
       {
         Validate();

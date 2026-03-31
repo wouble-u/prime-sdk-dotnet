@@ -19,21 +19,11 @@ namespace CoinbaseSdk.Prime.Financing
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
 
-  /// <summary>
-  /// Get Trade Finance Tiered Pricing Fees
-  /// Get trade finance tiered pricing fees for a given entity at a specific time, default to current time.
-  /// </summary>
   public class GetTradeFinanceTieredPricingFeesRequest(string entityId)
   {
-    /// <summary>
-    /// The unique ID of the entity
-    /// </summary>
     [JsonIgnore]
     public string EntityId { get; set; } = entityId;
 
-    /// <summary>
-    /// The fees on a specific effective date in RFC3339 format
-    /// </summary>
     [JsonPropertyName("effective_at")]
     public string? EffectiveAt { get; set; }
 
@@ -42,27 +32,18 @@ namespace CoinbaseSdk.Prime.Financing
       private string? _entityId;
       private string? _effectiveAt;
 
-      /// <summary>
-      /// The unique ID of the entity
-      /// </summary>
       public Builder WithEntityId(string entityId)
       {
         _entityId = entityId;
         return this;
       }
 
-      /// <summary>
-      /// The fees on a specific effective date in RFC3339 format
-      /// </summary>
       public Builder WithEffectiveAt(string? effectiveAt)
       {
         _effectiveAt = effectiveAt;
         return this;
       }
 
-      /// <summary>
-      /// Validates required path parameters before building the request.
-      /// </summary>
       private void Validate()
       {
         if (string.IsNullOrWhiteSpace(_entityId))
@@ -71,9 +52,6 @@ namespace CoinbaseSdk.Prime.Financing
         }
       }
 
-      /// <summary>
-      /// Builds a new <see cref="GetTradeFinanceTieredPricingFeesRequest"/>.
-      /// </summary>
       public GetTradeFinanceTieredPricingFeesRequest Build()
       {
         Validate();

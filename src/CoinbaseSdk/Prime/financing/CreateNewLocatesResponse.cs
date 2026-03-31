@@ -18,9 +18,6 @@ namespace CoinbaseSdk.Prime.Financing
 {
   using System.Text.Json.Serialization;
 
-  /// <summary>
-  /// A successful response.
-  /// </summary>
   public class CreateNewLocatesResponse
   {
     [JsonPropertyName("locate_id")]

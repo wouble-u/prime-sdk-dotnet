@@ -18,9 +18,6 @@ namespace CoinbaseSdk.Prime.Transactions
 {
   using System.Text.Json.Serialization;
 
-  /// <summary>
-  /// A successful response.
-  /// </summary>
   public class SubmitDepositTravelRuleDataResponse
   {
     [JsonPropertyName("ownership_verification_required")]

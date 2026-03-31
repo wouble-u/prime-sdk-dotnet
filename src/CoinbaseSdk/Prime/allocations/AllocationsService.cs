@@ -23,10 +23,6 @@ namespace CoinbaseSdk.Prime.Allocations
 
   public class AllocationsService(ICoinbaseClient client) : CoinbaseService(client), IAllocationsService
   {
-    /// <summary>
-    /// Create Portfolio Allocations
-    /// Create allocation for a given portfolio.
-    /// </summary>
     public CreateAllocationResponse CreateAllocation(
       CreateAllocationRequest request,
       CallOptions? options = null)
@@ -39,10 +35,6 @@ namespace CoinbaseSdk.Prime.Allocations
         options);
     }
 
-    /// <summary>
-    /// Create Portfolio Allocations
-    /// Create allocation for a given portfolio.
-    /// </summary>
     public Task<CreateAllocationResponse> CreateAllocationAsync(
       CreateAllocationRequest request,
       CallOptions? options = null,
@@ -57,10 +49,6 @@ namespace CoinbaseSdk.Prime.Allocations
         cancellationToken);
     }
 
-    /// <summary>
-    /// Create Portfolio Net Allocations
-    /// Create net allocation for a given portfolio.
-    /// </summary>
     public CreateNetAllocationResponse CreateNetAllocation(
       CreateNetAllocationRequest request,
       CallOptions? options = null)
@@ -73,10 +61,6 @@ namespace CoinbaseSdk.Prime.Allocations
         options);
     }
 
-    /// <summary>
-    /// Create Portfolio Net Allocations
-    /// Create net allocation for a given portfolio.
-    /// </summary>
     public Task<CreateNetAllocationResponse> CreateNetAllocationAsync(
       CreateNetAllocationRequest request,
       CallOptions? options = null,
@@ -91,10 +75,6 @@ namespace CoinbaseSdk.Prime.Allocations
         cancellationToken);
     }
 
-    /// <summary>
-    /// List Portfolio Allocations
-    /// List historical allocations for a given portfolio.
-    /// </summary>
     public ListPortfolioAllocationsResponse ListPortfolioAllocations(
       ListPortfolioAllocationsRequest request,
       CallOptions? options = null)
@@ -107,10 +87,6 @@ namespace CoinbaseSdk.Prime.Allocations
         options);
     }
 
-    /// <summary>
-    /// List Portfolio Allocations
-    /// List historical allocations for a given portfolio.
-    /// </summary>
     public Task<ListPortfolioAllocationsResponse> ListPortfolioAllocationsAsync(
       ListPortfolioAllocationsRequest request,
       CallOptions? options = null,
@@ -125,10 +101,6 @@ namespace CoinbaseSdk.Prime.Allocations
         cancellationToken);
     }
 
-    /// <summary>
-    /// Get Net Allocations by Netting ID
-    /// Retrieve an allocation by netting ID.
-    /// </summary>
     public ListAllocationsByClientNettingIdResponse ListAllocationsByClientNettingId(
       ListAllocationsByClientNettingIdRequest request,
       CallOptions? options = null)
@@ -141,10 +113,6 @@ namespace CoinbaseSdk.Prime.Allocations
         options);
     }
 
-    /// <summary>
-    /// Get Net Allocations by Netting ID
-    /// Retrieve an allocation by netting ID.
-    /// </summary>
     public Task<ListAllocationsByClientNettingIdResponse> ListAllocationsByClientNettingIdAsync(
       ListAllocationsByClientNettingIdRequest request,
       CallOptions? options = null,
@@ -159,10 +127,6 @@ namespace CoinbaseSdk.Prime.Allocations
         cancellationToken);
     }
 
-    /// <summary>
-    /// Get Allocation by ID
-    /// Retrieve an allocation by allocation ID.
-    /// </summary>
     public GetAllocationResponse GetAllocation(
       GetAllocationRequest request,
       CallOptions? options = null)
@@ -175,10 +139,6 @@ namespace CoinbaseSdk.Prime.Allocations
         options);
     }
 
-    /// <summary>
-    /// Get Allocation by ID
-    /// Retrieve an allocation by allocation ID.
-    /// </summary>
     public Task<GetAllocationResponse> GetAllocationAsync(
       GetAllocationRequest request,
       CallOptions? options = null,

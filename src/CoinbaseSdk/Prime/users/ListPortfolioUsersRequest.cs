@@ -21,15 +21,8 @@ namespace CoinbaseSdk.Prime.Users
   using CoinbaseSdk.Prime.Common;
   using CoinbaseSdk.Prime.Model.Enums;
 
-  /// <summary>
-  /// List Portfolio Users
-  /// List all users associated with a given portfolio.
-  /// </summary>
   public class ListPortfolioUsersRequest(string portfolioId) : PaginatedRequest
   {
-    /// <summary>
-    /// The portfolio ID.
-    /// </summary>
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
 
@@ -40,9 +33,6 @@ namespace CoinbaseSdk.Prime.Users
       private SortDirection? _sortDirection;
       private int? _limit;
 
-      /// <summary>
-      /// The portfolio ID.
-      /// </summary>
       public Builder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
@@ -67,9 +57,6 @@ namespace CoinbaseSdk.Prime.Users
         return this;
       }
 
-      /// <summary>
-      /// Validates required path parameters before building the request.
-      /// </summary>
       private void Validate()
       {
         if (string.IsNullOrWhiteSpace(_portfolioId))
@@ -78,9 +65,6 @@ namespace CoinbaseSdk.Prime.Users
         }
       }
 
-      /// <summary>
-      /// Builds a new <see cref="ListPortfolioUsersRequest"/>.
-      /// </summary>
       public ListPortfolioUsersRequest Build()
       {
         Validate();

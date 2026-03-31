@@ -19,27 +19,14 @@ namespace CoinbaseSdk.Prime.Financing
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
 
-  /// <summary>
-  /// List Margin Call Summaries
-  /// Lists the margin call history for a given entity ID.
-  /// </summary>
   public class ListMarginCallSummariesRequest(string entityId)
   {
-    /// <summary>
-    /// The unique ID of the entity
-    /// </summary>
     [JsonIgnore]
     public string EntityId { get; set; } = entityId;
 
-    /// <summary>
-    /// The start date of the range to query for in RFC3339 format. Must be within the last 3 months
-    /// </summary>
     [JsonPropertyName("start_date")]
     public string? StartDate { get; set; }
 
-    /// <summary>
-    /// The end date of the range to query for in RFC3339 format
-    /// </summary>
     [JsonPropertyName("end_date")]
     public string? EndDate { get; set; }
 
@@ -49,36 +36,24 @@ namespace CoinbaseSdk.Prime.Financing
       private string? _startDate;
       private string? _endDate;
 
-      /// <summary>
-      /// The unique ID of the entity
-      /// </summary>
       public Builder WithEntityId(string entityId)
       {
         _entityId = entityId;
         return this;
       }
 
-      /// <summary>
-      /// The start date of the range to query for in RFC3339 format. Must be within the last 3 months
-      /// </summary>
       public Builder WithStartDate(string? startDate)
       {
         _startDate = startDate;
         return this;
       }
 
-      /// <summary>
-      /// The end date of the range to query for in RFC3339 format
-      /// </summary>
       public Builder WithEndDate(string? endDate)
       {
         _endDate = endDate;
         return this;
       }
 
-      /// <summary>
-      /// Validates required path parameters before building the request.
-      /// </summary>
       private void Validate()
       {
         if (string.IsNullOrWhiteSpace(_entityId))
@@ -87,9 +62,6 @@ namespace CoinbaseSdk.Prime.Financing
         }
       }
 
-      /// <summary>
-      /// Builds a new <see cref="ListMarginCallSummariesRequest"/>.
-      /// </summary>
       public ListMarginCallSummariesRequest Build()
       {
         Validate();

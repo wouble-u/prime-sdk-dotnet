@@ -19,14 +19,8 @@ namespace CoinbaseSdk.Prime.Portfolios
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Prime.Model;
 
-  /// <summary>
-  /// A successful response.
-  /// </summary>
   public class ListPortfoliosResponse
   {
-    /// <summary>
-    /// A list of portfolios.
-    /// </summary>
     [JsonPropertyName("portfolios")]
     public Portfolio[] Portfolios { get; set; } = [];
 

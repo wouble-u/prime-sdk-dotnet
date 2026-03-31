@@ -21,15 +21,8 @@ namespace CoinbaseSdk.Prime.Positions
   using CoinbaseSdk.Prime.Common;
   using CoinbaseSdk.Prime.Model.Enums;
 
-  /// <summary>
-  /// List Entity Positions
-  /// List paginated positions for a specific entity.
-  /// </summary>
   public class ListEntityPositionsRequest(string entityId) : PaginatedRequest
   {
-    /// <summary>
-    /// The unique ID of the entity
-    /// </summary>
     [JsonIgnore]
     public string EntityId { get; set; } = entityId;
 
@@ -40,9 +33,6 @@ namespace CoinbaseSdk.Prime.Positions
       private SortDirection? _sortDirection;
       private int? _limit;
 
-      /// <summary>
-      /// The unique ID of the entity
-      /// </summary>
       public Builder WithEntityId(string entityId)
       {
         _entityId = entityId;
@@ -67,9 +57,6 @@ namespace CoinbaseSdk.Prime.Positions
         return this;
       }
 
-      /// <summary>
-      /// Validates required path parameters before building the request.
-      /// </summary>
       private void Validate()
       {
         if (string.IsNullOrWhiteSpace(_entityId))
@@ -78,9 +65,6 @@ namespace CoinbaseSdk.Prime.Positions
         }
       }
 
-      /// <summary>
-      /// Builds a new <see cref="ListEntityPositionsRequest"/>.
-      /// </summary>
       public ListEntityPositionsRequest Build()
       {
         Validate();

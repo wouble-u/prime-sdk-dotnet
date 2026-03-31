@@ -21,57 +21,29 @@ namespace CoinbaseSdk.Prime.Activities
   using CoinbaseSdk.Prime.Common;
   using CoinbaseSdk.Prime.Model.Enums;
 
-  /// <summary>
-  /// List Entity Activities
-  /// List all activities associated with a given entity.
-  /// </summary>
   public class ListEntityActivitiesRequest(string entityId) : PaginatedRequest
   {
-    /// <summary>
-    /// Entity to retrieve activities for
-    /// </summary>
     [JsonIgnore]
     public string EntityId { get; set; } = entityId;
 
-    /// <summary>
-    /// Activity level to retrieve activities for
-    /// </summary>
     [JsonPropertyName("activity_level")]
     public ActivityLevel? ActivityLevel { get; set; }
 
-    /// <summary>
-    /// Filter by list of currencies
-    /// </summary>
     [JsonPropertyName("symbols")]
     public string?[] Symbols { get; set; } = [];
 
-    /// <summary>
-    /// Filter by list of activity categories [order, transaction, account, allocation, lending]
-    /// </summary>
     [JsonPropertyName("categories")]
     public ActivityCategory?[] Categories { get; set; } = [];
 
-    /// <summary>
-    /// Filter by list of statuses
-    /// </summary>
     [JsonPropertyName("statuses")]
     public ActivityStatus?[] Statuses { get; set; } = [];
 
-    /// <summary>
-    /// Filter created time by start date (RFC3339 format)
-    /// </summary>
     [JsonPropertyName("start_time")]
     public string? StartTime { get; set; }
 
-    /// <summary>
-    /// Filter created time by end date (RFC3339 format)
-    /// </summary>
     [JsonPropertyName("end_time")]
     public string? EndTime { get; set; }
 
-    /// <summary>
-    /// Flag to request retrieval of all activities across all networks for a given symbol
-    /// </summary>
     [JsonPropertyName("get_network_unified_activities")]
     public bool? GetNetworkUnifiedActivities { get; set; }
 
@@ -89,72 +61,48 @@ namespace CoinbaseSdk.Prime.Activities
       private SortDirection? _sortDirection;
       private int? _limit;
 
-      /// <summary>
-      /// Entity to retrieve activities for
-      /// </summary>
       public Builder WithEntityId(string entityId)
       {
         _entityId = entityId;
         return this;
       }
 
-      /// <summary>
-      /// Activity level to retrieve activities for
-      /// </summary>
       public Builder WithActivityLevel(ActivityLevel? activityLevel)
       {
         _activityLevel = activityLevel;
         return this;
       }
 
-      /// <summary>
-      /// Filter by list of currencies
-      /// </summary>
       public Builder WithSymbols(string?[] symbols)
       {
         _symbols = symbols;
         return this;
       }
 
-      /// <summary>
-      /// Filter by list of activity categories [order, transaction, account, allocation, lending]
-      /// </summary>
       public Builder WithCategories(ActivityCategory?[] categories)
       {
         _categories = categories;
         return this;
       }
 
-      /// <summary>
-      /// Filter by list of statuses
-      /// </summary>
       public Builder WithStatuses(ActivityStatus?[] statuses)
       {
         _statuses = statuses;
         return this;
       }
 
-      /// <summary>
-      /// Filter created time by start date (RFC3339 format)
-      /// </summary>
       public Builder WithStartTime(string? startTime)
       {
         _startTime = startTime;
         return this;
       }
 
-      /// <summary>
-      /// Filter created time by end date (RFC3339 format)
-      /// </summary>
       public Builder WithEndTime(string? endTime)
       {
         _endTime = endTime;
         return this;
       }
 
-      /// <summary>
-      /// Flag to request retrieval of all activities across all networks for a given symbol
-      /// </summary>
       public Builder WithGetNetworkUnifiedActivities(bool? getNetworkUnifiedActivities)
       {
         _getNetworkUnifiedActivities = getNetworkUnifiedActivities;
@@ -179,9 +127,6 @@ namespace CoinbaseSdk.Prime.Activities
         return this;
       }
 
-      /// <summary>
-      /// Validates required path parameters before building the request.
-      /// </summary>
       private void Validate()
       {
         if (string.IsNullOrWhiteSpace(_entityId))
@@ -190,9 +135,6 @@ namespace CoinbaseSdk.Prime.Activities
         }
       }
 
-      /// <summary>
-      /// Builds a new <see cref="ListEntityActivitiesRequest"/>.
-      /// </summary>
       public ListEntityActivitiesRequest Build()
       {
         Validate();

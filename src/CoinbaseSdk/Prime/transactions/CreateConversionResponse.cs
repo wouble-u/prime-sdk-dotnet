@@ -18,50 +18,26 @@ namespace CoinbaseSdk.Prime.Transactions
 {
   using System.Text.Json.Serialization;
 
-  /// <summary>
-  /// A successful response.
-  /// </summary>
   public class CreateConversionResponse
   {
-    /// <summary>
-    /// The activity ID for the conversion
-    /// </summary>
     [JsonPropertyName("activity_id")]
     public string? ActivityId { get; set; }
 
-    /// <summary>
-    /// The currency symbol to convert from
-    /// </summary>
     [JsonPropertyName("source_symbol")]
     public string? SourceSymbol { get; set; }
 
-    /// <summary>
-    /// The currency symbol to convert to
-    /// </summary>
     [JsonPropertyName("destination_symbol")]
     public string? DestinationSymbol { get; set; }
 
-    /// <summary>
-    /// The amount in whole units to convert
-    /// </summary>
     [JsonPropertyName("amount")]
     public string? Amount { get; set; }
 
-    /// <summary>
-    /// The UUID of the destination wallet
-    /// </summary>
     [JsonPropertyName("destination")]
     public string? Destination { get; set; }
 
-    /// <summary>
-    /// The UUID of the source wallet
-    /// </summary>
     [JsonPropertyName("source")]
     public string? Source { get; set; }
 
-    /// <summary>
-    /// The UUID of the conversion transaction
-    /// </summary>
     [JsonPropertyName("transaction_id")]
     public string? TransactionId { get; set; }
 

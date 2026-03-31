@@ -19,14 +19,8 @@ namespace CoinbaseSdk.Prime.Financing
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Prime.Model;
 
-  /// <summary>
-  /// A successful response.
-  /// </summary>
   public class ListFinancingEligibleAssetsResponse
   {
-    /// <summary>
-    /// List of assets eligible for Trade Finance
-    /// </summary>
     [JsonPropertyName("assets")]
     public TFAsset[] Assets { get; set; } = [];
 

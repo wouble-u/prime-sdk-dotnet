@@ -19,27 +19,14 @@ namespace CoinbaseSdk.Prime.Financing
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
 
-  /// <summary>
-  /// Get Portfolio Buying Power
-  /// Returns the size of a buy trade that can be performed based on existing holdings and available credit. The result will differ for different assets due to asset specific credit configurations and caps. Note that this result is changing based on asset price fluctuations, so may be rejected when submitted.
-  /// </summary>
   public class GetPortfolioBuyingPowerRequest(string portfolioId)
   {
-    /// <summary>
-    /// The unique ID of the portfolio
-    /// </summary>
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
 
-    /// <summary>
-    /// The symbol for the base currency
-    /// </summary>
     [JsonPropertyName("base_currency")]
     public string? BaseCurrency { get; set; }
 
-    /// <summary>
-    /// The symbol for the quote currency
-    /// </summary>
     [JsonPropertyName("quote_currency")]
     public string? QuoteCurrency { get; set; }
 
@@ -49,36 +36,24 @@ namespace CoinbaseSdk.Prime.Financing
       private string? _baseCurrency;
       private string? _quoteCurrency;
 
-      /// <summary>
-      /// The unique ID of the portfolio
-      /// </summary>
       public Builder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      /// <summary>
-      /// The symbol for the base currency
-      /// </summary>
       public Builder WithBaseCurrency(string? baseCurrency)
       {
         _baseCurrency = baseCurrency;
         return this;
       }
 
-      /// <summary>
-      /// The symbol for the quote currency
-      /// </summary>
       public Builder WithQuoteCurrency(string? quoteCurrency)
       {
         _quoteCurrency = quoteCurrency;
         return this;
       }
 
-      /// <summary>
-      /// Validates required path parameters before building the request.
-      /// </summary>
       private void Validate()
       {
         if (string.IsNullOrWhiteSpace(_portfolioId))
@@ -87,9 +62,6 @@ namespace CoinbaseSdk.Prime.Financing
         }
       }
 
-      /// <summary>
-      /// Builds a new <see cref="GetPortfolioBuyingPowerRequest"/>.
-      /// </summary>
       public GetPortfolioBuyingPowerRequest Build()
       {
         Validate();

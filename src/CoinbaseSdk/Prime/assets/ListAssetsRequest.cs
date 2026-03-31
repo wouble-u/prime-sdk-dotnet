@@ -19,15 +19,8 @@ namespace CoinbaseSdk.Prime.Assets
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
 
-  /// <summary>
-  /// List Assets
-  /// List all assets available for a given entity.
-  /// </summary>
   public class ListAssetsRequest(string entityId)
   {
-    /// <summary>
-    /// The entity ID
-    /// </summary>
     [JsonIgnore]
     public string EntityId { get; set; } = entityId;
 
@@ -35,18 +28,12 @@ namespace CoinbaseSdk.Prime.Assets
     {
       private string? _entityId;
 
-      /// <summary>
-      /// The entity ID
-      /// </summary>
       public Builder WithEntityId(string entityId)
       {
         _entityId = entityId;
         return this;
       }
 
-      /// <summary>
-      /// Validates required path parameters before building the request.
-      /// </summary>
       private void Validate()
       {
         if (string.IsNullOrWhiteSpace(_entityId))
@@ -55,9 +42,6 @@ namespace CoinbaseSdk.Prime.Assets
         }
       }
 
-      /// <summary>
-      /// Builds a new <see cref="ListAssetsRequest"/>.
-      /// </summary>
       public ListAssetsRequest Build()
       {
         Validate();

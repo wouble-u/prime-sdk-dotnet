@@ -21,33 +21,14 @@ namespace CoinbaseSdk.Prime.Balances
   using CoinbaseSdk.Prime.Common;
   using CoinbaseSdk.Prime.Model.Enums;
 
-  /// <summary>
-  /// List Entity Balances
-  /// List all balances for a specific entity.
-  /// </summary>
   public class ListEntityBalancesRequest(string entityId) : PaginatedRequest
   {
-    /// <summary>
-    /// The entity ID
-    /// </summary>
     [JsonIgnore]
     public string EntityId { get; set; } = entityId;
 
-    /// <summary>
-    /// A list of symbols by which to filter the response
-    /// </summary>
     [JsonPropertyName("symbols")]
     public string? Symbols { get; set; }
 
-    /// <summary>
-    /// A type by which to filter aggregated balances, defaults to "TOTAL"
-    /// - UNKNOWN_BALANCE_TYPE: nil
-    /// - TRADING_BALANCES: Trading balances
-    /// - VAULT_BALANCES: Vault balances
-    /// - TOTAL_BALANCES: Total balances (The sum of vault and trading + prime custody)
-    /// - PRIME_CUSTODY_BALANCES: Prime custody balances
-    /// - UNIFIED_TOTAL_BALANCES: Unified total balance across networks and wallet types (vault + trading + prime custody)
-    /// </summary>
     [JsonPropertyName("aggregation_type")]
     public string? AggregationType { get; set; }
 
@@ -60,33 +41,18 @@ namespace CoinbaseSdk.Prime.Balances
       private SortDirection? _sortDirection;
       private int? _limit;
 
-      /// <summary>
-      /// The entity ID
-      /// </summary>
       public Builder WithEntityId(string entityId)
       {
         _entityId = entityId;
         return this;
       }
 
-      /// <summary>
-      /// A list of symbols by which to filter the response
-      /// </summary>
       public Builder WithSymbols(string? symbols)
       {
         _symbols = symbols;
         return this;
       }
 
-      /// <summary>
-      /// A type by which to filter aggregated balances, defaults to "TOTAL"
-      /// - UNKNOWN_BALANCE_TYPE: nil
-      /// - TRADING_BALANCES: Trading balances
-      /// - VAULT_BALANCES: Vault balances
-      /// - TOTAL_BALANCES: Total balances (The sum of vault and trading + prime custody)
-      /// - PRIME_CUSTODY_BALANCES: Prime custody balances
-      /// - UNIFIED_TOTAL_BALANCES: Unified total balance across networks and wallet types (vault + trading + prime custody)
-      /// </summary>
       public Builder WithAggregationType(string? aggregationType)
       {
         _aggregationType = aggregationType;
@@ -111,9 +77,6 @@ namespace CoinbaseSdk.Prime.Balances
         return this;
       }
 
-      /// <summary>
-      /// Validates required path parameters before building the request.
-      /// </summary>
       private void Validate()
       {
         if (string.IsNullOrWhiteSpace(_entityId))
@@ -122,9 +85,6 @@ namespace CoinbaseSdk.Prime.Balances
         }
       }
 
-      /// <summary>
-      /// Builds a new <see cref="ListEntityBalancesRequest"/>.
-      /// </summary>
       public ListEntityBalancesRequest Build()
       {
         Validate();

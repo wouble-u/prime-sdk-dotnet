@@ -19,15 +19,8 @@ namespace CoinbaseSdk.Prime.Financing
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
 
-  /// <summary>
-  /// Get Margin Information
-  /// Gets real-time evaluation of the margin model based on current positions and spot rates.
-  /// </summary>
   public class GetMarginInformationRequest(string entityId)
   {
-    /// <summary>
-    /// The unique ID of the entity
-    /// </summary>
     [JsonIgnore]
     public string EntityId { get; set; } = entityId;
 
@@ -35,18 +28,12 @@ namespace CoinbaseSdk.Prime.Financing
     {
       private string? _entityId;
 
-      /// <summary>
-      /// The unique ID of the entity
-      /// </summary>
       public Builder WithEntityId(string entityId)
       {
         _entityId = entityId;
         return this;
       }
 
-      /// <summary>
-      /// Validates required path parameters before building the request.
-      /// </summary>
       private void Validate()
       {
         if (string.IsNullOrWhiteSpace(_entityId))
@@ -55,9 +42,6 @@ namespace CoinbaseSdk.Prime.Financing
         }
       }
 
-      /// <summary>
-      /// Builds a new <see cref="GetMarginInformationRequest"/>.
-      /// </summary>
       public GetMarginInformationRequest Build()
       {
         Validate();

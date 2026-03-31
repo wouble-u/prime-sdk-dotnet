@@ -19,15 +19,8 @@ namespace CoinbaseSdk.Prime.Financing
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
 
-  /// <summary>
-  /// Get Portfolio Credit Information
-  /// Retrieve a portfolio's post-trade credit information.
-  /// </summary>
   public class GetPortfolioCreditInformationRequest(string portfolioId)
   {
-    /// <summary>
-    /// The portfolio ID
-    /// </summary>
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
 
@@ -35,18 +28,12 @@ namespace CoinbaseSdk.Prime.Financing
     {
       private string? _portfolioId;
 
-      /// <summary>
-      /// The portfolio ID
-      /// </summary>
       public Builder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      /// <summary>
-      /// Validates required path parameters before building the request.
-      /// </summary>
       private void Validate()
       {
         if (string.IsNullOrWhiteSpace(_portfolioId))
@@ -55,9 +42,6 @@ namespace CoinbaseSdk.Prime.Financing
         }
       }
 
-      /// <summary>
-      /// Builds a new <see cref="GetPortfolioCreditInformationRequest"/>.
-      /// </summary>
       public GetPortfolioCreditInformationRequest Build()
       {
         Validate();

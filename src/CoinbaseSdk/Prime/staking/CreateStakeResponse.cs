@@ -18,26 +18,14 @@ namespace CoinbaseSdk.Prime.Staking
 {
   using System.Text.Json.Serialization;
 
-  /// <summary>
-  /// A successful response.
-  /// </summary>
   public class CreateStakeResponse
   {
-    /// <summary>
-    /// The wallet ID
-    /// </summary>
     [JsonPropertyName("wallet_id")]
     public string? WalletId { get; set; }
 
-    /// <summary>
-    /// ID of the newly created transaction, can be used to fetch details of the current state of execution
-    /// </summary>
     [JsonPropertyName("transaction_id")]
     public string? TransactionId { get; set; }
 
-    /// <summary>
-    /// The ID for the activity generated for this request
-    /// </summary>
     [JsonPropertyName("activity_id")]
     public string? ActivityId { get; set; }
 

@@ -21,33 +21,17 @@ namespace CoinbaseSdk.Prime.Invoice
   using CoinbaseSdk.Prime.Common;
   using CoinbaseSdk.Prime.Model.Enums;
 
-  /// <summary>
-  /// List Invoices
-  /// Retrieve a list of invoices belonging to an entity.
-  /// </summary>
   public class ListInvoicesRequest(string entityId) : PaginatedRequest
   {
-    /// <summary>
-    /// The entity ID
-    /// </summary>
     [JsonIgnore]
     public string EntityId { get; set; } = entityId;
 
-    /// <summary>
-    /// Invoice states to filter the response
-    /// </summary>
     [JsonPropertyName("states")]
     public string?[] States { get; set; } = [];
 
-    /// <summary>
-    /// Filter invoices by year
-    /// </summary>
     [JsonPropertyName("billing_year")]
     public int? BillingYear { get; set; }
 
-    /// <summary>
-    /// Integer representing the month to filter by, 1 for January, 12 for December
-    /// </summary>
     [JsonPropertyName("billing_month")]
     public int? BillingMonth { get; set; }
 
@@ -61,36 +45,24 @@ namespace CoinbaseSdk.Prime.Invoice
       private SortDirection? _sortDirection;
       private int? _limit;
 
-      /// <summary>
-      /// The entity ID
-      /// </summary>
       public Builder WithEntityId(string entityId)
       {
         _entityId = entityId;
         return this;
       }
 
-      /// <summary>
-      /// Invoice states to filter the response
-      /// </summary>
       public Builder WithStates(string?[] states)
       {
         _states = states;
         return this;
       }
 
-      /// <summary>
-      /// Filter invoices by year
-      /// </summary>
       public Builder WithBillingYear(int? billingYear)
       {
         _billingYear = billingYear;
         return this;
       }
 
-      /// <summary>
-      /// Integer representing the month to filter by, 1 for January, 12 for December
-      /// </summary>
       public Builder WithBillingMonth(int? billingMonth)
       {
         _billingMonth = billingMonth;
@@ -115,9 +87,6 @@ namespace CoinbaseSdk.Prime.Invoice
         return this;
       }
 
-      /// <summary>
-      /// Validates required path parameters before building the request.
-      /// </summary>
       private void Validate()
       {
         if (string.IsNullOrWhiteSpace(_entityId))
@@ -126,9 +95,6 @@ namespace CoinbaseSdk.Prime.Invoice
         }
       }
 
-      /// <summary>
-      /// Builds a new <see cref="ListInvoicesRequest"/>.
-      /// </summary>
       public ListInvoicesRequest Build()
       {
         Validate();

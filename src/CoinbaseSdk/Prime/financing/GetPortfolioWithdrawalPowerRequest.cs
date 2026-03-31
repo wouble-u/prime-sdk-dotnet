@@ -19,21 +19,11 @@ namespace CoinbaseSdk.Prime.Financing
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
 
-  /// <summary>
-  /// Get Portfolio Withdrawal Power
-  /// Returns the nominal quantity of a given asset that can be withdrawn based on holdings and current portfolio equity.
-  /// </summary>
   public class GetPortfolioWithdrawalPowerRequest(string portfolioId)
   {
-    /// <summary>
-    /// The unique ID of the portfolio
-    /// </summary>
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
 
-    /// <summary>
-    /// The currency symbol
-    /// </summary>
     [JsonPropertyName("symbol")]
     public string? Symbol { get; set; }
 
@@ -42,27 +32,18 @@ namespace CoinbaseSdk.Prime.Financing
       private string? _portfolioId;
       private string? _symbol;
 
-      /// <summary>
-      /// The unique ID of the portfolio
-      /// </summary>
       public Builder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      /// <summary>
-      /// The currency symbol
-      /// </summary>
       public Builder WithSymbol(string? symbol)
       {
         _symbol = symbol;
         return this;
       }
 
-      /// <summary>
-      /// Validates required path parameters before building the request.
-      /// </summary>
       private void Validate()
       {
         if (string.IsNullOrWhiteSpace(_portfolioId))
@@ -71,9 +52,6 @@ namespace CoinbaseSdk.Prime.Financing
         }
       }
 
-      /// <summary>
-      /// Builds a new <see cref="GetPortfolioWithdrawalPowerRequest"/>.
-      /// </summary>
       public GetPortfolioWithdrawalPowerRequest Build()
       {
         Validate();

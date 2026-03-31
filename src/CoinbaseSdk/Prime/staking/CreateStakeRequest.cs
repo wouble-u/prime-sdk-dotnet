@@ -20,27 +20,14 @@ namespace CoinbaseSdk.Prime.Staking
   using CoinbaseSdk.Core.Error;
   using CoinbaseSdk.Prime.Model;
 
-  /// <summary>
-  /// Request to stake or delegate a wallet
-  /// Creates an execution request to stake or delegate funds to a validator
-  /// </summary>
   public class CreateStakeRequest(string portfolioId, string walletId)
   {
-    /// <summary>
-    /// The portfolio ID
-    /// </summary>
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
 
-    /// <summary>
-    /// The wallet ID
-    /// </summary>
     [JsonIgnore]
     public string WalletId { get; set; } = walletId;
 
-    /// <summary>
-    /// The client generated idempotency key for requested execution. Subsequent requests using the same key will fail
-    /// </summary>
     [JsonPropertyName("idempotency_key")]
     public string? IdempotencyKey { get; set; }
 
@@ -54,27 +41,18 @@ namespace CoinbaseSdk.Prime.Staking
       private string? _idempotencyKey;
       private WalletStakeInputs _inputs;
 
-      /// <summary>
-      /// The portfolio ID
-      /// </summary>
       public Builder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      /// <summary>
-      /// The wallet ID
-      /// </summary>
       public Builder WithWalletId(string walletId)
       {
         _walletId = walletId;
         return this;
       }
 
-      /// <summary>
-      /// The client generated idempotency key for requested execution. Subsequent requests using the same key will fail
-      /// </summary>
       public Builder WithIdempotencyKey(string? idempotencyKey)
       {
         _idempotencyKey = idempotencyKey;
@@ -87,9 +65,6 @@ namespace CoinbaseSdk.Prime.Staking
         return this;
       }
 
-      /// <summary>
-      /// Validates required path parameters before building the request.
-      /// </summary>
       private void Validate()
       {
         if (string.IsNullOrWhiteSpace(_portfolioId))
@@ -102,9 +77,6 @@ namespace CoinbaseSdk.Prime.Staking
         }
       }
 
-      /// <summary>
-      /// Builds a new <see cref="CreateStakeRequest"/>.
-      /// </summary>
       public CreateStakeRequest Build()
       {
         Validate();

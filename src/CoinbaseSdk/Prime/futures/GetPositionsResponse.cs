@@ -19,17 +19,11 @@ namespace CoinbaseSdk.Prime.Futures
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Prime.Model;
 
-  /// <summary>
-  /// A successful response.
-  /// </summary>
   public class GetPositionsResponse
   {
     [JsonPropertyName("positions")]
     public FcmPosition[] Positions { get; set; } = [];
 
-    /// <summary>
-    /// Clearing account ID
-    /// </summary>
     [JsonPropertyName("clearing_account_id")]
     public string? ClearingAccountId { get; set; }
 

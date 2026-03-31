@@ -19,45 +19,23 @@ namespace CoinbaseSdk.Prime.Transactions
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
 
-  /// <summary>
-  /// Create Transfer
-  /// Create a wallet transfer.
-  /// </summary>
   public class CreateTransferRequest(string portfolioId, string walletId)
   {
-    /// <summary>
-    /// The portfolio ID
-    /// </summary>
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
 
-    /// <summary>
-    /// The wallet ID that the transfer will originate from
-    /// </summary>
     [JsonIgnore]
     public string WalletId { get; set; } = walletId;
 
-    /// <summary>
-    /// The amount in whole units to send
-    /// </summary>
     [JsonPropertyName("amount")]
     public string? Amount { get; set; }
 
-    /// <summary>
-    /// The UUID of the destination wallet
-    /// </summary>
     [JsonPropertyName("destination")]
     public string? Destination { get; set; }
 
-    /// <summary>
-    /// The idempotency key associated with this transfer
-    /// </summary>
     [JsonPropertyName("idempotency_key")]
     public string? IdempotencyKey { get; set; }
 
-    /// <summary>
-    /// The currency symbol to transfer
-    /// </summary>
     [JsonPropertyName("currency_symbol")]
     public string? CurrencySymbol { get; set; }
 
@@ -70,63 +48,42 @@ namespace CoinbaseSdk.Prime.Transactions
       private string? _idempotencyKey;
       private string? _currencySymbol;
 
-      /// <summary>
-      /// The portfolio ID
-      /// </summary>
       public Builder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      /// <summary>
-      /// The wallet ID that the transfer will originate from
-      /// </summary>
       public Builder WithWalletId(string walletId)
       {
         _walletId = walletId;
         return this;
       }
 
-      /// <summary>
-      /// The amount in whole units to send
-      /// </summary>
       public Builder WithAmount(string? amount)
       {
         _amount = amount;
         return this;
       }
 
-      /// <summary>
-      /// The UUID of the destination wallet
-      /// </summary>
       public Builder WithDestination(string? destination)
       {
         _destination = destination;
         return this;
       }
 
-      /// <summary>
-      /// The idempotency key associated with this transfer
-      /// </summary>
       public Builder WithIdempotencyKey(string? idempotencyKey)
       {
         _idempotencyKey = idempotencyKey;
         return this;
       }
 
-      /// <summary>
-      /// The currency symbol to transfer
-      /// </summary>
       public Builder WithCurrencySymbol(string? currencySymbol)
       {
         _currencySymbol = currencySymbol;
         return this;
       }
 
-      /// <summary>
-      /// Validates required path parameters before building the request.
-      /// </summary>
       private void Validate()
       {
         if (string.IsNullOrWhiteSpace(_portfolioId))
@@ -139,9 +96,6 @@ namespace CoinbaseSdk.Prime.Transactions
         }
       }
 
-      /// <summary>
-      /// Builds a new <see cref="CreateTransferRequest"/>.
-      /// </summary>
       public CreateTransferRequest Build()
       {
         Validate();

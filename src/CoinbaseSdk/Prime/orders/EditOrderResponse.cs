@@ -18,14 +18,8 @@ namespace CoinbaseSdk.Prime.Orders
 {
   using System.Text.Json.Serialization;
 
-  /// <summary>
-  /// A successful response.
-  /// </summary>
   public class EditOrderResponse
   {
-    /// <summary>
-    /// The ID of the order being edited
-    /// </summary>
     [JsonPropertyName("order_id")]
     public string? OrderId { get; set; }
 

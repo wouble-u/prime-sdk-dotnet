@@ -21,27 +21,14 @@ namespace CoinbaseSdk.Prime.Wallets
   using CoinbaseSdk.Prime.Common;
   using CoinbaseSdk.Prime.Model.Enums;
 
-  /// <summary>
-  /// List Wallet Addresses
-  /// Returns all deposit addresses associated with a wallet
-  /// </summary>
   public class ListWalletAddressesRequest(string portfolioId, string walletId) : PaginatedRequest
   {
-    /// <summary>
-    /// The portfolio ID associated with the wallet
-    /// </summary>
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
 
-    /// <summary>
-    /// The wallet ID for which to retrieve all deposit addresses
-    /// </summary>
     [JsonIgnore]
     public string WalletId { get; set; } = walletId;
 
-    /// <summary>
-    /// The blockchain network name and type, provide an empty network to retrieve addresses across all networks for this wallet
-    /// </summary>
     [JsonPropertyName("network_id")]
     public string? NetworkId { get; set; }
 
@@ -54,27 +41,18 @@ namespace CoinbaseSdk.Prime.Wallets
       private SortDirection? _sortDirection;
       private int? _limit;
 
-      /// <summary>
-      /// The portfolio ID associated with the wallet
-      /// </summary>
       public Builder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      /// <summary>
-      /// The wallet ID for which to retrieve all deposit addresses
-      /// </summary>
       public Builder WithWalletId(string walletId)
       {
         _walletId = walletId;
         return this;
       }
 
-      /// <summary>
-      /// The blockchain network name and type, provide an empty network to retrieve addresses across all networks for this wallet
-      /// </summary>
       public Builder WithNetworkId(string? networkId)
       {
         _networkId = networkId;
@@ -99,9 +77,6 @@ namespace CoinbaseSdk.Prime.Wallets
         return this;
       }
 
-      /// <summary>
-      /// Validates required path parameters before building the request.
-      /// </summary>
       private void Validate()
       {
         if (string.IsNullOrWhiteSpace(_portfolioId))
@@ -114,9 +89,6 @@ namespace CoinbaseSdk.Prime.Wallets
         }
       }
 
-      /// <summary>
-      /// Builds a new <see cref="ListWalletAddressesRequest"/>.
-      /// </summary>
       public ListWalletAddressesRequest Build()
       {
         Validate();

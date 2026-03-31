@@ -18,14 +18,8 @@ namespace CoinbaseSdk.Prime.Futures
 {
   using System.Text.Json.Serialization;
 
-  /// <summary>
-  /// A successful response.
-  /// </summary>
   public class GetFcmSettingsResponse
   {
-    /// <summary>
-    /// Target derivatives excess in the FCM
-    /// </summary>
     [JsonPropertyName("target_derivatives_excess")]
     public string? TargetDerivativesExcess { get; set; }
 

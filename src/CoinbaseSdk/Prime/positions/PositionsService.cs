@@ -23,10 +23,6 @@ namespace CoinbaseSdk.Prime.Positions
 
   public class PositionsService(ICoinbaseClient client) : CoinbaseService(client), IPositionsService
   {
-    /// <summary>
-    /// List Aggregate Entity Positions
-    /// List paginated aggregate positions for a specific entity.
-    /// </summary>
     public ListAggregateEntityPositionsResponse ListAggregateEntityPositions(
       ListAggregateEntityPositionsRequest request,
       CallOptions? options = null)
@@ -39,10 +35,6 @@ namespace CoinbaseSdk.Prime.Positions
         options);
     }
 
-    /// <summary>
-    /// List Aggregate Entity Positions
-    /// List paginated aggregate positions for a specific entity.
-    /// </summary>
     public Task<ListAggregateEntityPositionsResponse> ListAggregateEntityPositionsAsync(
       ListAggregateEntityPositionsRequest request,
       CallOptions? options = null,
@@ -57,10 +49,6 @@ namespace CoinbaseSdk.Prime.Positions
         cancellationToken);
     }
 
-    /// <summary>
-    /// List Entity Positions
-    /// List paginated positions for a specific entity.
-    /// </summary>
     public ListEntityPositionsResponse ListEntityPositions(
       ListEntityPositionsRequest request,
       CallOptions? options = null)
@@ -73,10 +61,6 @@ namespace CoinbaseSdk.Prime.Positions
         options);
     }
 
-    /// <summary>
-    /// List Entity Positions
-    /// List paginated positions for a specific entity.
-    /// </summary>
     public Task<ListEntityPositionsResponse> ListEntityPositionsAsync(
       ListEntityPositionsRequest request,
       CallOptions? options = null,

@@ -19,21 +19,11 @@ namespace CoinbaseSdk.Prime.Staking
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
 
-  /// <summary>
-  /// Get Staking Status
-  /// Get staking status for a wallet. Returns estimated completion times for active staking requests.
-  /// </summary>
   public class GetStakingStatusRequest(string portfolioId, string walletId)
   {
-    /// <summary>
-    /// The portfolio ID
-    /// </summary>
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
 
-    /// <summary>
-    /// The wallet ID
-    /// </summary>
     [JsonIgnore]
     public string WalletId { get; set; } = walletId;
 
@@ -42,27 +32,18 @@ namespace CoinbaseSdk.Prime.Staking
       private string? _portfolioId;
       private string? _walletId;
 
-      /// <summary>
-      /// The portfolio ID
-      /// </summary>
       public Builder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      /// <summary>
-      /// The wallet ID
-      /// </summary>
       public Builder WithWalletId(string walletId)
       {
         _walletId = walletId;
         return this;
       }
 
-      /// <summary>
-      /// Validates required path parameters before building the request.
-      /// </summary>
       private void Validate()
       {
         if (string.IsNullOrWhiteSpace(_portfolioId))
@@ -75,9 +56,6 @@ namespace CoinbaseSdk.Prime.Staking
         }
       }
 
-      /// <summary>
-      /// Builds a new <see cref="GetStakingStatusRequest"/>.
-      /// </summary>
       public GetStakingStatusRequest Build()
       {
         Validate();

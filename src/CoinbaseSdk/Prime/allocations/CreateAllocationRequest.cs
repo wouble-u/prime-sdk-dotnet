@@ -21,48 +21,26 @@ namespace CoinbaseSdk.Prime.Allocations
   using CoinbaseSdk.Prime.Model;
   using CoinbaseSdk.Prime.Model.Enums;
 
-  /// <summary>
-  /// Create Portfolio Allocations
-  /// Create allocation for a given portfolio.
-  /// </summary>
   public class CreateAllocationRequest()
   {
-    /// <summary>
-    /// The ID of the allocation
-    /// </summary>
     [JsonPropertyName("allocation_id")]
     public string? AllocationId { get; set; }
 
-    /// <summary>
-    /// The source portfolio id for the allocation
-    /// </summary>
     [JsonPropertyName("source_portfolio_id")]
     public string? SourcePortfolioId { get; set; }
 
-    /// <summary>
-    /// The product for the allocation
-    /// </summary>
     [JsonPropertyName("product_id")]
     public string? ProductId { get; set; }
 
-    /// <summary>
-    /// The list of order ids in the allocation
-    /// </summary>
     [JsonPropertyName("order_ids")]
     public string?[] OrderIds { get; set; } = [];
 
-    /// <summary>
-    /// The list of allocation_legs for the allocation
-    /// </summary>
     [JsonPropertyName("allocation_legs")]
     public AllocationLeg[] AllocationLegs { get; set; } = [];
 
     [JsonPropertyName("size_type")]
     public AllocationSizeType SizeType { get; set; }
 
-    /// <summary>
-    /// The portfolio where to allocate the remainder of the size
-    /// </summary>
     [JsonPropertyName("remainder_destination_portfolio")]
     public string? RemainderDestinationPortfolio { get; set; }
 
@@ -76,45 +54,30 @@ namespace CoinbaseSdk.Prime.Allocations
       private AllocationSizeType _sizeType;
       private string? _remainderDestinationPortfolio;
 
-      /// <summary>
-      /// The ID of the allocation
-      /// </summary>
       public Builder WithAllocationId(string? allocationId)
       {
         _allocationId = allocationId;
         return this;
       }
 
-      /// <summary>
-      /// The source portfolio id for the allocation
-      /// </summary>
       public Builder WithSourcePortfolioId(string? sourcePortfolioId)
       {
         _sourcePortfolioId = sourcePortfolioId;
         return this;
       }
 
-      /// <summary>
-      /// The product for the allocation
-      /// </summary>
       public Builder WithProductId(string? productId)
       {
         _productId = productId;
         return this;
       }
 
-      /// <summary>
-      /// The list of order ids in the allocation
-      /// </summary>
       public Builder WithOrderIds(string?[] orderIds)
       {
         _orderIds = orderIds;
         return this;
       }
 
-      /// <summary>
-      /// The list of allocation_legs for the allocation
-      /// </summary>
       public Builder WithAllocationLegs(AllocationLeg[] allocationLegs)
       {
         _allocationLegs = allocationLegs;
@@ -127,25 +90,16 @@ namespace CoinbaseSdk.Prime.Allocations
         return this;
       }
 
-      /// <summary>
-      /// The portfolio where to allocate the remainder of the size
-      /// </summary>
       public Builder WithRemainderDestinationPortfolio(string? remainderDestinationPortfolio)
       {
         _remainderDestinationPortfolio = remainderDestinationPortfolio;
         return this;
       }
 
-      /// <summary>
-      /// Validates required path parameters before building the request.
-      /// </summary>
       private void Validate()
       {
       }
 
-      /// <summary>
-      /// Builds a new <see cref="CreateAllocationRequest"/>.
-      /// </summary>
       public CreateAllocationRequest Build()
       {
         Validate();

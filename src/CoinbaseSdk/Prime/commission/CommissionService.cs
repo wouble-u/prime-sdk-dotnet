@@ -23,10 +23,6 @@ namespace CoinbaseSdk.Prime.Commission
 
   public class CommissionService(ICoinbaseClient client) : CoinbaseService(client), ICommissionService
   {
-    /// <summary>
-    /// Get Portfolio Commission
-    /// Retrieve commission associated with a given portfolio.
-    /// </summary>
     public GetPortfolioCommissionResponse GetPortfolioCommission(
       GetPortfolioCommissionRequest request,
       CallOptions? options = null)
@@ -39,10 +35,6 @@ namespace CoinbaseSdk.Prime.Commission
         options);
     }
 
-    /// <summary>
-    /// Get Portfolio Commission
-    /// Retrieve commission associated with a given portfolio.
-    /// </summary>
     public Task<GetPortfolioCommissionResponse> GetPortfolioCommissionAsync(
       GetPortfolioCommissionRequest request,
       CallOptions? options = null,

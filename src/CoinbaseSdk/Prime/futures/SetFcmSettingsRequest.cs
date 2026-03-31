@@ -19,21 +19,11 @@ namespace CoinbaseSdk.Prime.Futures
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
 
-  /// <summary>
-  /// Set FCM Settings
-  /// Update settings related to FCM.
-  /// </summary>
   public class SetFcmSettingsRequest(string entityId)
   {
-    /// <summary>
-    /// Entity ID
-    /// </summary>
     [JsonIgnore]
     public string EntityId { get; set; } = entityId;
 
-    /// <summary>
-    /// Target CFM Excess amount to set. Only non-negative number is allowed
-    /// </summary>
     [JsonPropertyName("target_derivatives_excess")]
     public string? TargetDerivativesExcess { get; set; }
 
@@ -42,27 +32,18 @@ namespace CoinbaseSdk.Prime.Futures
       private string? _entityId;
       private string? _targetDerivativesExcess;
 
-      /// <summary>
-      /// Entity ID
-      /// </summary>
       public Builder WithEntityId(string entityId)
       {
         _entityId = entityId;
         return this;
       }
 
-      /// <summary>
-      /// Target CFM Excess amount to set. Only non-negative number is allowed
-      /// </summary>
       public Builder WithTargetDerivativesExcess(string? targetDerivativesExcess)
       {
         _targetDerivativesExcess = targetDerivativesExcess;
         return this;
       }
 
-      /// <summary>
-      /// Validates required path parameters before building the request.
-      /// </summary>
       private void Validate()
       {
         if (string.IsNullOrWhiteSpace(_entityId))
@@ -71,9 +52,6 @@ namespace CoinbaseSdk.Prime.Futures
         }
       }
 
-      /// <summary>
-      /// Builds a new <see cref="SetFcmSettingsRequest"/>.
-      /// </summary>
       public SetFcmSettingsRequest Build()
       {
         Validate();

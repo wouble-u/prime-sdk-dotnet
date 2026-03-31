@@ -20,9 +20,6 @@ namespace CoinbaseSdk.Prime.Balances
   using CoinbaseSdk.Prime.Common;
   using CoinbaseSdk.Prime.Model;
 
-  /// <summary>
-  /// A successful response.
-  /// </summary>
   public class ListOnchainWalletBalancesResponse
   {
     [JsonPropertyName("balances")]
@@ -31,9 +28,6 @@ namespace CoinbaseSdk.Prime.Balances
     [JsonPropertyName("pagination")]
     public Pagination Pagination { get; set; }
 
-    /// <summary>
-    /// DeFi balances only return for the initial request. No pagination support.
-    /// </summary>
     [JsonPropertyName("defi_balances")]
     public DefiBalance[] DefiBalances { get; set; } = [];
 

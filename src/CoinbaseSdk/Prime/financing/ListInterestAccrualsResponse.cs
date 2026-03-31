@@ -19,9 +19,6 @@ namespace CoinbaseSdk.Prime.Financing
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Prime.Model;
 
-  /// <summary>
-  /// A successful response.
-  /// </summary>
   public class ListInterestAccrualsResponse
   {
     [JsonPropertyName("total_notional_accrual")]

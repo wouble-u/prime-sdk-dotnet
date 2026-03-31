@@ -19,27 +19,14 @@ namespace CoinbaseSdk.Prime.Futures
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
 
-  /// <summary>
-  /// Schedule Entity Futures Sweep
-  /// Schedule a sweep for a given entity from FCM wallet to USD Spot wallet. Only one pending sweep is allowed at a time per entity.
-  /// </summary>
   public class ScheduleEntityFuturesSweepRequest(string entityId)
   {
-    /// <summary>
-    /// Entity ID
-    /// </summary>
     [JsonIgnore]
     public string EntityId { get; set; } = entityId;
 
-    /// <summary>
-    /// Amount. Default to sweep all if not provided
-    /// </summary>
     [JsonPropertyName("amount")]
     public string? Amount { get; set; }
 
-    /// <summary>
-    /// Currency. Required
-    /// </summary>
     [JsonPropertyName("currency")]
     public string? Currency { get; set; }
 
@@ -49,36 +36,24 @@ namespace CoinbaseSdk.Prime.Futures
       private string? _amount;
       private string? _currency;
 
-      /// <summary>
-      /// Entity ID
-      /// </summary>
       public Builder WithEntityId(string entityId)
       {
         _entityId = entityId;
         return this;
       }
 
-      /// <summary>
-      /// Amount. Default to sweep all if not provided
-      /// </summary>
       public Builder WithAmount(string? amount)
       {
         _amount = amount;
         return this;
       }
 
-      /// <summary>
-      /// Currency. Required
-      /// </summary>
       public Builder WithCurrency(string? currency)
       {
         _currency = currency;
         return this;
       }
 
-      /// <summary>
-      /// Validates required path parameters before building the request.
-      /// </summary>
       private void Validate()
       {
         if (string.IsNullOrWhiteSpace(_entityId))
@@ -87,9 +62,6 @@ namespace CoinbaseSdk.Prime.Futures
         }
       }
 
-      /// <summary>
-      /// Builds a new <see cref="ScheduleEntityFuturesSweepRequest"/>.
-      /// </summary>
       public ScheduleEntityFuturesSweepRequest Build()
       {
         Validate();

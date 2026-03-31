@@ -20,9 +20,6 @@ namespace CoinbaseSdk.Prime.Transactions
   using CoinbaseSdk.Prime.Common;
   using CoinbaseSdk.Prime.Model;
 
-  /// <summary>
-  /// A successful response.
-  /// </summary>
   public class ListWalletTransactionsResponse
   {
     [JsonPropertyName("transactions")]

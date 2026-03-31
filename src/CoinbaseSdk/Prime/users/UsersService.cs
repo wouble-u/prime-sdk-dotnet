@@ -23,10 +23,6 @@ namespace CoinbaseSdk.Prime.Users
 
   public class UsersService(ICoinbaseClient client) : CoinbaseService(client), IUsersService
   {
-    /// <summary>
-    /// List Users
-    /// List all users associated with a given entity.
-    /// </summary>
     public ListUsersResponse ListUsers(
       ListUsersRequest request,
       CallOptions? options = null)
@@ -39,10 +35,6 @@ namespace CoinbaseSdk.Prime.Users
         options);
     }
 
-    /// <summary>
-    /// List Users
-    /// List all users associated with a given entity.
-    /// </summary>
     public Task<ListUsersResponse> ListUsersAsync(
       ListUsersRequest request,
       CallOptions? options = null,
@@ -57,10 +49,6 @@ namespace CoinbaseSdk.Prime.Users
         cancellationToken);
     }
 
-    /// <summary>
-    /// List Portfolio Users
-    /// List all users associated with a given portfolio.
-    /// </summary>
     public ListPortfolioUsersResponse ListPortfolioUsers(
       ListPortfolioUsersRequest request,
       CallOptions? options = null)
@@ -73,10 +61,6 @@ namespace CoinbaseSdk.Prime.Users
         options);
     }
 
-    /// <summary>
-    /// List Portfolio Users
-    /// List all users associated with a given portfolio.
-    /// </summary>
     public Task<ListPortfolioUsersResponse> ListPortfolioUsersAsync(
       ListPortfolioUsersRequest request,
       CallOptions? options = null,

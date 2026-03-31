@@ -18,14 +18,8 @@ namespace CoinbaseSdk.Prime.Staking
 {
   using System.Text.Json.Serialization;
 
-  /// <summary>
-  /// A successful response.
-  /// </summary>
   public class PreviewUnstakeResponse
   {
-    /// <summary>
-    /// Estimated amount that would be unstaked
-    /// </summary>
     [JsonPropertyName("estimated_amount")]
     public string? EstimatedAmount { get; set; }
 

@@ -19,47 +19,20 @@ namespace CoinbaseSdk.Prime.Wallets
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
 
-  /// <summary>
-  /// Get Wallet Deposit Instructions
-  /// Retrieve a specific wallet's deposit instructions.
-  /// </summary>
   public class GetWalletDepositInstructionsRequest(string portfolioId, string walletId)
   {
-    /// <summary>
-    /// The portfolio ID
-    /// </summary>
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
 
-    /// <summary>
-    /// The wallet ID
-    /// </summary>
     [JsonIgnore]
     public string WalletId { get; set; } = walletId;
 
-    /// <summary>
-    /// The deposit type
-    /// - UNKNOWN_WALLET_DEPOSIT_TYPE: nil value
-    /// - CRYPTO: A cryptocurrency deposit
-    /// - WIRE: A wire deposit
-    /// - SEN: DEPRECATED. A Silvergate Exchange Network deposit
-    /// - SWIFT: A SWIFT deposit
-    /// - SEPA: A SEPA deposit (Single Euro Payments Area)
-    /// </summary>
     [JsonPropertyName("deposit_type")]
     public string? DepositType { get; set; }
 
-    /// <summary>
-    /// The name of the network
-    /// The network id: base, bitcoin, ethereum, solana etc
-    /// </summary>
     [JsonPropertyName("network.id")]
     public string? NetworkId { get; set; }
 
-    /// <summary>
-    /// The network type
-    /// The network type: mainnet, testnet, etc
-    /// </summary>
     [JsonPropertyName("network.type")]
     public string? NetworkType { get; set; }
 
@@ -71,62 +44,36 @@ namespace CoinbaseSdk.Prime.Wallets
       private string? _networkId;
       private string? _networkType;
 
-      /// <summary>
-      /// The portfolio ID
-      /// </summary>
       public Builder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      /// <summary>
-      /// The wallet ID
-      /// </summary>
       public Builder WithWalletId(string walletId)
       {
         _walletId = walletId;
         return this;
       }
 
-      /// <summary>
-      /// The deposit type
-      /// - UNKNOWN_WALLET_DEPOSIT_TYPE: nil value
-      /// - CRYPTO: A cryptocurrency deposit
-      /// - WIRE: A wire deposit
-      /// - SEN: DEPRECATED. A Silvergate Exchange Network deposit
-      /// - SWIFT: A SWIFT deposit
-      /// - SEPA: A SEPA deposit (Single Euro Payments Area)
-      /// </summary>
       public Builder WithDepositType(string? depositType)
       {
         _depositType = depositType;
         return this;
       }
 
-      /// <summary>
-      /// The name of the network
-      /// The network id: base, bitcoin, ethereum, solana etc
-      /// </summary>
       public Builder WithNetworkId(string? networkId)
       {
         _networkId = networkId;
         return this;
       }
 
-      /// <summary>
-      /// The network type
-      /// The network type: mainnet, testnet, etc
-      /// </summary>
       public Builder WithNetworkType(string? networkType)
       {
         _networkType = networkType;
         return this;
       }
 
-      /// <summary>
-      /// Validates required path parameters before building the request.
-      /// </summary>
       private void Validate()
       {
         if (string.IsNullOrWhiteSpace(_portfolioId))
@@ -139,9 +86,6 @@ namespace CoinbaseSdk.Prime.Wallets
         }
       }
 
-      /// <summary>
-      /// Builds a new <see cref="GetWalletDepositInstructionsRequest"/>.
-      /// </summary>
       public GetWalletDepositInstructionsRequest Build()
       {
         Validate();

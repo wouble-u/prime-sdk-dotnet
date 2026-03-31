@@ -19,15 +19,8 @@ namespace CoinbaseSdk.Prime.OnchainAddressBook
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
 
-  /// <summary>
-  /// List Onchain Address Groups
-  /// Lists all onchain address groups for a given portfolio ID
-  /// </summary>
   public class ListOnchainAddressGroupsRequest(string portfolioId)
   {
-    /// <summary>
-    /// Portfolio ID
-    /// </summary>
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
 
@@ -35,18 +28,12 @@ namespace CoinbaseSdk.Prime.OnchainAddressBook
     {
       private string? _portfolioId;
 
-      /// <summary>
-      /// Portfolio ID
-      /// </summary>
       public Builder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      /// <summary>
-      /// Validates required path parameters before building the request.
-      /// </summary>
       private void Validate()
       {
         if (string.IsNullOrWhiteSpace(_portfolioId))
@@ -55,9 +42,6 @@ namespace CoinbaseSdk.Prime.OnchainAddressBook
         }
       }
 
-      /// <summary>
-      /// Builds a new <see cref="ListOnchainAddressGroupsRequest"/>.
-      /// </summary>
       public ListOnchainAddressGroupsRequest Build()
       {
         Validate();

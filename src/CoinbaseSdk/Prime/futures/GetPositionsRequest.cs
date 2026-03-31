@@ -19,21 +19,11 @@ namespace CoinbaseSdk.Prime.Futures
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
 
-  /// <summary>
-  /// Get Entity Positions
-  /// Retrieve all active fcm positions for a given entity.
-  /// </summary>
   public class GetPositionsRequest(string entityId)
   {
-    /// <summary>
-    /// Entity ID
-    /// </summary>
     [JsonIgnore]
     public string EntityId { get; set; } = entityId;
 
-    /// <summary>
-    /// Product ID. Optional
-    /// </summary>
     [JsonPropertyName("product_id")]
     public string? ProductId { get; set; }
 
@@ -42,27 +32,18 @@ namespace CoinbaseSdk.Prime.Futures
       private string? _entityId;
       private string? _productId;
 
-      /// <summary>
-      /// Entity ID
-      /// </summary>
       public Builder WithEntityId(string entityId)
       {
         _entityId = entityId;
         return this;
       }
 
-      /// <summary>
-      /// Product ID. Optional
-      /// </summary>
       public Builder WithProductId(string? productId)
       {
         _productId = productId;
         return this;
       }
 
-      /// <summary>
-      /// Validates required path parameters before building the request.
-      /// </summary>
       private void Validate()
       {
         if (string.IsNullOrWhiteSpace(_entityId))
@@ -71,9 +52,6 @@ namespace CoinbaseSdk.Prime.Futures
         }
       }
 
-      /// <summary>
-      /// Builds a new <see cref="GetPositionsRequest"/>.
-      /// </summary>
       public GetPositionsRequest Build()
       {
         Validate();

@@ -18,14 +18,8 @@ namespace CoinbaseSdk.Prime.Transactions
 {
   using System.Text.Json.Serialization;
 
-  /// <summary>
-  /// A successful response.
-  /// </summary>
   public class CancelAdvancedTransferResponse
   {
-    /// <summary>
-    /// The ID of the canceled Advanced Transfer
-    /// </summary>
     [JsonPropertyName("advanced_transfer_id")]
     public string? AdvancedTransferId { get; set; }
 

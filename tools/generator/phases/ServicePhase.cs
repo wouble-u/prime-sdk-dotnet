@@ -40,16 +40,13 @@ public static class ServicePhase
     sb.AppendLine();
     sb.AppendLine($"  public interface {svc.InterfaceName}");
     sb.AppendLine("  {");
-    foreach (var (b, op) in ops)
+    foreach (var (b, _) in ops)
     {
-      var methodDoc = XmlDocCommentEmitter.CombineOperationDocs(op.Summary, op.Description);
       if (b.OmitRequest)
       {
-        XmlDocCommentEmitter.AppendSummary(sb, methodDoc, "    ");
         sb.AppendLine($"    public {b.SdkMethod}Response {b.SdkMethod}(");
         sb.AppendLine("      CallOptions? options = null);");
         sb.AppendLine();
-        XmlDocCommentEmitter.AppendSummary(sb, methodDoc, "    ");
         sb.AppendLine($"    public Task<{b.SdkMethod}Response> {b.SdkMethod}Async(");
         sb.AppendLine("      CallOptions? options = null,");
         sb.AppendLine("      CancellationToken cancellationToken = default);");
@@ -57,12 +54,10 @@ public static class ServicePhase
         continue;
       }
 
-      XmlDocCommentEmitter.AppendSummary(sb, methodDoc, "    ");
       sb.AppendLine($"    public {b.SdkMethod}Response {b.SdkMethod}(");
       sb.AppendLine($"      {b.SdkMethod}Request request,");
       sb.AppendLine("      CallOptions? options = null);");
       sb.AppendLine();
-      XmlDocCommentEmitter.AppendSummary(sb, methodDoc, "    ");
       sb.AppendLine($"    public Task<{b.SdkMethod}Response> {b.SdkMethod}Async(");
       sb.AppendLine($"      {b.SdkMethod}Request request,");
       sb.AppendLine("      CallOptions? options = null,");
@@ -94,14 +89,12 @@ public static class ServicePhase
     sb.AppendLine("  {");
     foreach (var (b, op) in ops)
     {
-      var methodDoc = XmlDocCommentEmitter.CombineOperationDocs(op.Summary, op.Description);
       var pathExpr = ToCSharpPathExpression(op.Path, b.OmitRequest);
       var method = ToHttpMethodExpression(op.HttpMethod);
       var status = StatusArray(cfg, b.SdkMethod, op.HttpMethod);
       var bodyArg = RequestBodyArgument(b, op);
       if (b.OmitRequest)
       {
-        XmlDocCommentEmitter.AppendSummary(sb, methodDoc, "    ");
         sb.AppendLine($"    public {b.SdkMethod}Response {b.SdkMethod}(");
         sb.AppendLine("      CallOptions? options = null)");
         sb.AppendLine("    {");
@@ -113,7 +106,6 @@ public static class ServicePhase
         sb.AppendLine("        options);");
         sb.AppendLine("    }");
         sb.AppendLine();
-        XmlDocCommentEmitter.AppendSummary(sb, methodDoc, "    ");
         sb.AppendLine($"    public Task<{b.SdkMethod}Response> {b.SdkMethod}Async(");
         sb.AppendLine("      CallOptions? options = null,");
         sb.AppendLine("      CancellationToken cancellationToken = default)");
@@ -130,7 +122,6 @@ public static class ServicePhase
         continue;
       }
 
-      XmlDocCommentEmitter.AppendSummary(sb, methodDoc, "    ");
       sb.AppendLine($"    public {b.SdkMethod}Response {b.SdkMethod}(");
       sb.AppendLine($"      {b.SdkMethod}Request request,");
       sb.AppendLine("      CallOptions? options = null)");
@@ -143,7 +134,6 @@ public static class ServicePhase
       sb.AppendLine("        options);");
       sb.AppendLine("    }");
       sb.AppendLine();
-      XmlDocCommentEmitter.AppendSummary(sb, methodDoc, "    ");
       sb.AppendLine($"    public Task<{b.SdkMethod}Response> {b.SdkMethod}Async(");
       sb.AppendLine($"      {b.SdkMethod}Request request,");
       sb.AppendLine("      CallOptions? options = null,");

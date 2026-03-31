@@ -19,50 +19,26 @@ namespace CoinbaseSdk.Prime.Futures
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Prime.Model.Enums;
 
-  /// <summary>
-  /// A successful response.
-  /// </summary>
   public class GetFcmRiskLimitsResponse
   {
-    /// <summary>
-    /// Risk Limit set for a client
-    /// </summary>
     [JsonPropertyName("cfm_risk_limit")]
     public string? CfmRiskLimit { get; set; }
 
-    /// <summary>
-    /// Limit utilization calculated based on total margin and PnLs
-    /// </summary>
     [JsonPropertyName("cfm_risk_limit_utilization")]
     public string? CfmRiskLimitUtilization { get; set; }
 
-    /// <summary>
-    /// The total margin required for both positions and open orders
-    /// </summary>
     [JsonPropertyName("cfm_total_margin")]
     public string? CfmTotalMargin { get; set; }
 
-    /// <summary>
-    /// Open Trade Equity accrued during the current trading session
-    /// </summary>
     [JsonPropertyName("cfm_delta_ote")]
     public string? CfmDeltaOte { get; set; }
 
-    /// <summary>
-    /// Unsettled realized PNL for positions closed intraday
-    /// </summary>
     [JsonPropertyName("cfm_unsettled_realized_pnl")]
     public string? CfmUnsettledRealizedPnl { get; set; }
 
-    /// <summary>
-    /// Unsettled accrued funding PNL from the last settlement
-    /// </summary>
     [JsonPropertyName("cfm_unsettled_accrued_funding_pnl")]
     public string? CfmUnsettledAccruedFundingPnl { get; set; }
 
-    /// <summary>
-    /// Margin utilization as a decimal percentage between 0 and 1 (e.g. 0.5 means 50%)
-    /// </summary>
     [JsonPropertyName("margin_utilization_percent")]
     public string? MarginUtilizationPercent { get; set; }
 

@@ -21,27 +21,14 @@ namespace CoinbaseSdk.Prime.Orders
   using CoinbaseSdk.Prime.Common;
   using CoinbaseSdk.Prime.Model.Enums;
 
-  /// <summary>
-  /// List Portfolio Fills
-  /// Retrieve fills on a given portfolio. This endpoint requires a start_date, and returns a payload with a default limit of 100 if not specified by the user. The maximum allowed limit is 3000.
-  /// </summary>
   public class ListPortfolioFillsRequest(string portfolioId) : PaginatedRequest
   {
-    /// <summary>
-    /// The portfolio ID associated with the order
-    /// </summary>
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
 
-    /// <summary>
-    /// A start date for the fills to be queried from
-    /// </summary>
     [JsonPropertyName("start_date")]
     public string? StartDate { get; set; }
 
-    /// <summary>
-    /// An end date for the fills to be queried until
-    /// </summary>
     [JsonPropertyName("end_date")]
     public string? EndDate { get; set; }
 
@@ -54,27 +41,18 @@ namespace CoinbaseSdk.Prime.Orders
       private SortDirection? _sortDirection;
       private int? _limit;
 
-      /// <summary>
-      /// The portfolio ID associated with the order
-      /// </summary>
       public Builder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      /// <summary>
-      /// A start date for the fills to be queried from
-      /// </summary>
       public Builder WithStartDate(string? startDate)
       {
         _startDate = startDate;
         return this;
       }
 
-      /// <summary>
-      /// An end date for the fills to be queried until
-      /// </summary>
       public Builder WithEndDate(string? endDate)
       {
         _endDate = endDate;
@@ -99,9 +77,6 @@ namespace CoinbaseSdk.Prime.Orders
         return this;
       }
 
-      /// <summary>
-      /// Validates required path parameters before building the request.
-      /// </summary>
       private void Validate()
       {
         if (string.IsNullOrWhiteSpace(_portfolioId))
@@ -110,9 +85,6 @@ namespace CoinbaseSdk.Prime.Orders
         }
       }
 
-      /// <summary>
-      /// Builds a new <see cref="ListPortfolioFillsRequest"/>.
-      /// </summary>
       public ListPortfolioFillsRequest Build()
       {
         Validate();

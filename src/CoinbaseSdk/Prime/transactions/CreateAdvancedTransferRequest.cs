@@ -20,15 +20,8 @@ namespace CoinbaseSdk.Prime.Transactions
   using CoinbaseSdk.Core.Error;
   using CoinbaseSdk.Prime.Model;
 
-  /// <summary>
-  /// Create Advanced Transfer
-  /// Create advanced transfer for a given portfolio. This API is currently not available to all clients. Please reach out to Prime Operations with any questions.
-  /// </summary>
   public class CreateAdvancedTransferRequest(string portfolioId)
   {
-    /// <summary>
-    /// The portfolio ID
-    /// </summary>
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
 
@@ -40,9 +33,6 @@ namespace CoinbaseSdk.Prime.Transactions
       private string? _portfolioId;
       private AdvancedTransfer _advancedTransfer;
 
-      /// <summary>
-      /// The portfolio ID
-      /// </summary>
       public Builder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
@@ -55,9 +45,6 @@ namespace CoinbaseSdk.Prime.Transactions
         return this;
       }
 
-      /// <summary>
-      /// Validates required path parameters before building the request.
-      /// </summary>
       private void Validate()
       {
         if (string.IsNullOrWhiteSpace(_portfolioId))
@@ -66,9 +53,6 @@ namespace CoinbaseSdk.Prime.Transactions
         }
       }
 
-      /// <summary>
-      /// Builds a new <see cref="CreateAdvancedTransferRequest"/>.
-      /// </summary>
       public CreateAdvancedTransferRequest Build()
       {
         Validate();

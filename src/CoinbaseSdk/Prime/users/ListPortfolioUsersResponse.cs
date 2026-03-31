@@ -20,14 +20,8 @@ namespace CoinbaseSdk.Prime.Users
   using CoinbaseSdk.Prime.Common;
   using CoinbaseSdk.Prime.Model;
 
-  /// <summary>
-  /// A successful response.
-  /// </summary>
   public class ListPortfolioUsersResponse
   {
-    /// <summary>
-    /// The portfolio users.
-    /// </summary>
     [JsonPropertyName("users")]
     public PortfolioUser[] Users { get; set; } = [];
 

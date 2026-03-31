@@ -23,10 +23,6 @@ namespace CoinbaseSdk.Prime.Assets
 
   public class AssetsService(ICoinbaseClient client) : CoinbaseService(client), IAssetsService
   {
-    /// <summary>
-    /// List Assets
-    /// List all assets available for a given entity.
-    /// </summary>
     public ListAssetsResponse ListAssets(
       ListAssetsRequest request,
       CallOptions? options = null)
@@ -39,10 +35,6 @@ namespace CoinbaseSdk.Prime.Assets
         options);
     }
 
-    /// <summary>
-    /// List Assets
-    /// List all assets available for a given entity.
-    /// </summary>
     public Task<ListAssetsResponse> ListAssetsAsync(
       ListAssetsRequest request,
       CallOptions? options = null,

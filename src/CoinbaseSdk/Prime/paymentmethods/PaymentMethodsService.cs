@@ -23,10 +23,6 @@ namespace CoinbaseSdk.Prime.PaymentMethods
 
   public class PaymentMethodsService(ICoinbaseClient client) : CoinbaseService(client), IPaymentMethodsService
   {
-    /// <summary>
-    /// List Entity Payment Methods
-    /// Retrieve all payment methods for a given entity.
-    /// </summary>
     public ListEntityPaymentMethodsResponse ListEntityPaymentMethods(
       ListEntityPaymentMethodsRequest request,
       CallOptions? options = null)
@@ -39,10 +35,6 @@ namespace CoinbaseSdk.Prime.PaymentMethods
         options);
     }
 
-    /// <summary>
-    /// List Entity Payment Methods
-    /// Retrieve all payment methods for a given entity.
-    /// </summary>
     public Task<ListEntityPaymentMethodsResponse> ListEntityPaymentMethodsAsync(
       ListEntityPaymentMethodsRequest request,
       CallOptions? options = null,
@@ -57,10 +49,6 @@ namespace CoinbaseSdk.Prime.PaymentMethods
         cancellationToken);
     }
 
-    /// <summary>
-    /// Get Entity Payment Method
-    /// Get payment method details by id for a given entity.
-    /// </summary>
     public GetEntityPaymentMethodResponse GetEntityPaymentMethod(
       GetEntityPaymentMethodRequest request,
       CallOptions? options = null)
@@ -73,10 +61,6 @@ namespace CoinbaseSdk.Prime.PaymentMethods
         options);
     }
 
-    /// <summary>
-    /// Get Entity Payment Method
-    /// Get payment method details by id for a given entity.
-    /// </summary>
     public Task<GetEntityPaymentMethodResponse> GetEntityPaymentMethodAsync(
       GetEntityPaymentMethodRequest request,
       CallOptions? options = null,

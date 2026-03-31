@@ -19,15 +19,8 @@ namespace CoinbaseSdk.Prime.Futures
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
 
-  /// <summary>
-  /// Get FCM Margin Call Details
-  /// Retrieve the margin call details for a given entity.
-  /// </summary>
   public class GetFcmMarginCallDetailsRequest(string entityId)
   {
-    /// <summary>
-    /// Entity ID
-    /// </summary>
     [JsonIgnore]
     public string EntityId { get; set; } = entityId;
 
@@ -35,18 +28,12 @@ namespace CoinbaseSdk.Prime.Futures
     {
       private string? _entityId;
 
-      /// <summary>
-      /// Entity ID
-      /// </summary>
       public Builder WithEntityId(string entityId)
       {
         _entityId = entityId;
         return this;
       }
 
-      /// <summary>
-      /// Validates required path parameters before building the request.
-      /// </summary>
       private void Validate()
       {
         if (string.IsNullOrWhiteSpace(_entityId))
@@ -55,9 +42,6 @@ namespace CoinbaseSdk.Prime.Futures
         }
       }
 
-      /// <summary>
-      /// Builds a new <see cref="GetFcmMarginCallDetailsRequest"/>.
-      /// </summary>
       public GetFcmMarginCallDetailsRequest Build()
       {
         Validate();

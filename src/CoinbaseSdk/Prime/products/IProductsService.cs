@@ -20,35 +20,19 @@ namespace CoinbaseSdk.Prime.Products
 
   public interface IProductsService
   {
-    /// <summary>
-    /// List Portfolio Products
-    /// List tradable products for a given portfolio.
-    /// </summary>
     public ListPortfolioProductsResponse ListPortfolioProducts(
       ListPortfolioProductsRequest request,
       CallOptions? options = null);
 
-    /// <summary>
-    /// List Portfolio Products
-    /// List tradable products for a given portfolio.
-    /// </summary>
     public Task<ListPortfolioProductsResponse> ListPortfolioProductsAsync(
       ListPortfolioProductsRequest request,
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
-    /// <summary>
-    /// Get Public Product Candles (Beta)
-    /// Get rates for a single product by product ID, grouped in buckets. This feature is in beta please reach out to your Coinbase Prime account manager for more information.
-    /// </summary>
     public GetCandlesResponse GetCandles(
       GetCandlesRequest request,
       CallOptions? options = null);
 
-    /// <summary>
-    /// Get Public Product Candles (Beta)
-    /// Get rates for a single product by product ID, grouped in buckets. This feature is in beta please reach out to your Coinbase Prime account manager for more information.
-    /// </summary>
     public Task<GetCandlesResponse> GetCandlesAsync(
       GetCandlesRequest request,
       CallOptions? options = null,

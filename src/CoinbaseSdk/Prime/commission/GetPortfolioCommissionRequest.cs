@@ -19,18 +19,11 @@ namespace CoinbaseSdk.Prime.Commission
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
 
-  /// <summary>
-  /// Get Portfolio Commission
-  /// Retrieve commission associated with a given portfolio.
-  /// </summary>
   public class GetPortfolioCommissionRequest(string portfolioId)
   {
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
 
-    /// <summary>
-    /// Specific trading pair to check commission (e.g BTC-USD)
-    /// </summary>
     [JsonPropertyName("product_id")]
     public string? ProductId { get; set; }
 
@@ -45,18 +38,12 @@ namespace CoinbaseSdk.Prime.Commission
         return this;
       }
 
-      /// <summary>
-      /// Specific trading pair to check commission (e.g BTC-USD)
-      /// </summary>
       public Builder WithProductId(string? productId)
       {
         _productId = productId;
         return this;
       }
 
-      /// <summary>
-      /// Validates required path parameters before building the request.
-      /// </summary>
       private void Validate()
       {
         if (string.IsNullOrWhiteSpace(_portfolioId))
@@ -65,9 +52,6 @@ namespace CoinbaseSdk.Prime.Commission
         }
       }
 
-      /// <summary>
-      /// Builds a new <see cref="GetPortfolioCommissionRequest"/>.
-      /// </summary>
       public GetPortfolioCommissionRequest Build()
       {
         Validate();

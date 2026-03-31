@@ -23,10 +23,6 @@ namespace CoinbaseSdk.Prime.Products
 
   public class ProductsService(ICoinbaseClient client) : CoinbaseService(client), IProductsService
   {
-    /// <summary>
-    /// List Portfolio Products
-    /// List tradable products for a given portfolio.
-    /// </summary>
     public ListPortfolioProductsResponse ListPortfolioProducts(
       ListPortfolioProductsRequest request,
       CallOptions? options = null)
@@ -39,10 +35,6 @@ namespace CoinbaseSdk.Prime.Products
         options);
     }
 
-    /// <summary>
-    /// List Portfolio Products
-    /// List tradable products for a given portfolio.
-    /// </summary>
     public Task<ListPortfolioProductsResponse> ListPortfolioProductsAsync(
       ListPortfolioProductsRequest request,
       CallOptions? options = null,
@@ -57,10 +49,6 @@ namespace CoinbaseSdk.Prime.Products
         cancellationToken);
     }
 
-    /// <summary>
-    /// Get Public Product Candles (Beta)
-    /// Get rates for a single product by product ID, grouped in buckets. This feature is in beta please reach out to your Coinbase Prime account manager for more information.
-    /// </summary>
     public GetCandlesResponse GetCandles(
       GetCandlesRequest request,
       CallOptions? options = null)
@@ -73,10 +61,6 @@ namespace CoinbaseSdk.Prime.Products
         options);
     }
 
-    /// <summary>
-    /// Get Public Product Candles (Beta)
-    /// Get rates for a single product by product ID, grouped in buckets. This feature is in beta please reach out to your Coinbase Prime account manager for more information.
-    /// </summary>
     public Task<GetCandlesResponse> GetCandlesAsync(
       GetCandlesRequest request,
       CallOptions? options = null,

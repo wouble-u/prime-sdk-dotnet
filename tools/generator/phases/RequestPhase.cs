@@ -121,8 +121,6 @@ public static class RequestPhase
     }
 
     sb.AppendLine();
-    var classDoc = XmlDocCommentEmitter.CombineOperationDocs(op.Summary, op.Description);
-    XmlDocCommentEmitter.AppendSummary(sb, classDoc, "  ");
     var basePart = paginated ? " : PaginatedRequest" : string.Empty;
     sb.AppendLine(
       $"  public class {b.SdkMethod}Request({ctorArgs}){basePart}");
@@ -138,7 +136,6 @@ public static class RequestPhase
       needPropSep = true;
       var pn = OpenApiSchemaCodegen.ToPascalCase(p.Name);
       var cn = CamelParam(p.Name);
-      XmlDocCommentEmitter.AppendSummary(sb, p.Description, "    ");
       sb.AppendLine("    [JsonIgnore]");
       sb.AppendLine($"    public {MapPathParamToClr(p)} {pn} {{ get; set; }} = {cn};");
     }
@@ -153,7 +150,6 @@ public static class RequestPhase
       needPropSep = true;
       var pn = OpenApiSchemaCodegen.ToPascalCase(p.Name);
       var clr = MapParamToClr(p);
-      XmlDocCommentEmitter.AppendSummary(sb, p.Description, "    ");
       sb.AppendLine($"    [JsonPropertyName(\"{p.Name}\")]");
       sb.AppendLine($"    public {clr} {pn} {{ get; set; }}{DefaultForQuery(clr)}");
     }
@@ -166,7 +162,6 @@ public static class RequestPhase
       }
 
       needPropSep = true;
-      XmlDocCommentEmitter.AppendSummary(sb, p.Description, "    ");
       sb.AppendLine($"    [JsonPropertyName(\"{p.JsonName}\")]");
       sb.AppendLine($"    public {p.ClrType} {p.ClrName} {{ get; set; }}{DefaultForBody(p)}");
     }
@@ -264,7 +259,6 @@ public static class RequestPhase
       var f = "_" + CamelParam(p.Name);
       var t = mapParam(p).TrimEnd('?');
       var paramVar = CamelParam(p.Name);
-      XmlDocCommentEmitter.AppendSummary(sb, p.Description, "      ");
       sb.AppendLine($"      public Builder With{pn}({t} {paramVar})");
       sb.AppendLine("      {");
       sb.AppendLine($"        {f} = {paramVar};");
@@ -278,7 +272,6 @@ public static class RequestPhase
       var pn = OpenApiSchemaCodegen.ToPascalCase(p.Name);
       var f = "_" + CamelParam(p.Name);
       var paramVar = CamelParam(p.Name);
-      XmlDocCommentEmitter.AppendSummary(sb, p.Description, "      ");
       sb.AppendLine($"      public Builder With{pn}({mapParam(p)} {paramVar})");
       sb.AppendLine("      {");
       sb.AppendLine($"        {f} = {paramVar};");
@@ -291,7 +284,6 @@ public static class RequestPhase
     {
       var f = "_" + char.ToLowerInvariant(p.ClrName[0]) + p.ClrName[1..];
       var paramVar = char.ToLowerInvariant(p.ClrName[0]) + p.ClrName[1..];
-      XmlDocCommentEmitter.AppendSummary(sb, p.Description, "      ");
       sb.AppendLine($"      public Builder With{p.ClrName}({p.ClrType} {paramVar})");
       sb.AppendLine("      {");
       sb.AppendLine($"        {f} = {paramVar};");
@@ -322,9 +314,6 @@ public static class RequestPhase
       sb.AppendLine();
     }
 
-    sb.AppendLine("      /// <summary>");
-    sb.AppendLine("      /// Validates required path parameters before building the request.");
-    sb.AppendLine("      /// </summary>");
     sb.AppendLine("      private void Validate()");
     sb.AppendLine("      {");
     foreach (var p in pathParams.Where(x => x.Required))
@@ -343,9 +332,6 @@ public static class RequestPhase
 
     sb.AppendLine("      }");
     sb.AppendLine();
-    sb.AppendLine("      /// <summary>");
-    sb.AppendLine($"      /// Builds a new <see cref=\"{sdkMethod}Request\"/>.");
-    sb.AppendLine("      /// </summary>");
     sb.AppendLine($"      public {sdkMethod}Request Build()");
     sb.AppendLine("      {");
     sb.AppendLine("        Validate();");

@@ -20,18 +20,10 @@ namespace CoinbaseSdk.Prime.Invoice
 
   public interface IInvoiceService
   {
-    /// <summary>
-    /// List Invoices
-    /// Retrieve a list of invoices belonging to an entity.
-    /// </summary>
     public ListInvoicesResponse ListInvoices(
       ListInvoicesRequest request,
       CallOptions? options = null);
 
-    /// <summary>
-    /// List Invoices
-    /// Retrieve a list of invoices belonging to an entity.
-    /// </summary>
     public Task<ListInvoicesResponse> ListInvoicesAsync(
       ListInvoicesRequest request,
       CallOptions? options = null,

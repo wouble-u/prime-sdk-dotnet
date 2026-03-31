@@ -19,26 +19,16 @@ namespace CoinbaseSdk.Prime.Financing
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
 
-  /// <summary>
-  /// List Financing Eligible Assets
-  /// Get all assets eligible for Trade Finance with their adjustment factors.
-  /// </summary>
   public class ListFinancingEligibleAssetsRequest()
   {
 
     public class Builder
     {
 
-      /// <summary>
-      /// Validates required path parameters before building the request.
-      /// </summary>
       private void Validate()
       {
       }
 
-      /// <summary>
-      /// Builds a new <see cref="ListFinancingEligibleAssetsRequest"/>.
-      /// </summary>
       public ListFinancingEligibleAssetsRequest Build()
       {
         Validate();

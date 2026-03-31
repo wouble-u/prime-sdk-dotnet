@@ -20,69 +20,37 @@ namespace CoinbaseSdk.Prime.Activities
 
   public interface IActivitiesService
   {
-    /// <summary>
-    /// Get Activity by Activity ID
-    /// Retrieve an activity by its activity ID - this endpoint can retrieve both portfolio and entity activities when passed the appropriate API key
-    /// </summary>
     public GetActivityResponse GetActivity(
       GetActivityRequest request,
       CallOptions? options = null);
 
-    /// <summary>
-    /// Get Activity by Activity ID
-    /// Retrieve an activity by its activity ID - this endpoint can retrieve both portfolio and entity activities when passed the appropriate API key
-    /// </summary>
     public Task<GetActivityResponse> GetActivityAsync(
       GetActivityRequest request,
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
-    /// <summary>
-    /// List Entity Activities
-    /// List all activities associated with a given entity.
-    /// </summary>
     public ListEntityActivitiesResponse ListEntityActivities(
       ListEntityActivitiesRequest request,
       CallOptions? options = null);
 
-    /// <summary>
-    /// List Entity Activities
-    /// List all activities associated with a given entity.
-    /// </summary>
     public Task<ListEntityActivitiesResponse> ListEntityActivitiesAsync(
       ListEntityActivitiesRequest request,
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
-    /// <summary>
-    /// List Activities
-    /// List all activities associated with a given portfolio.
-    /// </summary>
     public ListActivitiesResponse ListActivities(
       ListActivitiesRequest request,
       CallOptions? options = null);
 
-    /// <summary>
-    /// List Activities
-    /// List all activities associated with a given portfolio.
-    /// </summary>
     public Task<ListActivitiesResponse> ListActivitiesAsync(
       ListActivitiesRequest request,
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
-    /// <summary>
-    /// Get Portfolio Activity by Activity ID
-    /// Retrieve an activity by its activity ID
-    /// </summary>
     public GetPortfolioActivityResponse GetPortfolioActivity(
       GetPortfolioActivityRequest request,
       CallOptions? options = null);
 
-    /// <summary>
-    /// Get Portfolio Activity by Activity ID
-    /// Retrieve an activity by its activity ID
-    /// </summary>
     public Task<GetPortfolioActivityResponse> GetPortfolioActivityAsync(
       GetPortfolioActivityRequest request,
       CallOptions? options = null,

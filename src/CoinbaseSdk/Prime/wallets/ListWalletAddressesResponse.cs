@@ -20,9 +20,6 @@ namespace CoinbaseSdk.Prime.Wallets
   using CoinbaseSdk.Prime.Common;
   using CoinbaseSdk.Prime.Model;
 
-  /// <summary>
-  /// A successful response.
-  /// </summary>
   public class ListWalletAddressesResponse
   {
     [JsonPropertyName("addresses")]

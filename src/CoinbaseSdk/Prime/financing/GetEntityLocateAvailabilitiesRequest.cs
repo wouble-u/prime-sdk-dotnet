@@ -19,27 +19,14 @@ namespace CoinbaseSdk.Prime.Financing
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
 
-  /// <summary>
-  /// Get Entity Locate Availabilities
-  /// Get currencies available to be located with their corresponding amount and rate.
-  /// </summary>
   public class GetEntityLocateAvailabilitiesRequest(string entityId)
   {
-    /// <summary>
-    /// The unique ID of the entity
-    /// </summary>
     [JsonIgnore]
     public string EntityId { get; set; } = entityId;
 
-    /// <summary>
-    /// Deprecated: Use locate_date instead
-    /// </summary>
     [JsonPropertyName("conversion_date")]
     public string? ConversionDate { get; set; }
 
-    /// <summary>
-    /// The date of the locate availability in YYYY-MM-DD format
-    /// </summary>
     [JsonPropertyName("locate_date")]
     public string? LocateDate { get; set; }
 
@@ -49,36 +36,24 @@ namespace CoinbaseSdk.Prime.Financing
       private string? _conversionDate;
       private string? _locateDate;
 
-      /// <summary>
-      /// The unique ID of the entity
-      /// </summary>
       public Builder WithEntityId(string entityId)
       {
         _entityId = entityId;
         return this;
       }
 
-      /// <summary>
-      /// Deprecated: Use locate_date instead
-      /// </summary>
       public Builder WithConversionDate(string? conversionDate)
       {
         _conversionDate = conversionDate;
         return this;
       }
 
-      /// <summary>
-      /// The date of the locate availability in YYYY-MM-DD format
-      /// </summary>
       public Builder WithLocateDate(string? locateDate)
       {
         _locateDate = locateDate;
         return this;
       }
 
-      /// <summary>
-      /// Validates required path parameters before building the request.
-      /// </summary>
       private void Validate()
       {
         if (string.IsNullOrWhiteSpace(_entityId))
@@ -87,9 +62,6 @@ namespace CoinbaseSdk.Prime.Financing
         }
       }
 
-      /// <summary>
-      /// Builds a new <see cref="GetEntityLocateAvailabilitiesRequest"/>.
-      /// </summary>
       public GetEntityLocateAvailabilitiesRequest Build()
       {
         Validate();

@@ -19,15 +19,8 @@ namespace CoinbaseSdk.Prime.Futures
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
 
-  /// <summary>
-  /// Cancel Entity Futures Sweep
-  /// Cancel the pending sweep for a given entity. A user will only be able to have one pending sweep at a time. If the sweep is not found, a 404 will be returned.
-  /// </summary>
   public class CancelEntityFuturesSweepRequest(string entityId)
   {
-    /// <summary>
-    /// Entity ID
-    /// </summary>
     [JsonIgnore]
     public string EntityId { get; set; } = entityId;
 
@@ -35,18 +28,12 @@ namespace CoinbaseSdk.Prime.Futures
     {
       private string? _entityId;
 
-      /// <summary>
-      /// Entity ID
-      /// </summary>
       public Builder WithEntityId(string entityId)
       {
         _entityId = entityId;
         return this;
       }
 
-      /// <summary>
-      /// Validates required path parameters before building the request.
-      /// </summary>
       private void Validate()
       {
         if (string.IsNullOrWhiteSpace(_entityId))
@@ -55,9 +42,6 @@ namespace CoinbaseSdk.Prime.Futures
         }
       }
 
-      /// <summary>
-      /// Builds a new <see cref="CancelEntityFuturesSweepRequest"/>.
-      /// </summary>
       public CancelEntityFuturesSweepRequest Build()
       {
         Validate();

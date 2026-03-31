@@ -19,21 +19,11 @@ namespace CoinbaseSdk.Prime.Allocations
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
 
-  /// <summary>
-  /// Get Net Allocations by Netting ID
-  /// Retrieve an allocation by netting ID.
-  /// </summary>
   public class ListAllocationsByClientNettingIdRequest(string portfolioId, string nettingId)
   {
-    /// <summary>
-    /// The portfolio ID of the allocation
-    /// </summary>
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
 
-    /// <summary>
-    /// The allocation netting ID
-    /// </summary>
     [JsonIgnore]
     public string NettingId { get; set; } = nettingId;
 
@@ -42,27 +32,18 @@ namespace CoinbaseSdk.Prime.Allocations
       private string? _portfolioId;
       private string? _nettingId;
 
-      /// <summary>
-      /// The portfolio ID of the allocation
-      /// </summary>
       public Builder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      /// <summary>
-      /// The allocation netting ID
-      /// </summary>
       public Builder WithNettingId(string nettingId)
       {
         _nettingId = nettingId;
         return this;
       }
 
-      /// <summary>
-      /// Validates required path parameters before building the request.
-      /// </summary>
       private void Validate()
       {
         if (string.IsNullOrWhiteSpace(_portfolioId))
@@ -75,9 +56,6 @@ namespace CoinbaseSdk.Prime.Allocations
         }
       }
 
-      /// <summary>
-      /// Builds a new <see cref="ListAllocationsByClientNettingIdRequest"/>.
-      /// </summary>
       public ListAllocationsByClientNettingIdRequest Build()
       {
         Validate();

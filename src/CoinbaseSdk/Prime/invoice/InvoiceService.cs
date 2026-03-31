@@ -23,10 +23,6 @@ namespace CoinbaseSdk.Prime.Invoice
 
   public class InvoiceService(ICoinbaseClient client) : CoinbaseService(client), IInvoiceService
   {
-    /// <summary>
-    /// List Invoices
-    /// Retrieve a list of invoices belonging to an entity.
-    /// </summary>
     public ListInvoicesResponse ListInvoices(
       ListInvoicesRequest request,
       CallOptions? options = null)
@@ -39,10 +35,6 @@ namespace CoinbaseSdk.Prime.Invoice
         options);
     }
 
-    /// <summary>
-    /// List Invoices
-    /// Retrieve a list of invoices belonging to an entity.
-    /// </summary>
     public Task<ListInvoicesResponse> ListInvoicesAsync(
       ListInvoicesRequest request,
       CallOptions? options = null,

@@ -20,14 +20,8 @@ namespace CoinbaseSdk.Prime.Allocations
   using CoinbaseSdk.Prime.Common;
   using CoinbaseSdk.Prime.Model;
 
-  /// <summary>
-  /// A successful response.
-  /// </summary>
   public class ListPortfolioAllocationsResponse
   {
-    /// <summary>
-    /// List of allocations.
-    /// </summary>
     [JsonPropertyName("allocations")]
     public Allocation[] Allocations { get; set; } = [];
 

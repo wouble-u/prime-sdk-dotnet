@@ -20,69 +20,37 @@ namespace CoinbaseSdk.Prime.Balances
 
   public interface IBalancesService
   {
-    /// <summary>
-    /// List Entity Balances
-    /// List all balances for a specific entity.
-    /// </summary>
     public ListEntityBalancesResponse ListEntityBalances(
       ListEntityBalancesRequest request,
       CallOptions? options = null);
 
-    /// <summary>
-    /// List Entity Balances
-    /// List all balances for a specific entity.
-    /// </summary>
     public Task<ListEntityBalancesResponse> ListEntityBalancesAsync(
       ListEntityBalancesRequest request,
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
-    /// <summary>
-    /// List Portfolio Balances
-    /// List all balances for a specific portfolio.
-    /// </summary>
     public ListPortfolioBalancesResponse ListPortfolioBalances(
       ListPortfolioBalancesRequest request,
       CallOptions? options = null);
 
-    /// <summary>
-    /// List Portfolio Balances
-    /// List all balances for a specific portfolio.
-    /// </summary>
     public Task<ListPortfolioBalancesResponse> ListPortfolioBalancesAsync(
       ListPortfolioBalancesRequest request,
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
-    /// <summary>
-    /// Get Wallet Balance
-    /// Query balance for a specific wallet.
-    /// </summary>
     public GetWalletBalanceResponse GetWalletBalance(
       GetWalletBalanceRequest request,
       CallOptions? options = null);
 
-    /// <summary>
-    /// Get Wallet Balance
-    /// Query balance for a specific wallet.
-    /// </summary>
     public Task<GetWalletBalanceResponse> GetWalletBalanceAsync(
       GetWalletBalanceRequest request,
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
-    /// <summary>
-    /// List Onchain Wallet Balances
-    /// Query balances for a specific onchain wallet.
-    /// </summary>
     public ListOnchainWalletBalancesResponse ListOnchainWalletBalances(
       ListOnchainWalletBalancesRequest request,
       CallOptions? options = null);
 
-    /// <summary>
-    /// List Onchain Wallet Balances
-    /// Query balances for a specific onchain wallet.
-    /// </summary>
     public Task<ListOnchainWalletBalancesResponse> ListOnchainWalletBalancesAsync(
       ListOnchainWalletBalancesRequest request,
       CallOptions? options = null,

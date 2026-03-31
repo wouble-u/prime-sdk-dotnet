@@ -20,33 +20,17 @@ namespace CoinbaseSdk.Prime.Staking
   using CoinbaseSdk.Core.Error;
   using CoinbaseSdk.Prime.Model.Enums;
 
-  /// <summary>
-  /// List Transaction Validators
-  /// List ETH 0x02 validators associated with wallet-level stake transactions for a given portfolio. It will not return data for unstake transactions, portfolio stake transactions, transactions which staked different currencies, or which staked to Ethereum 0x01 validators.
-  /// </summary>
   public class ListTransactionValidatorsRequest(string portfolioId)
   {
-    /// <summary>
-    /// The portfolio ID
-    /// </summary>
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
 
-    /// <summary>
-    /// List of transaction IDs to filter validators by. Maximum of 100 transaction IDs allowed per request.
-    /// </summary>
     [JsonPropertyName("transaction_ids")]
     public string?[] TransactionIds { get; set; } = [];
 
-    /// <summary>
-    /// Cursor for pagination
-    /// </summary>
     [JsonPropertyName("cursor")]
     public string? Cursor { get; set; }
 
-    /// <summary>
-    /// Maximum number of transaction-validator associations to return per page. Default is 100, maximum is 1000.
-    /// </summary>
     [JsonPropertyName("limit")]
     public int? Limit { get; set; }
 
@@ -61,36 +45,24 @@ namespace CoinbaseSdk.Prime.Staking
       private int? _limit;
       private SortDirection _sortDirection;
 
-      /// <summary>
-      /// The portfolio ID
-      /// </summary>
       public Builder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      /// <summary>
-      /// List of transaction IDs to filter validators by. Maximum of 100 transaction IDs allowed per request.
-      /// </summary>
       public Builder WithTransactionIds(string?[] transactionIds)
       {
         _transactionIds = transactionIds;
         return this;
       }
 
-      /// <summary>
-      /// Cursor for pagination
-      /// </summary>
       public Builder WithCursor(string? cursor)
       {
         _cursor = cursor;
         return this;
       }
 
-      /// <summary>
-      /// Maximum number of transaction-validator associations to return per page. Default is 100, maximum is 1000.
-      /// </summary>
       public Builder WithLimit(int? limit)
       {
         _limit = limit;
@@ -103,9 +75,6 @@ namespace CoinbaseSdk.Prime.Staking
         return this;
       }
 
-      /// <summary>
-      /// Validates required path parameters before building the request.
-      /// </summary>
       private void Validate()
       {
         if (string.IsNullOrWhiteSpace(_portfolioId))
@@ -114,9 +83,6 @@ namespace CoinbaseSdk.Prime.Staking
         }
       }
 
-      /// <summary>
-      /// Builds a new <see cref="ListTransactionValidatorsRequest"/>.
-      /// </summary>
       public ListTransactionValidatorsRequest Build()
       {
         Validate();

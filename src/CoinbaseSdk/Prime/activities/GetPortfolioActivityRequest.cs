@@ -19,21 +19,11 @@ namespace CoinbaseSdk.Prime.Activities
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
 
-  /// <summary>
-  /// Get Portfolio Activity by Activity ID
-  /// Retrieve an activity by its activity ID
-  /// </summary>
   public class GetPortfolioActivityRequest(string portfolioId, string activityId)
   {
-    /// <summary>
-    /// Portfolio to retrieve activity for.
-    /// </summary>
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
 
-    /// <summary>
-    /// Id of the activity to retrieve
-    /// </summary>
     [JsonIgnore]
     public string ActivityId { get; set; } = activityId;
 
@@ -42,27 +32,18 @@ namespace CoinbaseSdk.Prime.Activities
       private string? _portfolioId;
       private string? _activityId;
 
-      /// <summary>
-      /// Portfolio to retrieve activity for.
-      /// </summary>
       public Builder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      /// <summary>
-      /// Id of the activity to retrieve
-      /// </summary>
       public Builder WithActivityId(string activityId)
       {
         _activityId = activityId;
         return this;
       }
 
-      /// <summary>
-      /// Validates required path parameters before building the request.
-      /// </summary>
       private void Validate()
       {
         if (string.IsNullOrWhiteSpace(_portfolioId))
@@ -75,9 +56,6 @@ namespace CoinbaseSdk.Prime.Activities
         }
       }
 
-      /// <summary>
-      /// Builds a new <see cref="GetPortfolioActivityRequest"/>.
-      /// </summary>
       public GetPortfolioActivityRequest Build()
       {
         Validate();

@@ -18,14 +18,8 @@ namespace CoinbaseSdk.Prime.Transactions
 {
   using System.Text.Json.Serialization;
 
-  /// <summary>
-  /// A successful response.
-  /// </summary>
   public class CreateOnchainTransactionResponse
   {
-    /// <summary>
-    /// Unique identifier for the created transaction
-    /// </summary>
     [JsonPropertyName("transaction_id")]
     public string? TransactionId { get; set; }
 

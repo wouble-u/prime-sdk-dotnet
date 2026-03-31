@@ -19,33 +19,17 @@ namespace CoinbaseSdk.Prime.Financing
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
 
-  /// <summary>
-  /// List Existing Locates
-  /// List locates for the portfolio
-  /// </summary>
   public class ListExistingLocatesRequest(string portfolioId)
   {
-    /// <summary>
-    /// The unique ID of the portfolio
-    /// </summary>
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
 
-    /// <summary>
-    /// The IDs of specific locates to filter for
-    /// </summary>
     [JsonPropertyName("locate_ids")]
     public string?[] LocateIds { get; set; } = [];
 
-    /// <summary>
-    /// Deprecated: Use locate_date instead
-    /// </summary>
     [JsonPropertyName("conversion_date")]
     public string? ConversionDate { get; set; }
 
-    /// <summary>
-    /// The date of the locates in YYYY-MM-DD format
-    /// </summary>
     [JsonPropertyName("locate_date")]
     public string? LocateDate { get; set; }
 
@@ -56,45 +40,30 @@ namespace CoinbaseSdk.Prime.Financing
       private string? _conversionDate;
       private string? _locateDate;
 
-      /// <summary>
-      /// The unique ID of the portfolio
-      /// </summary>
       public Builder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      /// <summary>
-      /// The IDs of specific locates to filter for
-      /// </summary>
       public Builder WithLocateIds(string?[] locateIds)
       {
         _locateIds = locateIds;
         return this;
       }
 
-      /// <summary>
-      /// Deprecated: Use locate_date instead
-      /// </summary>
       public Builder WithConversionDate(string? conversionDate)
       {
         _conversionDate = conversionDate;
         return this;
       }
 
-      /// <summary>
-      /// The date of the locates in YYYY-MM-DD format
-      /// </summary>
       public Builder WithLocateDate(string? locateDate)
       {
         _locateDate = locateDate;
         return this;
       }
 
-      /// <summary>
-      /// Validates required path parameters before building the request.
-      /// </summary>
       private void Validate()
       {
         if (string.IsNullOrWhiteSpace(_portfolioId))
@@ -103,9 +72,6 @@ namespace CoinbaseSdk.Prime.Financing
         }
       }
 
-      /// <summary>
-      /// Builds a new <see cref="ListExistingLocatesRequest"/>.
-      /// </summary>
       public ListExistingLocatesRequest Build()
       {
         Validate();

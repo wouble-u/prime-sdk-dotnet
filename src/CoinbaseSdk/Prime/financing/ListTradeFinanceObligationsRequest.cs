@@ -19,15 +19,8 @@ namespace CoinbaseSdk.Prime.Financing
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
 
-  /// <summary>
-  /// List Trade Finance Obligations
-  /// List trade finance obligations for a given entity.
-  /// </summary>
   public class ListTradeFinanceObligationsRequest(string entityId)
   {
-    /// <summary>
-    /// The entity ID to retrieve obligations for
-    /// </summary>
     [JsonIgnore]
     public string EntityId { get; set; } = entityId;
 
@@ -35,18 +28,12 @@ namespace CoinbaseSdk.Prime.Financing
     {
       private string? _entityId;
 
-      /// <summary>
-      /// The entity ID to retrieve obligations for
-      /// </summary>
       public Builder WithEntityId(string entityId)
       {
         _entityId = entityId;
         return this;
       }
 
-      /// <summary>
-      /// Validates required path parameters before building the request.
-      /// </summary>
       private void Validate()
       {
         if (string.IsNullOrWhiteSpace(_entityId))
@@ -55,9 +42,6 @@ namespace CoinbaseSdk.Prime.Financing
         }
       }
 
-      /// <summary>
-      /// Builds a new <see cref="ListTradeFinanceObligationsRequest"/>.
-      /// </summary>
       public ListTradeFinanceObligationsRequest Build()
       {
         Validate();

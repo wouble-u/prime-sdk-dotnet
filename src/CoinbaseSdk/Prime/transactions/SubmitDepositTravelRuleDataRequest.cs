@@ -20,21 +20,11 @@ namespace CoinbaseSdk.Prime.Transactions
   using CoinbaseSdk.Core.Error;
   using CoinbaseSdk.Prime.Model;
 
-  /// <summary>
-  /// Submit Deposit Travel Rule Data
-  /// Submit travel rule data for an existing deposit transaction.
-  /// </summary>
   public class SubmitDepositTravelRuleDataRequest(string portfolioId, string transactionId)
   {
-    /// <summary>
-    /// The portfolio ID that owns the transaction
-    /// </summary>
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
 
-    /// <summary>
-    /// The transaction ID associated with the entry
-    /// </summary>
     [JsonIgnore]
     public string TransactionId { get; set; } = transactionId;
 
@@ -59,18 +49,12 @@ namespace CoinbaseSdk.Prime.Transactions
       private bool? _isSelf;
       private bool? _optOutOfOwnershipVerification;
 
-      /// <summary>
-      /// The portfolio ID that owns the transaction
-      /// </summary>
       public Builder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      /// <summary>
-      /// The transaction ID associated with the entry
-      /// </summary>
       public Builder WithTransactionId(string transactionId)
       {
         _transactionId = transactionId;
@@ -101,9 +85,6 @@ namespace CoinbaseSdk.Prime.Transactions
         return this;
       }
 
-      /// <summary>
-      /// Validates required path parameters before building the request.
-      /// </summary>
       private void Validate()
       {
         if (string.IsNullOrWhiteSpace(_portfolioId))
@@ -116,9 +97,6 @@ namespace CoinbaseSdk.Prime.Transactions
         }
       }
 
-      /// <summary>
-      /// Builds a new <see cref="SubmitDepositTravelRuleDataRequest"/>.
-      /// </summary>
       public SubmitDepositTravelRuleDataRequest Build()
       {
         Validate();

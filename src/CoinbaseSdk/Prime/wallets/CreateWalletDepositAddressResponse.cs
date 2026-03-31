@@ -19,20 +19,11 @@ namespace CoinbaseSdk.Prime.Wallets
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Prime.Model;
 
-  /// <summary>
-  /// A successful response.
-  /// </summary>
   public class CreateWalletDepositAddressResponse
   {
-    /// <summary>
-    /// The address on the network
-    /// </summary>
     [JsonPropertyName("address")]
     public string? Address { get; set; }
 
-    /// <summary>
-    /// The account identifier (used on some chains to distinguish accounts using the same address)
-    /// </summary>
     [JsonPropertyName("account_identifier")]
     public string? AccountIdentifier { get; set; }
 

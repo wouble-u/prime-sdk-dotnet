@@ -19,27 +19,14 @@ namespace CoinbaseSdk.Prime.Financing
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
 
-  /// <summary>
-  /// List Margin Conversions
-  /// Lists conversions and short collateral requirement between specified date range. This endpoint is deprecated and will be removed in the future. Use /v1/entities/{entity_id}/margin_summaries instead.
-  /// </summary>
   public class ListMarginConversionsRequest(string portfolioId)
   {
-    /// <summary>
-    /// The unique ID of the portfolio
-    /// </summary>
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
 
-    /// <summary>
-    /// The start date of the range to query for in RFC3339 format
-    /// </summary>
     [JsonPropertyName("start_date")]
     public string? StartDate { get; set; }
 
-    /// <summary>
-    /// The end date of the range to query for in RFC3339 format
-    /// </summary>
     [JsonPropertyName("end_date")]
     public string? EndDate { get; set; }
 
@@ -49,36 +36,24 @@ namespace CoinbaseSdk.Prime.Financing
       private string? _startDate;
       private string? _endDate;
 
-      /// <summary>
-      /// The unique ID of the portfolio
-      /// </summary>
       public Builder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      /// <summary>
-      /// The start date of the range to query for in RFC3339 format
-      /// </summary>
       public Builder WithStartDate(string? startDate)
       {
         _startDate = startDate;
         return this;
       }
 
-      /// <summary>
-      /// The end date of the range to query for in RFC3339 format
-      /// </summary>
       public Builder WithEndDate(string? endDate)
       {
         _endDate = endDate;
         return this;
       }
 
-      /// <summary>
-      /// Validates required path parameters before building the request.
-      /// </summary>
       private void Validate()
       {
         if (string.IsNullOrWhiteSpace(_portfolioId))
@@ -87,9 +62,6 @@ namespace CoinbaseSdk.Prime.Financing
         }
       }
 
-      /// <summary>
-      /// Builds a new <see cref="ListMarginConversionsRequest"/>.
-      /// </summary>
       public ListMarginConversionsRequest Build()
       {
         Validate();

@@ -21,15 +21,8 @@ namespace CoinbaseSdk.Prime.Wallets
   using CoinbaseSdk.Prime.Model;
   using CoinbaseSdk.Prime.Model.Enums;
 
-  /// <summary>
-  /// Create Wallet
-  /// Create a wallet. Note: The first ONCHAIN wallet for each network family must be created through the Prime UI.
-  /// </summary>
   public class CreateWalletRequest(string portfolioId)
   {
-    /// <summary>
-    /// Portfolio ID
-    /// </summary>
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
 
@@ -61,9 +54,6 @@ namespace CoinbaseSdk.Prime.Wallets
       private NetworkFamily _networkFamily;
       private Network _network;
 
-      /// <summary>
-      /// Portfolio ID
-      /// </summary>
       public Builder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
@@ -106,9 +96,6 @@ namespace CoinbaseSdk.Prime.Wallets
         return this;
       }
 
-      /// <summary>
-      /// Validates required path parameters before building the request.
-      /// </summary>
       private void Validate()
       {
         if (string.IsNullOrWhiteSpace(_portfolioId))
@@ -117,9 +104,6 @@ namespace CoinbaseSdk.Prime.Wallets
         }
       }
 
-      /// <summary>
-      /// Builds a new <see cref="CreateWalletRequest"/>.
-      /// </summary>
       public CreateWalletRequest Build()
       {
         Validate();

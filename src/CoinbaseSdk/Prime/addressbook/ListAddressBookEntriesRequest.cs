@@ -21,27 +21,14 @@ namespace CoinbaseSdk.Prime.AddressBook
   using CoinbaseSdk.Prime.Common;
   using CoinbaseSdk.Prime.Model.Enums;
 
-  /// <summary>
-  /// Get Address Book
-  /// Gets a list of address book addresses.
-  /// </summary>
   public class ListAddressBookEntriesRequest(string portfolioId) : PaginatedRequest
   {
-    /// <summary>
-    /// Portfolio ID
-    /// </summary>
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
 
-    /// <summary>
-    /// Cryptocurrency symbol -- if nothing is passed, all addresses are returned
-    /// </summary>
     [JsonPropertyName("currency_symbol")]
     public string? CurrencySymbol { get; set; }
 
-    /// <summary>
-    /// Query string that matches the address name
-    /// </summary>
     [JsonPropertyName("search")]
     public string? Search { get; set; }
 
@@ -54,27 +41,18 @@ namespace CoinbaseSdk.Prime.AddressBook
       private SortDirection? _sortDirection;
       private int? _limit;
 
-      /// <summary>
-      /// Portfolio ID
-      /// </summary>
       public Builder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      /// <summary>
-      /// Cryptocurrency symbol -- if nothing is passed, all addresses are returned
-      /// </summary>
       public Builder WithCurrencySymbol(string? currencySymbol)
       {
         _currencySymbol = currencySymbol;
         return this;
       }
 
-      /// <summary>
-      /// Query string that matches the address name
-      /// </summary>
       public Builder WithSearch(string? search)
       {
         _search = search;
@@ -99,9 +77,6 @@ namespace CoinbaseSdk.Prime.AddressBook
         return this;
       }
 
-      /// <summary>
-      /// Validates required path parameters before building the request.
-      /// </summary>
       private void Validate()
       {
         if (string.IsNullOrWhiteSpace(_portfolioId))
@@ -110,9 +85,6 @@ namespace CoinbaseSdk.Prime.AddressBook
         }
       }
 
-      /// <summary>
-      /// Builds a new <see cref="ListAddressBookEntriesRequest"/>.
-      /// </summary>
       public ListAddressBookEntriesRequest Build()
       {
         Validate();

@@ -91,9 +91,6 @@ public static class ResponsePhase
     }
 
     sb.AppendLine();
-    var responseClassDoc = op.SuccessResponseDescription ??
-                           XmlDocCommentEmitter.CombineOperationDocs(op.Summary, op.Description);
-    XmlDocCommentEmitter.AppendSummary(sb, responseClassDoc, "  ");
     sb.AppendLine($"  public class {b.SdkMethod}Response");
     sb.AppendLine("  {");
     var needRespSep = false;
@@ -105,7 +102,6 @@ public static class ResponsePhase
       }
 
       needRespSep = true;
-      XmlDocCommentEmitter.AppendSummary(sb, p.Description, "    ");
       sb.AppendLine($"    [JsonPropertyName(\"{p.JsonName}\")]");
       var def = DefaultForResponseProperty(p.ClrType);
       sb.AppendLine($"    public {p.ClrType} {p.ClrName} {{ get; set; }}{def}");

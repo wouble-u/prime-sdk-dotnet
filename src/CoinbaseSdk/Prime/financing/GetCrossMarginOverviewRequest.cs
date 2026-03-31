@@ -19,15 +19,8 @@ namespace CoinbaseSdk.Prime.Financing
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
 
-  /// <summary>
-  /// Get Cross Margin Overview
-  /// Gets live data for Cross Margin (XM) for a specific XM customer
-  /// </summary>
   public class GetCrossMarginOverviewRequest(string entityId)
   {
-    /// <summary>
-    /// XM customer Prime Entity ID
-    /// </summary>
     [JsonIgnore]
     public string EntityId { get; set; } = entityId;
 
@@ -35,18 +28,12 @@ namespace CoinbaseSdk.Prime.Financing
     {
       private string? _entityId;
 
-      /// <summary>
-      /// XM customer Prime Entity ID
-      /// </summary>
       public Builder WithEntityId(string entityId)
       {
         _entityId = entityId;
         return this;
       }
 
-      /// <summary>
-      /// Validates required path parameters before building the request.
-      /// </summary>
       private void Validate()
       {
         if (string.IsNullOrWhiteSpace(_entityId))
@@ -55,9 +42,6 @@ namespace CoinbaseSdk.Prime.Financing
         }
       }
 
-      /// <summary>
-      /// Builds a new <see cref="GetCrossMarginOverviewRequest"/>.
-      /// </summary>
       public GetCrossMarginOverviewRequest Build()
       {
         Validate();

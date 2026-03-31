@@ -20,35 +20,19 @@ namespace CoinbaseSdk.Prime.PaymentMethods
 
   public interface IPaymentMethodsService
   {
-    /// <summary>
-    /// List Entity Payment Methods
-    /// Retrieve all payment methods for a given entity.
-    /// </summary>
     public ListEntityPaymentMethodsResponse ListEntityPaymentMethods(
       ListEntityPaymentMethodsRequest request,
       CallOptions? options = null);
 
-    /// <summary>
-    /// List Entity Payment Methods
-    /// Retrieve all payment methods for a given entity.
-    /// </summary>
     public Task<ListEntityPaymentMethodsResponse> ListEntityPaymentMethodsAsync(
       ListEntityPaymentMethodsRequest request,
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
-    /// <summary>
-    /// Get Entity Payment Method
-    /// Get payment method details by id for a given entity.
-    /// </summary>
     public GetEntityPaymentMethodResponse GetEntityPaymentMethod(
       GetEntityPaymentMethodRequest request,
       CallOptions? options = null);
 
-    /// <summary>
-    /// Get Entity Payment Method
-    /// Get payment method details by id for a given entity.
-    /// </summary>
     public Task<GetEntityPaymentMethodResponse> GetEntityPaymentMethodAsync(
       GetEntityPaymentMethodRequest request,
       CallOptions? options = null,

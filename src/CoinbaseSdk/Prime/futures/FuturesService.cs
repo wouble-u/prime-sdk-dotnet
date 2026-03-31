@@ -23,10 +23,6 @@ namespace CoinbaseSdk.Prime.Futures
 
   public class FuturesService(ICoinbaseClient client) : CoinbaseService(client), IFuturesService
   {
-    /// <summary>
-    /// Set Auto Sweep
-    /// Set auto sweep for a given entity.
-    /// </summary>
     public SetAutoSweepResponse SetAutoSweep(
       SetAutoSweepRequest request,
       CallOptions? options = null)
@@ -39,10 +35,6 @@ namespace CoinbaseSdk.Prime.Futures
         options);
     }
 
-    /// <summary>
-    /// Set Auto Sweep
-    /// Set auto sweep for a given entity.
-    /// </summary>
     public Task<SetAutoSweepResponse> SetAutoSweepAsync(
       SetAutoSweepRequest request,
       CallOptions? options = null,
@@ -57,10 +49,6 @@ namespace CoinbaseSdk.Prime.Futures
         cancellationToken);
     }
 
-    /// <summary>
-    /// Get Entity FCM Balance
-    /// Retrieve fcm balance for a given entity.
-    /// </summary>
     public GetFcmBalanceResponse GetFcmBalance(
       GetFcmBalanceRequest request,
       CallOptions? options = null)
@@ -73,10 +61,6 @@ namespace CoinbaseSdk.Prime.Futures
         options);
     }
 
-    /// <summary>
-    /// Get Entity FCM Balance
-    /// Retrieve fcm balance for a given entity.
-    /// </summary>
     public Task<GetFcmBalanceResponse> GetFcmBalanceAsync(
       GetFcmBalanceRequest request,
       CallOptions? options = null,
@@ -91,10 +75,6 @@ namespace CoinbaseSdk.Prime.Futures
         cancellationToken);
     }
 
-    /// <summary>
-    /// Get FCM Margin Call Details
-    /// Retrieve the margin call details for a given entity.
-    /// </summary>
     public GetFcmMarginCallDetailsResponse GetFcmMarginCallDetails(
       GetFcmMarginCallDetailsRequest request,
       CallOptions? options = null)
@@ -107,10 +87,6 @@ namespace CoinbaseSdk.Prime.Futures
         options);
     }
 
-    /// <summary>
-    /// Get FCM Margin Call Details
-    /// Retrieve the margin call details for a given entity.
-    /// </summary>
     public Task<GetFcmMarginCallDetailsResponse> GetFcmMarginCallDetailsAsync(
       GetFcmMarginCallDetailsRequest request,
       CallOptions? options = null,
@@ -125,10 +101,6 @@ namespace CoinbaseSdk.Prime.Futures
         cancellationToken);
     }
 
-    /// <summary>
-    /// Get Entity Positions
-    /// Retrieve all active fcm positions for a given entity.
-    /// </summary>
     public GetPositionsResponse GetPositions(
       GetPositionsRequest request,
       CallOptions? options = null)
@@ -141,10 +113,6 @@ namespace CoinbaseSdk.Prime.Futures
         options);
     }
 
-    /// <summary>
-    /// Get Entity Positions
-    /// Retrieve all active fcm positions for a given entity.
-    /// </summary>
     public Task<GetPositionsResponse> GetPositionsAsync(
       GetPositionsRequest request,
       CallOptions? options = null,
@@ -159,10 +127,6 @@ namespace CoinbaseSdk.Prime.Futures
         cancellationToken);
     }
 
-    /// <summary>
-    /// Get FCM Risk Limits
-    /// Retrieve the risk limits for a given entity.
-    /// </summary>
     public GetFcmRiskLimitsResponse GetFcmRiskLimits(
       GetFcmRiskLimitsRequest request,
       CallOptions? options = null)
@@ -175,10 +139,6 @@ namespace CoinbaseSdk.Prime.Futures
         options);
     }
 
-    /// <summary>
-    /// Get FCM Risk Limits
-    /// Retrieve the risk limits for a given entity.
-    /// </summary>
     public Task<GetFcmRiskLimitsResponse> GetFcmRiskLimitsAsync(
       GetFcmRiskLimitsRequest request,
       CallOptions? options = null,
@@ -193,10 +153,6 @@ namespace CoinbaseSdk.Prime.Futures
         cancellationToken);
     }
 
-    /// <summary>
-    /// Get FCM Settings
-    /// Get settings related to FCM.
-    /// </summary>
     public GetFcmSettingsResponse GetFcmSettings(
       GetFcmSettingsRequest request,
       CallOptions? options = null)
@@ -209,10 +165,6 @@ namespace CoinbaseSdk.Prime.Futures
         options);
     }
 
-    /// <summary>
-    /// Get FCM Settings
-    /// Get settings related to FCM.
-    /// </summary>
     public Task<GetFcmSettingsResponse> GetFcmSettingsAsync(
       GetFcmSettingsRequest request,
       CallOptions? options = null,
@@ -227,10 +179,6 @@ namespace CoinbaseSdk.Prime.Futures
         cancellationToken);
     }
 
-    /// <summary>
-    /// Set FCM Settings
-    /// Update settings related to FCM.
-    /// </summary>
     public SetFcmSettingsResponse SetFcmSettings(
       SetFcmSettingsRequest request,
       CallOptions? options = null)
@@ -243,10 +191,6 @@ namespace CoinbaseSdk.Prime.Futures
         options);
     }
 
-    /// <summary>
-    /// Set FCM Settings
-    /// Update settings related to FCM.
-    /// </summary>
     public Task<SetFcmSettingsResponse> SetFcmSettingsAsync(
       SetFcmSettingsRequest request,
       CallOptions? options = null,
@@ -261,10 +205,6 @@ namespace CoinbaseSdk.Prime.Futures
         cancellationToken);
     }
 
-    /// <summary>
-    /// List Entity Futures Sweeps
-    /// Retrieve fcm sweeps in open status, including pending and processing sweeps.
-    /// </summary>
     public ListEntityFuturesSweepsResponse ListEntityFuturesSweeps(
       ListEntityFuturesSweepsRequest request,
       CallOptions? options = null)
@@ -277,10 +217,6 @@ namespace CoinbaseSdk.Prime.Futures
         options);
     }
 
-    /// <summary>
-    /// List Entity Futures Sweeps
-    /// Retrieve fcm sweeps in open status, including pending and processing sweeps.
-    /// </summary>
     public Task<ListEntityFuturesSweepsResponse> ListEntityFuturesSweepsAsync(
       ListEntityFuturesSweepsRequest request,
       CallOptions? options = null,
@@ -295,10 +231,6 @@ namespace CoinbaseSdk.Prime.Futures
         cancellationToken);
     }
 
-    /// <summary>
-    /// Schedule Entity Futures Sweep
-    /// Schedule a sweep for a given entity from FCM wallet to USD Spot wallet. Only one pending sweep is allowed at a time per entity.
-    /// </summary>
     public ScheduleEntityFuturesSweepResponse ScheduleEntityFuturesSweep(
       ScheduleEntityFuturesSweepRequest request,
       CallOptions? options = null)
@@ -311,10 +243,6 @@ namespace CoinbaseSdk.Prime.Futures
         options);
     }
 
-    /// <summary>
-    /// Schedule Entity Futures Sweep
-    /// Schedule a sweep for a given entity from FCM wallet to USD Spot wallet. Only one pending sweep is allowed at a time per entity.
-    /// </summary>
     public Task<ScheduleEntityFuturesSweepResponse> ScheduleEntityFuturesSweepAsync(
       ScheduleEntityFuturesSweepRequest request,
       CallOptions? options = null,
@@ -329,10 +257,6 @@ namespace CoinbaseSdk.Prime.Futures
         cancellationToken);
     }
 
-    /// <summary>
-    /// Cancel Entity Futures Sweep
-    /// Cancel the pending sweep for a given entity. A user will only be able to have one pending sweep at a time. If the sweep is not found, a 404 will be returned.
-    /// </summary>
     public CancelEntityFuturesSweepResponse CancelEntityFuturesSweep(
       CancelEntityFuturesSweepRequest request,
       CallOptions? options = null)
@@ -345,10 +269,6 @@ namespace CoinbaseSdk.Prime.Futures
         options);
     }
 
-    /// <summary>
-    /// Cancel Entity Futures Sweep
-    /// Cancel the pending sweep for a given entity. A user will only be able to have one pending sweep at a time. If the sweep is not found, a 404 will be returned.
-    /// </summary>
     public Task<CancelEntityFuturesSweepResponse> CancelEntityFuturesSweepAsync(
       CancelEntityFuturesSweepRequest request,
       CallOptions? options = null,
@@ -363,10 +283,6 @@ namespace CoinbaseSdk.Prime.Futures
         cancellationToken);
     }
 
-    /// <summary>
-    /// Get FCM Equity
-    /// Retrieve the equity data for a given entity.
-    /// </summary>
     public GetFcmEquityResponse GetFcmEquity(
       GetFcmEquityRequest request,
       CallOptions? options = null)
@@ -379,10 +295,6 @@ namespace CoinbaseSdk.Prime.Futures
         options);
     }
 
-    /// <summary>
-    /// Get FCM Equity
-    /// Retrieve the equity data for a given entity.
-    /// </summary>
     public Task<GetFcmEquityResponse> GetFcmEquityAsync(
       GetFcmEquityRequest request,
       CallOptions? options = null,

@@ -19,38 +19,20 @@ namespace CoinbaseSdk.Prime.Staking
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Prime.Model;
 
-  /// <summary>
-  /// A successful response.
-  /// </summary>
   public class GetUnstakingStatusResponse
   {
-    /// <summary>
-    /// The portfolio ID
-    /// </summary>
     [JsonPropertyName("portfolio_id")]
     public string? PortfolioId { get; set; }
 
-    /// <summary>
-    /// The wallet ID
-    /// </summary>
     [JsonPropertyName("wallet_id")]
     public string? WalletId { get; set; }
 
-    /// <summary>
-    /// The wallet address
-    /// </summary>
     [JsonPropertyName("wallet_address")]
     public string? WalletAddress { get; set; }
 
-    /// <summary>
-    /// Current timestamp at time of API call
-    /// </summary>
     [JsonPropertyName("current_timestamp")]
     public string? CurrentTimestamp { get; set; }
 
-    /// <summary>
-    /// List of validators with unstaking information for this wallet
-    /// </summary>
     [JsonPropertyName("validators")]
     public ValidatorUnstakingInfo[] Validators { get; set; } = [];
 

@@ -20,27 +20,14 @@ namespace CoinbaseSdk.Prime.Transactions
   using CoinbaseSdk.Core.Error;
   using CoinbaseSdk.Prime.Model;
 
-  /// <summary>
-  /// Create Onchain Transaction
-  /// Create an onchain transaction.
-  /// </summary>
   public class CreateOnchainTransactionRequest(string portfolioId, string walletId)
   {
-    /// <summary>
-    /// The portfolio ID
-    /// </summary>
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
 
-    /// <summary>
-    /// The wallet ID
-    /// </summary>
     [JsonIgnore]
     public string WalletId { get; set; } = walletId;
 
-    /// <summary>
-    /// Raw unsigned transaction in Hex format (Supports EVM and Solana)
-    /// </summary>
     [JsonPropertyName("raw_unsigned_txn")]
     public string? RawUnsignedTxn { get; set; }
 
@@ -58,27 +45,18 @@ namespace CoinbaseSdk.Prime.Transactions
       private RpcConfig _rpc;
       private EvmParams _evmParams;
 
-      /// <summary>
-      /// The portfolio ID
-      /// </summary>
       public Builder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      /// <summary>
-      /// The wallet ID
-      /// </summary>
       public Builder WithWalletId(string walletId)
       {
         _walletId = walletId;
         return this;
       }
 
-      /// <summary>
-      /// Raw unsigned transaction in Hex format (Supports EVM and Solana)
-      /// </summary>
       public Builder WithRawUnsignedTxn(string? rawUnsignedTxn)
       {
         _rawUnsignedTxn = rawUnsignedTxn;
@@ -97,9 +75,6 @@ namespace CoinbaseSdk.Prime.Transactions
         return this;
       }
 
-      /// <summary>
-      /// Validates required path parameters before building the request.
-      /// </summary>
       private void Validate()
       {
         if (string.IsNullOrWhiteSpace(_portfolioId))
@@ -112,9 +87,6 @@ namespace CoinbaseSdk.Prime.Transactions
         }
       }
 
-      /// <summary>
-      /// Builds a new <see cref="CreateOnchainTransactionRequest"/>.
-      /// </summary>
       public CreateOnchainTransactionRequest Build()
       {
         Validate();

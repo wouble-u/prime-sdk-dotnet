@@ -20,86 +20,46 @@ namespace CoinbaseSdk.Prime.Allocations
 
   public interface IAllocationsService
   {
-    /// <summary>
-    /// Create Portfolio Allocations
-    /// Create allocation for a given portfolio.
-    /// </summary>
     public CreateAllocationResponse CreateAllocation(
       CreateAllocationRequest request,
       CallOptions? options = null);
 
-    /// <summary>
-    /// Create Portfolio Allocations
-    /// Create allocation for a given portfolio.
-    /// </summary>
     public Task<CreateAllocationResponse> CreateAllocationAsync(
       CreateAllocationRequest request,
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
-    /// <summary>
-    /// Create Portfolio Net Allocations
-    /// Create net allocation for a given portfolio.
-    /// </summary>
     public CreateNetAllocationResponse CreateNetAllocation(
       CreateNetAllocationRequest request,
       CallOptions? options = null);
 
-    /// <summary>
-    /// Create Portfolio Net Allocations
-    /// Create net allocation for a given portfolio.
-    /// </summary>
     public Task<CreateNetAllocationResponse> CreateNetAllocationAsync(
       CreateNetAllocationRequest request,
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
-    /// <summary>
-    /// List Portfolio Allocations
-    /// List historical allocations for a given portfolio.
-    /// </summary>
     public ListPortfolioAllocationsResponse ListPortfolioAllocations(
       ListPortfolioAllocationsRequest request,
       CallOptions? options = null);
 
-    /// <summary>
-    /// List Portfolio Allocations
-    /// List historical allocations for a given portfolio.
-    /// </summary>
     public Task<ListPortfolioAllocationsResponse> ListPortfolioAllocationsAsync(
       ListPortfolioAllocationsRequest request,
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
-    /// <summary>
-    /// Get Net Allocations by Netting ID
-    /// Retrieve an allocation by netting ID.
-    /// </summary>
     public ListAllocationsByClientNettingIdResponse ListAllocationsByClientNettingId(
       ListAllocationsByClientNettingIdRequest request,
       CallOptions? options = null);
 
-    /// <summary>
-    /// Get Net Allocations by Netting ID
-    /// Retrieve an allocation by netting ID.
-    /// </summary>
     public Task<ListAllocationsByClientNettingIdResponse> ListAllocationsByClientNettingIdAsync(
       ListAllocationsByClientNettingIdRequest request,
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
-    /// <summary>
-    /// Get Allocation by ID
-    /// Retrieve an allocation by allocation ID.
-    /// </summary>
     public GetAllocationResponse GetAllocation(
       GetAllocationRequest request,
       CallOptions? options = null);
 
-    /// <summary>
-    /// Get Allocation by ID
-    /// Retrieve an allocation by allocation ID.
-    /// </summary>
     public Task<GetAllocationResponse> GetAllocationAsync(
       GetAllocationRequest request,
       CallOptions? options = null,

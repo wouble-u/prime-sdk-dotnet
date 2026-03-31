@@ -19,10 +19,6 @@ namespace CoinbaseSdk.Prime.PaymentMethods
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
 
-  /// <summary>
-  /// List Entity Payment Methods
-  /// Retrieve all payment methods for a given entity.
-  /// </summary>
   public class ListEntityPaymentMethodsRequest(string entityId)
   {
     [JsonIgnore]
@@ -38,9 +34,6 @@ namespace CoinbaseSdk.Prime.PaymentMethods
         return this;
       }
 
-      /// <summary>
-      /// Validates required path parameters before building the request.
-      /// </summary>
       private void Validate()
       {
         if (string.IsNullOrWhiteSpace(_entityId))
@@ -49,9 +42,6 @@ namespace CoinbaseSdk.Prime.PaymentMethods
         }
       }
 
-      /// <summary>
-      /// Builds a new <see cref="ListEntityPaymentMethodsRequest"/>.
-      /// </summary>
       public ListEntityPaymentMethodsRequest Build()
       {
         Validate();

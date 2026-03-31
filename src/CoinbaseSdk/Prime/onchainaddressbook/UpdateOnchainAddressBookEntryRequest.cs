@@ -20,10 +20,6 @@ namespace CoinbaseSdk.Prime.OnchainAddressBook
   using CoinbaseSdk.Core.Error;
   using CoinbaseSdk.Prime.Model;
 
-  /// <summary>
-  /// Update Onchain Address Book Entry
-  /// Updates an entry to the portfolio's onchain address groups.
-  /// </summary>
   public class UpdateOnchainAddressBookEntryRequest(string portfolioId)
   {
     [JsonIgnore]
@@ -49,9 +45,6 @@ namespace CoinbaseSdk.Prime.OnchainAddressBook
         return this;
       }
 
-      /// <summary>
-      /// Validates required path parameters before building the request.
-      /// </summary>
       private void Validate()
       {
         if (string.IsNullOrWhiteSpace(_portfolioId))
@@ -60,9 +53,6 @@ namespace CoinbaseSdk.Prime.OnchainAddressBook
         }
       }
 
-      /// <summary>
-      /// Builds a new <see cref="UpdateOnchainAddressBookEntryRequest"/>.
-      /// </summary>
       public UpdateOnchainAddressBookEntryRequest Build()
       {
         Validate();

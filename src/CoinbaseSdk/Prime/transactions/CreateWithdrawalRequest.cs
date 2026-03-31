@@ -21,42 +21,23 @@ namespace CoinbaseSdk.Prime.Transactions
   using CoinbaseSdk.Prime.Model;
   using CoinbaseSdk.Prime.Model.Enums;
 
-  /// <summary>
-  /// Create Withdrawal
-  /// Create a withdrawal.
-  /// </summary>
   public class CreateWithdrawalRequest(string portfolioId, string walletId)
   {
-    /// <summary>
-    /// The portfolio ID
-    /// </summary>
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
 
-    /// <summary>
-    /// The wallet ID
-    /// </summary>
     [JsonIgnore]
     public string WalletId { get; set; } = walletId;
 
-    /// <summary>
-    /// The amount in whole units of the withdrawal
-    /// </summary>
     [JsonPropertyName("amount")]
     public string? Amount { get; set; }
 
     [JsonPropertyName("destination_type")]
     public DestinationType DestinationType { get; set; }
 
-    /// <summary>
-    /// The idempotency key associated with the withdrawal
-    /// </summary>
     [JsonPropertyName("idempotency_key")]
     public string? IdempotencyKey { get; set; }
 
-    /// <summary>
-    /// The currency symbol for the withdrawal
-    /// </summary>
     [JsonPropertyName("currency_symbol")]
     public string? CurrencySymbol { get; set; }
 
@@ -85,27 +66,18 @@ namespace CoinbaseSdk.Prime.Transactions
       private CounterpartyDestination _counterparty;
       private TravelRuleData _travelRuleData;
 
-      /// <summary>
-      /// The portfolio ID
-      /// </summary>
       public Builder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      /// <summary>
-      /// The wallet ID
-      /// </summary>
       public Builder WithWalletId(string walletId)
       {
         _walletId = walletId;
         return this;
       }
 
-      /// <summary>
-      /// The amount in whole units of the withdrawal
-      /// </summary>
       public Builder WithAmount(string? amount)
       {
         _amount = amount;
@@ -118,18 +90,12 @@ namespace CoinbaseSdk.Prime.Transactions
         return this;
       }
 
-      /// <summary>
-      /// The idempotency key associated with the withdrawal
-      /// </summary>
       public Builder WithIdempotencyKey(string? idempotencyKey)
       {
         _idempotencyKey = idempotencyKey;
         return this;
       }
 
-      /// <summary>
-      /// The currency symbol for the withdrawal
-      /// </summary>
       public Builder WithCurrencySymbol(string? currencySymbol)
       {
         _currencySymbol = currencySymbol;
@@ -160,9 +126,6 @@ namespace CoinbaseSdk.Prime.Transactions
         return this;
       }
 
-      /// <summary>
-      /// Validates required path parameters before building the request.
-      /// </summary>
       private void Validate()
       {
         if (string.IsNullOrWhiteSpace(_portfolioId))
@@ -175,9 +138,6 @@ namespace CoinbaseSdk.Prime.Transactions
         }
       }
 
-      /// <summary>
-      /// Builds a new <see cref="CreateWithdrawalRequest"/>.
-      /// </summary>
       public CreateWithdrawalRequest Build()
       {
         Validate();

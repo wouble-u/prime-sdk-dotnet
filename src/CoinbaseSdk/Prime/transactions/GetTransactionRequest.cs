@@ -19,21 +19,11 @@ namespace CoinbaseSdk.Prime.Transactions
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
 
-  /// <summary>
-  /// Get Transaction by Transaction ID
-  /// Retrieve a specific transaction by its transaction ID.
-  /// </summary>
   public class GetTransactionRequest(string portfolioId, string transactionId)
   {
-    /// <summary>
-    /// The portfolio ID
-    /// </summary>
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
 
-    /// <summary>
-    /// The transaction ID
-    /// </summary>
     [JsonIgnore]
     public string TransactionId { get; set; } = transactionId;
 
@@ -42,27 +32,18 @@ namespace CoinbaseSdk.Prime.Transactions
       private string? _portfolioId;
       private string? _transactionId;
 
-      /// <summary>
-      /// The portfolio ID
-      /// </summary>
       public Builder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      /// <summary>
-      /// The transaction ID
-      /// </summary>
       public Builder WithTransactionId(string transactionId)
       {
         _transactionId = transactionId;
         return this;
       }
 
-      /// <summary>
-      /// Validates required path parameters before building the request.
-      /// </summary>
       private void Validate()
       {
         if (string.IsNullOrWhiteSpace(_portfolioId))
@@ -75,9 +56,6 @@ namespace CoinbaseSdk.Prime.Transactions
         }
       }
 
-      /// <summary>
-      /// Builds a new <see cref="GetTransactionRequest"/>.
-      /// </summary>
       public GetTransactionRequest Build()
       {
         Validate();

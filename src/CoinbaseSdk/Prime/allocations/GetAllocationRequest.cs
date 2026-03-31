@@ -19,21 +19,11 @@ namespace CoinbaseSdk.Prime.Allocations
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
 
-  /// <summary>
-  /// Get Allocation by ID
-  /// Retrieve an allocation by allocation ID.
-  /// </summary>
   public class GetAllocationRequest(string portfolioId, string allocationId)
   {
-    /// <summary>
-    /// The portfolio ID of the allocation
-    /// </summary>
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
 
-    /// <summary>
-    /// The ID of the allocation
-    /// </summary>
     [JsonIgnore]
     public string AllocationId { get; set; } = allocationId;
 
@@ -42,27 +32,18 @@ namespace CoinbaseSdk.Prime.Allocations
       private string? _portfolioId;
       private string? _allocationId;
 
-      /// <summary>
-      /// The portfolio ID of the allocation
-      /// </summary>
       public Builder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      /// <summary>
-      /// The ID of the allocation
-      /// </summary>
       public Builder WithAllocationId(string allocationId)
       {
         _allocationId = allocationId;
         return this;
       }
 
-      /// <summary>
-      /// Validates required path parameters before building the request.
-      /// </summary>
       private void Validate()
       {
         if (string.IsNullOrWhiteSpace(_portfolioId))
@@ -75,9 +56,6 @@ namespace CoinbaseSdk.Prime.Allocations
         }
       }
 
-      /// <summary>
-      /// Builds a new <see cref="GetAllocationRequest"/>.
-      /// </summary>
       public GetAllocationRequest Build()
       {
         Validate();

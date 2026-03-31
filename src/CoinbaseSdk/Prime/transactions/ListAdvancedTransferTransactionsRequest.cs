@@ -19,21 +19,11 @@ namespace CoinbaseSdk.Prime.Transactions
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
 
-  /// <summary>
-  /// List transactions associated with an Advanced Transfer
-  /// List transactions associated with an Advanced Transfer. This API is currently not available to all clients. Please reach out to Prime Operations with any questions.
-  /// </summary>
   public class ListAdvancedTransferTransactionsRequest(string portfolioId, string advancedTransferId)
   {
-    /// <summary>
-    /// The portfolio ID
-    /// </summary>
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
 
-    /// <summary>
-    /// The ID of the Advanced Transfer
-    /// </summary>
     [JsonIgnore]
     public string AdvancedTransferId { get; set; } = advancedTransferId;
 
@@ -42,27 +32,18 @@ namespace CoinbaseSdk.Prime.Transactions
       private string? _portfolioId;
       private string? _advancedTransferId;
 
-      /// <summary>
-      /// The portfolio ID
-      /// </summary>
       public Builder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      /// <summary>
-      /// The ID of the Advanced Transfer
-      /// </summary>
       public Builder WithAdvancedTransferId(string advancedTransferId)
       {
         _advancedTransferId = advancedTransferId;
         return this;
       }
 
-      /// <summary>
-      /// Validates required path parameters before building the request.
-      /// </summary>
       private void Validate()
       {
         if (string.IsNullOrWhiteSpace(_portfolioId))
@@ -75,9 +56,6 @@ namespace CoinbaseSdk.Prime.Transactions
         }
       }
 
-      /// <summary>
-      /// Builds a new <see cref="ListAdvancedTransferTransactionsRequest"/>.
-      /// </summary>
       public ListAdvancedTransferTransactionsRequest Build()
       {
         Validate();

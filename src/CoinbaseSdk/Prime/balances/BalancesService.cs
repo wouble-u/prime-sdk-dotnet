@@ -23,10 +23,6 @@ namespace CoinbaseSdk.Prime.Balances
 
   public class BalancesService(ICoinbaseClient client) : CoinbaseService(client), IBalancesService
   {
-    /// <summary>
-    /// List Entity Balances
-    /// List all balances for a specific entity.
-    /// </summary>
     public ListEntityBalancesResponse ListEntityBalances(
       ListEntityBalancesRequest request,
       CallOptions? options = null)
@@ -39,10 +35,6 @@ namespace CoinbaseSdk.Prime.Balances
         options);
     }
 
-    /// <summary>
-    /// List Entity Balances
-    /// List all balances for a specific entity.
-    /// </summary>
     public Task<ListEntityBalancesResponse> ListEntityBalancesAsync(
       ListEntityBalancesRequest request,
       CallOptions? options = null,
@@ -57,10 +49,6 @@ namespace CoinbaseSdk.Prime.Balances
         cancellationToken);
     }
 
-    /// <summary>
-    /// List Portfolio Balances
-    /// List all balances for a specific portfolio.
-    /// </summary>
     public ListPortfolioBalancesResponse ListPortfolioBalances(
       ListPortfolioBalancesRequest request,
       CallOptions? options = null)
@@ -73,10 +61,6 @@ namespace CoinbaseSdk.Prime.Balances
         options);
     }
 
-    /// <summary>
-    /// List Portfolio Balances
-    /// List all balances for a specific portfolio.
-    /// </summary>
     public Task<ListPortfolioBalancesResponse> ListPortfolioBalancesAsync(
       ListPortfolioBalancesRequest request,
       CallOptions? options = null,
@@ -91,10 +75,6 @@ namespace CoinbaseSdk.Prime.Balances
         cancellationToken);
     }
 
-    /// <summary>
-    /// Get Wallet Balance
-    /// Query balance for a specific wallet.
-    /// </summary>
     public GetWalletBalanceResponse GetWalletBalance(
       GetWalletBalanceRequest request,
       CallOptions? options = null)
@@ -107,10 +87,6 @@ namespace CoinbaseSdk.Prime.Balances
         options);
     }
 
-    /// <summary>
-    /// Get Wallet Balance
-    /// Query balance for a specific wallet.
-    /// </summary>
     public Task<GetWalletBalanceResponse> GetWalletBalanceAsync(
       GetWalletBalanceRequest request,
       CallOptions? options = null,
@@ -125,10 +101,6 @@ namespace CoinbaseSdk.Prime.Balances
         cancellationToken);
     }
 
-    /// <summary>
-    /// List Onchain Wallet Balances
-    /// Query balances for a specific onchain wallet.
-    /// </summary>
     public ListOnchainWalletBalancesResponse ListOnchainWalletBalances(
       ListOnchainWalletBalancesRequest request,
       CallOptions? options = null)
@@ -141,10 +113,6 @@ namespace CoinbaseSdk.Prime.Balances
         options);
     }
 
-    /// <summary>
-    /// List Onchain Wallet Balances
-    /// Query balances for a specific onchain wallet.
-    /// </summary>
     public Task<ListOnchainWalletBalancesResponse> ListOnchainWalletBalancesAsync(
       ListOnchainWalletBalancesRequest request,
       CallOptions? options = null,

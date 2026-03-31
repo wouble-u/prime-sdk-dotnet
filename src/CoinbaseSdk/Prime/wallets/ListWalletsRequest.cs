@@ -21,38 +21,17 @@ namespace CoinbaseSdk.Prime.Wallets
   using CoinbaseSdk.Prime.Common;
   using CoinbaseSdk.Prime.Model.Enums;
 
-  /// <summary>
-  /// List Portfolio Wallets
-  /// List all wallets associated with a given portfolio.
-  /// </summary>
   public class ListWalletsRequest(string portfolioId) : PaginatedRequest
   {
-    /// <summary>
-    /// The portfolio ID
-    /// </summary>
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
 
-    /// <summary>
-    /// The wallet type
-    /// - VAULT: A crypto vault
-    /// - TRADING: A trading wallet
-    /// - WALLET_TYPE_OTHER: Other wallet types (like consumer, etc)
-    /// - QC: A QC Wallet
-    /// - ONCHAIN: An Onchain wallet
-    /// </summary>
     [JsonPropertyName("type")]
     public string? Type { get; set; }
 
-    /// <summary>
-    /// The wallet symbol
-    /// </summary>
     [JsonPropertyName("symbols")]
     public string?[] Symbols { get; set; } = [];
 
-    /// <summary>
-    /// Flag to request retrieval of all wallets across all networks for a given symbol
-    /// </summary>
     [JsonPropertyName("get_network_unified_wallets")]
     public bool? GetNetworkUnifiedWallets { get; set; }
 
@@ -66,41 +45,24 @@ namespace CoinbaseSdk.Prime.Wallets
       private SortDirection? _sortDirection;
       private int? _limit;
 
-      /// <summary>
-      /// The portfolio ID
-      /// </summary>
       public Builder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      /// <summary>
-      /// The wallet type
-      /// - VAULT: A crypto vault
-      /// - TRADING: A trading wallet
-      /// - WALLET_TYPE_OTHER: Other wallet types (like consumer, etc)
-      /// - QC: A QC Wallet
-      /// - ONCHAIN: An Onchain wallet
-      /// </summary>
       public Builder WithType(string? type)
       {
         _type = type;
         return this;
       }
 
-      /// <summary>
-      /// The wallet symbol
-      /// </summary>
       public Builder WithSymbols(string?[] symbols)
       {
         _symbols = symbols;
         return this;
       }
 
-      /// <summary>
-      /// Flag to request retrieval of all wallets across all networks for a given symbol
-      /// </summary>
       public Builder WithGetNetworkUnifiedWallets(bool? getNetworkUnifiedWallets)
       {
         _getNetworkUnifiedWallets = getNetworkUnifiedWallets;
@@ -125,9 +87,6 @@ namespace CoinbaseSdk.Prime.Wallets
         return this;
       }
 
-      /// <summary>
-      /// Validates required path parameters before building the request.
-      /// </summary>
       private void Validate()
       {
         if (string.IsNullOrWhiteSpace(_portfolioId))
@@ -136,9 +95,6 @@ namespace CoinbaseSdk.Prime.Wallets
         }
       }
 
-      /// <summary>
-      /// Builds a new <see cref="ListWalletsRequest"/>.
-      /// </summary>
       public ListWalletsRequest Build()
       {
         Validate();

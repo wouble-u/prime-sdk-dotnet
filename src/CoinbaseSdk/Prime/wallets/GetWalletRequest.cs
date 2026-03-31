@@ -19,21 +19,11 @@ namespace CoinbaseSdk.Prime.Wallets
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
 
-  /// <summary>
-  /// Get Wallet by Wallet ID
-  /// Retrieve a specific wallet by Wallet ID.
-  /// </summary>
   public class GetWalletRequest(string portfolioId, string walletId)
   {
-    /// <summary>
-    /// Portfolio ID
-    /// </summary>
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
 
-    /// <summary>
-    /// Wallet ID
-    /// </summary>
     [JsonIgnore]
     public string WalletId { get; set; } = walletId;
 
@@ -42,27 +32,18 @@ namespace CoinbaseSdk.Prime.Wallets
       private string? _portfolioId;
       private string? _walletId;
 
-      /// <summary>
-      /// Portfolio ID
-      /// </summary>
       public Builder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      /// <summary>
-      /// Wallet ID
-      /// </summary>
       public Builder WithWalletId(string walletId)
       {
         _walletId = walletId;
         return this;
       }
 
-      /// <summary>
-      /// Validates required path parameters before building the request.
-      /// </summary>
       private void Validate()
       {
         if (string.IsNullOrWhiteSpace(_portfolioId))
@@ -75,9 +56,6 @@ namespace CoinbaseSdk.Prime.Wallets
         }
       }
 
-      /// <summary>
-      /// Builds a new <see cref="GetWalletRequest"/>.
-      /// </summary>
       public GetWalletRequest Build()
       {
         Validate();

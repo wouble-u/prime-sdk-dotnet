@@ -21,15 +21,8 @@ namespace CoinbaseSdk.Prime.Users
   using CoinbaseSdk.Prime.Common;
   using CoinbaseSdk.Prime.Model.Enums;
 
-  /// <summary>
-  /// List Users
-  /// List all users associated with a given entity.
-  /// </summary>
   public class ListUsersRequest(string entityId) : PaginatedRequest
   {
-    /// <summary>
-    /// The entity ID
-    /// </summary>
     [JsonIgnore]
     public string EntityId { get; set; } = entityId;
 
@@ -40,9 +33,6 @@ namespace CoinbaseSdk.Prime.Users
       private SortDirection? _sortDirection;
       private int? _limit;
 
-      /// <summary>
-      /// The entity ID
-      /// </summary>
       public Builder WithEntityId(string entityId)
       {
         _entityId = entityId;
@@ -67,9 +57,6 @@ namespace CoinbaseSdk.Prime.Users
         return this;
       }
 
-      /// <summary>
-      /// Validates required path parameters before building the request.
-      /// </summary>
       private void Validate()
       {
         if (string.IsNullOrWhiteSpace(_entityId))
@@ -78,9 +65,6 @@ namespace CoinbaseSdk.Prime.Users
         }
       }
 
-      /// <summary>
-      /// Builds a new <see cref="ListUsersRequest"/>.
-      /// </summary>
       public ListUsersRequest Build()
       {
         Validate();
