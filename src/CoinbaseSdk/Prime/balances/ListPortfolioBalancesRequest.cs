@@ -34,21 +34,21 @@ namespace CoinbaseSdk.Prime.Balances
       private string? _symbols;
       private string? _balanceType;
 
-      public Builder WithPortfolioId(string value)
+      public Builder WithPortfolioId(string portfolioId)
       {
-        _portfolioId = value;
+        _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithSymbols(string? value)
+      public Builder WithSymbols(string? symbols)
       {
-        _symbols = value;
+        _symbols = symbols;
         return this;
       }
 
-      public Builder WithBalanceType(string? value)
+      public Builder WithBalanceType(string? balanceType)
       {
-        _balanceType = value;
+        _balanceType = balanceType;
         return this;
       }
 

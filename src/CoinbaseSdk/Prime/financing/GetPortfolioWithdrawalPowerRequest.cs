@@ -31,15 +31,15 @@ namespace CoinbaseSdk.Prime.Financing
       private string? _portfolioId;
       private string? _symbol;
 
-      public Builder WithPortfolioId(string value)
+      public Builder WithPortfolioId(string portfolioId)
       {
-        _portfolioId = value;
+        _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithSymbol(string? value)
+      public Builder WithSymbol(string? symbol)
       {
-        _symbol = value;
+        _symbol = symbol;
         return this;
       }
 

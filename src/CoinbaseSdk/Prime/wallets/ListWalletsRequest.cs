@@ -42,27 +42,27 @@ namespace CoinbaseSdk.Prime.Wallets
       private SortDirection? _sortDirection;
       private int? _limit;
 
-      public Builder WithPortfolioId(string value)
+      public Builder WithPortfolioId(string portfolioId)
       {
-        _portfolioId = value;
+        _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithType(string? value)
+      public Builder WithType(string? type)
       {
-        _type = value;
+        _type = type;
         return this;
       }
 
-      public Builder WithSymbols(string?[] value)
+      public Builder WithSymbols(string?[] symbols)
       {
-        _symbols = value;
+        _symbols = symbols;
         return this;
       }
 
-      public Builder WithGetNetworkUnifiedWallets(bool? value)
+      public Builder WithGetNetworkUnifiedWallets(bool? getNetworkUnifiedWallets)
       {
-        _getNetworkUnifiedWallets = value;
+        _getNetworkUnifiedWallets = getNetworkUnifiedWallets;
         return this;
       }
 

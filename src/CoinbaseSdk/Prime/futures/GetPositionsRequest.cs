@@ -31,15 +31,15 @@ namespace CoinbaseSdk.Prime.Futures
       private string? _entityId;
       private string? _productId;
 
-      public Builder WithEntityId(string value)
+      public Builder WithEntityId(string entityId)
       {
-        _entityId = value;
+        _entityId = entityId;
         return this;
       }
 
-      public Builder WithProductId(string? value)
+      public Builder WithProductId(string? productId)
       {
-        _productId = value;
+        _productId = productId;
         return this;
       }
 

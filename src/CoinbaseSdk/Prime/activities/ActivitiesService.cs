@@ -23,19 +23,19 @@ namespace CoinbaseSdk.Prime.Activities
 
   public class ActivitiesService(ICoinbaseClient client) : CoinbaseService(client), IActivitiesService
   {
-    public GetActivityResponse GetActivity(GetActivityRequest request, CallOptions? options = null)
+    public GetActivityResponse GetActivity(GetActivityRequest request, CallOptions? callOptions = null)
     {
       return Request<GetActivityResponse>(
         HttpMethod.Get,
         $"/activities/{request.ActivityId}",
         [HttpStatusCode.OK],
         null,
-        options);
+        callOptions);
     }
 
     public Task<GetActivityResponse> GetActivityAsync(
       GetActivityRequest request,
-      CallOptions? options = null,
+      CallOptions? callOptions = null,
       CancellationToken cancellationToken = default)
     {
       return RequestAsync<GetActivityResponse>(
@@ -43,23 +43,23 @@ namespace CoinbaseSdk.Prime.Activities
         $"/activities/{request.ActivityId}",
         [HttpStatusCode.OK],
         null,
-        options,
+        callOptions,
         cancellationToken);
     }
 
-    public GetPortfolioActivityResponse GetPortfolioActivity(GetPortfolioActivityRequest request, CallOptions? options = null)
+    public GetPortfolioActivityResponse GetPortfolioActivity(GetPortfolioActivityRequest request, CallOptions? callOptions = null)
     {
       return Request<GetPortfolioActivityResponse>(
         HttpMethod.Get,
         $"/portfolios/{request.PortfolioId}/activities/{request.ActivityId}",
         [HttpStatusCode.OK],
         null,
-        options);
+        callOptions);
     }
 
     public Task<GetPortfolioActivityResponse> GetPortfolioActivityAsync(
       GetPortfolioActivityRequest request,
-      CallOptions? options = null,
+      CallOptions? callOptions = null,
       CancellationToken cancellationToken = default)
     {
       return RequestAsync<GetPortfolioActivityResponse>(
@@ -67,23 +67,23 @@ namespace CoinbaseSdk.Prime.Activities
         $"/portfolios/{request.PortfolioId}/activities/{request.ActivityId}",
         [HttpStatusCode.OK],
         null,
-        options,
+        callOptions,
         cancellationToken);
     }
 
-    public ListActivitiesResponse ListActivities(ListActivitiesRequest request, CallOptions? options = null)
+    public ListActivitiesResponse ListActivities(ListActivitiesRequest request, CallOptions? callOptions = null)
     {
       return Request<ListActivitiesResponse>(
         HttpMethod.Get,
         $"/portfolios/{request.PortfolioId}/activities",
         [HttpStatusCode.OK],
         request,
-        options);
+        callOptions);
     }
 
     public Task<ListActivitiesResponse> ListActivitiesAsync(
       ListActivitiesRequest request,
-      CallOptions? options = null,
+      CallOptions? callOptions = null,
       CancellationToken cancellationToken = default)
     {
       return RequestAsync<ListActivitiesResponse>(
@@ -91,23 +91,23 @@ namespace CoinbaseSdk.Prime.Activities
         $"/portfolios/{request.PortfolioId}/activities",
         [HttpStatusCode.OK],
         request,
-        options,
+        callOptions,
         cancellationToken);
     }
 
-    public ListEntityActivitiesResponse ListEntityActivities(ListEntityActivitiesRequest request, CallOptions? options = null)
+    public ListEntityActivitiesResponse ListEntityActivities(ListEntityActivitiesRequest request, CallOptions? callOptions = null)
     {
       return Request<ListEntityActivitiesResponse>(
         HttpMethod.Get,
         $"/entities/{request.EntityId}/activities",
         [HttpStatusCode.OK],
         request,
-        options);
+        callOptions);
     }
 
     public Task<ListEntityActivitiesResponse> ListEntityActivitiesAsync(
       ListEntityActivitiesRequest request,
-      CallOptions? options = null,
+      CallOptions? callOptions = null,
       CancellationToken cancellationToken = default)
     {
       return RequestAsync<ListEntityActivitiesResponse>(
@@ -115,7 +115,7 @@ namespace CoinbaseSdk.Prime.Activities
         $"/entities/{request.EntityId}/activities",
         [HttpStatusCode.OK],
         request,
-        options,
+        callOptions,
         cancellationToken);
     }
 

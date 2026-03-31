@@ -28,9 +28,9 @@ namespace CoinbaseSdk.Prime.Portfolios
     {
       private string? _portfolioId;
 
-      public Builder WithPortfolioId(string value)
+      public Builder WithPortfolioId(string portfolioId)
       {
-        _portfolioId = value;
+        _portfolioId = portfolioId;
         return this;
       }
 

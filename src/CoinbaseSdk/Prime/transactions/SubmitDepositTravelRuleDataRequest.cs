@@ -44,39 +44,39 @@ namespace CoinbaseSdk.Prime.Transactions
       private bool? _isSelf;
       private bool? _optOutOfOwnershipVerification;
 
-      public Builder WithPortfolioId(string value)
+      public Builder WithPortfolioId(string portfolioId)
       {
-        _portfolioId = value;
+        _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithTransactionId(string value)
+      public Builder WithTransactionId(string transactionId)
       {
-        _transactionId = value;
+        _transactionId = transactionId;
         return this;
       }
 
-      public Builder WithOriginator(TravelRuleParty value)
+      public Builder WithOriginator(TravelRuleParty originator)
       {
-        _originator = value;
+        _originator = originator;
         return this;
       }
 
-      public Builder WithBeneficiary(TravelRuleParty value)
+      public Builder WithBeneficiary(TravelRuleParty beneficiary)
       {
-        _beneficiary = value;
+        _beneficiary = beneficiary;
         return this;
       }
 
-      public Builder WithIsSelf(bool? value)
+      public Builder WithIsSelf(bool? isSelf)
       {
-        _isSelf = value;
+        _isSelf = isSelf;
         return this;
       }
 
-      public Builder WithOptOutOfOwnershipVerification(bool? value)
+      public Builder WithOptOutOfOwnershipVerification(bool? optOutOfOwnershipVerification)
       {
-        _optOutOfOwnershipVerification = value;
+        _optOutOfOwnershipVerification = optOutOfOwnershipVerification;
         return this;
       }
 

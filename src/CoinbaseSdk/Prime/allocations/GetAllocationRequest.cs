@@ -31,15 +31,15 @@ namespace CoinbaseSdk.Prime.Allocations
       private string? _portfolioId;
       private string? _allocationId;
 
-      public Builder WithPortfolioId(string value)
+      public Builder WithPortfolioId(string portfolioId)
       {
-        _portfolioId = value;
+        _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithAllocationId(string value)
+      public Builder WithAllocationId(string allocationId)
       {
-        _allocationId = value;
+        _allocationId = allocationId;
         return this;
       }
 

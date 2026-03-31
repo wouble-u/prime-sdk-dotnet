@@ -31,15 +31,15 @@ namespace CoinbaseSdk.Prime.Orders
       private string? _portfolioId;
       private string? _orderId;
 
-      public Builder WithPortfolioId(string value)
+      public Builder WithPortfolioId(string portfolioId)
       {
-        _portfolioId = value;
+        _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithOrderId(string value)
+      public Builder WithOrderId(string orderId)
       {
-        _orderId = value;
+        _orderId = orderId;
         return this;
       }
 

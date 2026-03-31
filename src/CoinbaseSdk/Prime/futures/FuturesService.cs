@@ -23,19 +23,19 @@ namespace CoinbaseSdk.Prime.Futures
 
   public class FuturesService(ICoinbaseClient client) : CoinbaseService(client), IFuturesService
   {
-    public CancelEntityFuturesSweepResponse CancelEntityFuturesSweep(CancelEntityFuturesSweepRequest request, CallOptions? options = null)
+    public CancelEntityFuturesSweepResponse CancelEntityFuturesSweep(CancelEntityFuturesSweepRequest request, CallOptions? callOptions = null)
     {
       return Request<CancelEntityFuturesSweepResponse>(
         HttpMethod.Delete,
         $"/entities/{request.EntityId}/futures/sweeps",
         [HttpStatusCode.OK],
         null,
-        options);
+        callOptions);
     }
 
     public Task<CancelEntityFuturesSweepResponse> CancelEntityFuturesSweepAsync(
       CancelEntityFuturesSweepRequest request,
-      CallOptions? options = null,
+      CallOptions? callOptions = null,
       CancellationToken cancellationToken = default)
     {
       return RequestAsync<CancelEntityFuturesSweepResponse>(
@@ -43,23 +43,23 @@ namespace CoinbaseSdk.Prime.Futures
         $"/entities/{request.EntityId}/futures/sweeps",
         [HttpStatusCode.OK],
         null,
-        options,
+        callOptions,
         cancellationToken);
     }
 
-    public GetFcmBalanceResponse GetFcmBalance(GetFcmBalanceRequest request, CallOptions? options = null)
+    public GetFcmBalanceResponse GetFcmBalance(GetFcmBalanceRequest request, CallOptions? callOptions = null)
     {
       return Request<GetFcmBalanceResponse>(
         HttpMethod.Get,
         $"/entities/{request.EntityId}/futures/balance_summary",
         [HttpStatusCode.OK],
         null,
-        options);
+        callOptions);
     }
 
     public Task<GetFcmBalanceResponse> GetFcmBalanceAsync(
       GetFcmBalanceRequest request,
-      CallOptions? options = null,
+      CallOptions? callOptions = null,
       CancellationToken cancellationToken = default)
     {
       return RequestAsync<GetFcmBalanceResponse>(
@@ -67,23 +67,23 @@ namespace CoinbaseSdk.Prime.Futures
         $"/entities/{request.EntityId}/futures/balance_summary",
         [HttpStatusCode.OK],
         null,
-        options,
+        callOptions,
         cancellationToken);
     }
 
-    public GetFcmEquityResponse GetFcmEquity(GetFcmEquityRequest request, CallOptions? options = null)
+    public GetFcmEquityResponse GetFcmEquity(GetFcmEquityRequest request, CallOptions? callOptions = null)
     {
       return Request<GetFcmEquityResponse>(
         HttpMethod.Get,
         $"/entities/{request.EntityId}/futures/equity",
         [HttpStatusCode.OK],
         null,
-        options);
+        callOptions);
     }
 
     public Task<GetFcmEquityResponse> GetFcmEquityAsync(
       GetFcmEquityRequest request,
-      CallOptions? options = null,
+      CallOptions? callOptions = null,
       CancellationToken cancellationToken = default)
     {
       return RequestAsync<GetFcmEquityResponse>(
@@ -91,23 +91,23 @@ namespace CoinbaseSdk.Prime.Futures
         $"/entities/{request.EntityId}/futures/equity",
         [HttpStatusCode.OK],
         null,
-        options,
+        callOptions,
         cancellationToken);
     }
 
-    public GetFcmMarginCallDetailsResponse GetFcmMarginCallDetails(GetFcmMarginCallDetailsRequest request, CallOptions? options = null)
+    public GetFcmMarginCallDetailsResponse GetFcmMarginCallDetails(GetFcmMarginCallDetailsRequest request, CallOptions? callOptions = null)
     {
       return Request<GetFcmMarginCallDetailsResponse>(
         HttpMethod.Get,
         $"/entities/{request.EntityId}/futures/margin_call_details",
         [HttpStatusCode.OK],
         null,
-        options);
+        callOptions);
     }
 
     public Task<GetFcmMarginCallDetailsResponse> GetFcmMarginCallDetailsAsync(
       GetFcmMarginCallDetailsRequest request,
-      CallOptions? options = null,
+      CallOptions? callOptions = null,
       CancellationToken cancellationToken = default)
     {
       return RequestAsync<GetFcmMarginCallDetailsResponse>(
@@ -115,23 +115,23 @@ namespace CoinbaseSdk.Prime.Futures
         $"/entities/{request.EntityId}/futures/margin_call_details",
         [HttpStatusCode.OK],
         null,
-        options,
+        callOptions,
         cancellationToken);
     }
 
-    public GetFcmRiskLimitsResponse GetFcmRiskLimits(GetFcmRiskLimitsRequest request, CallOptions? options = null)
+    public GetFcmRiskLimitsResponse GetFcmRiskLimits(GetFcmRiskLimitsRequest request, CallOptions? callOptions = null)
     {
       return Request<GetFcmRiskLimitsResponse>(
         HttpMethod.Get,
         $"/entities/{request.EntityId}/futures/risk_limits",
         [HttpStatusCode.OK],
         null,
-        options);
+        callOptions);
     }
 
     public Task<GetFcmRiskLimitsResponse> GetFcmRiskLimitsAsync(
       GetFcmRiskLimitsRequest request,
-      CallOptions? options = null,
+      CallOptions? callOptions = null,
       CancellationToken cancellationToken = default)
     {
       return RequestAsync<GetFcmRiskLimitsResponse>(
@@ -139,23 +139,23 @@ namespace CoinbaseSdk.Prime.Futures
         $"/entities/{request.EntityId}/futures/risk_limits",
         [HttpStatusCode.OK],
         null,
-        options,
+        callOptions,
         cancellationToken);
     }
 
-    public GetFcmSettingsResponse GetFcmSettings(GetFcmSettingsRequest request, CallOptions? options = null)
+    public GetFcmSettingsResponse GetFcmSettings(GetFcmSettingsRequest request, CallOptions? callOptions = null)
     {
       return Request<GetFcmSettingsResponse>(
         HttpMethod.Get,
         $"/entities/{request.EntityId}/futures/settings",
         [HttpStatusCode.OK],
         null,
-        options);
+        callOptions);
     }
 
     public Task<GetFcmSettingsResponse> GetFcmSettingsAsync(
       GetFcmSettingsRequest request,
-      CallOptions? options = null,
+      CallOptions? callOptions = null,
       CancellationToken cancellationToken = default)
     {
       return RequestAsync<GetFcmSettingsResponse>(
@@ -163,23 +163,23 @@ namespace CoinbaseSdk.Prime.Futures
         $"/entities/{request.EntityId}/futures/settings",
         [HttpStatusCode.OK],
         null,
-        options,
+        callOptions,
         cancellationToken);
     }
 
-    public GetPositionsResponse GetPositions(GetPositionsRequest request, CallOptions? options = null)
+    public GetPositionsResponse GetPositions(GetPositionsRequest request, CallOptions? callOptions = null)
     {
       return Request<GetPositionsResponse>(
         HttpMethod.Get,
         $"/entities/{request.EntityId}/futures/positions",
         [HttpStatusCode.OK],
         request,
-        options);
+        callOptions);
     }
 
     public Task<GetPositionsResponse> GetPositionsAsync(
       GetPositionsRequest request,
-      CallOptions? options = null,
+      CallOptions? callOptions = null,
       CancellationToken cancellationToken = default)
     {
       return RequestAsync<GetPositionsResponse>(
@@ -187,23 +187,23 @@ namespace CoinbaseSdk.Prime.Futures
         $"/entities/{request.EntityId}/futures/positions",
         [HttpStatusCode.OK],
         request,
-        options,
+        callOptions,
         cancellationToken);
     }
 
-    public ListEntityFuturesSweepsResponse ListEntityFuturesSweeps(ListEntityFuturesSweepsRequest request, CallOptions? options = null)
+    public ListEntityFuturesSweepsResponse ListEntityFuturesSweeps(ListEntityFuturesSweepsRequest request, CallOptions? callOptions = null)
     {
       return Request<ListEntityFuturesSweepsResponse>(
         HttpMethod.Get,
         $"/entities/{request.EntityId}/futures/sweeps",
         [HttpStatusCode.OK],
         null,
-        options);
+        callOptions);
     }
 
     public Task<ListEntityFuturesSweepsResponse> ListEntityFuturesSweepsAsync(
       ListEntityFuturesSweepsRequest request,
-      CallOptions? options = null,
+      CallOptions? callOptions = null,
       CancellationToken cancellationToken = default)
     {
       return RequestAsync<ListEntityFuturesSweepsResponse>(
@@ -211,23 +211,23 @@ namespace CoinbaseSdk.Prime.Futures
         $"/entities/{request.EntityId}/futures/sweeps",
         [HttpStatusCode.OK],
         null,
-        options,
+        callOptions,
         cancellationToken);
     }
 
-    public ScheduleEntityFuturesSweepResponse ScheduleEntityFuturesSweep(ScheduleEntityFuturesSweepRequest request, CallOptions? options = null)
+    public ScheduleEntityFuturesSweepResponse ScheduleEntityFuturesSweep(ScheduleEntityFuturesSweepRequest request, CallOptions? callOptions = null)
     {
       return Request<ScheduleEntityFuturesSweepResponse>(
         HttpMethod.Post,
         $"/entities/{request.EntityId}/futures/sweeps",
         [HttpStatusCode.OK],
         request,
-        options);
+        callOptions);
     }
 
     public Task<ScheduleEntityFuturesSweepResponse> ScheduleEntityFuturesSweepAsync(
       ScheduleEntityFuturesSweepRequest request,
-      CallOptions? options = null,
+      CallOptions? callOptions = null,
       CancellationToken cancellationToken = default)
     {
       return RequestAsync<ScheduleEntityFuturesSweepResponse>(
@@ -235,23 +235,23 @@ namespace CoinbaseSdk.Prime.Futures
         $"/entities/{request.EntityId}/futures/sweeps",
         [HttpStatusCode.OK],
         request,
-        options,
+        callOptions,
         cancellationToken);
     }
 
-    public SetAutoSweepResponse SetAutoSweep(SetAutoSweepRequest request, CallOptions? options = null)
+    public SetAutoSweepResponse SetAutoSweep(SetAutoSweepRequest request, CallOptions? callOptions = null)
     {
       return Request<SetAutoSweepResponse>(
         HttpMethod.Post,
         $"/entities/{request.EntityId}/futures/auto_sweep",
         [HttpStatusCode.OK],
         request,
-        options);
+        callOptions);
     }
 
     public Task<SetAutoSweepResponse> SetAutoSweepAsync(
       SetAutoSweepRequest request,
-      CallOptions? options = null,
+      CallOptions? callOptions = null,
       CancellationToken cancellationToken = default)
     {
       return RequestAsync<SetAutoSweepResponse>(
@@ -259,23 +259,23 @@ namespace CoinbaseSdk.Prime.Futures
         $"/entities/{request.EntityId}/futures/auto_sweep",
         [HttpStatusCode.OK],
         request,
-        options,
+        callOptions,
         cancellationToken);
     }
 
-    public SetFcmSettingsResponse SetFcmSettings(SetFcmSettingsRequest request, CallOptions? options = null)
+    public SetFcmSettingsResponse SetFcmSettings(SetFcmSettingsRequest request, CallOptions? callOptions = null)
     {
       return Request<SetFcmSettingsResponse>(
         HttpMethod.Post,
         $"/entities/{request.EntityId}/futures/settings",
         [HttpStatusCode.OK],
         request,
-        options);
+        callOptions);
     }
 
     public Task<SetFcmSettingsResponse> SetFcmSettingsAsync(
       SetFcmSettingsRequest request,
-      CallOptions? options = null,
+      CallOptions? callOptions = null,
       CancellationToken cancellationToken = default)
     {
       return RequestAsync<SetFcmSettingsResponse>(
@@ -283,7 +283,7 @@ namespace CoinbaseSdk.Prime.Futures
         $"/entities/{request.EntityId}/futures/settings",
         [HttpStatusCode.OK],
         request,
-        options,
+        callOptions,
         cancellationToken);
     }
 

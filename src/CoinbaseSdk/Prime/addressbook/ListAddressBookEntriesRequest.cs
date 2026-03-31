@@ -39,21 +39,21 @@ namespace CoinbaseSdk.Prime.AddressBook
       private SortDirection? _sortDirection;
       private int? _limit;
 
-      public Builder WithPortfolioId(string value)
+      public Builder WithPortfolioId(string portfolioId)
       {
-        _portfolioId = value;
+        _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithCurrencySymbol(string? value)
+      public Builder WithCurrencySymbol(string? currencySymbol)
       {
-        _currencySymbol = value;
+        _currencySymbol = currencySymbol;
         return this;
       }
 
-      public Builder WithSearch(string? value)
+      public Builder WithSearch(string? search)
       {
-        _search = value;
+        _search = search;
         return this;
       }
 

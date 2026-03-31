@@ -20,46 +20,46 @@ namespace CoinbaseSdk.Prime.Wallets
 
   public interface IWalletsService
   {
-    public CreateWalletResponse CreateWallet(CreateWalletRequest request, CallOptions? options = null);
+    public CreateWalletResponse CreateWallet(CreateWalletRequest request, CallOptions? callOptions = null);
 
     public Task<CreateWalletResponse> CreateWalletAsync(
       CreateWalletRequest request,
-      CallOptions? options = null,
+      CallOptions? callOptions = null,
       CancellationToken cancellationToken = default);
 
-    public CreateWalletDepositAddressResponse CreateWalletDepositAddress(CreateWalletDepositAddressRequest request, CallOptions? options = null);
+    public CreateWalletDepositAddressResponse CreateWalletDepositAddress(CreateWalletDepositAddressRequest request, CallOptions? callOptions = null);
 
     public Task<CreateWalletDepositAddressResponse> CreateWalletDepositAddressAsync(
       CreateWalletDepositAddressRequest request,
-      CallOptions? options = null,
+      CallOptions? callOptions = null,
       CancellationToken cancellationToken = default);
 
-    public GetWalletResponse GetWallet(GetWalletRequest request, CallOptions? options = null);
+    public GetWalletResponse GetWallet(GetWalletRequest request, CallOptions? callOptions = null);
 
     public Task<GetWalletResponse> GetWalletAsync(
       GetWalletRequest request,
-      CallOptions? options = null,
+      CallOptions? callOptions = null,
       CancellationToken cancellationToken = default);
 
-    public GetWalletDepositInstructionsResponse GetWalletDepositInstructions(GetWalletDepositInstructionsRequest request, CallOptions? options = null);
+    public GetWalletDepositInstructionsResponse GetWalletDepositInstructions(GetWalletDepositInstructionsRequest request, CallOptions? callOptions = null);
 
     public Task<GetWalletDepositInstructionsResponse> GetWalletDepositInstructionsAsync(
       GetWalletDepositInstructionsRequest request,
-      CallOptions? options = null,
+      CallOptions? callOptions = null,
       CancellationToken cancellationToken = default);
 
-    public ListWalletAddressesResponse ListWalletAddresses(ListWalletAddressesRequest request, CallOptions? options = null);
+    public ListWalletAddressesResponse ListWalletAddresses(ListWalletAddressesRequest request, CallOptions? callOptions = null);
 
     public Task<ListWalletAddressesResponse> ListWalletAddressesAsync(
       ListWalletAddressesRequest request,
-      CallOptions? options = null,
+      CallOptions? callOptions = null,
       CancellationToken cancellationToken = default);
 
-    public ListWalletsResponse ListWallets(ListWalletsRequest request, CallOptions? options = null);
+    public ListWalletsResponse ListWallets(ListWalletsRequest request, CallOptions? callOptions = null);
 
     public Task<ListWalletsResponse> ListWalletsAsync(
       ListWalletsRequest request,
-      CallOptions? options = null,
+      CallOptions? callOptions = null,
       CancellationToken cancellationToken = default);
 
   }

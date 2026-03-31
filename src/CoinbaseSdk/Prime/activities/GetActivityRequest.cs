@@ -28,9 +28,9 @@ namespace CoinbaseSdk.Prime.Activities
     {
       private string? _activityId;
 
-      public Builder WithActivityId(string value)
+      public Builder WithActivityId(string activityId)
       {
-        _activityId = value;
+        _activityId = activityId;
         return this;
       }
 

@@ -31,15 +31,15 @@ namespace CoinbaseSdk.Prime.Futures
       private string? _entityId;
       private bool? _autoSweep;
 
-      public Builder WithEntityId(string value)
+      public Builder WithEntityId(string entityId)
       {
-        _entityId = value;
+        _entityId = entityId;
         return this;
       }
 
-      public Builder WithAutoSweep(bool? value)
+      public Builder WithAutoSweep(bool? autoSweep)
       {
-        _autoSweep = value;
+        _autoSweep = autoSweep;
         return this;
       }
 

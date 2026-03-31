@@ -33,9 +33,9 @@ namespace CoinbaseSdk.Prime.Positions
       private SortDirection? _sortDirection;
       private int? _limit;
 
-      public Builder WithEntityId(string value)
+      public Builder WithEntityId(string entityId)
       {
-        _entityId = value;
+        _entityId = entityId;
         return this;
       }
 

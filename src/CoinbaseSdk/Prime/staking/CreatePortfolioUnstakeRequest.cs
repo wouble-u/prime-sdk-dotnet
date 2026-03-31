@@ -41,33 +41,33 @@ namespace CoinbaseSdk.Prime.Staking
       private string? _amount;
       private PortfolioStakingMetadata _metadata;
 
-      public Builder WithPortfolioId(string value)
+      public Builder WithPortfolioId(string portfolioId)
       {
-        _portfolioId = value;
+        _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithIdempotencyKey(string? value)
+      public Builder WithIdempotencyKey(string? idempotencyKey)
       {
-        _idempotencyKey = value;
+        _idempotencyKey = idempotencyKey;
         return this;
       }
 
-      public Builder WithCurrencySymbol(string? value)
+      public Builder WithCurrencySymbol(string? currencySymbol)
       {
-        _currencySymbol = value;
+        _currencySymbol = currencySymbol;
         return this;
       }
 
-      public Builder WithAmount(string? value)
+      public Builder WithAmount(string? amount)
       {
-        _amount = value;
+        _amount = amount;
         return this;
       }
 
-      public Builder WithMetadata(PortfolioStakingMetadata value)
+      public Builder WithMetadata(PortfolioStakingMetadata metadata)
       {
-        _metadata = value;
+        _metadata = metadata;
         return this;
       }
 

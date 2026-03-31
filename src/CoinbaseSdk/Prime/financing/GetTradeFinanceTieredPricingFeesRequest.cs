@@ -31,15 +31,15 @@ namespace CoinbaseSdk.Prime.Financing
       private string? _entityId;
       private string? _effectiveAt;
 
-      public Builder WithEntityId(string value)
+      public Builder WithEntityId(string entityId)
       {
-        _entityId = value;
+        _entityId = entityId;
         return this;
       }
 
-      public Builder WithEffectiveAt(string? value)
+      public Builder WithEffectiveAt(string? effectiveAt)
       {
-        _effectiveAt = value;
+        _effectiveAt = effectiveAt;
         return this;
       }
 

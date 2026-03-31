@@ -43,39 +43,39 @@ namespace CoinbaseSdk.Prime.AddressBook
       private string? _accountIdentifier;
       private string?[] _chainIds;
 
-      public Builder WithPortfolioId(string value)
+      public Builder WithPortfolioId(string portfolioId)
       {
-        _portfolioId = value;
+        _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithAddress(string? value)
+      public Builder WithAddress(string? address)
       {
-        _address = value;
+        _address = address;
         return this;
       }
 
-      public Builder WithCurrencySymbol(string? value)
+      public Builder WithCurrencySymbol(string? currencySymbol)
       {
-        _currencySymbol = value;
+        _currencySymbol = currencySymbol;
         return this;
       }
 
-      public Builder WithName(string? value)
+      public Builder WithName(string? name)
       {
-        _name = value;
+        _name = name;
         return this;
       }
 
-      public Builder WithAccountIdentifier(string? value)
+      public Builder WithAccountIdentifier(string? accountIdentifier)
       {
-        _accountIdentifier = value;
+        _accountIdentifier = accountIdentifier;
         return this;
       }
 
-      public Builder WithChainIds(string?[] value)
+      public Builder WithChainIds(string?[] chainIds)
       {
-        _chainIds = value;
+        _chainIds = chainIds;
         return this;
       }
 

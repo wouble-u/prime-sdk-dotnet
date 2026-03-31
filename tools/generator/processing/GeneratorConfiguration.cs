@@ -112,4 +112,10 @@ public class SdkOperationBinding
 
   [JsonPropertyName("omitRequest")]
   public bool OmitRequest { get; set; }
+
+  /// <summary>
+  /// OpenAPI parameter name → CLR type override (e.g. inline string-enums mapped to SDK enum types).
+  /// </summary>
+  [JsonPropertyName("paramTypeOverrides")]
+  public Dictionary<string, string> ParamTypeOverrides { get; set; } = new();
 }

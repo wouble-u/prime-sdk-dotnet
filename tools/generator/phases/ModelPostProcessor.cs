@@ -203,6 +203,7 @@ public class ModelPostProcessor
     RemoveStaleFile(_enumsDir, originalFileName, fileName, className, isEnum: true);
 
     content = SharedTransforms.DeduplicateUsings(content);
+    content = CopyrightHelper.ApplyCopyrightYear(outputPath, content);
     await File.WriteAllTextAsync(outputPath, content);
 
     if (!existsBefore)
@@ -259,6 +260,7 @@ public class ModelPostProcessor
 
     content = _transforms.ApplyEnumMappings(content, actualEnumNames);
     content = SharedTransforms.DeduplicateUsings(content);
+    content = CopyrightHelper.ApplyCopyrightYear(outputPath, content);
 
     await File.WriteAllTextAsync(outputPath, content);
 

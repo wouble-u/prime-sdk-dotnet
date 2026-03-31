@@ -44,39 +44,39 @@ namespace CoinbaseSdk.Prime.Orders
       private string? _quoteId;
       private string? _settlCurrency;
 
-      public Builder WithPortfolioId(string value)
+      public Builder WithPortfolioId(string portfolioId)
       {
-        _portfolioId = value;
+        _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithProductId(string? value)
+      public Builder WithProductId(string? productId)
       {
-        _productId = value;
+        _productId = productId;
         return this;
       }
 
-      public Builder WithSide(OrderSide value)
+      public Builder WithSide(OrderSide side)
       {
-        _side = value;
+        _side = side;
         return this;
       }
 
-      public Builder WithClientOrderId(string? value)
+      public Builder WithClientOrderId(string? clientOrderId)
       {
-        _clientOrderId = value;
+        _clientOrderId = clientOrderId;
         return this;
       }
 
-      public Builder WithQuoteId(string? value)
+      public Builder WithQuoteId(string? quoteId)
       {
-        _quoteId = value;
+        _quoteId = quoteId;
         return this;
       }
 
-      public Builder WithSettlCurrency(string? value)
+      public Builder WithSettlCurrency(string? settlCurrency)
       {
-        _settlCurrency = value;
+        _settlCurrency = settlCurrency;
         return this;
       }
 

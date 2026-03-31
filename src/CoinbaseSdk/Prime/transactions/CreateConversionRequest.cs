@@ -46,45 +46,45 @@ namespace CoinbaseSdk.Prime.Transactions
       private string? _sourceSymbol;
       private string? _destinationSymbol;
 
-      public Builder WithPortfolioId(string value)
+      public Builder WithPortfolioId(string portfolioId)
       {
-        _portfolioId = value;
+        _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithWalletId(string value)
+      public Builder WithWalletId(string walletId)
       {
-        _walletId = value;
+        _walletId = walletId;
         return this;
       }
 
-      public Builder WithAmount(string? value)
+      public Builder WithAmount(string? amount)
       {
-        _amount = value;
+        _amount = amount;
         return this;
       }
 
-      public Builder WithDestination(string? value)
+      public Builder WithDestination(string? destination)
       {
-        _destination = value;
+        _destination = destination;
         return this;
       }
 
-      public Builder WithIdempotencyKey(string? value)
+      public Builder WithIdempotencyKey(string? idempotencyKey)
       {
-        _idempotencyKey = value;
+        _idempotencyKey = idempotencyKey;
         return this;
       }
 
-      public Builder WithSourceSymbol(string? value)
+      public Builder WithSourceSymbol(string? sourceSymbol)
       {
-        _sourceSymbol = value;
+        _sourceSymbol = sourceSymbol;
         return this;
       }
 
-      public Builder WithDestinationSymbol(string? value)
+      public Builder WithDestinationSymbol(string? destinationSymbol)
       {
-        _destinationSymbol = value;
+        _destinationSymbol = destinationSymbol;
         return this;
       }
 

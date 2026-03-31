@@ -48,45 +48,45 @@ namespace CoinbaseSdk.Prime.Wallets
       private NetworkFamily _networkFamily;
       private Network _network;
 
-      public Builder WithPortfolioId(string value)
+      public Builder WithPortfolioId(string portfolioId)
       {
-        _portfolioId = value;
+        _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithName(string? value)
+      public Builder WithName(string? name)
       {
-        _name = value;
+        _name = name;
         return this;
       }
 
-      public Builder WithSymbol(string? value)
+      public Builder WithSymbol(string? symbol)
       {
-        _symbol = value;
+        _symbol = symbol;
         return this;
       }
 
-      public Builder WithWalletType(WalletType value)
+      public Builder WithWalletType(WalletType walletType)
       {
-        _walletType = value;
+        _walletType = walletType;
         return this;
       }
 
-      public Builder WithIdempotencyKey(string? value)
+      public Builder WithIdempotencyKey(string? idempotencyKey)
       {
-        _idempotencyKey = value;
+        _idempotencyKey = idempotencyKey;
         return this;
       }
 
-      public Builder WithNetworkFamily(NetworkFamily value)
+      public Builder WithNetworkFamily(NetworkFamily networkFamily)
       {
-        _networkFamily = value;
+        _networkFamily = networkFamily;
         return this;
       }
 
-      public Builder WithNetwork(Network value)
+      public Builder WithNetwork(Network network)
       {
-        _network = value;
+        _network = network;
         return this;
       }
 

@@ -39,21 +39,21 @@ namespace CoinbaseSdk.Prime.Wallets
       private SortDirection? _sortDirection;
       private int? _limit;
 
-      public Builder WithPortfolioId(string value)
+      public Builder WithPortfolioId(string portfolioId)
       {
-        _portfolioId = value;
+        _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithWalletId(string value)
+      public Builder WithWalletId(string walletId)
       {
-        _walletId = value;
+        _walletId = walletId;
         return this;
       }
 
-      public Builder WithNetworkId(string? value)
+      public Builder WithNetworkId(string? networkId)
       {
-        _networkId = value;
+        _networkId = networkId;
         return this;
       }
 

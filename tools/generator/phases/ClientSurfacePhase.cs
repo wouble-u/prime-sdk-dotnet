@@ -114,7 +114,7 @@ public sealed class ClientSurfacePhase
 
   private async Task WriteOrDiffAsync(string path, string content, bool dryRun, bool diffMode)
   {
-    content = ApplyCopyrightYear(path, content);
+    content = CopyrightHelper.ApplyCopyrightYear(path, content);
 
     if (diffMode)
     {
@@ -144,32 +144,6 @@ public sealed class ClientSurfacePhase
 
     Directory.CreateDirectory(Path.GetDirectoryName(path)!);
     await File.WriteAllTextAsync(path, content);
-  }
-
-  /// <summary>
-  /// Replaces the hardcoded copyright year in <paramref name="content"/> with:
-  /// - The existing year from the on-disk file (if the file already exists), or
-  /// - The current calendar year (for brand-new files).
-  /// </summary>
-  private static string ApplyCopyrightYear(string path, string content)
-  {
-    string targetYear;
-    if (File.Exists(path))
-    {
-      var onDisk = File.ReadAllText(path);
-      var yearMatch = System.Text.RegularExpressions.Regex.Match(
-        onDisk, @"Copyright (\d{4})-present");
-      targetYear = yearMatch.Success ? yearMatch.Groups[1].Value : DateTime.Now.Year.ToString();
-    }
-    else
-    {
-      targetYear = DateTime.Now.Year.ToString();
-    }
-
-    return System.Text.RegularExpressions.Regex.Replace(
-      content,
-      @"Copyright \d{4}-present",
-      $"Copyright {targetYear}-present");
   }
 
   private void ShowUnifiedDiff(string path, string existing, string generated)

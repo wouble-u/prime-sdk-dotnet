@@ -42,27 +42,27 @@ namespace CoinbaseSdk.Prime.Products
       private SortDirection? _sortDirection;
       private int? _limit;
 
-      public Builder WithPortfolioId(string value)
+      public Builder WithPortfolioId(string portfolioId)
       {
-        _portfolioId = value;
+        _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithProductType(string? value)
+      public Builder WithProductType(string? productType)
       {
-        _productType = value;
+        _productType = productType;
         return this;
       }
 
-      public Builder WithContractExpiryType(string? value)
+      public Builder WithContractExpiryType(string? contractExpiryType)
       {
-        _contractExpiryType = value;
+        _contractExpiryType = contractExpiryType;
         return this;
       }
 
-      public Builder WithExpiringContractStatus(string? value)
+      public Builder WithExpiringContractStatus(string? expiringContractStatus)
       {
-        _expiringContractStatus = value;
+        _expiringContractStatus = expiringContractStatus;
         return this;
       }
 

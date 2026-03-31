@@ -61,75 +61,75 @@ namespace CoinbaseSdk.Prime.Orders
       private string? _displayBaseSize;
       private string? _stopPrice;
 
-      public Builder WithPortfolioId(string value)
+      public Builder WithPortfolioId(string portfolioId)
       {
-        _portfolioId = value;
+        _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithOrderId(string value)
+      public Builder WithOrderId(string orderId)
       {
-        _orderId = value;
+        _orderId = orderId;
         return this;
       }
 
-      public Builder WithProductId(string? value)
+      public Builder WithProductId(string? productId)
       {
-        _productId = value;
+        _productId = productId;
         return this;
       }
 
-      public Builder WithOrigClientOrderId(string? value)
+      public Builder WithOrigClientOrderId(string? origClientOrderId)
       {
-        _origClientOrderId = value;
+        _origClientOrderId = origClientOrderId;
         return this;
       }
 
-      public Builder WithClientOrderId(string? value)
+      public Builder WithClientOrderId(string? clientOrderId)
       {
-        _clientOrderId = value;
+        _clientOrderId = clientOrderId;
         return this;
       }
 
-      public Builder WithBaseQuantity(string? value)
+      public Builder WithBaseQuantity(string? baseQuantity)
       {
-        _baseQuantity = value;
+        _baseQuantity = baseQuantity;
         return this;
       }
 
-      public Builder WithQuoteValue(string? value)
+      public Builder WithQuoteValue(string? quoteValue)
       {
-        _quoteValue = value;
+        _quoteValue = quoteValue;
         return this;
       }
 
-      public Builder WithLimitPrice(string? value)
+      public Builder WithLimitPrice(string? limitPrice)
       {
-        _limitPrice = value;
+        _limitPrice = limitPrice;
         return this;
       }
 
-      public Builder WithExpiryTime(string? value)
+      public Builder WithExpiryTime(string? expiryTime)
       {
-        _expiryTime = value;
+        _expiryTime = expiryTime;
         return this;
       }
 
-      public Builder WithDisplayQuoteSize(string? value)
+      public Builder WithDisplayQuoteSize(string? displayQuoteSize)
       {
-        _displayQuoteSize = value;
+        _displayQuoteSize = displayQuoteSize;
         return this;
       }
 
-      public Builder WithDisplayBaseSize(string? value)
+      public Builder WithDisplayBaseSize(string? displayBaseSize)
       {
-        _displayBaseSize = value;
+        _displayBaseSize = displayBaseSize;
         return this;
       }
 
-      public Builder WithStopPrice(string? value)
+      public Builder WithStopPrice(string? stopPrice)
       {
-        _stopPrice = value;
+        _stopPrice = stopPrice;
         return this;
       }
 

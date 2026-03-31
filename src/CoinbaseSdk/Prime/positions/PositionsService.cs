@@ -23,19 +23,19 @@ namespace CoinbaseSdk.Prime.Positions
 
   public class PositionsService(ICoinbaseClient client) : CoinbaseService(client), IPositionsService
   {
-    public ListAggregateEntityPositionsResponse ListAggregateEntityPositions(ListAggregateEntityPositionsRequest request, CallOptions? options = null)
+    public ListAggregateEntityPositionsResponse ListAggregateEntityPositions(ListAggregateEntityPositionsRequest request, CallOptions? callOptions = null)
     {
       return Request<ListAggregateEntityPositionsResponse>(
         HttpMethod.Get,
         $"/entities/{request.EntityId}/aggregate_positions",
         [HttpStatusCode.OK],
         request,
-        options);
+        callOptions);
     }
 
     public Task<ListAggregateEntityPositionsResponse> ListAggregateEntityPositionsAsync(
       ListAggregateEntityPositionsRequest request,
-      CallOptions? options = null,
+      CallOptions? callOptions = null,
       CancellationToken cancellationToken = default)
     {
       return RequestAsync<ListAggregateEntityPositionsResponse>(
@@ -43,23 +43,23 @@ namespace CoinbaseSdk.Prime.Positions
         $"/entities/{request.EntityId}/aggregate_positions",
         [HttpStatusCode.OK],
         request,
-        options,
+        callOptions,
         cancellationToken);
     }
 
-    public ListEntityPositionsResponse ListEntityPositions(ListEntityPositionsRequest request, CallOptions? options = null)
+    public ListEntityPositionsResponse ListEntityPositions(ListEntityPositionsRequest request, CallOptions? callOptions = null)
     {
       return Request<ListEntityPositionsResponse>(
         HttpMethod.Get,
         $"/entities/{request.EntityId}/positions",
         [HttpStatusCode.OK],
         request,
-        options);
+        callOptions);
     }
 
     public Task<ListEntityPositionsResponse> ListEntityPositionsAsync(
       ListEntityPositionsRequest request,
-      CallOptions? options = null,
+      CallOptions? callOptions = null,
       CancellationToken cancellationToken = default)
     {
       return RequestAsync<ListEntityPositionsResponse>(
@@ -67,7 +67,7 @@ namespace CoinbaseSdk.Prime.Positions
         $"/entities/{request.EntityId}/positions",
         [HttpStatusCode.OK],
         request,
-        options,
+        callOptions,
         cancellationToken);
     }
 

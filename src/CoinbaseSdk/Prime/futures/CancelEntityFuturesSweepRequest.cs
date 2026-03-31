@@ -28,9 +28,9 @@ namespace CoinbaseSdk.Prime.Futures
     {
       private string? _entityId;
 
-      public Builder WithEntityId(string value)
+      public Builder WithEntityId(string entityId)
       {
-        _entityId = value;
+        _entityId = entityId;
         return this;
       }
 

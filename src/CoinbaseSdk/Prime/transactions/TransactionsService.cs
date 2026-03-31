@@ -23,19 +23,19 @@ namespace CoinbaseSdk.Prime.Transactions
 
   public class TransactionsService(ICoinbaseClient client) : CoinbaseService(client), ITransactionsService
   {
-    public CancelAdvancedTransferResponse CancelAdvancedTransfer(CancelAdvancedTransferRequest request, CallOptions? options = null)
+    public CancelAdvancedTransferResponse CancelAdvancedTransfer(CancelAdvancedTransferRequest request, CallOptions? callOptions = null)
     {
       return Request<CancelAdvancedTransferResponse>(
         HttpMethod.Post,
         $"/portfolios/{request.PortfolioId}/advanced_transfers/{request.AdvancedTransferId}/cancel",
         [HttpStatusCode.OK],
         request,
-        options);
+        callOptions);
     }
 
     public Task<CancelAdvancedTransferResponse> CancelAdvancedTransferAsync(
       CancelAdvancedTransferRequest request,
-      CallOptions? options = null,
+      CallOptions? callOptions = null,
       CancellationToken cancellationToken = default)
     {
       return RequestAsync<CancelAdvancedTransferResponse>(
@@ -43,23 +43,23 @@ namespace CoinbaseSdk.Prime.Transactions
         $"/portfolios/{request.PortfolioId}/advanced_transfers/{request.AdvancedTransferId}/cancel",
         [HttpStatusCode.OK],
         request,
-        options,
+        callOptions,
         cancellationToken);
     }
 
-    public CreateAdvancedTransferResponse CreateAdvancedTransfer(CreateAdvancedTransferRequest request, CallOptions? options = null)
+    public CreateAdvancedTransferResponse CreateAdvancedTransfer(CreateAdvancedTransferRequest request, CallOptions? callOptions = null)
     {
       return Request<CreateAdvancedTransferResponse>(
         HttpMethod.Post,
         $"/portfolios/{request.PortfolioId}/advanced_transfers",
         [HttpStatusCode.Created, HttpStatusCode.OK],
         request,
-        options);
+        callOptions);
     }
 
     public Task<CreateAdvancedTransferResponse> CreateAdvancedTransferAsync(
       CreateAdvancedTransferRequest request,
-      CallOptions? options = null,
+      CallOptions? callOptions = null,
       CancellationToken cancellationToken = default)
     {
       return RequestAsync<CreateAdvancedTransferResponse>(
@@ -67,23 +67,23 @@ namespace CoinbaseSdk.Prime.Transactions
         $"/portfolios/{request.PortfolioId}/advanced_transfers",
         [HttpStatusCode.Created, HttpStatusCode.OK],
         request,
-        options,
+        callOptions,
         cancellationToken);
     }
 
-    public CreateConversionResponse CreateConversion(CreateConversionRequest request, CallOptions? options = null)
+    public CreateConversionResponse CreateConversion(CreateConversionRequest request, CallOptions? callOptions = null)
     {
       return Request<CreateConversionResponse>(
         HttpMethod.Post,
         $"/portfolios/{request.PortfolioId}/wallets/{request.WalletId}/conversion",
         [HttpStatusCode.Created, HttpStatusCode.OK],
         request,
-        options);
+        callOptions);
     }
 
     public Task<CreateConversionResponse> CreateConversionAsync(
       CreateConversionRequest request,
-      CallOptions? options = null,
+      CallOptions? callOptions = null,
       CancellationToken cancellationToken = default)
     {
       return RequestAsync<CreateConversionResponse>(
@@ -91,23 +91,23 @@ namespace CoinbaseSdk.Prime.Transactions
         $"/portfolios/{request.PortfolioId}/wallets/{request.WalletId}/conversion",
         [HttpStatusCode.Created, HttpStatusCode.OK],
         request,
-        options,
+        callOptions,
         cancellationToken);
     }
 
-    public CreateOnchainTransactionResponse CreateOnchainTransaction(CreateOnchainTransactionRequest request, CallOptions? options = null)
+    public CreateOnchainTransactionResponse CreateOnchainTransaction(CreateOnchainTransactionRequest request, CallOptions? callOptions = null)
     {
       return Request<CreateOnchainTransactionResponse>(
         HttpMethod.Post,
         $"/portfolios/{request.PortfolioId}/wallets/{request.WalletId}/onchain_transaction",
         [HttpStatusCode.Created, HttpStatusCode.OK],
         request,
-        options);
+        callOptions);
     }
 
     public Task<CreateOnchainTransactionResponse> CreateOnchainTransactionAsync(
       CreateOnchainTransactionRequest request,
-      CallOptions? options = null,
+      CallOptions? callOptions = null,
       CancellationToken cancellationToken = default)
     {
       return RequestAsync<CreateOnchainTransactionResponse>(
@@ -115,23 +115,23 @@ namespace CoinbaseSdk.Prime.Transactions
         $"/portfolios/{request.PortfolioId}/wallets/{request.WalletId}/onchain_transaction",
         [HttpStatusCode.Created, HttpStatusCode.OK],
         request,
-        options,
+        callOptions,
         cancellationToken);
     }
 
-    public CreateTransferResponse CreateTransfer(CreateTransferRequest request, CallOptions? options = null)
+    public CreateTransferResponse CreateTransfer(CreateTransferRequest request, CallOptions? callOptions = null)
     {
       return Request<CreateTransferResponse>(
         HttpMethod.Post,
         $"/portfolios/{request.PortfolioId}/wallets/{request.WalletId}/transfers",
         [HttpStatusCode.Created, HttpStatusCode.OK],
         request,
-        options);
+        callOptions);
     }
 
     public Task<CreateTransferResponse> CreateTransferAsync(
       CreateTransferRequest request,
-      CallOptions? options = null,
+      CallOptions? callOptions = null,
       CancellationToken cancellationToken = default)
     {
       return RequestAsync<CreateTransferResponse>(
@@ -139,23 +139,23 @@ namespace CoinbaseSdk.Prime.Transactions
         $"/portfolios/{request.PortfolioId}/wallets/{request.WalletId}/transfers",
         [HttpStatusCode.Created, HttpStatusCode.OK],
         request,
-        options,
+        callOptions,
         cancellationToken);
     }
 
-    public CreateWithdrawalResponse CreateWithdrawal(CreateWithdrawalRequest request, CallOptions? options = null)
+    public CreateWithdrawalResponse CreateWithdrawal(CreateWithdrawalRequest request, CallOptions? callOptions = null)
     {
       return Request<CreateWithdrawalResponse>(
         HttpMethod.Post,
         $"/portfolios/{request.PortfolioId}/wallets/{request.WalletId}/withdrawals",
         [HttpStatusCode.Created, HttpStatusCode.OK],
         request,
-        options);
+        callOptions);
     }
 
     public Task<CreateWithdrawalResponse> CreateWithdrawalAsync(
       CreateWithdrawalRequest request,
-      CallOptions? options = null,
+      CallOptions? callOptions = null,
       CancellationToken cancellationToken = default)
     {
       return RequestAsync<CreateWithdrawalResponse>(
@@ -163,23 +163,23 @@ namespace CoinbaseSdk.Prime.Transactions
         $"/portfolios/{request.PortfolioId}/wallets/{request.WalletId}/withdrawals",
         [HttpStatusCode.Created, HttpStatusCode.OK],
         request,
-        options,
+        callOptions,
         cancellationToken);
     }
 
-    public GetTransactionResponse GetTransaction(GetTransactionRequest request, CallOptions? options = null)
+    public GetTransactionResponse GetTransaction(GetTransactionRequest request, CallOptions? callOptions = null)
     {
       return Request<GetTransactionResponse>(
         HttpMethod.Get,
         $"/portfolios/{request.PortfolioId}/transactions/{request.TransactionId}",
         [HttpStatusCode.OK],
         null,
-        options);
+        callOptions);
     }
 
     public Task<GetTransactionResponse> GetTransactionAsync(
       GetTransactionRequest request,
-      CallOptions? options = null,
+      CallOptions? callOptions = null,
       CancellationToken cancellationToken = default)
     {
       return RequestAsync<GetTransactionResponse>(
@@ -187,23 +187,23 @@ namespace CoinbaseSdk.Prime.Transactions
         $"/portfolios/{request.PortfolioId}/transactions/{request.TransactionId}",
         [HttpStatusCode.OK],
         null,
-        options,
+        callOptions,
         cancellationToken);
     }
 
-    public GetTransactionTravelRuleDataResponse GetTransactionTravelRuleData(GetTransactionTravelRuleDataRequest request, CallOptions? options = null)
+    public GetTransactionTravelRuleDataResponse GetTransactionTravelRuleData(GetTransactionTravelRuleDataRequest request, CallOptions? callOptions = null)
     {
       return Request<GetTransactionTravelRuleDataResponse>(
         HttpMethod.Get,
         $"/portfolios/{request.PortfolioId}/transactions/{request.TransactionId}/travel_rule",
         [HttpStatusCode.OK],
         null,
-        options);
+        callOptions);
     }
 
     public Task<GetTransactionTravelRuleDataResponse> GetTransactionTravelRuleDataAsync(
       GetTransactionTravelRuleDataRequest request,
-      CallOptions? options = null,
+      CallOptions? callOptions = null,
       CancellationToken cancellationToken = default)
     {
       return RequestAsync<GetTransactionTravelRuleDataResponse>(
@@ -211,23 +211,23 @@ namespace CoinbaseSdk.Prime.Transactions
         $"/portfolios/{request.PortfolioId}/transactions/{request.TransactionId}/travel_rule",
         [HttpStatusCode.OK],
         null,
-        options,
+        callOptions,
         cancellationToken);
     }
 
-    public ListAdvancedTransferTransactionsResponse ListAdvancedTransferTransactions(ListAdvancedTransferTransactionsRequest request, CallOptions? options = null)
+    public ListAdvancedTransferTransactionsResponse ListAdvancedTransferTransactions(ListAdvancedTransferTransactionsRequest request, CallOptions? callOptions = null)
     {
       return Request<ListAdvancedTransferTransactionsResponse>(
         HttpMethod.Get,
         $"/portfolios/{request.PortfolioId}/advanced_transfers/{request.AdvancedTransferId}/transactions",
         [HttpStatusCode.OK],
         null,
-        options);
+        callOptions);
     }
 
     public Task<ListAdvancedTransferTransactionsResponse> ListAdvancedTransferTransactionsAsync(
       ListAdvancedTransferTransactionsRequest request,
-      CallOptions? options = null,
+      CallOptions? callOptions = null,
       CancellationToken cancellationToken = default)
     {
       return RequestAsync<ListAdvancedTransferTransactionsResponse>(
@@ -235,23 +235,23 @@ namespace CoinbaseSdk.Prime.Transactions
         $"/portfolios/{request.PortfolioId}/advanced_transfers/{request.AdvancedTransferId}/transactions",
         [HttpStatusCode.OK],
         null,
-        options,
+        callOptions,
         cancellationToken);
     }
 
-    public ListAdvancedTransfersResponse ListAdvancedTransfers(ListAdvancedTransfersRequest request, CallOptions? options = null)
+    public ListAdvancedTransfersResponse ListAdvancedTransfers(ListAdvancedTransfersRequest request, CallOptions? callOptions = null)
     {
       return Request<ListAdvancedTransfersResponse>(
         HttpMethod.Get,
         $"/portfolios/{request.PortfolioId}/advanced_transfers",
         [HttpStatusCode.OK],
         request,
-        options);
+        callOptions);
     }
 
     public Task<ListAdvancedTransfersResponse> ListAdvancedTransfersAsync(
       ListAdvancedTransfersRequest request,
-      CallOptions? options = null,
+      CallOptions? callOptions = null,
       CancellationToken cancellationToken = default)
     {
       return RequestAsync<ListAdvancedTransfersResponse>(
@@ -259,23 +259,23 @@ namespace CoinbaseSdk.Prime.Transactions
         $"/portfolios/{request.PortfolioId}/advanced_transfers",
         [HttpStatusCode.OK],
         request,
-        options,
+        callOptions,
         cancellationToken);
     }
 
-    public ListPortfolioTransactionsResponse ListPortfolioTransactions(ListPortfolioTransactionsRequest request, CallOptions? options = null)
+    public ListPortfolioTransactionsResponse ListPortfolioTransactions(ListPortfolioTransactionsRequest request, CallOptions? callOptions = null)
     {
       return Request<ListPortfolioTransactionsResponse>(
         HttpMethod.Get,
         $"/portfolios/{request.PortfolioId}/transactions",
         [HttpStatusCode.OK],
         request,
-        options);
+        callOptions);
     }
 
     public Task<ListPortfolioTransactionsResponse> ListPortfolioTransactionsAsync(
       ListPortfolioTransactionsRequest request,
-      CallOptions? options = null,
+      CallOptions? callOptions = null,
       CancellationToken cancellationToken = default)
     {
       return RequestAsync<ListPortfolioTransactionsResponse>(
@@ -283,23 +283,23 @@ namespace CoinbaseSdk.Prime.Transactions
         $"/portfolios/{request.PortfolioId}/transactions",
         [HttpStatusCode.OK],
         request,
-        options,
+        callOptions,
         cancellationToken);
     }
 
-    public ListWalletTransactionsResponse ListWalletTransactions(ListWalletTransactionsRequest request, CallOptions? options = null)
+    public ListWalletTransactionsResponse ListWalletTransactions(ListWalletTransactionsRequest request, CallOptions? callOptions = null)
     {
       return Request<ListWalletTransactionsResponse>(
         HttpMethod.Get,
         $"/portfolios/{request.PortfolioId}/wallets/{request.WalletId}/transactions",
         [HttpStatusCode.OK],
         request,
-        options);
+        callOptions);
     }
 
     public Task<ListWalletTransactionsResponse> ListWalletTransactionsAsync(
       ListWalletTransactionsRequest request,
-      CallOptions? options = null,
+      CallOptions? callOptions = null,
       CancellationToken cancellationToken = default)
     {
       return RequestAsync<ListWalletTransactionsResponse>(
@@ -307,23 +307,23 @@ namespace CoinbaseSdk.Prime.Transactions
         $"/portfolios/{request.PortfolioId}/wallets/{request.WalletId}/transactions",
         [HttpStatusCode.OK],
         request,
-        options,
+        callOptions,
         cancellationToken);
     }
 
-    public SubmitDepositTravelRuleDataResponse SubmitDepositTravelRuleData(SubmitDepositTravelRuleDataRequest request, CallOptions? options = null)
+    public SubmitDepositTravelRuleDataResponse SubmitDepositTravelRuleData(SubmitDepositTravelRuleDataRequest request, CallOptions? callOptions = null)
     {
       return Request<SubmitDepositTravelRuleDataResponse>(
         HttpMethod.Post,
         $"/portfolios/{request.PortfolioId}/transactions/{request.TransactionId}/travel_rule/deposit",
         [HttpStatusCode.Created, HttpStatusCode.OK],
         request,
-        options);
+        callOptions);
     }
 
     public Task<SubmitDepositTravelRuleDataResponse> SubmitDepositTravelRuleDataAsync(
       SubmitDepositTravelRuleDataRequest request,
-      CallOptions? options = null,
+      CallOptions? callOptions = null,
       CancellationToken cancellationToken = default)
     {
       return RequestAsync<SubmitDepositTravelRuleDataResponse>(
@@ -331,7 +331,7 @@ namespace CoinbaseSdk.Prime.Transactions
         $"/portfolios/{request.PortfolioId}/transactions/{request.TransactionId}/travel_rule/deposit",
         [HttpStatusCode.Created, HttpStatusCode.OK],
         request,
-        options,
+        callOptions,
         cancellationToken);
     }
 

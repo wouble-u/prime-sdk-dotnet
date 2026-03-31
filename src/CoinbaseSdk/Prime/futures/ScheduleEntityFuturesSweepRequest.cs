@@ -34,21 +34,21 @@ namespace CoinbaseSdk.Prime.Futures
       private string? _amount;
       private string? _currency;
 
-      public Builder WithEntityId(string value)
+      public Builder WithEntityId(string entityId)
       {
-        _entityId = value;
+        _entityId = entityId;
         return this;
       }
 
-      public Builder WithAmount(string? value)
+      public Builder WithAmount(string? amount)
       {
-        _amount = value;
+        _amount = amount;
         return this;
       }
 
-      public Builder WithCurrency(string? value)
+      public Builder WithCurrency(string? currency)
       {
-        _currency = value;
+        _currency = currency;
         return this;
       }
 

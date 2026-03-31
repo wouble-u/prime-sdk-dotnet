@@ -8,9 +8,6 @@
 # Google infrastructure types
 Google*.cs
 
-# Keep curated model (OpenAPI generator may emit Google protobuf date types for this schema)
-TravelRuleParty.cs
-
 # Inline schemas
 RFQ.cs
 

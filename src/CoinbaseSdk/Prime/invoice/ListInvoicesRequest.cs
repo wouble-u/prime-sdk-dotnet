@@ -42,27 +42,27 @@ namespace CoinbaseSdk.Prime.Invoice
       private SortDirection? _sortDirection;
       private int? _limit;
 
-      public Builder WithEntityId(string value)
+      public Builder WithEntityId(string entityId)
       {
-        _entityId = value;
+        _entityId = entityId;
         return this;
       }
 
-      public Builder WithStates(string?[] value)
+      public Builder WithStates(string?[] states)
       {
-        _states = value;
+        _states = states;
         return this;
       }
 
-      public Builder WithBillingYear(int? value)
+      public Builder WithBillingYear(int? billingYear)
       {
-        _billingYear = value;
+        _billingYear = billingYear;
         return this;
       }
 
-      public Builder WithBillingMonth(int? value)
+      public Builder WithBillingMonth(int? billingMonth)
       {
-        _billingMonth = value;
+        _billingMonth = billingMonth;
         return this;
       }
 

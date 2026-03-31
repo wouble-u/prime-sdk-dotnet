@@ -23,19 +23,19 @@ namespace CoinbaseSdk.Prime.Invoice
 
   public class InvoiceService(ICoinbaseClient client) : CoinbaseService(client), IInvoiceService
   {
-    public ListInvoicesResponse ListInvoices(ListInvoicesRequest request, CallOptions? options = null)
+    public ListInvoicesResponse ListInvoices(ListInvoicesRequest request, CallOptions? callOptions = null)
     {
       return Request<ListInvoicesResponse>(
         HttpMethod.Get,
         $"/entities/{request.EntityId}/invoices",
         [HttpStatusCode.OK],
         request,
-        options);
+        callOptions);
     }
 
     public Task<ListInvoicesResponse> ListInvoicesAsync(
       ListInvoicesRequest request,
-      CallOptions? options = null,
+      CallOptions? callOptions = null,
       CancellationToken cancellationToken = default)
     {
       return RequestAsync<ListInvoicesResponse>(
@@ -43,7 +43,7 @@ namespace CoinbaseSdk.Prime.Invoice
         $"/entities/{request.EntityId}/invoices",
         [HttpStatusCode.OK],
         request,
-        options,
+        callOptions,
         cancellationToken);
     }
 

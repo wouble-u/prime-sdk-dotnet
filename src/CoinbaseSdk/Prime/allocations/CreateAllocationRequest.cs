@@ -48,45 +48,45 @@ namespace CoinbaseSdk.Prime.Allocations
       private AllocationSizeType _sizeType;
       private string? _remainderDestinationPortfolio;
 
-      public Builder WithAllocationId(string? value)
+      public Builder WithAllocationId(string? allocationId)
       {
-        _allocationId = value;
+        _allocationId = allocationId;
         return this;
       }
 
-      public Builder WithSourcePortfolioId(string? value)
+      public Builder WithSourcePortfolioId(string? sourcePortfolioId)
       {
-        _sourcePortfolioId = value;
+        _sourcePortfolioId = sourcePortfolioId;
         return this;
       }
 
-      public Builder WithProductId(string? value)
+      public Builder WithProductId(string? productId)
       {
-        _productId = value;
+        _productId = productId;
         return this;
       }
 
-      public Builder WithOrderIds(string?[] value)
+      public Builder WithOrderIds(string?[] orderIds)
       {
-        _orderIds = value;
+        _orderIds = orderIds;
         return this;
       }
 
-      public Builder WithAllocationLegs(AllocationLeg[] value)
+      public Builder WithAllocationLegs(AllocationLeg[] allocationLegs)
       {
-        _allocationLegs = value;
+        _allocationLegs = allocationLegs;
         return this;
       }
 
-      public Builder WithSizeType(AllocationSizeType value)
+      public Builder WithSizeType(AllocationSizeType sizeType)
       {
-        _sizeType = value;
+        _sizeType = sizeType;
         return this;
       }
 
-      public Builder WithRemainderDestinationPortfolio(string? value)
+      public Builder WithRemainderDestinationPortfolio(string? remainderDestinationPortfolio)
       {
-        _remainderDestinationPortfolio = value;
+        _remainderDestinationPortfolio = remainderDestinationPortfolio;
         return this;
       }
 

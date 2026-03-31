@@ -23,19 +23,19 @@ namespace CoinbaseSdk.Prime.AddressBook
 
   public class AddressBookService(ICoinbaseClient client) : CoinbaseService(client), IAddressBookService
   {
-    public CreateAddressBookEntryResponse CreateAddressBookEntry(CreateAddressBookEntryRequest request, CallOptions? options = null)
+    public CreateAddressBookEntryResponse CreateAddressBookEntry(CreateAddressBookEntryRequest request, CallOptions? callOptions = null)
     {
       return Request<CreateAddressBookEntryResponse>(
         HttpMethod.Post,
         $"/portfolios/{request.PortfolioId}/address_book",
         [HttpStatusCode.Created, HttpStatusCode.OK],
         request,
-        options);
+        callOptions);
     }
 
     public Task<CreateAddressBookEntryResponse> CreateAddressBookEntryAsync(
       CreateAddressBookEntryRequest request,
-      CallOptions? options = null,
+      CallOptions? callOptions = null,
       CancellationToken cancellationToken = default)
     {
       return RequestAsync<CreateAddressBookEntryResponse>(
@@ -43,23 +43,23 @@ namespace CoinbaseSdk.Prime.AddressBook
         $"/portfolios/{request.PortfolioId}/address_book",
         [HttpStatusCode.Created, HttpStatusCode.OK],
         request,
-        options,
+        callOptions,
         cancellationToken);
     }
 
-    public ListAddressBookEntriesResponse ListAddressBookEntries(ListAddressBookEntriesRequest request, CallOptions? options = null)
+    public ListAddressBookEntriesResponse ListAddressBookEntries(ListAddressBookEntriesRequest request, CallOptions? callOptions = null)
     {
       return Request<ListAddressBookEntriesResponse>(
         HttpMethod.Get,
         $"/portfolios/{request.PortfolioId}/address_book",
         [HttpStatusCode.OK],
         request,
-        options);
+        callOptions);
     }
 
     public Task<ListAddressBookEntriesResponse> ListAddressBookEntriesAsync(
       ListAddressBookEntriesRequest request,
-      CallOptions? options = null,
+      CallOptions? callOptions = null,
       CancellationToken cancellationToken = default)
     {
       return RequestAsync<ListAddressBookEntriesResponse>(
@@ -67,7 +67,7 @@ namespace CoinbaseSdk.Prime.AddressBook
         $"/portfolios/{request.PortfolioId}/address_book",
         [HttpStatusCode.OK],
         request,
-        options,
+        callOptions,
         cancellationToken);
     }
 

@@ -37,27 +37,27 @@ namespace CoinbaseSdk.Prime.Financing
       private string? _conversionDate;
       private string? _locateDate;
 
-      public Builder WithPortfolioId(string value)
+      public Builder WithPortfolioId(string portfolioId)
       {
-        _portfolioId = value;
+        _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithLocateIds(string?[] value)
+      public Builder WithLocateIds(string?[] locateIds)
       {
-        _locateIds = value;
+        _locateIds = locateIds;
         return this;
       }
 
-      public Builder WithConversionDate(string? value)
+      public Builder WithConversionDate(string? conversionDate)
       {
-        _conversionDate = value;
+        _conversionDate = conversionDate;
         return this;
       }
 
-      public Builder WithLocateDate(string? value)
+      public Builder WithLocateDate(string? locateDate)
       {
-        _locateDate = value;
+        _locateDate = locateDate;
         return this;
       }
 

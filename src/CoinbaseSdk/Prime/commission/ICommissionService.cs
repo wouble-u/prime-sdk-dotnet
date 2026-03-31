@@ -20,11 +20,11 @@ namespace CoinbaseSdk.Prime.Commission
 
   public interface ICommissionService
   {
-    public GetPortfolioCommissionResponse GetPortfolioCommission(GetPortfolioCommissionRequest request, CallOptions? options = null);
+    public GetPortfolioCommissionResponse GetPortfolioCommission(GetPortfolioCommissionRequest request, CallOptions? callOptions = null);
 
     public Task<GetPortfolioCommissionResponse> GetPortfolioCommissionAsync(
       GetPortfolioCommissionRequest request,
-      CallOptions? options = null,
+      CallOptions? callOptions = null,
       CancellationToken cancellationToken = default);
 
   }

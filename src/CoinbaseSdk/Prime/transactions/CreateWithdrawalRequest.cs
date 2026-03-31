@@ -57,63 +57,63 @@ namespace CoinbaseSdk.Prime.Transactions
       private CounterpartyDestination _counterparty;
       private TravelRuleData _travelRuleData;
 
-      public Builder WithPortfolioId(string value)
+      public Builder WithPortfolioId(string portfolioId)
       {
-        _portfolioId = value;
+        _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithWalletId(string value)
+      public Builder WithWalletId(string walletId)
       {
-        _walletId = value;
+        _walletId = walletId;
         return this;
       }
 
-      public Builder WithAmount(string? value)
+      public Builder WithAmount(string? amount)
       {
-        _amount = value;
+        _amount = amount;
         return this;
       }
 
-      public Builder WithDestinationType(DestinationType value)
+      public Builder WithDestinationType(DestinationType destinationType)
       {
-        _destinationType = value;
+        _destinationType = destinationType;
         return this;
       }
 
-      public Builder WithIdempotencyKey(string? value)
+      public Builder WithIdempotencyKey(string? idempotencyKey)
       {
-        _idempotencyKey = value;
+        _idempotencyKey = idempotencyKey;
         return this;
       }
 
-      public Builder WithCurrencySymbol(string? value)
+      public Builder WithCurrencySymbol(string? currencySymbol)
       {
-        _currencySymbol = value;
+        _currencySymbol = currencySymbol;
         return this;
       }
 
-      public Builder WithPaymentMethod(PaymentMethodDestination value)
+      public Builder WithPaymentMethod(PaymentMethodDestination paymentMethod)
       {
-        _paymentMethod = value;
+        _paymentMethod = paymentMethod;
         return this;
       }
 
-      public Builder WithBlockchainAddress(BlockchainAddress value)
+      public Builder WithBlockchainAddress(BlockchainAddress blockchainAddress)
       {
-        _blockchainAddress = value;
+        _blockchainAddress = blockchainAddress;
         return this;
       }
 
-      public Builder WithCounterparty(CounterpartyDestination value)
+      public Builder WithCounterparty(CounterpartyDestination counterparty)
       {
-        _counterparty = value;
+        _counterparty = counterparty;
         return this;
       }
 
-      public Builder WithTravelRuleData(TravelRuleData value)
+      public Builder WithTravelRuleData(TravelRuleData travelRuleData)
       {
-        _travelRuleData = value;
+        _travelRuleData = travelRuleData;
         return this;
       }
 

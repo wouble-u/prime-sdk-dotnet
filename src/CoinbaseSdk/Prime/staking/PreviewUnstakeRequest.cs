@@ -34,21 +34,21 @@ namespace CoinbaseSdk.Prime.Staking
       private string? _walletId;
       private string? _amount;
 
-      public Builder WithPortfolioId(string value)
+      public Builder WithPortfolioId(string portfolioId)
       {
-        _portfolioId = value;
+        _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithWalletId(string value)
+      public Builder WithWalletId(string walletId)
       {
-        _walletId = value;
+        _walletId = walletId;
         return this;
       }
 
-      public Builder WithAmount(string? value)
+      public Builder WithAmount(string? amount)
       {
-        _amount = value;
+        _amount = amount;
         return this;
       }
 

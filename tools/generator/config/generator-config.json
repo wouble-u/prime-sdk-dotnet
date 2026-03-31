@@ -35,7 +35,8 @@
     "RPC ": "RpcConfig ",
     "RPC?": "RpcConfig?",
     "RPC>": "RpcConfig>",
-    "PaginatedResponse": "Pagination"
+    "PaginatedResponse": "Pagination",
+    "GoogleTypeDate": "DateOfBirth"
   },
   "acronymMappings": [
     { "acronym": "FCM", "normalized": "Fcm" },

@@ -38,27 +38,27 @@ namespace CoinbaseSdk.Prime.Staking
       private string? _idempotencyKey;
       private WalletUnstakeInputs _inputs;
 
-      public Builder WithPortfolioId(string value)
+      public Builder WithPortfolioId(string portfolioId)
       {
-        _portfolioId = value;
+        _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithWalletId(string value)
+      public Builder WithWalletId(string walletId)
       {
-        _walletId = value;
+        _walletId = walletId;
         return this;
       }
 
-      public Builder WithIdempotencyKey(string? value)
+      public Builder WithIdempotencyKey(string? idempotencyKey)
       {
-        _idempotencyKey = value;
+        _idempotencyKey = idempotencyKey;
         return this;
       }
 
-      public Builder WithInputs(WalletUnstakeInputs value)
+      public Builder WithInputs(WalletUnstakeInputs inputs)
       {
-        _inputs = value;
+        _inputs = inputs;
         return this;
       }
 

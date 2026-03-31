@@ -41,33 +41,33 @@ namespace CoinbaseSdk.Prime.Transactions
       private RpcConfig _rpc;
       private EvmParams _evmParams;
 
-      public Builder WithPortfolioId(string value)
+      public Builder WithPortfolioId(string portfolioId)
       {
-        _portfolioId = value;
+        _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithWalletId(string value)
+      public Builder WithWalletId(string walletId)
       {
-        _walletId = value;
+        _walletId = walletId;
         return this;
       }
 
-      public Builder WithRawUnsignedTxn(string? value)
+      public Builder WithRawUnsignedTxn(string? rawUnsignedTxn)
       {
-        _rawUnsignedTxn = value;
+        _rawUnsignedTxn = rawUnsignedTxn;
         return this;
       }
 
-      public Builder WithRpc(RpcConfig value)
+      public Builder WithRpc(RpcConfig rpc)
       {
-        _rpc = value;
+        _rpc = rpc;
         return this;
       }
 
-      public Builder WithEvmParams(EvmParams value)
+      public Builder WithEvmParams(EvmParams evmParams)
       {
-        _evmParams = value;
+        _evmParams = evmParams;
         return this;
       }
 

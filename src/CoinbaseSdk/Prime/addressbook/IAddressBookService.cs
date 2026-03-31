@@ -20,18 +20,18 @@ namespace CoinbaseSdk.Prime.AddressBook
 
   public interface IAddressBookService
   {
-    public CreateAddressBookEntryResponse CreateAddressBookEntry(CreateAddressBookEntryRequest request, CallOptions? options = null);
+    public CreateAddressBookEntryResponse CreateAddressBookEntry(CreateAddressBookEntryRequest request, CallOptions? callOptions = null);
 
     public Task<CreateAddressBookEntryResponse> CreateAddressBookEntryAsync(
       CreateAddressBookEntryRequest request,
-      CallOptions? options = null,
+      CallOptions? callOptions = null,
       CancellationToken cancellationToken = default);
 
-    public ListAddressBookEntriesResponse ListAddressBookEntries(ListAddressBookEntriesRequest request, CallOptions? options = null);
+    public ListAddressBookEntriesResponse ListAddressBookEntries(ListAddressBookEntriesRequest request, CallOptions? callOptions = null);
 
     public Task<ListAddressBookEntriesResponse> ListAddressBookEntriesAsync(
       ListAddressBookEntriesRequest request,
-      CallOptions? options = null,
+      CallOptions? callOptions = null,
       CancellationToken cancellationToken = default);
 
   }

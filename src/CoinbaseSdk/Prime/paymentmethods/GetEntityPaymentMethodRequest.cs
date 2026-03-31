@@ -31,15 +31,15 @@ namespace CoinbaseSdk.Prime.PaymentMethods
       private string? _entityId;
       private string? _paymentMethodId;
 
-      public Builder WithEntityId(string value)
+      public Builder WithEntityId(string entityId)
       {
-        _entityId = value;
+        _entityId = entityId;
         return this;
       }
 
-      public Builder WithPaymentMethodId(string value)
+      public Builder WithPaymentMethodId(string paymentMethodId)
       {
-        _paymentMethodId = value;
+        _paymentMethodId = paymentMethodId;
         return this;
       }
 

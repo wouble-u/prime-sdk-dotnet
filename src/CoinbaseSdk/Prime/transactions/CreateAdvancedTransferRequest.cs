@@ -32,15 +32,15 @@ namespace CoinbaseSdk.Prime.Transactions
       private string? _portfolioId;
       private AdvancedTransfer _advancedTransfer;
 
-      public Builder WithPortfolioId(string value)
+      public Builder WithPortfolioId(string portfolioId)
       {
-        _portfolioId = value;
+        _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithAdvancedTransfer(AdvancedTransfer value)
+      public Builder WithAdvancedTransfer(AdvancedTransfer advancedTransfer)
       {
-        _advancedTransfer = value;
+        _advancedTransfer = advancedTransfer;
         return this;
       }
 

@@ -20,67 +20,67 @@ namespace CoinbaseSdk.Prime.Staking
 
   public interface IStakingService
   {
-    public ClaimStakingRewardsResponse ClaimStakingRewards(ClaimStakingRewardsRequest request, CallOptions? options = null);
+    public ClaimStakingRewardsResponse ClaimStakingRewards(ClaimStakingRewardsRequest request, CallOptions? callOptions = null);
 
     public Task<ClaimStakingRewardsResponse> ClaimStakingRewardsAsync(
       ClaimStakingRewardsRequest request,
-      CallOptions? options = null,
+      CallOptions? callOptions = null,
       CancellationToken cancellationToken = default);
 
-    public CreatePortfolioStakeResponse CreatePortfolioStake(CreatePortfolioStakeRequest request, CallOptions? options = null);
+    public CreatePortfolioStakeResponse CreatePortfolioStake(CreatePortfolioStakeRequest request, CallOptions? callOptions = null);
 
     public Task<CreatePortfolioStakeResponse> CreatePortfolioStakeAsync(
       CreatePortfolioStakeRequest request,
-      CallOptions? options = null,
+      CallOptions? callOptions = null,
       CancellationToken cancellationToken = default);
 
-    public CreatePortfolioUnstakeResponse CreatePortfolioUnstake(CreatePortfolioUnstakeRequest request, CallOptions? options = null);
+    public CreatePortfolioUnstakeResponse CreatePortfolioUnstake(CreatePortfolioUnstakeRequest request, CallOptions? callOptions = null);
 
     public Task<CreatePortfolioUnstakeResponse> CreatePortfolioUnstakeAsync(
       CreatePortfolioUnstakeRequest request,
-      CallOptions? options = null,
+      CallOptions? callOptions = null,
       CancellationToken cancellationToken = default);
 
-    public CreateStakeResponse CreateStake(CreateStakeRequest request, CallOptions? options = null);
+    public CreateStakeResponse CreateStake(CreateStakeRequest request, CallOptions? callOptions = null);
 
     public Task<CreateStakeResponse> CreateStakeAsync(
       CreateStakeRequest request,
-      CallOptions? options = null,
+      CallOptions? callOptions = null,
       CancellationToken cancellationToken = default);
 
-    public CreateUnstakeResponse CreateUnstake(CreateUnstakeRequest request, CallOptions? options = null);
+    public CreateUnstakeResponse CreateUnstake(CreateUnstakeRequest request, CallOptions? callOptions = null);
 
     public Task<CreateUnstakeResponse> CreateUnstakeAsync(
       CreateUnstakeRequest request,
-      CallOptions? options = null,
+      CallOptions? callOptions = null,
       CancellationToken cancellationToken = default);
 
-    public GetStakingStatusResponse GetStakingStatus(GetStakingStatusRequest request, CallOptions? options = null);
+    public GetStakingStatusResponse GetStakingStatus(GetStakingStatusRequest request, CallOptions? callOptions = null);
 
     public Task<GetStakingStatusResponse> GetStakingStatusAsync(
       GetStakingStatusRequest request,
-      CallOptions? options = null,
+      CallOptions? callOptions = null,
       CancellationToken cancellationToken = default);
 
-    public GetUnstakingStatusResponse GetUnstakingStatus(GetUnstakingStatusRequest request, CallOptions? options = null);
+    public GetUnstakingStatusResponse GetUnstakingStatus(GetUnstakingStatusRequest request, CallOptions? callOptions = null);
 
     public Task<GetUnstakingStatusResponse> GetUnstakingStatusAsync(
       GetUnstakingStatusRequest request,
-      CallOptions? options = null,
+      CallOptions? callOptions = null,
       CancellationToken cancellationToken = default);
 
-    public ListTransactionValidatorsResponse ListTransactionValidators(ListTransactionValidatorsRequest request, CallOptions? options = null);
+    public ListTransactionValidatorsResponse ListTransactionValidators(ListTransactionValidatorsRequest request, CallOptions? callOptions = null);
 
     public Task<ListTransactionValidatorsResponse> ListTransactionValidatorsAsync(
       ListTransactionValidatorsRequest request,
-      CallOptions? options = null,
+      CallOptions? callOptions = null,
       CancellationToken cancellationToken = default);
 
-    public PreviewUnstakeResponse PreviewUnstake(PreviewUnstakeRequest request, CallOptions? options = null);
+    public PreviewUnstakeResponse PreviewUnstake(PreviewUnstakeRequest request, CallOptions? callOptions = null);
 
     public Task<PreviewUnstakeResponse> PreviewUnstakeAsync(
       PreviewUnstakeRequest request,
-      CallOptions? options = null,
+      CallOptions? callOptions = null,
       CancellationToken cancellationToken = default);
 
   }

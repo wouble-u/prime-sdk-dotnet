@@ -86,123 +86,123 @@ namespace CoinbaseSdk.Prime.Orders
       private string? _offset;
       private string? _wigLevel;
 
-      public Builder WithPortfolioId(string value)
+      public Builder WithPortfolioId(string portfolioId)
       {
-        _portfolioId = value;
+        _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithProductId(string? value)
+      public Builder WithProductId(string? productId)
       {
-        _productId = value;
+        _productId = productId;
         return this;
       }
 
-      public Builder WithSide(OrderSide value)
+      public Builder WithSide(OrderSide side)
       {
-        _side = value;
+        _side = side;
         return this;
       }
 
-      public Builder WithType(OrderType value)
+      public Builder WithType(OrderType type)
       {
-        _type = value;
+        _type = type;
         return this;
       }
 
-      public Builder WithBaseQuantity(string? value)
+      public Builder WithBaseQuantity(string? baseQuantity)
       {
-        _baseQuantity = value;
+        _baseQuantity = baseQuantity;
         return this;
       }
 
-      public Builder WithQuoteValue(string? value)
+      public Builder WithQuoteValue(string? quoteValue)
       {
-        _quoteValue = value;
+        _quoteValue = quoteValue;
         return this;
       }
 
-      public Builder WithLimitPrice(string? value)
+      public Builder WithLimitPrice(string? limitPrice)
       {
-        _limitPrice = value;
+        _limitPrice = limitPrice;
         return this;
       }
 
-      public Builder WithStartTime(string? value)
+      public Builder WithStartTime(string? startTime)
       {
-        _startTime = value;
+        _startTime = startTime;
         return this;
       }
 
-      public Builder WithExpiryTime(string? value)
+      public Builder WithExpiryTime(string? expiryTime)
       {
-        _expiryTime = value;
+        _expiryTime = expiryTime;
         return this;
       }
 
-      public Builder WithTimeInForce(TimeInForceType value)
+      public Builder WithTimeInForce(TimeInForceType timeInForce)
       {
-        _timeInForce = value;
+        _timeInForce = timeInForce;
         return this;
       }
 
-      public Builder WithIsRaiseExact(bool? value)
+      public Builder WithIsRaiseExact(bool? isRaiseExact)
       {
-        _isRaiseExact = value;
+        _isRaiseExact = isRaiseExact;
         return this;
       }
 
-      public Builder WithHistoricalPov(string? value)
+      public Builder WithHistoricalPov(string? historicalPov)
       {
-        _historicalPov = value;
+        _historicalPov = historicalPov;
         return this;
       }
 
-      public Builder WithStopPrice(string? value)
+      public Builder WithStopPrice(string? stopPrice)
       {
-        _stopPrice = value;
+        _stopPrice = stopPrice;
         return this;
       }
 
-      public Builder WithSettlCurrency(string? value)
+      public Builder WithSettlCurrency(string? settlCurrency)
       {
-        _settlCurrency = value;
+        _settlCurrency = settlCurrency;
         return this;
       }
 
-      public Builder WithPostOnly(bool? value)
+      public Builder WithPostOnly(bool? postOnly)
       {
-        _postOnly = value;
+        _postOnly = postOnly;
         return this;
       }
 
-      public Builder WithDisplayQuoteSize(string? value)
+      public Builder WithDisplayQuoteSize(string? displayQuoteSize)
       {
-        _displayQuoteSize = value;
+        _displayQuoteSize = displayQuoteSize;
         return this;
       }
 
-      public Builder WithDisplayBaseSize(string? value)
+      public Builder WithDisplayBaseSize(string? displayBaseSize)
       {
-        _displayBaseSize = value;
+        _displayBaseSize = displayBaseSize;
         return this;
       }
 
-      public Builder WithPegOffsetType(PegOffsetType value)
+      public Builder WithPegOffsetType(PegOffsetType pegOffsetType)
       {
-        _pegOffsetType = value;
+        _pegOffsetType = pegOffsetType;
         return this;
       }
 
-      public Builder WithOffset(string? value)
+      public Builder WithOffset(string? offset)
       {
-        _offset = value;
+        _offset = offset;
         return this;
       }
 
-      public Builder WithWigLevel(string? value)
+      public Builder WithWigLevel(string? wigLevel)
       {
-        _wigLevel = value;
+        _wigLevel = wigLevel;
         return this;
       }
 

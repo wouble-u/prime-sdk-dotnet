@@ -32,15 +32,15 @@ namespace CoinbaseSdk.Prime.OnchainAddressBook
       private string? _portfolioId;
       private AddressGroup _addressGroup;
 
-      public Builder WithPortfolioId(string value)
+      public Builder WithPortfolioId(string portfolioId)
       {
-        _portfolioId = value;
+        _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithAddressGroup(AddressGroup value)
+      public Builder WithAddressGroup(AddressGroup addressGroup)
       {
-        _addressGroup = value;
+        _addressGroup = addressGroup;
         return this;
       }
 

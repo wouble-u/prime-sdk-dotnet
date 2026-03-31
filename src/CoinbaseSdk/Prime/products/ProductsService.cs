@@ -23,19 +23,19 @@ namespace CoinbaseSdk.Prime.Products
 
   public class ProductsService(ICoinbaseClient client) : CoinbaseService(client), IProductsService
   {
-    public GetCandlesResponse GetCandles(GetCandlesRequest request, CallOptions? options = null)
+    public GetCandlesResponse GetCandles(GetCandlesRequest request, CallOptions? callOptions = null)
     {
       return Request<GetCandlesResponse>(
         HttpMethod.Get,
         $"/portfolios/{request.PortfolioId}/candles",
         [HttpStatusCode.OK],
         request,
-        options);
+        callOptions);
     }
 
     public Task<GetCandlesResponse> GetCandlesAsync(
       GetCandlesRequest request,
-      CallOptions? options = null,
+      CallOptions? callOptions = null,
       CancellationToken cancellationToken = default)
     {
       return RequestAsync<GetCandlesResponse>(
@@ -43,23 +43,23 @@ namespace CoinbaseSdk.Prime.Products
         $"/portfolios/{request.PortfolioId}/candles",
         [HttpStatusCode.OK],
         request,
-        options,
+        callOptions,
         cancellationToken);
     }
 
-    public ListPortfolioProductsResponse ListPortfolioProducts(ListPortfolioProductsRequest request, CallOptions? options = null)
+    public ListPortfolioProductsResponse ListPortfolioProducts(ListPortfolioProductsRequest request, CallOptions? callOptions = null)
     {
       return Request<ListPortfolioProductsResponse>(
         HttpMethod.Get,
         $"/portfolios/{request.PortfolioId}/products",
         [HttpStatusCode.OK],
         request,
-        options);
+        callOptions);
     }
 
     public Task<ListPortfolioProductsResponse> ListPortfolioProductsAsync(
       ListPortfolioProductsRequest request,
-      CallOptions? options = null,
+      CallOptions? callOptions = null,
       CancellationToken cancellationToken = default)
     {
       return RequestAsync<ListPortfolioProductsResponse>(
@@ -67,7 +67,7 @@ namespace CoinbaseSdk.Prime.Products
         $"/portfolios/{request.PortfolioId}/products",
         [HttpStatusCode.OK],
         request,
-        options,
+        callOptions,
         cancellationToken);
     }
 

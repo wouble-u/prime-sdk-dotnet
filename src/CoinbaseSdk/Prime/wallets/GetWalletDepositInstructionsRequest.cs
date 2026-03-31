@@ -40,33 +40,33 @@ namespace CoinbaseSdk.Prime.Wallets
       private string? _networkId;
       private string? _networkType;
 
-      public Builder WithPortfolioId(string value)
+      public Builder WithPortfolioId(string portfolioId)
       {
-        _portfolioId = value;
+        _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithWalletId(string value)
+      public Builder WithWalletId(string walletId)
       {
-        _walletId = value;
+        _walletId = walletId;
         return this;
       }
 
-      public Builder WithDepositType(string? value)
+      public Builder WithDepositType(string? depositType)
       {
-        _depositType = value;
+        _depositType = depositType;
         return this;
       }
 
-      public Builder WithNetworkId(string? value)
+      public Builder WithNetworkId(string? networkId)
       {
-        _networkId = value;
+        _networkId = networkId;
         return this;
       }
 
-      public Builder WithNetworkType(string? value)
+      public Builder WithNetworkType(string? networkType)
       {
-        _networkType = value;
+        _networkType = networkType;
         return this;
       }
 

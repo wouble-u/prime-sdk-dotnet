@@ -50,51 +50,51 @@ namespace CoinbaseSdk.Prime.Orders
       private string? _limitPrice;
       private string? _settlCurrency;
 
-      public Builder WithPortfolioId(string value)
+      public Builder WithPortfolioId(string portfolioId)
       {
-        _portfolioId = value;
+        _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithProductId(string? value)
+      public Builder WithProductId(string? productId)
       {
-        _productId = value;
+        _productId = productId;
         return this;
       }
 
-      public Builder WithSide(OrderSide value)
+      public Builder WithSide(OrderSide side)
       {
-        _side = value;
+        _side = side;
         return this;
       }
 
-      public Builder WithClientQuoteId(string? value)
+      public Builder WithClientQuoteId(string? clientQuoteId)
       {
-        _clientQuoteId = value;
+        _clientQuoteId = clientQuoteId;
         return this;
       }
 
-      public Builder WithBaseQuantity(string? value)
+      public Builder WithBaseQuantity(string? baseQuantity)
       {
-        _baseQuantity = value;
+        _baseQuantity = baseQuantity;
         return this;
       }
 
-      public Builder WithQuoteValue(string? value)
+      public Builder WithQuoteValue(string? quoteValue)
       {
-        _quoteValue = value;
+        _quoteValue = quoteValue;
         return this;
       }
 
-      public Builder WithLimitPrice(string? value)
+      public Builder WithLimitPrice(string? limitPrice)
       {
-        _limitPrice = value;
+        _limitPrice = limitPrice;
         return this;
       }
 
-      public Builder WithSettlCurrency(string? value)
+      public Builder WithSettlCurrency(string? settlCurrency)
       {
-        _settlCurrency = value;
+        _settlCurrency = settlCurrency;
         return this;
       }
 

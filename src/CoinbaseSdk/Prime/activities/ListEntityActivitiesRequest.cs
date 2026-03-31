@@ -26,13 +26,13 @@ namespace CoinbaseSdk.Prime.Activities
     [JsonIgnore]
     public string EntityId { get; set; } = entityId;
     [JsonPropertyName("activity_level")]
-    public string? ActivityLevel { get; set; }
+    public ActivityLevel? ActivityLevel { get; set; }
     [JsonPropertyName("symbols")]
     public string?[] Symbols { get; set; } = [];
     [JsonPropertyName("categories")]
-    public string?[] Categories { get; set; } = [];
+    public ActivityCategory?[] Categories { get; set; } = [];
     [JsonPropertyName("statuses")]
-    public string?[] Statuses { get; set; } = [];
+    public ActivityStatus?[] Statuses { get; set; } = [];
     [JsonPropertyName("start_time")]
     public string? StartTime { get; set; }
     [JsonPropertyName("end_time")]
@@ -43,10 +43,10 @@ namespace CoinbaseSdk.Prime.Activities
     public class Builder
     {
       private string? _entityId;
-      private string? _activityLevel;
+      private ActivityLevel? _activityLevel;
       private string?[]? _symbols;
-      private string?[]? _categories;
-      private string?[]? _statuses;
+      private ActivityCategory?[]? _categories;
+      private ActivityStatus?[]? _statuses;
       private string? _startTime;
       private string? _endTime;
       private bool? _getNetworkUnifiedActivities;
@@ -54,51 +54,51 @@ namespace CoinbaseSdk.Prime.Activities
       private SortDirection? _sortDirection;
       private int? _limit;
 
-      public Builder WithEntityId(string value)
+      public Builder WithEntityId(string entityId)
       {
-        _entityId = value;
+        _entityId = entityId;
         return this;
       }
 
-      public Builder WithActivityLevel(string? value)
+      public Builder WithActivityLevel(ActivityLevel? activityLevel)
       {
-        _activityLevel = value;
+        _activityLevel = activityLevel;
         return this;
       }
 
-      public Builder WithSymbols(string?[] value)
+      public Builder WithSymbols(string?[] symbols)
       {
-        _symbols = value;
+        _symbols = symbols;
         return this;
       }
 
-      public Builder WithCategories(string?[] value)
+      public Builder WithCategories(ActivityCategory?[] categories)
       {
-        _categories = value;
+        _categories = categories;
         return this;
       }
 
-      public Builder WithStatuses(string?[] value)
+      public Builder WithStatuses(ActivityStatus?[] statuses)
       {
-        _statuses = value;
+        _statuses = statuses;
         return this;
       }
 
-      public Builder WithStartTime(string? value)
+      public Builder WithStartTime(string? startTime)
       {
-        _startTime = value;
+        _startTime = startTime;
         return this;
       }
 
-      public Builder WithEndTime(string? value)
+      public Builder WithEndTime(string? endTime)
       {
-        _endTime = value;
+        _endTime = endTime;
         return this;
       }
 
-      public Builder WithGetNetworkUnifiedActivities(bool? value)
+      public Builder WithGetNetworkUnifiedActivities(bool? getNetworkUnifiedActivities)
       {
-        _getNetworkUnifiedActivities = value;
+        _getNetworkUnifiedActivities = getNetworkUnifiedActivities;
         return this;
       }
 

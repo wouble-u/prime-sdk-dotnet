@@ -41,33 +41,33 @@ namespace CoinbaseSdk.Prime.Staking
       private int? _limit;
       private SortDirection _sortDirection;
 
-      public Builder WithPortfolioId(string value)
+      public Builder WithPortfolioId(string portfolioId)
       {
-        _portfolioId = value;
+        _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithTransactionIds(string?[] value)
+      public Builder WithTransactionIds(string?[] transactionIds)
       {
-        _transactionIds = value;
+        _transactionIds = transactionIds;
         return this;
       }
 
-      public Builder WithCursor(string? value)
+      public Builder WithCursor(string? cursor)
       {
-        _cursor = value;
+        _cursor = cursor;
         return this;
       }
 
-      public Builder WithLimit(int? value)
+      public Builder WithLimit(int? limit)
       {
-        _limit = value;
+        _limit = limit;
         return this;
       }
 
-      public Builder WithSortDirection(SortDirection value)
+      public Builder WithSortDirection(SortDirection sortDirection)
       {
-        _sortDirection = value;
+        _sortDirection = sortDirection;
         return this;
       }
 

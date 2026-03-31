@@ -45,33 +45,33 @@ namespace CoinbaseSdk.Prime.Transactions
       private SortDirection? _sortDirection;
       private int? _limit;
 
-      public Builder WithPortfolioId(string value)
+      public Builder WithPortfolioId(string portfolioId)
       {
-        _portfolioId = value;
+        _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithWalletId(string value)
+      public Builder WithWalletId(string walletId)
       {
-        _walletId = value;
+        _walletId = walletId;
         return this;
       }
 
-      public Builder WithTypes(string?[] value)
+      public Builder WithTypes(string?[] types)
       {
-        _types = value;
+        _types = types;
         return this;
       }
 
-      public Builder WithStartTime(string? value)
+      public Builder WithStartTime(string? startTime)
       {
-        _startTime = value;
+        _startTime = startTime;
         return this;
       }
 
-      public Builder WithEndTime(string? value)
+      public Builder WithEndTime(string? endTime)
       {
-        _endTime = value;
+        _endTime = endTime;
         return this;
       }
 

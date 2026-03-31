@@ -22,6 +22,16 @@ namespace CoinbaseSdk.Tools.Generator.Phases;
 
 public static class RequestPhase
 {
+  /// <summary>
+  /// Returns true when a configured CLR type override refers to types in <c>CoinbaseSdk.Prime.Model.Enums</c>.
+  /// </summary>
+  private static bool TypeOverrideUsesModelEnumsNamespace(string clrType)
+  {
+    return clrType.Contains("ActivityCategory", StringComparison.Ordinal)
+           || clrType.Contains("ActivityStatus", StringComparison.Ordinal)
+           || clrType.Contains("ActivityLevel", StringComparison.Ordinal);
+  }
+
   public static string EmitRequest(
     ParsedOpenApiDocument doc,
     GeneratorConfiguration cfg,
@@ -29,8 +39,15 @@ public static class RequestPhase
     SdkOperationBinding b,
     ParsedOperation op)
   {
-    string MapParamToClr(ParsedParameter p) =>
-      OpenApiSchemaCodegen.ToClrType(doc.Root, p.Schema, transforms, out _, out _);
+    string MapParamToClr(ParsedParameter p)
+    {
+      if (b.ParamTypeOverrides.TryGetValue(p.Name, out var ov) && !string.IsNullOrWhiteSpace(ov))
+      {
+        return ov;
+      }
+
+      return OpenApiSchemaCodegen.ToClrType(doc.Root, p.Schema, transforms, out _, out _);
+    }
 
     // Path params are always required (they're in the URL); use non-nullable CLR types.
     string MapPathParamToClr(ParsedParameter p)
@@ -85,7 +102,9 @@ public static class RequestPhase
     }
 
     // Always include Model.Enums when paginated (SortDirection is in that namespace)
+    var overrideUsesEnums = b.ParamTypeOverrides.Values.Any(TypeOverrideUsesModelEnumsNamespace);
     var usesEnums = paginated ||
+                   overrideUsesEnums ||
                    pathParams.Concat(queryParamsForMembers).Any(p => p.Schema != null &&
                      OpenApiSchemaCodegen.ToClrType(doc.Root, p.Schema, transforms, out _, out var isEnum) is not null && isEnum) ||
                    bodyProps.Any(p => p.UsesEnum);
@@ -218,9 +237,10 @@ public static class RequestPhase
       var pn = OpenApiSchemaCodegen.ToPascalCase(p.Name);
       var f = "_" + CamelParam(p.Name);
       var t = mapParam(p).TrimEnd('?');
-      sb.AppendLine($"      public Builder With{pn}({t} value)");
+      var paramVar = CamelParam(p.Name);
+      sb.AppendLine($"      public Builder With{pn}({t} {paramVar})");
       sb.AppendLine("      {");
-      sb.AppendLine($"        {f} = value;");
+      sb.AppendLine($"        {f} = {paramVar};");
       sb.AppendLine("        return this;");
       sb.AppendLine("      }");
       sb.AppendLine();
@@ -230,9 +250,10 @@ public static class RequestPhase
     {
       var pn = OpenApiSchemaCodegen.ToPascalCase(p.Name);
       var f = "_" + CamelParam(p.Name);
-      sb.AppendLine($"      public Builder With{pn}({mapParam(p)} value)");
+      var paramVar = CamelParam(p.Name);
+      sb.AppendLine($"      public Builder With{pn}({mapParam(p)} {paramVar})");
       sb.AppendLine("      {");
-      sb.AppendLine($"        {f} = value;");
+      sb.AppendLine($"        {f} = {paramVar};");
       sb.AppendLine("        return this;");
       sb.AppendLine("      }");
       sb.AppendLine();
@@ -241,9 +262,10 @@ public static class RequestPhase
     foreach (var p in bodyProps)
     {
       var f = "_" + char.ToLowerInvariant(p.ClrName[0]) + p.ClrName[1..];
-      sb.AppendLine($"      public Builder With{p.ClrName}({p.ClrType} value)");
+      var paramVar = char.ToLowerInvariant(p.ClrName[0]) + p.ClrName[1..];
+      sb.AppendLine($"      public Builder With{p.ClrName}({p.ClrType} {paramVar})");
       sb.AppendLine("      {");
-      sb.AppendLine($"        {f} = value;");
+      sb.AppendLine($"        {f} = {paramVar};");
       sb.AppendLine("        return this;");
       sb.AppendLine("      }");
       sb.AppendLine();

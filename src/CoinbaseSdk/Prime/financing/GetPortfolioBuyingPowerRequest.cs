@@ -34,21 +34,21 @@ namespace CoinbaseSdk.Prime.Financing
       private string? _baseCurrency;
       private string? _quoteCurrency;
 
-      public Builder WithPortfolioId(string value)
+      public Builder WithPortfolioId(string portfolioId)
       {
-        _portfolioId = value;
+        _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithBaseCurrency(string? value)
+      public Builder WithBaseCurrency(string? baseCurrency)
       {
-        _baseCurrency = value;
+        _baseCurrency = baseCurrency;
         return this;
       }
 
-      public Builder WithQuoteCurrency(string? value)
+      public Builder WithQuoteCurrency(string? quoteCurrency)
       {
-        _quoteCurrency = value;
+        _quoteCurrency = quoteCurrency;
         return this;
       }
 

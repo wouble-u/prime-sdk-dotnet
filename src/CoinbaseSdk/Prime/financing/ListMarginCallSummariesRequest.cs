@@ -34,21 +34,21 @@ namespace CoinbaseSdk.Prime.Financing
       private string? _startDate;
       private string? _endDate;
 
-      public Builder WithEntityId(string value)
+      public Builder WithEntityId(string entityId)
       {
-        _entityId = value;
+        _entityId = entityId;
         return this;
       }
 
-      public Builder WithStartDate(string? value)
+      public Builder WithStartDate(string? startDate)
       {
-        _startDate = value;
+        _startDate = startDate;
         return this;
       }
 
-      public Builder WithEndDate(string? value)
+      public Builder WithEndDate(string? endDate)
       {
-        _endDate = value;
+        _endDate = endDate;
         return this;
       }
 

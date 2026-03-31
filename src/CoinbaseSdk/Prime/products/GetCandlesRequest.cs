@@ -40,33 +40,33 @@ namespace CoinbaseSdk.Prime.Products
       private string? _endTime;
       private string? _granularity;
 
-      public Builder WithPortfolioId(string value)
+      public Builder WithPortfolioId(string portfolioId)
       {
-        _portfolioId = value;
+        _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithProductId(string? value)
+      public Builder WithProductId(string? productId)
       {
-        _productId = value;
+        _productId = productId;
         return this;
       }
 
-      public Builder WithStartTime(string? value)
+      public Builder WithStartTime(string? startTime)
       {
-        _startTime = value;
+        _startTime = startTime;
         return this;
       }
 
-      public Builder WithEndTime(string? value)
+      public Builder WithEndTime(string? endTime)
       {
-        _endTime = value;
+        _endTime = endTime;
         return this;
       }
 
-      public Builder WithGranularity(string? value)
+      public Builder WithGranularity(string? granularity)
       {
-        _granularity = value;
+        _granularity = granularity;
         return this;
       }
 

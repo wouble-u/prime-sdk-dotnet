@@ -48,39 +48,39 @@ namespace CoinbaseSdk.Prime.Transactions
       private SortDirection? _sortDirection;
       private int? _limit;
 
-      public Builder WithPortfolioId(string value)
+      public Builder WithPortfolioId(string portfolioId)
       {
-        _portfolioId = value;
+        _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithState(string? value)
+      public Builder WithState(string? state)
       {
-        _state = value;
+        _state = state;
         return this;
       }
 
-      public Builder WithType(string? value)
+      public Builder WithType(string? type)
       {
-        _type = value;
+        _type = type;
         return this;
       }
 
-      public Builder WithStartTime(string? value)
+      public Builder WithStartTime(string? startTime)
       {
-        _startTime = value;
+        _startTime = startTime;
         return this;
       }
 
-      public Builder WithEndTime(string? value)
+      public Builder WithEndTime(string? endTime)
       {
-        _endTime = value;
+        _endTime = endTime;
         return this;
       }
 
-      public Builder WithReferenceId(string? value)
+      public Builder WithReferenceId(string? referenceId)
       {
-        _referenceId = value;
+        _referenceId = referenceId;
         return this;
       }
 

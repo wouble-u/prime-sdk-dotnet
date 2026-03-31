@@ -31,15 +31,15 @@ namespace CoinbaseSdk.Prime.Futures
       private string? _entityId;
       private string? _targetDerivativesExcess;
 
-      public Builder WithEntityId(string value)
+      public Builder WithEntityId(string entityId)
       {
-        _entityId = value;
+        _entityId = entityId;
         return this;
       }
 
-      public Builder WithTargetDerivativesExcess(string? value)
+      public Builder WithTargetDerivativesExcess(string? targetDerivativesExcess)
       {
-        _targetDerivativesExcess = value;
+        _targetDerivativesExcess = targetDerivativesExcess;
         return this;
       }
 

@@ -3,7 +3,16 @@
   { "operationId": "PrimeRESTAPI_CreateAllocation", "sdkMethod": "CreateAllocation", "service": "allocations" },
   { "operationId": "PrimeRESTAPI_CreateNetAllocation", "sdkMethod": "CreateNetAllocation", "service": "allocations" },
   { "operationId": "PrimeRESTAPI_GetInterestAccruals", "sdkMethod": "ListInterestAccruals", "service": "financing" },
-  { "operationId": "PrimeRESTAPI_GetEntityActivities", "sdkMethod": "ListEntityActivities", "service": "activities" },
+  {
+    "operationId": "PrimeRESTAPI_GetEntityActivities",
+    "sdkMethod": "ListEntityActivities",
+    "service": "activities",
+    "paramTypeOverrides": {
+      "categories": "ActivityCategory?[]",
+      "statuses": "ActivityStatus?[]",
+      "activity_level": "ActivityLevel?"
+    }
+  },
   { "operationId": "PrimeRESTAPI_ListAggregateEntityPositions", "sdkMethod": "ListAggregateEntityPositions", "service": "positions" },
   { "operationId": "PrimeRESTAPI_GetEntityAssets", "sdkMethod": "ListAssets", "service": "assets" },
   { "operationId": "PrimeRESTAPI_ListEntityBalances", "sdkMethod": "ListEntityBalances", "service": "balances" },
@@ -33,7 +42,15 @@
   { "operationId": "PrimeRESTAPI_GetPortfolio", "sdkMethod": "GetPortfolio", "service": "portfolios" },
   { "operationId": "PrimeRESTAPI_AcceptQuote", "sdkMethod": "AcceptQuote", "service": "orders" },
   { "operationId": "PrimeRESTAPI_GetPortfolioInterestAccruals", "sdkMethod": "ListInterestAccrualsForPortfolio", "service": "financing" },
-  { "operationId": "PrimeRESTAPI_GetPortfolioActivities", "sdkMethod": "ListActivities", "service": "activities" },
+  {
+    "operationId": "PrimeRESTAPI_GetPortfolioActivities",
+    "sdkMethod": "ListActivities",
+    "service": "activities",
+    "paramTypeOverrides": {
+      "categories": "ActivityCategory?[]",
+      "statuses": "ActivityStatus?[]"
+    }
+  },
   { "operationId": "PrimeRESTAPI_GetPortfolioActivity", "sdkMethod": "GetPortfolioActivity", "service": "activities" },
   { "operationId": "PrimeRESTAPI_GetPortfolioAddressBook", "sdkMethod": "ListAddressBookEntries", "service": "addressbook" },
   { "operationId": "PrimeRESTAPI_CreatePortfolioAddressBookEntry", "sdkMethod": "CreateAddressBookEntry", "service": "addressbook" },

@@ -39,21 +39,21 @@ namespace CoinbaseSdk.Prime.Balances
       private SortDirection? _sortDirection;
       private int? _limit;
 
-      public Builder WithEntityId(string value)
+      public Builder WithEntityId(string entityId)
       {
-        _entityId = value;
+        _entityId = entityId;
         return this;
       }
 
-      public Builder WithSymbols(string? value)
+      public Builder WithSymbols(string? symbols)
       {
-        _symbols = value;
+        _symbols = symbols;
         return this;
       }
 
-      public Builder WithAggregationType(string? value)
+      public Builder WithAggregationType(string? aggregationType)
       {
-        _aggregationType = value;
+        _aggregationType = aggregationType;
         return this;
       }
 
