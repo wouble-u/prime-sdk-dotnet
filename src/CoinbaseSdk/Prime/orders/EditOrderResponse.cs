@@ -24,10 +24,5 @@ namespace CoinbaseSdk.Prime.Orders
     public string? OrderId { get; set; }
 
     public EditOrderResponse() { }
-
-    public EditOrderResponse(string orderId)
-    {
-      OrderId = orderId;
-    }
   }
 }

@@ -1,22 +1,23 @@
 /*
  * Copyright 2024-present Coinbase Global, Inc.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ *  http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
  */
 
 namespace CoinbaseSdk.Prime.Invoice
 {
   using System.Text.Json.Serialization;
+  using CoinbaseSdk.Core.Error;
   using CoinbaseSdk.Prime.Common;
   using CoinbaseSdk.Prime.Model.Enums;
 
@@ -24,13 +25,78 @@ namespace CoinbaseSdk.Prime.Invoice
   {
     [JsonIgnore]
     public string EntityId { get; set; } = entityId;
-
-    public InvoiceState[] States { get; set; } = [];
-
+    [JsonPropertyName("states")]
+    public string?[] States { get; set; } = [];
+    [JsonPropertyName("billing_year")]
+    public int? BillingYear { get; set; }
     [JsonPropertyName("billing_month")]
     public int? BillingMonth { get; set; }
 
-    [JsonPropertyName("billing_year")]
-    public int? BillingYear { get; set; }
+    public class Builder
+    {
+      private string? _entityId;
+      private string?[]? _states;
+      private int? _billingYear;
+      private int? _billingMonth;
+      private string? _cursor;
+      private SortDirection? _sortDirection;
+      private int? _limit;
+
+      public Builder WithEntityId(string value)
+      {
+        _entityId = value;
+        return this;
+      }
+
+      public Builder WithStates(string?[] value)
+      {
+        _states = value;
+        return this;
+      }
+
+      public Builder WithBillingYear(int? value)
+      {
+        _billingYear = value;
+        return this;
+      }
+
+      public Builder WithBillingMonth(int? value)
+      {
+        _billingMonth = value;
+        return this;
+      }
+
+      public Builder WithCursor(string cursor)
+      { _cursor = cursor; return this; }
+
+      public Builder WithSortDirection(SortDirection sortDirection)
+      { _sortDirection = sortDirection; return this; }
+
+      public Builder WithLimit(int limit)
+      { _limit = limit; return this; }
+
+      private void Validate()
+      {
+        if (string.IsNullOrWhiteSpace(_entityId))
+        {
+          throw new CoinbaseClientException("EntityId is required");
+        }
+      }
+
+      public ListInvoicesRequest Build()
+      {
+        Validate();
+        var request = new ListInvoicesRequest(_entityId!)
+        {
+          States = _states,
+          BillingYear = _billingYear,
+          BillingMonth = _billingMonth,
+          Cursor = _cursor,
+          SortDirection = _sortDirection,
+          Limit = _limit,
+        };
+        return request;
+      }
+    }
   }
 }

@@ -17,16 +17,39 @@
 namespace CoinbaseSdk.Prime.Portfolios
 {
   using System.Text.Json.Serialization;
+  using CoinbaseSdk.Core.Error;
 
-  /// <summary>
-  /// Request object for getting a portfolio's counterparty ID.
-  /// </summary>
   public class GetPortfolioCounterpartyRequest(string portfolioId)
   {
-    /// <summary>
-    /// The portfolio ID.
-    /// </summary>
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
+
+    public class Builder
+    {
+      private string? _portfolioId;
+
+      public Builder WithPortfolioId(string value)
+      {
+        _portfolioId = value;
+        return this;
+      }
+
+      private void Validate()
+      {
+        if (string.IsNullOrWhiteSpace(_portfolioId))
+        {
+          throw new CoinbaseClientException("PortfolioId is required");
+        }
+      }
+
+      public GetPortfolioCounterpartyRequest Build()
+      {
+        Validate();
+        var request = new GetPortfolioCounterpartyRequest(_portfolioId!)
+        {
+        };
+        return request;
+      }
+    }
   }
 }

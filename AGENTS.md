@@ -1,13 +1,14 @@
 # Repository Guidelines
 
 ## Project Structure & Module Organization
-Keep the solution rooted at `prime-sdk-dotnet.sln`. Library code lives in `src/CoinbaseSdk/Prime`, tests in `src/CoinbaseSdk/Prime.Tests`, and runnable samples in `src/CoinbaseSdk/PrimeExample`. Shared analyzers are configured through `src/StyleCopRules.ruleset`. Use the `tools` directory for generated assets or scripts already provided by the repository.
+Keep the solution rooted at `prime-sdk-dotnet.sln`. Library code lives in `src/CoinbaseSdk/Prime`, tests in `src/CoinbaseSdk/Prime.Tests`, and runnable samples in `src/CoinbaseSdk/PrimeExample`. Shared analyzers are configured through `src/StyleCopRules.ruleset`. Use the `tools` directory for generated assets or scripts already provided by the repository. Run `dotnet run --project tools/generator` to regenerate models, enums, requests, responses, and services from the Prime OpenAPI spec (see `tools/generator/README.md`).
 
 ## Build, Test, and Development Commands
 - `dotnet restore prime-sdk-dotnet.sln` installs all NuGet dependencies.
 - `dotnet build prime-sdk-dotnet.sln` compiles the library, samples, and tests with warnings treated as errors.
 - `dotnet test src/CoinbaseSdk/Prime.Tests/CoinbaseSdk.Prime.Tests.csproj` runs the xUnit suite.
 - `dotnet run --project src/CoinbaseSdk/PrimeExample list` enumerates sample scenarios; swap `list` for any example command to execute it.
+- `dotnet run --project tools/generator` runs the holistic OpenAPI-driven generator; add `--dry-run` or `--diff` for diagnostics only.
 
 ## Coding Style & Naming Conventions
 Adhere to the StyleCop rules baked into the project; analyzer violations will fail the build. Use four-space indentation, expression-bodied members sparingly, and keep braces on new lines. Favor PascalCase for public types and members, camelCase for locals and parameters, and suffix async methods with `Async`. Run `dotnet format` locally to auto-fix whitespace and style issues before committing.

@@ -1,95 +1,84 @@
 /*
  * Copyright 2025-present Coinbase Global, Inc.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ *  http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
  */
 
 namespace CoinbaseSdk.Prime.Financing
 {
   using System.Text.Json.Serialization;
-  using CoinbaseSdk.Prime.Common;
-  using CoinbaseSdk.Prime.Model.Enums;
+  using CoinbaseSdk.Core.Error;
 
-  public class ListExistingLocatesRequest(string portfolioId) : PaginatedRequest
+  public class ListExistingLocatesRequest(string portfolioId)
   {
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
-
     [JsonPropertyName("locate_ids")]
-    public string[] LocateIds { get; set; } = [];
-
+    public string?[] LocateIds { get; set; } = [];
     [JsonPropertyName("conversion_date")]
     public string? ConversionDate { get; set; }
-
     [JsonPropertyName("locate_date")]
     public string? LocateDate { get; set; }
 
     public class Builder
     {
-      private string[] _locateIds = [];
+      private string? _portfolioId;
+      private string?[]? _locateIds;
       private string? _conversionDate;
       private string? _locateDate;
-      private string? _cursor;
-      private SortDirection? _sortDirection;
-      private int? _limit;
 
-      public Builder WithLocateIds(string[] locateIds)
+      public Builder WithPortfolioId(string value)
       {
-        _locateIds = locateIds;
+        _portfolioId = value;
         return this;
       }
 
-      public Builder WithConversionDate(string conversionDate)
+      public Builder WithLocateIds(string?[] value)
       {
-        _conversionDate = conversionDate;
+        _locateIds = value;
         return this;
       }
 
-      public Builder WithLocateDate(string locateDate)
+      public Builder WithConversionDate(string? value)
       {
-        _locateDate = locateDate;
+        _conversionDate = value;
         return this;
       }
 
-      public Builder WithCursor(string cursor)
+      public Builder WithLocateDate(string? value)
       {
-        _cursor = cursor;
+        _locateDate = value;
         return this;
       }
 
-      public Builder WithSortDirection(SortDirection sortDirection)
+      private void Validate()
       {
-        _sortDirection = sortDirection;
-        return this;
+        if (string.IsNullOrWhiteSpace(_portfolioId))
+        {
+          throw new CoinbaseClientException("PortfolioId is required");
+        }
       }
 
-      public Builder WithLimit(int limit)
+      public ListExistingLocatesRequest Build()
       {
-        _limit = limit;
-        return this;
-      }
-
-      public ListExistingLocatesRequest Build(string portfolioId)
-      {
-        return new ListExistingLocatesRequest(portfolioId)
+        Validate();
+        var request = new ListExistingLocatesRequest(_portfolioId!)
         {
           LocateIds = _locateIds,
           ConversionDate = _conversionDate,
           LocateDate = _locateDate,
-          Cursor = _cursor,
-          SortDirection = _sortDirection,
-          Limit = _limit
         };
+        return request;
       }
     }
   }

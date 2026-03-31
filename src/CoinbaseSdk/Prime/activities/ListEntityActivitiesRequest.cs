@@ -25,94 +25,92 @@ namespace CoinbaseSdk.Prime.Activities
   {
     [JsonIgnore]
     public string EntityId { get; set; } = entityId;
-
     [JsonPropertyName("activity_level")]
-    public ActivityLevel? ActivityLevel { get; set; }
-    public string[] Symbols { get; set; } = [];
-    public ActivityCategory?[] Categories { get; set; } = [];
-    public ActivityStatus?[] Statuses { get; set; } = [];
+    public string? ActivityLevel { get; set; }
+    [JsonPropertyName("symbols")]
+    public string?[] Symbols { get; set; } = [];
+    [JsonPropertyName("categories")]
+    public string?[] Categories { get; set; } = [];
+    [JsonPropertyName("statuses")]
+    public string?[] Statuses { get; set; } = [];
     [JsonPropertyName("start_time")]
     public string? StartTime { get; set; }
     [JsonPropertyName("end_time")]
     public string? EndTime { get; set; }
+    [JsonPropertyName("get_network_unified_activities")]
+    public bool? GetNetworkUnifiedActivities { get; set; }
 
     public class Builder
     {
       private string? _entityId;
-      private ActivityLevel? _activityLevel;
-      private string[]? _symbols;
-      private ActivityCategory?[]? _categories;
-      private ActivityStatus?[]? _statuses;
+      private string? _activityLevel;
+      private string?[]? _symbols;
+      private string?[]? _categories;
+      private string?[]? _statuses;
       private string? _startTime;
       private string? _endTime;
+      private bool? _getNetworkUnifiedActivities;
       private string? _cursor;
       private SortDirection? _sortDirection;
       private int? _limit;
 
-      public Builder WithEntityId(string entityId)
+      public Builder WithEntityId(string value)
       {
-        _entityId = entityId;
+        _entityId = value;
         return this;
       }
 
-      public Builder WithActivityLevel(ActivityLevel activityLevel)
+      public Builder WithActivityLevel(string? value)
       {
-        _activityLevel = activityLevel;
+        _activityLevel = value;
         return this;
       }
 
-      public Builder WithSymbols(string[] symbols)
+      public Builder WithSymbols(string?[] value)
       {
-        _symbols = symbols;
+        _symbols = value;
         return this;
       }
 
-      public Builder WithCategories(ActivityCategory?[] categories)
+      public Builder WithCategories(string?[] value)
       {
-        _categories = categories;
+        _categories = value;
         return this;
       }
 
-      public Builder WithStatuses(ActivityStatus?[] statuses)
+      public Builder WithStatuses(string?[] value)
       {
-        _statuses = statuses;
+        _statuses = value;
         return this;
       }
 
-      public Builder WithStartTime(string startTime)
+      public Builder WithStartTime(string? value)
       {
-        _startTime = startTime;
+        _startTime = value;
         return this;
       }
 
-      public Builder WithEndTime(string endTime)
+      public Builder WithEndTime(string? value)
       {
-        _endTime = endTime;
+        _endTime = value;
+        return this;
+      }
+
+      public Builder WithGetNetworkUnifiedActivities(bool? value)
+      {
+        _getNetworkUnifiedActivities = value;
         return this;
       }
 
       public Builder WithCursor(string cursor)
-      {
-        _cursor = cursor;
-        return this;
-      }
+      { _cursor = cursor; return this; }
 
       public Builder WithSortDirection(SortDirection sortDirection)
-      {
-        _sortDirection = sortDirection;
-        return this;
-      }
+      { _sortDirection = sortDirection; return this; }
 
       public Builder WithLimit(int limit)
-      {
-        _limit = limit;
-        return this;
-      }
+      { _limit = limit; return this; }
 
-      /// <summary>
-      /// Validates the builder.
-      /// </summary>
-      /// <exception cref="CoinbaseClientException">Thrown when <see cref="_entityId" /> is null, empty, or whitespace.</exception>
       private void Validate()
       {
         if (string.IsNullOrWhiteSpace(_entityId))
@@ -121,25 +119,21 @@ namespace CoinbaseSdk.Prime.Activities
         }
       }
 
-      /// <summary>
-      /// Builds the <see cref="ListEntityActivitiesRequest"/>.
-      /// </summary>
-      /// <returns>The <see cref="ListEntityActivitiesRequest"/>.</returns>
-      /// <exception cref="CoinbaseClientException">Thrown when <see cref="_entityId" /> is null, empty, or whitespace.</exception>
       public ListEntityActivitiesRequest Build()
       {
         Validate();
         var request = new ListEntityActivitiesRequest(_entityId!)
         {
           ActivityLevel = _activityLevel,
-          Symbols = _symbols ?? [],
-          Categories = _categories ?? [],
-          Statuses = _statuses ?? [],
+          Symbols = _symbols,
+          Categories = _categories,
+          Statuses = _statuses,
           StartTime = _startTime,
           EndTime = _endTime,
+          GetNetworkUnifiedActivities = _getNetworkUnifiedActivities,
           Cursor = _cursor,
           SortDirection = _sortDirection,
-          Limit = _limit
+          Limit = _limit,
         };
         return request;
       }

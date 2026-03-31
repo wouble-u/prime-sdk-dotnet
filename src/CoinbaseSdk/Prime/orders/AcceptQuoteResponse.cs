@@ -26,4 +26,3 @@ namespace CoinbaseSdk.Prime.Orders
     public AcceptQuoteResponse() { }
   }
 }
-

@@ -1,17 +1,17 @@
 /*
  * Copyright 2024-present Coinbase Global, Inc.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ *  http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
  */
 
 namespace CoinbaseSdk.Prime.Transactions
@@ -23,24 +23,20 @@ namespace CoinbaseSdk.Prime.Transactions
   {
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
-
     [JsonIgnore]
     public string WalletId { get; set; } = walletId;
-
+    [JsonPropertyName("amount")]
     public string? Amount { get; set; }
-
+    [JsonPropertyName("destination")]
     public string? Destination { get; set; }
-
     [JsonPropertyName("idempotency_key")]
     public string? IdempotencyKey { get; set; }
-
     [JsonPropertyName("source_symbol")]
     public string? SourceSymbol { get; set; }
-
     [JsonPropertyName("destination_symbol")]
     public string? DestinationSymbol { get; set; }
 
-    public class CreateConversionRequestBuilder
+    public class Builder
     {
       private string? _portfolioId;
       private string? _walletId;
@@ -50,75 +46,64 @@ namespace CoinbaseSdk.Prime.Transactions
       private string? _sourceSymbol;
       private string? _destinationSymbol;
 
-      public CreateConversionRequestBuilder WithPortfolioId(string portfolioId)
+      public Builder WithPortfolioId(string value)
       {
-        _portfolioId = portfolioId;
+        _portfolioId = value;
         return this;
       }
 
-      public CreateConversionRequestBuilder WithWalletId(string walletId)
+      public Builder WithWalletId(string value)
       {
-        _walletId = walletId;
+        _walletId = value;
         return this;
       }
 
-      public CreateConversionRequestBuilder WithAmount(string amount)
+      public Builder WithAmount(string? value)
       {
-        _amount = amount;
+        _amount = value;
         return this;
       }
 
-      public CreateConversionRequestBuilder WithDestination(string destination)
+      public Builder WithDestination(string? value)
       {
-        _destination = destination;
+        _destination = value;
         return this;
       }
 
-      public CreateConversionRequestBuilder WithIdempotencyKey(string idempotencyKey)
+      public Builder WithIdempotencyKey(string? value)
       {
-        _idempotencyKey = idempotencyKey;
+        _idempotencyKey = value;
         return this;
       }
 
-      public CreateConversionRequestBuilder WithSourceSymbol(string sourceSymbol)
+      public Builder WithSourceSymbol(string? value)
       {
-        _sourceSymbol = sourceSymbol;
+        _sourceSymbol = value;
         return this;
       }
 
-      public CreateConversionRequestBuilder WithDestinationSymbol(string destinationSymbol)
+      public Builder WithDestinationSymbol(string? value)
       {
-        _destinationSymbol = destinationSymbol;
+        _destinationSymbol = value;
         return this;
       }
 
-      /// <summary>
-      /// Validate the builder.
-      /// </summary>
-      /// <exception cref="CoinbaseClientException">Thrown when the
-      /// <see cref="_portfolioId"/> or <see cref="_walletId"/> are null, empty
-      /// or whitespace.</exception>
       private void Validate()
       {
-        if (string.IsNullOrEmpty(_portfolioId))
+        if (string.IsNullOrWhiteSpace(_portfolioId))
         {
           throw new CoinbaseClientException("PortfolioId is required");
         }
-        if (string.IsNullOrEmpty(_walletId))
+        if (string.IsNullOrWhiteSpace(_walletId))
         {
           throw new CoinbaseClientException("WalletId is required");
         }
       }
 
-      /// <summary>
-      /// Build the <see cref="CreateConversionRequest"/> object.
-      /// </summary>
-      /// <returns>The <see cref="CreateConversionRequest"/> object.</returns>
-      /// <exception cref="CoinbaseClientException">Thrown when the required fields are not set.</exception>
       public CreateConversionRequest Build()
       {
         Validate();
-        return new CreateConversionRequest(_portfolioId!, _walletId!)
+        var request = new CreateConversionRequest(_portfolioId!, _walletId!)
         {
           Amount = _amount,
           Destination = _destination,
@@ -126,6 +111,7 @@ namespace CoinbaseSdk.Prime.Transactions
           SourceSymbol = _sourceSymbol,
           DestinationSymbol = _destinationSymbol,
         };
+        return request;
       }
     }
   }

@@ -1,17 +1,17 @@
 /*
  * Copyright 2024-present Coinbase Global, Inc.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ *  http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
  */
 
 namespace CoinbaseSdk.Prime.Transactions
@@ -25,95 +25,91 @@ namespace CoinbaseSdk.Prime.Transactions
   {
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
-
     [JsonPropertyName("symbols")]
-    public string[] Symbols { get; set; } = [];
-
+    public string? Symbols { get; set; }
     [JsonPropertyName("types")]
-    public TransactionType[] Types { get; set; } = [];
-
+    public string?[] Types { get; set; } = [];
     [JsonPropertyName("start_time")]
     public string? StartTime { get; set; }
-
     [JsonPropertyName("end_time")]
     public string? EndTime { get; set; }
+    [JsonPropertyName("get_network_unified_transactions")]
+    public bool? GetNetworkUnifiedTransactions { get; set; }
+    [JsonPropertyName("travel_rule_status")]
+    public string?[] TravelRuleStatus { get; set; } = [];
 
     public class Builder
     {
       private string? _portfolioId;
-      private string[] _symbols = [];
-      private TransactionType[] _types = [];
+      private string? _symbols;
+      private string?[]? _types;
       private string? _startTime;
       private string? _endTime;
+      private bool? _getNetworkUnifiedTransactions;
+      private string?[]? _travelRuleStatus;
       private string? _cursor;
       private SortDirection? _sortDirection;
       private int? _limit;
 
-      public Builder WithPortfolioId(string portfolioId)
+      public Builder WithPortfolioId(string value)
       {
-        _portfolioId = portfolioId;
+        _portfolioId = value;
         return this;
       }
 
-      public Builder WithSymbols(string[] symbols)
+      public Builder WithSymbols(string? value)
       {
-        _symbols = symbols;
+        _symbols = value;
         return this;
       }
 
-      public Builder WithTypes(TransactionType[] types)
+      public Builder WithTypes(string?[] value)
       {
-        _types = types;
+        _types = value;
         return this;
       }
 
-      public Builder WithStartTime(string startTime)
+      public Builder WithStartTime(string? value)
       {
-        _startTime = startTime;
+        _startTime = value;
         return this;
       }
 
-      public Builder WithEndTime(string endTime)
+      public Builder WithEndTime(string? value)
       {
-        _endTime = endTime;
+        _endTime = value;
+        return this;
+      }
+
+      public Builder WithGetNetworkUnifiedTransactions(bool? value)
+      {
+        _getNetworkUnifiedTransactions = value;
+        return this;
+      }
+
+      public Builder WithTravelRuleStatus(string?[] value)
+      {
+        _travelRuleStatus = value;
         return this;
       }
 
       public Builder WithCursor(string cursor)
-      {
-        _cursor = cursor;
-        return this;
-      }
+      { _cursor = cursor; return this; }
 
       public Builder WithSortDirection(SortDirection sortDirection)
-      {
-        _sortDirection = sortDirection;
-        return this;
-      }
+      { _sortDirection = sortDirection; return this; }
 
       public Builder WithLimit(int limit)
-      {
-        _limit = limit;
-        return this;
-      }
+      { _limit = limit; return this; }
 
-      /// <summary>
-      /// Validates the request.
-      /// </summary>
-      /// <exception cref="CoinbaseClientException">Thrown when <see cref="_portfolioId" /> is null, empty, or whitespace.</exception>
       private void Validate()
       {
         if (string.IsNullOrWhiteSpace(_portfolioId))
         {
-          throw new CoinbaseClientException("PortfolioId cannot be null or empty");
+          throw new CoinbaseClientException("PortfolioId is required");
         }
       }
 
-      /// <summary>
-      /// Builds the <see cref="ListPortfolioTransactionsRequest"/> object.
-      /// </summary>
-      /// <returns>The <see cref="ListPortfolioTransactionsRequest"/> object.</returns>
-      /// <exception cref="CoinbaseClientException">Thrown when the required fields are not set.</exception>
       public ListPortfolioTransactionsRequest Build()
       {
         Validate();
@@ -123,6 +119,8 @@ namespace CoinbaseSdk.Prime.Transactions
           Types = _types,
           StartTime = _startTime,
           EndTime = _endTime,
+          GetNetworkUnifiedTransactions = _getNetworkUnifiedTransactions,
+          TravelRuleStatus = _travelRuleStatus,
           Cursor = _cursor,
           SortDirection = _sortDirection,
           Limit = _limit,

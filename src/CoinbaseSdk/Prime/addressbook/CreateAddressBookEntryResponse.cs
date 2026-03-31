@@ -16,8 +16,8 @@
 
 namespace CoinbaseSdk.Prime.AddressBook
 {
-  using System.Text.Json.Serialization;
   using CoinbaseSdk.Prime.Model.Enums;
+  using System.Text.Json.Serialization;
 
   public class CreateAddressBookEntryResponse
   {
@@ -27,5 +27,7 @@ namespace CoinbaseSdk.Prime.AddressBook
     public int? NumApprovalsRemaining { get; set; }
     [JsonPropertyName("activity_id")]
     public string? ActivityId { get; set; }
+
+    public CreateAddressBookEntryResponse() { }
   }
 }

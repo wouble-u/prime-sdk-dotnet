@@ -20,11 +20,10 @@ namespace CoinbaseSdk.Prime.Balances
   using CoinbaseSdk.Core.Client;
   using CoinbaseSdk.Core.Http;
   using CoinbaseSdk.Core.Service;
+
   public class BalancesService(ICoinbaseClient client) : CoinbaseService(client), IBalancesService
   {
-    public GetWalletBalanceResponse GetWalletBalance(
-      GetWalletBalanceRequest request,
-      CallOptions? options = null)
+    public GetWalletBalanceResponse GetWalletBalance(GetWalletBalanceRequest request, CallOptions? options = null)
     {
       return Request<GetWalletBalanceResponse>(
         HttpMethod.Get,
@@ -48,9 +47,7 @@ namespace CoinbaseSdk.Prime.Balances
         cancellationToken);
     }
 
-    public ListEntityBalancesResponse ListEntityBalances(
-      ListEntityBalancesRequest request,
-      CallOptions? options = null)
+    public ListEntityBalancesResponse ListEntityBalances(ListEntityBalancesRequest request, CallOptions? options = null)
     {
       return Request<ListEntityBalancesResponse>(
         HttpMethod.Get,
@@ -74,9 +71,31 @@ namespace CoinbaseSdk.Prime.Balances
         cancellationToken);
     }
 
-    public ListPortfolioBalancesResponse ListPortfolioBalances(
-      ListPortfolioBalancesRequest request,
-      CallOptions? options = null)
+    public ListOnchainWalletBalancesResponse ListOnchainWalletBalances(ListOnchainWalletBalancesRequest request, CallOptions? options = null)
+    {
+      return Request<ListOnchainWalletBalancesResponse>(
+        HttpMethod.Get,
+        $"/portfolios/{request.PortfolioId}/wallets/{request.WalletId}/web3_balances",
+        [HttpStatusCode.OK],
+        request,
+        options);
+    }
+
+    public Task<ListOnchainWalletBalancesResponse> ListOnchainWalletBalancesAsync(
+      ListOnchainWalletBalancesRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default)
+    {
+      return RequestAsync<ListOnchainWalletBalancesResponse>(
+        HttpMethod.Get,
+        $"/portfolios/{request.PortfolioId}/wallets/{request.WalletId}/web3_balances",
+        [HttpStatusCode.OK],
+        request,
+        options,
+        cancellationToken);
+    }
+
+    public ListPortfolioBalancesResponse ListPortfolioBalances(ListPortfolioBalancesRequest request, CallOptions? options = null)
     {
       return Request<ListPortfolioBalancesResponse>(
         HttpMethod.Get,
@@ -100,30 +119,5 @@ namespace CoinbaseSdk.Prime.Balances
         cancellationToken);
     }
 
-    public ListOnchainWalletBalancesResponse ListOnchainWalletBalances(
-      ListOnchainWalletBalancesRequest request,
-      CallOptions? options = null)
-    {
-      return Request<ListOnchainWalletBalancesResponse>(
-        HttpMethod.Get,
-        $"/portfolios/{request.PortfolioId}/wallets/{request.WalletId}/web3_balances",
-        [HttpStatusCode.OK],
-        request,
-        options);
-    }
-
-    public Task<ListOnchainWalletBalancesResponse> ListOnchainWalletBalancesAsync(
-      ListOnchainWalletBalancesRequest request,
-      CallOptions? options = null,
-      CancellationToken cancellationToken = default)
-    {
-      return RequestAsync<ListOnchainWalletBalancesResponse>(
-        HttpMethod.Get,
-        $"/portfolios/{request.PortfolioId}/wallets/{request.WalletId}/web3_balances",
-        [HttpStatusCode.OK],
-        request,
-        options,
-        cancellationToken);
-    }
   }
 }

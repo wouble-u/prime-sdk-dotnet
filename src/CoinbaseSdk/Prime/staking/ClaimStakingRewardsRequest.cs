@@ -18,29 +18,72 @@ namespace CoinbaseSdk.Prime.Staking
 {
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
+  using CoinbaseSdk.Prime.Model;
 
-  /// <summary>
-  /// Request object for claiming staking rewards from a wallet.
-  /// </summary>
   public class ClaimStakingRewardsRequest(string portfolioId, string walletId)
   {
-    /// <summary>
-    /// The portfolio ID.
-    /// </summary>
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
-
-    /// <summary>
-    /// The wallet ID.
-    /// </summary>
     [JsonIgnore]
     public string WalletId { get; set; } = walletId;
-
-    /// <summary>
-    /// The client generated idempotency key for requested execution.
-    /// Any subsequent requests with the same key will return the original response.
-    /// </summary>
     [JsonPropertyName("idempotency_key")]
     public string? IdempotencyKey { get; set; }
+    [JsonPropertyName("inputs")]
+    public WalletClaimRewardsInputs Inputs { get; set; }
+
+    public class Builder
+    {
+      private string? _portfolioId;
+      private string? _walletId;
+      private string? _idempotencyKey;
+      private WalletClaimRewardsInputs _inputs;
+
+      public Builder WithPortfolioId(string value)
+      {
+        _portfolioId = value;
+        return this;
+      }
+
+      public Builder WithWalletId(string value)
+      {
+        _walletId = value;
+        return this;
+      }
+
+      public Builder WithIdempotencyKey(string? value)
+      {
+        _idempotencyKey = value;
+        return this;
+      }
+
+      public Builder WithInputs(WalletClaimRewardsInputs value)
+      {
+        _inputs = value;
+        return this;
+      }
+
+      private void Validate()
+      {
+        if (string.IsNullOrWhiteSpace(_portfolioId))
+        {
+          throw new CoinbaseClientException("PortfolioId is required");
+        }
+        if (string.IsNullOrWhiteSpace(_walletId))
+        {
+          throw new CoinbaseClientException("WalletId is required");
+        }
+      }
+
+      public ClaimStakingRewardsRequest Build()
+      {
+        Validate();
+        var request = new ClaimStakingRewardsRequest(_portfolioId!, _walletId!)
+        {
+          IdempotencyKey = _idempotencyKey,
+          Inputs = _inputs,
+        };
+        return request;
+      }
+    }
   }
 }

@@ -24,7 +24,32 @@ namespace CoinbaseSdk.Prime.Futures
     [JsonIgnore]
     public string EntityId { get; set; } = entityId;
 
-    [JsonPropertyName("product_id")]
-    public string? ProductId { get; set; }
+    public class Builder
+    {
+      private string? _entityId;
+
+      public Builder WithEntityId(string value)
+      {
+        _entityId = value;
+        return this;
+      }
+
+      private void Validate()
+      {
+        if (string.IsNullOrWhiteSpace(_entityId))
+        {
+          throw new CoinbaseClientException("EntityId is required");
+        }
+      }
+
+      public GetFcmRiskLimitsRequest Build()
+      {
+        Validate();
+        var request = new GetFcmRiskLimitsRequest(_entityId!)
+        {
+        };
+        return request;
+      }
+    }
   }
 }

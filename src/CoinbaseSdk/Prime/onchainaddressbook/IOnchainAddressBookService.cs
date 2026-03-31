@@ -20,53 +20,33 @@ namespace CoinbaseSdk.Prime.OnchainAddressBook
 
   public interface IOnchainAddressBookService
   {
-    public ActivityCreationResponse CreateOnchainAddressBookEntry(
-        CreateOnchainAddressBookEntryRequest request,
-        CallOptions? options = null);
+    public CreateOnchainAddressBookEntryResponse CreateOnchainAddressBookEntry(CreateOnchainAddressBookEntryRequest request, CallOptions? options = null);
 
-    public Task<ActivityCreationResponse> CreateOnchainAddressBookEntryAsync(
-        CreateOnchainAddressBookEntryRequest request,
-        CallOptions? options = null,
-        CancellationToken cancellationToken = default);
+    public Task<CreateOnchainAddressBookEntryResponse> CreateOnchainAddressBookEntryAsync(
+      CreateOnchainAddressBookEntryRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default);
 
-    public ActivityCreationResponse UpdateOnchainAddressBookEntry(
-        UpdateOnchainAddressBookEntryRequest request,
-        CallOptions? options = null);
+    public DeleteOnchainAddressGroupResponse DeleteOnchainAddressGroup(DeleteOnchainAddressGroupRequest request, CallOptions? options = null);
 
-    public Task<ActivityCreationResponse> UpdateOnchainAddressBookEntryAsync(
-        UpdateOnchainAddressBookEntryRequest request,
-        CallOptions? options = null,
-        CancellationToken cancellationToken = default);
+    public Task<DeleteOnchainAddressGroupResponse> DeleteOnchainAddressGroupAsync(
+      DeleteOnchainAddressGroupRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default);
 
-    public ActivityCreationResponse DeleteOnchainAddressGroup(
-        DeleteOnchainAddressGroupRequest request,
-        CallOptions? options = null);
+    public ListOnchainAddressGroupsResponse ListOnchainAddressGroups(ListOnchainAddressGroupsRequest request, CallOptions? options = null);
 
-    public Task<ActivityCreationResponse> DeleteOnchainAddressGroupAsync(
-        DeleteOnchainAddressGroupRequest request,
-        CallOptions? options = null,
-        CancellationToken cancellationToken = default);
-
-    /// <summary>
-    /// Lists all onchain address groups for a given portfolio ID.
-    /// </summary>
-    /// <param name="request">The request object containing the portfolio ID.</param>
-    /// <param name="options">Optional call options.</param>
-    /// <returns>A response containing the list of onchain address groups.</returns>
-    ListOnchainAddressGroupsResponse ListOnchainAddressGroups(
-      ListOnchainAddressGroupsRequest request,
-      CallOptions? options = null);
-
-    /// <summary>
-    /// Lists all onchain address groups for a given portfolio ID asynchronously.
-    /// </summary>
-    /// <param name="request">The request object containing the portfolio ID.</param>
-    /// <param name="options">Optional call options.</param>
-    /// <param name="cancellationToken">Cancellation token.</param>
-    /// <returns>A task that returns a response containing the list of onchain address groups.</returns>
-    Task<ListOnchainAddressGroupsResponse> ListOnchainAddressGroupsAsync(
+    public Task<ListOnchainAddressGroupsResponse> ListOnchainAddressGroupsAsync(
       ListOnchainAddressGroupsRequest request,
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
+
+    public UpdateOnchainAddressBookEntryResponse UpdateOnchainAddressBookEntry(UpdateOnchainAddressBookEntryRequest request, CallOptions? options = null);
+
+    public Task<UpdateOnchainAddressBookEntryResponse> UpdateOnchainAddressBookEntryAsync(
+      UpdateOnchainAddressBookEntryRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default);
+
   }
 }

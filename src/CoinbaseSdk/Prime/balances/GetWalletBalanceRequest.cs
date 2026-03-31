@@ -17,12 +17,52 @@
 namespace CoinbaseSdk.Prime.Balances
 {
   using System.Text.Json.Serialization;
+  using CoinbaseSdk.Core.Error;
+
   public class GetWalletBalanceRequest(string portfolioId, string walletId)
   {
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
-
     [JsonIgnore]
     public string WalletId { get; set; } = walletId;
+
+    public class Builder
+    {
+      private string? _portfolioId;
+      private string? _walletId;
+
+      public Builder WithPortfolioId(string value)
+      {
+        _portfolioId = value;
+        return this;
+      }
+
+      public Builder WithWalletId(string value)
+      {
+        _walletId = value;
+        return this;
+      }
+
+      private void Validate()
+      {
+        if (string.IsNullOrWhiteSpace(_portfolioId))
+        {
+          throw new CoinbaseClientException("PortfolioId is required");
+        }
+        if (string.IsNullOrWhiteSpace(_walletId))
+        {
+          throw new CoinbaseClientException("WalletId is required");
+        }
+      }
+
+      public GetWalletBalanceRequest Build()
+      {
+        Validate();
+        var request = new GetWalletBalanceRequest(_portfolioId!, _walletId!)
+        {
+        };
+        return request;
+      }
+    }
   }
 }

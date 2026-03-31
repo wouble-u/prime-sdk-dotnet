@@ -47,6 +47,30 @@ namespace CoinbaseSdk.Prime.Orders
         cancellationToken);
     }
 
+    public CancelOrderResponse CancelOrder(CancelOrderRequest request, CallOptions? options = null)
+    {
+      return Request<CancelOrderResponse>(
+        HttpMethod.Post,
+        $"/portfolios/{request.PortfolioId}/orders/{request.OrderId}/cancel",
+        [HttpStatusCode.OK],
+        null,
+        options);
+    }
+
+    public Task<CancelOrderResponse> CancelOrderAsync(
+      CancelOrderRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default)
+    {
+      return RequestAsync<CancelOrderResponse>(
+        HttpMethod.Post,
+        $"/portfolios/{request.PortfolioId}/orders/{request.OrderId}/cancel",
+        [HttpStatusCode.OK],
+        null,
+        options,
+        cancellationToken);
+    }
+
     public CreateOrderResponse CreateOrder(CreateOrderRequest request, CallOptions? options = null)
     {
       return Request<CreateOrderResponse>(
@@ -95,26 +119,26 @@ namespace CoinbaseSdk.Prime.Orders
         cancellationToken);
     }
 
-    public CancelOrderResponse CancelOrder(CancelOrderRequest request, CallOptions? options = null)
+    public EditOrderResponse EditOrder(EditOrderRequest request, CallOptions? options = null)
     {
-      return Request<CancelOrderResponse>(
-        HttpMethod.Post,
-        $"/portfolios/{request.PortfolioId}/orders/{request.OrderId}/cancel",
+      return Request<EditOrderResponse>(
+        HttpMethod.Put,
+        $"/portfolios/{request.PortfolioId}/orders/{request.OrderId}/edit",
         [HttpStatusCode.OK],
-        null,
+        request,
         options);
     }
 
-    public Task<CancelOrderResponse> CancelOrderAsync(
-      CancelOrderRequest request,
+    public Task<EditOrderResponse> EditOrderAsync(
+      EditOrderRequest request,
       CallOptions? options = null,
       CancellationToken cancellationToken = default)
     {
-      return RequestAsync<CancelOrderResponse>(
-        HttpMethod.Post,
-        $"/portfolios/{request.PortfolioId}/orders/{request.OrderId}/cancel",
+      return RequestAsync<EditOrderResponse>(
+        HttpMethod.Put,
+        $"/portfolios/{request.PortfolioId}/orders/{request.OrderId}/edit",
         [HttpStatusCode.OK],
-        null,
+        request,
         options,
         cancellationToken);
     }
@@ -143,9 +167,7 @@ namespace CoinbaseSdk.Prime.Orders
         cancellationToken);
     }
 
-    public GetOrderPreviewResponse GetOrderPreview(
-      GetOrderPreviewRequest request,
-      CallOptions? options = null)
+    public GetOrderPreviewResponse GetOrderPreview(GetOrderPreviewRequest request, CallOptions? options = null)
     {
       return Request<GetOrderPreviewResponse>(
         HttpMethod.Post,
@@ -169,9 +191,7 @@ namespace CoinbaseSdk.Prime.Orders
         cancellationToken);
     }
 
-    public ListOpenOrdersResponse ListOpenOrders(
-      ListOpenOrdersRequest request,
-      CallOptions? options = null)
+    public ListOpenOrdersResponse ListOpenOrders(ListOpenOrdersRequest request, CallOptions? options = null)
     {
       return Request<ListOpenOrdersResponse>(
         HttpMethod.Get,
@@ -195,9 +215,31 @@ namespace CoinbaseSdk.Prime.Orders
         cancellationToken);
     }
 
-    public ListOrderFillsResponse ListOrderFills(
-      ListOrderFillsRequest request,
-      CallOptions? options = null)
+    public ListOrderEditHistoryResponse ListOrderEditHistory(ListOrderEditHistoryRequest request, CallOptions? options = null)
+    {
+      return Request<ListOrderEditHistoryResponse>(
+        HttpMethod.Get,
+        $"/portfolios/{request.PortfolioId}/orders/{request.OrderId}/edit_history",
+        [HttpStatusCode.OK],
+        null,
+        options);
+    }
+
+    public Task<ListOrderEditHistoryResponse> ListOrderEditHistoryAsync(
+      ListOrderEditHistoryRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default)
+    {
+      return RequestAsync<ListOrderEditHistoryResponse>(
+        HttpMethod.Get,
+        $"/portfolios/{request.PortfolioId}/orders/{request.OrderId}/edit_history",
+        [HttpStatusCode.OK],
+        null,
+        options,
+        cancellationToken);
+    }
+
+    public ListOrderFillsResponse ListOrderFills(ListOrderFillsRequest request, CallOptions? options = null)
     {
       return Request<ListOrderFillsResponse>(
         HttpMethod.Get,
@@ -221,35 +263,7 @@ namespace CoinbaseSdk.Prime.Orders
         cancellationToken);
     }
 
-    public ListPortfolioOrdersResponse ListPortfolioOrders(
-      ListPortfolioOrdersRequest request,
-      CallOptions? options = null)
-    {
-      return Request<ListPortfolioOrdersResponse>(
-        HttpMethod.Get,
-        $"/portfolios/{request.PortfolioId}/orders",
-        [HttpStatusCode.OK],
-        request,
-        options);
-    }
-
-    public Task<ListPortfolioOrdersResponse> ListPortfolioOrdersAsync(
-      ListPortfolioOrdersRequest request,
-      CallOptions? options = null,
-      CancellationToken cancellationToken = default)
-    {
-      return RequestAsync<ListPortfolioOrdersResponse>(
-        HttpMethod.Get,
-        $"/portfolios/{request.PortfolioId}/orders",
-        [HttpStatusCode.OK],
-        request,
-        options,
-        cancellationToken);
-    }
-
-    public ListPortfolioFillsResponse ListPortfolioFills(
-      ListPortfolioFillsRequest request,
-      CallOptions? options = null)
+    public ListPortfolioFillsResponse ListPortfolioFills(ListPortfolioFillsRequest request, CallOptions? options = null)
     {
       return Request<ListPortfolioFillsResponse>(
         HttpMethod.Get,
@@ -273,54 +287,29 @@ namespace CoinbaseSdk.Prime.Orders
         cancellationToken);
     }
 
-    public ListOrderEditHistoryResponse ListOrderEditHistory(
-      ListOrderEditHistoryRequest request,
-      CallOptions? options = null)
+    public ListPortfolioOrdersResponse ListPortfolioOrders(ListPortfolioOrdersRequest request, CallOptions? options = null)
     {
-      return Request<ListOrderEditHistoryResponse>(
+      return Request<ListPortfolioOrdersResponse>(
         HttpMethod.Get,
-        $"/portfolios/{request.PortfolioId}/orders/{request.OrderId}/edit_history",
+        $"/portfolios/{request.PortfolioId}/orders",
         [HttpStatusCode.OK],
         request,
         options);
     }
 
-    public Task<ListOrderEditHistoryResponse> ListOrderEditHistoryAsync(
-      ListOrderEditHistoryRequest request,
+    public Task<ListPortfolioOrdersResponse> ListPortfolioOrdersAsync(
+      ListPortfolioOrdersRequest request,
       CallOptions? options = null,
       CancellationToken cancellationToken = default)
     {
-      return RequestAsync<ListOrderEditHistoryResponse>(
+      return RequestAsync<ListPortfolioOrdersResponse>(
         HttpMethod.Get,
-        $"/portfolios/{request.PortfolioId}/orders/{request.OrderId}/edit_history",
+        $"/portfolios/{request.PortfolioId}/orders",
         [HttpStatusCode.OK],
         request,
         options,
         cancellationToken);
     }
 
-    public EditOrderResponse EditOrder(EditOrderRequest request, CallOptions? options = null)
-    {
-      return Request<EditOrderResponse>(
-        HttpMethod.Put,
-        $"/portfolios/{request.PortfolioId}/orders/{request.OrderId}/edit",
-        [HttpStatusCode.OK],
-        request,
-        options);
-    }
-
-    public Task<EditOrderResponse> EditOrderAsync(
-      EditOrderRequest request,
-      CallOptions? options = null,
-      CancellationToken cancellationToken = default)
-    {
-      return RequestAsync<EditOrderResponse>(
-        HttpMethod.Put,
-        $"/portfolios/{request.PortfolioId}/orders/{request.OrderId}/edit",
-        [HttpStatusCode.OK],
-        request,
-        options,
-        cancellationToken);
-    }
   }
 }

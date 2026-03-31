@@ -20,11 +20,10 @@ namespace CoinbaseSdk.Prime.AddressBook
   using CoinbaseSdk.Core.Client;
   using CoinbaseSdk.Core.Http;
   using CoinbaseSdk.Core.Service;
+
   public class AddressBookService(ICoinbaseClient client) : CoinbaseService(client), IAddressBookService
   {
-    public CreateAddressBookEntryResponse CreateAddressBookEntry(
-      CreateAddressBookEntryRequest request,
-      CallOptions? options = null)
+    public CreateAddressBookEntryResponse CreateAddressBookEntry(CreateAddressBookEntryRequest request, CallOptions? options = null)
     {
       return Request<CreateAddressBookEntryResponse>(
         HttpMethod.Post,
@@ -48,9 +47,7 @@ namespace CoinbaseSdk.Prime.AddressBook
         cancellationToken);
     }
 
-    public ListAddressBookEntriesResponse ListAddressBookEntries(
-      ListAddressBookEntriesRequest request,
-      CallOptions? options = null)
+    public ListAddressBookEntriesResponse ListAddressBookEntries(ListAddressBookEntriesRequest request, CallOptions? options = null)
     {
       return Request<ListAddressBookEntriesResponse>(
         HttpMethod.Get,
@@ -73,5 +70,6 @@ namespace CoinbaseSdk.Prime.AddressBook
         options,
         cancellationToken);
     }
+
   }
 }

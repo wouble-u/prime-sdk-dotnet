@@ -23,7 +23,6 @@ namespace CoinbaseSdk.Prime.Activities
   {
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
-
     [JsonIgnore]
     public string ActivityId { get; set; } = activityId;
 
@@ -32,44 +31,37 @@ namespace CoinbaseSdk.Prime.Activities
       private string? _portfolioId;
       private string? _activityId;
 
-      public Builder WithPortfolioId(string portfolioId)
+      public Builder WithPortfolioId(string value)
       {
-        _portfolioId = portfolioId;
+        _portfolioId = value;
         return this;
       }
 
-      public Builder WithActivityId(string activityId)
+      public Builder WithActivityId(string value)
       {
-        _activityId = activityId;
+        _activityId = value;
         return this;
       }
 
-      /// <summary>
-      /// Validates the builder.
-      /// </summary>
-      /// <exception cref="CoinbaseClientException">Thrown when <see cref="_portfolioId" /> or <see cref="_activityId" /> is null, empty, or whitespace.</exception>
       private void Validate()
       {
         if (string.IsNullOrWhiteSpace(_portfolioId))
         {
           throw new CoinbaseClientException("PortfolioId is required");
         }
-
         if (string.IsNullOrWhiteSpace(_activityId))
         {
           throw new CoinbaseClientException("ActivityId is required");
         }
       }
 
-      /// <summary>
-      /// Builds the <see cref="GetPortfolioActivityRequest"/>.
-      /// </summary>
-      /// <returns>The <see cref="GetPortfolioActivityRequest"/>.</returns>
-      /// <exception cref="CoinbaseClientException">Thrown when <see cref="_portfolioId" /> or <see cref="_activityId" /> is null, empty, or whitespace.</exception>
       public GetPortfolioActivityRequest Build()
       {
         Validate();
-        return new GetPortfolioActivityRequest(_portfolioId!, _activityId!);
+        var request = new GetPortfolioActivityRequest(_portfolioId!, _activityId!)
+        {
+        };
+        return request;
       }
     }
   }

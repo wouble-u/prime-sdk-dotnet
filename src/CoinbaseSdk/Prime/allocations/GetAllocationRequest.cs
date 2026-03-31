@@ -23,7 +23,6 @@ namespace CoinbaseSdk.Prime.Allocations
   {
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
-
     [JsonIgnore]
     public string AllocationId { get; set; } = allocationId;
 
@@ -32,24 +31,18 @@ namespace CoinbaseSdk.Prime.Allocations
       private string? _portfolioId;
       private string? _allocationId;
 
-      public Builder WithPortfolioId(string portfolioId)
+      public Builder WithPortfolioId(string value)
       {
-        _portfolioId = portfolioId;
+        _portfolioId = value;
         return this;
       }
 
-      public Builder WithAllocationId(string allocationId)
+      public Builder WithAllocationId(string value)
       {
-        _allocationId = allocationId;
+        _allocationId = value;
         return this;
       }
 
-      /// <summary>
-      /// Validate the builder.
-      /// </summary>
-      /// <exception cref="CoinbaseClientException">Thrown when the
-      /// <see cref="_portfolioId"/> or <see cref="_allocationId"/> are null, empty
-      /// or whitespace.</exception>
       private void Validate()
       {
         if (string.IsNullOrWhiteSpace(_portfolioId))
@@ -62,15 +55,13 @@ namespace CoinbaseSdk.Prime.Allocations
         }
       }
 
-      /// <summary>
-      /// Build the <see cref="GetAllocationRequest"/> object.
-      /// </summary>
-      /// <returns>The <see cref="GetAllocationRequest"/> object.</returns>
-      /// <exception cref="CoinbaseClientException">Thrown when the required fields are not set.</exception>
       public GetAllocationRequest Build()
       {
         Validate();
-        return new GetAllocationRequest(_portfolioId!, _allocationId!);
+        var request = new GetAllocationRequest(_portfolioId!, _allocationId!)
+        {
+        };
+        return request;
       }
     }
   }

@@ -1,97 +1,84 @@
 /*
  * Copyright 2025-present Coinbase Global, Inc.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ *  http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
  */
-
 
 namespace CoinbaseSdk.Prime.Financing
 {
   using System.Text.Json.Serialization;
-  using CoinbaseSdk.Prime.Common;
-  using CoinbaseSdk.Prime.Model.Enums;
+  using CoinbaseSdk.Core.Error;
 
-  public class ListInterestAccrualsRequest(string entityId) : PaginatedRequest
+  public class ListInterestAccrualsRequest(string entityId)
   {
     [JsonIgnore]
     public string EntityId { get; set; } = entityId;
-
     [JsonPropertyName("portfolio_id")]
     public string? PortfolioId { get; set; }
-
     [JsonPropertyName("start_date")]
     public string? StartDate { get; set; }
-
     [JsonPropertyName("end_date")]
     public string? EndDate { get; set; }
 
-    public class Builder(string entityId)
+    public class Builder
     {
-      private readonly string _entityId = entityId;
+      private string? _entityId;
       private string? _portfolioId;
       private string? _startDate;
       private string? _endDate;
-      private string? _cursor;
-      private SortDirection? _sortDirection;
-      private int? _limit;
 
-      public Builder WithPortfolioId(string portfolioId)
+      public Builder WithEntityId(string value)
       {
-        _portfolioId = portfolioId;
+        _entityId = value;
         return this;
       }
 
-      public Builder WithStartDate(string startDate)
+      public Builder WithPortfolioId(string? value)
       {
-        _startDate = startDate;
+        _portfolioId = value;
         return this;
       }
 
-      public Builder WithEndDate(string endDate)
+      public Builder WithStartDate(string? value)
       {
-        _endDate = endDate;
+        _startDate = value;
         return this;
       }
 
-      public Builder WithCursor(string cursor)
+      public Builder WithEndDate(string? value)
       {
-        _cursor = cursor;
+        _endDate = value;
         return this;
       }
 
-      public Builder WithSortDirection(SortDirection sortDirection)
+      private void Validate()
       {
-        _sortDirection = sortDirection;
-        return this;
-      }
-
-      public Builder WithLimit(int limit)
-      {
-        _limit = limit;
-        return this;
+        if (string.IsNullOrWhiteSpace(_entityId))
+        {
+          throw new CoinbaseClientException("EntityId is required");
+        }
       }
 
       public ListInterestAccrualsRequest Build()
       {
-        return new ListInterestAccrualsRequest(_entityId)
+        Validate();
+        var request = new ListInterestAccrualsRequest(_entityId!)
         {
           PortfolioId = _portfolioId,
           StartDate = _startDate,
           EndDate = _endDate,
-          Cursor = _cursor,
-          Limit = _limit,
-          SortDirection = _sortDirection
         };
+        return request;
       }
     }
   }

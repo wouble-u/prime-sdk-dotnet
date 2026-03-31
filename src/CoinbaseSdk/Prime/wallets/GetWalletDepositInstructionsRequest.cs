@@ -17,20 +17,82 @@
 namespace CoinbaseSdk.Prime.Wallets
 {
   using System.Text.Json.Serialization;
-  using CoinbaseSdk.Prime.Model;
-  using CoinbaseSdk.Prime.Model.Enums;
+  using CoinbaseSdk.Core.Error;
 
   public class GetWalletDepositInstructionsRequest(string portfolioId, string walletId)
   {
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
-
     [JsonIgnore]
     public string WalletId { get; set; } = walletId;
-
     [JsonPropertyName("deposit_type")]
-    public WalletDepositInstructionType DepositType { get; set; }
+    public string? DepositType { get; set; }
+    [JsonPropertyName("network.id")]
+    public string? NetworkId { get; set; }
+    [JsonPropertyName("network.type")]
+    public string? NetworkType { get; set; }
 
-    public Network? Network { get; set; }
+    public class Builder
+    {
+      private string? _portfolioId;
+      private string? _walletId;
+      private string? _depositType;
+      private string? _networkId;
+      private string? _networkType;
+
+      public Builder WithPortfolioId(string value)
+      {
+        _portfolioId = value;
+        return this;
+      }
+
+      public Builder WithWalletId(string value)
+      {
+        _walletId = value;
+        return this;
+      }
+
+      public Builder WithDepositType(string? value)
+      {
+        _depositType = value;
+        return this;
+      }
+
+      public Builder WithNetworkId(string? value)
+      {
+        _networkId = value;
+        return this;
+      }
+
+      public Builder WithNetworkType(string? value)
+      {
+        _networkType = value;
+        return this;
+      }
+
+      private void Validate()
+      {
+        if (string.IsNullOrWhiteSpace(_portfolioId))
+        {
+          throw new CoinbaseClientException("PortfolioId is required");
+        }
+        if (string.IsNullOrWhiteSpace(_walletId))
+        {
+          throw new CoinbaseClientException("WalletId is required");
+        }
+      }
+
+      public GetWalletDepositInstructionsRequest Build()
+      {
+        Validate();
+        var request = new GetWalletDepositInstructionsRequest(_portfolioId!, _walletId!)
+        {
+          DepositType = _depositType,
+          NetworkId = _networkId,
+          NetworkType = _networkType,
+        };
+        return request;
+      }
+    }
   }
 }

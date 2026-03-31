@@ -17,17 +17,76 @@
 namespace CoinbaseSdk.Prime.Orders
 {
   using System.Text.Json.Serialization;
+  using CoinbaseSdk.Core.Error;
   using CoinbaseSdk.Prime.Common;
+  using CoinbaseSdk.Prime.Model.Enums;
 
   public class ListPortfolioFillsRequest(string portfolioId) : PaginatedRequest
   {
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
-
     [JsonPropertyName("start_date")]
     public string? StartDate { get; set; }
-
     [JsonPropertyName("end_date")]
     public string? EndDate { get; set; }
+
+    public class Builder
+    {
+      private string? _portfolioId;
+      private string? _startDate;
+      private string? _endDate;
+      private string? _cursor;
+      private SortDirection? _sortDirection;
+      private int? _limit;
+
+      public Builder WithPortfolioId(string value)
+      {
+        _portfolioId = value;
+        return this;
+      }
+
+      public Builder WithStartDate(string? value)
+      {
+        _startDate = value;
+        return this;
+      }
+
+      public Builder WithEndDate(string? value)
+      {
+        _endDate = value;
+        return this;
+      }
+
+      public Builder WithCursor(string cursor)
+      { _cursor = cursor; return this; }
+
+      public Builder WithSortDirection(SortDirection sortDirection)
+      { _sortDirection = sortDirection; return this; }
+
+      public Builder WithLimit(int limit)
+      { _limit = limit; return this; }
+
+      private void Validate()
+      {
+        if (string.IsNullOrWhiteSpace(_portfolioId))
+        {
+          throw new CoinbaseClientException("PortfolioId is required");
+        }
+      }
+
+      public ListPortfolioFillsRequest Build()
+      {
+        Validate();
+        var request = new ListPortfolioFillsRequest(_portfolioId!)
+        {
+          StartDate = _startDate,
+          EndDate = _endDate,
+          Cursor = _cursor,
+          SortDirection = _sortDirection,
+          Limit = _limit,
+        };
+        return request;
+      }
+    }
   }
 }

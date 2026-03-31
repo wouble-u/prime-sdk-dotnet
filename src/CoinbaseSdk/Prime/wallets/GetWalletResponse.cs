@@ -17,10 +17,12 @@
 namespace CoinbaseSdk.Prime.Wallets
 {
   using CoinbaseSdk.Prime.Model;
+  using System.Text.Json.Serialization;
 
   public class GetWalletResponse
   {
-    public Wallet? Wallet { get; set; }
+    [JsonPropertyName("wallet")]
+    public Wallet Wallet { get; set; }
 
     public GetWalletResponse() { }
   }

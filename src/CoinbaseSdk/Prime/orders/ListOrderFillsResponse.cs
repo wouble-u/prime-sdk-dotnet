@@ -16,13 +16,17 @@
 
 namespace CoinbaseSdk.Prime.Orders
 {
-  using CoinbaseSdk.Prime.Common;
   using CoinbaseSdk.Prime.Model;
+  using CoinbaseSdk.Prime.Common;
+  using System.Text.Json.Serialization;
 
   public class ListOrderFillsResponse
   {
-    public List<Fill> Fills { get; set; } = [];
+    [JsonPropertyName("fills")]
+    public Fill[] Fills { get; set; } = [];
+    [JsonPropertyName("pagination")]
+    public Pagination Pagination { get; set; }
 
-    public Pagination? Pagination { get; set; }
+    public ListOrderFillsResponse() { }
   }
 }

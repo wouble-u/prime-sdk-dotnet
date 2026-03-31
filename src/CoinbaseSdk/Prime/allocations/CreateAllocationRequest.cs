@@ -17,99 +17,87 @@
 namespace CoinbaseSdk.Prime.Allocations
 {
   using System.Text.Json.Serialization;
-  using CoinbaseSdk.Prime.Model;
+  using CoinbaseSdk.Core.Error;
   using CoinbaseSdk.Prime.Model.Enums;
+  using CoinbaseSdk.Prime.Model;
 
-  public class CreateAllocationRequest
+  public class CreateAllocationRequest()
   {
     [JsonPropertyName("allocation_id")]
     public string? AllocationId { get; set; }
-
     [JsonPropertyName("source_portfolio_id")]
     public string? SourcePortfolioId { get; set; }
-
     [JsonPropertyName("product_id")]
     public string? ProductId { get; set; }
-
     [JsonPropertyName("order_ids")]
-    public string[] OrderIds { get; set; } = [];
-
+    public string?[] OrderIds { get; set; } = [];
     [JsonPropertyName("allocation_legs")]
     public AllocationLeg[] AllocationLegs { get; set; } = [];
-
     [JsonPropertyName("size_type")]
     public AllocationSizeType SizeType { get; set; }
-
     [JsonPropertyName("remainder_destination_portfolio")]
     public string? RemainderDestinationPortfolio { get; set; }
-
-    [JsonPropertyName("netting_id")]
-    public string? NettingId { get; set; }
-
-    public CreateAllocationRequest() { }
 
     public class Builder
     {
       private string? _allocationId;
       private string? _sourcePortfolioId;
       private string? _productId;
-      private string[] _orderIds = [];
-      private AllocationLeg[] _allocationLegs = [];
+      private string?[] _orderIds;
+      private AllocationLeg[] _allocationLegs;
       private AllocationSizeType _sizeType;
       private string? _remainderDestinationPortfolio;
-      private string? _nettingId;
 
-      public Builder WithAllocationId(string? allocationId)
+      public Builder WithAllocationId(string? value)
       {
-        _allocationId = allocationId;
+        _allocationId = value;
         return this;
       }
 
-      public Builder WithSourcePortfolioId(string? sourcePortfolioId)
+      public Builder WithSourcePortfolioId(string? value)
       {
-        _sourcePortfolioId = sourcePortfolioId;
+        _sourcePortfolioId = value;
         return this;
       }
 
-      public Builder WithProductId(string? productId)
+      public Builder WithProductId(string? value)
       {
-        _productId = productId;
+        _productId = value;
         return this;
       }
 
-      public Builder WithOrderIds(string[] orderIds)
+      public Builder WithOrderIds(string?[] value)
       {
-        _orderIds = orderIds;
+        _orderIds = value;
         return this;
       }
 
-      public Builder WithAllocationLegs(AllocationLeg[] allocationLegs)
+      public Builder WithAllocationLegs(AllocationLeg[] value)
       {
-        _allocationLegs = allocationLegs;
+        _allocationLegs = value;
         return this;
       }
 
-      public Builder WithSizeType(AllocationSizeType sizeType)
+      public Builder WithSizeType(AllocationSizeType value)
       {
-        _sizeType = sizeType;
+        _sizeType = value;
         return this;
       }
 
-      public Builder WithRemainderDestinationPortfolio(string? remainderDestinationPortfolio)
+      public Builder WithRemainderDestinationPortfolio(string? value)
       {
-        _remainderDestinationPortfolio = remainderDestinationPortfolio;
+        _remainderDestinationPortfolio = value;
         return this;
       }
 
-      public Builder WithNettingId(string? nettingId)
+      private void Validate()
       {
-        _nettingId = nettingId;
-        return this;
       }
 
       public CreateAllocationRequest Build()
       {
-        return new CreateAllocationRequest
+        Validate();
+        var request = new CreateAllocationRequest()
         {
           AllocationId = _allocationId,
           SourcePortfolioId = _sourcePortfolioId,
@@ -118,8 +106,8 @@ namespace CoinbaseSdk.Prime.Allocations
           AllocationLegs = _allocationLegs,
           SizeType = _sizeType,
           RemainderDestinationPortfolio = _remainderDestinationPortfolio,
-          NettingId = _nettingId
         };
+        return request;
       }
     }
   }

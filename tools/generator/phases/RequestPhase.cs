@@ -1,0 +1,318 @@
+/*
+ * Copyright 2025-present Coinbase Global, Inc.
+ *
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ */
+
+using System.Text;
+using CoinbaseSdk.Tools.Generator.Processing;
+using CoinbaseSdk.Tools.Generator.Spec;
+
+namespace CoinbaseSdk.Tools.Generator.Phases;
+
+public static class RequestPhase
+{
+  public static string EmitRequest(
+    ParsedOpenApiDocument doc,
+    GeneratorConfiguration cfg,
+    SharedTransforms transforms,
+    SdkOperationBinding b,
+    ParsedOperation op)
+  {
+    string MapParamToClr(ParsedParameter p) =>
+      OpenApiSchemaCodegen.ToClrType(doc.Root, p.Schema, transforms, out _, out _);
+
+    // Path params are always required (they're in the URL); use non-nullable CLR types.
+    string MapPathParamToClr(ParsedParameter p)
+    {
+      var t = MapParamToClr(p);
+      return t.TrimEnd('?');
+    }
+
+    var svc = NamingResolver.RequireService(cfg, b.Service);
+    var ns = NamingResolver.FullNamespace(svc);
+    var pathParams = op.Parameters.Where(p => p.In == "path").ToList();
+    var queryParams = op.Parameters.Where(p => p.In == "query").ToList();
+    var bodyProps = op.RequestBodyJsonSchema != null
+      ? OpenApiSchemaCodegen.ListProperties(doc.Root, op.RequestBodyJsonSchema, transforms)
+      : new List<SchemaProperty>();
+
+    var paginated = queryParams.Any(p =>
+      p.Name is "cursor" or "sort_direction");
+
+    // Pagination query params are modeled on PaginatedRequest (cursor, limit, sort_direction).
+    var queryParamsForMembers = paginated
+      ? queryParams.Where(p => p.Name is not ("cursor" or "limit" or "sort_direction")).ToList()
+      : queryParams;
+
+    var ctorArgs = string.Join(", ", pathParams.Select(p =>
+      $"{MapPathParamToClr(p)} {CamelParam(p.Name)}"));
+
+    var sb = new StringBuilder();
+    sb.AppendLine("/*");
+    sb.AppendLine(" * Copyright 2025-present Coinbase Global, Inc.");
+    sb.AppendLine(" *");
+    sb.AppendLine(" *  Licensed under the Apache License, Version 2.0 (the \"License\");");
+    sb.AppendLine(" *  you may not use this file except in compliance with the License.");
+    sb.AppendLine(" *  You may obtain a copy of the License at");
+    sb.AppendLine(" *");
+    sb.AppendLine(" *  http://www.apache.org/licenses/LICENSE-2.0");
+    sb.AppendLine(" *");
+    sb.AppendLine(" *  Unless required by applicable law or agreed to in writing, software");
+    sb.AppendLine(" *  distributed under the License is distributed on an \"AS IS\" BASIS,");
+    sb.AppendLine(" *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.");
+    sb.AppendLine(" *  See the License for the specific language governing permissions and");
+    sb.AppendLine(" *  limitations under the License.");
+    sb.AppendLine(" */");
+    sb.AppendLine();
+    sb.AppendLine($"namespace {ns}");
+    sb.AppendLine("{");
+    sb.AppendLine("  using System.Text.Json.Serialization;");
+    sb.AppendLine("  using CoinbaseSdk.Core.Error;");
+    if (paginated)
+    {
+      sb.AppendLine("  using CoinbaseSdk.Prime.Common;");
+    }
+
+    // Always include Model.Enums when paginated (SortDirection is in that namespace)
+    var usesEnums = paginated ||
+                   pathParams.Concat(queryParamsForMembers).Any(p => p.Schema != null &&
+                     OpenApiSchemaCodegen.ToClrType(doc.Root, p.Schema, transforms, out _, out var isEnum) is not null && isEnum) ||
+                   bodyProps.Any(p => p.UsesEnum);
+    if (usesEnums)
+    {
+      sb.AppendLine("  using CoinbaseSdk.Prime.Model.Enums;");
+    }
+
+    if (bodyProps.Any(p => p.UsesModel))
+    {
+      sb.AppendLine("  using CoinbaseSdk.Prime.Model;");
+    }
+
+    sb.AppendLine();
+    var basePart = paginated ? " : PaginatedRequest" : string.Empty;
+    sb.AppendLine(
+      $"  public class {b.SdkMethod}Request({ctorArgs}){basePart}");
+    sb.AppendLine("  {");
+    foreach (var p in pathParams)
+    {
+      var pn = OpenApiSchemaCodegen.ToPascalCase(p.Name);
+      var cn = CamelParam(p.Name);
+      sb.AppendLine("    [JsonIgnore]");
+      sb.AppendLine($"    public {MapPathParamToClr(p)} {pn} {{ get; set; }} = {cn};");
+    }
+
+    foreach (var p in queryParamsForMembers)
+    {
+      var pn = OpenApiSchemaCodegen.ToPascalCase(p.Name);
+      var clr = MapParamToClr(p);
+      sb.AppendLine($"    [JsonPropertyName(\"{p.Name}\")]");
+      sb.AppendLine($"    public {clr} {pn} {{ get; set; }}{DefaultForQuery(clr)}");
+    }
+
+    foreach (var p in bodyProps)
+    {
+      sb.AppendLine($"    [JsonPropertyName(\"{p.JsonName}\")]");
+      sb.AppendLine($"    public {p.ClrType} {p.ClrName} {{ get; set; }}{DefaultForBody(p)}");
+    }
+
+    sb.AppendLine();
+    EmitBuilder(sb, b.SdkMethod, pathParams, queryParamsForMembers, bodyProps, paginated, MapParamToClr);
+    sb.AppendLine("  }");
+    sb.AppendLine("}");
+    return sb.ToString();
+  }
+
+  private static string CamelParam(string openapiName)
+  {
+    var pc = OpenApiSchemaCodegen.ToPascalCase(openapiName);
+    return char.ToLowerInvariant(pc[0]) + pc[1..];
+  }
+
+  /// <summary>
+  /// Backing field for optional builder state; avoids <c>string??</c> when <paramref name="clr"/> is already nullable.
+  /// </summary>
+  private static string BuilderBackingFieldType(string clr)
+  {
+    var t = clr.TrimEnd();
+    if (t.EndsWith("?", StringComparison.Ordinal))
+    {
+      return t;
+    }
+
+    return t + "?";
+  }
+
+  private static string DefaultForQuery(string clr)
+  {
+    if (clr.EndsWith("[]", StringComparison.Ordinal))
+    {
+      return " = [];";
+    }
+
+    return string.Empty;
+  }
+
+  private static string DefaultForBody(SchemaProperty p)
+  {
+    if (p.ClrType.EndsWith("[]", StringComparison.Ordinal))
+    {
+      return " = [];";
+    }
+
+    return string.Empty;
+  }
+
+  private static void EmitBuilder(
+    StringBuilder sb,
+    string sdkMethod,
+    List<ParsedParameter> pathParams,
+    List<ParsedParameter> queryParams,
+    List<SchemaProperty> bodyProps,
+    bool paginated,
+    Func<ParsedParameter, string> mapParam)
+  {
+    // Builder backing fields: path params are non-nullable (required), query/body optional.
+    string PathFieldType(ParsedParameter p) => mapParam(p).TrimEnd('?') + "?";
+
+    sb.AppendLine("    public class Builder");
+    sb.AppendLine("    {");
+    foreach (var p in pathParams)
+    {
+      var f = "_" + CamelParam(p.Name);
+      sb.AppendLine($"      private {PathFieldType(p)} {f};");
+    }
+
+    foreach (var p in queryParams)
+    {
+      var f = "_" + CamelParam(p.Name);
+      sb.AppendLine($"      private {BuilderBackingFieldType(mapParam(p))} {f};");
+    }
+
+    foreach (var p in bodyProps)
+    {
+      var field = "_" + char.ToLowerInvariant(p.ClrName[0]) + p.ClrName[1..];
+      sb.AppendLine($"      private {p.ClrType} {field};");
+    }
+
+    if (paginated)
+    {
+      sb.AppendLine("      private string? _cursor;");
+      sb.AppendLine("      private SortDirection? _sortDirection;");
+      sb.AppendLine("      private int? _limit;");
+    }
+
+    sb.AppendLine();
+    foreach (var p in pathParams)
+    {
+      var pn = OpenApiSchemaCodegen.ToPascalCase(p.Name);
+      var f = "_" + CamelParam(p.Name);
+      var t = mapParam(p).TrimEnd('?');
+      sb.AppendLine($"      public Builder With{pn}({t} value)");
+      sb.AppendLine("      {");
+      sb.AppendLine($"        {f} = value;");
+      sb.AppendLine("        return this;");
+      sb.AppendLine("      }");
+      sb.AppendLine();
+    }
+
+    foreach (var p in queryParams)
+    {
+      var pn = OpenApiSchemaCodegen.ToPascalCase(p.Name);
+      var f = "_" + CamelParam(p.Name);
+      sb.AppendLine($"      public Builder With{pn}({mapParam(p)} value)");
+      sb.AppendLine("      {");
+      sb.AppendLine($"        {f} = value;");
+      sb.AppendLine("        return this;");
+      sb.AppendLine("      }");
+      sb.AppendLine();
+    }
+
+    foreach (var p in bodyProps)
+    {
+      var f = "_" + char.ToLowerInvariant(p.ClrName[0]) + p.ClrName[1..];
+      sb.AppendLine($"      public Builder With{p.ClrName}({p.ClrType} value)");
+      sb.AppendLine("      {");
+      sb.AppendLine($"        {f} = value;");
+      sb.AppendLine("        return this;");
+      sb.AppendLine("      }");
+      sb.AppendLine();
+    }
+
+    if (paginated)
+    {
+      sb.AppendLine("      public Builder WithCursor(string cursor)");
+      sb.AppendLine("      { _cursor = cursor; return this; }");
+      sb.AppendLine();
+      sb.AppendLine("      public Builder WithSortDirection(SortDirection sortDirection)");
+      sb.AppendLine("      { _sortDirection = sortDirection; return this; }");
+      sb.AppendLine();
+      sb.AppendLine("      public Builder WithLimit(int limit)");
+      sb.AppendLine("      { _limit = limit; return this; }");
+      sb.AppendLine();
+    }
+
+    sb.AppendLine("      private void Validate()");
+    sb.AppendLine("      {");
+    foreach (var p in pathParams.Where(x => x.Required))
+    {
+      var pn = OpenApiSchemaCodegen.ToPascalCase(p.Name);
+      var f = "_" + CamelParam(p.Name);
+      var clr = mapParam(p);
+      if (clr == "string?" || clr == "string")
+      {
+        sb.AppendLine($"        if (string.IsNullOrWhiteSpace({f}))");
+        sb.AppendLine("        {");
+        sb.AppendLine($"          throw new CoinbaseClientException(\"{pn} is required\");");
+        sb.AppendLine("        }");
+      }
+    }
+
+    sb.AppendLine("      }");
+    sb.AppendLine();
+    sb.AppendLine($"      public {sdkMethod}Request Build()");
+    sb.AppendLine("      {");
+    sb.AppendLine("        Validate();");
+    var ctor = string.Join(", ", pathParams.Select(p =>
+    {
+      var f = "_" + CamelParam(p.Name);
+      return $"{f}!";
+    }));
+    sb.AppendLine($"        var request = new {sdkMethod}Request({ctor})");
+    sb.AppendLine("        {");
+    foreach (var p in queryParams)
+    {
+      var pn = OpenApiSchemaCodegen.ToPascalCase(p.Name);
+      var f = "_" + CamelParam(p.Name);
+      sb.AppendLine($"          {pn} = {f},");
+    }
+
+    foreach (var p in bodyProps)
+    {
+      var f = "_" + char.ToLowerInvariant(p.ClrName[0]) + p.ClrName[1..];
+      sb.AppendLine($"          {p.ClrName} = {f},");
+    }
+
+    if (paginated)
+    {
+      sb.AppendLine("          Cursor = _cursor,");
+      sb.AppendLine("          SortDirection = _sortDirection,");
+      sb.AppendLine("          Limit = _limit,");
+    }
+
+    sb.AppendLine("        };");
+    sb.AppendLine("        return request;");
+    sb.AppendLine("      }");
+    sb.AppendLine("    }");
+  }
+}

@@ -17,10 +17,13 @@
 namespace CoinbaseSdk.Prime.Orders
 {
   using CoinbaseSdk.Prime.Model;
+  using System.Text.Json.Serialization;
 
   public class GetOrderResponse
   {
-    public Order? Order { get; set; }
+    [JsonPropertyName("order")]
+    public Order Order { get; set; }
+
+    public GetOrderResponse() { }
   }
 }
-

@@ -17,89 +17,99 @@
 namespace CoinbaseSdk.Prime.Orders
 {
   using System.Text.Json.Serialization;
+  using CoinbaseSdk.Core.Error;
   using CoinbaseSdk.Prime.Model.Enums;
 
   public class CreateQuoteRequest(string portfolioId)
   {
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
-
     [JsonPropertyName("product_id")]
     public string? ProductId { get; set; }
-
-    public OrderSide? Side { get; set; }
-
+    [JsonPropertyName("side")]
+    public OrderSide Side { get; set; }
     [JsonPropertyName("client_quote_id")]
     public string? ClientQuoteId { get; set; }
-
     [JsonPropertyName("base_quantity")]
     public string? BaseQuantity { get; set; }
-
     [JsonPropertyName("quote_value")]
     public string? QuoteValue { get; set; }
-
     [JsonPropertyName("limit_price")]
     public string? LimitPrice { get; set; }
-
     [JsonPropertyName("settl_currency")]
     public string? SettlCurrency { get; set; }
 
-    public class CreateQuoteRequestBuilder(string portfolioId)
+    public class Builder
     {
-      private readonly string _portfolioId = portfolioId;
+      private string? _portfolioId;
       private string? _productId;
-      private OrderSide? _side;
+      private OrderSide _side;
       private string? _clientQuoteId;
       private string? _baseQuantity;
       private string? _quoteValue;
       private string? _limitPrice;
       private string? _settlCurrency;
 
-      public CreateQuoteRequestBuilder WithProductId(string productId)
+      public Builder WithPortfolioId(string value)
       {
-        _productId = productId;
+        _portfolioId = value;
         return this;
       }
 
-      public CreateQuoteRequestBuilder WithSide(OrderSide side)
+      public Builder WithProductId(string? value)
       {
-        _side = side;
+        _productId = value;
         return this;
       }
 
-      public CreateQuoteRequestBuilder WithClientQuoteId(string clientQuoteId)
+      public Builder WithSide(OrderSide value)
       {
-        _clientQuoteId = clientQuoteId;
+        _side = value;
         return this;
       }
 
-      public CreateQuoteRequestBuilder WithBaseQuantity(string baseQuantity)
+      public Builder WithClientQuoteId(string? value)
       {
-        _baseQuantity = baseQuantity;
+        _clientQuoteId = value;
         return this;
       }
 
-      public CreateQuoteRequestBuilder WithQuoteValue(string quoteValue)
+      public Builder WithBaseQuantity(string? value)
       {
-        _quoteValue = quoteValue;
+        _baseQuantity = value;
         return this;
       }
 
-      public CreateQuoteRequestBuilder WithLimitPrice(string limitPrice)
+      public Builder WithQuoteValue(string? value)
       {
-        _limitPrice = limitPrice;
+        _quoteValue = value;
         return this;
       }
 
-      public CreateQuoteRequestBuilder WithSettlCurrency(string settlCurrency)
+      public Builder WithLimitPrice(string? value)
       {
-        _settlCurrency = settlCurrency;
+        _limitPrice = value;
         return this;
+      }
+
+      public Builder WithSettlCurrency(string? value)
+      {
+        _settlCurrency = value;
+        return this;
+      }
+
+      private void Validate()
+      {
+        if (string.IsNullOrWhiteSpace(_portfolioId))
+        {
+          throw new CoinbaseClientException("PortfolioId is required");
+        }
       }
 
       public CreateQuoteRequest Build()
       {
-        return new CreateQuoteRequest(_portfolioId)
+        Validate();
+        var request = new CreateQuoteRequest(_portfolioId!)
         {
           ProductId = _productId,
           Side = _side,
@@ -109,6 +119,7 @@ namespace CoinbaseSdk.Prime.Orders
           LimitPrice = _limitPrice,
           SettlCurrency = _settlCurrency,
         };
+        return request;
       }
     }
   }

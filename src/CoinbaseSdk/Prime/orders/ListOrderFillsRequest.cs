@@ -17,14 +17,69 @@
 namespace CoinbaseSdk.Prime.Orders
 {
   using System.Text.Json.Serialization;
+  using CoinbaseSdk.Core.Error;
   using CoinbaseSdk.Prime.Common;
+  using CoinbaseSdk.Prime.Model.Enums;
 
   public class ListOrderFillsRequest(string portfolioId, string orderId) : PaginatedRequest
   {
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
-
     [JsonIgnore]
     public string OrderId { get; set; } = orderId;
+
+    public class Builder
+    {
+      private string? _portfolioId;
+      private string? _orderId;
+      private string? _cursor;
+      private SortDirection? _sortDirection;
+      private int? _limit;
+
+      public Builder WithPortfolioId(string value)
+      {
+        _portfolioId = value;
+        return this;
+      }
+
+      public Builder WithOrderId(string value)
+      {
+        _orderId = value;
+        return this;
+      }
+
+      public Builder WithCursor(string cursor)
+      { _cursor = cursor; return this; }
+
+      public Builder WithSortDirection(SortDirection sortDirection)
+      { _sortDirection = sortDirection; return this; }
+
+      public Builder WithLimit(int limit)
+      { _limit = limit; return this; }
+
+      private void Validate()
+      {
+        if (string.IsNullOrWhiteSpace(_portfolioId))
+        {
+          throw new CoinbaseClientException("PortfolioId is required");
+        }
+        if (string.IsNullOrWhiteSpace(_orderId))
+        {
+          throw new CoinbaseClientException("OrderId is required");
+        }
+      }
+
+      public ListOrderFillsRequest Build()
+      {
+        Validate();
+        var request = new ListOrderFillsRequest(_portfolioId!, _orderId!)
+        {
+          Cursor = _cursor,
+          SortDirection = _sortDirection,
+          Limit = _limit,
+        };
+        return request;
+      }
+    }
   }
 }

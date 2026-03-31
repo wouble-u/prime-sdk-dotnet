@@ -1,69 +1,73 @@
 /*
  * Copyright 2025-present Coinbase Global, Inc.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ *  http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
  */
 
 namespace CoinbaseSdk.Prime.Staking
 {
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
-  using CoinbaseSdk.Prime.Common;
   using CoinbaseSdk.Prime.Model.Enums;
 
-  public class ListTransactionValidatorsRequest(string portfolioId) : PaginatedRequest
+  public class ListTransactionValidatorsRequest(string portfolioId)
   {
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
-
     [JsonPropertyName("transaction_ids")]
-    public string[] TransactionIds { get; set; } = [];
+    public string?[] TransactionIds { get; set; } = [];
+    [JsonPropertyName("cursor")]
+    public string? Cursor { get; set; }
+    [JsonPropertyName("limit")]
+    public int? Limit { get; set; }
+    [JsonPropertyName("sort_direction")]
+    public SortDirection SortDirection { get; set; }
 
     public class Builder
     {
       private string? _portfolioId;
-      private string[] _transactionIds = [];
+      private string?[] _transactionIds;
       private string? _cursor;
-      private SortDirection? _sortDirection;
       private int? _limit;
+      private SortDirection _sortDirection;
 
-      public Builder WithPortfolioId(string portfolioId)
+      public Builder WithPortfolioId(string value)
       {
-        _portfolioId = portfolioId;
+        _portfolioId = value;
         return this;
       }
 
-      public Builder WithTransactionIds(string[] transactionIds)
+      public Builder WithTransactionIds(string?[] value)
       {
-        _transactionIds = transactionIds;
+        _transactionIds = value;
         return this;
       }
 
-      public Builder WithCursor(string cursor)
+      public Builder WithCursor(string? value)
       {
-        _cursor = cursor;
+        _cursor = value;
         return this;
       }
 
-      public Builder WithSortDirection(SortDirection sortDirection)
+      public Builder WithLimit(int? value)
       {
-        _sortDirection = sortDirection;
+        _limit = value;
         return this;
       }
 
-      public Builder WithLimit(int limit)
+      public Builder WithSortDirection(SortDirection value)
       {
-        _limit = limit;
+        _sortDirection = value;
         return this;
       }
 
@@ -78,13 +82,14 @@ namespace CoinbaseSdk.Prime.Staking
       public ListTransactionValidatorsRequest Build()
       {
         Validate();
-        return new ListTransactionValidatorsRequest(_portfolioId!)
+        var request = new ListTransactionValidatorsRequest(_portfolioId!)
         {
           TransactionIds = _transactionIds,
           Cursor = _cursor,
+          Limit = _limit,
           SortDirection = _sortDirection,
-          Limit = _limit
         };
+        return request;
       }
     }
   }

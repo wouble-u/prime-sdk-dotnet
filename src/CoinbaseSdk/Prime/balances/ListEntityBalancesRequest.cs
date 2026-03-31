@@ -17,6 +17,7 @@
 namespace CoinbaseSdk.Prime.Balances
 {
   using System.Text.Json.Serialization;
+  using CoinbaseSdk.Core.Error;
   using CoinbaseSdk.Prime.Common;
   using CoinbaseSdk.Prime.Model.Enums;
 
@@ -24,61 +25,65 @@ namespace CoinbaseSdk.Prime.Balances
   {
     [JsonIgnore]
     public string EntityId { get; set; } = entityId;
-
-    public string[] Symbols { get; set; } = [];
-
-
+    [JsonPropertyName("symbols")]
+    public string? Symbols { get; set; }
     [JsonPropertyName("aggregation_type")]
-    public PortfolioBalanceType? AggregationType { get; set; }
+    public string? AggregationType { get; set; }
 
-    public class Builder(string entityId)
+    public class Builder
     {
-      private readonly string _entityId = entityId;
-      private string[] _symbols = [];
-      private PortfolioBalanceType? _aggregationType;
+      private string? _entityId;
+      private string? _symbols;
+      private string? _aggregationType;
       private string? _cursor;
       private SortDirection? _sortDirection;
       private int? _limit;
 
-      public Builder WithSymbols(string[] symbols)
+      public Builder WithEntityId(string value)
       {
-        _symbols = symbols;
+        _entityId = value;
         return this;
       }
 
-      public Builder WithAggregationType(PortfolioBalanceType? aggregationType)
+      public Builder WithSymbols(string? value)
       {
-        _aggregationType = aggregationType;
+        _symbols = value;
+        return this;
+      }
+
+      public Builder WithAggregationType(string? value)
+      {
+        _aggregationType = value;
         return this;
       }
 
       public Builder WithCursor(string cursor)
-      {
-        _cursor = cursor;
-        return this;
-      }
+      { _cursor = cursor; return this; }
 
       public Builder WithSortDirection(SortDirection sortDirection)
-      {
-        _sortDirection = sortDirection;
-        return this;
-      }
+      { _sortDirection = sortDirection; return this; }
 
       public Builder WithLimit(int limit)
+      { _limit = limit; return this; }
+
+      private void Validate()
       {
-        _limit = limit;
-        return this;
+        if (string.IsNullOrWhiteSpace(_entityId))
+        {
+          throw new CoinbaseClientException("EntityId is required");
+        }
       }
 
       public ListEntityBalancesRequest Build()
       {
-        var request = new ListEntityBalancesRequest(_entityId)
+        Validate();
+        var request = new ListEntityBalancesRequest(_entityId!)
         {
           Symbols = _symbols,
           AggregationType = _aggregationType,
           Cursor = _cursor,
           SortDirection = _sortDirection,
-          Limit = _limit
+          Limit = _limit,
         };
         return request;
       }

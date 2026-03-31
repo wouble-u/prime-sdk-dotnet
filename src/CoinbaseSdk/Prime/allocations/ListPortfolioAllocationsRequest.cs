@@ -25,101 +25,73 @@ namespace CoinbaseSdk.Prime.Allocations
   {
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
-
     [JsonPropertyName("product_ids")]
-    public string[] ProductIds { get; set; } = [];
-
+    public string?[] ProductIds { get; set; } = [];
     [JsonPropertyName("order_side")]
-    public OrderSide OrderSide { get; set; }
-
+    public string? OrderSide { get; set; }
     [JsonPropertyName("start_date")]
     public string? StartDate { get; set; }
-
     [JsonPropertyName("end_date")]
     public string? EndDate { get; set; }
 
     public class Builder
     {
       private string? _portfolioId;
-      private string[] _productIds = [];
-      private OrderSide _orderSide;
+      private string?[]? _productIds;
+      private string? _orderSide;
       private string? _startDate;
       private string? _endDate;
       private string? _cursor;
       private SortDirection? _sortDirection;
       private int? _limit;
 
-      public Builder WithPortfolioId(string portfolioId)
+      public Builder WithPortfolioId(string value)
       {
-        _portfolioId = portfolioId;
+        _portfolioId = value;
         return this;
       }
 
-      public Builder WithProductIds(string[] productIds)
+      public Builder WithProductIds(string?[] value)
       {
-        _productIds = productIds;
+        _productIds = value;
         return this;
       }
 
-      public Builder WithOrderSide(OrderSide orderSide)
+      public Builder WithOrderSide(string? value)
       {
-        _orderSide = orderSide;
+        _orderSide = value;
         return this;
       }
 
-      public Builder WithStartDate(string? startDate)
+      public Builder WithStartDate(string? value)
       {
-        _startDate = startDate;
+        _startDate = value;
         return this;
       }
 
-      public Builder WithEndDate(string? endDate)
+      public Builder WithEndDate(string? value)
       {
-        _endDate = endDate;
+        _endDate = value;
         return this;
       }
 
       public Builder WithCursor(string cursor)
-      {
-        _cursor = cursor;
-        return this;
-      }
+      { _cursor = cursor; return this; }
 
       public Builder WithSortDirection(SortDirection sortDirection)
-      {
-        _sortDirection = sortDirection;
-        return this;
-      }
+      { _sortDirection = sortDirection; return this; }
 
       public Builder WithLimit(int limit)
-      {
-        _limit = limit;
-        return this;
-      }
+      { _limit = limit; return this; }
 
-      /// <summary>
-      /// Validates the builder.
-      /// </summary>
-      /// <exception cref="CoinbaseClientException">Thrown when the
-      /// <see cref="_portfolioId"/> or <see cref="_startDate"/> are null, empty
-      /// or whitespace.</exception>
       private void Validate()
       {
         if (string.IsNullOrWhiteSpace(_portfolioId))
         {
           throw new CoinbaseClientException("PortfolioId is required");
         }
-        if (string.IsNullOrWhiteSpace(_startDate))
-        {
-          throw new CoinbaseClientException("StartDate is required");
-        }
       }
 
-      /// <summary>
-      /// Builds the <see cref="ListPortfolioAllocationsRequest"/>.
-      /// </summary>
-      /// <returns>The <see cref="ListPortfolioAllocationsRequest"/>.</returns>
-      /// <exception cref="CoinbaseClientException">Thrown when the required fields are not set.</exception>
       public ListPortfolioAllocationsRequest Build()
       {
         Validate();
@@ -127,11 +99,11 @@ namespace CoinbaseSdk.Prime.Allocations
         {
           ProductIds = _productIds,
           OrderSide = _orderSide,
-          StartDate = _startDate!,
+          StartDate = _startDate,
           EndDate = _endDate,
           Cursor = _cursor,
           SortDirection = _sortDirection,
-          Limit = _limit
+          Limit = _limit,
         };
         return request;
       }

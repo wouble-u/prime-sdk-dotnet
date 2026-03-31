@@ -17,13 +17,52 @@
 namespace CoinbaseSdk.Prime.OnchainAddressBook
 {
   using System.Text.Json.Serialization;
+  using CoinbaseSdk.Core.Error;
 
   public class DeleteOnchainAddressGroupRequest(string portfolioId, string addressGroupId)
   {
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
-
     [JsonIgnore]
     public string AddressGroupId { get; set; } = addressGroupId;
+
+    public class Builder
+    {
+      private string? _portfolioId;
+      private string? _addressGroupId;
+
+      public Builder WithPortfolioId(string value)
+      {
+        _portfolioId = value;
+        return this;
+      }
+
+      public Builder WithAddressGroupId(string value)
+      {
+        _addressGroupId = value;
+        return this;
+      }
+
+      private void Validate()
+      {
+        if (string.IsNullOrWhiteSpace(_portfolioId))
+        {
+          throw new CoinbaseClientException("PortfolioId is required");
+        }
+        if (string.IsNullOrWhiteSpace(_addressGroupId))
+        {
+          throw new CoinbaseClientException("AddressGroupId is required");
+        }
+      }
+
+      public DeleteOnchainAddressGroupRequest Build()
+      {
+        Validate();
+        var request = new DeleteOnchainAddressGroupRequest(_portfolioId!, _addressGroupId!)
+        {
+        };
+        return request;
+      }
+    }
   }
 }

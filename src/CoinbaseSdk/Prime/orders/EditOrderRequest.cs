@@ -23,41 +23,30 @@ namespace CoinbaseSdk.Prime.Orders
   {
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
-
     [JsonIgnore]
     public string OrderId { get; set; } = orderId;
-
     [JsonPropertyName("product_id")]
     public string? ProductId { get; set; }
-
     [JsonPropertyName("orig_client_order_id")]
     public string? OrigClientOrderId { get; set; }
-
     [JsonPropertyName("client_order_id")]
     public string? ClientOrderId { get; set; }
-
     [JsonPropertyName("base_quantity")]
     public string? BaseQuantity { get; set; }
-
     [JsonPropertyName("quote_value")]
     public string? QuoteValue { get; set; }
-
     [JsonPropertyName("limit_price")]
     public string? LimitPrice { get; set; }
-
     [JsonPropertyName("expiry_time")]
     public string? ExpiryTime { get; set; }
-
     [JsonPropertyName("display_quote_size")]
     public string? DisplayQuoteSize { get; set; }
-
     [JsonPropertyName("display_base_size")]
     public string? DisplayBaseSize { get; set; }
-
     [JsonPropertyName("stop_price")]
     public string? StopPrice { get; set; }
 
-    public class EditOrderRequestBuilder
+    public class Builder
     {
       private string? _portfolioId;
       private string? _orderId;
@@ -72,114 +61,94 @@ namespace CoinbaseSdk.Prime.Orders
       private string? _displayBaseSize;
       private string? _stopPrice;
 
-      public EditOrderRequestBuilder WithPortfolioId(string portfolioId)
+      public Builder WithPortfolioId(string value)
       {
-        _portfolioId = portfolioId;
+        _portfolioId = value;
         return this;
       }
 
-      public EditOrderRequestBuilder WithOrderId(string orderId)
+      public Builder WithOrderId(string value)
       {
-        _orderId = orderId;
+        _orderId = value;
         return this;
       }
 
-      public EditOrderRequestBuilder WithProductId(string? productId)
+      public Builder WithProductId(string? value)
       {
-        _productId = productId;
+        _productId = value;
         return this;
       }
 
-      public EditOrderRequestBuilder WithOrigClientOrderId(string? origClientOrderId)
+      public Builder WithOrigClientOrderId(string? value)
       {
-        _origClientOrderId = origClientOrderId;
+        _origClientOrderId = value;
         return this;
       }
 
-      public EditOrderRequestBuilder WithClientOrderId(string? clientOrderId)
+      public Builder WithClientOrderId(string? value)
       {
-        _clientOrderId = clientOrderId;
+        _clientOrderId = value;
         return this;
       }
 
-      public EditOrderRequestBuilder WithBaseQuantity(string? baseQuantity)
+      public Builder WithBaseQuantity(string? value)
       {
-        _baseQuantity = baseQuantity;
+        _baseQuantity = value;
         return this;
       }
 
-      public EditOrderRequestBuilder WithQuoteValue(string? quoteValue)
+      public Builder WithQuoteValue(string? value)
       {
-        _quoteValue = quoteValue;
+        _quoteValue = value;
         return this;
       }
 
-      public EditOrderRequestBuilder WithLimitPrice(string? limitPrice)
+      public Builder WithLimitPrice(string? value)
       {
-        _limitPrice = limitPrice;
+        _limitPrice = value;
         return this;
       }
 
-      public EditOrderRequestBuilder WithExpiryTime(string? expiryTime)
+      public Builder WithExpiryTime(string? value)
       {
-        _expiryTime = expiryTime;
+        _expiryTime = value;
         return this;
       }
 
-      public EditOrderRequestBuilder WithDisplayQuoteSize(string? displayQuoteSize)
+      public Builder WithDisplayQuoteSize(string? value)
       {
-        _displayQuoteSize = displayQuoteSize;
+        _displayQuoteSize = value;
         return this;
       }
 
-      public EditOrderRequestBuilder WithDisplayBaseSize(string? displayBaseSize)
+      public Builder WithDisplayBaseSize(string? value)
       {
-        _displayBaseSize = displayBaseSize;
+        _displayBaseSize = value;
         return this;
       }
 
-      public EditOrderRequestBuilder WithStopPrice(string? stopPrice)
+      public Builder WithStopPrice(string? value)
       {
-        _stopPrice = stopPrice;
+        _stopPrice = value;
         return this;
       }
 
-      /// <summary>
-      /// Validates the builder.
-      /// </summary>
-      /// <exception cref="CoinbaseClientException">Thrown when required fields are missing.</exception>
       private void Validate()
       {
         if (string.IsNullOrWhiteSpace(_portfolioId))
         {
           throw new CoinbaseClientException("PortfolioId is required");
         }
-
         if (string.IsNullOrWhiteSpace(_orderId))
         {
           throw new CoinbaseClientException("OrderId is required");
         }
-
-        if (string.IsNullOrWhiteSpace(_origClientOrderId))
-        {
-          throw new CoinbaseClientException("OrigClientOrderId is required");
-        }
-
-        if (string.IsNullOrWhiteSpace(_clientOrderId))
-        {
-          throw new CoinbaseClientException("ClientOrderId is required");
-        }
       }
 
-      /// <summary>
-      /// Builds the <see cref="EditOrderRequest"/> object.
-      /// </summary>
-      /// <returns>The <see cref="EditOrderRequest"/> object.</returns>
-      /// <exception cref="CoinbaseClientException">Thrown when the required fields are not set.</exception>
       public EditOrderRequest Build()
       {
         Validate();
-        return new EditOrderRequest(_portfolioId!, _orderId!)
+        var request = new EditOrderRequest(_portfolioId!, _orderId!)
         {
           ProductId = _productId,
           OrigClientOrderId = _origClientOrderId,
@@ -192,6 +161,7 @@ namespace CoinbaseSdk.Prime.Orders
           DisplayBaseSize = _displayBaseSize,
           StopPrice = _stopPrice,
         };
+        return request;
       }
     }
   }

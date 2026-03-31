@@ -16,23 +16,13 @@
 
 namespace CoinbaseSdk.Prime.Allocations
 {
+  using CoinbaseSdk.Prime.Model;
   using System.Text.Json.Serialization;
 
   public class CreateNetAllocationResponse
   {
-    public bool? Success { get; set; }
-
-    [JsonPropertyName("netting_id")]
-    public string? NettingId { get; set; }
-
-    [JsonPropertyName("buy_allocation_id")]
-    public string? BuyAllocationId { get; set; }
-
-    [JsonPropertyName("sell_allocation_id")]
-    public string? SellAllocationId { get; set; }
-
-    [JsonPropertyName("failure_reason")]
-    public string? FailureReason { get; set; }
+    [JsonPropertyName("body")]
+    public CreateNetAllocationResponseBody Body { get; set; }
 
     public CreateNetAllocationResponse() { }
   }

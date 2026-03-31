@@ -14,12 +14,16 @@
  *  limitations under the License.
  */
 
-
 namespace CoinbaseSdk.Prime.Allocations
 {
   using CoinbaseSdk.Prime.Model;
+  using System.Text.Json.Serialization;
+
   public class GetAllocationResponse
   {
-    public Allocation? Allocation { get; set; }
+    [JsonPropertyName("allocation")]
+    public Allocation Allocation { get; set; }
+
+    public GetAllocationResponse() { }
   }
 }

@@ -20,40 +20,33 @@ namespace CoinbaseSdk.Prime.Activities
 
   public interface IActivitiesService
   {
-    public ListActivitiesResponse ListActivities(
-      ListActivitiesRequest request,
-      CallOptions? options = null);
-
-    public Task<ListActivitiesResponse> ListActivitiesAsync(
-      ListActivitiesRequest request,
-      CallOptions? options = null,
-      CancellationToken cancellationToken = default);
-
-    public ListEntityActivitiesResponse ListEntityActivities(
-      ListEntityActivitiesRequest request,
-      CallOptions? options = null);
-
-    public Task<ListEntityActivitiesResponse> ListEntityActivitiesAsync(
-      ListEntityActivitiesRequest request,
-      CallOptions? options = null,
-      CancellationToken cancellationToken = default);
-
-    public GetActivityResponse GetActivity(
-      GetActivityRequest request,
-      CallOptions? options = null);
+    public GetActivityResponse GetActivity(GetActivityRequest request, CallOptions? options = null);
 
     public Task<GetActivityResponse> GetActivityAsync(
       GetActivityRequest request,
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
-    public GetPortfolioActivityResponse GetPortfolioActivity(
-      GetPortfolioActivityRequest request,
-      CallOptions? options = null);
+    public GetPortfolioActivityResponse GetPortfolioActivity(GetPortfolioActivityRequest request, CallOptions? options = null);
 
     public Task<GetPortfolioActivityResponse> GetPortfolioActivityAsync(
       GetPortfolioActivityRequest request,
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
+
+    public ListActivitiesResponse ListActivities(ListActivitiesRequest request, CallOptions? options = null);
+
+    public Task<ListActivitiesResponse> ListActivitiesAsync(
+      ListActivitiesRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default);
+
+    public ListEntityActivitiesResponse ListEntityActivities(ListEntityActivitiesRequest request, CallOptions? options = null);
+
+    public Task<ListEntityActivitiesResponse> ListEntityActivitiesAsync(
+      ListEntityActivitiesRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default);
+
   }
 }

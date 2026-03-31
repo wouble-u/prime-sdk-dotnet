@@ -1,22 +1,23 @@
 /*
  * Copyright 2024-present Coinbase Global, Inc.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ *  http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
  */
 
 namespace CoinbaseSdk.Prime.Orders
 {
   using System.Text.Json.Serialization;
+  using CoinbaseSdk.Core.Error;
   using CoinbaseSdk.Prime.Common;
   using CoinbaseSdk.Prime.Model.Enums;
 
@@ -24,90 +25,85 @@ namespace CoinbaseSdk.Prime.Orders
   {
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
-
     [JsonPropertyName("product_ids")]
-    public string[]? ProductIds { get; set; }
-
+    public string?[] ProductIds { get; set; } = [];
     [JsonPropertyName("order_type")]
-    public OrderType? OrderType { get; set; }
-
+    public string? OrderType { get; set; }
     [JsonPropertyName("start_date")]
-    public DateTime? StartDate { get; set; }
-
+    public string? StartDate { get; set; }
     [JsonPropertyName("order_side")]
-    public OrderSide? OrderSide { get; set; }
-
+    public string? OrderSide { get; set; }
     [JsonPropertyName("end_date")]
-    public DateTime? EndDate { get; set; }
+    public string? EndDate { get; set; }
 
     public class Builder
     {
       private string? _portfolioId;
-      private string[]? _productIds;
-      private OrderType? _orderType;
-      private DateTime? _startDate;
-      private OrderSide? _orderSide;
-      private DateTime? _endDate;
+      private string?[]? _productIds;
+      private string? _orderType;
+      private string? _startDate;
+      private string? _orderSide;
+      private string? _endDate;
       private string? _cursor;
       private SortDirection? _sortDirection;
       private int? _limit;
 
-      public Builder WithPortfolioId(string portfolioId)
+      public Builder WithPortfolioId(string value)
       {
-        _portfolioId = portfolioId;
+        _portfolioId = value;
         return this;
       }
 
-      public Builder WithProductIds(string[] productIds)
+      public Builder WithProductIds(string?[] value)
       {
-        _productIds = productIds;
+        _productIds = value;
         return this;
       }
 
-      public Builder WithOrderType(OrderType orderType)
+      public Builder WithOrderType(string? value)
       {
-        _orderType = orderType;
+        _orderType = value;
         return this;
       }
 
-      public Builder WithStartDate(DateTime startDate)
+      public Builder WithStartDate(string? value)
       {
-        _startDate = startDate;
+        _startDate = value;
         return this;
       }
 
-      public Builder WithOrderSide(OrderSide orderSide)
+      public Builder WithOrderSide(string? value)
       {
-        _orderSide = orderSide;
+        _orderSide = value;
         return this;
       }
 
-      public Builder WithEndDate(DateTime endDate)
+      public Builder WithEndDate(string? value)
       {
-        _endDate = endDate;
+        _endDate = value;
         return this;
       }
 
       public Builder WithCursor(string cursor)
-      {
-        _cursor = cursor;
-        return this;
-      }
+      { _cursor = cursor; return this; }
 
       public Builder WithSortDirection(SortDirection sortDirection)
-      {
-        _sortDirection = sortDirection;
-        return this;
-      }
+      { _sortDirection = sortDirection; return this; }
 
       public Builder WithLimit(int limit)
+      { _limit = limit; return this; }
+
+      private void Validate()
       {
-        _limit = limit;
-        return this;
+        if (string.IsNullOrWhiteSpace(_portfolioId))
+        {
+          throw new CoinbaseClientException("PortfolioId is required");
+        }
       }
 
       public ListOpenOrdersRequest Build()
       {
+        Validate();
         var request = new ListOpenOrdersRequest(_portfolioId!)
         {
           ProductIds = _productIds,

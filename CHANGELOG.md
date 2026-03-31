@@ -1,5 +1,63 @@
 # Changelog
 
+## [Unreleased]
+
+### Added
+
+- **New API Endpoints**
+  - `FuturesService.GetFcmEquity`
+  - `ProductsService.GetCandles`
+  - `StakingService.GetStakingStatus`
+  - `StakingService.GetUnstakingStatus`
+  - `StakingService.PreviewUnstake`
+  - `TransactionsService.ListAdvancedTransfers`
+  - `TransactionsService.CreateAdvancedTransfer`
+  - `TransactionsService.CancelAdvancedTransfer`
+  - `TransactionsService.ListAdvancedTransferTransactions`
+  - `TransactionsService.GetTransactionTravelRuleData`
+  - `TransactionsService.SubmitDepositTravelRuleData`
+
+- **New Examples** (run with `dotnet run --file <path>`)
+
+  ```bash
+  # Futures
+  dotnet run --file src/CoinbaseSdk/PrimeExample/examples/futures/GetFcmEquity.cs --entityId <entity_id>
+
+  # Products
+  dotnet run --file src/CoinbaseSdk/PrimeExample/examples/products/GetCandles.cs --portfolioId <portfolio_id> --productId BTC-USD --granularity ONE_HOUR
+
+  # Staking
+  dotnet run --file src/CoinbaseSdk/PrimeExample/examples/staking/GetStakingStatus.cs --portfolioId <portfolio_id> --walletId <wallet_id>
+  dotnet run --file src/CoinbaseSdk/PrimeExample/examples/staking/GetUnstakingStatus.cs --portfolioId <portfolio_id> --walletId <wallet_id>
+  dotnet run --file src/CoinbaseSdk/PrimeExample/examples/staking/PreviewUnstake.cs --portfolioId <portfolio_id> --walletId <wallet_id> --amount 1.0
+
+  # Advanced Transfers
+  dotnet run --file src/CoinbaseSdk/PrimeExample/examples/transactions/ListAdvancedTransfers.cs --portfolioId <portfolio_id>
+  dotnet run --file src/CoinbaseSdk/PrimeExample/examples/transactions/CreateAdvancedTransfer.cs --portfolioId <portfolio_id> --transferType BLIND_MATCH
+  dotnet run --file src/CoinbaseSdk/PrimeExample/examples/transactions/CancelAdvancedTransfer.cs --portfolioId <portfolio_id> --advancedTransferId <transfer_id>
+  dotnet run --file src/CoinbaseSdk/PrimeExample/examples/transactions/ListAdvancedTransferTransactions.cs --portfolioId <portfolio_id> --advancedTransferId <transfer_id>
+
+  # Travel Rule
+  dotnet run --file src/CoinbaseSdk/PrimeExample/examples/transactions/GetTransactionTravelRuleData.cs --portfolioId <portfolio_id> --transactionId <transaction_id>
+  dotnet run --file src/CoinbaseSdk/PrimeExample/examples/transactions/SubmitDepositTravelRuleData.cs --portfolioId <portfolio_id> --transactionId <transaction_id>
+  ```
+
+- **New Domain Models**
+  - `AdvancedTransfer`, `BlindMatchMetadata`, `CommissionDetailTotal`
+  - `FcmScheduledMaintenance`, `FcmTradingSessionDetails`, `FundMovement`
+  - `FutureProductDetails`, `PerpetualProductDetails`
+  - `RequestToSubmitTravelRuleDataForAnExistingDepositTransaction`
+  - `StakingStatus`, `TravelRuleData`, `ValidatorAllocation`, `ValidatorStakingInfo`
+
+- **New Enums**
+  - `AdvancedTransferState`, `AdvancedTransferType`, `ContractExpiryType`
+  - `ExpiringContractStatus`, `FcmMarginHealthState`, `FcmTradingSessionClosedReason`
+  - `FcmTradingSessionState`, `ProductType`, `RiskManagementType`
+  - `SecondaryPermission`, `StakeType`
+
+- **Generator: ExamplePhase** — the SDK generator (`tools/generator`) now automatically creates
+  runnable example scripts for any new endpoint that does not yet have one.
+
 ## [0.4.0] - 2025-DEC-23
 
 ### Added

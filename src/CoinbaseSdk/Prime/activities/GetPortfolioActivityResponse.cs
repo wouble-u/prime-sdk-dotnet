@@ -17,13 +17,13 @@
 namespace CoinbaseSdk.Prime.Activities
 {
   using CoinbaseSdk.Prime.Model;
+  using System.Text.Json.Serialization;
 
   public class GetPortfolioActivityResponse
   {
-    public Activity? Activity { get; set; }
+    [JsonPropertyName("activity")]
+    public Activity Activity { get; set; }
 
-    public GetPortfolioActivityResponse()
-    {
-    }
+    public GetPortfolioActivityResponse() { }
   }
 }

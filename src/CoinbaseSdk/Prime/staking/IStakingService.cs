@@ -1,17 +1,17 @@
 /*
  * Copyright 2025-present Coinbase Global, Inc.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ *  http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
  */
 
 namespace CoinbaseSdk.Prime.Staking
@@ -20,58 +20,68 @@ namespace CoinbaseSdk.Prime.Staking
 
   public interface IStakingService
   {
-    public CreateStakeResponse CreateStake(
-        CreateStakeRequest request,
-        CallOptions? options = null);
-
-    public Task<CreateStakeResponse> CreateStakeAsync(
-        CreateStakeRequest request,
-        CallOptions? options = null,
-        CancellationToken cancellationToken = default);
-
-    public CreateUnstakeResponse CreateUnstake(
-        CreateUnstakeRequest request,
-        CallOptions? options = null);
-
-    public Task<CreateUnstakeResponse> CreateUnstakeAsync(
-        CreateUnstakeRequest request,
-        CallOptions? options = null,
-        CancellationToken cancellationToken = default);
-
-    public CreatePortfolioStakeResponse CreatePortfolioStake(
-        CreatePortfolioStakeRequest request,
-        CallOptions? options = null);
-
-    public Task<CreatePortfolioStakeResponse> CreatePortfolioStakeAsync(
-        CreatePortfolioStakeRequest request,
-        CallOptions? options = null,
-        CancellationToken cancellationToken = default);
-
-    public CreatePortfolioUnstakeResponse CreatePortfolioUnstake(
-        CreatePortfolioUnstakeRequest request,
-        CallOptions? options = null);
-
-    public Task<CreatePortfolioUnstakeResponse> CreatePortfolioUnstakeAsync(
-        CreatePortfolioUnstakeRequest request,
-        CallOptions? options = null,
-        CancellationToken cancellationToken = default);
-
-    public ClaimStakingRewardsResponse ClaimStakingRewards(
-        ClaimStakingRewardsRequest request,
-        CallOptions? options = null);
+    public ClaimStakingRewardsResponse ClaimStakingRewards(ClaimStakingRewardsRequest request, CallOptions? options = null);
 
     public Task<ClaimStakingRewardsResponse> ClaimStakingRewardsAsync(
-        ClaimStakingRewardsRequest request,
-        CallOptions? options = null,
-        CancellationToken cancellationToken = default);
+      ClaimStakingRewardsRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default);
 
-    public ListTransactionValidatorsResponse ListTransactionValidators(
-        ListTransactionValidatorsRequest request,
-        CallOptions? options = null);
+    public CreatePortfolioStakeResponse CreatePortfolioStake(CreatePortfolioStakeRequest request, CallOptions? options = null);
+
+    public Task<CreatePortfolioStakeResponse> CreatePortfolioStakeAsync(
+      CreatePortfolioStakeRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default);
+
+    public CreatePortfolioUnstakeResponse CreatePortfolioUnstake(CreatePortfolioUnstakeRequest request, CallOptions? options = null);
+
+    public Task<CreatePortfolioUnstakeResponse> CreatePortfolioUnstakeAsync(
+      CreatePortfolioUnstakeRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default);
+
+    public CreateStakeResponse CreateStake(CreateStakeRequest request, CallOptions? options = null);
+
+    public Task<CreateStakeResponse> CreateStakeAsync(
+      CreateStakeRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default);
+
+    public CreateUnstakeResponse CreateUnstake(CreateUnstakeRequest request, CallOptions? options = null);
+
+    public Task<CreateUnstakeResponse> CreateUnstakeAsync(
+      CreateUnstakeRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default);
+
+    public GetStakingStatusResponse GetStakingStatus(GetStakingStatusRequest request, CallOptions? options = null);
+
+    public Task<GetStakingStatusResponse> GetStakingStatusAsync(
+      GetStakingStatusRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default);
+
+    public GetUnstakingStatusResponse GetUnstakingStatus(GetUnstakingStatusRequest request, CallOptions? options = null);
+
+    public Task<GetUnstakingStatusResponse> GetUnstakingStatusAsync(
+      GetUnstakingStatusRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default);
+
+    public ListTransactionValidatorsResponse ListTransactionValidators(ListTransactionValidatorsRequest request, CallOptions? options = null);
 
     public Task<ListTransactionValidatorsResponse> ListTransactionValidatorsAsync(
-        ListTransactionValidatorsRequest request,
-        CallOptions? options = null,
-        CancellationToken cancellationToken = default);
+      ListTransactionValidatorsRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default);
+
+    public PreviewUnstakeResponse PreviewUnstake(PreviewUnstakeRequest request, CallOptions? options = null);
+
+    public Task<PreviewUnstakeResponse> PreviewUnstakeAsync(
+      PreviewUnstakeRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default);
+
   }
 }

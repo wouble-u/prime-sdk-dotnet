@@ -17,11 +17,56 @@
 namespace CoinbaseSdk.Prime.Users
 {
   using System.Text.Json.Serialization;
+  using CoinbaseSdk.Core.Error;
   using CoinbaseSdk.Prime.Common;
+  using CoinbaseSdk.Prime.Model.Enums;
 
   public class ListUsersRequest(string entityId) : PaginatedRequest
   {
     [JsonIgnore]
     public string EntityId { get; set; } = entityId;
+
+    public class Builder
+    {
+      private string? _entityId;
+      private string? _cursor;
+      private SortDirection? _sortDirection;
+      private int? _limit;
+
+      public Builder WithEntityId(string value)
+      {
+        _entityId = value;
+        return this;
+      }
+
+      public Builder WithCursor(string cursor)
+      { _cursor = cursor; return this; }
+
+      public Builder WithSortDirection(SortDirection sortDirection)
+      { _sortDirection = sortDirection; return this; }
+
+      public Builder WithLimit(int limit)
+      { _limit = limit; return this; }
+
+      private void Validate()
+      {
+        if (string.IsNullOrWhiteSpace(_entityId))
+        {
+          throw new CoinbaseClientException("EntityId is required");
+        }
+      }
+
+      public ListUsersRequest Build()
+      {
+        Validate();
+        var request = new ListUsersRequest(_entityId!)
+        {
+          Cursor = _cursor,
+          SortDirection = _sortDirection,
+          Limit = _limit,
+        };
+        return request;
+      }
+    }
   }
 }

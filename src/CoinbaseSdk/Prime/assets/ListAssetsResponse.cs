@@ -17,8 +17,11 @@
 namespace CoinbaseSdk.Prime.Assets
 {
   using CoinbaseSdk.Prime.Model;
+  using System.Text.Json.Serialization;
+
   public class ListAssetsResponse
   {
+    [JsonPropertyName("assets")]
     public Asset[] Assets { get; set; } = [];
 
     public ListAssetsResponse() { }

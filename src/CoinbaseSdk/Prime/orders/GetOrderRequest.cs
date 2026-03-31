@@ -17,13 +17,52 @@
 namespace CoinbaseSdk.Prime.Orders
 {
   using System.Text.Json.Serialization;
+  using CoinbaseSdk.Core.Error;
 
   public class GetOrderRequest(string portfolioId, string orderId)
   {
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
-
     [JsonIgnore]
     public string OrderId { get; set; } = orderId;
+
+    public class Builder
+    {
+      private string? _portfolioId;
+      private string? _orderId;
+
+      public Builder WithPortfolioId(string value)
+      {
+        _portfolioId = value;
+        return this;
+      }
+
+      public Builder WithOrderId(string value)
+      {
+        _orderId = value;
+        return this;
+      }
+
+      private void Validate()
+      {
+        if (string.IsNullOrWhiteSpace(_portfolioId))
+        {
+          throw new CoinbaseClientException("PortfolioId is required");
+        }
+        if (string.IsNullOrWhiteSpace(_orderId))
+        {
+          throw new CoinbaseClientException("OrderId is required");
+        }
+      }
+
+      public GetOrderRequest Build()
+      {
+        Validate();
+        var request = new GetOrderRequest(_portfolioId!, _orderId!)
+        {
+        };
+        return request;
+      }
+    }
   }
 }

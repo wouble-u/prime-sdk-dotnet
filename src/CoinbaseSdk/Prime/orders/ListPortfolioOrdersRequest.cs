@@ -25,102 +25,83 @@ namespace CoinbaseSdk.Prime.Orders
   {
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
-
     [JsonPropertyName("order_statuses")]
-    public OrderStatus[]? OrderStatuses { get; set; }
-
+    public string?[] OrderStatuses { get; set; } = [];
     [JsonPropertyName("product_ids")]
-    public string[]? ProductIds { get; set; }
-
+    public string?[] ProductIds { get; set; } = [];
     [JsonPropertyName("order_type")]
-    public OrderType? OrderType { get; set; }
-
+    public string? OrderType { get; set; }
     [JsonPropertyName("order_side")]
-    public OrderSide? OrderSide { get; set; }
-
+    public string? OrderSide { get; set; }
     [JsonPropertyName("start_date")]
     public string? StartDate { get; set; }
-
     [JsonPropertyName("end_date")]
     public string? EndDate { get; set; }
 
     public class Builder
     {
       private string? _portfolioId;
-      private OrderStatus[]? _orderStatuses;
-      private string[]? _productIds;
-      private OrderType? _orderType;
-      private OrderSide? _orderSide;
+      private string?[]? _orderStatuses;
+      private string?[]? _productIds;
+      private string? _orderType;
+      private string? _orderSide;
       private string? _startDate;
       private string? _endDate;
       private string? _cursor;
       private SortDirection? _sortDirection;
       private int? _limit;
 
-      public Builder WithPortfolioId(string portfolioId)
+      public Builder WithPortfolioId(string value)
       {
-        _portfolioId = portfolioId;
+        _portfolioId = value;
         return this;
       }
 
-      public Builder WithOrderStatuses(OrderStatus[] orderStatuses)
+      public Builder WithOrderStatuses(string?[] value)
       {
-        _orderStatuses = orderStatuses;
+        _orderStatuses = value;
         return this;
       }
 
-      public Builder WithProductIds(string[] productIds)
+      public Builder WithProductIds(string?[] value)
       {
-        _productIds = productIds;
+        _productIds = value;
         return this;
       }
 
-      public Builder WithOrderType(OrderType orderType)
+      public Builder WithOrderType(string? value)
       {
-        _orderType = orderType;
+        _orderType = value;
         return this;
       }
 
-      public Builder WithOrderSide(OrderSide orderSide)
+      public Builder WithOrderSide(string? value)
       {
-        _orderSide = orderSide;
+        _orderSide = value;
         return this;
       }
 
-      public Builder WithStartDate(string startDate)
+      public Builder WithStartDate(string? value)
       {
-        _startDate = startDate;
+        _startDate = value;
         return this;
       }
 
-      public Builder WithEndDate(string endDate)
+      public Builder WithEndDate(string? value)
       {
-        _endDate = endDate;
+        _endDate = value;
         return this;
       }
 
       public Builder WithCursor(string cursor)
-      {
-        _cursor = cursor;
-        return this;
-      }
+      { _cursor = cursor; return this; }
 
       public Builder WithSortDirection(SortDirection sortDirection)
-      {
-        _sortDirection = sortDirection;
-        return this;
-      }
+      { _sortDirection = sortDirection; return this; }
 
       public Builder WithLimit(int limit)
-      {
-        _limit = limit;
-        return this;
-      }
+      { _limit = limit; return this; }
 
-      /// <summary>
-      /// Validates the builder.
-      /// </summary>
-      /// <exception cref="CoinbaseClientException">Thrown when <see cref="_portfolioId" /> is null, empty, or whitespace.</exception>
       private void Validate()
       {
         if (string.IsNullOrWhiteSpace(_portfolioId))
@@ -129,11 +110,6 @@ namespace CoinbaseSdk.Prime.Orders
         }
       }
 
-      /// <summary>
-      /// Builds the <see cref="ListPortfolioOrdersRequest"/>.
-      /// </summary>
-      /// <returns>The <see cref="ListPortfolioOrdersRequest"/>.</returns>
-      /// <exception cref="CoinbaseClientException">Thrown when required fields are not provided.</exception>
       public ListPortfolioOrdersRequest Build()
       {
         Validate();

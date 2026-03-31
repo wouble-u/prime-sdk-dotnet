@@ -18,6 +18,7 @@ namespace CoinbaseSdk.Prime.Activities
 {
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
+
   public class GetActivityRequest(string activityId)
   {
     [JsonIgnore]
@@ -27,18 +28,12 @@ namespace CoinbaseSdk.Prime.Activities
     {
       private string? _activityId;
 
-      public Builder WithActivityId(string activityId)
+      public Builder WithActivityId(string value)
       {
-        _activityId = activityId;
+        _activityId = value;
         return this;
       }
 
-      /// <summary>
-      /// Validates the input fields.
-      /// </summary>
-      /// <exception cref="CoinbaseClientException">
-      /// If <see cref="_activityId"/> is null, empty, or whitespace.
-      /// </exception>
       private void Validate()
       {
         if (string.IsNullOrWhiteSpace(_activityId))
@@ -47,15 +42,13 @@ namespace CoinbaseSdk.Prime.Activities
         }
       }
 
-      /// <summary>
-      /// Builds the <see cref="GetActivityRequest"/>.
-      /// </summary>
-      /// <returns>The new <see cref="GetActivityRequest"/>.</returns>
-      /// <exception cref="CoinbaseClientException"> If the required fields are not set.</exception>
       public GetActivityRequest Build()
       {
         Validate();
-        return new GetActivityRequest(_activityId!);
+        var request = new GetActivityRequest(_activityId!)
+        {
+        };
+        return request;
       }
     }
   }

@@ -25,9 +25,9 @@ namespace CoinbaseSdk.Prime.AddressBook
   {
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
-
     [JsonPropertyName("currency_symbol")]
     public string? CurrencySymbol { get; set; }
+    [JsonPropertyName("search")]
     public string? Search { get; set; }
 
     public class Builder
@@ -39,47 +39,33 @@ namespace CoinbaseSdk.Prime.AddressBook
       private SortDirection? _sortDirection;
       private int? _limit;
 
-      public Builder WithPortfolioId(string portfolioId)
+      public Builder WithPortfolioId(string value)
       {
-        _portfolioId = portfolioId;
+        _portfolioId = value;
         return this;
       }
 
-      public Builder WithCurrencySymbol(string? currencySymbol)
+      public Builder WithCurrencySymbol(string? value)
       {
-        _currencySymbol = currencySymbol;
+        _currencySymbol = value;
         return this;
       }
 
-      public Builder WithSearch(string? search)
+      public Builder WithSearch(string? value)
       {
-        _search = search;
+        _search = value;
         return this;
       }
 
       public Builder WithCursor(string cursor)
-      {
-        _cursor = cursor;
-        return this;
-      }
+      { _cursor = cursor; return this; }
 
-      public Builder WithSortDirection(SortDirection? sortDirection)
-      {
-        _sortDirection = sortDirection;
-        return this;
-      }
+      public Builder WithSortDirection(SortDirection sortDirection)
+      { _sortDirection = sortDirection; return this; }
 
       public Builder WithLimit(int limit)
-      {
-        _limit = limit;
-        return this;
-      }
+      { _limit = limit; return this; }
 
-      /// <summary>
-      /// Validate the builder.
-      /// </summary>
-      /// <exception cref="CoinbaseClientException">Thrown when the
-      /// <see cref="_portfolioId"/> is null, empty or whitespace.</exception>
       private void Validate()
       {
         if (string.IsNullOrWhiteSpace(_portfolioId))
@@ -88,11 +74,6 @@ namespace CoinbaseSdk.Prime.AddressBook
         }
       }
 
-      /// <summary>
-      /// Build the <see cref="ListAddressBookEntriesRequest"/>.
-      /// </summary>
-      /// <returns>The <see cref="ListAddressBookEntriesRequest"/>.</returns>
-      /// <exception cref="CoinbaseClientException">Thrown when the required fields are not set.</exception>
       public ListAddressBookEntriesRequest Build()
       {
         Validate();
@@ -102,7 +83,7 @@ namespace CoinbaseSdk.Prime.AddressBook
           Search = _search,
           Cursor = _cursor,
           SortDirection = _sortDirection,
-          Limit = _limit
+          Limit = _limit,
         };
         return request;
       }

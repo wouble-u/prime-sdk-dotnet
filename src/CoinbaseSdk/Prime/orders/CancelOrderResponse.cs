@@ -16,8 +16,13 @@
 
 namespace CoinbaseSdk.Prime.Orders
 {
+  using System.Text.Json.Serialization;
+
   public class CancelOrderResponse
   {
+    [JsonPropertyName("id")]
     public string? Id { get; set; }
+
+    public CancelOrderResponse() { }
   }
 }

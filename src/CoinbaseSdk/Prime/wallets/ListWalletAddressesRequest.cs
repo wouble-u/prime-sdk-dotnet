@@ -17,17 +17,79 @@
 namespace CoinbaseSdk.Prime.Wallets
 {
   using System.Text.Json.Serialization;
+  using CoinbaseSdk.Core.Error;
   using CoinbaseSdk.Prime.Common;
+  using CoinbaseSdk.Prime.Model.Enums;
 
   public class ListWalletAddressesRequest(string portfolioId, string walletId) : PaginatedRequest
   {
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
-
     [JsonIgnore]
     public string WalletId { get; set; } = walletId;
-
     [JsonPropertyName("network_id")]
     public string? NetworkId { get; set; }
+
+    public class Builder
+    {
+      private string? _portfolioId;
+      private string? _walletId;
+      private string? _networkId;
+      private string? _cursor;
+      private SortDirection? _sortDirection;
+      private int? _limit;
+
+      public Builder WithPortfolioId(string value)
+      {
+        _portfolioId = value;
+        return this;
+      }
+
+      public Builder WithWalletId(string value)
+      {
+        _walletId = value;
+        return this;
+      }
+
+      public Builder WithNetworkId(string? value)
+      {
+        _networkId = value;
+        return this;
+      }
+
+      public Builder WithCursor(string cursor)
+      { _cursor = cursor; return this; }
+
+      public Builder WithSortDirection(SortDirection sortDirection)
+      { _sortDirection = sortDirection; return this; }
+
+      public Builder WithLimit(int limit)
+      { _limit = limit; return this; }
+
+      private void Validate()
+      {
+        if (string.IsNullOrWhiteSpace(_portfolioId))
+        {
+          throw new CoinbaseClientException("PortfolioId is required");
+        }
+        if (string.IsNullOrWhiteSpace(_walletId))
+        {
+          throw new CoinbaseClientException("WalletId is required");
+        }
+      }
+
+      public ListWalletAddressesRequest Build()
+      {
+        Validate();
+        var request = new ListWalletAddressesRequest(_portfolioId!, _walletId!)
+        {
+          NetworkId = _networkId,
+          Cursor = _cursor,
+          SortDirection = _sortDirection,
+          Limit = _limit,
+        };
+        return request;
+      }
+    }
   }
 }
