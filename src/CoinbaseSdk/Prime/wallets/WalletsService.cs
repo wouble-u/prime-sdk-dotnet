@@ -1,17 +1,17 @@
 /*
  * Copyright 2024-present Coinbase Global, Inc.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ *  http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
  */
 
 namespace CoinbaseSdk.Prime.Wallets
@@ -23,7 +23,47 @@ namespace CoinbaseSdk.Prime.Wallets
 
   public class WalletsService(ICoinbaseClient client) : CoinbaseService(client), IWalletsService
   {
-    public CreateWalletResponse CreateWallet(CreateWalletRequest request, CallOptions? options = null)
+    /// <summary>
+    /// List Portfolio Wallets
+    /// List all wallets associated with a given portfolio.
+    /// </summary>
+    public ListWalletsResponse ListWallets(
+      ListWalletsRequest request,
+      CallOptions? options = null)
+    {
+      return Request<ListWalletsResponse>(
+        HttpMethod.Get,
+        $"/portfolios/{request.PortfolioId}/wallets",
+        [HttpStatusCode.OK],
+        request,
+        options);
+    }
+
+    /// <summary>
+    /// List Portfolio Wallets
+    /// List all wallets associated with a given portfolio.
+    /// </summary>
+    public Task<ListWalletsResponse> ListWalletsAsync(
+      ListWalletsRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default)
+    {
+      return RequestAsync<ListWalletsResponse>(
+        HttpMethod.Get,
+        $"/portfolios/{request.PortfolioId}/wallets",
+        [HttpStatusCode.OK],
+        request,
+        options,
+        cancellationToken);
+    }
+
+    /// <summary>
+    /// Create Wallet
+    /// Create a wallet. Note: The first ONCHAIN wallet for each network family must be created through the Prime UI.
+    /// </summary>
+    public CreateWalletResponse CreateWallet(
+      CreateWalletRequest request,
+      CallOptions? options = null)
     {
       return Request<CreateWalletResponse>(
         HttpMethod.Post,
@@ -33,6 +73,10 @@ namespace CoinbaseSdk.Prime.Wallets
         options);
     }
 
+    /// <summary>
+    /// Create Wallet
+    /// Create a wallet. Note: The first ONCHAIN wallet for each network family must be created through the Prime UI.
+    /// </summary>
     public Task<CreateWalletResponse> CreateWalletAsync(
       CreateWalletRequest request,
       CallOptions? options = null,
@@ -47,31 +91,13 @@ namespace CoinbaseSdk.Prime.Wallets
         cancellationToken);
     }
 
-    public CreateWalletDepositAddressResponse CreateWalletDepositAddress(CreateWalletDepositAddressRequest request, CallOptions? options = null)
-    {
-      return Request<CreateWalletDepositAddressResponse>(
-        HttpMethod.Post,
-        $"/portfolios/{request.PortfolioId}/wallets/{request.WalletId}/addresses",
-        [HttpStatusCode.Created, HttpStatusCode.OK],
-        request,
-        options);
-    }
-
-    public Task<CreateWalletDepositAddressResponse> CreateWalletDepositAddressAsync(
-      CreateWalletDepositAddressRequest request,
-      CallOptions? options = null,
-      CancellationToken cancellationToken = default)
-    {
-      return RequestAsync<CreateWalletDepositAddressResponse>(
-        HttpMethod.Post,
-        $"/portfolios/{request.PortfolioId}/wallets/{request.WalletId}/addresses",
-        [HttpStatusCode.Created, HttpStatusCode.OK],
-        request,
-        options,
-        cancellationToken);
-    }
-
-    public GetWalletResponse GetWallet(GetWalletRequest request, CallOptions? options = null)
+    /// <summary>
+    /// Get Wallet by Wallet ID
+    /// Retrieve a specific wallet by Wallet ID.
+    /// </summary>
+    public GetWalletResponse GetWallet(
+      GetWalletRequest request,
+      CallOptions? options = null)
     {
       return Request<GetWalletResponse>(
         HttpMethod.Get,
@@ -81,6 +107,10 @@ namespace CoinbaseSdk.Prime.Wallets
         options);
     }
 
+    /// <summary>
+    /// Get Wallet by Wallet ID
+    /// Retrieve a specific wallet by Wallet ID.
+    /// </summary>
     public Task<GetWalletResponse> GetWalletAsync(
       GetWalletRequest request,
       CallOptions? options = null,
@@ -95,31 +125,13 @@ namespace CoinbaseSdk.Prime.Wallets
         cancellationToken);
     }
 
-    public GetWalletDepositInstructionsResponse GetWalletDepositInstructions(GetWalletDepositInstructionsRequest request, CallOptions? options = null)
-    {
-      return Request<GetWalletDepositInstructionsResponse>(
-        HttpMethod.Get,
-        $"/portfolios/{request.PortfolioId}/wallets/{request.WalletId}/deposit_instructions",
-        [HttpStatusCode.OK],
-        request,
-        options);
-    }
-
-    public Task<GetWalletDepositInstructionsResponse> GetWalletDepositInstructionsAsync(
-      GetWalletDepositInstructionsRequest request,
-      CallOptions? options = null,
-      CancellationToken cancellationToken = default)
-    {
-      return RequestAsync<GetWalletDepositInstructionsResponse>(
-        HttpMethod.Get,
-        $"/portfolios/{request.PortfolioId}/wallets/{request.WalletId}/deposit_instructions",
-        [HttpStatusCode.OK],
-        request,
-        options,
-        cancellationToken);
-    }
-
-    public ListWalletAddressesResponse ListWalletAddresses(ListWalletAddressesRequest request, CallOptions? options = null)
+    /// <summary>
+    /// List Wallet Addresses
+    /// Returns all deposit addresses associated with a wallet
+    /// </summary>
+    public ListWalletAddressesResponse ListWalletAddresses(
+      ListWalletAddressesRequest request,
+      CallOptions? options = null)
     {
       return Request<ListWalletAddressesResponse>(
         HttpMethod.Get,
@@ -129,6 +141,10 @@ namespace CoinbaseSdk.Prime.Wallets
         options);
     }
 
+    /// <summary>
+    /// List Wallet Addresses
+    /// Returns all deposit addresses associated with a wallet
+    /// </summary>
     public Task<ListWalletAddressesResponse> ListWalletAddressesAsync(
       ListWalletAddressesRequest request,
       CallOptions? options = null,
@@ -143,24 +159,68 @@ namespace CoinbaseSdk.Prime.Wallets
         cancellationToken);
     }
 
-    public ListWalletsResponse ListWallets(ListWalletsRequest request, CallOptions? options = null)
+    /// <summary>
+    /// Create Wallet Deposit Address
+    /// Creates a new deposit address for a wallet. Only applicable to wallets that support multiple deposit addresses on a given network
+    /// </summary>
+    public CreateWalletDepositAddressResponse CreateWalletDepositAddress(
+      CreateWalletDepositAddressRequest request,
+      CallOptions? options = null)
     {
-      return Request<ListWalletsResponse>(
+      return Request<CreateWalletDepositAddressResponse>(
+        HttpMethod.Post,
+        $"/portfolios/{request.PortfolioId}/wallets/{request.WalletId}/addresses",
+        [HttpStatusCode.Created, HttpStatusCode.OK],
+        request,
+        options);
+    }
+
+    /// <summary>
+    /// Create Wallet Deposit Address
+    /// Creates a new deposit address for a wallet. Only applicable to wallets that support multiple deposit addresses on a given network
+    /// </summary>
+    public Task<CreateWalletDepositAddressResponse> CreateWalletDepositAddressAsync(
+      CreateWalletDepositAddressRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default)
+    {
+      return RequestAsync<CreateWalletDepositAddressResponse>(
+        HttpMethod.Post,
+        $"/portfolios/{request.PortfolioId}/wallets/{request.WalletId}/addresses",
+        [HttpStatusCode.Created, HttpStatusCode.OK],
+        request,
+        options,
+        cancellationToken);
+    }
+
+    /// <summary>
+    /// Get Wallet Deposit Instructions
+    /// Retrieve a specific wallet's deposit instructions.
+    /// </summary>
+    public GetWalletDepositInstructionsResponse GetWalletDepositInstructions(
+      GetWalletDepositInstructionsRequest request,
+      CallOptions? options = null)
+    {
+      return Request<GetWalletDepositInstructionsResponse>(
         HttpMethod.Get,
-        $"/portfolios/{request.PortfolioId}/wallets",
+        $"/portfolios/{request.PortfolioId}/wallets/{request.WalletId}/deposit_instructions",
         [HttpStatusCode.OK],
         request,
         options);
     }
 
-    public Task<ListWalletsResponse> ListWalletsAsync(
-      ListWalletsRequest request,
+    /// <summary>
+    /// Get Wallet Deposit Instructions
+    /// Retrieve a specific wallet's deposit instructions.
+    /// </summary>
+    public Task<GetWalletDepositInstructionsResponse> GetWalletDepositInstructionsAsync(
+      GetWalletDepositInstructionsRequest request,
       CallOptions? options = null,
       CancellationToken cancellationToken = default)
     {
-      return RequestAsync<ListWalletsResponse>(
+      return RequestAsync<GetWalletDepositInstructionsResponse>(
         HttpMethod.Get,
-        $"/portfolios/{request.PortfolioId}/wallets",
+        $"/portfolios/{request.PortfolioId}/wallets/{request.WalletId}/deposit_instructions",
         [HttpStatusCode.OK],
         request,
         options,

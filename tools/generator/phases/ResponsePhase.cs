@@ -34,17 +34,17 @@ public static class ResponsePhase
     sb.AppendLine("/*");
     sb.AppendLine(" * Copyright 2025-present Coinbase Global, Inc.");
     sb.AppendLine(" *");
-    sb.AppendLine(" * Licensed under the Apache License, Version 2.0 (the \"License\");");
-    sb.AppendLine(" * you may not use this file except in compliance with the License.");
-    sb.AppendLine(" * You may obtain a copy of the License at");
+    sb.AppendLine(" *  Licensed under the Apache License, Version 2.0 (the \"License\");");
+    sb.AppendLine(" *  you may not use this file except in compliance with the License.");
+    sb.AppendLine(" *  You may obtain a copy of the License at");
     sb.AppendLine(" *");
-    sb.AppendLine(" * http://www.apache.org/licenses/LICENSE-2.0");
+    sb.AppendLine(" *  http://www.apache.org/licenses/LICENSE-2.0");
     sb.AppendLine(" *");
-    sb.AppendLine(" * Unless required by applicable law or agreed to in writing, software");
-    sb.AppendLine(" * distributed under the License is distributed on an \"AS IS\" BASIS,");
-    sb.AppendLine(" * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.");
-    sb.AppendLine(" * See the License for the specific language governing permissions and");
-    sb.AppendLine(" * limitations under the License.");
+    sb.AppendLine(" *  Unless required by applicable law or agreed to in writing, software");
+    sb.AppendLine(" *  distributed under the License is distributed on an \"AS IS\" BASIS,");
+    sb.AppendLine(" *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.");
+    sb.AppendLine(" *  See the License for the specific language governing permissions and");
+    sb.AppendLine(" *  limitations under the License.");
     sb.AppendLine(" */");
     sb.AppendLine();
     sb.AppendLine($"namespace {ns}");
@@ -70,6 +70,16 @@ public static class ResponsePhase
       string.Equals(p.ClrType, "Pagination", StringComparison.Ordinal) ||
       string.Equals(p.ClrType, "Pagination?", StringComparison.Ordinal));
     var useJson = props.Count > 0;
+    if (useJson)
+    {
+      sb.AppendLine("  using System.Text.Json.Serialization;");
+    }
+
+    if (useCommon)
+    {
+      sb.AppendLine("  using CoinbaseSdk.Prime.Common;");
+    }
+
     if (useModel)
     {
       sb.AppendLine("  using CoinbaseSdk.Prime.Model;");
@@ -80,21 +90,22 @@ public static class ResponsePhase
       sb.AppendLine("  using CoinbaseSdk.Prime.Model.Enums;");
     }
 
-    if (useCommon)
-    {
-      sb.AppendLine("  using CoinbaseSdk.Prime.Common;");
-    }
-
-    if (useJson)
-    {
-      sb.AppendLine("  using System.Text.Json.Serialization;");
-    }
-
     sb.AppendLine();
+    var responseClassDoc = op.SuccessResponseDescription ??
+                           XmlDocCommentEmitter.CombineOperationDocs(op.Summary, op.Description);
+    XmlDocCommentEmitter.AppendSummary(sb, responseClassDoc, "  ");
     sb.AppendLine($"  public class {b.SdkMethod}Response");
     sb.AppendLine("  {");
+    var needRespSep = false;
     foreach (var p in props)
     {
+      if (needRespSep)
+      {
+        sb.AppendLine();
+      }
+
+      needRespSep = true;
+      XmlDocCommentEmitter.AppendSummary(sb, p.Description, "    ");
       sb.AppendLine($"    [JsonPropertyName(\"{p.JsonName}\")]");
       var def = DefaultForResponseProperty(p.ClrType);
       sb.AppendLine($"    public {p.ClrType} {p.ClrName} {{ get; set; }}{def}");

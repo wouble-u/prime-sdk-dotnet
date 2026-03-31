@@ -67,6 +67,7 @@ public static class SpecParser
               Name = name,
               In = inn,
               Required = req,
+              Description = GetScalar(pm, "description"),
               Schema = schema
             });
           }
@@ -92,6 +93,7 @@ public static class SpecParser
         }
 
         string? successRef = null;
+        string? successResponseDescription = null;
         if (opNode.Children.ContainsKey(new YamlScalarNode("responses")))
         {
           var responses = (YamlMappingNode)opNode.Children[new YamlScalarNode("responses")];
@@ -103,6 +105,7 @@ public static class SpecParser
             }
 
             var resp = (YamlMappingNode)responses.Children[new YamlScalarNode(code)];
+            successResponseDescription = GetScalar(resp, "description");
             if (!resp.Children.ContainsKey(new YamlScalarNode("content")))
             {
               continue;
@@ -131,6 +134,9 @@ public static class SpecParser
           OperationId = operationId,
           HttpMethod = methodKey.ToUpperInvariant(),
           Path = pathKey,
+          Summary = GetScalar(opNode, "summary"),
+          Description = GetScalar(opNode, "description"),
+          SuccessResponseDescription = successResponseDescription,
           Parameters = parameters,
           RequestBodyJsonSchema = bodySchema,
           SuccessResponseSchemaRef = successRef
@@ -139,6 +145,17 @@ public static class SpecParser
     }
 
     return new ParsedOpenApiDocument { Root = root, OperationsById = ops };
+  }
+
+  private static string? GetScalar(YamlMappingNode mapping, string key)
+  {
+    var k = new YamlScalarNode(key);
+    if (!mapping.Children.ContainsKey(k))
+    {
+      return null;
+    }
+
+    return ((YamlScalarNode)mapping.Children[k]).Value;
   }
 
   private static string? ExtractRef(YamlNode schemaNode)

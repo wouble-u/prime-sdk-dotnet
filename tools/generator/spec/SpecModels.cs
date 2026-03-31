@@ -29,6 +29,9 @@ public class ParsedOperation
   public string OperationId { get; init; } = "";
   public string HttpMethod { get; init; } = "";
   public string Path { get; init; } = "";
+  public string? Summary { get; init; }
+  public string? Description { get; init; }
+  public string? SuccessResponseDescription { get; init; }
   public List<ParsedParameter> Parameters { get; init; } = new();
   public YamlMappingNode? RequestBodyJsonSchema { get; init; }
   public string? SuccessResponseSchemaRef { get; init; }
@@ -39,5 +42,6 @@ public class ParsedParameter
   public string Name { get; init; } = "";
   public string In { get; init; } = "";
   public bool Required { get; init; }
+  public string? Description { get; init; }
   public YamlMappingNode Schema { get; init; } = null!;
 }

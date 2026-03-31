@@ -40,12 +40,16 @@ public static class ServicePhase
     sb.AppendLine();
     sb.AppendLine($"  public interface {svc.InterfaceName}");
     sb.AppendLine("  {");
-    foreach (var (b, _) in ops)
+    foreach (var (b, op) in ops)
     {
+      var methodDoc = XmlDocCommentEmitter.CombineOperationDocs(op.Summary, op.Description);
       if (b.OmitRequest)
       {
-        sb.AppendLine($"    public {b.SdkMethod}Response {b.SdkMethod}(CallOptions? options = null);");
+        XmlDocCommentEmitter.AppendSummary(sb, methodDoc, "    ");
+        sb.AppendLine($"    public {b.SdkMethod}Response {b.SdkMethod}(");
+        sb.AppendLine("      CallOptions? options = null);");
         sb.AppendLine();
+        XmlDocCommentEmitter.AppendSummary(sb, methodDoc, "    ");
         sb.AppendLine($"    public Task<{b.SdkMethod}Response> {b.SdkMethod}Async(");
         sb.AppendLine("      CallOptions? options = null,");
         sb.AppendLine("      CancellationToken cancellationToken = default);");
@@ -53,9 +57,12 @@ public static class ServicePhase
         continue;
       }
 
-      sb.AppendLine(
-        $"    public {b.SdkMethod}Response {b.SdkMethod}({b.SdkMethod}Request request, CallOptions? options = null);");
+      XmlDocCommentEmitter.AppendSummary(sb, methodDoc, "    ");
+      sb.AppendLine($"    public {b.SdkMethod}Response {b.SdkMethod}(");
+      sb.AppendLine($"      {b.SdkMethod}Request request,");
+      sb.AppendLine("      CallOptions? options = null);");
       sb.AppendLine();
+      XmlDocCommentEmitter.AppendSummary(sb, methodDoc, "    ");
       sb.AppendLine($"    public Task<{b.SdkMethod}Response> {b.SdkMethod}Async(");
       sb.AppendLine($"      {b.SdkMethod}Request request,");
       sb.AppendLine("      CallOptions? options = null,");
@@ -87,13 +94,16 @@ public static class ServicePhase
     sb.AppendLine("  {");
     foreach (var (b, op) in ops)
     {
+      var methodDoc = XmlDocCommentEmitter.CombineOperationDocs(op.Summary, op.Description);
       var pathExpr = ToCSharpPathExpression(op.Path, b.OmitRequest);
       var method = ToHttpMethodExpression(op.HttpMethod);
       var status = StatusArray(cfg, b.SdkMethod, op.HttpMethod);
       var bodyArg = RequestBodyArgument(b, op);
       if (b.OmitRequest)
       {
-        sb.AppendLine($"    public {b.SdkMethod}Response {b.SdkMethod}(CallOptions? options = null)");
+        XmlDocCommentEmitter.AppendSummary(sb, methodDoc, "    ");
+        sb.AppendLine($"    public {b.SdkMethod}Response {b.SdkMethod}(");
+        sb.AppendLine("      CallOptions? options = null)");
         sb.AppendLine("    {");
         sb.AppendLine($"      return Request<{b.SdkMethod}Response>(");
         sb.AppendLine($"        {method},");
@@ -103,6 +113,7 @@ public static class ServicePhase
         sb.AppendLine("        options);");
         sb.AppendLine("    }");
         sb.AppendLine();
+        XmlDocCommentEmitter.AppendSummary(sb, methodDoc, "    ");
         sb.AppendLine($"    public Task<{b.SdkMethod}Response> {b.SdkMethod}Async(");
         sb.AppendLine("      CallOptions? options = null,");
         sb.AppendLine("      CancellationToken cancellationToken = default)");
@@ -119,8 +130,10 @@ public static class ServicePhase
         continue;
       }
 
-      sb.AppendLine(
-        $"    public {b.SdkMethod}Response {b.SdkMethod}({b.SdkMethod}Request request, CallOptions? options = null)");
+      XmlDocCommentEmitter.AppendSummary(sb, methodDoc, "    ");
+      sb.AppendLine($"    public {b.SdkMethod}Response {b.SdkMethod}(");
+      sb.AppendLine($"      {b.SdkMethod}Request request,");
+      sb.AppendLine("      CallOptions? options = null)");
       sb.AppendLine("    {");
       sb.AppendLine($"      return Request<{b.SdkMethod}Response>(");
       sb.AppendLine($"        {method},");
@@ -130,6 +143,7 @@ public static class ServicePhase
       sb.AppendLine("        options);");
       sb.AppendLine("    }");
       sb.AppendLine();
+      XmlDocCommentEmitter.AppendSummary(sb, methodDoc, "    ");
       sb.AppendLine($"    public Task<{b.SdkMethod}Response> {b.SdkMethod}Async(");
       sb.AppendLine($"      {b.SdkMethod}Request request,");
       sb.AppendLine("      CallOptions? options = null,");
@@ -241,17 +255,17 @@ public static class ServicePhase
     sb.AppendLine("/*");
     sb.AppendLine(" * Copyright 2025-present Coinbase Global, Inc.");
     sb.AppendLine(" *");
-    sb.AppendLine(" * Licensed under the Apache License, Version 2.0 (the \"License\");");
-    sb.AppendLine(" * you may not use this file except in compliance with the License.");
-    sb.AppendLine(" * You may obtain a copy of the License at");
+    sb.AppendLine(" *  Licensed under the Apache License, Version 2.0 (the \"License\");");
+    sb.AppendLine(" *  you may not use this file except in compliance with the License.");
+    sb.AppendLine(" *  You may obtain a copy of the License at");
     sb.AppendLine(" *");
-    sb.AppendLine(" * http://www.apache.org/licenses/LICENSE-2.0");
+    sb.AppendLine(" *  http://www.apache.org/licenses/LICENSE-2.0");
     sb.AppendLine(" *");
-    sb.AppendLine(" * Unless required by applicable law or agreed to in writing, software");
-    sb.AppendLine(" * distributed under the License is distributed on an \"AS IS\" BASIS,");
-    sb.AppendLine(" * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.");
-    sb.AppendLine(" * See the License for the specific language governing permissions and");
-    sb.AppendLine(" * limitations under the License.");
+    sb.AppendLine(" *  Unless required by applicable law or agreed to in writing, software");
+    sb.AppendLine(" *  distributed under the License is distributed on an \"AS IS\" BASIS,");
+    sb.AppendLine(" *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.");
+    sb.AppendLine(" *  See the License for the specific language governing permissions and");
+    sb.AppendLine(" *  limitations under the License.");
     sb.AppendLine(" */");
     sb.AppendLine();
   }

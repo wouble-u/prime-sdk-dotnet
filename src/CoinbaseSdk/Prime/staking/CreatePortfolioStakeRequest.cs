@@ -1,17 +1,17 @@
 /*
  * Copyright 2025-present Coinbase Global, Inc.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ *  http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
  */
 
 namespace CoinbaseSdk.Prime.Staking
@@ -20,16 +20,36 @@ namespace CoinbaseSdk.Prime.Staking
   using CoinbaseSdk.Core.Error;
   using CoinbaseSdk.Prime.Model;
 
+  /// <summary>
+  /// Request to stake currency in a portfolio
+  /// Creates an execution request to stake funds across a portfolio.  This will stake funds in one or more wallets in the portfolio, with a total bondable balance up to the requested stake amount.
+  /// </summary>
   public class CreatePortfolioStakeRequest(string portfolioId)
   {
+    /// <summary>
+    /// The portfolio ID
+    /// </summary>
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
+
+    /// <summary>
+    /// The client generated idempotency key (uuid required) for requested execution. Subsequent requests using the same key will not create new transactions.
+    /// </summary>
     [JsonPropertyName("idempotency_key")]
     public string? IdempotencyKey { get; set; }
+
+    /// <summary>
+    /// The currency symbol to stake
+    /// </summary>
     [JsonPropertyName("currency_symbol")]
     public string? CurrencySymbol { get; set; }
+
+    /// <summary>
+    /// The quantity of the chosen currency to stake
+    /// </summary>
     [JsonPropertyName("amount")]
     public string? Amount { get; set; }
+
     [JsonPropertyName("metadata")]
     public PortfolioStakingMetadata Metadata { get; set; }
 
@@ -41,24 +61,36 @@ namespace CoinbaseSdk.Prime.Staking
       private string? _amount;
       private PortfolioStakingMetadata _metadata;
 
+      /// <summary>
+      /// The portfolio ID
+      /// </summary>
       public Builder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
+      /// <summary>
+      /// The client generated idempotency key (uuid required) for requested execution. Subsequent requests using the same key will not create new transactions.
+      /// </summary>
       public Builder WithIdempotencyKey(string? idempotencyKey)
       {
         _idempotencyKey = idempotencyKey;
         return this;
       }
 
+      /// <summary>
+      /// The currency symbol to stake
+      /// </summary>
       public Builder WithCurrencySymbol(string? currencySymbol)
       {
         _currencySymbol = currencySymbol;
         return this;
       }
 
+      /// <summary>
+      /// The quantity of the chosen currency to stake
+      /// </summary>
       public Builder WithAmount(string? amount)
       {
         _amount = amount;
@@ -71,6 +103,9 @@ namespace CoinbaseSdk.Prime.Staking
         return this;
       }
 
+      /// <summary>
+      /// Validates required path parameters before building the request.
+      /// </summary>
       private void Validate()
       {
         if (string.IsNullOrWhiteSpace(_portfolioId))
@@ -79,17 +114,19 @@ namespace CoinbaseSdk.Prime.Staking
         }
       }
 
+      /// <summary>
+      /// Builds a new <see cref="CreatePortfolioStakeRequest"/>.
+      /// </summary>
       public CreatePortfolioStakeRequest Build()
       {
         Validate();
-        var request = new CreatePortfolioStakeRequest(_portfolioId!)
+        return new CreatePortfolioStakeRequest(_portfolioId!)
         {
           IdempotencyKey = _idempotencyKey,
           CurrencySymbol = _currencySymbol,
           Amount = _amount,
           Metadata = _metadata,
         };
-        return request;
       }
     }
   }

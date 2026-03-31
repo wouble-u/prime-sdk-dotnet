@@ -118,4 +118,10 @@ public class SdkOperationBinding
   /// </summary>
   [JsonPropertyName("paramTypeOverrides")]
   public Dictionary<string, string> ParamTypeOverrides { get; set; } = new();
+
+  /// <summary>
+  /// When true, the request extends <c>PaginatedRequest</c> even if the OpenAPI operation omits pagination query parameters.
+  /// </summary>
+  [JsonPropertyName("forcePaginated")]
+  public bool ForcePaginated { get; set; }
 }

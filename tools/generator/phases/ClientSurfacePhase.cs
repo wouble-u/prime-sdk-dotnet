@@ -69,32 +69,30 @@ public sealed class ClientSurfacePhase
       list.Add((b, op));
     }
 
-    foreach (var kv in byService)
+    foreach (var (_, ops) in byService.OrderBy(kv => kv.Key, StringComparer.Ordinal))
     {
-      kv.Value.Sort((a, b) => string.Compare(a.B.SdkMethod, b.B.SdkMethod, StringComparison.Ordinal));
-    }
-
-    foreach (var (b, op) in byService.Values.SelectMany(x => x))
-    {
-      if (!b.OmitRequest)
+      foreach (var (b, op) in ops)
       {
-        var req = RequestPhase.EmitRequest(_doc, _cfg, _transforms, b, op);
+        if (!b.OmitRequest)
+        {
+          var req = RequestPhase.EmitRequest(_doc, _cfg, _transforms, b, op);
+          await WriteOrDiffAsync(
+            Path.Combine(_primeSrcRoot, NamingResolver.RequireService(_cfg, b.Service).Folder, $"{b.SdkMethod}Request.cs"),
+            req,
+            dryRun,
+            diffMode);
+        }
+
+        var resp = ResponsePhase.EmitResponse(_doc, _cfg, _transforms, b, op);
         await WriteOrDiffAsync(
-          Path.Combine(_primeSrcRoot, NamingResolver.RequireService(_cfg, b.Service).Folder, $"{b.SdkMethod}Request.cs"),
-          req,
+          Path.Combine(_primeSrcRoot, NamingResolver.RequireService(_cfg, b.Service).Folder, $"{b.SdkMethod}Response.cs"),
+          resp,
           dryRun,
           diffMode);
       }
-
-      var resp = ResponsePhase.EmitResponse(_doc, _cfg, _transforms, b, op);
-      await WriteOrDiffAsync(
-        Path.Combine(_primeSrcRoot, NamingResolver.RequireService(_cfg, b.Service).Folder, $"{b.SdkMethod}Response.cs"),
-        resp,
-        dryRun,
-        diffMode);
     }
 
-    foreach (var (serviceKey, ops) in byService)
+    foreach (var (serviceKey, ops) in byService.OrderBy(kv => kv.Key, StringComparer.Ordinal))
     {
       var svcDef = NamingResolver.RequireService(_cfg, serviceKey);
       var iface = ServicePhase.EmitInterface(svcDef, ops);

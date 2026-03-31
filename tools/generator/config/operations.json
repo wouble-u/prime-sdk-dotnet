@@ -54,10 +54,26 @@
   { "operationId": "PrimeRESTAPI_GetPortfolioActivity", "sdkMethod": "GetPortfolioActivity", "service": "activities" },
   { "operationId": "PrimeRESTAPI_GetPortfolioAddressBook", "sdkMethod": "ListAddressBookEntries", "service": "addressbook" },
   { "operationId": "PrimeRESTAPI_CreatePortfolioAddressBookEntry", "sdkMethod": "CreateAddressBookEntry", "service": "addressbook" },
-  { "operationId": "PrimeRESTAPI_GetPortfolioAllocations", "sdkMethod": "ListPortfolioAllocations", "service": "allocations" },
+  {
+    "operationId": "PrimeRESTAPI_GetPortfolioAllocations",
+    "sdkMethod": "ListPortfolioAllocations",
+    "service": "allocations",
+    "paramTypeOverrides": {
+      "order_side": "OrderSide?"
+    }
+  },
   { "operationId": "PrimeRESTAPI_GetAllocationsByClientNettingId", "sdkMethod": "ListAllocationsByClientNettingId", "service": "allocations" },
   { "operationId": "PrimeRESTAPI_GetAllocation", "sdkMethod": "GetAllocation", "service": "allocations" },
-  { "operationId": "PrimeRESTAPI_GetPortfolioBalances", "sdkMethod": "ListPortfolioBalances", "service": "balances" },
+  {
+    "operationId": "PrimeRESTAPI_GetPortfolioBalances",
+    "sdkMethod": "ListPortfolioBalances",
+    "service": "balances",
+    "forcePaginated": true,
+    "paramTypeOverrides": {
+      "balance_type": "PortfolioBalanceType?",
+      "symbols": "string[]"
+    }
+  },
   { "operationId": "PrimeRESTAPI_GetBuyingPower", "sdkMethod": "GetPortfolioBuyingPower", "service": "financing" },
   { "operationId": "PrimeRESTAPI_GetPortfolioCommission", "sdkMethod": "GetPortfolioCommission", "service": "commission" },
   { "operationId": "PrimeRESTAPI_GetPortfolioCounterpartyID", "sdkMethod": "GetPortfolioCounterparty", "service": "portfolios" },

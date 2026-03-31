@@ -64,8 +64,9 @@ public static class RequestPhase
       ? OpenApiSchemaCodegen.ListProperties(doc.Root, op.RequestBodyJsonSchema, transforms)
       : new List<SchemaProperty>();
 
-    var paginated = queryParams.Any(p =>
-      p.Name is "cursor" or "sort_direction");
+    var paginated = b.ForcePaginated ||
+                    queryParams.Any(p =>
+                      p.Name is "cursor" or "sort_direction");
 
     // Pagination query params are modeled on PaginatedRequest (cursor, limit, sort_direction).
     var queryParamsForMembers = paginated
@@ -79,17 +80,17 @@ public static class RequestPhase
     sb.AppendLine("/*");
     sb.AppendLine(" * Copyright 2025-present Coinbase Global, Inc.");
     sb.AppendLine(" *");
-    sb.AppendLine(" * Licensed under the Apache License, Version 2.0 (the \"License\");");
-    sb.AppendLine(" * you may not use this file except in compliance with the License.");
-    sb.AppendLine(" * You may obtain a copy of the License at");
+    sb.AppendLine(" *  Licensed under the Apache License, Version 2.0 (the \"License\");");
+    sb.AppendLine(" *  you may not use this file except in compliance with the License.");
+    sb.AppendLine(" *  You may obtain a copy of the License at");
     sb.AppendLine(" *");
-    sb.AppendLine(" * http://www.apache.org/licenses/LICENSE-2.0");
+    sb.AppendLine(" *  http://www.apache.org/licenses/LICENSE-2.0");
     sb.AppendLine(" *");
-    sb.AppendLine(" * Unless required by applicable law or agreed to in writing, software");
-    sb.AppendLine(" * distributed under the License is distributed on an \"AS IS\" BASIS,");
-    sb.AppendLine(" * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.");
-    sb.AppendLine(" * See the License for the specific language governing permissions and");
-    sb.AppendLine(" * limitations under the License.");
+    sb.AppendLine(" *  Unless required by applicable law or agreed to in writing, software");
+    sb.AppendLine(" *  distributed under the License is distributed on an \"AS IS\" BASIS,");
+    sb.AppendLine(" *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.");
+    sb.AppendLine(" *  See the License for the specific language governing permissions and");
+    sb.AppendLine(" *  limitations under the License.");
     sb.AppendLine(" */");
     sb.AppendLine();
     sb.AppendLine($"namespace {ns}");
@@ -108,39 +109,64 @@ public static class RequestPhase
                    pathParams.Concat(queryParamsForMembers).Any(p => p.Schema != null &&
                      OpenApiSchemaCodegen.ToClrType(doc.Root, p.Schema, transforms, out _, out var isEnum) is not null && isEnum) ||
                    bodyProps.Any(p => p.UsesEnum);
+    var usesModel = bodyProps.Any(p => p.UsesModel);
+    if (usesModel)
+    {
+      sb.AppendLine("  using CoinbaseSdk.Prime.Model;");
+    }
+
     if (usesEnums)
     {
       sb.AppendLine("  using CoinbaseSdk.Prime.Model.Enums;");
     }
 
-    if (bodyProps.Any(p => p.UsesModel))
-    {
-      sb.AppendLine("  using CoinbaseSdk.Prime.Model;");
-    }
-
     sb.AppendLine();
+    var classDoc = XmlDocCommentEmitter.CombineOperationDocs(op.Summary, op.Description);
+    XmlDocCommentEmitter.AppendSummary(sb, classDoc, "  ");
     var basePart = paginated ? " : PaginatedRequest" : string.Empty;
     sb.AppendLine(
       $"  public class {b.SdkMethod}Request({ctorArgs}){basePart}");
     sb.AppendLine("  {");
+    var needPropSep = false;
     foreach (var p in pathParams)
     {
+      if (needPropSep)
+      {
+        sb.AppendLine();
+      }
+
+      needPropSep = true;
       var pn = OpenApiSchemaCodegen.ToPascalCase(p.Name);
       var cn = CamelParam(p.Name);
+      XmlDocCommentEmitter.AppendSummary(sb, p.Description, "    ");
       sb.AppendLine("    [JsonIgnore]");
       sb.AppendLine($"    public {MapPathParamToClr(p)} {pn} {{ get; set; }} = {cn};");
     }
 
     foreach (var p in queryParamsForMembers)
     {
+      if (needPropSep)
+      {
+        sb.AppendLine();
+      }
+
+      needPropSep = true;
       var pn = OpenApiSchemaCodegen.ToPascalCase(p.Name);
       var clr = MapParamToClr(p);
+      XmlDocCommentEmitter.AppendSummary(sb, p.Description, "    ");
       sb.AppendLine($"    [JsonPropertyName(\"{p.Name}\")]");
       sb.AppendLine($"    public {clr} {pn} {{ get; set; }}{DefaultForQuery(clr)}");
     }
 
     foreach (var p in bodyProps)
     {
+      if (needPropSep)
+      {
+        sb.AppendLine();
+      }
+
+      needPropSep = true;
+      XmlDocCommentEmitter.AppendSummary(sb, p.Description, "    ");
       sb.AppendLine($"    [JsonPropertyName(\"{p.JsonName}\")]");
       sb.AppendLine($"    public {p.ClrType} {p.ClrName} {{ get; set; }}{DefaultForBody(p)}");
     }
@@ -238,6 +264,7 @@ public static class RequestPhase
       var f = "_" + CamelParam(p.Name);
       var t = mapParam(p).TrimEnd('?');
       var paramVar = CamelParam(p.Name);
+      XmlDocCommentEmitter.AppendSummary(sb, p.Description, "      ");
       sb.AppendLine($"      public Builder With{pn}({t} {paramVar})");
       sb.AppendLine("      {");
       sb.AppendLine($"        {f} = {paramVar};");
@@ -251,6 +278,7 @@ public static class RequestPhase
       var pn = OpenApiSchemaCodegen.ToPascalCase(p.Name);
       var f = "_" + CamelParam(p.Name);
       var paramVar = CamelParam(p.Name);
+      XmlDocCommentEmitter.AppendSummary(sb, p.Description, "      ");
       sb.AppendLine($"      public Builder With{pn}({mapParam(p)} {paramVar})");
       sb.AppendLine("      {");
       sb.AppendLine($"        {f} = {paramVar};");
@@ -263,6 +291,7 @@ public static class RequestPhase
     {
       var f = "_" + char.ToLowerInvariant(p.ClrName[0]) + p.ClrName[1..];
       var paramVar = char.ToLowerInvariant(p.ClrName[0]) + p.ClrName[1..];
+      XmlDocCommentEmitter.AppendSummary(sb, p.Description, "      ");
       sb.AppendLine($"      public Builder With{p.ClrName}({p.ClrType} {paramVar})");
       sb.AppendLine("      {");
       sb.AppendLine($"        {f} = {paramVar};");
@@ -274,16 +303,28 @@ public static class RequestPhase
     if (paginated)
     {
       sb.AppendLine("      public Builder WithCursor(string cursor)");
-      sb.AppendLine("      { _cursor = cursor; return this; }");
+      sb.AppendLine("      {");
+      sb.AppendLine("        _cursor = cursor;");
+      sb.AppendLine("        return this;");
+      sb.AppendLine("      }");
       sb.AppendLine();
       sb.AppendLine("      public Builder WithSortDirection(SortDirection sortDirection)");
-      sb.AppendLine("      { _sortDirection = sortDirection; return this; }");
+      sb.AppendLine("      {");
+      sb.AppendLine("        _sortDirection = sortDirection;");
+      sb.AppendLine("        return this;");
+      sb.AppendLine("      }");
       sb.AppendLine();
       sb.AppendLine("      public Builder WithLimit(int limit)");
-      sb.AppendLine("      { _limit = limit; return this; }");
+      sb.AppendLine("      {");
+      sb.AppendLine("        _limit = limit;");
+      sb.AppendLine("        return this;");
+      sb.AppendLine("      }");
       sb.AppendLine();
     }
 
+    sb.AppendLine("      /// <summary>");
+    sb.AppendLine("      /// Validates required path parameters before building the request.");
+    sb.AppendLine("      /// </summary>");
     sb.AppendLine("      private void Validate()");
     sb.AppendLine("      {");
     foreach (var p in pathParams.Where(x => x.Required))
@@ -302,6 +343,9 @@ public static class RequestPhase
 
     sb.AppendLine("      }");
     sb.AppendLine();
+    sb.AppendLine("      /// <summary>");
+    sb.AppendLine($"      /// Builds a new <see cref=\"{sdkMethod}Request\"/>.");
+    sb.AppendLine("      /// </summary>");
     sb.AppendLine($"      public {sdkMethod}Request Build()");
     sb.AppendLine("      {");
     sb.AppendLine("        Validate();");
@@ -310,7 +354,7 @@ public static class RequestPhase
       var f = "_" + CamelParam(p.Name);
       return $"{f}!";
     }));
-    sb.AppendLine($"        var request = new {sdkMethod}Request({ctor})");
+    sb.AppendLine($"        return new {sdkMethod}Request({ctor})");
     sb.AppendLine("        {");
     foreach (var p in queryParams)
     {
@@ -333,7 +377,6 @@ public static class RequestPhase
     }
 
     sb.AppendLine("        };");
-    sb.AppendLine("        return request;");
     sb.AppendLine("      }");
     sb.AppendLine("    }");
   }

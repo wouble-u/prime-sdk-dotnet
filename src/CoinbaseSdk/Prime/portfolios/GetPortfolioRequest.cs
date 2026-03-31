@@ -1,17 +1,17 @@
 /*
  * Copyright 2024-present Coinbase Global, Inc.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ *  http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
  */
 
 namespace CoinbaseSdk.Prime.Portfolios
@@ -19,8 +19,15 @@ namespace CoinbaseSdk.Prime.Portfolios
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
 
+  /// <summary>
+  /// Get Portfolio by Portfolio ID
+  /// Retrieve a given portfolio by its portfolio ID.
+  /// </summary>
   public class GetPortfolioRequest(string portfolioId)
   {
+    /// <summary>
+    /// The portfolio ID
+    /// </summary>
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
 
@@ -28,12 +35,18 @@ namespace CoinbaseSdk.Prime.Portfolios
     {
       private string? _portfolioId;
 
+      /// <summary>
+      /// The portfolio ID
+      /// </summary>
       public Builder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
+      /// <summary>
+      /// Validates required path parameters before building the request.
+      /// </summary>
       private void Validate()
       {
         if (string.IsNullOrWhiteSpace(_portfolioId))
@@ -42,13 +55,15 @@ namespace CoinbaseSdk.Prime.Portfolios
         }
       }
 
+      /// <summary>
+      /// Builds a new <see cref="GetPortfolioRequest"/>.
+      /// </summary>
       public GetPortfolioRequest Build()
       {
         Validate();
-        var request = new GetPortfolioRequest(_portfolioId!)
+        return new GetPortfolioRequest(_portfolioId!)
         {
         };
-        return request;
       }
     }
   }

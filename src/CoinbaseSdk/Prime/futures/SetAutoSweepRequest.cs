@@ -1,17 +1,17 @@
 /*
  * Copyright 2025-present Coinbase Global, Inc.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ *  http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
  */
 
 namespace CoinbaseSdk.Prime.Futures
@@ -19,10 +19,21 @@ namespace CoinbaseSdk.Prime.Futures
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
 
+  /// <summary>
+  /// Set Auto Sweep
+  /// Set auto sweep for a given entity.
+  /// </summary>
   public class SetAutoSweepRequest(string entityId)
   {
+    /// <summary>
+    /// Entity ID
+    /// </summary>
     [JsonIgnore]
     public string EntityId { get; set; } = entityId;
+
+    /// <summary>
+    /// Auto sweep status, default to false
+    /// </summary>
     [JsonPropertyName("auto_sweep")]
     public bool? AutoSweep { get; set; }
 
@@ -31,18 +42,27 @@ namespace CoinbaseSdk.Prime.Futures
       private string? _entityId;
       private bool? _autoSweep;
 
+      /// <summary>
+      /// Entity ID
+      /// </summary>
       public Builder WithEntityId(string entityId)
       {
         _entityId = entityId;
         return this;
       }
 
+      /// <summary>
+      /// Auto sweep status, default to false
+      /// </summary>
       public Builder WithAutoSweep(bool? autoSweep)
       {
         _autoSweep = autoSweep;
         return this;
       }
 
+      /// <summary>
+      /// Validates required path parameters before building the request.
+      /// </summary>
       private void Validate()
       {
         if (string.IsNullOrWhiteSpace(_entityId))
@@ -51,14 +71,16 @@ namespace CoinbaseSdk.Prime.Futures
         }
       }
 
+      /// <summary>
+      /// Builds a new <see cref="SetAutoSweepRequest"/>.
+      /// </summary>
       public SetAutoSweepRequest Build()
       {
         Validate();
-        var request = new SetAutoSweepRequest(_entityId!)
+        return new SetAutoSweepRequest(_entityId!)
         {
           AutoSweep = _autoSweep,
         };
-        return request;
       }
     }
   }

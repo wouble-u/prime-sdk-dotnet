@@ -192,23 +192,59 @@ public class SharedTransforms
   public static string DeduplicateUsings(string content)
   {
     var lines = content.Split('\n');
-    var seen = new HashSet<string>(StringComparer.Ordinal);
     var builder = new StringBuilder();
+    var usingRun = new List<string>();
+
+    void FlushUsingRun()
+    {
+      if (usingRun.Count == 0)
+      {
+        return;
+      }
+
+      var unique = new Dictionary<string, string>(StringComparer.Ordinal);
+      foreach (var line in usingRun)
+      {
+        var trimmed = line.Trim();
+        if (!unique.ContainsKey(trimmed))
+        {
+          unique[trimmed] = line;
+        }
+      }
+
+      var sorted = unique.Values
+        .OrderBy(line =>
+        {
+          var ns = line.Trim()["using ".Length..^1].Trim();
+          return ns.StartsWith("System", StringComparison.Ordinal) ? 0 : 1;
+        })
+        .ThenBy(line => line.Trim()["using ".Length..^1].Trim(), StringComparer.Ordinal)
+        .ToList();
+
+      foreach (var line in sorted)
+      {
+        builder.Append(line);
+        builder.Append('\n');
+      }
+
+      usingRun.Clear();
+    }
+
     foreach (var line in lines)
     {
       var trimmed = line.Trim();
       if (trimmed.StartsWith("using ", StringComparison.Ordinal) && trimmed.EndsWith(';'))
       {
-        if (!seen.Add(trimmed))
-        {
-          continue;
-        }
+        usingRun.Add(line);
+        continue;
       }
 
+      FlushUsingRun();
       builder.Append(line);
       builder.Append('\n');
     }
 
+    FlushUsingRun();
     return builder.ToString().TrimEnd('\n') + '\n';
   }
 }

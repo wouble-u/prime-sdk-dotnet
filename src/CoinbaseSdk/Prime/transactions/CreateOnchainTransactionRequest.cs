@@ -1,17 +1,17 @@
 /*
  * Copyright 2025-present Coinbase Global, Inc.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ *  http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
  */
 
 namespace CoinbaseSdk.Prime.Transactions
@@ -20,16 +20,33 @@ namespace CoinbaseSdk.Prime.Transactions
   using CoinbaseSdk.Core.Error;
   using CoinbaseSdk.Prime.Model;
 
+  /// <summary>
+  /// Create Onchain Transaction
+  /// Create an onchain transaction.
+  /// </summary>
   public class CreateOnchainTransactionRequest(string portfolioId, string walletId)
   {
+    /// <summary>
+    /// The portfolio ID
+    /// </summary>
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
+
+    /// <summary>
+    /// The wallet ID
+    /// </summary>
     [JsonIgnore]
     public string WalletId { get; set; } = walletId;
+
+    /// <summary>
+    /// Raw unsigned transaction in Hex format (Supports EVM and Solana)
+    /// </summary>
     [JsonPropertyName("raw_unsigned_txn")]
     public string? RawUnsignedTxn { get; set; }
+
     [JsonPropertyName("rpc")]
     public RpcConfig Rpc { get; set; }
+
     [JsonPropertyName("evm_params")]
     public EvmParams EvmParams { get; set; }
 
@@ -41,18 +58,27 @@ namespace CoinbaseSdk.Prime.Transactions
       private RpcConfig _rpc;
       private EvmParams _evmParams;
 
+      /// <summary>
+      /// The portfolio ID
+      /// </summary>
       public Builder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
+      /// <summary>
+      /// The wallet ID
+      /// </summary>
       public Builder WithWalletId(string walletId)
       {
         _walletId = walletId;
         return this;
       }
 
+      /// <summary>
+      /// Raw unsigned transaction in Hex format (Supports EVM and Solana)
+      /// </summary>
       public Builder WithRawUnsignedTxn(string? rawUnsignedTxn)
       {
         _rawUnsignedTxn = rawUnsignedTxn;
@@ -71,6 +97,9 @@ namespace CoinbaseSdk.Prime.Transactions
         return this;
       }
 
+      /// <summary>
+      /// Validates required path parameters before building the request.
+      /// </summary>
       private void Validate()
       {
         if (string.IsNullOrWhiteSpace(_portfolioId))
@@ -83,16 +112,18 @@ namespace CoinbaseSdk.Prime.Transactions
         }
       }
 
+      /// <summary>
+      /// Builds a new <see cref="CreateOnchainTransactionRequest"/>.
+      /// </summary>
       public CreateOnchainTransactionRequest Build()
       {
         Validate();
-        var request = new CreateOnchainTransactionRequest(_portfolioId!, _walletId!)
+        return new CreateOnchainTransactionRequest(_portfolioId!, _walletId!)
         {
           RawUnsignedTxn = _rawUnsignedTxn,
           Rpc = _rpc,
           EvmParams = _evmParams,
         };
-        return request;
       }
     }
   }

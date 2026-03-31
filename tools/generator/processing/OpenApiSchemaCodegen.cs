@@ -146,7 +146,14 @@ public static class OpenApiSchemaCodegen
       var required = schema.Children.ContainsKey(new YamlScalarNode("required")) &&
                      ((YamlSequenceNode)schema.Children[new YamlScalarNode("required")]).Children
                      .Any(n => ((YamlScalarNode)n).Value == jsonName);
-      list.Add(new SchemaProperty(jsonName, clrName, clr, required, model.Count > 0, enums.Count > 0));
+      string? propDescription = null;
+      if (pnode is YamlMappingNode propMap &&
+          propMap.Children.ContainsKey(new YamlScalarNode("description")))
+      {
+        propDescription = ((YamlScalarNode)propMap.Children[new YamlScalarNode("description")]).Value;
+      }
+
+      list.Add(new SchemaProperty(jsonName, clrName, clr, required, model.Count > 0, enums.Count > 0, propDescription));
     }
 
     return list;
@@ -188,4 +195,5 @@ public record SchemaProperty(
   string ClrType,
   bool Required,
   bool UsesModel,
-  bool UsesEnum);
+  bool UsesEnum,
+  string? Description = null);
