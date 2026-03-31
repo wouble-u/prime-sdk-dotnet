@@ -35,7 +35,7 @@ namespace CoinbaseSdk.Prime.Wallets
     [JsonPropertyName("get_network_unified_wallets")]
     public bool? GetNetworkUnifiedWallets { get; set; }
 
-    public class Builder
+    public class ListWalletsRequestBuilder
     {
       private string? _portfolioId;
       private string? _type;
@@ -45,43 +45,43 @@ namespace CoinbaseSdk.Prime.Wallets
       private SortDirection? _sortDirection;
       private int? _limit;
 
-      public Builder WithPortfolioId(string portfolioId)
+      public ListWalletsRequestBuilder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithType(string? type)
+      public ListWalletsRequestBuilder WithType(string? type)
       {
         _type = type;
         return this;
       }
 
-      public Builder WithSymbols(string?[] symbols)
+      public ListWalletsRequestBuilder WithSymbols(string?[] symbols)
       {
         _symbols = symbols;
         return this;
       }
 
-      public Builder WithGetNetworkUnifiedWallets(bool? getNetworkUnifiedWallets)
+      public ListWalletsRequestBuilder WithGetNetworkUnifiedWallets(bool? getNetworkUnifiedWallets)
       {
         _getNetworkUnifiedWallets = getNetworkUnifiedWallets;
         return this;
       }
 
-      public Builder WithCursor(string cursor)
+      public ListWalletsRequestBuilder WithCursor(string cursor)
       {
         _cursor = cursor;
         return this;
       }
 
-      public Builder WithSortDirection(SortDirection sortDirection)
+      public ListWalletsRequestBuilder WithSortDirection(SortDirection sortDirection)
       {
         _sortDirection = sortDirection;
         return this;
       }
 
-      public Builder WithLimit(int limit)
+      public ListWalletsRequestBuilder WithLimit(int limit)
       {
         _limit = limit;
         return this;

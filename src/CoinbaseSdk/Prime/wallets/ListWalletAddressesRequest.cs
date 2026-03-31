@@ -32,7 +32,7 @@ namespace CoinbaseSdk.Prime.Wallets
     [JsonPropertyName("network_id")]
     public string? NetworkId { get; set; }
 
-    public class Builder
+    public class ListWalletAddressesRequestBuilder
     {
       private string? _portfolioId;
       private string? _walletId;
@@ -41,37 +41,37 @@ namespace CoinbaseSdk.Prime.Wallets
       private SortDirection? _sortDirection;
       private int? _limit;
 
-      public Builder WithPortfolioId(string portfolioId)
+      public ListWalletAddressesRequestBuilder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithWalletId(string walletId)
+      public ListWalletAddressesRequestBuilder WithWalletId(string walletId)
       {
         _walletId = walletId;
         return this;
       }
 
-      public Builder WithNetworkId(string? networkId)
+      public ListWalletAddressesRequestBuilder WithNetworkId(string? networkId)
       {
         _networkId = networkId;
         return this;
       }
 
-      public Builder WithCursor(string cursor)
+      public ListWalletAddressesRequestBuilder WithCursor(string cursor)
       {
         _cursor = cursor;
         return this;
       }
 
-      public Builder WithSortDirection(SortDirection sortDirection)
+      public ListWalletAddressesRequestBuilder WithSortDirection(SortDirection sortDirection)
       {
         _sortDirection = sortDirection;
         return this;
       }
 
-      public Builder WithLimit(int limit)
+      public ListWalletAddressesRequestBuilder WithLimit(int limit)
       {
         _limit = limit;
         return this;

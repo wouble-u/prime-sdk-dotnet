@@ -26,32 +26,32 @@ namespace CoinbaseSdk.Prime.Users
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
 
-    public class Builder
+    public class ListPortfolioUsersRequestBuilder
     {
       private string? _portfolioId;
       private string? _cursor;
       private SortDirection? _sortDirection;
       private int? _limit;
 
-      public Builder WithPortfolioId(string portfolioId)
+      public ListPortfolioUsersRequestBuilder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithCursor(string cursor)
+      public ListPortfolioUsersRequestBuilder WithCursor(string cursor)
       {
         _cursor = cursor;
         return this;
       }
 
-      public Builder WithSortDirection(SortDirection sortDirection)
+      public ListPortfolioUsersRequestBuilder WithSortDirection(SortDirection sortDirection)
       {
         _sortDirection = sortDirection;
         return this;
       }
 
-      public Builder WithLimit(int limit)
+      public ListPortfolioUsersRequestBuilder WithLimit(int limit)
       {
         _limit = limit;
         return this;

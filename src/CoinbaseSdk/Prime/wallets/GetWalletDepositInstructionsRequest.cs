@@ -36,7 +36,7 @@ namespace CoinbaseSdk.Prime.Wallets
     [JsonPropertyName("network.type")]
     public string? NetworkType { get; set; }
 
-    public class Builder
+    public class GetWalletDepositInstructionsRequestBuilder
     {
       private string? _portfolioId;
       private string? _walletId;
@@ -44,31 +44,31 @@ namespace CoinbaseSdk.Prime.Wallets
       private string? _networkId;
       private string? _networkType;
 
-      public Builder WithPortfolioId(string portfolioId)
+      public GetWalletDepositInstructionsRequestBuilder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithWalletId(string walletId)
+      public GetWalletDepositInstructionsRequestBuilder WithWalletId(string walletId)
       {
         _walletId = walletId;
         return this;
       }
 
-      public Builder WithDepositType(string? depositType)
+      public GetWalletDepositInstructionsRequestBuilder WithDepositType(string? depositType)
       {
         _depositType = depositType;
         return this;
       }
 
-      public Builder WithNetworkId(string? networkId)
+      public GetWalletDepositInstructionsRequestBuilder WithNetworkId(string? networkId)
       {
         _networkId = networkId;
         return this;
       }
 
-      public Builder WithNetworkType(string? networkType)
+      public GetWalletDepositInstructionsRequestBuilder WithNetworkType(string? networkType)
       {
         _networkType = networkType;
         return this;

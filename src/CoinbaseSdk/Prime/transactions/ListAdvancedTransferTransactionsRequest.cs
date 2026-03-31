@@ -27,18 +27,18 @@ namespace CoinbaseSdk.Prime.Transactions
     [JsonIgnore]
     public string AdvancedTransferId { get; set; } = advancedTransferId;
 
-    public class Builder
+    public class ListAdvancedTransferTransactionsRequestBuilder
     {
       private string? _portfolioId;
       private string? _advancedTransferId;
 
-      public Builder WithPortfolioId(string portfolioId)
+      public ListAdvancedTransferTransactionsRequestBuilder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithAdvancedTransferId(string advancedTransferId)
+      public ListAdvancedTransferTransactionsRequestBuilder WithAdvancedTransferId(string advancedTransferId)
       {
         _advancedTransferId = advancedTransferId;
         return this;

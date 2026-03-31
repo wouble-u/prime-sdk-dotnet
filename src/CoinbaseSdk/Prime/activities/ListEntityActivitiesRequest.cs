@@ -47,7 +47,7 @@ namespace CoinbaseSdk.Prime.Activities
     [JsonPropertyName("get_network_unified_activities")]
     public bool? GetNetworkUnifiedActivities { get; set; }
 
-    public class Builder
+    public class ListEntityActivitiesRequestBuilder
     {
       private string? _entityId;
       private ActivityLevel? _activityLevel;
@@ -61,67 +61,67 @@ namespace CoinbaseSdk.Prime.Activities
       private SortDirection? _sortDirection;
       private int? _limit;
 
-      public Builder WithEntityId(string entityId)
+      public ListEntityActivitiesRequestBuilder WithEntityId(string entityId)
       {
         _entityId = entityId;
         return this;
       }
 
-      public Builder WithActivityLevel(ActivityLevel? activityLevel)
+      public ListEntityActivitiesRequestBuilder WithActivityLevel(ActivityLevel? activityLevel)
       {
         _activityLevel = activityLevel;
         return this;
       }
 
-      public Builder WithSymbols(string?[] symbols)
+      public ListEntityActivitiesRequestBuilder WithSymbols(string?[] symbols)
       {
         _symbols = symbols;
         return this;
       }
 
-      public Builder WithCategories(ActivityCategory?[] categories)
+      public ListEntityActivitiesRequestBuilder WithCategories(ActivityCategory?[] categories)
       {
         _categories = categories;
         return this;
       }
 
-      public Builder WithStatuses(ActivityStatus?[] statuses)
+      public ListEntityActivitiesRequestBuilder WithStatuses(ActivityStatus?[] statuses)
       {
         _statuses = statuses;
         return this;
       }
 
-      public Builder WithStartTime(string? startTime)
+      public ListEntityActivitiesRequestBuilder WithStartTime(string? startTime)
       {
         _startTime = startTime;
         return this;
       }
 
-      public Builder WithEndTime(string? endTime)
+      public ListEntityActivitiesRequestBuilder WithEndTime(string? endTime)
       {
         _endTime = endTime;
         return this;
       }
 
-      public Builder WithGetNetworkUnifiedActivities(bool? getNetworkUnifiedActivities)
+      public ListEntityActivitiesRequestBuilder WithGetNetworkUnifiedActivities(bool? getNetworkUnifiedActivities)
       {
         _getNetworkUnifiedActivities = getNetworkUnifiedActivities;
         return this;
       }
 
-      public Builder WithCursor(string cursor)
+      public ListEntityActivitiesRequestBuilder WithCursor(string cursor)
       {
         _cursor = cursor;
         return this;
       }
 
-      public Builder WithSortDirection(SortDirection sortDirection)
+      public ListEntityActivitiesRequestBuilder WithSortDirection(SortDirection sortDirection)
       {
         _sortDirection = sortDirection;
         return this;
       }
 
-      public Builder WithLimit(int limit)
+      public ListEntityActivitiesRequestBuilder WithLimit(int limit)
       {
         _limit = limit;
         return this;

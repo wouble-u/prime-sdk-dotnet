@@ -27,18 +27,18 @@ namespace CoinbaseSdk.Prime.Allocations
     [JsonIgnore]
     public string AllocationId { get; set; } = allocationId;
 
-    public class Builder
+    public class GetAllocationRequestBuilder
     {
       private string? _portfolioId;
       private string? _allocationId;
 
-      public Builder WithPortfolioId(string portfolioId)
+      public GetAllocationRequestBuilder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithAllocationId(string allocationId)
+      public GetAllocationRequestBuilder WithAllocationId(string allocationId)
       {
         _allocationId = allocationId;
         return this;

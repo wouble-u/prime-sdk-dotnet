@@ -70,7 +70,7 @@ rootCommand.SetHandler((context) =>
         var client = CoinbasePrimeClient.FromEnv();
         var transactionsService = new TransactionsService(client);
 
-        var request = new SubmitDepositTravelRuleDataRequest.Builder()
+        var request = new SubmitDepositTravelRuleDataRequest.SubmitDepositTravelRuleDataRequestBuilder()
             .WithPortfolioId(portfolioId)
             .WithTransactionId(transactionId)
             .Build();

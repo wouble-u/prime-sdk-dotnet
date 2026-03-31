@@ -28,18 +28,18 @@ namespace CoinbaseSdk.Prime.OnchainAddressBook
     [JsonPropertyName("address_group")]
     public AddressGroup AddressGroup { get; set; }
 
-    public class Builder
+    public class UpdateOnchainAddressBookEntryRequestBuilder
     {
       private string? _portfolioId;
       private AddressGroup _addressGroup;
 
-      public Builder WithPortfolioId(string portfolioId)
+      public UpdateOnchainAddressBookEntryRequestBuilder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithAddressGroup(AddressGroup addressGroup)
+      public UpdateOnchainAddressBookEntryRequestBuilder WithAddressGroup(AddressGroup addressGroup)
       {
         _addressGroup = addressGroup;
         return this;

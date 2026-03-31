@@ -30,25 +30,25 @@ namespace CoinbaseSdk.Prime.Staking
     [JsonPropertyName("amount")]
     public string? Amount { get; set; }
 
-    public class Builder
+    public class PreviewUnstakeRequestBuilder
     {
       private string? _portfolioId;
       private string? _walletId;
       private string? _amount;
 
-      public Builder WithPortfolioId(string portfolioId)
+      public PreviewUnstakeRequestBuilder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithWalletId(string walletId)
+      public PreviewUnstakeRequestBuilder WithWalletId(string walletId)
       {
         _walletId = walletId;
         return this;
       }
 
-      public Builder WithAmount(string? amount)
+      public PreviewUnstakeRequestBuilder WithAmount(string? amount)
       {
         _amount = amount;
         return this;

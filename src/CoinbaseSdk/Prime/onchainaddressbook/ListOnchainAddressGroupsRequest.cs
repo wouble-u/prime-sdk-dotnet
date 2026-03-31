@@ -24,11 +24,11 @@ namespace CoinbaseSdk.Prime.OnchainAddressBook
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
 
-    public class Builder
+    public class ListOnchainAddressGroupsRequestBuilder
     {
       private string? _portfolioId;
 
-      public Builder WithPortfolioId(string portfolioId)
+      public ListOnchainAddressGroupsRequestBuilder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;

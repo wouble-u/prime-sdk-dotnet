@@ -39,7 +39,7 @@ namespace CoinbaseSdk.Prime.Transactions
     [JsonPropertyName("currency_symbol")]
     public string? CurrencySymbol { get; set; }
 
-    public class Builder
+    public class CreateTransferRequestBuilder
     {
       private string? _portfolioId;
       private string? _walletId;
@@ -48,37 +48,37 @@ namespace CoinbaseSdk.Prime.Transactions
       private string? _idempotencyKey;
       private string? _currencySymbol;
 
-      public Builder WithPortfolioId(string portfolioId)
+      public CreateTransferRequestBuilder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithWalletId(string walletId)
+      public CreateTransferRequestBuilder WithWalletId(string walletId)
       {
         _walletId = walletId;
         return this;
       }
 
-      public Builder WithAmount(string? amount)
+      public CreateTransferRequestBuilder WithAmount(string? amount)
       {
         _amount = amount;
         return this;
       }
 
-      public Builder WithDestination(string? destination)
+      public CreateTransferRequestBuilder WithDestination(string? destination)
       {
         _destination = destination;
         return this;
       }
 
-      public Builder WithIdempotencyKey(string? idempotencyKey)
+      public CreateTransferRequestBuilder WithIdempotencyKey(string? idempotencyKey)
       {
         _idempotencyKey = idempotencyKey;
         return this;
       }
 
-      public Builder WithCurrencySymbol(string? currencySymbol)
+      public CreateTransferRequestBuilder WithCurrencySymbol(string? currencySymbol)
       {
         _currencySymbol = currencySymbol;
         return this;

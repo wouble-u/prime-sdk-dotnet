@@ -59,7 +59,7 @@ rootCommand.SetHandler((entityId, locateDate) =>
         var client = CoinbasePrimeClient.FromEnv();
         var financingService = new FinancingService(client);
 
-        var builder = new GetEntityLocateAvailabilitiesRequest.Builder();
+        var builder = new GetEntityLocateAvailabilitiesRequest.GetEntityLocateAvailabilitiesRequestBuilder();
 
         if (!string.IsNullOrEmpty(locateDate))
         {

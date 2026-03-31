@@ -27,18 +27,18 @@ namespace CoinbaseSdk.Prime.Activities
     [JsonIgnore]
     public string ActivityId { get; set; } = activityId;
 
-    public class Builder
+    public class GetPortfolioActivityRequestBuilder
     {
       private string? _portfolioId;
       private string? _activityId;
 
-      public Builder WithPortfolioId(string portfolioId)
+      public GetPortfolioActivityRequestBuilder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithActivityId(string activityId)
+      public GetPortfolioActivityRequestBuilder WithActivityId(string activityId)
       {
         _activityId = activityId;
         return this;

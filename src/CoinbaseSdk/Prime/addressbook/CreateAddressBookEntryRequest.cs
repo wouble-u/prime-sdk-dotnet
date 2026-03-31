@@ -39,7 +39,7 @@ namespace CoinbaseSdk.Prime.AddressBook
     [JsonPropertyName("chain_ids")]
     public string?[] ChainIds { get; set; } = [];
 
-    public class Builder
+    public class CreateAddressBookEntryRequestBuilder
     {
       private string? _portfolioId;
       private string? _address;
@@ -48,37 +48,37 @@ namespace CoinbaseSdk.Prime.AddressBook
       private string? _accountIdentifier;
       private string?[] _chainIds;
 
-      public Builder WithPortfolioId(string portfolioId)
+      public CreateAddressBookEntryRequestBuilder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithAddress(string? address)
+      public CreateAddressBookEntryRequestBuilder WithAddress(string? address)
       {
         _address = address;
         return this;
       }
 
-      public Builder WithCurrencySymbol(string? currencySymbol)
+      public CreateAddressBookEntryRequestBuilder WithCurrencySymbol(string? currencySymbol)
       {
         _currencySymbol = currencySymbol;
         return this;
       }
 
-      public Builder WithName(string? name)
+      public CreateAddressBookEntryRequestBuilder WithName(string? name)
       {
         _name = name;
         return this;
       }
 
-      public Builder WithAccountIdentifier(string? accountIdentifier)
+      public CreateAddressBookEntryRequestBuilder WithAccountIdentifier(string? accountIdentifier)
       {
         _accountIdentifier = accountIdentifier;
         return this;
       }
 
-      public Builder WithChainIds(string?[] chainIds)
+      public CreateAddressBookEntryRequestBuilder WithChainIds(string?[] chainIds)
       {
         _chainIds = chainIds;
         return this;

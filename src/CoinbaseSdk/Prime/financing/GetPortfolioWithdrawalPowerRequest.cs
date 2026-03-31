@@ -27,18 +27,18 @@ namespace CoinbaseSdk.Prime.Financing
     [JsonPropertyName("symbol")]
     public string? Symbol { get; set; }
 
-    public class Builder
+    public class GetPortfolioWithdrawalPowerRequestBuilder
     {
       private string? _portfolioId;
       private string? _symbol;
 
-      public Builder WithPortfolioId(string portfolioId)
+      public GetPortfolioWithdrawalPowerRequestBuilder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithSymbol(string? symbol)
+      public GetPortfolioWithdrawalPowerRequestBuilder WithSymbol(string? symbol)
       {
         _symbol = symbol;
         return this;

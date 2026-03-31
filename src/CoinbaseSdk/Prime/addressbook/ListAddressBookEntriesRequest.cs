@@ -32,7 +32,7 @@ namespace CoinbaseSdk.Prime.AddressBook
     [JsonPropertyName("search")]
     public string? Search { get; set; }
 
-    public class Builder
+    public class ListAddressBookEntriesRequestBuilder
     {
       private string? _portfolioId;
       private string? _currencySymbol;
@@ -41,37 +41,37 @@ namespace CoinbaseSdk.Prime.AddressBook
       private SortDirection? _sortDirection;
       private int? _limit;
 
-      public Builder WithPortfolioId(string portfolioId)
+      public ListAddressBookEntriesRequestBuilder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithCurrencySymbol(string? currencySymbol)
+      public ListAddressBookEntriesRequestBuilder WithCurrencySymbol(string? currencySymbol)
       {
         _currencySymbol = currencySymbol;
         return this;
       }
 
-      public Builder WithSearch(string? search)
+      public ListAddressBookEntriesRequestBuilder WithSearch(string? search)
       {
         _search = search;
         return this;
       }
 
-      public Builder WithCursor(string cursor)
+      public ListAddressBookEntriesRequestBuilder WithCursor(string cursor)
       {
         _cursor = cursor;
         return this;
       }
 
-      public Builder WithSortDirection(SortDirection sortDirection)
+      public ListAddressBookEntriesRequestBuilder WithSortDirection(SortDirection sortDirection)
       {
         _sortDirection = sortDirection;
         return this;
       }
 
-      public Builder WithLimit(int limit)
+      public ListAddressBookEntriesRequestBuilder WithLimit(int limit)
       {
         _limit = limit;
         return this;

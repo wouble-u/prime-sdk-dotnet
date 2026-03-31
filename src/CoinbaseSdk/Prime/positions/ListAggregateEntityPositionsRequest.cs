@@ -26,32 +26,32 @@ namespace CoinbaseSdk.Prime.Positions
     [JsonIgnore]
     public string EntityId { get; set; } = entityId;
 
-    public class Builder
+    public class ListAggregateEntityPositionsRequestBuilder
     {
       private string? _entityId;
       private string? _cursor;
       private SortDirection? _sortDirection;
       private int? _limit;
 
-      public Builder WithEntityId(string entityId)
+      public ListAggregateEntityPositionsRequestBuilder WithEntityId(string entityId)
       {
         _entityId = entityId;
         return this;
       }
 
-      public Builder WithCursor(string cursor)
+      public ListAggregateEntityPositionsRequestBuilder WithCursor(string cursor)
       {
         _cursor = cursor;
         return this;
       }
 
-      public Builder WithSortDirection(SortDirection sortDirection)
+      public ListAggregateEntityPositionsRequestBuilder WithSortDirection(SortDirection sortDirection)
       {
         _sortDirection = sortDirection;
         return this;
       }
 
-      public Builder WithLimit(int limit)
+      public ListAggregateEntityPositionsRequestBuilder WithLimit(int limit)
       {
         _limit = limit;
         return this;

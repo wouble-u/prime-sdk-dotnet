@@ -57,7 +57,7 @@ namespace CoinbaseSdk.Prime.Orders
     [JsonPropertyName("stop_price")]
     public string? StopPrice { get; set; }
 
-    public class Builder
+    public class EditOrderRequestBuilder
     {
       private string? _portfolioId;
       private string? _orderId;
@@ -72,73 +72,73 @@ namespace CoinbaseSdk.Prime.Orders
       private string? _displayBaseSize;
       private string? _stopPrice;
 
-      public Builder WithPortfolioId(string portfolioId)
+      public EditOrderRequestBuilder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithOrderId(string orderId)
+      public EditOrderRequestBuilder WithOrderId(string orderId)
       {
         _orderId = orderId;
         return this;
       }
 
-      public Builder WithProductId(string? productId)
+      public EditOrderRequestBuilder WithProductId(string? productId)
       {
         _productId = productId;
         return this;
       }
 
-      public Builder WithOrigClientOrderId(string? origClientOrderId)
+      public EditOrderRequestBuilder WithOrigClientOrderId(string? origClientOrderId)
       {
         _origClientOrderId = origClientOrderId;
         return this;
       }
 
-      public Builder WithClientOrderId(string? clientOrderId)
+      public EditOrderRequestBuilder WithClientOrderId(string? clientOrderId)
       {
         _clientOrderId = clientOrderId;
         return this;
       }
 
-      public Builder WithBaseQuantity(string? baseQuantity)
+      public EditOrderRequestBuilder WithBaseQuantity(string? baseQuantity)
       {
         _baseQuantity = baseQuantity;
         return this;
       }
 
-      public Builder WithQuoteValue(string? quoteValue)
+      public EditOrderRequestBuilder WithQuoteValue(string? quoteValue)
       {
         _quoteValue = quoteValue;
         return this;
       }
 
-      public Builder WithLimitPrice(string? limitPrice)
+      public EditOrderRequestBuilder WithLimitPrice(string? limitPrice)
       {
         _limitPrice = limitPrice;
         return this;
       }
 
-      public Builder WithExpiryTime(string? expiryTime)
+      public EditOrderRequestBuilder WithExpiryTime(string? expiryTime)
       {
         _expiryTime = expiryTime;
         return this;
       }
 
-      public Builder WithDisplayQuoteSize(string? displayQuoteSize)
+      public EditOrderRequestBuilder WithDisplayQuoteSize(string? displayQuoteSize)
       {
         _displayQuoteSize = displayQuoteSize;
         return this;
       }
 
-      public Builder WithDisplayBaseSize(string? displayBaseSize)
+      public EditOrderRequestBuilder WithDisplayBaseSize(string? displayBaseSize)
       {
         _displayBaseSize = displayBaseSize;
         return this;
       }
 
-      public Builder WithStopPrice(string? stopPrice)
+      public EditOrderRequestBuilder WithStopPrice(string? stopPrice)
       {
         _stopPrice = stopPrice;
         return this;

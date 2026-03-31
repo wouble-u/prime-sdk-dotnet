@@ -40,7 +40,7 @@ namespace CoinbaseSdk.Prime.Orders
     [JsonPropertyName("settl_currency")]
     public string? SettlCurrency { get; set; }
 
-    public class Builder
+    public class AcceptQuoteRequestBuilder
     {
       private string? _portfolioId;
       private string? _productId;
@@ -49,37 +49,37 @@ namespace CoinbaseSdk.Prime.Orders
       private string? _quoteId;
       private string? _settlCurrency;
 
-      public Builder WithPortfolioId(string portfolioId)
+      public AcceptQuoteRequestBuilder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithProductId(string? productId)
+      public AcceptQuoteRequestBuilder WithProductId(string? productId)
       {
         _productId = productId;
         return this;
       }
 
-      public Builder WithSide(OrderSide side)
+      public AcceptQuoteRequestBuilder WithSide(OrderSide side)
       {
         _side = side;
         return this;
       }
 
-      public Builder WithClientOrderId(string? clientOrderId)
+      public AcceptQuoteRequestBuilder WithClientOrderId(string? clientOrderId)
       {
         _clientOrderId = clientOrderId;
         return this;
       }
 
-      public Builder WithQuoteId(string? quoteId)
+      public AcceptQuoteRequestBuilder WithQuoteId(string? quoteId)
       {
         _quoteId = quoteId;
         return this;
       }
 
-      public Builder WithSettlCurrency(string? settlCurrency)
+      public AcceptQuoteRequestBuilder WithSettlCurrency(string? settlCurrency)
       {
         _settlCurrency = settlCurrency;
         return this;

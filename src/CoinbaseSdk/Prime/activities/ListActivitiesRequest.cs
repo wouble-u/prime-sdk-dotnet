@@ -44,7 +44,7 @@ namespace CoinbaseSdk.Prime.Activities
     [JsonPropertyName("get_network_unified_activities")]
     public bool? GetNetworkUnifiedActivities { get; set; }
 
-    public class Builder
+    public class ListActivitiesRequestBuilder
     {
       private string? _portfolioId;
       private string?[]? _symbols;
@@ -57,61 +57,61 @@ namespace CoinbaseSdk.Prime.Activities
       private SortDirection? _sortDirection;
       private int? _limit;
 
-      public Builder WithPortfolioId(string portfolioId)
+      public ListActivitiesRequestBuilder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithSymbols(string?[] symbols)
+      public ListActivitiesRequestBuilder WithSymbols(string?[] symbols)
       {
         _symbols = symbols;
         return this;
       }
 
-      public Builder WithCategories(ActivityCategory?[] categories)
+      public ListActivitiesRequestBuilder WithCategories(ActivityCategory?[] categories)
       {
         _categories = categories;
         return this;
       }
 
-      public Builder WithStatuses(ActivityStatus?[] statuses)
+      public ListActivitiesRequestBuilder WithStatuses(ActivityStatus?[] statuses)
       {
         _statuses = statuses;
         return this;
       }
 
-      public Builder WithStartTime(string? startTime)
+      public ListActivitiesRequestBuilder WithStartTime(string? startTime)
       {
         _startTime = startTime;
         return this;
       }
 
-      public Builder WithEndTime(string? endTime)
+      public ListActivitiesRequestBuilder WithEndTime(string? endTime)
       {
         _endTime = endTime;
         return this;
       }
 
-      public Builder WithGetNetworkUnifiedActivities(bool? getNetworkUnifiedActivities)
+      public ListActivitiesRequestBuilder WithGetNetworkUnifiedActivities(bool? getNetworkUnifiedActivities)
       {
         _getNetworkUnifiedActivities = getNetworkUnifiedActivities;
         return this;
       }
 
-      public Builder WithCursor(string cursor)
+      public ListActivitiesRequestBuilder WithCursor(string cursor)
       {
         _cursor = cursor;
         return this;
       }
 
-      public Builder WithSortDirection(SortDirection sortDirection)
+      public ListActivitiesRequestBuilder WithSortDirection(SortDirection sortDirection)
       {
         _sortDirection = sortDirection;
         return this;
       }
 
-      public Builder WithLimit(int limit)
+      public ListActivitiesRequestBuilder WithLimit(int limit)
       {
         _limit = limit;
         return this;

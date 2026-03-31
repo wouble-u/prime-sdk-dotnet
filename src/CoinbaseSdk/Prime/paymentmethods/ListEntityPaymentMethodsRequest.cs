@@ -24,11 +24,11 @@ namespace CoinbaseSdk.Prime.PaymentMethods
     [JsonIgnore]
     public string EntityId { get; set; } = entityId;
 
-    public class Builder
+    public class ListEntityPaymentMethodsRequestBuilder
     {
       private string? _entityId;
 
-      public Builder WithEntityId(string entityId)
+      public ListEntityPaymentMethodsRequestBuilder WithEntityId(string entityId)
       {
         _entityId = entityId;
         return this;

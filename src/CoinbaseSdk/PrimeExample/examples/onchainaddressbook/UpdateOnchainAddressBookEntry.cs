@@ -69,7 +69,7 @@ rootCommand.SetHandler((context) =>
         var client = CoinbasePrimeClient.FromEnv();
         var onchainAddressBookService = new OnchainAddressBookService(client);
 
-        var request = new UpdateOnchainAddressBookEntryRequest.Builder()
+        var request = new UpdateOnchainAddressBookEntryRequest.UpdateOnchainAddressBookEntryRequestBuilder()
             .WithPortfolioId(portfolioId)
             .WithAddressGroup(addressGroup)
             .Build();

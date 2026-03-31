@@ -44,7 +44,7 @@ namespace CoinbaseSdk.Prime.Allocations
     [JsonPropertyName("netting_id")]
     public string? NettingId { get; set; }
 
-    public class Builder
+    public class CreateNetAllocationRequestBuilder
     {
       private string? _sourcePortfolioId;
       private string? _productId;
@@ -54,43 +54,43 @@ namespace CoinbaseSdk.Prime.Allocations
       private string? _remainderDestinationPortfolio;
       private string? _nettingId;
 
-      public Builder WithSourcePortfolioId(string? sourcePortfolioId)
+      public CreateNetAllocationRequestBuilder WithSourcePortfolioId(string? sourcePortfolioId)
       {
         _sourcePortfolioId = sourcePortfolioId;
         return this;
       }
 
-      public Builder WithProductId(string? productId)
+      public CreateNetAllocationRequestBuilder WithProductId(string? productId)
       {
         _productId = productId;
         return this;
       }
 
-      public Builder WithOrderIds(string?[] orderIds)
+      public CreateNetAllocationRequestBuilder WithOrderIds(string?[] orderIds)
       {
         _orderIds = orderIds;
         return this;
       }
 
-      public Builder WithAllocationLegs(AllocationLeg[] allocationLegs)
+      public CreateNetAllocationRequestBuilder WithAllocationLegs(AllocationLeg[] allocationLegs)
       {
         _allocationLegs = allocationLegs;
         return this;
       }
 
-      public Builder WithSizeType(AllocationSizeType sizeType)
+      public CreateNetAllocationRequestBuilder WithSizeType(AllocationSizeType sizeType)
       {
         _sizeType = sizeType;
         return this;
       }
 
-      public Builder WithRemainderDestinationPortfolio(string? remainderDestinationPortfolio)
+      public CreateNetAllocationRequestBuilder WithRemainderDestinationPortfolio(string? remainderDestinationPortfolio)
       {
         _remainderDestinationPortfolio = remainderDestinationPortfolio;
         return this;
       }
 
-      public Builder WithNettingId(string? nettingId)
+      public CreateNetAllocationRequestBuilder WithNettingId(string? nettingId)
       {
         _nettingId = nettingId;
         return this;

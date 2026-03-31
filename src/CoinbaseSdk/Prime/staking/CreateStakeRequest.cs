@@ -34,32 +34,32 @@ namespace CoinbaseSdk.Prime.Staking
     [JsonPropertyName("inputs")]
     public WalletStakeInputs Inputs { get; set; }
 
-    public class Builder
+    public class CreateStakeRequestBuilder
     {
       private string? _portfolioId;
       private string? _walletId;
       private string? _idempotencyKey;
       private WalletStakeInputs _inputs;
 
-      public Builder WithPortfolioId(string portfolioId)
+      public CreateStakeRequestBuilder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithWalletId(string walletId)
+      public CreateStakeRequestBuilder WithWalletId(string walletId)
       {
         _walletId = walletId;
         return this;
       }
 
-      public Builder WithIdempotencyKey(string? idempotencyKey)
+      public CreateStakeRequestBuilder WithIdempotencyKey(string? idempotencyKey)
       {
         _idempotencyKey = idempotencyKey;
         return this;
       }
 
-      public Builder WithInputs(WalletStakeInputs inputs)
+      public CreateStakeRequestBuilder WithInputs(WalletStakeInputs inputs)
       {
         _inputs = inputs;
         return this;

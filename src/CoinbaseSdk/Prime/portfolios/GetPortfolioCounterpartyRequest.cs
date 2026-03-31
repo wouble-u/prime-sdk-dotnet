@@ -24,11 +24,11 @@ namespace CoinbaseSdk.Prime.Portfolios
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
 
-    public class Builder
+    public class GetPortfolioCounterpartyRequestBuilder
     {
       private string? _portfolioId;
 
-      public Builder WithPortfolioId(string portfolioId)
+      public GetPortfolioCounterpartyRequestBuilder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;

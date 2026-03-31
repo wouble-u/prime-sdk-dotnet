@@ -89,7 +89,7 @@ rootCommand.SetHandler((portfolioId, walletId, typeStr, startTime, endTime) =>
         var transactionsService = new TransactionsService(client);
 
         // Build request
-        var requestBuilder = new ListWalletTransactionsRequest.Builder()
+        var requestBuilder = new ListWalletTransactionsRequest.ListWalletTransactionsRequestBuilder()
             .WithPortfolioId(portfolioId)
             .WithWalletId(walletId);
 

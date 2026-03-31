@@ -30,25 +30,25 @@ namespace CoinbaseSdk.Prime.Futures
     [JsonPropertyName("currency")]
     public string? Currency { get; set; }
 
-    public class Builder
+    public class ScheduleEntityFuturesSweepRequestBuilder
     {
       private string? _entityId;
       private string? _amount;
       private string? _currency;
 
-      public Builder WithEntityId(string entityId)
+      public ScheduleEntityFuturesSweepRequestBuilder WithEntityId(string entityId)
       {
         _entityId = entityId;
         return this;
       }
 
-      public Builder WithAmount(string? amount)
+      public ScheduleEntityFuturesSweepRequestBuilder WithAmount(string? amount)
       {
         _amount = amount;
         return this;
       }
 
-      public Builder WithCurrency(string? currency)
+      public ScheduleEntityFuturesSweepRequestBuilder WithCurrency(string? currency)
       {
         _currency = currency;
         return this;

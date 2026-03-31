@@ -53,7 +53,7 @@ namespace CoinbaseSdk.Prime.Transactions
     [JsonPropertyName("travel_rule_data")]
     public TravelRuleData TravelRuleData { get; set; }
 
-    public class Builder
+    public class CreateWithdrawalRequestBuilder
     {
       private string? _portfolioId;
       private string? _walletId;
@@ -66,61 +66,61 @@ namespace CoinbaseSdk.Prime.Transactions
       private CounterpartyDestination _counterparty;
       private TravelRuleData _travelRuleData;
 
-      public Builder WithPortfolioId(string portfolioId)
+      public CreateWithdrawalRequestBuilder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithWalletId(string walletId)
+      public CreateWithdrawalRequestBuilder WithWalletId(string walletId)
       {
         _walletId = walletId;
         return this;
       }
 
-      public Builder WithAmount(string? amount)
+      public CreateWithdrawalRequestBuilder WithAmount(string? amount)
       {
         _amount = amount;
         return this;
       }
 
-      public Builder WithDestinationType(DestinationType destinationType)
+      public CreateWithdrawalRequestBuilder WithDestinationType(DestinationType destinationType)
       {
         _destinationType = destinationType;
         return this;
       }
 
-      public Builder WithIdempotencyKey(string? idempotencyKey)
+      public CreateWithdrawalRequestBuilder WithIdempotencyKey(string? idempotencyKey)
       {
         _idempotencyKey = idempotencyKey;
         return this;
       }
 
-      public Builder WithCurrencySymbol(string? currencySymbol)
+      public CreateWithdrawalRequestBuilder WithCurrencySymbol(string? currencySymbol)
       {
         _currencySymbol = currencySymbol;
         return this;
       }
 
-      public Builder WithPaymentMethod(PaymentMethodDestination paymentMethod)
+      public CreateWithdrawalRequestBuilder WithPaymentMethod(PaymentMethodDestination paymentMethod)
       {
         _paymentMethod = paymentMethod;
         return this;
       }
 
-      public Builder WithBlockchainAddress(BlockchainAddress blockchainAddress)
+      public CreateWithdrawalRequestBuilder WithBlockchainAddress(BlockchainAddress blockchainAddress)
       {
         _blockchainAddress = blockchainAddress;
         return this;
       }
 
-      public Builder WithCounterparty(CounterpartyDestination counterparty)
+      public CreateWithdrawalRequestBuilder WithCounterparty(CounterpartyDestination counterparty)
       {
         _counterparty = counterparty;
         return this;
       }
 
-      public Builder WithTravelRuleData(TravelRuleData travelRuleData)
+      public CreateWithdrawalRequestBuilder WithTravelRuleData(TravelRuleData travelRuleData)
       {
         _travelRuleData = travelRuleData;
         return this;

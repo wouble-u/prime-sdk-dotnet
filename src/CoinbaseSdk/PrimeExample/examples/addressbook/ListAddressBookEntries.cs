@@ -64,7 +64,7 @@ rootCommand.SetHandler((portfolioId, currencySymbol, search) =>
         var client = CoinbasePrimeClient.FromEnv();
         var addressBookService = new AddressBookService(client);
 
-        var requestBuilder = new ListAddressBookEntriesRequest.Builder()
+        var requestBuilder = new ListAddressBookEntriesRequest.ListAddressBookEntriesRequestBuilder()
             .WithPortfolioId(portfolioId);
 
         if (!string.IsNullOrEmpty(currencySymbol))

@@ -83,7 +83,7 @@ rootCommand.SetHandler((context) =>
         var client = CoinbasePrimeClient.FromEnv();
         var stakingService = new StakingService(client);
 
-        var request = new PreviewUnstakeRequest.Builder()
+        var request = new PreviewUnstakeRequest.PreviewUnstakeRequestBuilder()
             .WithPortfolioId(portfolioId)
             .WithWalletId(walletId)
             .WithAmount(amount)

@@ -30,25 +30,25 @@ namespace CoinbaseSdk.Prime.Financing
     [JsonPropertyName("locate_date")]
     public string? LocateDate { get; set; }
 
-    public class Builder
+    public class GetEntityLocateAvailabilitiesRequestBuilder
     {
       private string? _entityId;
       private string? _conversionDate;
       private string? _locateDate;
 
-      public Builder WithEntityId(string entityId)
+      public GetEntityLocateAvailabilitiesRequestBuilder WithEntityId(string entityId)
       {
         _entityId = entityId;
         return this;
       }
 
-      public Builder WithConversionDate(string? conversionDate)
+      public GetEntityLocateAvailabilitiesRequestBuilder WithConversionDate(string? conversionDate)
       {
         _conversionDate = conversionDate;
         return this;
       }
 
-      public Builder WithLocateDate(string? locateDate)
+      public GetEntityLocateAvailabilitiesRequestBuilder WithLocateDate(string? locateDate)
       {
         _locateDate = locateDate;
         return this;

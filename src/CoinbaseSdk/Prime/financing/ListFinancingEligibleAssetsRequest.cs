@@ -22,7 +22,7 @@ namespace CoinbaseSdk.Prime.Financing
   public class ListFinancingEligibleAssetsRequest()
   {
 
-    public class Builder
+    public class ListFinancingEligibleAssetsRequestBuilder
     {
 
       private void Validate()

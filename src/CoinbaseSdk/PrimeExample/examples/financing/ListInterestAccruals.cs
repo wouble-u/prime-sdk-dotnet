@@ -69,7 +69,7 @@ rootCommand.SetHandler((entityId, portfolioId, startDate, endDate) =>
         var client = CoinbasePrimeClient.FromEnv();
         var financingService = new FinancingService(client);
 
-        var builder = new ListInterestAccrualsRequest.Builder(entityId);
+        var builder = new ListInterestAccrualsRequest.ListInterestAccrualsRequestBuilder(entityId);
 
         if (!string.IsNullOrEmpty(portfolioId))
         {

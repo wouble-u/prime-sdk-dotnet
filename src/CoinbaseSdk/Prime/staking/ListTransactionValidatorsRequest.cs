@@ -37,7 +37,7 @@ namespace CoinbaseSdk.Prime.Staking
     [JsonPropertyName("sort_direction")]
     public SortDirection SortDirection { get; set; }
 
-    public class Builder
+    public class ListTransactionValidatorsRequestBuilder
     {
       private string? _portfolioId;
       private string?[] _transactionIds;
@@ -45,31 +45,31 @@ namespace CoinbaseSdk.Prime.Staking
       private int? _limit;
       private SortDirection _sortDirection;
 
-      public Builder WithPortfolioId(string portfolioId)
+      public ListTransactionValidatorsRequestBuilder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithTransactionIds(string?[] transactionIds)
+      public ListTransactionValidatorsRequestBuilder WithTransactionIds(string?[] transactionIds)
       {
         _transactionIds = transactionIds;
         return this;
       }
 
-      public Builder WithCursor(string? cursor)
+      public ListTransactionValidatorsRequestBuilder WithCursor(string? cursor)
       {
         _cursor = cursor;
         return this;
       }
 
-      public Builder WithLimit(int? limit)
+      public ListTransactionValidatorsRequestBuilder WithLimit(int? limit)
       {
         _limit = limit;
         return this;
       }
 
-      public Builder WithSortDirection(SortDirection sortDirection)
+      public ListTransactionValidatorsRequestBuilder WithSortDirection(SortDirection sortDirection)
       {
         _sortDirection = sortDirection;
         return this;

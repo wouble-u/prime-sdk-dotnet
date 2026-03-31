@@ -44,7 +44,7 @@ namespace CoinbaseSdk.Prime.Wallets
     [JsonPropertyName("network")]
     public Network Network { get; set; }
 
-    public class Builder
+    public class CreateWalletRequestBuilder
     {
       private string? _portfolioId;
       private string? _name;
@@ -54,43 +54,43 @@ namespace CoinbaseSdk.Prime.Wallets
       private NetworkFamily _networkFamily;
       private Network _network;
 
-      public Builder WithPortfolioId(string portfolioId)
+      public CreateWalletRequestBuilder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithName(string? name)
+      public CreateWalletRequestBuilder WithName(string? name)
       {
         _name = name;
         return this;
       }
 
-      public Builder WithSymbol(string? symbol)
+      public CreateWalletRequestBuilder WithSymbol(string? symbol)
       {
         _symbol = symbol;
         return this;
       }
 
-      public Builder WithWalletType(WalletType walletType)
+      public CreateWalletRequestBuilder WithWalletType(WalletType walletType)
       {
         _walletType = walletType;
         return this;
       }
 
-      public Builder WithIdempotencyKey(string? idempotencyKey)
+      public CreateWalletRequestBuilder WithIdempotencyKey(string? idempotencyKey)
       {
         _idempotencyKey = idempotencyKey;
         return this;
       }
 
-      public Builder WithNetworkFamily(NetworkFamily networkFamily)
+      public CreateWalletRequestBuilder WithNetworkFamily(NetworkFamily networkFamily)
       {
         _networkFamily = networkFamily;
         return this;
       }
 
-      public Builder WithNetwork(Network network)
+      public CreateWalletRequestBuilder WithNetwork(Network network)
       {
         _network = network;
         return this;

@@ -27,18 +27,18 @@ namespace CoinbaseSdk.Prime.Wallets
     [JsonIgnore]
     public string WalletId { get; set; } = walletId;
 
-    public class Builder
+    public class GetWalletRequestBuilder
     {
       private string? _portfolioId;
       private string? _walletId;
 
-      public Builder WithPortfolioId(string portfolioId)
+      public GetWalletRequestBuilder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithWalletId(string walletId)
+      public GetWalletRequestBuilder WithWalletId(string walletId)
       {
         _walletId = walletId;
         return this;

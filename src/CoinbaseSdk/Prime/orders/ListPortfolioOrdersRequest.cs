@@ -44,7 +44,7 @@ namespace CoinbaseSdk.Prime.Orders
     [JsonPropertyName("end_date")]
     public string? EndDate { get; set; }
 
-    public class Builder
+    public class ListPortfolioOrdersRequestBuilder
     {
       private string? _portfolioId;
       private string?[]? _orderStatuses;
@@ -57,61 +57,61 @@ namespace CoinbaseSdk.Prime.Orders
       private SortDirection? _sortDirection;
       private int? _limit;
 
-      public Builder WithPortfolioId(string portfolioId)
+      public ListPortfolioOrdersRequestBuilder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithOrderStatuses(string?[] orderStatuses)
+      public ListPortfolioOrdersRequestBuilder WithOrderStatuses(string?[] orderStatuses)
       {
         _orderStatuses = orderStatuses;
         return this;
       }
 
-      public Builder WithProductIds(string?[] productIds)
+      public ListPortfolioOrdersRequestBuilder WithProductIds(string?[] productIds)
       {
         _productIds = productIds;
         return this;
       }
 
-      public Builder WithOrderType(string? orderType)
+      public ListPortfolioOrdersRequestBuilder WithOrderType(string? orderType)
       {
         _orderType = orderType;
         return this;
       }
 
-      public Builder WithOrderSide(string? orderSide)
+      public ListPortfolioOrdersRequestBuilder WithOrderSide(string? orderSide)
       {
         _orderSide = orderSide;
         return this;
       }
 
-      public Builder WithStartDate(string? startDate)
+      public ListPortfolioOrdersRequestBuilder WithStartDate(string? startDate)
       {
         _startDate = startDate;
         return this;
       }
 
-      public Builder WithEndDate(string? endDate)
+      public ListPortfolioOrdersRequestBuilder WithEndDate(string? endDate)
       {
         _endDate = endDate;
         return this;
       }
 
-      public Builder WithCursor(string cursor)
+      public ListPortfolioOrdersRequestBuilder WithCursor(string cursor)
       {
         _cursor = cursor;
         return this;
       }
 
-      public Builder WithSortDirection(SortDirection sortDirection)
+      public ListPortfolioOrdersRequestBuilder WithSortDirection(SortDirection sortDirection)
       {
         _sortDirection = sortDirection;
         return this;
       }
 
-      public Builder WithLimit(int limit)
+      public ListPortfolioOrdersRequestBuilder WithLimit(int limit)
       {
         _limit = limit;
         return this;

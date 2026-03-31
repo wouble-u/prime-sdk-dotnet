@@ -81,7 +81,7 @@ rootCommand.SetHandler((portfolioId, symbolsStr, categoriesStr, startTime, endTi
         var activitiesService = new ActivitiesService(client);
 
         // Build request
-        var requestBuilder = new ListActivitiesRequest.Builder()
+        var requestBuilder = new ListActivitiesRequest.ListActivitiesRequestBuilder()
             .WithPortfolioId(portfolioId);
 
         if (!string.IsNullOrEmpty(symbolsStr))

@@ -36,7 +36,7 @@ namespace CoinbaseSdk.Prime.Products
     [JsonPropertyName("granularity")]
     public string? Granularity { get; set; }
 
-    public class Builder
+    public class GetCandlesRequestBuilder
     {
       private string? _portfolioId;
       private string? _productId;
@@ -44,31 +44,31 @@ namespace CoinbaseSdk.Prime.Products
       private string? _endTime;
       private string? _granularity;
 
-      public Builder WithPortfolioId(string portfolioId)
+      public GetCandlesRequestBuilder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithProductId(string? productId)
+      public GetCandlesRequestBuilder WithProductId(string? productId)
       {
         _productId = productId;
         return this;
       }
 
-      public Builder WithStartTime(string? startTime)
+      public GetCandlesRequestBuilder WithStartTime(string? startTime)
       {
         _startTime = startTime;
         return this;
       }
 
-      public Builder WithEndTime(string? endTime)
+      public GetCandlesRequestBuilder WithEndTime(string? endTime)
       {
         _endTime = endTime;
         return this;
       }
 
-      public Builder WithGranularity(string? granularity)
+      public GetCandlesRequestBuilder WithGranularity(string? granularity)
       {
         _granularity = granularity;
         return this;

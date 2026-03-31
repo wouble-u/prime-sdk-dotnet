@@ -46,7 +46,7 @@ namespace CoinbaseSdk.Prime.Orders
     [JsonPropertyName("settl_currency")]
     public string? SettlCurrency { get; set; }
 
-    public class Builder
+    public class CreateQuoteRequestBuilder
     {
       private string? _portfolioId;
       private string? _productId;
@@ -57,49 +57,49 @@ namespace CoinbaseSdk.Prime.Orders
       private string? _limitPrice;
       private string? _settlCurrency;
 
-      public Builder WithPortfolioId(string portfolioId)
+      public CreateQuoteRequestBuilder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithProductId(string? productId)
+      public CreateQuoteRequestBuilder WithProductId(string? productId)
       {
         _productId = productId;
         return this;
       }
 
-      public Builder WithSide(OrderSide side)
+      public CreateQuoteRequestBuilder WithSide(OrderSide side)
       {
         _side = side;
         return this;
       }
 
-      public Builder WithClientQuoteId(string? clientQuoteId)
+      public CreateQuoteRequestBuilder WithClientQuoteId(string? clientQuoteId)
       {
         _clientQuoteId = clientQuoteId;
         return this;
       }
 
-      public Builder WithBaseQuantity(string? baseQuantity)
+      public CreateQuoteRequestBuilder WithBaseQuantity(string? baseQuantity)
       {
         _baseQuantity = baseQuantity;
         return this;
       }
 
-      public Builder WithQuoteValue(string? quoteValue)
+      public CreateQuoteRequestBuilder WithQuoteValue(string? quoteValue)
       {
         _quoteValue = quoteValue;
         return this;
       }
 
-      public Builder WithLimitPrice(string? limitPrice)
+      public CreateQuoteRequestBuilder WithLimitPrice(string? limitPrice)
       {
         _limitPrice = limitPrice;
         return this;
       }
 
-      public Builder WithSettlCurrency(string? settlCurrency)
+      public CreateQuoteRequestBuilder WithSettlCurrency(string? settlCurrency)
       {
         _settlCurrency = settlCurrency;
         return this;

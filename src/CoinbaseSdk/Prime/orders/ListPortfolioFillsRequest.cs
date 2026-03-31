@@ -32,7 +32,7 @@ namespace CoinbaseSdk.Prime.Orders
     [JsonPropertyName("end_date")]
     public string? EndDate { get; set; }
 
-    public class Builder
+    public class ListPortfolioFillsRequestBuilder
     {
       private string? _portfolioId;
       private string? _startDate;
@@ -41,37 +41,37 @@ namespace CoinbaseSdk.Prime.Orders
       private SortDirection? _sortDirection;
       private int? _limit;
 
-      public Builder WithPortfolioId(string portfolioId)
+      public ListPortfolioFillsRequestBuilder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithStartDate(string? startDate)
+      public ListPortfolioFillsRequestBuilder WithStartDate(string? startDate)
       {
         _startDate = startDate;
         return this;
       }
 
-      public Builder WithEndDate(string? endDate)
+      public ListPortfolioFillsRequestBuilder WithEndDate(string? endDate)
       {
         _endDate = endDate;
         return this;
       }
 
-      public Builder WithCursor(string cursor)
+      public ListPortfolioFillsRequestBuilder WithCursor(string cursor)
       {
         _cursor = cursor;
         return this;
       }
 
-      public Builder WithSortDirection(SortDirection sortDirection)
+      public ListPortfolioFillsRequestBuilder WithSortDirection(SortDirection sortDirection)
       {
         _sortDirection = sortDirection;
         return this;
       }
 
-      public Builder WithLimit(int limit)
+      public ListPortfolioFillsRequestBuilder WithLimit(int limit)
       {
         _limit = limit;
         return this;

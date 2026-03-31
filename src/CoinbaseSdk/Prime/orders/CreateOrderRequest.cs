@@ -88,7 +88,7 @@ namespace CoinbaseSdk.Prime.Orders
     [JsonPropertyName("wig_level")]
     public string? WigLevel { get; set; }
 
-    public class Builder
+    public class CreateOrderRequestBuilder
     {
       private string? _portfolioId;
       private string? _productId;
@@ -113,133 +113,133 @@ namespace CoinbaseSdk.Prime.Orders
       private string? _offset;
       private string? _wigLevel;
 
-      public Builder WithPortfolioId(string portfolioId)
+      public CreateOrderRequestBuilder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithProductId(string? productId)
+      public CreateOrderRequestBuilder WithProductId(string? productId)
       {
         _productId = productId;
         return this;
       }
 
-      public Builder WithSide(OrderSide side)
+      public CreateOrderRequestBuilder WithSide(OrderSide side)
       {
         _side = side;
         return this;
       }
 
-      public Builder WithClientOrderId(string? clientOrderId)
+      public CreateOrderRequestBuilder WithClientOrderId(string? clientOrderId)
       {
         _clientOrderId = clientOrderId;
         return this;
       }
 
-      public Builder WithType(OrderType type)
+      public CreateOrderRequestBuilder WithType(OrderType type)
       {
         _type = type;
         return this;
       }
 
-      public Builder WithBaseQuantity(string? baseQuantity)
+      public CreateOrderRequestBuilder WithBaseQuantity(string? baseQuantity)
       {
         _baseQuantity = baseQuantity;
         return this;
       }
 
-      public Builder WithQuoteValue(string? quoteValue)
+      public CreateOrderRequestBuilder WithQuoteValue(string? quoteValue)
       {
         _quoteValue = quoteValue;
         return this;
       }
 
-      public Builder WithLimitPrice(string? limitPrice)
+      public CreateOrderRequestBuilder WithLimitPrice(string? limitPrice)
       {
         _limitPrice = limitPrice;
         return this;
       }
 
-      public Builder WithStartTime(string? startTime)
+      public CreateOrderRequestBuilder WithStartTime(string? startTime)
       {
         _startTime = startTime;
         return this;
       }
 
-      public Builder WithExpiryTime(string? expiryTime)
+      public CreateOrderRequestBuilder WithExpiryTime(string? expiryTime)
       {
         _expiryTime = expiryTime;
         return this;
       }
 
-      public Builder WithTimeInForce(TimeInForceType timeInForce)
+      public CreateOrderRequestBuilder WithTimeInForce(TimeInForceType timeInForce)
       {
         _timeInForce = timeInForce;
         return this;
       }
 
-      public Builder WithStpId(string? stpId)
+      public CreateOrderRequestBuilder WithStpId(string? stpId)
       {
         _stpId = stpId;
         return this;
       }
 
-      public Builder WithDisplayQuoteSize(string? displayQuoteSize)
+      public CreateOrderRequestBuilder WithDisplayQuoteSize(string? displayQuoteSize)
       {
         _displayQuoteSize = displayQuoteSize;
         return this;
       }
 
-      public Builder WithDisplayBaseSize(string? displayBaseSize)
+      public CreateOrderRequestBuilder WithDisplayBaseSize(string? displayBaseSize)
       {
         _displayBaseSize = displayBaseSize;
         return this;
       }
 
-      public Builder WithIsRaiseExact(bool? isRaiseExact)
+      public CreateOrderRequestBuilder WithIsRaiseExact(bool? isRaiseExact)
       {
         _isRaiseExact = isRaiseExact;
         return this;
       }
 
-      public Builder WithHistoricalPov(string? historicalPov)
+      public CreateOrderRequestBuilder WithHistoricalPov(string? historicalPov)
       {
         _historicalPov = historicalPov;
         return this;
       }
 
-      public Builder WithStopPrice(string? stopPrice)
+      public CreateOrderRequestBuilder WithStopPrice(string? stopPrice)
       {
         _stopPrice = stopPrice;
         return this;
       }
 
-      public Builder WithSettlCurrency(string? settlCurrency)
+      public CreateOrderRequestBuilder WithSettlCurrency(string? settlCurrency)
       {
         _settlCurrency = settlCurrency;
         return this;
       }
 
-      public Builder WithPostOnly(bool? postOnly)
+      public CreateOrderRequestBuilder WithPostOnly(bool? postOnly)
       {
         _postOnly = postOnly;
         return this;
       }
 
-      public Builder WithPegOffsetType(PegOffsetType pegOffsetType)
+      public CreateOrderRequestBuilder WithPegOffsetType(PegOffsetType pegOffsetType)
       {
         _pegOffsetType = pegOffsetType;
         return this;
       }
 
-      public Builder WithOffset(string? offset)
+      public CreateOrderRequestBuilder WithOffset(string? offset)
       {
         _offset = offset;
         return this;
       }
 
-      public Builder WithWigLevel(string? wigLevel)
+      public CreateOrderRequestBuilder WithWigLevel(string? wigLevel)
       {
         _wigLevel = wigLevel;
         return this;

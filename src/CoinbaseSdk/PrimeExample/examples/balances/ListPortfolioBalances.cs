@@ -65,7 +65,7 @@ rootCommand.SetHandler((portfolioId, symbolsStr, balanceTypeStr) =>
         var client = CoinbasePrimeClient.FromEnv();
         var balancesService = new BalancesService(client);
 
-        var requestBuilder = new ListPortfolioBalancesRequest.Builder()
+        var requestBuilder = new ListPortfolioBalancesRequest.ListPortfolioBalancesRequestBuilder()
             .WithPortfolioId(portfolioId);
 
         if (!string.IsNullOrEmpty(symbolsStr))

@@ -37,7 +37,7 @@ namespace CoinbaseSdk.Prime.Transactions
     [JsonPropertyName("evm_params")]
     public EvmParams EvmParams { get; set; }
 
-    public class Builder
+    public class CreateOnchainTransactionRequestBuilder
     {
       private string? _portfolioId;
       private string? _walletId;
@@ -45,31 +45,31 @@ namespace CoinbaseSdk.Prime.Transactions
       private RpcConfig _rpc;
       private EvmParams _evmParams;
 
-      public Builder WithPortfolioId(string portfolioId)
+      public CreateOnchainTransactionRequestBuilder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithWalletId(string walletId)
+      public CreateOnchainTransactionRequestBuilder WithWalletId(string walletId)
       {
         _walletId = walletId;
         return this;
       }
 
-      public Builder WithRawUnsignedTxn(string? rawUnsignedTxn)
+      public CreateOnchainTransactionRequestBuilder WithRawUnsignedTxn(string? rawUnsignedTxn)
       {
         _rawUnsignedTxn = rawUnsignedTxn;
         return this;
       }
 
-      public Builder WithRpc(RpcConfig rpc)
+      public CreateOnchainTransactionRequestBuilder WithRpc(RpcConfig rpc)
       {
         _rpc = rpc;
         return this;
       }
 
-      public Builder WithEvmParams(EvmParams evmParams)
+      public CreateOnchainTransactionRequestBuilder WithEvmParams(EvmParams evmParams)
       {
         _evmParams = evmParams;
         return this;

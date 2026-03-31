@@ -27,18 +27,18 @@ namespace CoinbaseSdk.Prime.Financing
     [JsonPropertyName("effective_at")]
     public string? EffectiveAt { get; set; }
 
-    public class Builder
+    public class GetTradeFinanceTieredPricingFeesRequestBuilder
     {
       private string? _entityId;
       private string? _effectiveAt;
 
-      public Builder WithEntityId(string entityId)
+      public GetTradeFinanceTieredPricingFeesRequestBuilder WithEntityId(string entityId)
       {
         _entityId = entityId;
         return this;
       }
 
-      public Builder WithEffectiveAt(string? effectiveAt)
+      public GetTradeFinanceTieredPricingFeesRequestBuilder WithEffectiveAt(string? effectiveAt)
       {
         _effectiveAt = effectiveAt;
         return this;

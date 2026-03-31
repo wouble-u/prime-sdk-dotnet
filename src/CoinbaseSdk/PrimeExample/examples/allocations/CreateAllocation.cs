@@ -135,7 +135,7 @@ rootCommand.SetHandler((context) =>
             .WithAmount(amount)
             .Build();
 
-        var request = new CreateAllocationRequest.Builder()
+        var request = new CreateAllocationRequest.CreateAllocationRequestBuilder()
             .WithAllocationId(Guid.NewGuid().ToString())
             .WithSourcePortfolioId(sourcePortfolioId)
             .WithProductId(productId)

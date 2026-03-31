@@ -28,18 +28,18 @@ namespace CoinbaseSdk.Prime.Transactions
     [JsonPropertyName("advanced_transfer")]
     public AdvancedTransfer AdvancedTransfer { get; set; }
 
-    public class Builder
+    public class CreateAdvancedTransferRequestBuilder
     {
       private string? _portfolioId;
       private AdvancedTransfer _advancedTransfer;
 
-      public Builder WithPortfolioId(string portfolioId)
+      public CreateAdvancedTransferRequestBuilder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithAdvancedTransfer(AdvancedTransfer advancedTransfer)
+      public CreateAdvancedTransferRequestBuilder WithAdvancedTransfer(AdvancedTransfer advancedTransfer)
       {
         _advancedTransfer = advancedTransfer;
         return this;

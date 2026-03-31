@@ -27,18 +27,18 @@ namespace CoinbaseSdk.Prime.Orders
     [JsonIgnore]
     public string OrderId { get; set; } = orderId;
 
-    public class Builder
+    public class GetOrderRequestBuilder
     {
       private string? _portfolioId;
       private string? _orderId;
 
-      public Builder WithPortfolioId(string portfolioId)
+      public GetOrderRequestBuilder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithOrderId(string orderId)
+      public GetOrderRequestBuilder WithOrderId(string orderId)
       {
         _orderId = orderId;
         return this;

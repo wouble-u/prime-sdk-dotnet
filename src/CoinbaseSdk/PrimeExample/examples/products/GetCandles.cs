@@ -80,7 +80,7 @@ rootCommand.SetHandler((context) =>
         var client = CoinbasePrimeClient.FromEnv();
         var productsService = new ProductsService(client);
 
-        var requestBuilder = new GetCandlesRequest.Builder()
+        var requestBuilder = new GetCandlesRequest.GetCandlesRequestBuilder()
             .WithPortfolioId(portfolioId);
 
         if (!string.IsNullOrEmpty(productId))

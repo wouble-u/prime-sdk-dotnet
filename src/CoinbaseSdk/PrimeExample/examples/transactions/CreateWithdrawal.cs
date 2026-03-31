@@ -142,7 +142,7 @@ rootCommand.SetHandler((context) =>
         idempotencyKey ??= Guid.NewGuid().ToString();
 
         // Build request
-        var requestBuilder = new CreateWithdrawalRequest.Builder()
+        var requestBuilder = new CreateWithdrawalRequest.CreateWithdrawalRequestBuilder()
             .WithPortfolioId(portfolioId)
             .WithWalletId(walletId)
             .WithCurrencySymbol(currencySymbol)

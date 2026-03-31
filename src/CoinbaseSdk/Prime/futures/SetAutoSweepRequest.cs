@@ -27,18 +27,18 @@ namespace CoinbaseSdk.Prime.Futures
     [JsonPropertyName("auto_sweep")]
     public bool? AutoSweep { get; set; }
 
-    public class Builder
+    public class SetAutoSweepRequestBuilder
     {
       private string? _entityId;
       private bool? _autoSweep;
 
-      public Builder WithEntityId(string entityId)
+      public SetAutoSweepRequestBuilder WithEntityId(string entityId)
       {
         _entityId = entityId;
         return this;
       }
 
-      public Builder WithAutoSweep(bool? autoSweep)
+      public SetAutoSweepRequestBuilder WithAutoSweep(bool? autoSweep)
       {
         _autoSweep = autoSweep;
         return this;

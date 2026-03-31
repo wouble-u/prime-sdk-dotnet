@@ -83,7 +83,7 @@ rootCommand.SetHandler((context) =>
         var client = CoinbasePrimeClient.FromEnv();
         var transactionsService = new TransactionsService(client);
 
-        var request = new CreateOnchainTransactionRequest.Builder()
+        var request = new CreateOnchainTransactionRequest.CreateOnchainTransactionRequestBuilder()
             .WithPortfolioId(portfolioId)
             .WithWalletId(walletId)
             .WithRawUnsignedTxn(rawUnsignedTxn)

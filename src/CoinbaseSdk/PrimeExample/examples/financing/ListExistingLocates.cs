@@ -64,7 +64,7 @@ rootCommand.SetHandler((portfolioId, locateIdsStr, locateDate) =>
         var client = CoinbasePrimeClient.FromEnv();
         var financingService = new FinancingService(client);
 
-        var builder = new ListExistingLocatesRequest.Builder();
+        var builder = new ListExistingLocatesRequest.ListExistingLocatesRequestBuilder();
 
         if (!string.IsNullOrEmpty(locateIdsStr))
         {

@@ -27,18 +27,18 @@ namespace CoinbaseSdk.Prime.Allocations
     [JsonIgnore]
     public string NettingId { get; set; } = nettingId;
 
-    public class Builder
+    public class ListAllocationsByClientNettingIdRequestBuilder
     {
       private string? _portfolioId;
       private string? _nettingId;
 
-      public Builder WithPortfolioId(string portfolioId)
+      public ListAllocationsByClientNettingIdRequestBuilder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithNettingId(string nettingId)
+      public ListAllocationsByClientNettingIdRequestBuilder WithNettingId(string nettingId)
       {
         _nettingId = nettingId;
         return this;

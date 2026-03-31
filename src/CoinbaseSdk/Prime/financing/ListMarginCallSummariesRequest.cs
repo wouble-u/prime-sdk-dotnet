@@ -30,25 +30,25 @@ namespace CoinbaseSdk.Prime.Financing
     [JsonPropertyName("end_date")]
     public string? EndDate { get; set; }
 
-    public class Builder
+    public class ListMarginCallSummariesRequestBuilder
     {
       private string? _entityId;
       private string? _startDate;
       private string? _endDate;
 
-      public Builder WithEntityId(string entityId)
+      public ListMarginCallSummariesRequestBuilder WithEntityId(string entityId)
       {
         _entityId = entityId;
         return this;
       }
 
-      public Builder WithStartDate(string? startDate)
+      public ListMarginCallSummariesRequestBuilder WithStartDate(string? startDate)
       {
         _startDate = startDate;
         return this;
       }
 
-      public Builder WithEndDate(string? endDate)
+      public ListMarginCallSummariesRequestBuilder WithEndDate(string? endDate)
       {
         _endDate = endDate;
         return this;

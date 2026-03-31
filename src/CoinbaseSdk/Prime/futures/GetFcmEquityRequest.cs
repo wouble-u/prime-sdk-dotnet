@@ -24,11 +24,11 @@ namespace CoinbaseSdk.Prime.Futures
     [JsonIgnore]
     public string EntityId { get; set; } = entityId;
 
-    public class Builder
+    public class GetFcmEquityRequestBuilder
     {
       private string? _entityId;
 
-      public Builder WithEntityId(string entityId)
+      public GetFcmEquityRequestBuilder WithEntityId(string entityId)
       {
         _entityId = entityId;
         return this;

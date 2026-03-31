@@ -27,18 +27,18 @@ namespace CoinbaseSdk.Prime.Staking
     [JsonIgnore]
     public string WalletId { get; set; } = walletId;
 
-    public class Builder
+    public class GetStakingStatusRequestBuilder
     {
       private string? _portfolioId;
       private string? _walletId;
 
-      public Builder WithPortfolioId(string portfolioId)
+      public GetStakingStatusRequestBuilder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithWalletId(string walletId)
+      public GetStakingStatusRequestBuilder WithWalletId(string walletId)
       {
         _walletId = walletId;
         return this;

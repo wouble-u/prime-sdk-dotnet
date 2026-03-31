@@ -38,7 +38,7 @@ namespace CoinbaseSdk.Prime.Allocations
     [JsonPropertyName("end_date")]
     public string? EndDate { get; set; }
 
-    public class Builder
+    public class ListPortfolioAllocationsRequestBuilder
     {
       private string? _portfolioId;
       private string?[]? _productIds;
@@ -49,49 +49,49 @@ namespace CoinbaseSdk.Prime.Allocations
       private SortDirection? _sortDirection;
       private int? _limit;
 
-      public Builder WithPortfolioId(string portfolioId)
+      public ListPortfolioAllocationsRequestBuilder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithProductIds(string?[] productIds)
+      public ListPortfolioAllocationsRequestBuilder WithProductIds(string?[] productIds)
       {
         _productIds = productIds;
         return this;
       }
 
-      public Builder WithOrderSide(OrderSide? orderSide)
+      public ListPortfolioAllocationsRequestBuilder WithOrderSide(OrderSide? orderSide)
       {
         _orderSide = orderSide;
         return this;
       }
 
-      public Builder WithStartDate(string? startDate)
+      public ListPortfolioAllocationsRequestBuilder WithStartDate(string? startDate)
       {
         _startDate = startDate;
         return this;
       }
 
-      public Builder WithEndDate(string? endDate)
+      public ListPortfolioAllocationsRequestBuilder WithEndDate(string? endDate)
       {
         _endDate = endDate;
         return this;
       }
 
-      public Builder WithCursor(string cursor)
+      public ListPortfolioAllocationsRequestBuilder WithCursor(string cursor)
       {
         _cursor = cursor;
         return this;
       }
 
-      public Builder WithSortDirection(SortDirection sortDirection)
+      public ListPortfolioAllocationsRequestBuilder WithSortDirection(SortDirection sortDirection)
       {
         _sortDirection = sortDirection;
         return this;
       }
 
-      public Builder WithLimit(int limit)
+      public ListPortfolioAllocationsRequestBuilder WithLimit(int limit)
       {
         _limit = limit;
         return this;

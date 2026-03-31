@@ -121,7 +121,7 @@ rootCommand.SetHandler((context) =>
         idempotencyKey ??= Guid.NewGuid().ToString();
 
         // Build request
-        var request = new CreateTransferRequest.Builder()
+        var request = new CreateTransferRequest.CreateTransferRequestBuilder()
             .WithPortfolioId(portfolioId)
             .WithWalletId(walletId)
             .WithDestination(destination)

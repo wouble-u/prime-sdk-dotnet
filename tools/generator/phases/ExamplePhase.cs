@@ -114,22 +114,7 @@ public sealed class ExamplePhase
 
     // ── Shebang + license ──────────────────────────────────────────────────────
     sb.AppendLine("#!/usr/bin/env -S dotnet run --file");
-    sb.AppendLine("/*");
-    sb.AppendLine(" * Copyright 2026-present Coinbase Global, Inc.");
-    sb.AppendLine(" *");
-    sb.AppendLine(" *  Licensed under the Apache License, Version 2.0 (the \"License\");");
-    sb.AppendLine(" *  you may not use this file except in compliance with the License.");
-    sb.AppendLine(" *  You may obtain a copy of the License at");
-    sb.AppendLine(" *");
-    sb.AppendLine(" *  http://www.apache.org/licenses/LICENSE-2.0");
-    sb.AppendLine(" *");
-    sb.AppendLine(" *  Unless required by applicable law or agreed to in writing, software");
-    sb.AppendLine(" *  distributed under the License is distributed on an \"AS IS\" BASIS,");
-    sb.AppendLine(" *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.");
-    sb.AppendLine(" *  See the License for the specific language governing permissions and");
-    sb.AppendLine(" *  limitations under the License.");
-    sb.AppendLine(" */");
-    sb.AppendLine();
+    CopyrightHelper.AppendEmittedCsFileLicense(sb, CopyrightHelper.SdkEmittedCopyrightYear);
     sb.AppendLine("#:project ../../../Prime");
     sb.AppendLine("#:project ../../");
     sb.AppendLine("#:package Newtonsoft.Json@13.0.3");
@@ -275,7 +260,7 @@ public sealed class ExamplePhase
     else
     {
       // Builder pattern.
-      sb.AppendLine($"        var request = new {b.SdkMethod}Request.Builder()");
+      sb.AppendLine($"        var request = new {b.SdkMethod}Request.{b.SdkMethod}RequestBuilder()");
       foreach (var p in pathParams)
       {
         var clrName = OpenApiSchemaCodegen.ToPascalCase(p.Name);

@@ -35,7 +35,7 @@ namespace CoinbaseSdk.Prime.Products
     [JsonPropertyName("expiring_contract_status")]
     public string? ExpiringContractStatus { get; set; }
 
-    public class Builder
+    public class ListPortfolioProductsRequestBuilder
     {
       private string? _portfolioId;
       private string? _productType;
@@ -45,43 +45,43 @@ namespace CoinbaseSdk.Prime.Products
       private SortDirection? _sortDirection;
       private int? _limit;
 
-      public Builder WithPortfolioId(string portfolioId)
+      public ListPortfolioProductsRequestBuilder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithProductType(string? productType)
+      public ListPortfolioProductsRequestBuilder WithProductType(string? productType)
       {
         _productType = productType;
         return this;
       }
 
-      public Builder WithContractExpiryType(string? contractExpiryType)
+      public ListPortfolioProductsRequestBuilder WithContractExpiryType(string? contractExpiryType)
       {
         _contractExpiryType = contractExpiryType;
         return this;
       }
 
-      public Builder WithExpiringContractStatus(string? expiringContractStatus)
+      public ListPortfolioProductsRequestBuilder WithExpiringContractStatus(string? expiringContractStatus)
       {
         _expiringContractStatus = expiringContractStatus;
         return this;
       }
 
-      public Builder WithCursor(string cursor)
+      public ListPortfolioProductsRequestBuilder WithCursor(string cursor)
       {
         _cursor = cursor;
         return this;
       }
 
-      public Builder WithSortDirection(SortDirection sortDirection)
+      public ListPortfolioProductsRequestBuilder WithSortDirection(SortDirection sortDirection)
       {
         _sortDirection = sortDirection;
         return this;
       }
 
-      public Builder WithLimit(int limit)
+      public ListPortfolioProductsRequestBuilder WithLimit(int limit)
       {
         _limit = limit;
         return this;

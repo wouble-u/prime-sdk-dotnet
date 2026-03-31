@@ -88,7 +88,7 @@ rootCommand.SetHandler((portfolioId, address, currencySymbol, name, accountIdent
         var client = CoinbasePrimeClient.FromEnv();
         var addressBookService = new AddressBookService(client);
 
-        var requestBuilder = new CreateAddressBookEntryRequest.Builder()
+        var requestBuilder = new CreateAddressBookEntryRequest.CreateAddressBookEntryRequestBuilder()
             .WithPortfolioId(portfolioId)
             .WithAddress(address)
             .WithCurrencySymbol(currencySymbol);

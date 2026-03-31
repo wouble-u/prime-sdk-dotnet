@@ -27,18 +27,18 @@ namespace CoinbaseSdk.Prime.Futures
     [JsonPropertyName("target_derivatives_excess")]
     public string? TargetDerivativesExcess { get; set; }
 
-    public class Builder
+    public class SetFcmSettingsRequestBuilder
     {
       private string? _entityId;
       private string? _targetDerivativesExcess;
 
-      public Builder WithEntityId(string entityId)
+      public SetFcmSettingsRequestBuilder WithEntityId(string entityId)
       {
         _entityId = entityId;
         return this;
       }
 
-      public Builder WithTargetDerivativesExcess(string? targetDerivativesExcess)
+      public SetFcmSettingsRequestBuilder WithTargetDerivativesExcess(string? targetDerivativesExcess)
       {
         _targetDerivativesExcess = targetDerivativesExcess;
         return this;

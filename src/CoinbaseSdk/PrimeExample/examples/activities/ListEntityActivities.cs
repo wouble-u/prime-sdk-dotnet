@@ -77,7 +77,7 @@ rootCommand.SetHandler((entityId, symbolsStr, categoriesStr, startTime, endTime)
         var activitiesService = new ActivitiesService(client);
 
         // Build request
-        var requestBuilder = new ListEntityActivitiesRequest.Builder()
+        var requestBuilder = new ListEntityActivitiesRequest.ListEntityActivitiesRequestBuilder()
             .WithEntityId(entityId);
 
         if (!string.IsNullOrEmpty(symbolsStr))

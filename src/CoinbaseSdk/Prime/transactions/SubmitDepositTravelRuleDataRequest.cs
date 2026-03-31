@@ -40,7 +40,7 @@ namespace CoinbaseSdk.Prime.Transactions
     [JsonPropertyName("opt_out_of_ownership_verification")]
     public bool? OptOutOfOwnershipVerification { get; set; }
 
-    public class Builder
+    public class SubmitDepositTravelRuleDataRequestBuilder
     {
       private string? _portfolioId;
       private string? _transactionId;
@@ -49,37 +49,37 @@ namespace CoinbaseSdk.Prime.Transactions
       private bool? _isSelf;
       private bool? _optOutOfOwnershipVerification;
 
-      public Builder WithPortfolioId(string portfolioId)
+      public SubmitDepositTravelRuleDataRequestBuilder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithTransactionId(string transactionId)
+      public SubmitDepositTravelRuleDataRequestBuilder WithTransactionId(string transactionId)
       {
         _transactionId = transactionId;
         return this;
       }
 
-      public Builder WithOriginator(TravelRuleParty originator)
+      public SubmitDepositTravelRuleDataRequestBuilder WithOriginator(TravelRuleParty originator)
       {
         _originator = originator;
         return this;
       }
 
-      public Builder WithBeneficiary(TravelRuleParty beneficiary)
+      public SubmitDepositTravelRuleDataRequestBuilder WithBeneficiary(TravelRuleParty beneficiary)
       {
         _beneficiary = beneficiary;
         return this;
       }
 
-      public Builder WithIsSelf(bool? isSelf)
+      public SubmitDepositTravelRuleDataRequestBuilder WithIsSelf(bool? isSelf)
       {
         _isSelf = isSelf;
         return this;
       }
 
-      public Builder WithOptOutOfOwnershipVerification(bool? optOutOfOwnershipVerification)
+      public SubmitDepositTravelRuleDataRequestBuilder WithOptOutOfOwnershipVerification(bool? optOutOfOwnershipVerification)
       {
         _optOutOfOwnershipVerification = optOutOfOwnershipVerification;
         return this;

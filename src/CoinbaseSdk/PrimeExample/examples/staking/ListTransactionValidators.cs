@@ -59,7 +59,7 @@ rootCommand.SetHandler((portfolioId, transactionIdsStr) =>
         var client = CoinbasePrimeClient.FromEnv();
         var stakingService = new StakingService(client);
 
-        var requestBuilder = new ListTransactionValidatorsRequest.Builder()
+        var requestBuilder = new ListTransactionValidatorsRequest.ListTransactionValidatorsRequestBuilder()
             .WithPortfolioId(portfolioId);
 
         if (!string.IsNullOrEmpty(transactionIdsStr))

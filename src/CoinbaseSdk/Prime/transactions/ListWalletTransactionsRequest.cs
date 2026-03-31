@@ -38,7 +38,7 @@ namespace CoinbaseSdk.Prime.Transactions
     [JsonPropertyName("end_time")]
     public string? EndTime { get; set; }
 
-    public class Builder
+    public class ListWalletTransactionsRequestBuilder
     {
       private string? _portfolioId;
       private string? _walletId;
@@ -49,49 +49,49 @@ namespace CoinbaseSdk.Prime.Transactions
       private SortDirection? _sortDirection;
       private int? _limit;
 
-      public Builder WithPortfolioId(string portfolioId)
+      public ListWalletTransactionsRequestBuilder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithWalletId(string walletId)
+      public ListWalletTransactionsRequestBuilder WithWalletId(string walletId)
       {
         _walletId = walletId;
         return this;
       }
 
-      public Builder WithTypes(string?[] types)
+      public ListWalletTransactionsRequestBuilder WithTypes(string?[] types)
       {
         _types = types;
         return this;
       }
 
-      public Builder WithStartTime(string? startTime)
+      public ListWalletTransactionsRequestBuilder WithStartTime(string? startTime)
       {
         _startTime = startTime;
         return this;
       }
 
-      public Builder WithEndTime(string? endTime)
+      public ListWalletTransactionsRequestBuilder WithEndTime(string? endTime)
       {
         _endTime = endTime;
         return this;
       }
 
-      public Builder WithCursor(string cursor)
+      public ListWalletTransactionsRequestBuilder WithCursor(string cursor)
       {
         _cursor = cursor;
         return this;
       }
 
-      public Builder WithSortDirection(SortDirection sortDirection)
+      public ListWalletTransactionsRequestBuilder WithSortDirection(SortDirection sortDirection)
       {
         _sortDirection = sortDirection;
         return this;
       }
 
-      public Builder WithLimit(int limit)
+      public ListWalletTransactionsRequestBuilder WithLimit(int limit)
       {
         _limit = limit;
         return this;

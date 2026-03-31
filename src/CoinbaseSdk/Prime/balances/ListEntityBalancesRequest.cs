@@ -32,7 +32,7 @@ namespace CoinbaseSdk.Prime.Balances
     [JsonPropertyName("aggregation_type")]
     public string? AggregationType { get; set; }
 
-    public class Builder
+    public class ListEntityBalancesRequestBuilder
     {
       private string? _entityId;
       private string? _symbols;
@@ -41,37 +41,37 @@ namespace CoinbaseSdk.Prime.Balances
       private SortDirection? _sortDirection;
       private int? _limit;
 
-      public Builder WithEntityId(string entityId)
+      public ListEntityBalancesRequestBuilder WithEntityId(string entityId)
       {
         _entityId = entityId;
         return this;
       }
 
-      public Builder WithSymbols(string? symbols)
+      public ListEntityBalancesRequestBuilder WithSymbols(string? symbols)
       {
         _symbols = symbols;
         return this;
       }
 
-      public Builder WithAggregationType(string? aggregationType)
+      public ListEntityBalancesRequestBuilder WithAggregationType(string? aggregationType)
       {
         _aggregationType = aggregationType;
         return this;
       }
 
-      public Builder WithCursor(string cursor)
+      public ListEntityBalancesRequestBuilder WithCursor(string cursor)
       {
         _cursor = cursor;
         return this;
       }
 
-      public Builder WithSortDirection(SortDirection sortDirection)
+      public ListEntityBalancesRequestBuilder WithSortDirection(SortDirection sortDirection)
       {
         _sortDirection = sortDirection;
         return this;
       }
 
-      public Builder WithLimit(int limit)
+      public ListEntityBalancesRequestBuilder WithLimit(int limit)
       {
         _limit = limit;
         return this;

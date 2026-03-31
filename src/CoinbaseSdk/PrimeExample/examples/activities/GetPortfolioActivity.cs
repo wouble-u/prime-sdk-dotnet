@@ -70,7 +70,7 @@ rootCommand.SetHandler((portfolioId, activityId) =>
         var activitiesService = new ActivitiesService(client);
 
         // Build request
-        var request = new GetPortfolioActivityRequest.Builder()
+        var request = new GetPortfolioActivityRequest.GetPortfolioActivityRequestBuilder()
             .WithPortfolioId(portfolioId)
             .WithActivityId(activityId)
             .Build();

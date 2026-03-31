@@ -65,7 +65,7 @@ rootCommand.SetHandler((entityId, symbolsStr, aggregationTypeStr) =>
         var client = CoinbasePrimeClient.FromEnv();
         var balancesService = new BalancesService(client);
 
-        var requestBuilder = new ListEntityBalancesRequest.Builder(entityId);
+        var requestBuilder = new ListEntityBalancesRequest.ListEntityBalancesRequestBuilder(entityId);
 
         if (!string.IsNullOrEmpty(symbolsStr))
         {

@@ -41,7 +41,7 @@ namespace CoinbaseSdk.Prime.Orders
     [JsonPropertyName("end_date")]
     public string? EndDate { get; set; }
 
-    public class Builder
+    public class ListOpenOrdersRequestBuilder
     {
       private string? _portfolioId;
       private string?[]? _productIds;
@@ -53,55 +53,55 @@ namespace CoinbaseSdk.Prime.Orders
       private SortDirection? _sortDirection;
       private int? _limit;
 
-      public Builder WithPortfolioId(string portfolioId)
+      public ListOpenOrdersRequestBuilder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithProductIds(string?[] productIds)
+      public ListOpenOrdersRequestBuilder WithProductIds(string?[] productIds)
       {
         _productIds = productIds;
         return this;
       }
 
-      public Builder WithOrderType(string? orderType)
+      public ListOpenOrdersRequestBuilder WithOrderType(string? orderType)
       {
         _orderType = orderType;
         return this;
       }
 
-      public Builder WithStartDate(string? startDate)
+      public ListOpenOrdersRequestBuilder WithStartDate(string? startDate)
       {
         _startDate = startDate;
         return this;
       }
 
-      public Builder WithOrderSide(string? orderSide)
+      public ListOpenOrdersRequestBuilder WithOrderSide(string? orderSide)
       {
         _orderSide = orderSide;
         return this;
       }
 
-      public Builder WithEndDate(string? endDate)
+      public ListOpenOrdersRequestBuilder WithEndDate(string? endDate)
       {
         _endDate = endDate;
         return this;
       }
 
-      public Builder WithCursor(string cursor)
+      public ListOpenOrdersRequestBuilder WithCursor(string cursor)
       {
         _cursor = cursor;
         return this;
       }
 
-      public Builder WithSortDirection(SortDirection sortDirection)
+      public ListOpenOrdersRequestBuilder WithSortDirection(SortDirection sortDirection)
       {
         _sortDirection = sortDirection;
         return this;
       }
 
-      public Builder WithLimit(int limit)
+      public ListOpenOrdersRequestBuilder WithLimit(int limit)
       {
         _limit = limit;
         return this;

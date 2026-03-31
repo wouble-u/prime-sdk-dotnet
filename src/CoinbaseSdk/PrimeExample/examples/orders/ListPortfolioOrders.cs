@@ -105,7 +105,7 @@ rootCommand.SetHandler((context) =>
         var client = CoinbasePrimeClient.FromEnv();
         var ordersService = new OrdersService(client);
 
-        var requestBuilder = new ListPortfolioOrdersRequest.Builder()
+        var requestBuilder = new ListPortfolioOrdersRequest.ListPortfolioOrdersRequestBuilder()
             .WithPortfolioId(portfolioId);
 
         if (!string.IsNullOrEmpty(productIds))

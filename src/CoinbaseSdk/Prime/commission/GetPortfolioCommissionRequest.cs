@@ -27,18 +27,18 @@ namespace CoinbaseSdk.Prime.Commission
     [JsonPropertyName("product_id")]
     public string? ProductId { get; set; }
 
-    public class Builder
+    public class GetPortfolioCommissionRequestBuilder
     {
       private string? _portfolioId;
       private string? _productId;
 
-      public Builder WithPortfolioId(string portfolioId)
+      public GetPortfolioCommissionRequestBuilder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithProductId(string? productId)
+      public GetPortfolioCommissionRequestBuilder WithProductId(string? productId)
       {
         _productId = productId;
         return this;

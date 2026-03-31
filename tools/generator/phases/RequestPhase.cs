@@ -1,5 +1,5 @@
 /*
- * Copyright 2025-present Coinbase Global, Inc.
+ * Copyright 2026-present Coinbase Global, Inc.
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -77,22 +77,7 @@ public static class RequestPhase
       $"{MapPathParamToClr(p)} {CamelParam(p.Name)}"));
 
     var sb = new StringBuilder();
-    sb.AppendLine("/*");
-    sb.AppendLine(" * Copyright 2025-present Coinbase Global, Inc.");
-    sb.AppendLine(" *");
-    sb.AppendLine(" *  Licensed under the Apache License, Version 2.0 (the \"License\");");
-    sb.AppendLine(" *  you may not use this file except in compliance with the License.");
-    sb.AppendLine(" *  You may obtain a copy of the License at");
-    sb.AppendLine(" *");
-    sb.AppendLine(" *  http://www.apache.org/licenses/LICENSE-2.0");
-    sb.AppendLine(" *");
-    sb.AppendLine(" *  Unless required by applicable law or agreed to in writing, software");
-    sb.AppendLine(" *  distributed under the License is distributed on an \"AS IS\" BASIS,");
-    sb.AppendLine(" *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.");
-    sb.AppendLine(" *  See the License for the specific language governing permissions and");
-    sb.AppendLine(" *  limitations under the License.");
-    sb.AppendLine(" */");
-    sb.AppendLine();
+    CopyrightHelper.AppendEmittedCsFileLicense(sb, CopyrightHelper.SdkEmittedCopyrightYear);
     sb.AppendLine($"namespace {ns}");
     sb.AppendLine("{");
     sb.AppendLine("  using System.Text.Json.Serialization;");
@@ -222,10 +207,13 @@ public static class RequestPhase
     bool paginated,
     Func<ParsedParameter, string> mapParam)
   {
+    // Nested builder name matches historical SDK / example pattern (e.g. CreateOrderRequestBuilder).
+    var nestedBuilder = $"{sdkMethod}RequestBuilder";
+
     // Builder backing fields: path params are non-nullable (required), query/body optional.
     string PathFieldType(ParsedParameter p) => mapParam(p).TrimEnd('?') + "?";
 
-    sb.AppendLine("    public class Builder");
+    sb.AppendLine($"    public class {nestedBuilder}");
     sb.AppendLine("    {");
     foreach (var p in pathParams)
     {
@@ -259,7 +247,7 @@ public static class RequestPhase
       var f = "_" + CamelParam(p.Name);
       var t = mapParam(p).TrimEnd('?');
       var paramVar = CamelParam(p.Name);
-      sb.AppendLine($"      public Builder With{pn}({t} {paramVar})");
+      sb.AppendLine($"      public {nestedBuilder} With{pn}({t} {paramVar})");
       sb.AppendLine("      {");
       sb.AppendLine($"        {f} = {paramVar};");
       sb.AppendLine("        return this;");
@@ -272,7 +260,7 @@ public static class RequestPhase
       var pn = OpenApiSchemaCodegen.ToPascalCase(p.Name);
       var f = "_" + CamelParam(p.Name);
       var paramVar = CamelParam(p.Name);
-      sb.AppendLine($"      public Builder With{pn}({mapParam(p)} {paramVar})");
+      sb.AppendLine($"      public {nestedBuilder} With{pn}({mapParam(p)} {paramVar})");
       sb.AppendLine("      {");
       sb.AppendLine($"        {f} = {paramVar};");
       sb.AppendLine("        return this;");
@@ -284,7 +272,7 @@ public static class RequestPhase
     {
       var f = "_" + char.ToLowerInvariant(p.ClrName[0]) + p.ClrName[1..];
       var paramVar = char.ToLowerInvariant(p.ClrName[0]) + p.ClrName[1..];
-      sb.AppendLine($"      public Builder With{p.ClrName}({p.ClrType} {paramVar})");
+      sb.AppendLine($"      public {nestedBuilder} With{p.ClrName}({p.ClrType} {paramVar})");
       sb.AppendLine("      {");
       sb.AppendLine($"        {f} = {paramVar};");
       sb.AppendLine("        return this;");
@@ -294,19 +282,19 @@ public static class RequestPhase
 
     if (paginated)
     {
-      sb.AppendLine("      public Builder WithCursor(string cursor)");
+      sb.AppendLine($"      public {nestedBuilder} WithCursor(string cursor)");
       sb.AppendLine("      {");
       sb.AppendLine("        _cursor = cursor;");
       sb.AppendLine("        return this;");
       sb.AppendLine("      }");
       sb.AppendLine();
-      sb.AppendLine("      public Builder WithSortDirection(SortDirection sortDirection)");
+      sb.AppendLine($"      public {nestedBuilder} WithSortDirection(SortDirection sortDirection)");
       sb.AppendLine("      {");
       sb.AppendLine("        _sortDirection = sortDirection;");
       sb.AppendLine("        return this;");
       sb.AppendLine("      }");
       sb.AppendLine();
-      sb.AppendLine("      public Builder WithLimit(int limit)");
+      sb.AppendLine($"      public {nestedBuilder} WithLimit(int limit)");
       sb.AppendLine("      {");
       sb.AppendLine("        _limit = limit;");
       sb.AppendLine("        return this;");

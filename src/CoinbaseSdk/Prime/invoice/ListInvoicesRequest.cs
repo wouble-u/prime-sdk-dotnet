@@ -35,7 +35,7 @@ namespace CoinbaseSdk.Prime.Invoice
     [JsonPropertyName("billing_month")]
     public int? BillingMonth { get; set; }
 
-    public class Builder
+    public class ListInvoicesRequestBuilder
     {
       private string? _entityId;
       private string?[]? _states;
@@ -45,43 +45,43 @@ namespace CoinbaseSdk.Prime.Invoice
       private SortDirection? _sortDirection;
       private int? _limit;
 
-      public Builder WithEntityId(string entityId)
+      public ListInvoicesRequestBuilder WithEntityId(string entityId)
       {
         _entityId = entityId;
         return this;
       }
 
-      public Builder WithStates(string?[] states)
+      public ListInvoicesRequestBuilder WithStates(string?[] states)
       {
         _states = states;
         return this;
       }
 
-      public Builder WithBillingYear(int? billingYear)
+      public ListInvoicesRequestBuilder WithBillingYear(int? billingYear)
       {
         _billingYear = billingYear;
         return this;
       }
 
-      public Builder WithBillingMonth(int? billingMonth)
+      public ListInvoicesRequestBuilder WithBillingMonth(int? billingMonth)
       {
         _billingMonth = billingMonth;
         return this;
       }
 
-      public Builder WithCursor(string cursor)
+      public ListInvoicesRequestBuilder WithCursor(string cursor)
       {
         _cursor = cursor;
         return this;
       }
 
-      public Builder WithSortDirection(SortDirection sortDirection)
+      public ListInvoicesRequestBuilder WithSortDirection(SortDirection sortDirection)
       {
         _sortDirection = sortDirection;
         return this;
       }
 
-      public Builder WithLimit(int limit)
+      public ListInvoicesRequestBuilder WithLimit(int limit)
       {
         _limit = limit;
         return this;

@@ -24,11 +24,11 @@ namespace CoinbaseSdk.Prime.Financing
     [JsonIgnore]
     public string EntityId { get; set; } = entityId;
 
-    public class Builder
+    public class GetMarginInformationRequestBuilder
     {
       private string? _entityId;
 
-      public Builder WithEntityId(string entityId)
+      public GetMarginInformationRequestBuilder WithEntityId(string entityId)
       {
         _entityId = entityId;
         return this;

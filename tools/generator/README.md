@@ -38,7 +38,18 @@ tools/generator/
     SpecParser.cs
     SpecModels.cs
   templates/                 # Model templates for CLI; placeholder .mustache for client surface
+  sync-copyright-years-from-git.sh  # Aligns file-header Copyright years with Git first-commit dates
 ```
+
+## Copyright years (generator sources)
+
+- **File headers** under `tools/generator/` should use the year the file was **first added in Git**, not a hardcoded guess. After adding or renaming generator sources, run from the repo root:
+
+```bash
+bash tools/generator/sync-copyright-years-from-git.sh
+```
+
+- **Emitted C#** under `src/CoinbaseSdk/Prime/` (requests, responses, services, new examples) uses the year from the first commit that added `tools/generator/phases/RequestPhase.cs`, resolved at generator startup via `CopyrightHelper.InitializeSdkEmittedCopyrightYear`. **New** output files (no prior version on disk) get that year in `ApplyCopyrightYear`; existing files keep their on-disk year.
 
 ## Prerequisites
 

@@ -41,7 +41,7 @@ namespace CoinbaseSdk.Prime.Transactions
     [JsonPropertyName("reference_id")]
     public string? ReferenceId { get; set; }
 
-    public class Builder
+    public class ListAdvancedTransfersRequestBuilder
     {
       private string? _portfolioId;
       private string? _state;
@@ -53,55 +53,55 @@ namespace CoinbaseSdk.Prime.Transactions
       private SortDirection? _sortDirection;
       private int? _limit;
 
-      public Builder WithPortfolioId(string portfolioId)
+      public ListAdvancedTransfersRequestBuilder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithState(string? state)
+      public ListAdvancedTransfersRequestBuilder WithState(string? state)
       {
         _state = state;
         return this;
       }
 
-      public Builder WithType(string? type)
+      public ListAdvancedTransfersRequestBuilder WithType(string? type)
       {
         _type = type;
         return this;
       }
 
-      public Builder WithStartTime(string? startTime)
+      public ListAdvancedTransfersRequestBuilder WithStartTime(string? startTime)
       {
         _startTime = startTime;
         return this;
       }
 
-      public Builder WithEndTime(string? endTime)
+      public ListAdvancedTransfersRequestBuilder WithEndTime(string? endTime)
       {
         _endTime = endTime;
         return this;
       }
 
-      public Builder WithReferenceId(string? referenceId)
+      public ListAdvancedTransfersRequestBuilder WithReferenceId(string? referenceId)
       {
         _referenceId = referenceId;
         return this;
       }
 
-      public Builder WithCursor(string cursor)
+      public ListAdvancedTransfersRequestBuilder WithCursor(string cursor)
       {
         _cursor = cursor;
         return this;
       }
 
-      public Builder WithSortDirection(SortDirection sortDirection)
+      public ListAdvancedTransfersRequestBuilder WithSortDirection(SortDirection sortDirection)
       {
         _sortDirection = sortDirection;
         return this;
       }
 
-      public Builder WithLimit(int limit)
+      public ListAdvancedTransfersRequestBuilder WithLimit(int limit)
       {
         _limit = limit;
         return this;

@@ -82,7 +82,7 @@ rootCommand.SetHandler((context) =>
             .WithType(transferType)
             .Build();
 
-        var request = new CreateAdvancedTransferRequest.Builder()
+        var request = new CreateAdvancedTransferRequest.CreateAdvancedTransferRequestBuilder()
             .WithPortfolioId(portfolioId)
             .WithAdvancedTransfer(advancedTransfer)
             .Build();

@@ -36,7 +36,7 @@ namespace CoinbaseSdk.Prime.Financing
     [JsonPropertyName("locate_date")]
     public string? LocateDate { get; set; }
 
-    public class Builder
+    public class CreateNewLocatesRequestBuilder
     {
       private string? _portfolioId;
       private string? _symbol;
@@ -44,31 +44,31 @@ namespace CoinbaseSdk.Prime.Financing
       private string? _conversionDate;
       private string? _locateDate;
 
-      public Builder WithPortfolioId(string portfolioId)
+      public CreateNewLocatesRequestBuilder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithSymbol(string? symbol)
+      public CreateNewLocatesRequestBuilder WithSymbol(string? symbol)
       {
         _symbol = symbol;
         return this;
       }
 
-      public Builder WithAmount(string? amount)
+      public CreateNewLocatesRequestBuilder WithAmount(string? amount)
       {
         _amount = amount;
         return this;
       }
 
-      public Builder WithConversionDate(string? conversionDate)
+      public CreateNewLocatesRequestBuilder WithConversionDate(string? conversionDate)
       {
         _conversionDate = conversionDate;
         return this;
       }
 
-      public Builder WithLocateDate(string? locateDate)
+      public CreateNewLocatesRequestBuilder WithLocateDate(string? locateDate)
       {
         _locateDate = locateDate;
         return this;

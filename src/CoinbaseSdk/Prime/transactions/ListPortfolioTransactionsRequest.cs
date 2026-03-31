@@ -44,7 +44,7 @@ namespace CoinbaseSdk.Prime.Transactions
     [JsonPropertyName("travel_rule_status")]
     public string?[] TravelRuleStatus { get; set; } = [];
 
-    public class Builder
+    public class ListPortfolioTransactionsRequestBuilder
     {
       private string? _portfolioId;
       private string? _symbols;
@@ -57,61 +57,61 @@ namespace CoinbaseSdk.Prime.Transactions
       private SortDirection? _sortDirection;
       private int? _limit;
 
-      public Builder WithPortfolioId(string portfolioId)
+      public ListPortfolioTransactionsRequestBuilder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithSymbols(string? symbols)
+      public ListPortfolioTransactionsRequestBuilder WithSymbols(string? symbols)
       {
         _symbols = symbols;
         return this;
       }
 
-      public Builder WithTypes(string?[] types)
+      public ListPortfolioTransactionsRequestBuilder WithTypes(string?[] types)
       {
         _types = types;
         return this;
       }
 
-      public Builder WithStartTime(string? startTime)
+      public ListPortfolioTransactionsRequestBuilder WithStartTime(string? startTime)
       {
         _startTime = startTime;
         return this;
       }
 
-      public Builder WithEndTime(string? endTime)
+      public ListPortfolioTransactionsRequestBuilder WithEndTime(string? endTime)
       {
         _endTime = endTime;
         return this;
       }
 
-      public Builder WithGetNetworkUnifiedTransactions(bool? getNetworkUnifiedTransactions)
+      public ListPortfolioTransactionsRequestBuilder WithGetNetworkUnifiedTransactions(bool? getNetworkUnifiedTransactions)
       {
         _getNetworkUnifiedTransactions = getNetworkUnifiedTransactions;
         return this;
       }
 
-      public Builder WithTravelRuleStatus(string?[] travelRuleStatus)
+      public ListPortfolioTransactionsRequestBuilder WithTravelRuleStatus(string?[] travelRuleStatus)
       {
         _travelRuleStatus = travelRuleStatus;
         return this;
       }
 
-      public Builder WithCursor(string cursor)
+      public ListPortfolioTransactionsRequestBuilder WithCursor(string cursor)
       {
         _cursor = cursor;
         return this;
       }
 
-      public Builder WithSortDirection(SortDirection sortDirection)
+      public ListPortfolioTransactionsRequestBuilder WithSortDirection(SortDirection sortDirection)
       {
         _sortDirection = sortDirection;
         return this;
       }
 
-      public Builder WithLimit(int limit)
+      public ListPortfolioTransactionsRequestBuilder WithLimit(int limit)
       {
         _limit = limit;
         return this;

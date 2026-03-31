@@ -44,7 +44,7 @@ namespace CoinbaseSdk.Prime.Allocations
     [JsonPropertyName("remainder_destination_portfolio")]
     public string? RemainderDestinationPortfolio { get; set; }
 
-    public class Builder
+    public class CreateAllocationRequestBuilder
     {
       private string? _allocationId;
       private string? _sourcePortfolioId;
@@ -54,43 +54,43 @@ namespace CoinbaseSdk.Prime.Allocations
       private AllocationSizeType _sizeType;
       private string? _remainderDestinationPortfolio;
 
-      public Builder WithAllocationId(string? allocationId)
+      public CreateAllocationRequestBuilder WithAllocationId(string? allocationId)
       {
         _allocationId = allocationId;
         return this;
       }
 
-      public Builder WithSourcePortfolioId(string? sourcePortfolioId)
+      public CreateAllocationRequestBuilder WithSourcePortfolioId(string? sourcePortfolioId)
       {
         _sourcePortfolioId = sourcePortfolioId;
         return this;
       }
 
-      public Builder WithProductId(string? productId)
+      public CreateAllocationRequestBuilder WithProductId(string? productId)
       {
         _productId = productId;
         return this;
       }
 
-      public Builder WithOrderIds(string?[] orderIds)
+      public CreateAllocationRequestBuilder WithOrderIds(string?[] orderIds)
       {
         _orderIds = orderIds;
         return this;
       }
 
-      public Builder WithAllocationLegs(AllocationLeg[] allocationLegs)
+      public CreateAllocationRequestBuilder WithAllocationLegs(AllocationLeg[] allocationLegs)
       {
         _allocationLegs = allocationLegs;
         return this;
       }
 
-      public Builder WithSizeType(AllocationSizeType sizeType)
+      public CreateAllocationRequestBuilder WithSizeType(AllocationSizeType sizeType)
       {
         _sizeType = sizeType;
         return this;
       }
 
-      public Builder WithRemainderDestinationPortfolio(string? remainderDestinationPortfolio)
+      public CreateAllocationRequestBuilder WithRemainderDestinationPortfolio(string? remainderDestinationPortfolio)
       {
         _remainderDestinationPortfolio = remainderDestinationPortfolio;
         return this;

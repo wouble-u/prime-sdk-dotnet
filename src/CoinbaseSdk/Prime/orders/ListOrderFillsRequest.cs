@@ -29,7 +29,7 @@ namespace CoinbaseSdk.Prime.Orders
     [JsonIgnore]
     public string OrderId { get; set; } = orderId;
 
-    public class Builder
+    public class ListOrderFillsRequestBuilder
     {
       private string? _portfolioId;
       private string? _orderId;
@@ -37,31 +37,31 @@ namespace CoinbaseSdk.Prime.Orders
       private SortDirection? _sortDirection;
       private int? _limit;
 
-      public Builder WithPortfolioId(string portfolioId)
+      public ListOrderFillsRequestBuilder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithOrderId(string orderId)
+      public ListOrderFillsRequestBuilder WithOrderId(string orderId)
       {
         _orderId = orderId;
         return this;
       }
 
-      public Builder WithCursor(string cursor)
+      public ListOrderFillsRequestBuilder WithCursor(string cursor)
       {
         _cursor = cursor;
         return this;
       }
 
-      public Builder WithSortDirection(SortDirection sortDirection)
+      public ListOrderFillsRequestBuilder WithSortDirection(SortDirection sortDirection)
       {
         _sortDirection = sortDirection;
         return this;
       }
 
-      public Builder WithLimit(int limit)
+      public ListOrderFillsRequestBuilder WithLimit(int limit)
       {
         _limit = limit;
         return this;

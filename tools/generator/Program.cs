@@ -1,5 +1,5 @@
 /*
- * Copyright 2025-present Coinbase Global, Inc.
+ * Copyright 2026-present Coinbase Global, Inc.
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -52,6 +52,7 @@ try
   }
 
   var projectRoot = GeneratorPaths.FindProjectRoot();
+  CopyrightHelper.InitializeSdkEmittedCopyrightYear(projectRoot);
   var cfg = GeneratorConfiguration.Load(projectRoot);
   var operations = GeneratorConfiguration.LoadOperations(projectRoot);
   var transforms = new SharedTransforms(cfg);
@@ -103,6 +104,11 @@ try
   await clientPhase.RunAsync(operations, dryRun, diffMode);
 
   var examplesRoot = Path.Combine(projectRoot, "src", "CoinbaseSdk", "PrimeExample", "examples");
+  if (!dryRun && !diffMode)
+  {
+    ExampleRequestBuilderNamingSync.Run(logger, examplesRoot);
+  }
+
   var exampleLogger = loggerFactory.CreateLogger<ExamplePhase>();
   var examplePhase = new ExamplePhase(exampleLogger, document, cfg, transforms, examplesRoot);
   await examplePhase.RunAsync(operations, dryRun, diffMode);
