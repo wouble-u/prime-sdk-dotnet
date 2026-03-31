@@ -20,11 +20,11 @@ namespace CoinbaseSdk.Prime.Invoice
 
   public interface IInvoiceService
   {
-    public ListInvoicesResponse ListInvoices(ListInvoicesRequest request, CallOptions? callOptions = null);
+    public ListInvoicesResponse ListInvoices(ListInvoicesRequest request, CallOptions? options = null);
 
     public Task<ListInvoicesResponse> ListInvoicesAsync(
       ListInvoicesRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
   }

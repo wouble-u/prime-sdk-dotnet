@@ -20,18 +20,18 @@ namespace CoinbaseSdk.Prime.Positions
 
   public interface IPositionsService
   {
-    public ListAggregateEntityPositionsResponse ListAggregateEntityPositions(ListAggregateEntityPositionsRequest request, CallOptions? callOptions = null);
+    public ListAggregateEntityPositionsResponse ListAggregateEntityPositions(ListAggregateEntityPositionsRequest request, CallOptions? options = null);
 
     public Task<ListAggregateEntityPositionsResponse> ListAggregateEntityPositionsAsync(
       ListAggregateEntityPositionsRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
-    public ListEntityPositionsResponse ListEntityPositions(ListEntityPositionsRequest request, CallOptions? callOptions = null);
+    public ListEntityPositionsResponse ListEntityPositions(ListEntityPositionsRequest request, CallOptions? options = null);
 
     public Task<ListEntityPositionsResponse> ListEntityPositionsAsync(
       ListEntityPositionsRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
   }

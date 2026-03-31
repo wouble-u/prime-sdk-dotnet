@@ -20,11 +20,11 @@ namespace CoinbaseSdk.Prime.Assets
 
   public interface IAssetsService
   {
-    public ListAssetsResponse ListAssets(ListAssetsRequest request, CallOptions? callOptions = null);
+    public ListAssetsResponse ListAssets(ListAssetsRequest request, CallOptions? options = null);
 
     public Task<ListAssetsResponse> ListAssetsAsync(
       ListAssetsRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
   }

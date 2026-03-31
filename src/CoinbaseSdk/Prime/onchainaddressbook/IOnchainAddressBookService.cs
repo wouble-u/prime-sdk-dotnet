@@ -20,32 +20,32 @@ namespace CoinbaseSdk.Prime.OnchainAddressBook
 
   public interface IOnchainAddressBookService
   {
-    public CreateOnchainAddressBookEntryResponse CreateOnchainAddressBookEntry(CreateOnchainAddressBookEntryRequest request, CallOptions? callOptions = null);
+    public CreateOnchainAddressBookEntryResponse CreateOnchainAddressBookEntry(CreateOnchainAddressBookEntryRequest request, CallOptions? options = null);
 
     public Task<CreateOnchainAddressBookEntryResponse> CreateOnchainAddressBookEntryAsync(
       CreateOnchainAddressBookEntryRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
-    public DeleteOnchainAddressGroupResponse DeleteOnchainAddressGroup(DeleteOnchainAddressGroupRequest request, CallOptions? callOptions = null);
+    public DeleteOnchainAddressGroupResponse DeleteOnchainAddressGroup(DeleteOnchainAddressGroupRequest request, CallOptions? options = null);
 
     public Task<DeleteOnchainAddressGroupResponse> DeleteOnchainAddressGroupAsync(
       DeleteOnchainAddressGroupRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
-    public ListOnchainAddressGroupsResponse ListOnchainAddressGroups(ListOnchainAddressGroupsRequest request, CallOptions? callOptions = null);
+    public ListOnchainAddressGroupsResponse ListOnchainAddressGroups(ListOnchainAddressGroupsRequest request, CallOptions? options = null);
 
     public Task<ListOnchainAddressGroupsResponse> ListOnchainAddressGroupsAsync(
       ListOnchainAddressGroupsRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
-    public UpdateOnchainAddressBookEntryResponse UpdateOnchainAddressBookEntry(UpdateOnchainAddressBookEntryRequest request, CallOptions? callOptions = null);
+    public UpdateOnchainAddressBookEntryResponse UpdateOnchainAddressBookEntry(UpdateOnchainAddressBookEntryRequest request, CallOptions? options = null);
 
     public Task<UpdateOnchainAddressBookEntryResponse> UpdateOnchainAddressBookEntryAsync(
       UpdateOnchainAddressBookEntryRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
   }

@@ -23,19 +23,19 @@ namespace CoinbaseSdk.Prime.Commission
 
   public class CommissionService(ICoinbaseClient client) : CoinbaseService(client), ICommissionService
   {
-    public GetPortfolioCommissionResponse GetPortfolioCommission(GetPortfolioCommissionRequest request, CallOptions? callOptions = null)
+    public GetPortfolioCommissionResponse GetPortfolioCommission(GetPortfolioCommissionRequest request, CallOptions? options = null)
     {
       return Request<GetPortfolioCommissionResponse>(
         HttpMethod.Get,
         $"/portfolios/{request.PortfolioId}/commission",
         [HttpStatusCode.OK],
         request,
-        callOptions);
+        options);
     }
 
     public Task<GetPortfolioCommissionResponse> GetPortfolioCommissionAsync(
       GetPortfolioCommissionRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default)
     {
       return RequestAsync<GetPortfolioCommissionResponse>(
@@ -43,7 +43,7 @@ namespace CoinbaseSdk.Prime.Commission
         $"/portfolios/{request.PortfolioId}/commission",
         [HttpStatusCode.OK],
         request,
-        callOptions,
+        options,
         cancellationToken);
     }
 

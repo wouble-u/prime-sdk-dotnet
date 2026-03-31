@@ -20,32 +20,32 @@ namespace CoinbaseSdk.Prime.Balances
 
   public interface IBalancesService
   {
-    public GetWalletBalanceResponse GetWalletBalance(GetWalletBalanceRequest request, CallOptions? callOptions = null);
+    public GetWalletBalanceResponse GetWalletBalance(GetWalletBalanceRequest request, CallOptions? options = null);
 
     public Task<GetWalletBalanceResponse> GetWalletBalanceAsync(
       GetWalletBalanceRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
-    public ListEntityBalancesResponse ListEntityBalances(ListEntityBalancesRequest request, CallOptions? callOptions = null);
+    public ListEntityBalancesResponse ListEntityBalances(ListEntityBalancesRequest request, CallOptions? options = null);
 
     public Task<ListEntityBalancesResponse> ListEntityBalancesAsync(
       ListEntityBalancesRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
-    public ListOnchainWalletBalancesResponse ListOnchainWalletBalances(ListOnchainWalletBalancesRequest request, CallOptions? callOptions = null);
+    public ListOnchainWalletBalancesResponse ListOnchainWalletBalances(ListOnchainWalletBalancesRequest request, CallOptions? options = null);
 
     public Task<ListOnchainWalletBalancesResponse> ListOnchainWalletBalancesAsync(
       ListOnchainWalletBalancesRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
-    public ListPortfolioBalancesResponse ListPortfolioBalances(ListPortfolioBalancesRequest request, CallOptions? callOptions = null);
+    public ListPortfolioBalancesResponse ListPortfolioBalances(ListPortfolioBalancesRequest request, CallOptions? options = null);
 
     public Task<ListPortfolioBalancesResponse> ListPortfolioBalancesAsync(
       ListPortfolioBalancesRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
   }

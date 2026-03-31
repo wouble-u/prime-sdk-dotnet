@@ -20,32 +20,32 @@ namespace CoinbaseSdk.Prime.Activities
 
   public interface IActivitiesService
   {
-    public GetActivityResponse GetActivity(GetActivityRequest request, CallOptions? callOptions = null);
+    public GetActivityResponse GetActivity(GetActivityRequest request, CallOptions? options = null);
 
     public Task<GetActivityResponse> GetActivityAsync(
       GetActivityRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
-    public GetPortfolioActivityResponse GetPortfolioActivity(GetPortfolioActivityRequest request, CallOptions? callOptions = null);
+    public GetPortfolioActivityResponse GetPortfolioActivity(GetPortfolioActivityRequest request, CallOptions? options = null);
 
     public Task<GetPortfolioActivityResponse> GetPortfolioActivityAsync(
       GetPortfolioActivityRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
-    public ListActivitiesResponse ListActivities(ListActivitiesRequest request, CallOptions? callOptions = null);
+    public ListActivitiesResponse ListActivities(ListActivitiesRequest request, CallOptions? options = null);
 
     public Task<ListActivitiesResponse> ListActivitiesAsync(
       ListActivitiesRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
-    public ListEntityActivitiesResponse ListEntityActivities(ListEntityActivitiesRequest request, CallOptions? callOptions = null);
+    public ListEntityActivitiesResponse ListEntityActivities(ListEntityActivitiesRequest request, CallOptions? options = null);
 
     public Task<ListEntityActivitiesResponse> ListEntityActivitiesAsync(
       ListEntityActivitiesRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
   }

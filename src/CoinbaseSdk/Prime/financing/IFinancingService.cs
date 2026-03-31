@@ -20,109 +20,109 @@ namespace CoinbaseSdk.Prime.Financing
 
   public interface IFinancingService
   {
-    public CreateNewLocatesResponse CreateNewLocates(CreateNewLocatesRequest request, CallOptions? callOptions = null);
+    public CreateNewLocatesResponse CreateNewLocates(CreateNewLocatesRequest request, CallOptions? options = null);
 
     public Task<CreateNewLocatesResponse> CreateNewLocatesAsync(
       CreateNewLocatesRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
-    public GetCrossMarginOverviewResponse GetCrossMarginOverview(GetCrossMarginOverviewRequest request, CallOptions? callOptions = null);
+    public GetCrossMarginOverviewResponse GetCrossMarginOverview(GetCrossMarginOverviewRequest request, CallOptions? options = null);
 
     public Task<GetCrossMarginOverviewResponse> GetCrossMarginOverviewAsync(
       GetCrossMarginOverviewRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
-    public GetEntityLocateAvailabilitiesResponse GetEntityLocateAvailabilities(GetEntityLocateAvailabilitiesRequest request, CallOptions? callOptions = null);
+    public GetEntityLocateAvailabilitiesResponse GetEntityLocateAvailabilities(GetEntityLocateAvailabilitiesRequest request, CallOptions? options = null);
 
     public Task<GetEntityLocateAvailabilitiesResponse> GetEntityLocateAvailabilitiesAsync(
       GetEntityLocateAvailabilitiesRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
-    public GetMarginInformationResponse GetMarginInformation(GetMarginInformationRequest request, CallOptions? callOptions = null);
+    public GetMarginInformationResponse GetMarginInformation(GetMarginInformationRequest request, CallOptions? options = null);
 
     public Task<GetMarginInformationResponse> GetMarginInformationAsync(
       GetMarginInformationRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
-    public GetPortfolioBuyingPowerResponse GetPortfolioBuyingPower(GetPortfolioBuyingPowerRequest request, CallOptions? callOptions = null);
+    public GetPortfolioBuyingPowerResponse GetPortfolioBuyingPower(GetPortfolioBuyingPowerRequest request, CallOptions? options = null);
 
     public Task<GetPortfolioBuyingPowerResponse> GetPortfolioBuyingPowerAsync(
       GetPortfolioBuyingPowerRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
-    public GetPortfolioCreditInformationResponse GetPortfolioCreditInformation(GetPortfolioCreditInformationRequest request, CallOptions? callOptions = null);
+    public GetPortfolioCreditInformationResponse GetPortfolioCreditInformation(GetPortfolioCreditInformationRequest request, CallOptions? options = null);
 
     public Task<GetPortfolioCreditInformationResponse> GetPortfolioCreditInformationAsync(
       GetPortfolioCreditInformationRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
-    public GetPortfolioWithdrawalPowerResponse GetPortfolioWithdrawalPower(GetPortfolioWithdrawalPowerRequest request, CallOptions? callOptions = null);
+    public GetPortfolioWithdrawalPowerResponse GetPortfolioWithdrawalPower(GetPortfolioWithdrawalPowerRequest request, CallOptions? options = null);
 
     public Task<GetPortfolioWithdrawalPowerResponse> GetPortfolioWithdrawalPowerAsync(
       GetPortfolioWithdrawalPowerRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
-    public GetTradeFinanceTieredPricingFeesResponse GetTradeFinanceTieredPricingFees(GetTradeFinanceTieredPricingFeesRequest request, CallOptions? callOptions = null);
+    public GetTradeFinanceTieredPricingFeesResponse GetTradeFinanceTieredPricingFees(GetTradeFinanceTieredPricingFeesRequest request, CallOptions? options = null);
 
     public Task<GetTradeFinanceTieredPricingFeesResponse> GetTradeFinanceTieredPricingFeesAsync(
       GetTradeFinanceTieredPricingFeesRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
-    public ListExistingLocatesResponse ListExistingLocates(ListExistingLocatesRequest request, CallOptions? callOptions = null);
+    public ListExistingLocatesResponse ListExistingLocates(ListExistingLocatesRequest request, CallOptions? options = null);
 
     public Task<ListExistingLocatesResponse> ListExistingLocatesAsync(
       ListExistingLocatesRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
-    public ListFinancingEligibleAssetsResponse ListFinancingEligibleAssets(ListFinancingEligibleAssetsRequest request, CallOptions? callOptions = null);
+    public ListFinancingEligibleAssetsResponse ListFinancingEligibleAssets(ListFinancingEligibleAssetsRequest request, CallOptions? options = null);
 
     public Task<ListFinancingEligibleAssetsResponse> ListFinancingEligibleAssetsAsync(
       ListFinancingEligibleAssetsRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
-    public ListInterestAccrualsResponse ListInterestAccruals(ListInterestAccrualsRequest request, CallOptions? callOptions = null);
+    public ListInterestAccrualsResponse ListInterestAccruals(ListInterestAccrualsRequest request, CallOptions? options = null);
 
     public Task<ListInterestAccrualsResponse> ListInterestAccrualsAsync(
       ListInterestAccrualsRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
-    public ListInterestAccrualsForPortfolioResponse ListInterestAccrualsForPortfolio(ListInterestAccrualsForPortfolioRequest request, CallOptions? callOptions = null);
+    public ListInterestAccrualsForPortfolioResponse ListInterestAccrualsForPortfolio(ListInterestAccrualsForPortfolioRequest request, CallOptions? options = null);
 
     public Task<ListInterestAccrualsForPortfolioResponse> ListInterestAccrualsForPortfolioAsync(
       ListInterestAccrualsForPortfolioRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
-    public ListMarginCallSummariesResponse ListMarginCallSummaries(ListMarginCallSummariesRequest request, CallOptions? callOptions = null);
+    public ListMarginCallSummariesResponse ListMarginCallSummaries(ListMarginCallSummariesRequest request, CallOptions? options = null);
 
     public Task<ListMarginCallSummariesResponse> ListMarginCallSummariesAsync(
       ListMarginCallSummariesRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
-    public ListMarginConversionsResponse ListMarginConversions(ListMarginConversionsRequest request, CallOptions? callOptions = null);
+    public ListMarginConversionsResponse ListMarginConversions(ListMarginConversionsRequest request, CallOptions? options = null);
 
     public Task<ListMarginConversionsResponse> ListMarginConversionsAsync(
       ListMarginConversionsRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
-    public ListTradeFinanceObligationsResponse ListTradeFinanceObligations(ListTradeFinanceObligationsRequest request, CallOptions? callOptions = null);
+    public ListTradeFinanceObligationsResponse ListTradeFinanceObligations(ListTradeFinanceObligationsRequest request, CallOptions? options = null);
 
     public Task<ListTradeFinanceObligationsResponse> ListTradeFinanceObligationsAsync(
       ListTradeFinanceObligationsRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
   }

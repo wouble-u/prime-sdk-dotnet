@@ -23,19 +23,19 @@ namespace CoinbaseSdk.Prime.Portfolios
 
   public class PortfoliosService(ICoinbaseClient client) : CoinbaseService(client), IPortfoliosService
   {
-    public GetPortfolioResponse GetPortfolio(GetPortfolioRequest request, CallOptions? callOptions = null)
+    public GetPortfolioResponse GetPortfolio(GetPortfolioRequest request, CallOptions? options = null)
     {
       return Request<GetPortfolioResponse>(
         HttpMethod.Get,
         $"/portfolios/{request.PortfolioId}",
         [HttpStatusCode.OK],
         null,
-        callOptions);
+        options);
     }
 
     public Task<GetPortfolioResponse> GetPortfolioAsync(
       GetPortfolioRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default)
     {
       return RequestAsync<GetPortfolioResponse>(
@@ -43,23 +43,23 @@ namespace CoinbaseSdk.Prime.Portfolios
         $"/portfolios/{request.PortfolioId}",
         [HttpStatusCode.OK],
         null,
-        callOptions,
+        options,
         cancellationToken);
     }
 
-    public GetPortfolioCounterpartyResponse GetPortfolioCounterparty(GetPortfolioCounterpartyRequest request, CallOptions? callOptions = null)
+    public GetPortfolioCounterpartyResponse GetPortfolioCounterparty(GetPortfolioCounterpartyRequest request, CallOptions? options = null)
     {
       return Request<GetPortfolioCounterpartyResponse>(
         HttpMethod.Get,
         $"/portfolios/{request.PortfolioId}/counterparty",
         [HttpStatusCode.OK],
         null,
-        callOptions);
+        options);
     }
 
     public Task<GetPortfolioCounterpartyResponse> GetPortfolioCounterpartyAsync(
       GetPortfolioCounterpartyRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default)
     {
       return RequestAsync<GetPortfolioCounterpartyResponse>(
@@ -67,22 +67,22 @@ namespace CoinbaseSdk.Prime.Portfolios
         $"/portfolios/{request.PortfolioId}/counterparty",
         [HttpStatusCode.OK],
         null,
-        callOptions,
+        options,
         cancellationToken);
     }
 
-    public ListPortfoliosResponse ListPortfolios(CallOptions? callOptions = null)
+    public ListPortfoliosResponse ListPortfolios(CallOptions? options = null)
     {
       return Request<ListPortfoliosResponse>(
         HttpMethod.Get,
         $"/portfolios",
         [HttpStatusCode.OK],
         null,
-        callOptions);
+        options);
     }
 
     public Task<ListPortfoliosResponse> ListPortfoliosAsync(
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default)
     {
       return RequestAsync<ListPortfoliosResponse>(
@@ -90,7 +90,7 @@ namespace CoinbaseSdk.Prime.Portfolios
         $"/portfolios",
         [HttpStatusCode.OK],
         null,
-        callOptions,
+        options,
         cancellationToken);
     }
 

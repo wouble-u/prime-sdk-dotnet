@@ -23,19 +23,19 @@ namespace CoinbaseSdk.Prime.PaymentMethods
 
   public class PaymentMethodsService(ICoinbaseClient client) : CoinbaseService(client), IPaymentMethodsService
   {
-    public GetEntityPaymentMethodResponse GetEntityPaymentMethod(GetEntityPaymentMethodRequest request, CallOptions? callOptions = null)
+    public GetEntityPaymentMethodResponse GetEntityPaymentMethod(GetEntityPaymentMethodRequest request, CallOptions? options = null)
     {
       return Request<GetEntityPaymentMethodResponse>(
         HttpMethod.Get,
         $"/entities/{request.EntityId}/payment-methods/{request.PaymentMethodId}",
         [HttpStatusCode.OK],
         null,
-        callOptions);
+        options);
     }
 
     public Task<GetEntityPaymentMethodResponse> GetEntityPaymentMethodAsync(
       GetEntityPaymentMethodRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default)
     {
       return RequestAsync<GetEntityPaymentMethodResponse>(
@@ -43,23 +43,23 @@ namespace CoinbaseSdk.Prime.PaymentMethods
         $"/entities/{request.EntityId}/payment-methods/{request.PaymentMethodId}",
         [HttpStatusCode.OK],
         null,
-        callOptions,
+        options,
         cancellationToken);
     }
 
-    public ListEntityPaymentMethodsResponse ListEntityPaymentMethods(ListEntityPaymentMethodsRequest request, CallOptions? callOptions = null)
+    public ListEntityPaymentMethodsResponse ListEntityPaymentMethods(ListEntityPaymentMethodsRequest request, CallOptions? options = null)
     {
       return Request<ListEntityPaymentMethodsResponse>(
         HttpMethod.Get,
         $"/entities/{request.EntityId}/payment-methods",
         [HttpStatusCode.OK],
         null,
-        callOptions);
+        options);
     }
 
     public Task<ListEntityPaymentMethodsResponse> ListEntityPaymentMethodsAsync(
       ListEntityPaymentMethodsRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default)
     {
       return RequestAsync<ListEntityPaymentMethodsResponse>(
@@ -67,7 +67,7 @@ namespace CoinbaseSdk.Prime.PaymentMethods
         $"/entities/{request.EntityId}/payment-methods",
         [HttpStatusCode.OK],
         null,
-        callOptions,
+        options,
         cancellationToken);
     }
 

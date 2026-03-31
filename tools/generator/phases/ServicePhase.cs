@@ -44,21 +44,21 @@ public static class ServicePhase
     {
       if (b.OmitRequest)
       {
-        sb.AppendLine($"    public {b.SdkMethod}Response {b.SdkMethod}(CallOptions? callOptions = null);");
+        sb.AppendLine($"    public {b.SdkMethod}Response {b.SdkMethod}(CallOptions? options = null);");
         sb.AppendLine();
         sb.AppendLine($"    public Task<{b.SdkMethod}Response> {b.SdkMethod}Async(");
-        sb.AppendLine("      CallOptions? callOptions = null,");
+        sb.AppendLine("      CallOptions? options = null,");
         sb.AppendLine("      CancellationToken cancellationToken = default);");
         sb.AppendLine();
         continue;
       }
 
       sb.AppendLine(
-        $"    public {b.SdkMethod}Response {b.SdkMethod}({b.SdkMethod}Request request, CallOptions? callOptions = null);");
+        $"    public {b.SdkMethod}Response {b.SdkMethod}({b.SdkMethod}Request request, CallOptions? options = null);");
       sb.AppendLine();
       sb.AppendLine($"    public Task<{b.SdkMethod}Response> {b.SdkMethod}Async(");
       sb.AppendLine($"      {b.SdkMethod}Request request,");
-      sb.AppendLine("      CallOptions? callOptions = null,");
+      sb.AppendLine("      CallOptions? options = null,");
       sb.AppendLine("      CancellationToken cancellationToken = default);");
       sb.AppendLine();
     }
@@ -93,18 +93,18 @@ public static class ServicePhase
       var bodyArg = RequestBodyArgument(b, op);
       if (b.OmitRequest)
       {
-        sb.AppendLine($"    public {b.SdkMethod}Response {b.SdkMethod}(CallOptions? callOptions = null)");
+        sb.AppendLine($"    public {b.SdkMethod}Response {b.SdkMethod}(CallOptions? options = null)");
         sb.AppendLine("    {");
         sb.AppendLine($"      return Request<{b.SdkMethod}Response>(");
         sb.AppendLine($"        {method},");
         sb.AppendLine($"        {pathExpr},");
         sb.AppendLine($"        {status},");
         sb.AppendLine("        null,");
-        sb.AppendLine("        callOptions);");
+        sb.AppendLine("        options);");
         sb.AppendLine("    }");
         sb.AppendLine();
         sb.AppendLine($"    public Task<{b.SdkMethod}Response> {b.SdkMethod}Async(");
-        sb.AppendLine("      CallOptions? callOptions = null,");
+        sb.AppendLine("      CallOptions? options = null,");
         sb.AppendLine("      CancellationToken cancellationToken = default)");
         sb.AppendLine("    {");
         sb.AppendLine($"      return RequestAsync<{b.SdkMethod}Response>(");
@@ -112,7 +112,7 @@ public static class ServicePhase
         sb.AppendLine($"        {pathExpr},");
         sb.AppendLine($"        {status},");
         sb.AppendLine("        null,");
-        sb.AppendLine("        callOptions,");
+        sb.AppendLine("        options,");
         sb.AppendLine("        cancellationToken);");
         sb.AppendLine("    }");
         sb.AppendLine();
@@ -120,19 +120,19 @@ public static class ServicePhase
       }
 
       sb.AppendLine(
-        $"    public {b.SdkMethod}Response {b.SdkMethod}({b.SdkMethod}Request request, CallOptions? callOptions = null)");
+        $"    public {b.SdkMethod}Response {b.SdkMethod}({b.SdkMethod}Request request, CallOptions? options = null)");
       sb.AppendLine("    {");
       sb.AppendLine($"      return Request<{b.SdkMethod}Response>(");
       sb.AppendLine($"        {method},");
       sb.AppendLine($"        {pathExpr},");
       sb.AppendLine($"        {status},");
       sb.AppendLine($"        {bodyArg},");
-      sb.AppendLine("        callOptions);");
+      sb.AppendLine("        options);");
       sb.AppendLine("    }");
       sb.AppendLine();
       sb.AppendLine($"    public Task<{b.SdkMethod}Response> {b.SdkMethod}Async(");
       sb.AppendLine($"      {b.SdkMethod}Request request,");
-      sb.AppendLine("      CallOptions? callOptions = null,");
+      sb.AppendLine("      CallOptions? options = null,");
       sb.AppendLine("      CancellationToken cancellationToken = default)");
       sb.AppendLine("    {");
       sb.AppendLine($"      return RequestAsync<{b.SdkMethod}Response>(");
@@ -140,7 +140,7 @@ public static class ServicePhase
       sb.AppendLine($"        {pathExpr},");
       sb.AppendLine($"        {status},");
       sb.AppendLine($"        {bodyArg},");
-      sb.AppendLine("        callOptions,");
+      sb.AppendLine("        options,");
       sb.AppendLine("        cancellationToken);");
       sb.AppendLine("    }");
       sb.AppendLine();

@@ -20,24 +20,24 @@ namespace CoinbaseSdk.Prime.Portfolios
 
   public interface IPortfoliosService
   {
-    public GetPortfolioResponse GetPortfolio(GetPortfolioRequest request, CallOptions? callOptions = null);
+    public GetPortfolioResponse GetPortfolio(GetPortfolioRequest request, CallOptions? options = null);
 
     public Task<GetPortfolioResponse> GetPortfolioAsync(
       GetPortfolioRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
-    public GetPortfolioCounterpartyResponse GetPortfolioCounterparty(GetPortfolioCounterpartyRequest request, CallOptions? callOptions = null);
+    public GetPortfolioCounterpartyResponse GetPortfolioCounterparty(GetPortfolioCounterpartyRequest request, CallOptions? options = null);
 
     public Task<GetPortfolioCounterpartyResponse> GetPortfolioCounterpartyAsync(
       GetPortfolioCounterpartyRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
-    public ListPortfoliosResponse ListPortfolios(CallOptions? callOptions = null);
+    public ListPortfoliosResponse ListPortfolios(CallOptions? options = null);
 
     public Task<ListPortfoliosResponse> ListPortfoliosAsync(
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
   }

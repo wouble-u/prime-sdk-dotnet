@@ -23,19 +23,19 @@ namespace CoinbaseSdk.Prime.Assets
 
   public class AssetsService(ICoinbaseClient client) : CoinbaseService(client), IAssetsService
   {
-    public ListAssetsResponse ListAssets(ListAssetsRequest request, CallOptions? callOptions = null)
+    public ListAssetsResponse ListAssets(ListAssetsRequest request, CallOptions? options = null)
     {
       return Request<ListAssetsResponse>(
         HttpMethod.Get,
         $"/entities/{request.EntityId}/assets",
         [HttpStatusCode.OK],
         null,
-        callOptions);
+        options);
     }
 
     public Task<ListAssetsResponse> ListAssetsAsync(
       ListAssetsRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default)
     {
       return RequestAsync<ListAssetsResponse>(
@@ -43,7 +43,7 @@ namespace CoinbaseSdk.Prime.Assets
         $"/entities/{request.EntityId}/assets",
         [HttpStatusCode.OK],
         null,
-        callOptions,
+        options,
         cancellationToken);
     }
 

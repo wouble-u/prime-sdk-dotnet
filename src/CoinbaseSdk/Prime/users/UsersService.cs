@@ -23,19 +23,19 @@ namespace CoinbaseSdk.Prime.Users
 
   public class UsersService(ICoinbaseClient client) : CoinbaseService(client), IUsersService
   {
-    public ListPortfolioUsersResponse ListPortfolioUsers(ListPortfolioUsersRequest request, CallOptions? callOptions = null)
+    public ListPortfolioUsersResponse ListPortfolioUsers(ListPortfolioUsersRequest request, CallOptions? options = null)
     {
       return Request<ListPortfolioUsersResponse>(
         HttpMethod.Get,
         $"/portfolios/{request.PortfolioId}/users",
         [HttpStatusCode.OK],
         request,
-        callOptions);
+        options);
     }
 
     public Task<ListPortfolioUsersResponse> ListPortfolioUsersAsync(
       ListPortfolioUsersRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default)
     {
       return RequestAsync<ListPortfolioUsersResponse>(
@@ -43,23 +43,23 @@ namespace CoinbaseSdk.Prime.Users
         $"/portfolios/{request.PortfolioId}/users",
         [HttpStatusCode.OK],
         request,
-        callOptions,
+        options,
         cancellationToken);
     }
 
-    public ListUsersResponse ListUsers(ListUsersRequest request, CallOptions? callOptions = null)
+    public ListUsersResponse ListUsers(ListUsersRequest request, CallOptions? options = null)
     {
       return Request<ListUsersResponse>(
         HttpMethod.Get,
         $"/entities/{request.EntityId}/users",
         [HttpStatusCode.OK],
         request,
-        callOptions);
+        options);
     }
 
     public Task<ListUsersResponse> ListUsersAsync(
       ListUsersRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default)
     {
       return RequestAsync<ListUsersResponse>(
@@ -67,7 +67,7 @@ namespace CoinbaseSdk.Prime.Users
         $"/entities/{request.EntityId}/users",
         [HttpStatusCode.OK],
         request,
-        callOptions,
+        options,
         cancellationToken);
     }
 

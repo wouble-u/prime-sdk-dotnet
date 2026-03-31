@@ -20,88 +20,88 @@ namespace CoinbaseSdk.Prime.Orders
 
   public interface IOrdersService
   {
-    public AcceptQuoteResponse AcceptQuote(AcceptQuoteRequest request, CallOptions? callOptions = null);
+    public AcceptQuoteResponse AcceptQuote(AcceptQuoteRequest request, CallOptions? options = null);
 
     public Task<AcceptQuoteResponse> AcceptQuoteAsync(
       AcceptQuoteRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
-    public CancelOrderResponse CancelOrder(CancelOrderRequest request, CallOptions? callOptions = null);
+    public CancelOrderResponse CancelOrder(CancelOrderRequest request, CallOptions? options = null);
 
     public Task<CancelOrderResponse> CancelOrderAsync(
       CancelOrderRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
-    public CreateOrderResponse CreateOrder(CreateOrderRequest request, CallOptions? callOptions = null);
+    public CreateOrderResponse CreateOrder(CreateOrderRequest request, CallOptions? options = null);
 
     public Task<CreateOrderResponse> CreateOrderAsync(
       CreateOrderRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
-    public CreateQuoteResponse CreateQuote(CreateQuoteRequest request, CallOptions? callOptions = null);
+    public CreateQuoteResponse CreateQuote(CreateQuoteRequest request, CallOptions? options = null);
 
     public Task<CreateQuoteResponse> CreateQuoteAsync(
       CreateQuoteRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
-    public EditOrderResponse EditOrder(EditOrderRequest request, CallOptions? callOptions = null);
+    public EditOrderResponse EditOrder(EditOrderRequest request, CallOptions? options = null);
 
     public Task<EditOrderResponse> EditOrderAsync(
       EditOrderRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
-    public GetOrderResponse GetOrder(GetOrderRequest request, CallOptions? callOptions = null);
+    public GetOrderResponse GetOrder(GetOrderRequest request, CallOptions? options = null);
 
     public Task<GetOrderResponse> GetOrderAsync(
       GetOrderRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
-    public GetOrderPreviewResponse GetOrderPreview(GetOrderPreviewRequest request, CallOptions? callOptions = null);
+    public GetOrderPreviewResponse GetOrderPreview(GetOrderPreviewRequest request, CallOptions? options = null);
 
     public Task<GetOrderPreviewResponse> GetOrderPreviewAsync(
       GetOrderPreviewRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
-    public ListOpenOrdersResponse ListOpenOrders(ListOpenOrdersRequest request, CallOptions? callOptions = null);
+    public ListOpenOrdersResponse ListOpenOrders(ListOpenOrdersRequest request, CallOptions? options = null);
 
     public Task<ListOpenOrdersResponse> ListOpenOrdersAsync(
       ListOpenOrdersRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
-    public ListOrderEditHistoryResponse ListOrderEditHistory(ListOrderEditHistoryRequest request, CallOptions? callOptions = null);
+    public ListOrderEditHistoryResponse ListOrderEditHistory(ListOrderEditHistoryRequest request, CallOptions? options = null);
 
     public Task<ListOrderEditHistoryResponse> ListOrderEditHistoryAsync(
       ListOrderEditHistoryRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
-    public ListOrderFillsResponse ListOrderFills(ListOrderFillsRequest request, CallOptions? callOptions = null);
+    public ListOrderFillsResponse ListOrderFills(ListOrderFillsRequest request, CallOptions? options = null);
 
     public Task<ListOrderFillsResponse> ListOrderFillsAsync(
       ListOrderFillsRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
-    public ListPortfolioFillsResponse ListPortfolioFills(ListPortfolioFillsRequest request, CallOptions? callOptions = null);
+    public ListPortfolioFillsResponse ListPortfolioFills(ListPortfolioFillsRequest request, CallOptions? options = null);
 
     public Task<ListPortfolioFillsResponse> ListPortfolioFillsAsync(
       ListPortfolioFillsRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
-    public ListPortfolioOrdersResponse ListPortfolioOrders(ListPortfolioOrdersRequest request, CallOptions? callOptions = null);
+    public ListPortfolioOrdersResponse ListPortfolioOrders(ListPortfolioOrdersRequest request, CallOptions? options = null);
 
     public Task<ListPortfolioOrdersResponse> ListPortfolioOrdersAsync(
       ListPortfolioOrdersRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
   }

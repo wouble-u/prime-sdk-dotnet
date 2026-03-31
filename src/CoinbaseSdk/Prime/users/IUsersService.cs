@@ -20,18 +20,18 @@ namespace CoinbaseSdk.Prime.Users
 
   public interface IUsersService
   {
-    public ListPortfolioUsersResponse ListPortfolioUsers(ListPortfolioUsersRequest request, CallOptions? callOptions = null);
+    public ListPortfolioUsersResponse ListPortfolioUsers(ListPortfolioUsersRequest request, CallOptions? options = null);
 
     public Task<ListPortfolioUsersResponse> ListPortfolioUsersAsync(
       ListPortfolioUsersRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
-    public ListUsersResponse ListUsers(ListUsersRequest request, CallOptions? callOptions = null);
+    public ListUsersResponse ListUsers(ListUsersRequest request, CallOptions? options = null);
 
     public Task<ListUsersResponse> ListUsersAsync(
       ListUsersRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
   }

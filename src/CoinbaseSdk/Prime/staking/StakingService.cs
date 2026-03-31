@@ -23,19 +23,19 @@ namespace CoinbaseSdk.Prime.Staking
 
   public class StakingService(ICoinbaseClient client) : CoinbaseService(client), IStakingService
   {
-    public ClaimStakingRewardsResponse ClaimStakingRewards(ClaimStakingRewardsRequest request, CallOptions? callOptions = null)
+    public ClaimStakingRewardsResponse ClaimStakingRewards(ClaimStakingRewardsRequest request, CallOptions? options = null)
     {
       return Request<ClaimStakingRewardsResponse>(
         HttpMethod.Post,
         $"/portfolios/{request.PortfolioId}/wallets/{request.WalletId}/staking/claim_rewards",
         [HttpStatusCode.OK],
         request,
-        callOptions);
+        options);
     }
 
     public Task<ClaimStakingRewardsResponse> ClaimStakingRewardsAsync(
       ClaimStakingRewardsRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default)
     {
       return RequestAsync<ClaimStakingRewardsResponse>(
@@ -43,23 +43,23 @@ namespace CoinbaseSdk.Prime.Staking
         $"/portfolios/{request.PortfolioId}/wallets/{request.WalletId}/staking/claim_rewards",
         [HttpStatusCode.OK],
         request,
-        callOptions,
+        options,
         cancellationToken);
     }
 
-    public CreatePortfolioStakeResponse CreatePortfolioStake(CreatePortfolioStakeRequest request, CallOptions? callOptions = null)
+    public CreatePortfolioStakeResponse CreatePortfolioStake(CreatePortfolioStakeRequest request, CallOptions? options = null)
     {
       return Request<CreatePortfolioStakeResponse>(
         HttpMethod.Post,
         $"/portfolios/{request.PortfolioId}/staking/initiate",
         [HttpStatusCode.OK],
         request,
-        callOptions);
+        options);
     }
 
     public Task<CreatePortfolioStakeResponse> CreatePortfolioStakeAsync(
       CreatePortfolioStakeRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default)
     {
       return RequestAsync<CreatePortfolioStakeResponse>(
@@ -67,23 +67,23 @@ namespace CoinbaseSdk.Prime.Staking
         $"/portfolios/{request.PortfolioId}/staking/initiate",
         [HttpStatusCode.OK],
         request,
-        callOptions,
+        options,
         cancellationToken);
     }
 
-    public CreatePortfolioUnstakeResponse CreatePortfolioUnstake(CreatePortfolioUnstakeRequest request, CallOptions? callOptions = null)
+    public CreatePortfolioUnstakeResponse CreatePortfolioUnstake(CreatePortfolioUnstakeRequest request, CallOptions? options = null)
     {
       return Request<CreatePortfolioUnstakeResponse>(
         HttpMethod.Post,
         $"/portfolios/{request.PortfolioId}/staking/unstake",
         [HttpStatusCode.OK],
         request,
-        callOptions);
+        options);
     }
 
     public Task<CreatePortfolioUnstakeResponse> CreatePortfolioUnstakeAsync(
       CreatePortfolioUnstakeRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default)
     {
       return RequestAsync<CreatePortfolioUnstakeResponse>(
@@ -91,23 +91,23 @@ namespace CoinbaseSdk.Prime.Staking
         $"/portfolios/{request.PortfolioId}/staking/unstake",
         [HttpStatusCode.OK],
         request,
-        callOptions,
+        options,
         cancellationToken);
     }
 
-    public CreateStakeResponse CreateStake(CreateStakeRequest request, CallOptions? callOptions = null)
+    public CreateStakeResponse CreateStake(CreateStakeRequest request, CallOptions? options = null)
     {
       return Request<CreateStakeResponse>(
         HttpMethod.Post,
         $"/portfolios/{request.PortfolioId}/wallets/{request.WalletId}/staking/initiate",
         [HttpStatusCode.OK],
         request,
-        callOptions);
+        options);
     }
 
     public Task<CreateStakeResponse> CreateStakeAsync(
       CreateStakeRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default)
     {
       return RequestAsync<CreateStakeResponse>(
@@ -115,23 +115,23 @@ namespace CoinbaseSdk.Prime.Staking
         $"/portfolios/{request.PortfolioId}/wallets/{request.WalletId}/staking/initiate",
         [HttpStatusCode.OK],
         request,
-        callOptions,
+        options,
         cancellationToken);
     }
 
-    public CreateUnstakeResponse CreateUnstake(CreateUnstakeRequest request, CallOptions? callOptions = null)
+    public CreateUnstakeResponse CreateUnstake(CreateUnstakeRequest request, CallOptions? options = null)
     {
       return Request<CreateUnstakeResponse>(
         HttpMethod.Post,
         $"/portfolios/{request.PortfolioId}/wallets/{request.WalletId}/staking/unstake",
         [HttpStatusCode.OK],
         request,
-        callOptions);
+        options);
     }
 
     public Task<CreateUnstakeResponse> CreateUnstakeAsync(
       CreateUnstakeRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default)
     {
       return RequestAsync<CreateUnstakeResponse>(
@@ -139,23 +139,23 @@ namespace CoinbaseSdk.Prime.Staking
         $"/portfolios/{request.PortfolioId}/wallets/{request.WalletId}/staking/unstake",
         [HttpStatusCode.OK],
         request,
-        callOptions,
+        options,
         cancellationToken);
     }
 
-    public GetStakingStatusResponse GetStakingStatus(GetStakingStatusRequest request, CallOptions? callOptions = null)
+    public GetStakingStatusResponse GetStakingStatus(GetStakingStatusRequest request, CallOptions? options = null)
     {
       return Request<GetStakingStatusResponse>(
         HttpMethod.Get,
         $"/portfolios/{request.PortfolioId}/wallets/{request.WalletId}/staking/status",
         [HttpStatusCode.OK],
         null,
-        callOptions);
+        options);
     }
 
     public Task<GetStakingStatusResponse> GetStakingStatusAsync(
       GetStakingStatusRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default)
     {
       return RequestAsync<GetStakingStatusResponse>(
@@ -163,23 +163,23 @@ namespace CoinbaseSdk.Prime.Staking
         $"/portfolios/{request.PortfolioId}/wallets/{request.WalletId}/staking/status",
         [HttpStatusCode.OK],
         null,
-        callOptions,
+        options,
         cancellationToken);
     }
 
-    public GetUnstakingStatusResponse GetUnstakingStatus(GetUnstakingStatusRequest request, CallOptions? callOptions = null)
+    public GetUnstakingStatusResponse GetUnstakingStatus(GetUnstakingStatusRequest request, CallOptions? options = null)
     {
       return Request<GetUnstakingStatusResponse>(
         HttpMethod.Get,
         $"/portfolios/{request.PortfolioId}/wallets/{request.WalletId}/staking/unstake/status",
         [HttpStatusCode.OK],
         null,
-        callOptions);
+        options);
     }
 
     public Task<GetUnstakingStatusResponse> GetUnstakingStatusAsync(
       GetUnstakingStatusRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default)
     {
       return RequestAsync<GetUnstakingStatusResponse>(
@@ -187,23 +187,23 @@ namespace CoinbaseSdk.Prime.Staking
         $"/portfolios/{request.PortfolioId}/wallets/{request.WalletId}/staking/unstake/status",
         [HttpStatusCode.OK],
         null,
-        callOptions,
+        options,
         cancellationToken);
     }
 
-    public ListTransactionValidatorsResponse ListTransactionValidators(ListTransactionValidatorsRequest request, CallOptions? callOptions = null)
+    public ListTransactionValidatorsResponse ListTransactionValidators(ListTransactionValidatorsRequest request, CallOptions? options = null)
     {
       return Request<ListTransactionValidatorsResponse>(
         HttpMethod.Post,
         $"/portfolios/{request.PortfolioId}/staking/transaction-validators/query",
         [HttpStatusCode.OK],
         request,
-        callOptions);
+        options);
     }
 
     public Task<ListTransactionValidatorsResponse> ListTransactionValidatorsAsync(
       ListTransactionValidatorsRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default)
     {
       return RequestAsync<ListTransactionValidatorsResponse>(
@@ -211,23 +211,23 @@ namespace CoinbaseSdk.Prime.Staking
         $"/portfolios/{request.PortfolioId}/staking/transaction-validators/query",
         [HttpStatusCode.OK],
         request,
-        callOptions,
+        options,
         cancellationToken);
     }
 
-    public PreviewUnstakeResponse PreviewUnstake(PreviewUnstakeRequest request, CallOptions? callOptions = null)
+    public PreviewUnstakeResponse PreviewUnstake(PreviewUnstakeRequest request, CallOptions? options = null)
     {
       return Request<PreviewUnstakeResponse>(
         HttpMethod.Post,
         $"/portfolios/{request.PortfolioId}/wallets/{request.WalletId}/staking/unstake/preview",
         [HttpStatusCode.Created, HttpStatusCode.OK],
         request,
-        callOptions);
+        options);
     }
 
     public Task<PreviewUnstakeResponse> PreviewUnstakeAsync(
       PreviewUnstakeRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default)
     {
       return RequestAsync<PreviewUnstakeResponse>(
@@ -235,7 +235,7 @@ namespace CoinbaseSdk.Prime.Staking
         $"/portfolios/{request.PortfolioId}/wallets/{request.WalletId}/staking/unstake/preview",
         [HttpStatusCode.Created, HttpStatusCode.OK],
         request,
-        callOptions,
+        options,
         cancellationToken);
     }
 

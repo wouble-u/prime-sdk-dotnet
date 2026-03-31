@@ -20,81 +20,81 @@ namespace CoinbaseSdk.Prime.Futures
 
   public interface IFuturesService
   {
-    public CancelEntityFuturesSweepResponse CancelEntityFuturesSweep(CancelEntityFuturesSweepRequest request, CallOptions? callOptions = null);
+    public CancelEntityFuturesSweepResponse CancelEntityFuturesSweep(CancelEntityFuturesSweepRequest request, CallOptions? options = null);
 
     public Task<CancelEntityFuturesSweepResponse> CancelEntityFuturesSweepAsync(
       CancelEntityFuturesSweepRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
-    public GetFcmBalanceResponse GetFcmBalance(GetFcmBalanceRequest request, CallOptions? callOptions = null);
+    public GetFcmBalanceResponse GetFcmBalance(GetFcmBalanceRequest request, CallOptions? options = null);
 
     public Task<GetFcmBalanceResponse> GetFcmBalanceAsync(
       GetFcmBalanceRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
-    public GetFcmEquityResponse GetFcmEquity(GetFcmEquityRequest request, CallOptions? callOptions = null);
+    public GetFcmEquityResponse GetFcmEquity(GetFcmEquityRequest request, CallOptions? options = null);
 
     public Task<GetFcmEquityResponse> GetFcmEquityAsync(
       GetFcmEquityRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
-    public GetFcmMarginCallDetailsResponse GetFcmMarginCallDetails(GetFcmMarginCallDetailsRequest request, CallOptions? callOptions = null);
+    public GetFcmMarginCallDetailsResponse GetFcmMarginCallDetails(GetFcmMarginCallDetailsRequest request, CallOptions? options = null);
 
     public Task<GetFcmMarginCallDetailsResponse> GetFcmMarginCallDetailsAsync(
       GetFcmMarginCallDetailsRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
-    public GetFcmRiskLimitsResponse GetFcmRiskLimits(GetFcmRiskLimitsRequest request, CallOptions? callOptions = null);
+    public GetFcmRiskLimitsResponse GetFcmRiskLimits(GetFcmRiskLimitsRequest request, CallOptions? options = null);
 
     public Task<GetFcmRiskLimitsResponse> GetFcmRiskLimitsAsync(
       GetFcmRiskLimitsRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
-    public GetFcmSettingsResponse GetFcmSettings(GetFcmSettingsRequest request, CallOptions? callOptions = null);
+    public GetFcmSettingsResponse GetFcmSettings(GetFcmSettingsRequest request, CallOptions? options = null);
 
     public Task<GetFcmSettingsResponse> GetFcmSettingsAsync(
       GetFcmSettingsRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
-    public GetPositionsResponse GetPositions(GetPositionsRequest request, CallOptions? callOptions = null);
+    public GetPositionsResponse GetPositions(GetPositionsRequest request, CallOptions? options = null);
 
     public Task<GetPositionsResponse> GetPositionsAsync(
       GetPositionsRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
-    public ListEntityFuturesSweepsResponse ListEntityFuturesSweeps(ListEntityFuturesSweepsRequest request, CallOptions? callOptions = null);
+    public ListEntityFuturesSweepsResponse ListEntityFuturesSweeps(ListEntityFuturesSweepsRequest request, CallOptions? options = null);
 
     public Task<ListEntityFuturesSweepsResponse> ListEntityFuturesSweepsAsync(
       ListEntityFuturesSweepsRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
-    public ScheduleEntityFuturesSweepResponse ScheduleEntityFuturesSweep(ScheduleEntityFuturesSweepRequest request, CallOptions? callOptions = null);
+    public ScheduleEntityFuturesSweepResponse ScheduleEntityFuturesSweep(ScheduleEntityFuturesSweepRequest request, CallOptions? options = null);
 
     public Task<ScheduleEntityFuturesSweepResponse> ScheduleEntityFuturesSweepAsync(
       ScheduleEntityFuturesSweepRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
-    public SetAutoSweepResponse SetAutoSweep(SetAutoSweepRequest request, CallOptions? callOptions = null);
+    public SetAutoSweepResponse SetAutoSweep(SetAutoSweepRequest request, CallOptions? options = null);
 
     public Task<SetAutoSweepResponse> SetAutoSweepAsync(
       SetAutoSweepRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
-    public SetFcmSettingsResponse SetFcmSettings(SetFcmSettingsRequest request, CallOptions? callOptions = null);
+    public SetFcmSettingsResponse SetFcmSettings(SetFcmSettingsRequest request, CallOptions? options = null);
 
     public Task<SetFcmSettingsResponse> SetFcmSettingsAsync(
       SetFcmSettingsRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
   }

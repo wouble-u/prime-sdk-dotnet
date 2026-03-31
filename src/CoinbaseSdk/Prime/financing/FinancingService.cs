@@ -23,19 +23,19 @@ namespace CoinbaseSdk.Prime.Financing
 
   public class FinancingService(ICoinbaseClient client) : CoinbaseService(client), IFinancingService
   {
-    public CreateNewLocatesResponse CreateNewLocates(CreateNewLocatesRequest request, CallOptions? callOptions = null)
+    public CreateNewLocatesResponse CreateNewLocates(CreateNewLocatesRequest request, CallOptions? options = null)
     {
       return Request<CreateNewLocatesResponse>(
         HttpMethod.Post,
         $"/portfolios/{request.PortfolioId}/locates",
         [HttpStatusCode.OK],
         request,
-        callOptions);
+        options);
     }
 
     public Task<CreateNewLocatesResponse> CreateNewLocatesAsync(
       CreateNewLocatesRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default)
     {
       return RequestAsync<CreateNewLocatesResponse>(
@@ -43,23 +43,23 @@ namespace CoinbaseSdk.Prime.Financing
         $"/portfolios/{request.PortfolioId}/locates",
         [HttpStatusCode.OK],
         request,
-        callOptions,
+        options,
         cancellationToken);
     }
 
-    public GetCrossMarginOverviewResponse GetCrossMarginOverview(GetCrossMarginOverviewRequest request, CallOptions? callOptions = null)
+    public GetCrossMarginOverviewResponse GetCrossMarginOverview(GetCrossMarginOverviewRequest request, CallOptions? options = null)
     {
       return Request<GetCrossMarginOverviewResponse>(
         HttpMethod.Get,
         $"/entities/{request.EntityId}/cross_margin",
         [HttpStatusCode.OK],
         null,
-        callOptions);
+        options);
     }
 
     public Task<GetCrossMarginOverviewResponse> GetCrossMarginOverviewAsync(
       GetCrossMarginOverviewRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default)
     {
       return RequestAsync<GetCrossMarginOverviewResponse>(
@@ -67,23 +67,23 @@ namespace CoinbaseSdk.Prime.Financing
         $"/entities/{request.EntityId}/cross_margin",
         [HttpStatusCode.OK],
         null,
-        callOptions,
+        options,
         cancellationToken);
     }
 
-    public GetEntityLocateAvailabilitiesResponse GetEntityLocateAvailabilities(GetEntityLocateAvailabilitiesRequest request, CallOptions? callOptions = null)
+    public GetEntityLocateAvailabilitiesResponse GetEntityLocateAvailabilities(GetEntityLocateAvailabilitiesRequest request, CallOptions? options = null)
     {
       return Request<GetEntityLocateAvailabilitiesResponse>(
         HttpMethod.Get,
         $"/entities/{request.EntityId}/locates_availability",
         [HttpStatusCode.OK],
         request,
-        callOptions);
+        options);
     }
 
     public Task<GetEntityLocateAvailabilitiesResponse> GetEntityLocateAvailabilitiesAsync(
       GetEntityLocateAvailabilitiesRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default)
     {
       return RequestAsync<GetEntityLocateAvailabilitiesResponse>(
@@ -91,23 +91,23 @@ namespace CoinbaseSdk.Prime.Financing
         $"/entities/{request.EntityId}/locates_availability",
         [HttpStatusCode.OK],
         request,
-        callOptions,
+        options,
         cancellationToken);
     }
 
-    public GetMarginInformationResponse GetMarginInformation(GetMarginInformationRequest request, CallOptions? callOptions = null)
+    public GetMarginInformationResponse GetMarginInformation(GetMarginInformationRequest request, CallOptions? options = null)
     {
       return Request<GetMarginInformationResponse>(
         HttpMethod.Get,
         $"/entities/{request.EntityId}/margin",
         [HttpStatusCode.OK],
         null,
-        callOptions);
+        options);
     }
 
     public Task<GetMarginInformationResponse> GetMarginInformationAsync(
       GetMarginInformationRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default)
     {
       return RequestAsync<GetMarginInformationResponse>(
@@ -115,23 +115,23 @@ namespace CoinbaseSdk.Prime.Financing
         $"/entities/{request.EntityId}/margin",
         [HttpStatusCode.OK],
         null,
-        callOptions,
+        options,
         cancellationToken);
     }
 
-    public GetPortfolioBuyingPowerResponse GetPortfolioBuyingPower(GetPortfolioBuyingPowerRequest request, CallOptions? callOptions = null)
+    public GetPortfolioBuyingPowerResponse GetPortfolioBuyingPower(GetPortfolioBuyingPowerRequest request, CallOptions? options = null)
     {
       return Request<GetPortfolioBuyingPowerResponse>(
         HttpMethod.Get,
         $"/portfolios/{request.PortfolioId}/buying_power",
         [HttpStatusCode.OK],
         request,
-        callOptions);
+        options);
     }
 
     public Task<GetPortfolioBuyingPowerResponse> GetPortfolioBuyingPowerAsync(
       GetPortfolioBuyingPowerRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default)
     {
       return RequestAsync<GetPortfolioBuyingPowerResponse>(
@@ -139,23 +139,23 @@ namespace CoinbaseSdk.Prime.Financing
         $"/portfolios/{request.PortfolioId}/buying_power",
         [HttpStatusCode.OK],
         request,
-        callOptions,
+        options,
         cancellationToken);
     }
 
-    public GetPortfolioCreditInformationResponse GetPortfolioCreditInformation(GetPortfolioCreditInformationRequest request, CallOptions? callOptions = null)
+    public GetPortfolioCreditInformationResponse GetPortfolioCreditInformation(GetPortfolioCreditInformationRequest request, CallOptions? options = null)
     {
       return Request<GetPortfolioCreditInformationResponse>(
         HttpMethod.Get,
         $"/portfolios/{request.PortfolioId}/credit",
         [HttpStatusCode.OK],
         null,
-        callOptions);
+        options);
     }
 
     public Task<GetPortfolioCreditInformationResponse> GetPortfolioCreditInformationAsync(
       GetPortfolioCreditInformationRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default)
     {
       return RequestAsync<GetPortfolioCreditInformationResponse>(
@@ -163,23 +163,23 @@ namespace CoinbaseSdk.Prime.Financing
         $"/portfolios/{request.PortfolioId}/credit",
         [HttpStatusCode.OK],
         null,
-        callOptions,
+        options,
         cancellationToken);
     }
 
-    public GetPortfolioWithdrawalPowerResponse GetPortfolioWithdrawalPower(GetPortfolioWithdrawalPowerRequest request, CallOptions? callOptions = null)
+    public GetPortfolioWithdrawalPowerResponse GetPortfolioWithdrawalPower(GetPortfolioWithdrawalPowerRequest request, CallOptions? options = null)
     {
       return Request<GetPortfolioWithdrawalPowerResponse>(
         HttpMethod.Get,
         $"/portfolios/{request.PortfolioId}/withdrawal_power",
         [HttpStatusCode.OK],
         request,
-        callOptions);
+        options);
     }
 
     public Task<GetPortfolioWithdrawalPowerResponse> GetPortfolioWithdrawalPowerAsync(
       GetPortfolioWithdrawalPowerRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default)
     {
       return RequestAsync<GetPortfolioWithdrawalPowerResponse>(
@@ -187,23 +187,23 @@ namespace CoinbaseSdk.Prime.Financing
         $"/portfolios/{request.PortfolioId}/withdrawal_power",
         [HttpStatusCode.OK],
         request,
-        callOptions,
+        options,
         cancellationToken);
     }
 
-    public GetTradeFinanceTieredPricingFeesResponse GetTradeFinanceTieredPricingFees(GetTradeFinanceTieredPricingFeesRequest request, CallOptions? callOptions = null)
+    public GetTradeFinanceTieredPricingFeesResponse GetTradeFinanceTieredPricingFees(GetTradeFinanceTieredPricingFeesRequest request, CallOptions? options = null)
     {
       return Request<GetTradeFinanceTieredPricingFeesResponse>(
         HttpMethod.Get,
         $"/entities/{request.EntityId}/tf_tiered_fees",
         [HttpStatusCode.OK],
         request,
-        callOptions);
+        options);
     }
 
     public Task<GetTradeFinanceTieredPricingFeesResponse> GetTradeFinanceTieredPricingFeesAsync(
       GetTradeFinanceTieredPricingFeesRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default)
     {
       return RequestAsync<GetTradeFinanceTieredPricingFeesResponse>(
@@ -211,23 +211,23 @@ namespace CoinbaseSdk.Prime.Financing
         $"/entities/{request.EntityId}/tf_tiered_fees",
         [HttpStatusCode.OK],
         request,
-        callOptions,
+        options,
         cancellationToken);
     }
 
-    public ListExistingLocatesResponse ListExistingLocates(ListExistingLocatesRequest request, CallOptions? callOptions = null)
+    public ListExistingLocatesResponse ListExistingLocates(ListExistingLocatesRequest request, CallOptions? options = null)
     {
       return Request<ListExistingLocatesResponse>(
         HttpMethod.Get,
         $"/portfolios/{request.PortfolioId}/locates",
         [HttpStatusCode.OK],
         request,
-        callOptions);
+        options);
     }
 
     public Task<ListExistingLocatesResponse> ListExistingLocatesAsync(
       ListExistingLocatesRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default)
     {
       return RequestAsync<ListExistingLocatesResponse>(
@@ -235,23 +235,23 @@ namespace CoinbaseSdk.Prime.Financing
         $"/portfolios/{request.PortfolioId}/locates",
         [HttpStatusCode.OK],
         request,
-        callOptions,
+        options,
         cancellationToken);
     }
 
-    public ListFinancingEligibleAssetsResponse ListFinancingEligibleAssets(ListFinancingEligibleAssetsRequest request, CallOptions? callOptions = null)
+    public ListFinancingEligibleAssetsResponse ListFinancingEligibleAssets(ListFinancingEligibleAssetsRequest request, CallOptions? options = null)
     {
       return Request<ListFinancingEligibleAssetsResponse>(
         HttpMethod.Get,
         $"/financing/eligible-assets",
         [HttpStatusCode.OK],
         null,
-        callOptions);
+        options);
     }
 
     public Task<ListFinancingEligibleAssetsResponse> ListFinancingEligibleAssetsAsync(
       ListFinancingEligibleAssetsRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default)
     {
       return RequestAsync<ListFinancingEligibleAssetsResponse>(
@@ -259,23 +259,23 @@ namespace CoinbaseSdk.Prime.Financing
         $"/financing/eligible-assets",
         [HttpStatusCode.OK],
         null,
-        callOptions,
+        options,
         cancellationToken);
     }
 
-    public ListInterestAccrualsResponse ListInterestAccruals(ListInterestAccrualsRequest request, CallOptions? callOptions = null)
+    public ListInterestAccrualsResponse ListInterestAccruals(ListInterestAccrualsRequest request, CallOptions? options = null)
     {
       return Request<ListInterestAccrualsResponse>(
         HttpMethod.Get,
         $"/entities/{request.EntityId}/accruals",
         [HttpStatusCode.OK],
         request,
-        callOptions);
+        options);
     }
 
     public Task<ListInterestAccrualsResponse> ListInterestAccrualsAsync(
       ListInterestAccrualsRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default)
     {
       return RequestAsync<ListInterestAccrualsResponse>(
@@ -283,23 +283,23 @@ namespace CoinbaseSdk.Prime.Financing
         $"/entities/{request.EntityId}/accruals",
         [HttpStatusCode.OK],
         request,
-        callOptions,
+        options,
         cancellationToken);
     }
 
-    public ListInterestAccrualsForPortfolioResponse ListInterestAccrualsForPortfolio(ListInterestAccrualsForPortfolioRequest request, CallOptions? callOptions = null)
+    public ListInterestAccrualsForPortfolioResponse ListInterestAccrualsForPortfolio(ListInterestAccrualsForPortfolioRequest request, CallOptions? options = null)
     {
       return Request<ListInterestAccrualsForPortfolioResponse>(
         HttpMethod.Get,
         $"/portfolios/{request.PortfolioId}/accruals",
         [HttpStatusCode.OK],
         request,
-        callOptions);
+        options);
     }
 
     public Task<ListInterestAccrualsForPortfolioResponse> ListInterestAccrualsForPortfolioAsync(
       ListInterestAccrualsForPortfolioRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default)
     {
       return RequestAsync<ListInterestAccrualsForPortfolioResponse>(
@@ -307,23 +307,23 @@ namespace CoinbaseSdk.Prime.Financing
         $"/portfolios/{request.PortfolioId}/accruals",
         [HttpStatusCode.OK],
         request,
-        callOptions,
+        options,
         cancellationToken);
     }
 
-    public ListMarginCallSummariesResponse ListMarginCallSummaries(ListMarginCallSummariesRequest request, CallOptions? callOptions = null)
+    public ListMarginCallSummariesResponse ListMarginCallSummaries(ListMarginCallSummariesRequest request, CallOptions? options = null)
     {
       return Request<ListMarginCallSummariesResponse>(
         HttpMethod.Get,
         $"/entities/{request.EntityId}/margin_summaries",
         [HttpStatusCode.OK],
         request,
-        callOptions);
+        options);
     }
 
     public Task<ListMarginCallSummariesResponse> ListMarginCallSummariesAsync(
       ListMarginCallSummariesRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default)
     {
       return RequestAsync<ListMarginCallSummariesResponse>(
@@ -331,23 +331,23 @@ namespace CoinbaseSdk.Prime.Financing
         $"/entities/{request.EntityId}/margin_summaries",
         [HttpStatusCode.OK],
         request,
-        callOptions,
+        options,
         cancellationToken);
     }
 
-    public ListMarginConversionsResponse ListMarginConversions(ListMarginConversionsRequest request, CallOptions? callOptions = null)
+    public ListMarginConversionsResponse ListMarginConversions(ListMarginConversionsRequest request, CallOptions? options = null)
     {
       return Request<ListMarginConversionsResponse>(
         HttpMethod.Get,
         $"/portfolios/{request.PortfolioId}/margin_conversions",
         [HttpStatusCode.OK],
         request,
-        callOptions);
+        options);
     }
 
     public Task<ListMarginConversionsResponse> ListMarginConversionsAsync(
       ListMarginConversionsRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default)
     {
       return RequestAsync<ListMarginConversionsResponse>(
@@ -355,23 +355,23 @@ namespace CoinbaseSdk.Prime.Financing
         $"/portfolios/{request.PortfolioId}/margin_conversions",
         [HttpStatusCode.OK],
         request,
-        callOptions,
+        options,
         cancellationToken);
     }
 
-    public ListTradeFinanceObligationsResponse ListTradeFinanceObligations(ListTradeFinanceObligationsRequest request, CallOptions? callOptions = null)
+    public ListTradeFinanceObligationsResponse ListTradeFinanceObligations(ListTradeFinanceObligationsRequest request, CallOptions? options = null)
     {
       return Request<ListTradeFinanceObligationsResponse>(
         HttpMethod.Get,
         $"/entities/{request.EntityId}/tf_obligations",
         [HttpStatusCode.OK],
         null,
-        callOptions);
+        options);
     }
 
     public Task<ListTradeFinanceObligationsResponse> ListTradeFinanceObligationsAsync(
       ListTradeFinanceObligationsRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default)
     {
       return RequestAsync<ListTradeFinanceObligationsResponse>(
@@ -379,7 +379,7 @@ namespace CoinbaseSdk.Prime.Financing
         $"/entities/{request.EntityId}/tf_obligations",
         [HttpStatusCode.OK],
         null,
-        callOptions,
+        options,
         cancellationToken);
     }
 

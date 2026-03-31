@@ -20,18 +20,18 @@ namespace CoinbaseSdk.Prime.Products
 
   public interface IProductsService
   {
-    public GetCandlesResponse GetCandles(GetCandlesRequest request, CallOptions? callOptions = null);
+    public GetCandlesResponse GetCandles(GetCandlesRequest request, CallOptions? options = null);
 
     public Task<GetCandlesResponse> GetCandlesAsync(
       GetCandlesRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
-    public ListPortfolioProductsResponse ListPortfolioProducts(ListPortfolioProductsRequest request, CallOptions? callOptions = null);
+    public ListPortfolioProductsResponse ListPortfolioProducts(ListPortfolioProductsRequest request, CallOptions? options = null);
 
     public Task<ListPortfolioProductsResponse> ListPortfolioProductsAsync(
       ListPortfolioProductsRequest request,
-      CallOptions? callOptions = null,
+      CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
   }
