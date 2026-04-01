@@ -71,7 +71,7 @@
     "Wallets": "wallets",
     "Address Book": "addressbook",
     "Onchain Address Book": "onchainaddressbook",
-    "Advanced Transfer": "transactions",
+    "Advanced Transfer": "advancedtransfer",
     "Travel Rule": "transactions"
   },
   "services": {
@@ -93,7 +93,8 @@
     "users": { "folder": "users", "namespace": "Users", "interfaceName": "IUsersService", "className": "UsersService" },
     "wallets": { "folder": "wallets", "namespace": "Wallets", "interfaceName": "IWalletsService", "className": "WalletsService" },
     "addressbook": { "folder": "addressbook", "namespace": "AddressBook", "interfaceName": "IAddressBookService", "className": "AddressBookService" },
-    "onchainaddressbook": { "folder": "onchainaddressbook", "namespace": "OnchainAddressBook", "interfaceName": "IOnchainAddressBookService", "className": "OnchainAddressBookService" }
+    "onchainaddressbook": { "folder": "onchainaddressbook", "namespace": "OnchainAddressBook", "interfaceName": "IOnchainAddressBookService", "className": "OnchainAddressBookService" },
+    "advancedtransfer": { "folder": "advancedtransfer", "namespace": "AdvancedTransfer", "interfaceName": "IAdvancedTransferService", "className": "AdvancedTransferService" }
   },
   "statusCodeOverrides": {
     "CreateOrder": [ "Created", "OK" ],
@@ -104,7 +105,6 @@
     "CreateTransfer": [ "Created", "OK" ],
     "CreateWithdrawal": [ "Created", "OK" ],
     "CreateOnchainTransaction": [ "Created", "OK" ],
-    "CreateAdvancedTransfer": [ "Created", "OK" ],
     "PreviewUnstake": [ "Created", "OK" ],
     "SubmitDepositTravelRuleData": [ "Created", "OK" ]
   }

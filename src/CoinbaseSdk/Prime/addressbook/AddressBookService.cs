@@ -56,7 +56,7 @@ namespace CoinbaseSdk.Prime.AddressBook
       return Request<CreateAddressBookEntryResponse>(
         HttpMethod.Post,
         $"/portfolios/{request.PortfolioId}/address_book",
-        [HttpStatusCode.Created, HttpStatusCode.OK],
+        [HttpStatusCode.OK],
         request,
         options);
     }
@@ -69,7 +69,7 @@ namespace CoinbaseSdk.Prime.AddressBook
       return RequestAsync<CreateAddressBookEntryResponse>(
         HttpMethod.Post,
         $"/portfolios/{request.PortfolioId}/address_book",
-        [HttpStatusCode.Created, HttpStatusCode.OK],
+        [HttpStatusCode.OK],
         request,
         options,
         cancellationToken);

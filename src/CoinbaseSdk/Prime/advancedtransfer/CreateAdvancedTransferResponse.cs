@@ -14,16 +14,16 @@
  *  limitations under the License.
  */
 
-namespace CoinbaseSdk.Prime.Transactions
+namespace CoinbaseSdk.Prime.AdvancedTransfer
 {
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Prime.Model;
 
-  public class ListAdvancedTransferTransactionsResponse
+  public class CreateAdvancedTransferResponse
   {
-    [JsonPropertyName("transactions")]
-    public Transaction[] Transactions { get; set; } = [];
+    [JsonPropertyName("advanced_transfer")]
+    public AdvancedTransfer AdvancedTransfer { get; set; }
 
-    public ListAdvancedTransferTransactionsResponse() { }
+    public CreateAdvancedTransferResponse() { }
   }
 }

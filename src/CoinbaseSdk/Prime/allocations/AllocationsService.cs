@@ -30,7 +30,7 @@ namespace CoinbaseSdk.Prime.Allocations
       return Request<CreateAllocationResponse>(
         HttpMethod.Post,
         $"/allocations",
-        [HttpStatusCode.Created, HttpStatusCode.OK],
+        [HttpStatusCode.OK],
         request,
         options);
     }
@@ -43,7 +43,7 @@ namespace CoinbaseSdk.Prime.Allocations
       return RequestAsync<CreateAllocationResponse>(
         HttpMethod.Post,
         $"/allocations",
-        [HttpStatusCode.Created, HttpStatusCode.OK],
+        [HttpStatusCode.OK],
         request,
         options,
         cancellationToken);
@@ -56,7 +56,7 @@ namespace CoinbaseSdk.Prime.Allocations
       return Request<CreateNetAllocationResponse>(
         HttpMethod.Post,
         $"/allocations/net",
-        [HttpStatusCode.Created, HttpStatusCode.OK],
+        [HttpStatusCode.OK],
         request,
         options);
     }
@@ -69,7 +69,7 @@ namespace CoinbaseSdk.Prime.Allocations
       return RequestAsync<CreateNetAllocationResponse>(
         HttpMethod.Post,
         $"/allocations/net",
-        [HttpStatusCode.Created, HttpStatusCode.OK],
+        [HttpStatusCode.OK],
         request,
         options,
         cancellationToken);

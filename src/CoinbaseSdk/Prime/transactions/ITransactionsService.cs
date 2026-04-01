@@ -83,42 +83,6 @@ namespace CoinbaseSdk.Prime.Transactions
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
-    public ListAdvancedTransfersResponse ListAdvancedTransfers(
-      ListAdvancedTransfersRequest request,
-      CallOptions? options = null);
-
-    public Task<ListAdvancedTransfersResponse> ListAdvancedTransfersAsync(
-      ListAdvancedTransfersRequest request,
-      CallOptions? options = null,
-      CancellationToken cancellationToken = default);
-
-    public CreateAdvancedTransferResponse CreateAdvancedTransfer(
-      CreateAdvancedTransferRequest request,
-      CallOptions? options = null);
-
-    public Task<CreateAdvancedTransferResponse> CreateAdvancedTransferAsync(
-      CreateAdvancedTransferRequest request,
-      CallOptions? options = null,
-      CancellationToken cancellationToken = default);
-
-    public CancelAdvancedTransferResponse CancelAdvancedTransfer(
-      CancelAdvancedTransferRequest request,
-      CallOptions? options = null);
-
-    public Task<CancelAdvancedTransferResponse> CancelAdvancedTransferAsync(
-      CancelAdvancedTransferRequest request,
-      CallOptions? options = null,
-      CancellationToken cancellationToken = default);
-
-    public ListAdvancedTransferTransactionsResponse ListAdvancedTransferTransactions(
-      ListAdvancedTransferTransactionsRequest request,
-      CallOptions? options = null);
-
-    public Task<ListAdvancedTransferTransactionsResponse> ListAdvancedTransferTransactionsAsync(
-      ListAdvancedTransferTransactionsRequest request,
-      CallOptions? options = null,
-      CancellationToken cancellationToken = default);
-
     public GetTransactionTravelRuleDataResponse GetTransactionTravelRuleData(
       GetTransactionTravelRuleDataRequest request,
       CallOptions? options = null);

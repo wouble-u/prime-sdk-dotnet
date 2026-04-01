@@ -47,6 +47,8 @@ namespace CoinbaseSdk.Prime.Model
     /// </summary>
     [JsonPropertyName("active_loans")]
     public List<XmLoan>? ActiveLoans { get; set; }
+    [JsonPropertyName("active_liquidation")]
+    public ActiveLiquidationSummary? ActiveLiquidation { get; set; }
     public CrossMarginOverview() { }
 
     public CrossMarginOverview(Builder builder)
@@ -57,6 +59,7 @@ namespace CoinbaseSdk.Prime.Model
       this.MarginSummary = builder.marginSummary;
       this.ActiveMarginCalls = builder.activeMarginCalls;
       this.ActiveLoans = builder.activeLoans;
+      this.ActiveLiquidation = builder.activeLiquidation;
     }
 
     public class Builder
@@ -68,6 +71,7 @@ namespace CoinbaseSdk.Prime.Model
       internal XmSummary? marginSummary;
       internal List<XmMarginCall>? activeMarginCalls;
       internal List<XmLoan>? activeLoans;
+      internal ActiveLiquidationSummary? activeLiquidation;
 #pragma warning restore SA1307, SA1401
       public Builder WithControlStatus(XmControlStatus? controlStatus)
       {
@@ -97,6 +101,11 @@ namespace CoinbaseSdk.Prime.Model
       public Builder WithActiveLoans(List<XmLoan>? activeLoans)
       {
         this.activeLoans = activeLoans;
+        return this;
+      }
+      public Builder WithActiveLiquidation(ActiveLiquidationSummary? activeLiquidation)
+      {
+        this.activeLiquidation = activeLiquidation;
         return this;
       }
       public CrossMarginOverview Build()

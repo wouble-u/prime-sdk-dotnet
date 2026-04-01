@@ -122,11 +122,11 @@
   { "operationId": "PrimeRESTAPI_GetWithdrawalPower", "sdkMethod": "GetPortfolioWithdrawalPower", "service": "financing" },
 
   // ── New endpoints added in the 2025-03 spec update ─────────────────────────────────────────────
-  // Advanced Transfer (routed to transactions service)
-  { "operationId": "PrimeRESTAPI_ListAdvancedTransfers", "sdkMethod": "ListAdvancedTransfers", "service": "transactions" },
-  { "operationId": "PrimeRESTAPI_CreateAdvancedTransfer", "sdkMethod": "CreateAdvancedTransfer", "service": "transactions" },
-  { "operationId": "PrimeRESTAPI_CancelAdvancedTransfer", "sdkMethod": "CancelAdvancedTransfer", "service": "transactions" },
-  { "operationId": "PrimeRESTAPI_ListAdvancedTransferTransactions", "sdkMethod": "ListAdvancedTransferTransactions", "service": "transactions" },
+  // Advanced Transfer (own service — separate tag in spec)
+  { "operationId": "PrimeRESTAPI_ListAdvancedTransfers", "sdkMethod": "ListAdvancedTransfers", "service": "advancedtransfer" },
+  { "operationId": "PrimeRESTAPI_CreateAdvancedTransfer", "sdkMethod": "CreateAdvancedTransfer", "service": "advancedtransfer" },
+  { "operationId": "PrimeRESTAPI_CancelAdvancedTransfer", "sdkMethod": "CancelAdvancedTransfer", "service": "advancedtransfer" },
+  { "operationId": "PrimeRESTAPI_ListAdvancedTransferTransactions", "sdkMethod": "ListAdvancedTransferTransactions", "service": "advancedtransfer" },
 
   // Products
   { "operationId": "PrimeRESTAPI_GetCandles", "sdkMethod": "GetCandles", "service": "products" },

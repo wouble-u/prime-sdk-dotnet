@@ -14,33 +14,34 @@
  *  limitations under the License.
  */
 
-namespace CoinbaseSdk.Prime.Transactions
+namespace CoinbaseSdk.Prime.AdvancedTransfer
 {
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
+  using CoinbaseSdk.Prime.Model;
 
-  public class CancelAdvancedTransferRequest(string portfolioId, string advancedTransferId)
+  public class CreateAdvancedTransferRequest(string portfolioId)
   {
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
 
-    [JsonIgnore]
-    public string AdvancedTransferId { get; set; } = advancedTransferId;
+    [JsonPropertyName("advanced_transfer")]
+    public AdvancedTransfer AdvancedTransfer { get; set; }
 
-    public class CancelAdvancedTransferRequestBuilder
+    public class CreateAdvancedTransferRequestBuilder
     {
       private string? _portfolioId;
-      private string? _advancedTransferId;
+      private AdvancedTransfer _advancedTransfer;
 
-      public CancelAdvancedTransferRequestBuilder WithPortfolioId(string portfolioId)
+      public CreateAdvancedTransferRequestBuilder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      public CancelAdvancedTransferRequestBuilder WithAdvancedTransferId(string advancedTransferId)
+      public CreateAdvancedTransferRequestBuilder WithAdvancedTransfer(AdvancedTransfer advancedTransfer)
       {
-        _advancedTransferId = advancedTransferId;
+        _advancedTransfer = advancedTransfer;
         return this;
       }
 
@@ -50,17 +51,14 @@ namespace CoinbaseSdk.Prime.Transactions
         {
           throw new CoinbaseClientException("PortfolioId is required");
         }
-        if (string.IsNullOrWhiteSpace(_advancedTransferId))
-        {
-          throw new CoinbaseClientException("AdvancedTransferId is required");
-        }
       }
 
-      public CancelAdvancedTransferRequest Build()
+      public CreateAdvancedTransferRequest Build()
       {
         Validate();
-        return new CancelAdvancedTransferRequest(_portfolioId!, _advancedTransferId!)
+        return new CreateAdvancedTransferRequest(_portfolioId!)
         {
+          AdvancedTransfer = _advancedTransfer,
         };
       }
     }

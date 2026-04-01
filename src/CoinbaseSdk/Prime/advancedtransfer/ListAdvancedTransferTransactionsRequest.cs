@@ -14,7 +14,7 @@
  *  limitations under the License.
  */
 
-namespace CoinbaseSdk.Prime.Transactions
+namespace CoinbaseSdk.Prime.AdvancedTransfer
 {
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
