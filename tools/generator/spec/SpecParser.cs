@@ -92,17 +92,18 @@ public static class SpecParser
         }
 
         string? successRef = null;
+        var successStatusCodes = new List<int>();
         if (opNode.Children.ContainsKey(new YamlScalarNode("responses")))
         {
           var responses = (YamlMappingNode)opNode.Children[new YamlScalarNode("responses")];
-          foreach (var code in new[] { "200", "201" })
+          foreach (var (codeStr, codeInt) in new[] { ("200", 200), ("201", 201) })
           {
-            if (!responses.Children.ContainsKey(new YamlScalarNode(code)))
+            if (!responses.Children.ContainsKey(new YamlScalarNode(codeStr)))
             {
               continue;
             }
 
-            var resp = (YamlMappingNode)responses.Children[new YamlScalarNode(code)];
+            var resp = (YamlMappingNode)responses.Children[new YamlScalarNode(codeStr)];
             if (!resp.Children.ContainsKey(new YamlScalarNode("content")))
             {
               continue;
@@ -120,9 +121,12 @@ public static class SpecParser
               continue;
             }
 
-            var schemaNode = aj.Children[new YamlScalarNode("schema")];
-            successRef = ExtractRef(schemaNode);
-            break;
+            successStatusCodes.Add(codeInt);
+            if (successRef == null)
+            {
+              var schemaNode = aj.Children[new YamlScalarNode("schema")];
+              successRef = ExtractRef(schemaNode);
+            }
           }
         }
 
@@ -133,7 +137,8 @@ public static class SpecParser
           Path = pathKey,
           Parameters = parameters,
           RequestBodyJsonSchema = bodySchema,
-          SuccessResponseSchemaRef = successRef
+          SuccessResponseSchemaRef = successRef,
+          SuccessStatusCodes = successStatusCodes
         };
       }
     }

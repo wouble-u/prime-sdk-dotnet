@@ -22,51 +22,31 @@ namespace CoinbaseSdk.Tools.Generator.Phases;
 
 public static class ServicePhase
 {
-  private static readonly HashSet<string> CreatedAndOk = new(StringComparer.Ordinal)
-  {
-    "CreateOrder", "CreateQuote", "CreateWallet", "CreateWalletDepositAddress",
-    "CreateConversion", "CreateTransfer", "CreateWithdrawal", "CreateOnchainTransaction",
-    "CreateAllocation", "CreateNetAllocation", "CreateAddressBookEntry"
-  };
 
   public static string EmitInterface(ServiceDefinition svc, List<(SdkOperationBinding B, ParsedOperation Op)> ops)
   {
     var ns = NamingResolver.FullNamespace(svc);
     var sb = new StringBuilder();
     AppendCopyright(sb);
-    sb.AppendLine($"namespace {ns}");
-    sb.AppendLine("{");
-    sb.AppendLine("  using CoinbaseSdk.Core.Http;");
-    sb.AppendLine();
-    sb.AppendLine($"  public interface {svc.InterfaceName}");
-    sb.AppendLine("  {");
+    sb.Append($$"""
+    namespace {{ns}}
+    {
+      using CoinbaseSdk.Core.Http;
+
+      public interface {{svc.InterfaceName}}
+      {
+
+    """);
     foreach (var (b, _) in ops)
     {
-      if (b.OmitRequest)
-      {
-        sb.AppendLine($"    public {b.SdkMethod}Response {b.SdkMethod}(");
-        sb.AppendLine("      CallOptions? options = null);");
-        sb.AppendLine();
-        sb.AppendLine($"    public Task<{b.SdkMethod}Response> {b.SdkMethod}Async(");
-        sb.AppendLine("      CallOptions? options = null,");
-        sb.AppendLine("      CancellationToken cancellationToken = default);");
-        sb.AppendLine();
-        continue;
-      }
-
-      sb.AppendLine($"    public {b.SdkMethod}Response {b.SdkMethod}(");
-      sb.AppendLine($"      {b.SdkMethod}Request request,");
-      sb.AppendLine("      CallOptions? options = null);");
-      sb.AppendLine();
-      sb.AppendLine($"    public Task<{b.SdkMethod}Response> {b.SdkMethod}Async(");
-      sb.AppendLine($"      {b.SdkMethod}Request request,");
-      sb.AppendLine("      CallOptions? options = null,");
-      sb.AppendLine("      CancellationToken cancellationToken = default);");
-      sb.AppendLine();
+      sb.Append(InterfaceMethodBlock(b));
     }
 
-    sb.AppendLine("  }");
-    sb.AppendLine("}");
+    sb.Append("""
+      }
+    }
+
+    """);
     return sb.ToString();
   }
 
@@ -78,81 +58,126 @@ public static class ServicePhase
     var ns = NamingResolver.FullNamespace(svc);
     var sb = new StringBuilder();
     AppendCopyright(sb);
-    sb.AppendLine($"namespace {ns}");
-    sb.AppendLine("{");
-    sb.AppendLine("  using System.Net;");
-    sb.AppendLine("  using CoinbaseSdk.Core.Client;");
-    sb.AppendLine("  using CoinbaseSdk.Core.Http;");
-    sb.AppendLine("  using CoinbaseSdk.Core.Service;");
-    sb.AppendLine();
-    sb.AppendLine($"  public class {svc.ClassName}(ICoinbaseClient client) : CoinbaseService(client), {svc.InterfaceName}");
-    sb.AppendLine("  {");
+    sb.Append($$"""
+    namespace {{ns}}
+    {
+      using System.Net;
+      using CoinbaseSdk.Core.Client;
+      using CoinbaseSdk.Core.Http;
+      using CoinbaseSdk.Core.Service;
+
+      public class {{svc.ClassName}}(ICoinbaseClient client) : CoinbaseService(client), {{svc.InterfaceName}}
+      {
+
+    """);
     foreach (var (b, op) in ops)
     {
       var pathExpr = ToCSharpPathExpression(op.Path, b.OmitRequest);
       var method = ToHttpMethodExpression(op.HttpMethod);
-      var status = StatusArray(cfg, b.SdkMethod, op.HttpMethod);
+      var status = StatusArray(cfg, b.SdkMethod, op);
       var bodyArg = RequestBodyArgument(b, op);
-      if (b.OmitRequest)
-      {
-        sb.AppendLine($"    public {b.SdkMethod}Response {b.SdkMethod}(");
-        sb.AppendLine("      CallOptions? options = null)");
-        sb.AppendLine("    {");
-        sb.AppendLine($"      return Request<{b.SdkMethod}Response>(");
-        sb.AppendLine($"        {method},");
-        sb.AppendLine($"        {pathExpr},");
-        sb.AppendLine($"        {status},");
-        sb.AppendLine("        null,");
-        sb.AppendLine("        options);");
-        sb.AppendLine("    }");
-        sb.AppendLine();
-        sb.AppendLine($"    public Task<{b.SdkMethod}Response> {b.SdkMethod}Async(");
-        sb.AppendLine("      CallOptions? options = null,");
-        sb.AppendLine("      CancellationToken cancellationToken = default)");
-        sb.AppendLine("    {");
-        sb.AppendLine($"      return RequestAsync<{b.SdkMethod}Response>(");
-        sb.AppendLine($"        {method},");
-        sb.AppendLine($"        {pathExpr},");
-        sb.AppendLine($"        {status},");
-        sb.AppendLine("        null,");
-        sb.AppendLine("        options,");
-        sb.AppendLine("        cancellationToken);");
-        sb.AppendLine("    }");
-        sb.AppendLine();
-        continue;
-      }
-
-      sb.AppendLine($"    public {b.SdkMethod}Response {b.SdkMethod}(");
-      sb.AppendLine($"      {b.SdkMethod}Request request,");
-      sb.AppendLine("      CallOptions? options = null)");
-      sb.AppendLine("    {");
-      sb.AppendLine($"      return Request<{b.SdkMethod}Response>(");
-      sb.AppendLine($"        {method},");
-      sb.AppendLine($"        {pathExpr},");
-      sb.AppendLine($"        {status},");
-      sb.AppendLine($"        {bodyArg},");
-      sb.AppendLine("        options);");
-      sb.AppendLine("    }");
-      sb.AppendLine();
-      sb.AppendLine($"    public Task<{b.SdkMethod}Response> {b.SdkMethod}Async(");
-      sb.AppendLine($"      {b.SdkMethod}Request request,");
-      sb.AppendLine("      CallOptions? options = null,");
-      sb.AppendLine("      CancellationToken cancellationToken = default)");
-      sb.AppendLine("    {");
-      sb.AppendLine($"      return RequestAsync<{b.SdkMethod}Response>(");
-      sb.AppendLine($"        {method},");
-      sb.AppendLine($"        {pathExpr},");
-      sb.AppendLine($"        {status},");
-      sb.AppendLine($"        {bodyArg},");
-      sb.AppendLine("        options,");
-      sb.AppendLine("        cancellationToken);");
-      sb.AppendLine("    }");
-      sb.AppendLine();
+      sb.Append(ServiceMethodBlock(b, pathExpr, method, status, bodyArg));
     }
 
-    sb.AppendLine("  }");
-    sb.AppendLine("}");
+    sb.Append("""
+      }
+    }
+
+    """);
     return sb.ToString();
+  }
+
+  private static string InterfaceMethodBlock(SdkOperationBinding b)
+  {
+    return b.OmitRequest
+      ? $$"""
+        public {{b.SdkMethod}}Response {{b.SdkMethod}}(
+          CallOptions? options = null);
+
+        public Task<{{b.SdkMethod}}Response> {{b.SdkMethod}}Async(
+          CallOptions? options = null,
+          CancellationToken cancellationToken = default);
+
+
+    """
+      : $$"""
+        public {{b.SdkMethod}}Response {{b.SdkMethod}}(
+          {{b.SdkMethod}}Request request,
+          CallOptions? options = null);
+
+        public Task<{{b.SdkMethod}}Response> {{b.SdkMethod}}Async(
+          {{b.SdkMethod}}Request request,
+          CallOptions? options = null,
+          CancellationToken cancellationToken = default);
+
+
+    """;
+  }
+
+  private static string ServiceMethodBlock(
+    SdkOperationBinding b,
+    string pathExpr,
+    string method,
+    string status,
+    string bodyArg)
+  {
+    return b.OmitRequest
+      ? $$"""
+        public {{b.SdkMethod}}Response {{b.SdkMethod}}(
+          CallOptions? options = null)
+        {
+          return Request<{{b.SdkMethod}}Response>(
+            {{method}},
+            {{pathExpr}},
+            {{status}},
+            null,
+            options);
+        }
+
+        public Task<{{b.SdkMethod}}Response> {{b.SdkMethod}}Async(
+          CallOptions? options = null,
+          CancellationToken cancellationToken = default)
+        {
+          return RequestAsync<{{b.SdkMethod}}Response>(
+            {{method}},
+            {{pathExpr}},
+            {{status}},
+            null,
+            options,
+            cancellationToken);
+        }
+
+
+    """
+      : $$"""
+        public {{b.SdkMethod}}Response {{b.SdkMethod}}(
+          {{b.SdkMethod}}Request request,
+          CallOptions? options = null)
+        {
+          return Request<{{b.SdkMethod}}Response>(
+            {{method}},
+            {{pathExpr}},
+            {{status}},
+            {{bodyArg}},
+            options);
+        }
+
+        public Task<{{b.SdkMethod}}Response> {{b.SdkMethod}}Async(
+          {{b.SdkMethod}}Request request,
+          CallOptions? options = null,
+          CancellationToken cancellationToken = default)
+        {
+          return RequestAsync<{{b.SdkMethod}}Response>(
+            {{method}},
+            {{pathExpr}},
+            {{status}},
+            {{bodyArg}},
+            options,
+            cancellationToken);
+        }
+
+
+    """;
   }
 
   private static string RequestBodyArgument(SdkOperationBinding b, ParsedOperation op)
@@ -177,20 +202,27 @@ public static class ServicePhase
     return "null";
   }
 
-  private static string StatusArray(GeneratorConfiguration cfg, string sdkMethod, string httpMethod)
+  private static string StatusArray(GeneratorConfiguration cfg, string sdkMethod, ParsedOperation op)
   {
     if (cfg.StatusCodeOverrides.TryGetValue(sdkMethod, out var list))
     {
       return "[" + string.Join(", ", list.Select(s => $"HttpStatusCode.{s}")) + "]";
     }
 
-    if (httpMethod == "POST" && CreatedAndOk.Contains(sdkMethod))
+    if (op.SuccessStatusCodes.Count > 0)
     {
-      return "[HttpStatusCode.Created, HttpStatusCode.OK]";
+      return "[" + string.Join(", ", op.SuccessStatusCodes.Select(ToHttpStatusCode)) + "]";
     }
 
     return "[HttpStatusCode.OK]";
   }
+
+  private static string ToHttpStatusCode(int code) => code switch
+  {
+    200 => "HttpStatusCode.OK",
+    201 => "HttpStatusCode.Created",
+    _ => $"(HttpStatusCode){code}"
+  };
 
   private static string ToCSharpPathExpression(string openApiPath, bool omitRequest)
   {

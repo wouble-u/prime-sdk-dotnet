@@ -32,6 +32,11 @@ public class ParsedOperation
   public List<ParsedParameter> Parameters { get; init; } = new();
   public YamlMappingNode? RequestBodyJsonSchema { get; init; }
   public string? SuccessResponseSchemaRef { get; init; }
+
+  /// <summary>
+  /// HTTP success status codes present in the OpenAPI spec for this operation (e.g. 200, 201).
+  /// </summary>
+  public List<int> SuccessStatusCodes { get; init; } = new();
 }
 
 public class ParsedParameter
