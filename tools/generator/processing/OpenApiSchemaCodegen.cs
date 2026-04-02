@@ -80,7 +80,7 @@ public static class OpenApiSchemaCodegen
         {
           var items = mm.Children[new YamlScalarNode("items")];
           var inner = MapType(documentRoot, items, transforms, modelTypes, enumTypes);
-          return inner + "[]";
+          return NormalizeArrayElementType(inner) + "[]";
         }
 
         return MapPrimitive(mm, type);
@@ -146,7 +146,13 @@ public static class OpenApiSchemaCodegen
       var required = schema.Children.ContainsKey(new YamlScalarNode("required")) &&
                      ((YamlSequenceNode)schema.Children[new YamlScalarNode("required")]).Children
                      .Any(n => ((YamlScalarNode)n).Value == jsonName);
-      list.Add(new SchemaProperty(jsonName, clrName, clr, required, model.Count > 0, enums.Count > 0));
+      var usesEnum = enums.Count > 0;
+      if (!required && usesEnum && !clr.EndsWith("[]", StringComparison.Ordinal))
+      {
+        clr = OptionalScalarEnumClr(clr);
+      }
+
+      list.Add(new SchemaProperty(jsonName, clrName, clr, required, model.Count > 0, usesEnum));
     }
 
     return list;
@@ -179,6 +185,62 @@ public static class OpenApiSchemaCodegen
 
     var s = sb.ToString();
     return s.Length == 0 ? snakeOrKebabOrDotted : s;
+  }
+
+  /// <summary>
+  /// OpenAPI <c>string</c> items are modeled as <c>string?</c>; for arrays we use non-nullable elements (<c>string[]</c>) to match handwritten SDK conventions.
+  /// </summary>
+  private static string NormalizeArrayElementType(string elementClrType)
+  {
+    return elementClrType switch
+    {
+      "string?" => "string",
+      _ => elementClrType
+    };
+  }
+
+  /// <summary>
+  /// Optional body/query enum scalars must be nullable so default is omitted from JSON instead of serializing enum value 0.
+  /// </summary>
+  private static string OptionalScalarEnumClr(string clr)
+  {
+    if (clr.EndsWith("?", StringComparison.Ordinal))
+    {
+      return clr;
+    }
+
+    return clr + "?";
+  }
+
+  /// <summary>
+  /// Returns true when the schema resolves to an enum <c>$ref</c> (including <c>array</c> of enum).
+  /// </summary>
+  public static bool TypeIsEnumRef(
+    YamlMappingNode documentRoot,
+    YamlNode? node)
+  {
+    if (node == null)
+    {
+      return false;
+    }
+
+    if (node is YamlMappingNode mm && mm.Children.ContainsKey(new YamlScalarNode("type")))
+    {
+      var type = ((YamlScalarNode)mm.Children[new YamlScalarNode("type")]).Value!;
+      if (type == "array" && mm.Children.ContainsKey(new YamlScalarNode("items")))
+      {
+        return TypeIsEnumRef(documentRoot, mm.Children[new YamlScalarNode("items")]);
+      }
+    }
+
+    if (node is YamlMappingNode mm2 && mm2.Children.ContainsKey(new YamlScalarNode("$ref")))
+    {
+      var r = ((YamlScalarNode)mm2.Children[new YamlScalarNode("$ref")]).Value!;
+      var resolved = SpecParser.ResolveRef(documentRoot, r);
+      return resolved?.Children.ContainsKey(new YamlScalarNode("enum")) == true;
+    }
+
+    return false;
   }
 }
 

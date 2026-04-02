@@ -49,6 +49,19 @@ public static class RequestPhase
       return OpenApiSchemaCodegen.ToClrType(doc.Root, p.Schema, transforms, out _, out _);
     }
 
+    string MapQueryParamClr(ParsedParameter p)
+    {
+      var clr = MapParamToClr(p);
+      if (!p.Required &&
+          OpenApiSchemaCodegen.TypeIsEnumRef(doc.Root, p.Schema) &&
+          !clr.EndsWith("[]", StringComparison.Ordinal))
+      {
+        return clr.EndsWith("?", StringComparison.Ordinal) ? clr : clr + "?";
+      }
+
+      return clr;
+    }
+
     // Path params are always required (they're in the URL); use non-nullable CLR types.
     string MapPathParamToClr(ParsedParameter p)
     {
@@ -106,6 +119,12 @@ public static class RequestPhase
     }
 
     sb.AppendLine();
+    var typeDoc = GeneratorXmlDoc.FormatTypeSummary(op.Summary);
+    if (typeDoc.Length > 0)
+    {
+      sb.Append(typeDoc);
+    }
+
     var basePart = paginated ? " : PaginatedRequest" : string.Empty;
     sb.AppendLine(
       $"  public class {b.SdkMethod}Request({ctorArgs}){basePart}");
@@ -134,7 +153,7 @@ public static class RequestPhase
 
       needPropSep = true;
       var pn = OpenApiSchemaCodegen.ToPascalCase(p.Name);
-      var clr = MapParamToClr(p);
+      var clr = MapQueryParamClr(p);
       sb.AppendLine($"    [JsonPropertyName(\"{p.Name}\")]");
       sb.AppendLine($"    public {clr} {pn} {{ get; set; }}{DefaultForQuery(clr)}");
     }
@@ -152,7 +171,7 @@ public static class RequestPhase
     }
 
     sb.AppendLine();
-    EmitBuilder(sb, b.SdkMethod, pathParams, queryParamsForMembers, bodyProps, paginated, MapParamToClr);
+    EmitBuilder(sb, b.SdkMethod, pathParams, queryParamsForMembers, bodyProps, paginated, MapQueryParamClr);
     sb.AppendLine("  }");
     sb.AppendLine("}");
     return sb.ToString();
@@ -334,13 +353,28 @@ public static class RequestPhase
     {
       var pn = OpenApiSchemaCodegen.ToPascalCase(p.Name);
       var f = "_" + CamelParam(p.Name);
-      sb.AppendLine($"          {pn} = {f},");
+      var clr = mapParam(p);
+      if (clr.EndsWith("[]", StringComparison.Ordinal))
+      {
+        sb.AppendLine($"          {pn} = {f} ?? [],");
+      }
+      else
+      {
+        sb.AppendLine($"          {pn} = {f},");
+      }
     }
 
     foreach (var p in bodyProps)
     {
       var f = "_" + char.ToLowerInvariant(p.ClrName[0]) + p.ClrName[1..];
-      sb.AppendLine($"          {p.ClrName} = {f},");
+      if (p.ClrType.EndsWith("[]", StringComparison.Ordinal))
+      {
+        sb.AppendLine($"          {p.ClrName} = {f} ?? [],");
+      }
+      else
+      {
+        sb.AppendLine($"          {p.ClrName} = {f},");
+      }
     }
 
     if (paginated)

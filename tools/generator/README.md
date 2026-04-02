@@ -31,6 +31,7 @@ tools/generator/
     ServicePhase.cs
   processing/
     GeneratorConfiguration.cs
+    GeneratorXmlDoc.cs
     SharedTransforms.cs
     NamingResolver.cs
     OpenApiSchemaCodegen.cs
@@ -88,8 +89,16 @@ cd tools/generator
 
 ## Configuration
 
-- **`config/generator-config.json`** — `filePathReplacements`, `contentReplacements`, `acronymMappings`, `enumNameMappings`, `services` (folder + namespace + interface/class names), `statusCodeOverrides`, `specUrl`.
+- **`config/generator-config.json`** — `filePathReplacements`, `contentReplacements`, `acronymMappings`, `enumNameMappings`, `services` (folder + namespace + interface/class names), `serviceMethodOrders`, `statusCodeOverrides`, `specUrl`.
 - **`config/operations.json`** — Each SDK operation: `operationId`, `sdkMethod`, `service` key, optional `omitRequest` (e.g. `ListPortfolios`).
+
+### `serviceMethodOrders`
+
+Maps each `service` key (same as in `operations.json`) to an ordered list of `sdkMethod` names. After binding operations from `operations.json`, the generator sorts each service’s operations to match this list so emitted `I*Service` / `*Service` method order stays stable and aligned with the handwritten SDK. Methods not listed sort after known entries, alphabetically.
+
+### `statusCodeOverrides`
+
+Maps `sdkMethod` to HTTP status names accepted as success for `CoinbaseService.Request` / `RequestAsync` (e.g. `Created`, `OK`). The generator first uses OpenAPI-documented success codes (200/201); overrides extend that list when the live API returns **201 Created** but the published spec only lists **200** (or similar). **Confirm with the API team** when adding endpoints: accepting both `Created` and `OK` is permissive and avoids client failures if the server varies by environment or version.
 
 ## Workflow
 

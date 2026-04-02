@@ -50,6 +50,12 @@ public static class SpecParser
         }
 
         var operationId = ((YamlScalarNode)opNode.Children[new YamlScalarNode("operationId")]).Value!;
+        string? summary = null;
+        if (opNode.Children.ContainsKey(new YamlScalarNode("summary")))
+        {
+          summary = ((YamlScalarNode)opNode.Children[new YamlScalarNode("summary")]).Value;
+        }
+
         var parameters = new List<ParsedParameter>();
         if (opNode.Children.ContainsKey(new YamlScalarNode("parameters")))
         {
@@ -138,7 +144,8 @@ public static class SpecParser
           Parameters = parameters,
           RequestBodyJsonSchema = bodySchema,
           SuccessResponseSchemaRef = successRef,
-          SuccessStatusCodes = successStatusCodes
+          SuccessStatusCodes = successStatusCodes,
+          Summary = summary
         };
       }
     }

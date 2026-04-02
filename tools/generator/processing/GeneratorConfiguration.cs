@@ -46,6 +46,12 @@ public class GeneratorConfiguration
   [JsonPropertyName("statusCodeOverrides")]
   public Dictionary<string, List<string>> StatusCodeOverrides { get; set; } = new();
 
+  /// <summary>
+  /// Per-service preferred <see cref="SdkOperationBinding.SdkMethod"/> ordering for emitted interfaces and services (stable order vs operations.json traversal).
+  /// </summary>
+  [JsonPropertyName("serviceMethodOrders")]
+  public Dictionary<string, List<string>> ServiceMethodOrders { get; set; } = new();
+
   public static GeneratorConfiguration Load(string projectRoot)
   {
     var path = Path.Combine(GeneratorPaths.ConfigDirectory(projectRoot), "generator-config.json");

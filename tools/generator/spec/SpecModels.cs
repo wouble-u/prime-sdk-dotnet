@@ -37,6 +37,11 @@ public class ParsedOperation
   /// HTTP success status codes present in the OpenAPI spec for this operation (e.g. 200, 201).
   /// </summary>
   public List<int> SuccessStatusCodes { get; init; } = new();
+
+  /// <summary>
+  /// OpenAPI <c>summary</c> field, used for XML documentation on generated request/response/service members.
+  /// </summary>
+  public string? Summary { get; init; }
 }
 
 public class ParsedParameter

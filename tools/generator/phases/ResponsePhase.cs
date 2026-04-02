@@ -38,6 +38,12 @@ public static class ResponsePhase
     if (string.IsNullOrEmpty(op.SuccessResponseSchemaRef))
     {
       sb.AppendLine();
+      var emptyDoc = GeneratorXmlDoc.FormatTypeSummary(op.Summary);
+      if (emptyDoc.Length > 0)
+      {
+        sb.Append(emptyDoc);
+      }
+
       sb.AppendLine($"  public class {b.SdkMethod}Response");
       sb.AppendLine("  {");
       sb.AppendLine($"    public {b.SdkMethod}Response() {{ }}");
@@ -76,6 +82,12 @@ public static class ResponsePhase
     }
 
     sb.AppendLine();
+    var respDoc = GeneratorXmlDoc.FormatTypeSummary(op.Summary);
+    if (respDoc.Length > 0)
+    {
+      sb.Append(respDoc);
+    }
+
     sb.AppendLine($"  public class {b.SdkMethod}Response");
     sb.AppendLine("  {");
     var needRespSep = false;

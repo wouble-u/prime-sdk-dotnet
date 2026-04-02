@@ -17,6 +17,7 @@
 using CoinbaseSdk.Tools.Generator.Processing;
 using CoinbaseSdk.Tools.Generator.Spec;
 using Microsoft.Extensions.Logging;
+using System.Linq;
 
 namespace CoinbaseSdk.Tools.Generator.Phases;
 
@@ -67,6 +68,11 @@ public sealed class ClientSurfacePhase
       }
 
       list.Add((b, op));
+    }
+
+    foreach (var serviceKey in byService.Keys.ToList())
+    {
+      byService[serviceKey] = SortOperationsForService(_cfg, serviceKey, byService[serviceKey]);
     }
 
     foreach (var (_, ops) in byService.OrderBy(kv => kv.Key, StringComparer.Ordinal))
@@ -184,5 +190,22 @@ public sealed class ClientSurfacePhase
   private static string NormalizeNl(string s)
   {
     return s.Replace("\r\n", "\n", StringComparison.Ordinal);
+  }
+
+  private static List<(SdkOperationBinding B, ParsedOperation Op)> SortOperationsForService(
+    GeneratorConfiguration cfg,
+    string serviceKey,
+    List<(SdkOperationBinding B, ParsedOperation Op)> ops)
+  {
+    if (!cfg.ServiceMethodOrders.TryGetValue(serviceKey, out var order) || order.Count == 0)
+    {
+      return ops;
+    }
+
+    var rank = order.Select((m, i) => (m, i)).ToDictionary(x => x.m, x => x.i, StringComparer.Ordinal);
+    return ops
+      .OrderBy(x => rank.TryGetValue(x.B.SdkMethod, out var i) ? i : int.MaxValue)
+      .ThenBy(x => x.B.SdkMethod, StringComparer.Ordinal)
+      .ToList();
   }
 }

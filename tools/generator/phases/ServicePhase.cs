@@ -37,11 +37,12 @@ public static class ServicePhase
       {
 
     """);
-    foreach (var (b, _) in ops)
+    foreach (var (b, op) in ops)
     {
-      sb.Append(InterfaceMethodBlock(b));
+      sb.Append(InterfaceMethodBlock(b, op));
     }
 
+    TrimOneTrailingBlankLine(sb);
     sb.Append("""
       }
     }
@@ -76,9 +77,10 @@ public static class ServicePhase
       var method = ToHttpMethodExpression(op.HttpMethod);
       var status = StatusArray(cfg, b.SdkMethod, op);
       var bodyArg = RequestBodyArgument(b, op);
-      sb.Append(ServiceMethodBlock(b, pathExpr, method, status, bodyArg));
+      sb.Append(ServiceMethodBlock(b, op, pathExpr, method, status, bodyArg));
     }
 
+    TrimOneTrailingBlankLine(sb);
     sb.Append("""
       }
     }
@@ -87,10 +89,22 @@ public static class ServicePhase
     return sb.ToString();
   }
 
-  private static string InterfaceMethodBlock(SdkOperationBinding b)
+  /// <summary>
+  /// Avoids StyleCop SA1508 (blank line before closing type brace) after the last emitted method block.
+  /// </summary>
+  private static void TrimOneTrailingBlankLine(StringBuilder sb)
   {
+    if (sb.Length >= 2 && sb[sb.Length - 1] == '\n' && sb[sb.Length - 2] == '\n')
+    {
+      sb.Length--;
+    }
+  }
+
+  private static string InterfaceMethodBlock(SdkOperationBinding b, ParsedOperation op)
+  {
+    var doc = GeneratorXmlDoc.FormatMemberSummary(op.Summary);
     return b.OmitRequest
-      ? $$"""
+      ? doc + $$"""
         public {{b.SdkMethod}}Response {{b.SdkMethod}}(
           CallOptions? options = null);
 
@@ -100,7 +114,7 @@ public static class ServicePhase
 
 
     """
-      : $$"""
+      : doc + $$"""
         public {{b.SdkMethod}}Response {{b.SdkMethod}}(
           {{b.SdkMethod}}Request request,
           CallOptions? options = null);
@@ -116,13 +130,15 @@ public static class ServicePhase
 
   private static string ServiceMethodBlock(
     SdkOperationBinding b,
+    ParsedOperation op,
     string pathExpr,
     string method,
     string status,
     string bodyArg)
   {
+    var doc = GeneratorXmlDoc.FormatMemberSummary(op.Summary);
     return b.OmitRequest
-      ? $$"""
+      ? doc + $$"""
         public {{b.SdkMethod}}Response {{b.SdkMethod}}(
           CallOptions? options = null)
         {
@@ -149,7 +165,7 @@ public static class ServicePhase
 
 
     """
-      : $$"""
+      : doc + $$"""
         public {{b.SdkMethod}}Response {{b.SdkMethod}}(
           {{b.SdkMethod}}Request request,
           CallOptions? options = null)
