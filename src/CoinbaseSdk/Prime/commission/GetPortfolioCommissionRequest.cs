@@ -19,6 +19,9 @@ namespace CoinbaseSdk.Prime.Commission
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
 
+    /// <summary>
+    /// Get Portfolio Commission.
+    /// </summary>
   public class GetPortfolioCommissionRequest(string portfolioId)
   {
     [JsonIgnore]

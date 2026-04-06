@@ -19,6 +19,9 @@ namespace CoinbaseSdk.Prime.Futures
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
 
+    /// <summary>
+    /// Get FCM Risk Limits.
+    /// </summary>
   public class GetFcmRiskLimitsRequest(string entityId)
   {
     [JsonIgnore]

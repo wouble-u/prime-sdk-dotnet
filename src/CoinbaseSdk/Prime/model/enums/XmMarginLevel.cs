@@ -26,7 +26,7 @@ namespace CoinbaseSdk.Prime.Model.Enums
 {
   using System.Text.Json.Serialization;
 
-  [JsonConverter(typeof(JsonStringEnumConverter<XmMarginLevel>) )]
+  [JsonConverter(typeof(JsonStringEnumConverter<XmMarginLevel>))]
   public enum XmMarginLevel
   {
     XM_MARGIN_LEVEL_UNSPECIFIED,

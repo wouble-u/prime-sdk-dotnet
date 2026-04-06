@@ -26,7 +26,7 @@ namespace CoinbaseSdk.Prime.Model.Enums
 {
   using System.Text.Json.Serialization;
 
-  [JsonConverter(typeof(JsonStringEnumConverter<AssetChangeType>) )]
+  [JsonConverter(typeof(JsonStringEnumConverter<AssetChangeType>))]
   public enum AssetChangeType
   {
     BALANCE_TRANSFER,

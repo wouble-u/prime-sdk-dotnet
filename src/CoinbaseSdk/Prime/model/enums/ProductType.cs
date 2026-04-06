@@ -26,7 +26,7 @@ namespace CoinbaseSdk.Prime.Model.Enums
 {
   using System.Text.Json.Serialization;
 
-  [JsonConverter(typeof(JsonStringEnumConverter<ProductType>) )]
+  [JsonConverter(typeof(JsonStringEnumConverter<ProductType>))]
   public enum ProductType
   {
     SPOT,

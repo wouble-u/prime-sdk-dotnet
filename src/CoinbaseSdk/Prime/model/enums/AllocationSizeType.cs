@@ -26,7 +26,7 @@ namespace CoinbaseSdk.Prime.Model.Enums
 {
   using System.Text.Json.Serialization;
 
-  [JsonConverter(typeof(JsonStringEnumConverter<AllocationSizeType>) )]
+  [JsonConverter(typeof(JsonStringEnumConverter<AllocationSizeType>))]
   public enum AllocationSizeType
   {
     BASE,

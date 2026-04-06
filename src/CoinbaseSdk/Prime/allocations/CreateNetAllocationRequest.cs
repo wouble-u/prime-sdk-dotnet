@@ -21,6 +21,9 @@ namespace CoinbaseSdk.Prime.Allocations
   using CoinbaseSdk.Prime.Model;
   using CoinbaseSdk.Prime.Model.Enums;
 
+    /// <summary>
+    /// Create Portfolio Net Allocations.
+    /// </summary>
   public class CreateNetAllocationRequest()
   {
     [JsonPropertyName("source_portfolio_id")]
@@ -30,13 +33,13 @@ namespace CoinbaseSdk.Prime.Allocations
     public string? ProductId { get; set; }
 
     [JsonPropertyName("order_ids")]
-    public string?[] OrderIds { get; set; } = [];
+    public string[] OrderIds { get; set; } = [];
 
     [JsonPropertyName("allocation_legs")]
     public AllocationLeg[] AllocationLegs { get; set; } = [];
 
     [JsonPropertyName("size_type")]
-    public AllocationSizeType SizeType { get; set; }
+    public AllocationSizeType? SizeType { get; set; }
 
     [JsonPropertyName("remainder_destination_portfolio")]
     public string? RemainderDestinationPortfolio { get; set; }
@@ -48,9 +51,9 @@ namespace CoinbaseSdk.Prime.Allocations
     {
       private string? _sourcePortfolioId;
       private string? _productId;
-      private string?[] _orderIds;
+      private string[] _orderIds;
       private AllocationLeg[] _allocationLegs;
-      private AllocationSizeType _sizeType;
+      private AllocationSizeType? _sizeType;
       private string? _remainderDestinationPortfolio;
       private string? _nettingId;
 
@@ -66,7 +69,7 @@ namespace CoinbaseSdk.Prime.Allocations
         return this;
       }
 
-      public CreateNetAllocationRequestBuilder WithOrderIds(string?[] orderIds)
+      public CreateNetAllocationRequestBuilder WithOrderIds(string[] orderIds)
       {
         _orderIds = orderIds;
         return this;
@@ -78,7 +81,7 @@ namespace CoinbaseSdk.Prime.Allocations
         return this;
       }
 
-      public CreateNetAllocationRequestBuilder WithSizeType(AllocationSizeType sizeType)
+      public CreateNetAllocationRequestBuilder WithSizeType(AllocationSizeType? sizeType)
       {
         _sizeType = sizeType;
         return this;
@@ -107,8 +110,8 @@ namespace CoinbaseSdk.Prime.Allocations
         {
           SourcePortfolioId = _sourcePortfolioId,
           ProductId = _productId,
-          OrderIds = _orderIds,
-          AllocationLegs = _allocationLegs,
+          OrderIds = _orderIds ?? [],
+          AllocationLegs = _allocationLegs ?? [],
           SizeType = _sizeType,
           RemainderDestinationPortfolio = _remainderDestinationPortfolio,
           NettingId = _nettingId,

@@ -19,13 +19,16 @@ namespace CoinbaseSdk.Prime.Financing
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
 
+    /// <summary>
+    /// List Existing Locates.
+    /// </summary>
   public class ListExistingLocatesRequest(string portfolioId)
   {
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
 
     [JsonPropertyName("locate_ids")]
-    public string?[] LocateIds { get; set; } = [];
+    public string[] LocateIds { get; set; } = [];
 
     [JsonPropertyName("conversion_date")]
     public string? ConversionDate { get; set; }
@@ -36,7 +39,7 @@ namespace CoinbaseSdk.Prime.Financing
     public class ListExistingLocatesRequestBuilder
     {
       private string? _portfolioId;
-      private string?[]? _locateIds;
+      private string[]? _locateIds;
       private string? _conversionDate;
       private string? _locateDate;
 
@@ -46,7 +49,7 @@ namespace CoinbaseSdk.Prime.Financing
         return this;
       }
 
-      public ListExistingLocatesRequestBuilder WithLocateIds(string?[] locateIds)
+      public ListExistingLocatesRequestBuilder WithLocateIds(string[] locateIds)
       {
         _locateIds = locateIds;
         return this;
@@ -77,7 +80,7 @@ namespace CoinbaseSdk.Prime.Financing
         Validate();
         return new ListExistingLocatesRequest(_portfolioId!)
         {
-          LocateIds = _locateIds,
+          LocateIds = _locateIds ?? [],
           ConversionDate = _conversionDate,
           LocateDate = _locateDate,
         };

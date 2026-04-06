@@ -21,22 +21,25 @@ namespace CoinbaseSdk.Prime.Orders
   using CoinbaseSdk.Prime.Common;
   using CoinbaseSdk.Prime.Model.Enums;
 
+    /// <summary>
+    /// List Open Orders.
+    /// </summary>
   public class ListOpenOrdersRequest(string portfolioId) : PaginatedRequest
   {
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
 
     [JsonPropertyName("product_ids")]
-    public string?[] ProductIds { get; set; } = [];
+    public string[] ProductIds { get; set; } = [];
 
     [JsonPropertyName("order_type")]
-    public string? OrderType { get; set; }
+    public OrderType? OrderType { get; set; }
 
     [JsonPropertyName("start_date")]
     public string? StartDate { get; set; }
 
     [JsonPropertyName("order_side")]
-    public string? OrderSide { get; set; }
+    public OrderSide? OrderSide { get; set; }
 
     [JsonPropertyName("end_date")]
     public string? EndDate { get; set; }
@@ -44,10 +47,10 @@ namespace CoinbaseSdk.Prime.Orders
     public class ListOpenOrdersRequestBuilder
     {
       private string? _portfolioId;
-      private string?[]? _productIds;
-      private string? _orderType;
+      private string[]? _productIds;
+      private OrderType? _orderType;
       private string? _startDate;
-      private string? _orderSide;
+      private OrderSide? _orderSide;
       private string? _endDate;
       private string? _cursor;
       private SortDirection? _sortDirection;
@@ -59,13 +62,13 @@ namespace CoinbaseSdk.Prime.Orders
         return this;
       }
 
-      public ListOpenOrdersRequestBuilder WithProductIds(string?[] productIds)
+      public ListOpenOrdersRequestBuilder WithProductIds(string[] productIds)
       {
         _productIds = productIds;
         return this;
       }
 
-      public ListOpenOrdersRequestBuilder WithOrderType(string? orderType)
+      public ListOpenOrdersRequestBuilder WithOrderType(OrderType? orderType)
       {
         _orderType = orderType;
         return this;
@@ -77,7 +80,7 @@ namespace CoinbaseSdk.Prime.Orders
         return this;
       }
 
-      public ListOpenOrdersRequestBuilder WithOrderSide(string? orderSide)
+      public ListOpenOrdersRequestBuilder WithOrderSide(OrderSide? orderSide)
       {
         _orderSide = orderSide;
         return this;
@@ -120,7 +123,7 @@ namespace CoinbaseSdk.Prime.Orders
         Validate();
         return new ListOpenOrdersRequest(_portfolioId!)
         {
-          ProductIds = _productIds,
+          ProductIds = _productIds ?? [],
           OrderType = _orderType,
           StartDate = _startDate,
           OrderSide = _orderSide,

@@ -19,6 +19,9 @@ namespace CoinbaseSdk.Prime.Assets
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
 
+    /// <summary>
+    /// List Assets.
+    /// </summary>
   public class ListAssetsRequest(string entityId)
   {
     [JsonIgnore]

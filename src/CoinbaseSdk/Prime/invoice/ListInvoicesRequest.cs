@@ -21,13 +21,16 @@ namespace CoinbaseSdk.Prime.Invoice
   using CoinbaseSdk.Prime.Common;
   using CoinbaseSdk.Prime.Model.Enums;
 
+    /// <summary>
+    /// List Invoices.
+    /// </summary>
   public class ListInvoicesRequest(string entityId) : PaginatedRequest
   {
     [JsonIgnore]
     public string EntityId { get; set; } = entityId;
 
     [JsonPropertyName("states")]
-    public string?[] States { get; set; } = [];
+    public string[] States { get; set; } = [];
 
     [JsonPropertyName("billing_year")]
     public int? BillingYear { get; set; }
@@ -38,7 +41,7 @@ namespace CoinbaseSdk.Prime.Invoice
     public class ListInvoicesRequestBuilder
     {
       private string? _entityId;
-      private string?[]? _states;
+      private string[]? _states;
       private int? _billingYear;
       private int? _billingMonth;
       private string? _cursor;
@@ -51,7 +54,7 @@ namespace CoinbaseSdk.Prime.Invoice
         return this;
       }
 
-      public ListInvoicesRequestBuilder WithStates(string?[] states)
+      public ListInvoicesRequestBuilder WithStates(string[] states)
       {
         _states = states;
         return this;
@@ -100,7 +103,7 @@ namespace CoinbaseSdk.Prime.Invoice
         Validate();
         return new ListInvoicesRequest(_entityId!)
         {
-          States = _states,
+          States = _states ?? [],
           BillingYear = _billingYear,
           BillingMonth = _billingMonth,
           Cursor = _cursor,

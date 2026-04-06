@@ -26,7 +26,7 @@ namespace CoinbaseSdk.Prime.Model.Enums
 {
   using System.Text.Json.Serialization;
 
-  [JsonConverter(typeof(JsonStringEnumConverter<ActivityCategory>) )]
+  [JsonConverter(typeof(JsonStringEnumConverter<ActivityCategory>))]
   public enum ActivityCategory
   {
     OTHER_ACTIVITY_CATEGORY,

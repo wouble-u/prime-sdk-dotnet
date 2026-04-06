@@ -19,6 +19,9 @@ namespace CoinbaseSdk.Prime.OnchainAddressBook
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
 
+    /// <summary>
+    /// Delete Onchain Address Group.
+    /// </summary>
   public class DeleteOnchainAddressGroupRequest(string portfolioId, string addressGroupId)
   {
     [JsonIgnore]

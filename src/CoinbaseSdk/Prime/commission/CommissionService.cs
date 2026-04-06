@@ -23,6 +23,9 @@ namespace CoinbaseSdk.Prime.Commission
 
   public class CommissionService(ICoinbaseClient client) : CoinbaseService(client), ICommissionService
   {
+    /// <summary>
+    /// Get Portfolio Commission.
+    /// </summary>
     public GetPortfolioCommissionResponse GetPortfolioCommission(
       GetPortfolioCommissionRequest request,
       CallOptions? options = null)
@@ -48,6 +51,5 @@ namespace CoinbaseSdk.Prime.Commission
         options,
         cancellationToken);
     }
-
   }
 }

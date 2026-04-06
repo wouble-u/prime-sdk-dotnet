@@ -19,6 +19,9 @@ namespace CoinbaseSdk.Prime.Orders
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
 
+    /// <summary>
+    /// Edit Order (Beta).
+    /// </summary>
   public class EditOrderRequest(string portfolioId, string orderId)
   {
     [JsonIgnore]

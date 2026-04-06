@@ -19,6 +19,9 @@ namespace CoinbaseSdk.Prime.Wallets
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
 
+    /// <summary>
+    /// Get Wallet Deposit Instructions.
+    /// </summary>
   public class GetWalletDepositInstructionsRequest(string portfolioId, string walletId)
   {
     [JsonIgnore]

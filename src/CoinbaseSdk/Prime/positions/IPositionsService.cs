@@ -20,6 +20,9 @@ namespace CoinbaseSdk.Prime.Positions
 
   public interface IPositionsService
   {
+    /// <summary>
+    /// List Aggregate Entity Positions.
+    /// </summary>
     public ListAggregateEntityPositionsResponse ListAggregateEntityPositions(
       ListAggregateEntityPositionsRequest request,
       CallOptions? options = null);
@@ -29,6 +32,9 @@ namespace CoinbaseSdk.Prime.Positions
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
+    /// <summary>
+    /// List Entity Positions.
+    /// </summary>
     public ListEntityPositionsResponse ListEntityPositions(
       ListEntityPositionsRequest request,
       CallOptions? options = null);
@@ -37,6 +43,5 @@ namespace CoinbaseSdk.Prime.Positions
       ListEntityPositionsRequest request,
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
-
   }
 }

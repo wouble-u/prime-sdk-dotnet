@@ -21,6 +21,9 @@ namespace CoinbaseSdk.Prime.Transactions
   using CoinbaseSdk.Prime.Common;
   using CoinbaseSdk.Prime.Model.Enums;
 
+    /// <summary>
+    /// List Wallet Transactions.
+    /// </summary>
   public class ListWalletTransactionsRequest(string portfolioId, string walletId) : PaginatedRequest
   {
     [JsonIgnore]
@@ -30,7 +33,7 @@ namespace CoinbaseSdk.Prime.Transactions
     public string WalletId { get; set; } = walletId;
 
     [JsonPropertyName("types")]
-    public string?[] Types { get; set; } = [];
+    public string[] Types { get; set; } = [];
 
     [JsonPropertyName("start_time")]
     public string? StartTime { get; set; }
@@ -42,7 +45,7 @@ namespace CoinbaseSdk.Prime.Transactions
     {
       private string? _portfolioId;
       private string? _walletId;
-      private string?[]? _types;
+      private string[]? _types;
       private string? _startTime;
       private string? _endTime;
       private string? _cursor;
@@ -61,7 +64,7 @@ namespace CoinbaseSdk.Prime.Transactions
         return this;
       }
 
-      public ListWalletTransactionsRequestBuilder WithTypes(string?[] types)
+      public ListWalletTransactionsRequestBuilder WithTypes(string[] types)
       {
         _types = types;
         return this;
@@ -114,7 +117,7 @@ namespace CoinbaseSdk.Prime.Transactions
         Validate();
         return new ListWalletTransactionsRequest(_portfolioId!, _walletId!)
         {
-          Types = _types,
+          Types = _types ?? [],
           StartTime = _startTime,
           EndTime = _endTime,
           Cursor = _cursor,

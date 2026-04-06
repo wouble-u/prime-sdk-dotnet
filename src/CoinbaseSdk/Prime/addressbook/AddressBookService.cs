@@ -23,6 +23,9 @@ namespace CoinbaseSdk.Prime.AddressBook
 
   public class AddressBookService(ICoinbaseClient client) : CoinbaseService(client), IAddressBookService
   {
+    /// <summary>
+    /// Get Address Book.
+    /// </summary>
     public ListAddressBookEntriesResponse ListAddressBookEntries(
       ListAddressBookEntriesRequest request,
       CallOptions? options = null)
@@ -49,6 +52,9 @@ namespace CoinbaseSdk.Prime.AddressBook
         cancellationToken);
     }
 
+    /// <summary>
+    /// Create Address Book Entry.
+    /// </summary>
     public CreateAddressBookEntryResponse CreateAddressBookEntry(
       CreateAddressBookEntryRequest request,
       CallOptions? options = null)
@@ -56,7 +62,7 @@ namespace CoinbaseSdk.Prime.AddressBook
       return Request<CreateAddressBookEntryResponse>(
         HttpMethod.Post,
         $"/portfolios/{request.PortfolioId}/address_book",
-        [HttpStatusCode.OK],
+        [HttpStatusCode.Created, HttpStatusCode.OK],
         request,
         options);
     }
@@ -69,11 +75,10 @@ namespace CoinbaseSdk.Prime.AddressBook
       return RequestAsync<CreateAddressBookEntryResponse>(
         HttpMethod.Post,
         $"/portfolios/{request.PortfolioId}/address_book",
-        [HttpStatusCode.OK],
+        [HttpStatusCode.Created, HttpStatusCode.OK],
         request,
         options,
         cancellationToken);
     }
-
   }
 }

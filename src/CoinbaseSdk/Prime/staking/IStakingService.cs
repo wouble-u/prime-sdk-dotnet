@@ -20,6 +20,9 @@ namespace CoinbaseSdk.Prime.Staking
 
   public interface IStakingService
   {
+    /// <summary>
+    /// Request to stake currency in a portfolio.
+    /// </summary>
     public CreatePortfolioStakeResponse CreatePortfolioStake(
       CreatePortfolioStakeRequest request,
       CallOptions? options = null);
@@ -29,6 +32,9 @@ namespace CoinbaseSdk.Prime.Staking
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
+    /// <summary>
+    /// List Transaction Validators.
+    /// </summary>
     public ListTransactionValidatorsResponse ListTransactionValidators(
       ListTransactionValidatorsRequest request,
       CallOptions? options = null);
@@ -38,6 +44,9 @@ namespace CoinbaseSdk.Prime.Staking
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
+    /// <summary>
+    /// Request to unstake currency across a portfolio.
+    /// </summary>
     public CreatePortfolioUnstakeResponse CreatePortfolioUnstake(
       CreatePortfolioUnstakeRequest request,
       CallOptions? options = null);
@@ -47,6 +56,9 @@ namespace CoinbaseSdk.Prime.Staking
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
+    /// <summary>
+    /// Claim Wallet Staking Rewards (Alpha).
+    /// </summary>
     public ClaimStakingRewardsResponse ClaimStakingRewards(
       ClaimStakingRewardsRequest request,
       CallOptions? options = null);
@@ -56,6 +68,9 @@ namespace CoinbaseSdk.Prime.Staking
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
+    /// <summary>
+    /// Request to stake or delegate a wallet.
+    /// </summary>
     public CreateStakeResponse CreateStake(
       CreateStakeRequest request,
       CallOptions? options = null);
@@ -65,6 +80,9 @@ namespace CoinbaseSdk.Prime.Staking
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
+    /// <summary>
+    /// Request to unstake a wallet.
+    /// </summary>
     public CreateUnstakeResponse CreateUnstake(
       CreateUnstakeRequest request,
       CallOptions? options = null);
@@ -74,6 +92,9 @@ namespace CoinbaseSdk.Prime.Staking
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
+    /// <summary>
+    /// Get Staking Status.
+    /// </summary>
     public GetStakingStatusResponse GetStakingStatus(
       GetStakingStatusRequest request,
       CallOptions? options = null);
@@ -83,6 +104,9 @@ namespace CoinbaseSdk.Prime.Staking
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
+    /// <summary>
+    /// Get Unstaking Status.
+    /// </summary>
     public GetUnstakingStatusResponse GetUnstakingStatus(
       GetUnstakingStatusRequest request,
       CallOptions? options = null);
@@ -92,6 +116,9 @@ namespace CoinbaseSdk.Prime.Staking
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
+    /// <summary>
+    /// Preview Unstake.
+    /// </summary>
     public PreviewUnstakeResponse PreviewUnstake(
       PreviewUnstakeRequest request,
       CallOptions? options = null);
@@ -100,6 +127,5 @@ namespace CoinbaseSdk.Prime.Staking
       PreviewUnstakeRequest request,
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
-
   }
 }

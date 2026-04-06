@@ -21,6 +21,9 @@ namespace CoinbaseSdk.Prime.Transactions
   using CoinbaseSdk.Prime.Common;
   using CoinbaseSdk.Prime.Model.Enums;
 
+    /// <summary>
+    /// List Portfolio Transactions.
+    /// </summary>
   public class ListPortfolioTransactionsRequest(string portfolioId) : PaginatedRequest
   {
     [JsonIgnore]
@@ -30,7 +33,7 @@ namespace CoinbaseSdk.Prime.Transactions
     public string? Symbols { get; set; }
 
     [JsonPropertyName("types")]
-    public string?[] Types { get; set; } = [];
+    public string[] Types { get; set; } = [];
 
     [JsonPropertyName("start_time")]
     public string? StartTime { get; set; }
@@ -42,17 +45,17 @@ namespace CoinbaseSdk.Prime.Transactions
     public bool? GetNetworkUnifiedTransactions { get; set; }
 
     [JsonPropertyName("travel_rule_status")]
-    public string?[] TravelRuleStatus { get; set; } = [];
+    public string[] TravelRuleStatus { get; set; } = [];
 
     public class ListPortfolioTransactionsRequestBuilder
     {
       private string? _portfolioId;
       private string? _symbols;
-      private string?[]? _types;
+      private string[]? _types;
       private string? _startTime;
       private string? _endTime;
       private bool? _getNetworkUnifiedTransactions;
-      private string?[]? _travelRuleStatus;
+      private string[]? _travelRuleStatus;
       private string? _cursor;
       private SortDirection? _sortDirection;
       private int? _limit;
@@ -69,7 +72,7 @@ namespace CoinbaseSdk.Prime.Transactions
         return this;
       }
 
-      public ListPortfolioTransactionsRequestBuilder WithTypes(string?[] types)
+      public ListPortfolioTransactionsRequestBuilder WithTypes(string[] types)
       {
         _types = types;
         return this;
@@ -93,7 +96,7 @@ namespace CoinbaseSdk.Prime.Transactions
         return this;
       }
 
-      public ListPortfolioTransactionsRequestBuilder WithTravelRuleStatus(string?[] travelRuleStatus)
+      public ListPortfolioTransactionsRequestBuilder WithTravelRuleStatus(string[] travelRuleStatus)
       {
         _travelRuleStatus = travelRuleStatus;
         return this;
@@ -131,11 +134,11 @@ namespace CoinbaseSdk.Prime.Transactions
         return new ListPortfolioTransactionsRequest(_portfolioId!)
         {
           Symbols = _symbols,
-          Types = _types,
+          Types = _types ?? [],
           StartTime = _startTime,
           EndTime = _endTime,
           GetNetworkUnifiedTransactions = _getNetworkUnifiedTransactions,
-          TravelRuleStatus = _travelRuleStatus,
+          TravelRuleStatus = _travelRuleStatus ?? [],
           Cursor = _cursor,
           SortDirection = _sortDirection,
           Limit = _limit,

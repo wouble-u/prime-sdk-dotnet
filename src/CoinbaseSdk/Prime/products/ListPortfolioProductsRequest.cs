@@ -21,6 +21,9 @@ namespace CoinbaseSdk.Prime.Products
   using CoinbaseSdk.Prime.Common;
   using CoinbaseSdk.Prime.Model.Enums;
 
+    /// <summary>
+    /// List Portfolio Products.
+    /// </summary>
   public class ListPortfolioProductsRequest(string portfolioId) : PaginatedRequest
   {
     [JsonIgnore]

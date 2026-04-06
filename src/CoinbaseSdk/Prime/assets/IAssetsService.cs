@@ -20,6 +20,9 @@ namespace CoinbaseSdk.Prime.Assets
 
   public interface IAssetsService
   {
+    /// <summary>
+    /// List Assets.
+    /// </summary>
     public ListAssetsResponse ListAssets(
       ListAssetsRequest request,
       CallOptions? options = null);
@@ -28,6 +31,5 @@ namespace CoinbaseSdk.Prime.Assets
       ListAssetsRequest request,
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
-
   }
 }

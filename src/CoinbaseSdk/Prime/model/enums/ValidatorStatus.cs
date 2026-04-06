@@ -26,7 +26,7 @@ namespace CoinbaseSdk.Prime.Model.Enums
 {
   using System.Text.Json.Serialization;
 
-  [JsonConverter(typeof(JsonStringEnumConverter<ValidatorStatus>) )]
+  [JsonConverter(typeof(JsonStringEnumConverter<ValidatorStatus>))]
   public enum ValidatorStatus
   {
     VALIDATOR_STATUS_UNSPECIFIED,

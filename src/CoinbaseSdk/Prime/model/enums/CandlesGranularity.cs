@@ -26,7 +26,7 @@ namespace CoinbaseSdk.Prime.Model.Enums
 {
   using System.Text.Json.Serialization;
 
-  [JsonConverter(typeof(JsonStringEnumConverter<CandlesGranularity>) )]
+  [JsonConverter(typeof(JsonStringEnumConverter<CandlesGranularity>))]
   public enum CandlesGranularity
   {
     ONE_MINUTE,

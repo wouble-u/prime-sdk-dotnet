@@ -20,6 +20,9 @@ namespace CoinbaseSdk.Prime.Commission
 
   public interface ICommissionService
   {
+    /// <summary>
+    /// Get Portfolio Commission.
+    /// </summary>
     public GetPortfolioCommissionResponse GetPortfolioCommission(
       GetPortfolioCommissionRequest request,
       CallOptions? options = null);
@@ -28,6 +31,5 @@ namespace CoinbaseSdk.Prime.Commission
       GetPortfolioCommissionRequest request,
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
-
   }
 }

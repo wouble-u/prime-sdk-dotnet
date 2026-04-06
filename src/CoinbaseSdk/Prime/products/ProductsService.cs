@@ -23,6 +23,9 @@ namespace CoinbaseSdk.Prime.Products
 
   public class ProductsService(ICoinbaseClient client) : CoinbaseService(client), IProductsService
   {
+    /// <summary>
+    /// List Portfolio Products.
+    /// </summary>
     public ListPortfolioProductsResponse ListPortfolioProducts(
       ListPortfolioProductsRequest request,
       CallOptions? options = null)
@@ -49,6 +52,9 @@ namespace CoinbaseSdk.Prime.Products
         cancellationToken);
     }
 
+    /// <summary>
+    /// Get Public Product Candles (Beta).
+    /// </summary>
     public GetCandlesResponse GetCandles(
       GetCandlesRequest request,
       CallOptions? options = null)
@@ -74,6 +80,5 @@ namespace CoinbaseSdk.Prime.Products
         options,
         cancellationToken);
     }
-
   }
 }

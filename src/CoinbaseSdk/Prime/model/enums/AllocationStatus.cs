@@ -26,7 +26,7 @@ namespace CoinbaseSdk.Prime.Model.Enums
 {
   using System.Text.Json.Serialization;
 
-  [JsonConverter(typeof(JsonStringEnumConverter<AllocationStatus>) )]
+  [JsonConverter(typeof(JsonStringEnumConverter<AllocationStatus>))]
   public enum AllocationStatus
   {
     ALLOCATION_STATUS_UNSPECIFIED,

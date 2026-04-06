@@ -26,7 +26,7 @@ namespace CoinbaseSdk.Prime.Model.Enums
 {
   using System.Text.Json.Serialization;
 
-  [JsonConverter(typeof(JsonStringEnumConverter<MarginAddOnType>) )]
+  [JsonConverter(typeof(JsonStringEnumConverter<MarginAddOnType>))]
   public enum MarginAddOnType
   {
     MARGIN_ADD_ON_TYPE_UNSPECIFIED,

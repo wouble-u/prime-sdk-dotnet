@@ -26,7 +26,7 @@ namespace CoinbaseSdk.Prime.Model.Enums
 {
   using System.Text.Json.Serialization;
 
-  [JsonConverter(typeof(JsonStringEnumConverter<AdvancedTransferType>) )]
+  [JsonConverter(typeof(JsonStringEnumConverter<AdvancedTransferType>))]
   public enum AdvancedTransferType
   {
     ADVANCED_TRANSFER_TYPE_BLIND_MATCH

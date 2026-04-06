@@ -20,6 +20,9 @@ namespace CoinbaseSdk.Prime.AdvancedTransfer
 
   public interface IAdvancedTransferService
   {
+    /// <summary>
+    /// List Advanced Transfers.
+    /// </summary>
     public ListAdvancedTransfersResponse ListAdvancedTransfers(
       ListAdvancedTransfersRequest request,
       CallOptions? options = null);
@@ -29,6 +32,9 @@ namespace CoinbaseSdk.Prime.AdvancedTransfer
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
+    /// <summary>
+    /// Create Advanced Transfer.
+    /// </summary>
     public CreateAdvancedTransferResponse CreateAdvancedTransfer(
       CreateAdvancedTransferRequest request,
       CallOptions? options = null);
@@ -38,6 +44,9 @@ namespace CoinbaseSdk.Prime.AdvancedTransfer
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
+    /// <summary>
+    /// Cancel Advanced Transfer.
+    /// </summary>
     public CancelAdvancedTransferResponse CancelAdvancedTransfer(
       CancelAdvancedTransferRequest request,
       CallOptions? options = null);
@@ -47,6 +56,9 @@ namespace CoinbaseSdk.Prime.AdvancedTransfer
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
+    /// <summary>
+    /// List transactions associated with an Advanced Transfer.
+    /// </summary>
     public ListAdvancedTransferTransactionsResponse ListAdvancedTransferTransactions(
       ListAdvancedTransferTransactionsRequest request,
       CallOptions? options = null);
@@ -55,6 +67,5 @@ namespace CoinbaseSdk.Prime.AdvancedTransfer
       ListAdvancedTransferTransactionsRequest request,
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
-
   }
 }

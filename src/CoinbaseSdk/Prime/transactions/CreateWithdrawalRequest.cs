@@ -21,6 +21,9 @@ namespace CoinbaseSdk.Prime.Transactions
   using CoinbaseSdk.Prime.Model;
   using CoinbaseSdk.Prime.Model.Enums;
 
+    /// <summary>
+    /// Create Withdrawal.
+    /// </summary>
   public class CreateWithdrawalRequest(string portfolioId, string walletId)
   {
     [JsonIgnore]

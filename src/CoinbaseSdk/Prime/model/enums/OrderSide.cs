@@ -26,7 +26,7 @@ namespace CoinbaseSdk.Prime.Model.Enums
 {
   using System.Text.Json.Serialization;
 
-  [JsonConverter(typeof(JsonStringEnumConverter<OrderSide>) )]
+  [JsonConverter(typeof(JsonStringEnumConverter<OrderSide>))]
   public enum OrderSide
   {
     BUY,

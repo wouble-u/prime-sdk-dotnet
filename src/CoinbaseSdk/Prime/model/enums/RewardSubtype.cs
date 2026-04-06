@@ -26,7 +26,7 @@ namespace CoinbaseSdk.Prime.Model.Enums
 {
   using System.Text.Json.Serialization;
 
-  [JsonConverter(typeof(JsonStringEnumConverter<RewardSubtype>) )]
+  [JsonConverter(typeof(JsonStringEnumConverter<RewardSubtype>))]
   public enum RewardSubtype
   {
     MEV_REWARD,

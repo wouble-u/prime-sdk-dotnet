@@ -23,6 +23,9 @@ namespace CoinbaseSdk.Prime.Allocations
 
   public class AllocationsService(ICoinbaseClient client) : CoinbaseService(client), IAllocationsService
   {
+    /// <summary>
+    /// Create Portfolio Allocations.
+    /// </summary>
     public CreateAllocationResponse CreateAllocation(
       CreateAllocationRequest request,
       CallOptions? options = null)
@@ -30,7 +33,7 @@ namespace CoinbaseSdk.Prime.Allocations
       return Request<CreateAllocationResponse>(
         HttpMethod.Post,
         $"/allocations",
-        [HttpStatusCode.OK],
+        [HttpStatusCode.Created, HttpStatusCode.OK],
         request,
         options);
     }
@@ -43,12 +46,15 @@ namespace CoinbaseSdk.Prime.Allocations
       return RequestAsync<CreateAllocationResponse>(
         HttpMethod.Post,
         $"/allocations",
-        [HttpStatusCode.OK],
+        [HttpStatusCode.Created, HttpStatusCode.OK],
         request,
         options,
         cancellationToken);
     }
 
+    /// <summary>
+    /// Create Portfolio Net Allocations.
+    /// </summary>
     public CreateNetAllocationResponse CreateNetAllocation(
       CreateNetAllocationRequest request,
       CallOptions? options = null)
@@ -56,7 +62,7 @@ namespace CoinbaseSdk.Prime.Allocations
       return Request<CreateNetAllocationResponse>(
         HttpMethod.Post,
         $"/allocations/net",
-        [HttpStatusCode.OK],
+        [HttpStatusCode.Created, HttpStatusCode.OK],
         request,
         options);
     }
@@ -69,12 +75,15 @@ namespace CoinbaseSdk.Prime.Allocations
       return RequestAsync<CreateNetAllocationResponse>(
         HttpMethod.Post,
         $"/allocations/net",
-        [HttpStatusCode.OK],
+        [HttpStatusCode.Created, HttpStatusCode.OK],
         request,
         options,
         cancellationToken);
     }
 
+    /// <summary>
+    /// List Portfolio Allocations.
+    /// </summary>
     public ListPortfolioAllocationsResponse ListPortfolioAllocations(
       ListPortfolioAllocationsRequest request,
       CallOptions? options = null)
@@ -101,6 +110,9 @@ namespace CoinbaseSdk.Prime.Allocations
         cancellationToken);
     }
 
+    /// <summary>
+    /// Get Net Allocations by Netting ID.
+    /// </summary>
     public ListAllocationsByClientNettingIdResponse ListAllocationsByClientNettingId(
       ListAllocationsByClientNettingIdRequest request,
       CallOptions? options = null)
@@ -127,6 +139,9 @@ namespace CoinbaseSdk.Prime.Allocations
         cancellationToken);
     }
 
+    /// <summary>
+    /// Get Allocation by ID.
+    /// </summary>
     public GetAllocationResponse GetAllocation(
       GetAllocationRequest request,
       CallOptions? options = null)
@@ -152,6 +167,5 @@ namespace CoinbaseSdk.Prime.Allocations
         options,
         cancellationToken);
     }
-
   }
 }

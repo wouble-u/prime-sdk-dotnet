@@ -20,6 +20,9 @@ namespace CoinbaseSdk.Prime.Orders
   using CoinbaseSdk.Prime.Common;
   using CoinbaseSdk.Prime.Model;
 
+    /// <summary>
+    /// List Open Orders.
+    /// </summary>
   public class ListOpenOrdersResponse
   {
     [JsonPropertyName("orders")]

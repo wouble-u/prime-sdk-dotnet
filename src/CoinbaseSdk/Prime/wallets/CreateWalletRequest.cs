@@ -21,6 +21,9 @@ namespace CoinbaseSdk.Prime.Wallets
   using CoinbaseSdk.Prime.Model;
   using CoinbaseSdk.Prime.Model.Enums;
 
+    /// <summary>
+    /// Create Wallet.
+    /// </summary>
   public class CreateWalletRequest(string portfolioId)
   {
     [JsonIgnore]
@@ -33,13 +36,13 @@ namespace CoinbaseSdk.Prime.Wallets
     public string? Symbol { get; set; }
 
     [JsonPropertyName("wallet_type")]
-    public WalletType WalletType { get; set; }
+    public WalletType? WalletType { get; set; }
 
     [JsonPropertyName("idempotency_key")]
     public string? IdempotencyKey { get; set; }
 
     [JsonPropertyName("network_family")]
-    public NetworkFamily NetworkFamily { get; set; }
+    public NetworkFamily? NetworkFamily { get; set; }
 
     [JsonPropertyName("network")]
     public Network Network { get; set; }
@@ -49,9 +52,9 @@ namespace CoinbaseSdk.Prime.Wallets
       private string? _portfolioId;
       private string? _name;
       private string? _symbol;
-      private WalletType _walletType;
+      private WalletType? _walletType;
       private string? _idempotencyKey;
-      private NetworkFamily _networkFamily;
+      private NetworkFamily? _networkFamily;
       private Network _network;
 
       public CreateWalletRequestBuilder WithPortfolioId(string portfolioId)
@@ -72,7 +75,7 @@ namespace CoinbaseSdk.Prime.Wallets
         return this;
       }
 
-      public CreateWalletRequestBuilder WithWalletType(WalletType walletType)
+      public CreateWalletRequestBuilder WithWalletType(WalletType? walletType)
       {
         _walletType = walletType;
         return this;
@@ -84,7 +87,7 @@ namespace CoinbaseSdk.Prime.Wallets
         return this;
       }
 
-      public CreateWalletRequestBuilder WithNetworkFamily(NetworkFamily networkFamily)
+      public CreateWalletRequestBuilder WithNetworkFamily(NetworkFamily? networkFamily)
       {
         _networkFamily = networkFamily;
         return this;

@@ -20,6 +20,9 @@ namespace CoinbaseSdk.Prime.Financing
 
   public interface IFinancingService
   {
+    /// <summary>
+    /// List Interest Accruals.
+    /// </summary>
     public ListInterestAccrualsResponse ListInterestAccruals(
       ListInterestAccrualsRequest request,
       CallOptions? options = null);
@@ -29,6 +32,9 @@ namespace CoinbaseSdk.Prime.Financing
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
+    /// <summary>
+    /// Get Cross Margin Overview.
+    /// </summary>
     public GetCrossMarginOverviewResponse GetCrossMarginOverview(
       GetCrossMarginOverviewRequest request,
       CallOptions? options = null);
@@ -38,6 +44,9 @@ namespace CoinbaseSdk.Prime.Financing
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
+    /// <summary>
+    /// Get Entity Locate Availabilities.
+    /// </summary>
     public GetEntityLocateAvailabilitiesResponse GetEntityLocateAvailabilities(
       GetEntityLocateAvailabilitiesRequest request,
       CallOptions? options = null);
@@ -47,6 +56,9 @@ namespace CoinbaseSdk.Prime.Financing
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
+    /// <summary>
+    /// Get Margin Information.
+    /// </summary>
     public GetMarginInformationResponse GetMarginInformation(
       GetMarginInformationRequest request,
       CallOptions? options = null);
@@ -56,6 +68,9 @@ namespace CoinbaseSdk.Prime.Financing
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
+    /// <summary>
+    /// List Margin Call Summaries.
+    /// </summary>
     public ListMarginCallSummariesResponse ListMarginCallSummaries(
       ListMarginCallSummariesRequest request,
       CallOptions? options = null);
@@ -65,6 +80,9 @@ namespace CoinbaseSdk.Prime.Financing
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
+    /// <summary>
+    /// List Trade Finance Obligations.
+    /// </summary>
     public ListTradeFinanceObligationsResponse ListTradeFinanceObligations(
       ListTradeFinanceObligationsRequest request,
       CallOptions? options = null);
@@ -74,6 +92,9 @@ namespace CoinbaseSdk.Prime.Financing
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
+    /// <summary>
+    /// Get Trade Finance Tiered Pricing Fees.
+    /// </summary>
     public GetTradeFinanceTieredPricingFeesResponse GetTradeFinanceTieredPricingFees(
       GetTradeFinanceTieredPricingFeesRequest request,
       CallOptions? options = null);
@@ -83,6 +104,9 @@ namespace CoinbaseSdk.Prime.Financing
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
+    /// <summary>
+    /// List Financing Eligible Assets.
+    /// </summary>
     public ListFinancingEligibleAssetsResponse ListFinancingEligibleAssets(
       ListFinancingEligibleAssetsRequest request,
       CallOptions? options = null);
@@ -92,6 +116,9 @@ namespace CoinbaseSdk.Prime.Financing
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
+    /// <summary>
+    /// List Interest Accruals For Portfolio.
+    /// </summary>
     public ListInterestAccrualsForPortfolioResponse ListInterestAccrualsForPortfolio(
       ListInterestAccrualsForPortfolioRequest request,
       CallOptions? options = null);
@@ -101,6 +128,9 @@ namespace CoinbaseSdk.Prime.Financing
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
+    /// <summary>
+    /// Get Portfolio Buying Power.
+    /// </summary>
     public GetPortfolioBuyingPowerResponse GetPortfolioBuyingPower(
       GetPortfolioBuyingPowerRequest request,
       CallOptions? options = null);
@@ -110,6 +140,9 @@ namespace CoinbaseSdk.Prime.Financing
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
+    /// <summary>
+    /// Get Portfolio Credit Information.
+    /// </summary>
     public GetPortfolioCreditInformationResponse GetPortfolioCreditInformation(
       GetPortfolioCreditInformationRequest request,
       CallOptions? options = null);
@@ -119,6 +152,9 @@ namespace CoinbaseSdk.Prime.Financing
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
+    /// <summary>
+    /// List Existing Locates.
+    /// </summary>
     public ListExistingLocatesResponse ListExistingLocates(
       ListExistingLocatesRequest request,
       CallOptions? options = null);
@@ -128,6 +164,9 @@ namespace CoinbaseSdk.Prime.Financing
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
+    /// <summary>
+    /// Create New Locates.
+    /// </summary>
     public CreateNewLocatesResponse CreateNewLocates(
       CreateNewLocatesRequest request,
       CallOptions? options = null);
@@ -137,6 +176,9 @@ namespace CoinbaseSdk.Prime.Financing
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
+    /// <summary>
+    /// List Margin Conversions.
+    /// </summary>
     public ListMarginConversionsResponse ListMarginConversions(
       ListMarginConversionsRequest request,
       CallOptions? options = null);
@@ -146,6 +188,9 @@ namespace CoinbaseSdk.Prime.Financing
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
+    /// <summary>
+    /// Get Portfolio Withdrawal Power.
+    /// </summary>
     public GetPortfolioWithdrawalPowerResponse GetPortfolioWithdrawalPower(
       GetPortfolioWithdrawalPowerRequest request,
       CallOptions? options = null);
@@ -154,6 +199,5 @@ namespace CoinbaseSdk.Prime.Financing
       GetPortfolioWithdrawalPowerRequest request,
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
-
   }
 }

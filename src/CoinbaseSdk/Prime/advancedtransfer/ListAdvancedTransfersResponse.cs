@@ -20,6 +20,9 @@ namespace CoinbaseSdk.Prime.AdvancedTransfer
   using CoinbaseSdk.Prime.Common;
   using CoinbaseSdk.Prime.Model;
 
+    /// <summary>
+    /// List Advanced Transfers.
+    /// </summary>
   public class ListAdvancedTransfersResponse
   {
     [JsonPropertyName("advanced_transfers")]

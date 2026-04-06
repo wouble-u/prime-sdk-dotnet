@@ -23,6 +23,9 @@ namespace CoinbaseSdk.Prime.Orders
 
   public class OrdersService(ICoinbaseClient client) : CoinbaseService(client), IOrdersService
   {
+    /// <summary>
+    /// Accept Quote.
+    /// </summary>
     public AcceptQuoteResponse AcceptQuote(
       AcceptQuoteRequest request,
       CallOptions? options = null)
@@ -49,6 +52,9 @@ namespace CoinbaseSdk.Prime.Orders
         cancellationToken);
     }
 
+    /// <summary>
+    /// List Portfolio Fills.
+    /// </summary>
     public ListPortfolioFillsResponse ListPortfolioFills(
       ListPortfolioFillsRequest request,
       CallOptions? options = null)
@@ -75,6 +81,9 @@ namespace CoinbaseSdk.Prime.Orders
         cancellationToken);
     }
 
+    /// <summary>
+    /// List Open Orders.
+    /// </summary>
     public ListOpenOrdersResponse ListOpenOrders(
       ListOpenOrdersRequest request,
       CallOptions? options = null)
@@ -101,6 +110,9 @@ namespace CoinbaseSdk.Prime.Orders
         cancellationToken);
     }
 
+    /// <summary>
+    /// Create Order.
+    /// </summary>
     public CreateOrderResponse CreateOrder(
       CreateOrderRequest request,
       CallOptions? options = null)
@@ -127,6 +139,9 @@ namespace CoinbaseSdk.Prime.Orders
         cancellationToken);
     }
 
+    /// <summary>
+    /// Get Order Preview.
+    /// </summary>
     public GetOrderPreviewResponse GetOrderPreview(
       GetOrderPreviewRequest request,
       CallOptions? options = null)
@@ -153,6 +168,9 @@ namespace CoinbaseSdk.Prime.Orders
         cancellationToken);
     }
 
+    /// <summary>
+    /// List Portfolio Orders.
+    /// </summary>
     public ListPortfolioOrdersResponse ListPortfolioOrders(
       ListPortfolioOrdersRequest request,
       CallOptions? options = null)
@@ -179,6 +197,9 @@ namespace CoinbaseSdk.Prime.Orders
         cancellationToken);
     }
 
+    /// <summary>
+    /// Get Order by Order ID.
+    /// </summary>
     public GetOrderResponse GetOrder(
       GetOrderRequest request,
       CallOptions? options = null)
@@ -205,6 +226,9 @@ namespace CoinbaseSdk.Prime.Orders
         cancellationToken);
     }
 
+    /// <summary>
+    /// Cancel Order.
+    /// </summary>
     public CancelOrderResponse CancelOrder(
       CancelOrderRequest request,
       CallOptions? options = null)
@@ -231,6 +255,9 @@ namespace CoinbaseSdk.Prime.Orders
         cancellationToken);
     }
 
+    /// <summary>
+    /// Edit Order (Beta).
+    /// </summary>
     public EditOrderResponse EditOrder(
       EditOrderRequest request,
       CallOptions? options = null)
@@ -257,6 +284,9 @@ namespace CoinbaseSdk.Prime.Orders
         cancellationToken);
     }
 
+    /// <summary>
+    /// List Order Edit History.
+    /// </summary>
     public ListOrderEditHistoryResponse ListOrderEditHistory(
       ListOrderEditHistoryRequest request,
       CallOptions? options = null)
@@ -283,6 +313,9 @@ namespace CoinbaseSdk.Prime.Orders
         cancellationToken);
     }
 
+    /// <summary>
+    /// List Order Fills.
+    /// </summary>
     public ListOrderFillsResponse ListOrderFills(
       ListOrderFillsRequest request,
       CallOptions? options = null)
@@ -309,6 +342,9 @@ namespace CoinbaseSdk.Prime.Orders
         cancellationToken);
     }
 
+    /// <summary>
+    /// Create Quote Request.
+    /// </summary>
     public CreateQuoteResponse CreateQuote(
       CreateQuoteRequest request,
       CallOptions? options = null)
@@ -334,6 +370,5 @@ namespace CoinbaseSdk.Prime.Orders
         options,
         cancellationToken);
     }
-
   }
 }

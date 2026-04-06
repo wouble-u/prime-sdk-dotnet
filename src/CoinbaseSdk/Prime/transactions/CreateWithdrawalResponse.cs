@@ -19,6 +19,9 @@ namespace CoinbaseSdk.Prime.Transactions
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Prime.Model;
 
+    /// <summary>
+    /// Create Withdrawal.
+    /// </summary>
   public class CreateWithdrawalResponse
   {
     [JsonPropertyName("activity_id")]

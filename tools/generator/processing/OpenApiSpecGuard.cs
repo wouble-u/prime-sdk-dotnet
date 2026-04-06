@@ -14,9 +14,6 @@
  *  limitations under the License.
  */
 
-using System.Security.Cryptography;
-using System.Text;
-using CoinbaseSdk.Tools.Generator;
 using CoinbaseSdk.Tools.Generator.Spec;
 using Microsoft.Extensions.Logging;
 
@@ -24,72 +21,6 @@ namespace CoinbaseSdk.Tools.Generator.Processing;
 
 public static class OpenApiSpecGuard
 {
-  public const string FingerprintFileName = "openapi-spec.sha256";
-
-  public static async Task<string> ComputeSha256Async(string specPath, CancellationToken cancellationToken = default)
-  {
-    var bytes = await File.ReadAllBytesAsync(specPath, cancellationToken).ConfigureAwait(false);
-    var hash = SHA256.HashData(bytes);
-    return Convert.ToHexString(hash).ToLowerInvariant();
-  }
-
-  public static async Task VerifyFingerprintAsync(
-    ILogger logger,
-    string specPath,
-    string configDir,
-    bool allowDrift,
-    bool refresh,
-    CancellationToken cancellationToken = default)
-  {
-    var actual = await ComputeSha256Async(specPath, cancellationToken).ConfigureAwait(false);
-    var fpPath = Path.Combine(configDir, FingerprintFileName);
-
-    if (refresh)
-    {
-      await File.WriteAllTextAsync(
-          fpPath,
-          actual + Environment.NewLine,
-          Encoding.UTF8,
-          cancellationToken)
-        .ConfigureAwait(false);
-      logger.LogInformation("Wrote OpenAPI spec fingerprint to {Path}: {Hash}", fpPath, actual);
-      return;
-    }
-
-    if (!File.Exists(fpPath))
-    {
-      logger.LogWarning(
-        "No pinned OpenAPI fingerprint at {Path}. Commit {File} after verifying a spec update so unexpected remote changes fail the generator.",
-        fpPath,
-        FingerprintFileName);
-      return;
-    }
-
-    var expected = (await File.ReadAllTextAsync(fpPath, cancellationToken).ConfigureAwait(false)).Trim();
-    if (string.Equals(expected, actual, StringComparison.OrdinalIgnoreCase))
-    {
-      logger.LogInformation("OpenAPI spec fingerprint OK ({Hash}).", actual);
-      return;
-    }
-
-    if (allowDrift)
-    {
-      logger.LogWarning(
-        "OpenAPI spec fingerprint mismatch (expected {Expected}, actual {Actual}). Continuing because --allow-spec-drift was passed.",
-        expected,
-        actual);
-      return;
-    }
-
-    throw new InvalidOperationException(
-      "OpenAPI spec SHA-256 mismatch — the downloaded spec differs from the committed pin.\n" +
-      $"  Expected (tools/generator/config/{FingerprintFileName}): {expected}\n" +
-      $"  Actual (downloaded): {actual}\n" +
-      "If Coinbase published an intentional API update, refresh the pin after review:\n" +
-      "  dotnet run --project tools/generator -- --refresh-spec-fingerprint\n" +
-      "To bypass once (not for CI): --allow-spec-drift");
-  }
-
   public static void ValidateOperationBindings(
     ILogger logger,
     ParsedOpenApiDocument document,

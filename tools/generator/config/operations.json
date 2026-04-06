@@ -86,10 +86,26 @@
   { "operationId": "PrimeRESTAPI_CreateOnchainAddressGroup", "sdkMethod": "CreateOnchainAddressBookEntry", "service": "onchainaddressbook" },
   { "operationId": "PrimeRESTAPI_DeleteOnchainAddressGroup", "sdkMethod": "DeleteOnchainAddressGroup", "service": "onchainaddressbook" },
   { "operationId": "PrimeRESTAPI_ListOnchainAddressGroups", "sdkMethod": "ListOnchainAddressGroups", "service": "onchainaddressbook" },
-  { "operationId": "PrimeRESTAPI_GetOpenOrders", "sdkMethod": "ListOpenOrders", "service": "orders" },
+  {
+    "operationId": "PrimeRESTAPI_GetOpenOrders",
+    "sdkMethod": "ListOpenOrders",
+    "service": "orders",
+    "paramTypeOverrides": {
+      "order_type": "OrderType?",
+      "order_side": "OrderSide?"
+    }
+  },
   { "operationId": "PrimeRESTAPI_CreateOrder", "sdkMethod": "CreateOrder", "service": "orders" },
   { "operationId": "PrimeRESTAPI_OrderPreview", "sdkMethod": "GetOrderPreview", "service": "orders" },
-  { "operationId": "PrimeRESTAPI_GetOrders", "sdkMethod": "ListPortfolioOrders", "service": "orders" },
+  {
+    "operationId": "PrimeRESTAPI_GetOrders",
+    "sdkMethod": "ListPortfolioOrders",
+    "service": "orders",
+    "paramTypeOverrides": {
+      "order_type": "OrderType?",
+      "order_side": "OrderSide?"
+    }
+  },
   { "operationId": "PrimeRESTAPI_GetOrder", "sdkMethod": "GetOrder", "service": "orders" },
   { "operationId": "PrimeRESTAPI_CancelOrder", "sdkMethod": "CancelOrder", "service": "orders" },
   { "operationId": "PrimeRESTAPI_EditOrder", "sdkMethod": "EditOrder", "service": "orders" },

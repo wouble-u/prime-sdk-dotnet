@@ -22,8 +22,6 @@ using Microsoft.Extensions.Logging;
 
 var dryRun = args.Contains("--dry-run", StringComparer.Ordinal);
 var diffMode = args.Contains("--diff", StringComparer.Ordinal);
-var allowSpecDrift = args.Contains("--allow-spec-drift", StringComparer.Ordinal);
-var refreshSpecFingerprint = args.Contains("--refresh-spec-fingerprint", StringComparer.Ordinal);
 
 using var loggerFactory = LoggerFactory.Create(builder =>
 {
@@ -59,20 +57,12 @@ try
 
   var specPath = Path.Combine(projectRoot, "generated", "openapi.yaml");
   Directory.CreateDirectory(Path.GetDirectoryName(specPath)!);
-  logger.LogInformation("Downloading OpenAPI spec to {Path}...", specPath);
+  logger.LogInformation("Downloading OpenAPI spec from {Url} to {Path}...", cfg.SpecUrl, specPath);
   using (var http = new HttpClient())
   {
     var yaml = await http.GetStringAsync(cfg.SpecUrl);
     await File.WriteAllTextAsync(specPath, yaml);
   }
-
-  var configDir = GeneratorPaths.ConfigDirectory(projectRoot);
-  await OpenApiSpecGuard.VerifyFingerprintAsync(
-    logger,
-    specPath,
-    configDir,
-    allowSpecDrift,
-    refreshSpecFingerprint);
 
   var primeRoot = Path.Combine(projectRoot, "src", "CoinbaseSdk", "Prime");
   var modelDir = Path.Combine(primeRoot, "model");

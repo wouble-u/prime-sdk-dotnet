@@ -20,6 +20,9 @@ namespace CoinbaseSdk.Prime.PaymentMethods
 
   public interface IPaymentMethodsService
   {
+    /// <summary>
+    /// List Entity Payment Methods.
+    /// </summary>
     public ListEntityPaymentMethodsResponse ListEntityPaymentMethods(
       ListEntityPaymentMethodsRequest request,
       CallOptions? options = null);
@@ -29,6 +32,9 @@ namespace CoinbaseSdk.Prime.PaymentMethods
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
+    /// <summary>
+    /// Get Entity Payment Method.
+    /// </summary>
     public GetEntityPaymentMethodResponse GetEntityPaymentMethod(
       GetEntityPaymentMethodRequest request,
       CallOptions? options = null);
@@ -37,6 +43,5 @@ namespace CoinbaseSdk.Prime.PaymentMethods
       GetEntityPaymentMethodRequest request,
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
-
   }
 }

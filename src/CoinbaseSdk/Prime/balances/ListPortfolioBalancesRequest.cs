@@ -21,6 +21,9 @@ namespace CoinbaseSdk.Prime.Balances
   using CoinbaseSdk.Prime.Common;
   using CoinbaseSdk.Prime.Model.Enums;
 
+    /// <summary>
+    /// List Portfolio Balances.
+    /// </summary>
   public class ListPortfolioBalancesRequest(string portfolioId) : PaginatedRequest
   {
     [JsonIgnore]
@@ -90,7 +93,7 @@ namespace CoinbaseSdk.Prime.Balances
         Validate();
         return new ListPortfolioBalancesRequest(_portfolioId!)
         {
-          Symbols = _symbols,
+          Symbols = _symbols ?? [],
           BalanceType = _balanceType,
           Cursor = _cursor,
           SortDirection = _sortDirection,

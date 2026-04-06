@@ -20,6 +20,9 @@ namespace CoinbaseSdk.Prime.Users
 
   public interface IUsersService
   {
+    /// <summary>
+    /// List Users.
+    /// </summary>
     public ListUsersResponse ListUsers(
       ListUsersRequest request,
       CallOptions? options = null);
@@ -29,6 +32,9 @@ namespace CoinbaseSdk.Prime.Users
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
+    /// <summary>
+    /// List Portfolio Users.
+    /// </summary>
     public ListPortfolioUsersResponse ListPortfolioUsers(
       ListPortfolioUsersRequest request,
       CallOptions? options = null);
@@ -37,6 +43,5 @@ namespace CoinbaseSdk.Prime.Users
       ListPortfolioUsersRequest request,
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
-
   }
 }

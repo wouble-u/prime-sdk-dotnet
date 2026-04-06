@@ -20,6 +20,9 @@ namespace CoinbaseSdk.Prime.Orders
   using CoinbaseSdk.Core.Error;
   using CoinbaseSdk.Prime.Model.Enums;
 
+    /// <summary>
+    /// Accept Quote.
+    /// </summary>
   public class AcceptQuoteRequest(string portfolioId)
   {
     [JsonIgnore]

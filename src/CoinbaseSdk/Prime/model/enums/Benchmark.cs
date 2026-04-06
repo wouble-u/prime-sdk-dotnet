@@ -26,7 +26,7 @@ namespace CoinbaseSdk.Prime.Model.Enums
 {
   using System.Text.Json.Serialization;
 
-  [JsonConverter(typeof(JsonStringEnumConverter<Benchmark>) )]
+  [JsonConverter(typeof(JsonStringEnumConverter<Benchmark>))]
   public enum Benchmark
   {
     BENCHMARK_UNSET,

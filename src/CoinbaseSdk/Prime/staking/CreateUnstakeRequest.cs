@@ -20,6 +20,9 @@ namespace CoinbaseSdk.Prime.Staking
   using CoinbaseSdk.Core.Error;
   using CoinbaseSdk.Prime.Model;
 
+    /// <summary>
+    /// Request to unstake a wallet.
+    /// </summary>
   public class CreateUnstakeRequest(string portfolioId, string walletId)
   {
     [JsonIgnore]

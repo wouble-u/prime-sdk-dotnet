@@ -19,6 +19,9 @@ namespace CoinbaseSdk.Prime.Staking
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
 
+    /// <summary>
+    /// Preview Unstake.
+    /// </summary>
   public class PreviewUnstakeRequest(string portfolioId, string walletId)
   {
     [JsonIgnore]

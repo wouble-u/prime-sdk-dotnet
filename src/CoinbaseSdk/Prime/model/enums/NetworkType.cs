@@ -26,7 +26,7 @@ namespace CoinbaseSdk.Prime.Model.Enums
 {
   using System.Text.Json.Serialization;
 
-  [JsonConverter(typeof(JsonStringEnumConverter<NetworkType>) )]
+  [JsonConverter(typeof(JsonStringEnumConverter<NetworkType>))]
   public enum NetworkType
   {
     NETWORK_TYPE_UNSPECIFIED,

@@ -19,6 +19,9 @@ namespace CoinbaseSdk.Prime.Financing
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
 
+    /// <summary>
+    /// List Financing Eligible Assets.
+    /// </summary>
   public class ListFinancingEligibleAssetsRequest()
   {
 

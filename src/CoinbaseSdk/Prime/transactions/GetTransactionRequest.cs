@@ -19,6 +19,9 @@ namespace CoinbaseSdk.Prime.Transactions
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
 
+    /// <summary>
+    /// Get Transaction by Transaction ID.
+    /// </summary>
   public class GetTransactionRequest(string portfolioId, string transactionId)
   {
     [JsonIgnore]

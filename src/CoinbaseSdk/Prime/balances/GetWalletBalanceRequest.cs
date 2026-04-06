@@ -19,6 +19,9 @@ namespace CoinbaseSdk.Prime.Balances
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
 
+    /// <summary>
+    /// Get Wallet Balance.
+    /// </summary>
   public class GetWalletBalanceRequest(string portfolioId, string walletId)
   {
     [JsonIgnore]

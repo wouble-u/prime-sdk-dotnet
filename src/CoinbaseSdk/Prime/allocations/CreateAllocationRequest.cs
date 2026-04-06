@@ -21,6 +21,9 @@ namespace CoinbaseSdk.Prime.Allocations
   using CoinbaseSdk.Prime.Model;
   using CoinbaseSdk.Prime.Model.Enums;
 
+    /// <summary>
+    /// Create Portfolio Allocations.
+    /// </summary>
   public class CreateAllocationRequest()
   {
     [JsonPropertyName("allocation_id")]
@@ -33,13 +36,13 @@ namespace CoinbaseSdk.Prime.Allocations
     public string? ProductId { get; set; }
 
     [JsonPropertyName("order_ids")]
-    public string?[] OrderIds { get; set; } = [];
+    public string[] OrderIds { get; set; } = [];
 
     [JsonPropertyName("allocation_legs")]
     public AllocationLeg[] AllocationLegs { get; set; } = [];
 
     [JsonPropertyName("size_type")]
-    public AllocationSizeType SizeType { get; set; }
+    public AllocationSizeType? SizeType { get; set; }
 
     [JsonPropertyName("remainder_destination_portfolio")]
     public string? RemainderDestinationPortfolio { get; set; }
@@ -49,9 +52,9 @@ namespace CoinbaseSdk.Prime.Allocations
       private string? _allocationId;
       private string? _sourcePortfolioId;
       private string? _productId;
-      private string?[] _orderIds;
+      private string[] _orderIds;
       private AllocationLeg[] _allocationLegs;
-      private AllocationSizeType _sizeType;
+      private AllocationSizeType? _sizeType;
       private string? _remainderDestinationPortfolio;
 
       public CreateAllocationRequestBuilder WithAllocationId(string? allocationId)
@@ -72,7 +75,7 @@ namespace CoinbaseSdk.Prime.Allocations
         return this;
       }
 
-      public CreateAllocationRequestBuilder WithOrderIds(string?[] orderIds)
+      public CreateAllocationRequestBuilder WithOrderIds(string[] orderIds)
       {
         _orderIds = orderIds;
         return this;
@@ -84,7 +87,7 @@ namespace CoinbaseSdk.Prime.Allocations
         return this;
       }
 
-      public CreateAllocationRequestBuilder WithSizeType(AllocationSizeType sizeType)
+      public CreateAllocationRequestBuilder WithSizeType(AllocationSizeType? sizeType)
       {
         _sizeType = sizeType;
         return this;
@@ -108,8 +111,8 @@ namespace CoinbaseSdk.Prime.Allocations
           AllocationId = _allocationId,
           SourcePortfolioId = _sourcePortfolioId,
           ProductId = _productId,
-          OrderIds = _orderIds,
-          AllocationLegs = _allocationLegs,
+          OrderIds = _orderIds ?? [],
+          AllocationLegs = _allocationLegs ?? [],
           SizeType = _sizeType,
           RemainderDestinationPortfolio = _remainderDestinationPortfolio,
         };

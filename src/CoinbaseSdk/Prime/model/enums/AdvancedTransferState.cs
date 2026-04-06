@@ -26,7 +26,7 @@ namespace CoinbaseSdk.Prime.Model.Enums
 {
   using System.Text.Json.Serialization;
 
-  [JsonConverter(typeof(JsonStringEnumConverter<AdvancedTransferState>) )]
+  [JsonConverter(typeof(JsonStringEnumConverter<AdvancedTransferState>))]
   public enum AdvancedTransferState
   {
     ADVANCED_TRANSFER_STATE_CREATED,

@@ -19,6 +19,9 @@ namespace CoinbaseSdk.Prime.Wallets
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Prime.Model;
 
+    /// <summary>
+    /// Create Wallet Deposit Address.
+    /// </summary>
   public class CreateWalletDepositAddressResponse
   {
     [JsonPropertyName("address")]

@@ -20,6 +20,9 @@ namespace CoinbaseSdk.Prime.Transactions
 
   public interface ITransactionsService
   {
+    /// <summary>
+    /// List Portfolio Transactions.
+    /// </summary>
     public ListPortfolioTransactionsResponse ListPortfolioTransactions(
       ListPortfolioTransactionsRequest request,
       CallOptions? options = null);
@@ -29,6 +32,9 @@ namespace CoinbaseSdk.Prime.Transactions
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
+    /// <summary>
+    /// Get Transaction by Transaction ID.
+    /// </summary>
     public GetTransactionResponse GetTransaction(
       GetTransactionRequest request,
       CallOptions? options = null);
@@ -38,6 +44,9 @@ namespace CoinbaseSdk.Prime.Transactions
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
+    /// <summary>
+    /// Create Conversion.
+    /// </summary>
     public CreateConversionResponse CreateConversion(
       CreateConversionRequest request,
       CallOptions? options = null);
@@ -47,6 +56,9 @@ namespace CoinbaseSdk.Prime.Transactions
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
+    /// <summary>
+    /// Create Onchain Transaction.
+    /// </summary>
     public CreateOnchainTransactionResponse CreateOnchainTransaction(
       CreateOnchainTransactionRequest request,
       CallOptions? options = null);
@@ -56,6 +68,9 @@ namespace CoinbaseSdk.Prime.Transactions
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
+    /// <summary>
+    /// List Wallet Transactions.
+    /// </summary>
     public ListWalletTransactionsResponse ListWalletTransactions(
       ListWalletTransactionsRequest request,
       CallOptions? options = null);
@@ -65,6 +80,9 @@ namespace CoinbaseSdk.Prime.Transactions
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
+    /// <summary>
+    /// Create Transfer.
+    /// </summary>
     public CreateTransferResponse CreateTransfer(
       CreateTransferRequest request,
       CallOptions? options = null);
@@ -74,6 +92,9 @@ namespace CoinbaseSdk.Prime.Transactions
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
+    /// <summary>
+    /// Create Withdrawal.
+    /// </summary>
     public CreateWithdrawalResponse CreateWithdrawal(
       CreateWithdrawalRequest request,
       CallOptions? options = null);
@@ -83,6 +104,9 @@ namespace CoinbaseSdk.Prime.Transactions
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
+    /// <summary>
+    /// Get Transaction Travel Rule Data.
+    /// </summary>
     public GetTransactionTravelRuleDataResponse GetTransactionTravelRuleData(
       GetTransactionTravelRuleDataRequest request,
       CallOptions? options = null);
@@ -92,6 +116,9 @@ namespace CoinbaseSdk.Prime.Transactions
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
+    /// <summary>
+    /// Submit Deposit Travel Rule Data.
+    /// </summary>
     public SubmitDepositTravelRuleDataResponse SubmitDepositTravelRuleData(
       SubmitDepositTravelRuleDataRequest request,
       CallOptions? options = null);
@@ -100,6 +127,5 @@ namespace CoinbaseSdk.Prime.Transactions
       SubmitDepositTravelRuleDataRequest request,
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
-
   }
 }

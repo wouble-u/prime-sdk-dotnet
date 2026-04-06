@@ -21,6 +21,9 @@ namespace CoinbaseSdk.Prime.Balances
   using CoinbaseSdk.Prime.Common;
   using CoinbaseSdk.Prime.Model.Enums;
 
+    /// <summary>
+    /// List Entity Balances.
+    /// </summary>
   public class ListEntityBalancesRequest(string entityId) : PaginatedRequest
   {
     [JsonIgnore]

@@ -19,6 +19,9 @@ namespace CoinbaseSdk.Prime.Orders
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Prime.Model.Enums;
 
+    /// <summary>
+    /// Get Order Preview.
+    /// </summary>
   public class GetOrderPreviewResponse
   {
     [JsonPropertyName("portfolio_id")]
@@ -28,10 +31,10 @@ namespace CoinbaseSdk.Prime.Orders
     public string? ProductId { get; set; }
 
     [JsonPropertyName("side")]
-    public OrderSide Side { get; set; }
+    public OrderSide? Side { get; set; }
 
     [JsonPropertyName("type")]
-    public OrderType Type { get; set; }
+    public OrderType? Type { get; set; }
 
     [JsonPropertyName("base_quantity")]
     public string? BaseQuantity { get; set; }
@@ -49,7 +52,7 @@ namespace CoinbaseSdk.Prime.Orders
     public string? ExpiryTime { get; set; }
 
     [JsonPropertyName("time_in_force")]
-    public TimeInForceType TimeInForce { get; set; }
+    public TimeInForceType? TimeInForce { get; set; }
 
     [JsonPropertyName("commission")]
     public string? Commission { get; set; }

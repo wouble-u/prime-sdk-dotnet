@@ -26,7 +26,7 @@ namespace CoinbaseSdk.Prime.Model.Enums
 {
   using System.Text.Json.Serialization;
 
-  [JsonConverter(typeof(JsonStringEnumConverter<LoanType>) )]
+  [JsonConverter(typeof(JsonStringEnumConverter<LoanType>))]
   public enum LoanType
   {
     LOAN_TYPE_UNSET,

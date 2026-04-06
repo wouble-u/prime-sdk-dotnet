@@ -19,6 +19,9 @@ namespace CoinbaseSdk.Prime.Financing
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
 
+    /// <summary>
+    /// Get Cross Margin Overview.
+    /// </summary>
   public class GetCrossMarginOverviewRequest(string entityId)
   {
     [JsonIgnore]

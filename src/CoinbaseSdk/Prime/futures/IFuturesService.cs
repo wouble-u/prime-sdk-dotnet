@@ -20,6 +20,9 @@ namespace CoinbaseSdk.Prime.Futures
 
   public interface IFuturesService
   {
+    /// <summary>
+    /// Set Auto Sweep.
+    /// </summary>
     public SetAutoSweepResponse SetAutoSweep(
       SetAutoSweepRequest request,
       CallOptions? options = null);
@@ -29,6 +32,9 @@ namespace CoinbaseSdk.Prime.Futures
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
+    /// <summary>
+    /// Get Entity FCM Balance.
+    /// </summary>
     public GetFcmBalanceResponse GetFcmBalance(
       GetFcmBalanceRequest request,
       CallOptions? options = null);
@@ -38,6 +44,9 @@ namespace CoinbaseSdk.Prime.Futures
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
+    /// <summary>
+    /// Get FCM Margin Call Details.
+    /// </summary>
     public GetFcmMarginCallDetailsResponse GetFcmMarginCallDetails(
       GetFcmMarginCallDetailsRequest request,
       CallOptions? options = null);
@@ -47,6 +56,9 @@ namespace CoinbaseSdk.Prime.Futures
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
+    /// <summary>
+    /// Get Entity Positions.
+    /// </summary>
     public GetPositionsResponse GetPositions(
       GetPositionsRequest request,
       CallOptions? options = null);
@@ -56,6 +68,9 @@ namespace CoinbaseSdk.Prime.Futures
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
+    /// <summary>
+    /// Get FCM Risk Limits.
+    /// </summary>
     public GetFcmRiskLimitsResponse GetFcmRiskLimits(
       GetFcmRiskLimitsRequest request,
       CallOptions? options = null);
@@ -65,6 +80,9 @@ namespace CoinbaseSdk.Prime.Futures
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
+    /// <summary>
+    /// Get FCM Settings.
+    /// </summary>
     public GetFcmSettingsResponse GetFcmSettings(
       GetFcmSettingsRequest request,
       CallOptions? options = null);
@@ -74,6 +92,9 @@ namespace CoinbaseSdk.Prime.Futures
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
+    /// <summary>
+    /// Set FCM Settings.
+    /// </summary>
     public SetFcmSettingsResponse SetFcmSettings(
       SetFcmSettingsRequest request,
       CallOptions? options = null);
@@ -83,6 +104,9 @@ namespace CoinbaseSdk.Prime.Futures
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
+    /// <summary>
+    /// List Entity Futures Sweeps.
+    /// </summary>
     public ListEntityFuturesSweepsResponse ListEntityFuturesSweeps(
       ListEntityFuturesSweepsRequest request,
       CallOptions? options = null);
@@ -92,6 +116,9 @@ namespace CoinbaseSdk.Prime.Futures
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
+    /// <summary>
+    /// Schedule Entity Futures Sweep.
+    /// </summary>
     public ScheduleEntityFuturesSweepResponse ScheduleEntityFuturesSweep(
       ScheduleEntityFuturesSweepRequest request,
       CallOptions? options = null);
@@ -101,6 +128,9 @@ namespace CoinbaseSdk.Prime.Futures
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
+    /// <summary>
+    /// Cancel Entity Futures Sweep.
+    /// </summary>
     public CancelEntityFuturesSweepResponse CancelEntityFuturesSweep(
       CancelEntityFuturesSweepRequest request,
       CallOptions? options = null);
@@ -110,6 +140,9 @@ namespace CoinbaseSdk.Prime.Futures
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
+    /// <summary>
+    /// Get FCM Equity.
+    /// </summary>
     public GetFcmEquityResponse GetFcmEquity(
       GetFcmEquityRequest request,
       CallOptions? options = null);
@@ -118,6 +151,5 @@ namespace CoinbaseSdk.Prime.Futures
       GetFcmEquityRequest request,
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
-
   }
 }

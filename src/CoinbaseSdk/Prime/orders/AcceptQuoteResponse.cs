@@ -18,6 +18,9 @@ namespace CoinbaseSdk.Prime.Orders
 {
   using System.Text.Json.Serialization;
 
+    /// <summary>
+    /// Accept Quote.
+    /// </summary>
   public class AcceptQuoteResponse
   {
     [JsonPropertyName("order_id")]

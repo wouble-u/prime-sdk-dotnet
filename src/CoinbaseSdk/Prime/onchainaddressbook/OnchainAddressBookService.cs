@@ -23,6 +23,9 @@ namespace CoinbaseSdk.Prime.OnchainAddressBook
 
   public class OnchainAddressBookService(ICoinbaseClient client) : CoinbaseService(client), IOnchainAddressBookService
   {
+    /// <summary>
+    /// Update Onchain Address Book Entry.
+    /// </summary>
     public UpdateOnchainAddressBookEntryResponse UpdateOnchainAddressBookEntry(
       UpdateOnchainAddressBookEntryRequest request,
       CallOptions? options = null)
@@ -49,6 +52,9 @@ namespace CoinbaseSdk.Prime.OnchainAddressBook
         cancellationToken);
     }
 
+    /// <summary>
+    /// Create Onchain Address Book Entry.
+    /// </summary>
     public CreateOnchainAddressBookEntryResponse CreateOnchainAddressBookEntry(
       CreateOnchainAddressBookEntryRequest request,
       CallOptions? options = null)
@@ -56,7 +62,7 @@ namespace CoinbaseSdk.Prime.OnchainAddressBook
       return Request<CreateOnchainAddressBookEntryResponse>(
         HttpMethod.Post,
         $"/portfolios/{request.PortfolioId}/onchain_address_group",
-        [HttpStatusCode.OK],
+        [HttpStatusCode.Created, HttpStatusCode.OK],
         request,
         options);
     }
@@ -69,12 +75,15 @@ namespace CoinbaseSdk.Prime.OnchainAddressBook
       return RequestAsync<CreateOnchainAddressBookEntryResponse>(
         HttpMethod.Post,
         $"/portfolios/{request.PortfolioId}/onchain_address_group",
-        [HttpStatusCode.OK],
+        [HttpStatusCode.Created, HttpStatusCode.OK],
         request,
         options,
         cancellationToken);
     }
 
+    /// <summary>
+    /// Delete Onchain Address Group.
+    /// </summary>
     public DeleteOnchainAddressGroupResponse DeleteOnchainAddressGroup(
       DeleteOnchainAddressGroupRequest request,
       CallOptions? options = null)
@@ -101,6 +110,9 @@ namespace CoinbaseSdk.Prime.OnchainAddressBook
         cancellationToken);
     }
 
+    /// <summary>
+    /// List Onchain Address Groups.
+    /// </summary>
     public ListOnchainAddressGroupsResponse ListOnchainAddressGroups(
       ListOnchainAddressGroupsRequest request,
       CallOptions? options = null)
@@ -126,6 +138,5 @@ namespace CoinbaseSdk.Prime.OnchainAddressBook
         options,
         cancellationToken);
     }
-
   }
 }

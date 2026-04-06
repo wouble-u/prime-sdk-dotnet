@@ -20,6 +20,9 @@ namespace CoinbaseSdk.Prime.Balances
   using CoinbaseSdk.Prime.Common;
   using CoinbaseSdk.Prime.Model;
 
+    /// <summary>
+    /// List Onchain Wallet Balances.
+    /// </summary>
   public class ListOnchainWalletBalancesResponse
   {
     [JsonPropertyName("balances")]

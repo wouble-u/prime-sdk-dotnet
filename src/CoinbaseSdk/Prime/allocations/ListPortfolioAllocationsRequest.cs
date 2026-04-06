@@ -21,13 +21,16 @@ namespace CoinbaseSdk.Prime.Allocations
   using CoinbaseSdk.Prime.Common;
   using CoinbaseSdk.Prime.Model.Enums;
 
+    /// <summary>
+    /// List Portfolio Allocations.
+    /// </summary>
   public class ListPortfolioAllocationsRequest(string portfolioId) : PaginatedRequest
   {
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
 
     [JsonPropertyName("product_ids")]
-    public string?[] ProductIds { get; set; } = [];
+    public string[] ProductIds { get; set; } = [];
 
     [JsonPropertyName("order_side")]
     public OrderSide? OrderSide { get; set; }
@@ -41,7 +44,7 @@ namespace CoinbaseSdk.Prime.Allocations
     public class ListPortfolioAllocationsRequestBuilder
     {
       private string? _portfolioId;
-      private string?[]? _productIds;
+      private string[]? _productIds;
       private OrderSide? _orderSide;
       private string? _startDate;
       private string? _endDate;
@@ -55,7 +58,7 @@ namespace CoinbaseSdk.Prime.Allocations
         return this;
       }
 
-      public ListPortfolioAllocationsRequestBuilder WithProductIds(string?[] productIds)
+      public ListPortfolioAllocationsRequestBuilder WithProductIds(string[] productIds)
       {
         _productIds = productIds;
         return this;
@@ -110,7 +113,7 @@ namespace CoinbaseSdk.Prime.Allocations
         Validate();
         return new ListPortfolioAllocationsRequest(_portfolioId!)
         {
-          ProductIds = _productIds,
+          ProductIds = _productIds ?? [],
           OrderSide = _orderSide,
           StartDate = _startDate,
           EndDate = _endDate,

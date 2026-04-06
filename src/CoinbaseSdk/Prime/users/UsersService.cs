@@ -23,6 +23,9 @@ namespace CoinbaseSdk.Prime.Users
 
   public class UsersService(ICoinbaseClient client) : CoinbaseService(client), IUsersService
   {
+    /// <summary>
+    /// List Users.
+    /// </summary>
     public ListUsersResponse ListUsers(
       ListUsersRequest request,
       CallOptions? options = null)
@@ -49,6 +52,9 @@ namespace CoinbaseSdk.Prime.Users
         cancellationToken);
     }
 
+    /// <summary>
+    /// List Portfolio Users.
+    /// </summary>
     public ListPortfolioUsersResponse ListPortfolioUsers(
       ListPortfolioUsersRequest request,
       CallOptions? options = null)
@@ -74,6 +80,5 @@ namespace CoinbaseSdk.Prime.Users
         options,
         cancellationToken);
     }
-
   }
 }

@@ -20,6 +20,9 @@ namespace CoinbaseSdk.Prime.AddressBook
   using CoinbaseSdk.Prime.Common;
   using CoinbaseSdk.Prime.Model;
 
+    /// <summary>
+    /// Get Address Book.
+    /// </summary>
   public class ListAddressBookEntriesResponse
   {
     [JsonPropertyName("addresses")]

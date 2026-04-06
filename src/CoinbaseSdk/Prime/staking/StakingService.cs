@@ -23,6 +23,9 @@ namespace CoinbaseSdk.Prime.Staking
 
   public class StakingService(ICoinbaseClient client) : CoinbaseService(client), IStakingService
   {
+    /// <summary>
+    /// Request to stake currency in a portfolio.
+    /// </summary>
     public CreatePortfolioStakeResponse CreatePortfolioStake(
       CreatePortfolioStakeRequest request,
       CallOptions? options = null)
@@ -30,7 +33,7 @@ namespace CoinbaseSdk.Prime.Staking
       return Request<CreatePortfolioStakeResponse>(
         HttpMethod.Post,
         $"/portfolios/{request.PortfolioId}/staking/initiate",
-        [HttpStatusCode.OK],
+        [HttpStatusCode.Created, HttpStatusCode.OK],
         request,
         options);
     }
@@ -43,12 +46,15 @@ namespace CoinbaseSdk.Prime.Staking
       return RequestAsync<CreatePortfolioStakeResponse>(
         HttpMethod.Post,
         $"/portfolios/{request.PortfolioId}/staking/initiate",
-        [HttpStatusCode.OK],
+        [HttpStatusCode.Created, HttpStatusCode.OK],
         request,
         options,
         cancellationToken);
     }
 
+    /// <summary>
+    /// List Transaction Validators.
+    /// </summary>
     public ListTransactionValidatorsResponse ListTransactionValidators(
       ListTransactionValidatorsRequest request,
       CallOptions? options = null)
@@ -75,6 +81,9 @@ namespace CoinbaseSdk.Prime.Staking
         cancellationToken);
     }
 
+    /// <summary>
+    /// Request to unstake currency across a portfolio.
+    /// </summary>
     public CreatePortfolioUnstakeResponse CreatePortfolioUnstake(
       CreatePortfolioUnstakeRequest request,
       CallOptions? options = null)
@@ -82,7 +91,7 @@ namespace CoinbaseSdk.Prime.Staking
       return Request<CreatePortfolioUnstakeResponse>(
         HttpMethod.Post,
         $"/portfolios/{request.PortfolioId}/staking/unstake",
-        [HttpStatusCode.OK],
+        [HttpStatusCode.Created, HttpStatusCode.OK],
         request,
         options);
     }
@@ -95,12 +104,15 @@ namespace CoinbaseSdk.Prime.Staking
       return RequestAsync<CreatePortfolioUnstakeResponse>(
         HttpMethod.Post,
         $"/portfolios/{request.PortfolioId}/staking/unstake",
-        [HttpStatusCode.OK],
+        [HttpStatusCode.Created, HttpStatusCode.OK],
         request,
         options,
         cancellationToken);
     }
 
+    /// <summary>
+    /// Claim Wallet Staking Rewards (Alpha).
+    /// </summary>
     public ClaimStakingRewardsResponse ClaimStakingRewards(
       ClaimStakingRewardsRequest request,
       CallOptions? options = null)
@@ -108,7 +120,7 @@ namespace CoinbaseSdk.Prime.Staking
       return Request<ClaimStakingRewardsResponse>(
         HttpMethod.Post,
         $"/portfolios/{request.PortfolioId}/wallets/{request.WalletId}/staking/claim_rewards",
-        [HttpStatusCode.OK],
+        [HttpStatusCode.Created, HttpStatusCode.OK],
         request,
         options);
     }
@@ -121,12 +133,15 @@ namespace CoinbaseSdk.Prime.Staking
       return RequestAsync<ClaimStakingRewardsResponse>(
         HttpMethod.Post,
         $"/portfolios/{request.PortfolioId}/wallets/{request.WalletId}/staking/claim_rewards",
-        [HttpStatusCode.OK],
+        [HttpStatusCode.Created, HttpStatusCode.OK],
         request,
         options,
         cancellationToken);
     }
 
+    /// <summary>
+    /// Request to stake or delegate a wallet.
+    /// </summary>
     public CreateStakeResponse CreateStake(
       CreateStakeRequest request,
       CallOptions? options = null)
@@ -134,7 +149,7 @@ namespace CoinbaseSdk.Prime.Staking
       return Request<CreateStakeResponse>(
         HttpMethod.Post,
         $"/portfolios/{request.PortfolioId}/wallets/{request.WalletId}/staking/initiate",
-        [HttpStatusCode.OK],
+        [HttpStatusCode.Created, HttpStatusCode.OK],
         request,
         options);
     }
@@ -147,12 +162,15 @@ namespace CoinbaseSdk.Prime.Staking
       return RequestAsync<CreateStakeResponse>(
         HttpMethod.Post,
         $"/portfolios/{request.PortfolioId}/wallets/{request.WalletId}/staking/initiate",
-        [HttpStatusCode.OK],
+        [HttpStatusCode.Created, HttpStatusCode.OK],
         request,
         options,
         cancellationToken);
     }
 
+    /// <summary>
+    /// Request to unstake a wallet.
+    /// </summary>
     public CreateUnstakeResponse CreateUnstake(
       CreateUnstakeRequest request,
       CallOptions? options = null)
@@ -160,7 +178,7 @@ namespace CoinbaseSdk.Prime.Staking
       return Request<CreateUnstakeResponse>(
         HttpMethod.Post,
         $"/portfolios/{request.PortfolioId}/wallets/{request.WalletId}/staking/unstake",
-        [HttpStatusCode.OK],
+        [HttpStatusCode.Created, HttpStatusCode.OK],
         request,
         options);
     }
@@ -173,12 +191,15 @@ namespace CoinbaseSdk.Prime.Staking
       return RequestAsync<CreateUnstakeResponse>(
         HttpMethod.Post,
         $"/portfolios/{request.PortfolioId}/wallets/{request.WalletId}/staking/unstake",
-        [HttpStatusCode.OK],
+        [HttpStatusCode.Created, HttpStatusCode.OK],
         request,
         options,
         cancellationToken);
     }
 
+    /// <summary>
+    /// Get Staking Status.
+    /// </summary>
     public GetStakingStatusResponse GetStakingStatus(
       GetStakingStatusRequest request,
       CallOptions? options = null)
@@ -205,6 +226,9 @@ namespace CoinbaseSdk.Prime.Staking
         cancellationToken);
     }
 
+    /// <summary>
+    /// Get Unstaking Status.
+    /// </summary>
     public GetUnstakingStatusResponse GetUnstakingStatus(
       GetUnstakingStatusRequest request,
       CallOptions? options = null)
@@ -231,6 +255,9 @@ namespace CoinbaseSdk.Prime.Staking
         cancellationToken);
     }
 
+    /// <summary>
+    /// Preview Unstake.
+    /// </summary>
     public PreviewUnstakeResponse PreviewUnstake(
       PreviewUnstakeRequest request,
       CallOptions? options = null)
@@ -256,6 +283,5 @@ namespace CoinbaseSdk.Prime.Staking
         options,
         cancellationToken);
     }
-
   }
 }

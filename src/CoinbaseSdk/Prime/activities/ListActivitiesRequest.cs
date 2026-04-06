@@ -21,13 +21,16 @@ namespace CoinbaseSdk.Prime.Activities
   using CoinbaseSdk.Prime.Common;
   using CoinbaseSdk.Prime.Model.Enums;
 
+    /// <summary>
+    /// List Activities.
+    /// </summary>
   public class ListActivitiesRequest(string portfolioId) : PaginatedRequest
   {
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
 
     [JsonPropertyName("symbols")]
-    public string?[] Symbols { get; set; } = [];
+    public string[] Symbols { get; set; } = [];
 
     [JsonPropertyName("categories")]
     public ActivityCategory?[] Categories { get; set; } = [];
@@ -47,7 +50,7 @@ namespace CoinbaseSdk.Prime.Activities
     public class ListActivitiesRequestBuilder
     {
       private string? _portfolioId;
-      private string?[]? _symbols;
+      private string[]? _symbols;
       private ActivityCategory?[]? _categories;
       private ActivityStatus?[]? _statuses;
       private string? _startTime;
@@ -63,7 +66,7 @@ namespace CoinbaseSdk.Prime.Activities
         return this;
       }
 
-      public ListActivitiesRequestBuilder WithSymbols(string?[] symbols)
+      public ListActivitiesRequestBuilder WithSymbols(string[] symbols)
       {
         _symbols = symbols;
         return this;
@@ -130,9 +133,9 @@ namespace CoinbaseSdk.Prime.Activities
         Validate();
         return new ListActivitiesRequest(_portfolioId!)
         {
-          Symbols = _symbols,
-          Categories = _categories,
-          Statuses = _statuses,
+          Symbols = _symbols ?? [],
+          Categories = _categories ?? [],
+          Statuses = _statuses ?? [],
           StartTime = _startTime,
           EndTime = _endTime,
           GetNetworkUnifiedActivities = _getNetworkUnifiedActivities,

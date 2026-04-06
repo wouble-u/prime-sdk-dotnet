@@ -26,7 +26,7 @@ namespace CoinbaseSdk.Prime.Model.Enums
 {
   using System.Text.Json.Serialization;
 
-  [JsonConverter(typeof(JsonStringEnumConverter<NetworkFamily>) )]
+  [JsonConverter(typeof(JsonStringEnumConverter<NetworkFamily>))]
   public enum NetworkFamily
   {
     NETWORK_FAMILY_UNSPECIFIED,

@@ -21,6 +21,9 @@ namespace CoinbaseSdk.Prime.Wallets
   using CoinbaseSdk.Prime.Common;
   using CoinbaseSdk.Prime.Model.Enums;
 
+    /// <summary>
+    /// List Portfolio Wallets.
+    /// </summary>
   public class ListWalletsRequest(string portfolioId) : PaginatedRequest
   {
     [JsonIgnore]
@@ -30,7 +33,7 @@ namespace CoinbaseSdk.Prime.Wallets
     public string? Type { get; set; }
 
     [JsonPropertyName("symbols")]
-    public string?[] Symbols { get; set; } = [];
+    public string[] Symbols { get; set; } = [];
 
     [JsonPropertyName("get_network_unified_wallets")]
     public bool? GetNetworkUnifiedWallets { get; set; }
@@ -39,7 +42,7 @@ namespace CoinbaseSdk.Prime.Wallets
     {
       private string? _portfolioId;
       private string? _type;
-      private string?[]? _symbols;
+      private string[]? _symbols;
       private bool? _getNetworkUnifiedWallets;
       private string? _cursor;
       private SortDirection? _sortDirection;
@@ -57,7 +60,7 @@ namespace CoinbaseSdk.Prime.Wallets
         return this;
       }
 
-      public ListWalletsRequestBuilder WithSymbols(string?[] symbols)
+      public ListWalletsRequestBuilder WithSymbols(string[] symbols)
       {
         _symbols = symbols;
         return this;
@@ -101,7 +104,7 @@ namespace CoinbaseSdk.Prime.Wallets
         return new ListWalletsRequest(_portfolioId!)
         {
           Type = _type,
-          Symbols = _symbols,
+          Symbols = _symbols ?? [],
           GetNetworkUnifiedWallets = _getNetworkUnifiedWallets,
           Cursor = _cursor,
           SortDirection = _sortDirection,

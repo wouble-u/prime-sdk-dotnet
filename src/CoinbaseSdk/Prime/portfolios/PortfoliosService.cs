@@ -23,6 +23,9 @@ namespace CoinbaseSdk.Prime.Portfolios
 
   public class PortfoliosService(ICoinbaseClient client) : CoinbaseService(client), IPortfoliosService
   {
+    /// <summary>
+    /// List Portfolios.
+    /// </summary>
     public ListPortfoliosResponse ListPortfolios(
       CallOptions? options = null)
     {
@@ -47,6 +50,9 @@ namespace CoinbaseSdk.Prime.Portfolios
         cancellationToken);
     }
 
+    /// <summary>
+    /// Get Portfolio by Portfolio ID.
+    /// </summary>
     public GetPortfolioResponse GetPortfolio(
       GetPortfolioRequest request,
       CallOptions? options = null)
@@ -73,6 +79,9 @@ namespace CoinbaseSdk.Prime.Portfolios
         cancellationToken);
     }
 
+    /// <summary>
+    /// Get Portfolio Counterparty ID.
+    /// </summary>
     public GetPortfolioCounterpartyResponse GetPortfolioCounterparty(
       GetPortfolioCounterpartyRequest request,
       CallOptions? options = null)
@@ -98,6 +107,5 @@ namespace CoinbaseSdk.Prime.Portfolios
         options,
         cancellationToken);
     }
-
   }
 }

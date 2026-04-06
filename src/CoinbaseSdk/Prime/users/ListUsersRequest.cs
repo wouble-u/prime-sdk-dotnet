@@ -21,6 +21,9 @@ namespace CoinbaseSdk.Prime.Users
   using CoinbaseSdk.Prime.Common;
   using CoinbaseSdk.Prime.Model.Enums;
 
+    /// <summary>
+    /// List Users.
+    /// </summary>
   public class ListUsersRequest(string entityId) : PaginatedRequest
   {
     [JsonIgnore]

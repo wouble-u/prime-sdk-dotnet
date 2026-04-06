@@ -19,6 +19,9 @@ namespace CoinbaseSdk.Prime.Allocations
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
 
+    /// <summary>
+    /// Get Net Allocations by Netting ID.
+    /// </summary>
   public class ListAllocationsByClientNettingIdRequest(string portfolioId, string nettingId)
   {
     [JsonIgnore]

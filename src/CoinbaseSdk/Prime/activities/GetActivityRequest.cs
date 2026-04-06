@@ -19,6 +19,9 @@ namespace CoinbaseSdk.Prime.Activities
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
 
+    /// <summary>
+    /// Get Activity by Activity ID.
+    /// </summary>
   public class GetActivityRequest(string activityId)
   {
     [JsonIgnore]

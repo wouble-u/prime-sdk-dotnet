@@ -26,7 +26,7 @@ namespace CoinbaseSdk.Prime.Model.Enums
 {
   using System.Text.Json.Serialization;
 
-  [JsonConverter(typeof(JsonStringEnumConverter<UserRole>) )]
+  [JsonConverter(typeof(JsonStringEnumConverter<UserRole>))]
   public enum UserRole
   {
     AUDITOR,

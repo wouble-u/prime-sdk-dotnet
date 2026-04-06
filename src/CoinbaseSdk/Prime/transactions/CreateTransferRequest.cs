@@ -19,6 +19,9 @@ namespace CoinbaseSdk.Prime.Transactions
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
 
+    /// <summary>
+    /// Create Transfer.
+    /// </summary>
   public class CreateTransferRequest(string portfolioId, string walletId)
   {
     [JsonIgnore]

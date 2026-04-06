@@ -20,6 +20,9 @@ namespace CoinbaseSdk.Prime.Orders
 
   public interface IOrdersService
   {
+    /// <summary>
+    /// Accept Quote.
+    /// </summary>
     public AcceptQuoteResponse AcceptQuote(
       AcceptQuoteRequest request,
       CallOptions? options = null);
@@ -29,6 +32,9 @@ namespace CoinbaseSdk.Prime.Orders
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
+    /// <summary>
+    /// List Portfolio Fills.
+    /// </summary>
     public ListPortfolioFillsResponse ListPortfolioFills(
       ListPortfolioFillsRequest request,
       CallOptions? options = null);
@@ -38,6 +44,9 @@ namespace CoinbaseSdk.Prime.Orders
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
+    /// <summary>
+    /// List Open Orders.
+    /// </summary>
     public ListOpenOrdersResponse ListOpenOrders(
       ListOpenOrdersRequest request,
       CallOptions? options = null);
@@ -47,6 +56,9 @@ namespace CoinbaseSdk.Prime.Orders
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
+    /// <summary>
+    /// Create Order.
+    /// </summary>
     public CreateOrderResponse CreateOrder(
       CreateOrderRequest request,
       CallOptions? options = null);
@@ -56,6 +68,9 @@ namespace CoinbaseSdk.Prime.Orders
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
+    /// <summary>
+    /// Get Order Preview.
+    /// </summary>
     public GetOrderPreviewResponse GetOrderPreview(
       GetOrderPreviewRequest request,
       CallOptions? options = null);
@@ -65,6 +80,9 @@ namespace CoinbaseSdk.Prime.Orders
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
+    /// <summary>
+    /// List Portfolio Orders.
+    /// </summary>
     public ListPortfolioOrdersResponse ListPortfolioOrders(
       ListPortfolioOrdersRequest request,
       CallOptions? options = null);
@@ -74,6 +92,9 @@ namespace CoinbaseSdk.Prime.Orders
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
+    /// <summary>
+    /// Get Order by Order ID.
+    /// </summary>
     public GetOrderResponse GetOrder(
       GetOrderRequest request,
       CallOptions? options = null);
@@ -83,6 +104,9 @@ namespace CoinbaseSdk.Prime.Orders
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
+    /// <summary>
+    /// Cancel Order.
+    /// </summary>
     public CancelOrderResponse CancelOrder(
       CancelOrderRequest request,
       CallOptions? options = null);
@@ -92,6 +116,9 @@ namespace CoinbaseSdk.Prime.Orders
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
+    /// <summary>
+    /// Edit Order (Beta).
+    /// </summary>
     public EditOrderResponse EditOrder(
       EditOrderRequest request,
       CallOptions? options = null);
@@ -101,6 +128,9 @@ namespace CoinbaseSdk.Prime.Orders
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
+    /// <summary>
+    /// List Order Edit History.
+    /// </summary>
     public ListOrderEditHistoryResponse ListOrderEditHistory(
       ListOrderEditHistoryRequest request,
       CallOptions? options = null);
@@ -110,6 +140,9 @@ namespace CoinbaseSdk.Prime.Orders
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
+    /// <summary>
+    /// List Order Fills.
+    /// </summary>
     public ListOrderFillsResponse ListOrderFills(
       ListOrderFillsRequest request,
       CallOptions? options = null);
@@ -119,6 +152,9 @@ namespace CoinbaseSdk.Prime.Orders
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
+    /// <summary>
+    /// Create Quote Request.
+    /// </summary>
     public CreateQuoteResponse CreateQuote(
       CreateQuoteRequest request,
       CallOptions? options = null);
@@ -127,6 +163,5 @@ namespace CoinbaseSdk.Prime.Orders
       CreateQuoteRequest request,
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
-
   }
 }

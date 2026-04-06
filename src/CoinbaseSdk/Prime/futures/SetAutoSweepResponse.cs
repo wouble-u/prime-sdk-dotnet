@@ -18,6 +18,9 @@ namespace CoinbaseSdk.Prime.Futures
 {
   using System.Text.Json.Serialization;
 
+    /// <summary>
+    /// Set Auto Sweep.
+    /// </summary>
   public class SetAutoSweepResponse
   {
     [JsonPropertyName("success")]

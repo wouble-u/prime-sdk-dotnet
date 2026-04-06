@@ -19,6 +19,9 @@ namespace CoinbaseSdk.Prime.Orders
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Prime.Model;
 
+    /// <summary>
+    /// List Order Edit History.
+    /// </summary>
   public class ListOrderEditHistoryResponse
   {
     [JsonPropertyName("order_id")]

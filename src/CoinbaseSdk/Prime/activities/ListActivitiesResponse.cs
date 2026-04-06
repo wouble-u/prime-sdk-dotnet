@@ -20,6 +20,9 @@ namespace CoinbaseSdk.Prime.Activities
   using CoinbaseSdk.Prime.Common;
   using CoinbaseSdk.Prime.Model;
 
+    /// <summary>
+    /// List Activities.
+    /// </summary>
   public class ListActivitiesResponse
   {
     [JsonPropertyName("activities")]

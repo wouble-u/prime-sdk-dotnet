@@ -26,7 +26,7 @@ namespace CoinbaseSdk.Prime.Model.Enums
 {
   using System.Text.Json.Serialization;
 
-  [JsonConverter(typeof(JsonStringEnumConverter<FcmPositionSide>) )]
+  [JsonConverter(typeof(JsonStringEnumConverter<FcmPositionSide>))]
   public enum FcmPositionSide
   {
     FCM_POSITION_SIDE_UNSPECIFIED,

@@ -23,6 +23,9 @@ namespace CoinbaseSdk.Prime.Invoice
 
   public class InvoiceService(ICoinbaseClient client) : CoinbaseService(client), IInvoiceService
   {
+    /// <summary>
+    /// List Invoices.
+    /// </summary>
     public ListInvoicesResponse ListInvoices(
       ListInvoicesRequest request,
       CallOptions? options = null)
@@ -48,6 +51,5 @@ namespace CoinbaseSdk.Prime.Invoice
         options,
         cancellationToken);
     }
-
   }
 }

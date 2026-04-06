@@ -18,6 +18,9 @@ namespace CoinbaseSdk.Prime.Transactions
 {
   using System.Text.Json.Serialization;
 
+    /// <summary>
+    /// Create Transfer.
+    /// </summary>
   public class CreateTransferResponse
   {
     [JsonPropertyName("activity_id")]

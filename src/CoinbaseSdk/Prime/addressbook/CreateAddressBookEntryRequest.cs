@@ -19,6 +19,9 @@ namespace CoinbaseSdk.Prime.AddressBook
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
 
+    /// <summary>
+    /// Create Address Book Entry.
+    /// </summary>
   public class CreateAddressBookEntryRequest(string portfolioId)
   {
     [JsonIgnore]
@@ -37,7 +40,7 @@ namespace CoinbaseSdk.Prime.AddressBook
     public string? AccountIdentifier { get; set; }
 
     [JsonPropertyName("chain_ids")]
-    public string?[] ChainIds { get; set; } = [];
+    public string[] ChainIds { get; set; } = [];
 
     public class CreateAddressBookEntryRequestBuilder
     {
@@ -46,7 +49,7 @@ namespace CoinbaseSdk.Prime.AddressBook
       private string? _currencySymbol;
       private string? _name;
       private string? _accountIdentifier;
-      private string?[] _chainIds;
+      private string[] _chainIds;
 
       public CreateAddressBookEntryRequestBuilder WithPortfolioId(string portfolioId)
       {
@@ -78,7 +81,7 @@ namespace CoinbaseSdk.Prime.AddressBook
         return this;
       }
 
-      public CreateAddressBookEntryRequestBuilder WithChainIds(string?[] chainIds)
+      public CreateAddressBookEntryRequestBuilder WithChainIds(string[] chainIds)
       {
         _chainIds = chainIds;
         return this;
@@ -101,7 +104,7 @@ namespace CoinbaseSdk.Prime.AddressBook
           CurrencySymbol = _currencySymbol,
           Name = _name,
           AccountIdentifier = _accountIdentifier,
-          ChainIds = _chainIds,
+          ChainIds = _chainIds ?? [],
         };
       }
     }

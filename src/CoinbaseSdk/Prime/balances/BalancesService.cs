@@ -23,6 +23,9 @@ namespace CoinbaseSdk.Prime.Balances
 
   public class BalancesService(ICoinbaseClient client) : CoinbaseService(client), IBalancesService
   {
+    /// <summary>
+    /// List Entity Balances.
+    /// </summary>
     public ListEntityBalancesResponse ListEntityBalances(
       ListEntityBalancesRequest request,
       CallOptions? options = null)
@@ -49,6 +52,9 @@ namespace CoinbaseSdk.Prime.Balances
         cancellationToken);
     }
 
+    /// <summary>
+    /// List Portfolio Balances.
+    /// </summary>
     public ListPortfolioBalancesResponse ListPortfolioBalances(
       ListPortfolioBalancesRequest request,
       CallOptions? options = null)
@@ -75,6 +81,9 @@ namespace CoinbaseSdk.Prime.Balances
         cancellationToken);
     }
 
+    /// <summary>
+    /// Get Wallet Balance.
+    /// </summary>
     public GetWalletBalanceResponse GetWalletBalance(
       GetWalletBalanceRequest request,
       CallOptions? options = null)
@@ -101,6 +110,9 @@ namespace CoinbaseSdk.Prime.Balances
         cancellationToken);
     }
 
+    /// <summary>
+    /// List Onchain Wallet Balances.
+    /// </summary>
     public ListOnchainWalletBalancesResponse ListOnchainWalletBalances(
       ListOnchainWalletBalancesRequest request,
       CallOptions? options = null)
@@ -126,6 +138,5 @@ namespace CoinbaseSdk.Prime.Balances
         options,
         cancellationToken);
     }
-
   }
 }

@@ -26,7 +26,7 @@ namespace CoinbaseSdk.Prime.Model.Enums
 {
   using System.Text.Json.Serialization;
 
-  [JsonConverter(typeof(JsonStringEnumConverter<PaymentMethodType>) )]
+  [JsonConverter(typeof(JsonStringEnumConverter<PaymentMethodType>))]
   public enum PaymentMethodType
   {
     METHOD_WIRE,

@@ -20,6 +20,9 @@ namespace CoinbaseSdk.Prime.Orders
   using CoinbaseSdk.Core.Error;
   using CoinbaseSdk.Prime.Model.Enums;
 
+    /// <summary>
+    /// Create Order.
+    /// </summary>
   public class CreateOrderRequest(string portfolioId)
   {
     [JsonIgnore]
@@ -53,7 +56,7 @@ namespace CoinbaseSdk.Prime.Orders
     public string? ExpiryTime { get; set; }
 
     [JsonPropertyName("time_in_force")]
-    public TimeInForceType TimeInForce { get; set; }
+    public TimeInForceType? TimeInForce { get; set; }
 
     [JsonPropertyName("stp_id")]
     public string? StpId { get; set; }
@@ -80,7 +83,7 @@ namespace CoinbaseSdk.Prime.Orders
     public bool? PostOnly { get; set; }
 
     [JsonPropertyName("peg_offset_type")]
-    public PegOffsetType PegOffsetType { get; set; }
+    public PegOffsetType? PegOffsetType { get; set; }
 
     [JsonPropertyName("offset")]
     public string? Offset { get; set; }
@@ -100,7 +103,7 @@ namespace CoinbaseSdk.Prime.Orders
       private string? _limitPrice;
       private string? _startTime;
       private string? _expiryTime;
-      private TimeInForceType _timeInForce;
+      private TimeInForceType? _timeInForce;
       private string? _stpId;
       private string? _displayQuoteSize;
       private string? _displayBaseSize;
@@ -109,7 +112,7 @@ namespace CoinbaseSdk.Prime.Orders
       private string? _stopPrice;
       private string? _settlCurrency;
       private bool? _postOnly;
-      private PegOffsetType _pegOffsetType;
+      private PegOffsetType? _pegOffsetType;
       private string? _offset;
       private string? _wigLevel;
 
@@ -173,7 +176,7 @@ namespace CoinbaseSdk.Prime.Orders
         return this;
       }
 
-      public CreateOrderRequestBuilder WithTimeInForce(TimeInForceType timeInForce)
+      public CreateOrderRequestBuilder WithTimeInForce(TimeInForceType? timeInForce)
       {
         _timeInForce = timeInForce;
         return this;
@@ -227,7 +230,7 @@ namespace CoinbaseSdk.Prime.Orders
         return this;
       }
 
-      public CreateOrderRequestBuilder WithPegOffsetType(PegOffsetType pegOffsetType)
+      public CreateOrderRequestBuilder WithPegOffsetType(PegOffsetType? pegOffsetType)
       {
         _pegOffsetType = pegOffsetType;
         return this;

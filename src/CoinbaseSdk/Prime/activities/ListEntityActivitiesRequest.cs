@@ -21,6 +21,9 @@ namespace CoinbaseSdk.Prime.Activities
   using CoinbaseSdk.Prime.Common;
   using CoinbaseSdk.Prime.Model.Enums;
 
+    /// <summary>
+    /// List Entity Activities.
+    /// </summary>
   public class ListEntityActivitiesRequest(string entityId) : PaginatedRequest
   {
     [JsonIgnore]
@@ -30,7 +33,7 @@ namespace CoinbaseSdk.Prime.Activities
     public ActivityLevel? ActivityLevel { get; set; }
 
     [JsonPropertyName("symbols")]
-    public string?[] Symbols { get; set; } = [];
+    public string[] Symbols { get; set; } = [];
 
     [JsonPropertyName("categories")]
     public ActivityCategory?[] Categories { get; set; } = [];
@@ -51,7 +54,7 @@ namespace CoinbaseSdk.Prime.Activities
     {
       private string? _entityId;
       private ActivityLevel? _activityLevel;
-      private string?[]? _symbols;
+      private string[]? _symbols;
       private ActivityCategory?[]? _categories;
       private ActivityStatus?[]? _statuses;
       private string? _startTime;
@@ -73,7 +76,7 @@ namespace CoinbaseSdk.Prime.Activities
         return this;
       }
 
-      public ListEntityActivitiesRequestBuilder WithSymbols(string?[] symbols)
+      public ListEntityActivitiesRequestBuilder WithSymbols(string[] symbols)
       {
         _symbols = symbols;
         return this;
@@ -141,9 +144,9 @@ namespace CoinbaseSdk.Prime.Activities
         return new ListEntityActivitiesRequest(_entityId!)
         {
           ActivityLevel = _activityLevel,
-          Symbols = _symbols,
-          Categories = _categories,
-          Statuses = _statuses,
+          Symbols = _symbols ?? [],
+          Categories = _categories ?? [],
+          Statuses = _statuses ?? [],
           StartTime = _startTime,
           EndTime = _endTime,
           GetNetworkUnifiedActivities = _getNetworkUnifiedActivities,

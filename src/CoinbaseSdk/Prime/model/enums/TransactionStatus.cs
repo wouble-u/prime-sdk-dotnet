@@ -26,7 +26,7 @@ namespace CoinbaseSdk.Prime.Model.Enums
 {
   using System.Text.Json.Serialization;
 
-  [JsonConverter(typeof(JsonStringEnumConverter<TransactionStatus>) )]
+  [JsonConverter(typeof(JsonStringEnumConverter<TransactionStatus>))]
   public enum TransactionStatus
   {
     TRANSACTION_CREATED,

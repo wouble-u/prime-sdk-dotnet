@@ -20,6 +20,9 @@ namespace CoinbaseSdk.Prime.Wallets
 
   public interface IWalletsService
   {
+    /// <summary>
+    /// List Portfolio Wallets.
+    /// </summary>
     public ListWalletsResponse ListWallets(
       ListWalletsRequest request,
       CallOptions? options = null);
@@ -29,6 +32,9 @@ namespace CoinbaseSdk.Prime.Wallets
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
+    /// <summary>
+    /// Create Wallet.
+    /// </summary>
     public CreateWalletResponse CreateWallet(
       CreateWalletRequest request,
       CallOptions? options = null);
@@ -38,6 +44,9 @@ namespace CoinbaseSdk.Prime.Wallets
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
+    /// <summary>
+    /// Get Wallet by Wallet ID.
+    /// </summary>
     public GetWalletResponse GetWallet(
       GetWalletRequest request,
       CallOptions? options = null);
@@ -47,6 +56,9 @@ namespace CoinbaseSdk.Prime.Wallets
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
+    /// <summary>
+    /// List Wallet Addresses.
+    /// </summary>
     public ListWalletAddressesResponse ListWalletAddresses(
       ListWalletAddressesRequest request,
       CallOptions? options = null);
@@ -56,6 +68,9 @@ namespace CoinbaseSdk.Prime.Wallets
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
+    /// <summary>
+    /// Create Wallet Deposit Address.
+    /// </summary>
     public CreateWalletDepositAddressResponse CreateWalletDepositAddress(
       CreateWalletDepositAddressRequest request,
       CallOptions? options = null);
@@ -65,6 +80,9 @@ namespace CoinbaseSdk.Prime.Wallets
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
+    /// <summary>
+    /// Get Wallet Deposit Instructions.
+    /// </summary>
     public GetWalletDepositInstructionsResponse GetWalletDepositInstructions(
       GetWalletDepositInstructionsRequest request,
       CallOptions? options = null);
@@ -73,6 +91,5 @@ namespace CoinbaseSdk.Prime.Wallets
       GetWalletDepositInstructionsRequest request,
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
-
   }
 }

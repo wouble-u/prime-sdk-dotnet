@@ -23,6 +23,9 @@ namespace CoinbaseSdk.Prime.Wallets
 
   public class WalletsService(ICoinbaseClient client) : CoinbaseService(client), IWalletsService
   {
+    /// <summary>
+    /// List Portfolio Wallets.
+    /// </summary>
     public ListWalletsResponse ListWallets(
       ListWalletsRequest request,
       CallOptions? options = null)
@@ -49,6 +52,9 @@ namespace CoinbaseSdk.Prime.Wallets
         cancellationToken);
     }
 
+    /// <summary>
+    /// Create Wallet.
+    /// </summary>
     public CreateWalletResponse CreateWallet(
       CreateWalletRequest request,
       CallOptions? options = null)
@@ -75,6 +81,9 @@ namespace CoinbaseSdk.Prime.Wallets
         cancellationToken);
     }
 
+    /// <summary>
+    /// Get Wallet by Wallet ID.
+    /// </summary>
     public GetWalletResponse GetWallet(
       GetWalletRequest request,
       CallOptions? options = null)
@@ -101,6 +110,9 @@ namespace CoinbaseSdk.Prime.Wallets
         cancellationToken);
     }
 
+    /// <summary>
+    /// List Wallet Addresses.
+    /// </summary>
     public ListWalletAddressesResponse ListWalletAddresses(
       ListWalletAddressesRequest request,
       CallOptions? options = null)
@@ -127,6 +139,9 @@ namespace CoinbaseSdk.Prime.Wallets
         cancellationToken);
     }
 
+    /// <summary>
+    /// Create Wallet Deposit Address.
+    /// </summary>
     public CreateWalletDepositAddressResponse CreateWalletDepositAddress(
       CreateWalletDepositAddressRequest request,
       CallOptions? options = null)
@@ -153,6 +168,9 @@ namespace CoinbaseSdk.Prime.Wallets
         cancellationToken);
     }
 
+    /// <summary>
+    /// Get Wallet Deposit Instructions.
+    /// </summary>
     public GetWalletDepositInstructionsResponse GetWalletDepositInstructions(
       GetWalletDepositInstructionsRequest request,
       CallOptions? options = null)
@@ -178,6 +196,5 @@ namespace CoinbaseSdk.Prime.Wallets
         options,
         cancellationToken);
     }
-
   }
 }

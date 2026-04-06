@@ -19,6 +19,9 @@ namespace CoinbaseSdk.Prime.Staking
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Prime.Model;
 
+    /// <summary>
+    /// Get Unstaking Status.
+    /// </summary>
   public class GetUnstakingStatusResponse
   {
     [JsonPropertyName("portfolio_id")]

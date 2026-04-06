@@ -26,7 +26,7 @@ namespace CoinbaseSdk.Prime.Model.Enums
 {
   using System.Text.Json.Serialization;
 
-  [JsonConverter(typeof(JsonStringEnumConverter<ExpiringContractStatus>) )]
+  [JsonConverter(typeof(JsonStringEnumConverter<ExpiringContractStatus>))]
   public enum ExpiringContractStatus
   {
     EXPIRING_CONTRACT_STATUS_UNEXPIRED,

@@ -18,6 +18,9 @@ namespace CoinbaseSdk.Prime.Staking
 {
   using System.Text.Json.Serialization;
 
+    /// <summary>
+    /// Preview Unstake.
+    /// </summary>
   public class PreviewUnstakeResponse
   {
     [JsonPropertyName("estimated_amount")]

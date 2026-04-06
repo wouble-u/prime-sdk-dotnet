@@ -20,13 +20,16 @@ namespace CoinbaseSdk.Prime.Staking
   using CoinbaseSdk.Core.Error;
   using CoinbaseSdk.Prime.Model.Enums;
 
+    /// <summary>
+    /// List Transaction Validators.
+    /// </summary>
   public class ListTransactionValidatorsRequest(string portfolioId)
   {
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
 
     [JsonPropertyName("transaction_ids")]
-    public string?[] TransactionIds { get; set; } = [];
+    public string[] TransactionIds { get; set; } = [];
 
     [JsonPropertyName("cursor")]
     public string? Cursor { get; set; }
@@ -35,15 +38,15 @@ namespace CoinbaseSdk.Prime.Staking
     public int? Limit { get; set; }
 
     [JsonPropertyName("sort_direction")]
-    public SortDirection SortDirection { get; set; }
+    public SortDirection? SortDirection { get; set; }
 
     public class ListTransactionValidatorsRequestBuilder
     {
       private string? _portfolioId;
-      private string?[] _transactionIds;
+      private string[] _transactionIds;
       private string? _cursor;
       private int? _limit;
-      private SortDirection _sortDirection;
+      private SortDirection? _sortDirection;
 
       public ListTransactionValidatorsRequestBuilder WithPortfolioId(string portfolioId)
       {
@@ -51,7 +54,7 @@ namespace CoinbaseSdk.Prime.Staking
         return this;
       }
 
-      public ListTransactionValidatorsRequestBuilder WithTransactionIds(string?[] transactionIds)
+      public ListTransactionValidatorsRequestBuilder WithTransactionIds(string[] transactionIds)
       {
         _transactionIds = transactionIds;
         return this;
@@ -69,7 +72,7 @@ namespace CoinbaseSdk.Prime.Staking
         return this;
       }
 
-      public ListTransactionValidatorsRequestBuilder WithSortDirection(SortDirection sortDirection)
+      public ListTransactionValidatorsRequestBuilder WithSortDirection(SortDirection? sortDirection)
       {
         _sortDirection = sortDirection;
         return this;
@@ -88,7 +91,7 @@ namespace CoinbaseSdk.Prime.Staking
         Validate();
         return new ListTransactionValidatorsRequest(_portfolioId!)
         {
-          TransactionIds = _transactionIds,
+          TransactionIds = _transactionIds ?? [],
           Cursor = _cursor,
           Limit = _limit,
           SortDirection = _sortDirection,

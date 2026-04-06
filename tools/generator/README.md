@@ -75,9 +75,8 @@ dotnet run --project tools/generator -- --dry-run   # Log paths; do not write
 dotnet run --project tools/generator -- --diff      # Compare generated text to files on disk
 ```
 
-Spec pinning (avoids silent drift from the live `specUrl`):
+The generator always downloads the current YAML from `specUrl` in `generator-config.json` (cached under `generated/openapi.yaml`, gitignored).
 
-- **`config/openapi-spec.sha256`** — SHA-256 of the downloaded YAML (UTF-8 bytes). A mismatch fails the run unless you pass **`--allow-spec-drift`** (one-off) or refresh the pin after reviewing API changes: **`--refresh-spec-fingerprint`**.
 - **`operations.json`** — every `operationId` must exist in the spec; missing IDs fail the run. Operations present only in the spec log a warning until you add bindings.
 
 Or use the helper script from this directory:

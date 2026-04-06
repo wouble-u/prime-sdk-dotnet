@@ -20,6 +20,9 @@ namespace CoinbaseSdk.Prime.AdvancedTransfer
   using CoinbaseSdk.Core.Error;
   using CoinbaseSdk.Prime.Model;
 
+    /// <summary>
+    /// Create Advanced Transfer.
+    /// </summary>
   public class CreateAdvancedTransferRequest(string portfolioId)
   {
     [JsonIgnore]

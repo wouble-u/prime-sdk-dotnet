@@ -19,6 +19,9 @@ namespace CoinbaseSdk.Prime.Financing
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
 
+    /// <summary>
+    /// Get Portfolio Withdrawal Power.
+    /// </summary>
   public class GetPortfolioWithdrawalPowerRequest(string portfolioId)
   {
     [JsonIgnore]

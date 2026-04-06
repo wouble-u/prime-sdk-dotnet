@@ -29,7 +29,9 @@ public static class RequestPhase
   {
     return clrType.Contains("ActivityCategory", StringComparison.Ordinal)
            || clrType.Contains("ActivityStatus", StringComparison.Ordinal)
-           || clrType.Contains("ActivityLevel", StringComparison.Ordinal);
+           || clrType.Contains("ActivityLevel", StringComparison.Ordinal)
+           || clrType.Contains("OrderType", StringComparison.Ordinal)
+           || clrType.Contains("OrderSide", StringComparison.Ordinal);
   }
 
   public static string EmitRequest(

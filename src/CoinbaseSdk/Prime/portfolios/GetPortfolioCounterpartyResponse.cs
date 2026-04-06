@@ -19,6 +19,9 @@ namespace CoinbaseSdk.Prime.Portfolios
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Prime.Model;
 
+    /// <summary>
+    /// Get Portfolio Counterparty ID.
+    /// </summary>
   public class GetPortfolioCounterpartyResponse
   {
     [JsonPropertyName("counterparty")]

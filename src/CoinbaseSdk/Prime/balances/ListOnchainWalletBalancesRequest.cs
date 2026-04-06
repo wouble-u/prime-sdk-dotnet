@@ -21,6 +21,9 @@ namespace CoinbaseSdk.Prime.Balances
   using CoinbaseSdk.Prime.Common;
   using CoinbaseSdk.Prime.Model.Enums;
 
+    /// <summary>
+    /// List Onchain Wallet Balances.
+    /// </summary>
   public class ListOnchainWalletBalancesRequest(string portfolioId, string walletId) : PaginatedRequest
   {
     [JsonIgnore]
@@ -30,13 +33,13 @@ namespace CoinbaseSdk.Prime.Balances
     public string WalletId { get; set; } = walletId;
 
     [JsonPropertyName("visibility_statuses")]
-    public string?[] VisibilityStatuses { get; set; } = [];
+    public string[] VisibilityStatuses { get; set; } = [];
 
     public class ListOnchainWalletBalancesRequestBuilder
     {
       private string? _portfolioId;
       private string? _walletId;
-      private string?[]? _visibilityStatuses;
+      private string[]? _visibilityStatuses;
       private string? _cursor;
       private SortDirection? _sortDirection;
       private int? _limit;
@@ -53,7 +56,7 @@ namespace CoinbaseSdk.Prime.Balances
         return this;
       }
 
-      public ListOnchainWalletBalancesRequestBuilder WithVisibilityStatuses(string?[] visibilityStatuses)
+      public ListOnchainWalletBalancesRequestBuilder WithVisibilityStatuses(string[] visibilityStatuses)
       {
         _visibilityStatuses = visibilityStatuses;
         return this;
@@ -94,7 +97,7 @@ namespace CoinbaseSdk.Prime.Balances
         Validate();
         return new ListOnchainWalletBalancesRequest(_portfolioId!, _walletId!)
         {
-          VisibilityStatuses = _visibilityStatuses,
+          VisibilityStatuses = _visibilityStatuses ?? [],
           Cursor = _cursor,
           SortDirection = _sortDirection,
           Limit = _limit,

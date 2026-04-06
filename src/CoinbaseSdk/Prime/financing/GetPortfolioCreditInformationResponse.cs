@@ -19,6 +19,9 @@ namespace CoinbaseSdk.Prime.Financing
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Prime.Model;
 
+    /// <summary>
+    /// Get Portfolio Credit Information.
+    /// </summary>
   public class GetPortfolioCreditInformationResponse
   {
     [JsonPropertyName("post_trade_credit")]

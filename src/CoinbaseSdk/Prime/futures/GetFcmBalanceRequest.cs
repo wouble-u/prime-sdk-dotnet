@@ -19,6 +19,9 @@ namespace CoinbaseSdk.Prime.Futures
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
 
+    /// <summary>
+    /// Get Entity FCM Balance.
+    /// </summary>
   public class GetFcmBalanceRequest(string entityId)
   {
     [JsonIgnore]

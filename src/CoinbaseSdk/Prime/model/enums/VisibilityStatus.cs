@@ -26,7 +26,7 @@ namespace CoinbaseSdk.Prime.Model.Enums
 {
   using System.Text.Json.Serialization;
 
-  [JsonConverter(typeof(JsonStringEnumConverter<VisibilityStatus>) )]
+  [JsonConverter(typeof(JsonStringEnumConverter<VisibilityStatus>))]
   public enum VisibilityStatus
   {
     VISIBLE,

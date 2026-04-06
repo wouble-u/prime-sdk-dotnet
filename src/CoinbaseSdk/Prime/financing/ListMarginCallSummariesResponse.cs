@@ -19,6 +19,9 @@ namespace CoinbaseSdk.Prime.Financing
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Prime.Model;
 
+    /// <summary>
+    /// List Margin Call Summaries.
+    /// </summary>
   public class ListMarginCallSummariesResponse
   {
     [JsonPropertyName("margin_summaries")]

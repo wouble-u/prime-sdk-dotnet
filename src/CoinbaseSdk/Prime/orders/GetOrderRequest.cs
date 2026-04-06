@@ -19,6 +19,9 @@ namespace CoinbaseSdk.Prime.Orders
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
 
+    /// <summary>
+    /// Get Order by Order ID.
+    /// </summary>
   public class GetOrderRequest(string portfolioId, string orderId)
   {
     [JsonIgnore]
