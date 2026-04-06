@@ -56,6 +56,19 @@ public static class SpecParser
           summary = ((YamlScalarNode)opNode.Children[new YamlScalarNode("summary")]).Value;
         }
 
+        var tags = new List<string>();
+        if (opNode.Children.ContainsKey(new YamlScalarNode("tags")))
+        {
+          var tagSeq = (YamlSequenceNode)opNode.Children[new YamlScalarNode("tags")];
+          foreach (var t in tagSeq.Children)
+          {
+            if (t is YamlScalarNode sn && !string.IsNullOrEmpty(sn.Value))
+            {
+              tags.Add(sn.Value);
+            }
+          }
+        }
+
         var parameters = new List<ParsedParameter>();
         if (opNode.Children.ContainsKey(new YamlScalarNode("parameters")))
         {
@@ -141,6 +154,7 @@ public static class SpecParser
           OperationId = operationId,
           HttpMethod = methodKey.ToUpperInvariant(),
           Path = pathKey,
+          Tags = tags,
           Parameters = parameters,
           RequestBodyJsonSchema = bodySchema,
           SuccessResponseSchemaRef = successRef,

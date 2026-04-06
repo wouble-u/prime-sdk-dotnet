@@ -18,9 +18,9 @@ namespace CoinbaseSdk.Prime.Futures
 {
   using System.Text.Json.Serialization;
 
-    /// <summary>
-    /// Get Entity FCM Balance.
-    /// </summary>
+  /// <summary>
+  /// Get Entity FCM Balance.
+  /// </summary>
   public class GetFcmBalanceResponse
   {
     [JsonPropertyName("portfolio_id")]

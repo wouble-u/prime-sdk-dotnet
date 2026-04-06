@@ -20,9 +20,9 @@ namespace CoinbaseSdk.Prime.Staking
   using CoinbaseSdk.Core.Error;
   using CoinbaseSdk.Prime.Model;
 
-    /// <summary>
-    /// Request to stake currency in a portfolio.
-    /// </summary>
+  /// <summary>
+  /// Request to stake currency in a portfolio.
+  /// </summary>
   public class CreatePortfolioStakeRequest(string portfolioId)
   {
     [JsonIgnore]

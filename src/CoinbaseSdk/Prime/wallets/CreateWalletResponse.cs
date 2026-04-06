@@ -19,9 +19,9 @@ namespace CoinbaseSdk.Prime.Wallets
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Prime.Model.Enums;
 
-    /// <summary>
-    /// Create Wallet.
-    /// </summary>
+  /// <summary>
+  /// Create Wallet.
+  /// </summary>
   public class CreateWalletResponse
   {
     [JsonPropertyName("activity_id")]

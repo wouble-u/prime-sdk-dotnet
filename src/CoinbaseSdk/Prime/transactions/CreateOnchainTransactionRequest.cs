@@ -20,9 +20,9 @@ namespace CoinbaseSdk.Prime.Transactions
   using CoinbaseSdk.Core.Error;
   using CoinbaseSdk.Prime.Model;
 
-    /// <summary>
-    /// Create Onchain Transaction.
-    /// </summary>
+  /// <summary>
+  /// Create Onchain Transaction.
+  /// </summary>
   public class CreateOnchainTransactionRequest(string portfolioId, string walletId)
   {
     [JsonIgnore]

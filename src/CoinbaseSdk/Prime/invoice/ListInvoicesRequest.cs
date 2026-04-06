@@ -21,9 +21,9 @@ namespace CoinbaseSdk.Prime.Invoice
   using CoinbaseSdk.Prime.Common;
   using CoinbaseSdk.Prime.Model.Enums;
 
-    /// <summary>
-    /// List Invoices.
-    /// </summary>
+  /// <summary>
+  /// List Invoices.
+  /// </summary>
   public class ListInvoicesRequest(string entityId) : PaginatedRequest
   {
     [JsonIgnore]

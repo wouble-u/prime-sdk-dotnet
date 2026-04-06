@@ -19,9 +19,9 @@ namespace CoinbaseSdk.Prime.OnchainAddressBook
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Prime.Model.Enums;
 
-    /// <summary>
-    /// Delete Onchain Address Group.
-    /// </summary>
+  /// <summary>
+  /// Delete Onchain Address Group.
+  /// </summary>
   public class DeleteOnchainAddressGroupResponse
   {
     [JsonPropertyName("activity_type")]

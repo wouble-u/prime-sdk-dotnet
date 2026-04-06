@@ -20,9 +20,9 @@ namespace CoinbaseSdk.Prime.Positions
   using CoinbaseSdk.Prime.Common;
   using CoinbaseSdk.Prime.Model;
 
-    /// <summary>
-    /// List Entity Positions.
-    /// </summary>
+  /// <summary>
+  /// List Entity Positions.
+  /// </summary>
   public class ListEntityPositionsResponse
   {
     [JsonPropertyName("positions")]

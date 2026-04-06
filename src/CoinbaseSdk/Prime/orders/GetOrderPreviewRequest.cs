@@ -20,9 +20,9 @@ namespace CoinbaseSdk.Prime.Orders
   using CoinbaseSdk.Core.Error;
   using CoinbaseSdk.Prime.Model.Enums;
 
-    /// <summary>
-    /// Get Order Preview.
-    /// </summary>
+  /// <summary>
+  /// Get Order Preview.
+  /// </summary>
   public class GetOrderPreviewRequest(string portfolioId)
   {
     [JsonIgnore]

@@ -18,9 +18,9 @@ namespace CoinbaseSdk.Prime.Staking
 {
   using System.Text.Json.Serialization;
 
-    /// <summary>
-    /// Request to unstake currency across a portfolio.
-    /// </summary>
+  /// <summary>
+  /// Request to unstake currency across a portfolio.
+  /// </summary>
   public class CreatePortfolioUnstakeResponse
   {
     [JsonPropertyName("activity_id")]

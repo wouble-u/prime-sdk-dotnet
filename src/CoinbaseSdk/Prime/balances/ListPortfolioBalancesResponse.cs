@@ -20,9 +20,9 @@ namespace CoinbaseSdk.Prime.Balances
   using CoinbaseSdk.Prime.Model;
   using CoinbaseSdk.Prime.Model.Enums;
 
-    /// <summary>
-    /// List Portfolio Balances.
-    /// </summary>
+  /// <summary>
+  /// List Portfolio Balances.
+  /// </summary>
   public class ListPortfolioBalancesResponse
   {
     [JsonPropertyName("balances")]

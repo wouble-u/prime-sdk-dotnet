@@ -52,7 +52,6 @@ try
   var projectRoot = GeneratorPaths.FindProjectRoot();
   CopyrightHelper.InitializeSdkEmittedCopyrightYear(projectRoot);
   var cfg = GeneratorConfiguration.Load(projectRoot);
-  var operations = GeneratorConfiguration.LoadOperations(projectRoot);
   var transforms = new SharedTransforms(cfg);
 
   var specPath = Path.Combine(projectRoot, "generated", "openapi.yaml");
@@ -87,7 +86,9 @@ try
 
   logger.LogInformation("Parsing OpenAPI YAML for client surface...");
   var document = await SpecParser.LoadAsync(specPath);
-  OpenApiSpecGuard.ValidateOperationBindings(logger, document, operations);
+  var bindingMerge = GeneratorConfiguration.MergeOperationBindings(document, cfg, transforms, projectRoot);
+  OperationBindingValidator.ValidateOperationBindings(logger, document, bindingMerge);
+  var operations = bindingMerge.Merged;
 
   var clientLogger = loggerFactory.CreateLogger<ClientSurfacePhase>();
   var clientPhase = new ClientSurfacePhase(clientLogger, document, cfg, transforms, primeRoot);

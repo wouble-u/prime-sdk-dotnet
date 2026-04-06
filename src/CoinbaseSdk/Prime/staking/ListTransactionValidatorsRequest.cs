@@ -20,9 +20,9 @@ namespace CoinbaseSdk.Prime.Staking
   using CoinbaseSdk.Core.Error;
   using CoinbaseSdk.Prime.Model.Enums;
 
-    /// <summary>
-    /// List Transaction Validators.
-    /// </summary>
+  /// <summary>
+  /// List Transaction Validators.
+  /// </summary>
   public class ListTransactionValidatorsRequest(string portfolioId)
   {
     [JsonIgnore]

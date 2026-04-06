@@ -22,7 +22,7 @@ public static class NamingResolver
   {
     if (!cfg.Services.TryGetValue(serviceKey, out var def))
     {
-      throw new InvalidOperationException($"Unknown service key '{serviceKey}' in operations.json.");
+      throw new InvalidOperationException($"Unknown service key '{serviceKey}' in operation bindings.");
     }
 
     return def;

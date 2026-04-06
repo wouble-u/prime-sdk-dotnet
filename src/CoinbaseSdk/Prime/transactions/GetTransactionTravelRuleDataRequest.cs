@@ -19,9 +19,9 @@ namespace CoinbaseSdk.Prime.Transactions
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
 
-    /// <summary>
-    /// Get Transaction Travel Rule Data.
-    /// </summary>
+  /// <summary>
+  /// Get Transaction Travel Rule Data.
+  /// </summary>
   public class GetTransactionTravelRuleDataRequest(string portfolioId, string transactionId)
   {
     [JsonIgnore]

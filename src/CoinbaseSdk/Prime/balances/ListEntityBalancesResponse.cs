@@ -20,9 +20,9 @@ namespace CoinbaseSdk.Prime.Balances
   using CoinbaseSdk.Prime.Common;
   using CoinbaseSdk.Prime.Model;
 
-    /// <summary>
-    /// List Entity Balances.
-    /// </summary>
+  /// <summary>
+  /// List Entity Balances.
+  /// </summary>
   public class ListEntityBalancesResponse
   {
     [JsonPropertyName("balances")]

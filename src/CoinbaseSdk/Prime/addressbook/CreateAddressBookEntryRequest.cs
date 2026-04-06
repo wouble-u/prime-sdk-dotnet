@@ -19,9 +19,9 @@ namespace CoinbaseSdk.Prime.AddressBook
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
 
-    /// <summary>
-    /// Create Address Book Entry.
-    /// </summary>
+  /// <summary>
+  /// Create Address Book Entry.
+  /// </summary>
   public class CreateAddressBookEntryRequest(string portfolioId)
   {
     [JsonIgnore]

@@ -20,9 +20,9 @@ namespace CoinbaseSdk.Prime.Products
   using CoinbaseSdk.Prime.Common;
   using CoinbaseSdk.Prime.Model;
 
-    /// <summary>
-    /// List Portfolio Products.
-    /// </summary>
+  /// <summary>
+  /// List Portfolio Products.
+  /// </summary>
   public class ListPortfolioProductsResponse
   {
     [JsonPropertyName("products")]

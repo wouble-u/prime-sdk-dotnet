@@ -21,9 +21,9 @@ namespace CoinbaseSdk.Prime.Orders
   using CoinbaseSdk.Prime.Common;
   using CoinbaseSdk.Prime.Model.Enums;
 
-    /// <summary>
-    /// List Portfolio Orders.
-    /// </summary>
+  /// <summary>
+  /// List Portfolio Orders.
+  /// </summary>
   public class ListPortfolioOrdersRequest(string portfolioId) : PaginatedRequest
   {
     [JsonIgnore]

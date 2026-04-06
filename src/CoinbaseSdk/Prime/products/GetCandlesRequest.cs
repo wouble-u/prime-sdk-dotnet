@@ -19,9 +19,9 @@ namespace CoinbaseSdk.Prime.Products
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
 
-    /// <summary>
-    /// Get Public Product Candles (Beta).
-    /// </summary>
+  /// <summary>
+  /// Get Public Product Candles (Beta).
+  /// </summary>
   public class GetCandlesRequest(string portfolioId)
   {
     [JsonIgnore]

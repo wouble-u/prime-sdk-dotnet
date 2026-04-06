@@ -21,9 +21,9 @@ namespace CoinbaseSdk.Prime.Wallets
   using CoinbaseSdk.Prime.Common;
   using CoinbaseSdk.Prime.Model.Enums;
 
-    /// <summary>
-    /// List Portfolio Wallets.
-    /// </summary>
+  /// <summary>
+  /// List Portfolio Wallets.
+  /// </summary>
   public class ListWalletsRequest(string portfolioId) : PaginatedRequest
   {
     [JsonIgnore]

@@ -7,7 +7,7 @@ Holistic code generation for the Coinbase Prime .NET SDK from the [Prime OpenAPI
 Every run produces, together:
 
 1. **Models & enums** (`CoinbaseSdk.Prime.Model` / `Model.Enums`) via OpenAPI Generator CLI + post-processing (same pipeline as the former model-only tool).
-2. **Request / Response DTOs**, **service interfaces**, and **service implementations** under each feature folder (e.g. `orders/`, `wallets/`), driven by `config/operations.json` and `config/generator-config.json`.
+2. **Request / Response DTOs**, **service interfaces**, and **service implementations** under each feature folder (e.g. `orders/`, `wallets/`), driven by auto-derived operation bindings (`OperationBindingGenerator`), `config/operations-overrides.json`, and `config/generator-config.json`.
 
 There is no mode to generate only one category; output is always kept in sync.
 
@@ -17,8 +17,8 @@ There is no mode to generate only one category; output is always kept in sync.
 tools/generator/
   Program.cs                 # Entry: download spec, run all phases
   config/
-    generator-config.json    # Transforms, services registry, status-code overrides
-    operations.json          # operationId → sdkMethod, service, omitRequest
+    generator-config.json    # Transforms, tagToFolder, services registry, status-code overrides
+    operations-overrides.json # Sparse patches per operationId (overrides win)
     .openapi-generator-ignore
     openapitools.json
   phases/
@@ -35,9 +35,12 @@ tools/generator/
     SharedTransforms.cs
     NamingResolver.cs
     OpenApiSchemaCodegen.cs
+    OperationBindingGenerator.cs
+    OperationBindingValidator.cs
   spec/
     SpecParser.cs
     SpecModels.cs
+    SpecResponseSchema.cs
   templates/                 # Model templates for CLI; placeholder .mustache for client surface
   sync-copyright-years-from-git.sh  # Aligns file-header Copyright years with Git first-commit dates
 ```
@@ -77,7 +80,7 @@ dotnet run --project tools/generator -- --diff      # Compare generated text to 
 
 The generator always downloads the current YAML from `specUrl` in `generator-config.json` (cached under `generated/openapi.yaml`, gitignored).
 
-- **`operations.json`** — every `operationId` must exist in the spec; missing IDs fail the run. Operations present only in the spec log a warning until you add bindings.
+Bindings are derived for every spec operation (see `OperationBindingGenerator`). `operations-overrides.json` may patch any field; stale `operationId` rows fail the run. Overrides that exactly match derived defaults log a warning and can be removed.
 
 Or use the helper script from this directory:
 
@@ -88,12 +91,12 @@ cd tools/generator
 
 ## Configuration
 
-- **`config/generator-config.json`** — `filePathReplacements`, `contentReplacements`, `acronymMappings`, `enumNameMappings`, `services` (folder + namespace + interface/class names), `serviceMethodOrders`, `statusCodeOverrides`, `specUrl`.
-- **`config/operations.json`** — Each SDK operation: `operationId`, `sdkMethod`, `service` key, optional `omitRequest` (e.g. `ListPortfolios`).
+- **`config/generator-config.json`** — `filePathReplacements`, `contentReplacements`, `acronymMappings`, `enumNameMappings`, `tagToFolder` (OpenAPI tag → service key), `services` (folder + namespace + interface/class names), `serviceMethodOrders`, `statusCodeOverrides`, `specUrl`.
+- **`config/operations-overrides.json`** — Optional array of sparse patches: `operationId` plus any of `sdkMethod`, `service`, `omitRequest`, `forcePaginated`, `paramTypeOverrides` (merged onto derived values).
 
 ### `serviceMethodOrders`
 
-Maps each `service` key (same as in `operations.json`) to an ordered list of `sdkMethod` names. After binding operations from `operations.json`, the generator sorts each service’s operations to match this list so emitted `I*Service` / `*Service` method order stays stable and aligned with the handwritten SDK. Methods not listed sort after known entries, alphabetically.
+Maps each `service` key (same as binding `service`) to an ordered list of `sdkMethod` names. After binding operations, the generator sorts each service’s operations to match this list so emitted `I*Service` / `*Service` method order stays stable and aligned with the handwritten SDK. Methods not listed sort after known entries, alphabetically.
 
 ### `statusCodeOverrides`
 

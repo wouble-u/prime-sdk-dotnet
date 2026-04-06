@@ -21,9 +21,9 @@ namespace CoinbaseSdk.Prime.Allocations
   using CoinbaseSdk.Prime.Model;
   using CoinbaseSdk.Prime.Model.Enums;
 
-    /// <summary>
-    /// Create Portfolio Allocations.
-    /// </summary>
+  /// <summary>
+  /// Create Portfolio Allocations.
+  /// </summary>
   public class CreateAllocationRequest()
   {
     [JsonPropertyName("allocation_id")]

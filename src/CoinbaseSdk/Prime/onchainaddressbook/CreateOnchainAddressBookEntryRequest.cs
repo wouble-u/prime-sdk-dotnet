@@ -20,9 +20,9 @@ namespace CoinbaseSdk.Prime.OnchainAddressBook
   using CoinbaseSdk.Core.Error;
   using CoinbaseSdk.Prime.Model;
 
-    /// <summary>
-    /// Create Onchain Address Book Entry.
-    /// </summary>
+  /// <summary>
+  /// Create Onchain Address Book Entry.
+  /// </summary>
   public class CreateOnchainAddressBookEntryRequest(string portfolioId)
   {
     [JsonIgnore]

@@ -20,9 +20,9 @@ namespace CoinbaseSdk.Prime.Transactions
   using CoinbaseSdk.Core.Error;
   using CoinbaseSdk.Prime.Model;
 
-    /// <summary>
-    /// Submit Deposit Travel Rule Data.
-    /// </summary>
+  /// <summary>
+  /// Submit Deposit Travel Rule Data.
+  /// </summary>
   public class SubmitDepositTravelRuleDataRequest(string portfolioId, string transactionId)
   {
     [JsonIgnore]

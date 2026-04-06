@@ -19,9 +19,9 @@ namespace CoinbaseSdk.Prime.Financing
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Prime.Model;
 
-    /// <summary>
-    /// List Trade Finance Obligations.
-    /// </summary>
+  /// <summary>
+  /// List Trade Finance Obligations.
+  /// </summary>
   public class ListTradeFinanceObligationsResponse
   {
     [JsonPropertyName("obligations")]

@@ -21,16 +21,16 @@ namespace CoinbaseSdk.Prime.Transactions
   using CoinbaseSdk.Prime.Common;
   using CoinbaseSdk.Prime.Model.Enums;
 
-    /// <summary>
-    /// List Portfolio Transactions.
-    /// </summary>
+  /// <summary>
+  /// List Portfolio Transactions.
+  /// </summary>
   public class ListPortfolioTransactionsRequest(string portfolioId) : PaginatedRequest
   {
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
 
     [JsonPropertyName("symbols")]
-    public string? Symbols { get; set; }
+    public string[] Symbols { get; set; } = [];
 
     [JsonPropertyName("types")]
     public string[] Types { get; set; } = [];
@@ -50,7 +50,7 @@ namespace CoinbaseSdk.Prime.Transactions
     public class ListPortfolioTransactionsRequestBuilder
     {
       private string? _portfolioId;
-      private string? _symbols;
+      private string[]? _symbols;
       private string[]? _types;
       private string? _startTime;
       private string? _endTime;
@@ -66,7 +66,7 @@ namespace CoinbaseSdk.Prime.Transactions
         return this;
       }
 
-      public ListPortfolioTransactionsRequestBuilder WithSymbols(string? symbols)
+      public ListPortfolioTransactionsRequestBuilder WithSymbols(string[] symbols)
       {
         _symbols = symbols;
         return this;
@@ -133,7 +133,7 @@ namespace CoinbaseSdk.Prime.Transactions
         Validate();
         return new ListPortfolioTransactionsRequest(_portfolioId!)
         {
-          Symbols = _symbols,
+          Symbols = _symbols ?? [],
           Types = _types ?? [],
           StartTime = _startTime,
           EndTime = _endTime,

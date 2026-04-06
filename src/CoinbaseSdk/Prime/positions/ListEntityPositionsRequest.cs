@@ -21,9 +21,9 @@ namespace CoinbaseSdk.Prime.Positions
   using CoinbaseSdk.Prime.Common;
   using CoinbaseSdk.Prime.Model.Enums;
 
-    /// <summary>
-    /// List Entity Positions.
-    /// </summary>
+  /// <summary>
+  /// List Entity Positions.
+  /// </summary>
   public class ListEntityPositionsRequest(string entityId) : PaginatedRequest
   {
     [JsonIgnore]

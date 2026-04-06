@@ -20,9 +20,9 @@ namespace CoinbaseSdk.Prime.Users
   using CoinbaseSdk.Prime.Common;
   using CoinbaseSdk.Prime.Model;
 
-    /// <summary>
-    /// List Users.
-    /// </summary>
+  /// <summary>
+  /// List Users.
+  /// </summary>
   public class ListUsersResponse
   {
     [JsonPropertyName("users")]

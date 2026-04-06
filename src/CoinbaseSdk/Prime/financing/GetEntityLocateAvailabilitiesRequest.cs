@@ -19,9 +19,9 @@ namespace CoinbaseSdk.Prime.Financing
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
 
-    /// <summary>
-    /// Get Entity Locate Availabilities.
-    /// </summary>
+  /// <summary>
+  /// Get Entity Locate Availabilities.
+  /// </summary>
   public class GetEntityLocateAvailabilitiesRequest(string entityId)
   {
     [JsonIgnore]

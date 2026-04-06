@@ -19,9 +19,9 @@ namespace CoinbaseSdk.Prime.OnchainAddressBook
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Prime.Model.Enums;
 
-    /// <summary>
-    /// Create Onchain Address Book Entry.
-    /// </summary>
+  /// <summary>
+  /// Create Onchain Address Book Entry.
+  /// </summary>
   public class CreateOnchainAddressBookEntryResponse
   {
     [JsonPropertyName("activity_type")]

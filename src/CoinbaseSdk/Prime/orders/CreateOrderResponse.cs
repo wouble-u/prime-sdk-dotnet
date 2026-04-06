@@ -18,9 +18,9 @@ namespace CoinbaseSdk.Prime.Orders
 {
   using System.Text.Json.Serialization;
 
-    /// <summary>
-    /// Create Order.
-    /// </summary>
+  /// <summary>
+  /// Create Order.
+  /// </summary>
   public class CreateOrderResponse
   {
     [JsonPropertyName("order_id")]

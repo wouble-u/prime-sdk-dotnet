@@ -20,9 +20,9 @@ namespace CoinbaseSdk.Prime.Orders
   using CoinbaseSdk.Prime.Common;
   using CoinbaseSdk.Prime.Model;
 
-    /// <summary>
-    /// List Order Fills.
-    /// </summary>
+  /// <summary>
+  /// List Order Fills.
+  /// </summary>
   public class ListOrderFillsResponse
   {
     [JsonPropertyName("fills")]

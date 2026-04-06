@@ -19,9 +19,9 @@ namespace CoinbaseSdk.Prime.Activities
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
 
-    /// <summary>
-    /// Get Portfolio Activity by Activity ID.
-    /// </summary>
+  /// <summary>
+  /// Get Portfolio Activity by Activity ID.
+  /// </summary>
   public class GetPortfolioActivityRequest(string portfolioId, string activityId)
   {
     [JsonIgnore]

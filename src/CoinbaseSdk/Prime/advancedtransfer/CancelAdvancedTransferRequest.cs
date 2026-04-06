@@ -19,9 +19,9 @@ namespace CoinbaseSdk.Prime.AdvancedTransfer
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
 
-    /// <summary>
-    /// Cancel Advanced Transfer.
-    /// </summary>
+  /// <summary>
+  /// Cancel Advanced Transfer.
+  /// </summary>
   public class CancelAdvancedTransferRequest(string portfolioId, string advancedTransferId)
   {
     [JsonIgnore]

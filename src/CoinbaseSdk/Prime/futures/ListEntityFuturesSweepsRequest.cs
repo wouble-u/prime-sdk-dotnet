@@ -19,9 +19,9 @@ namespace CoinbaseSdk.Prime.Futures
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
 
-    /// <summary>
-    /// List Entity Futures Sweeps.
-    /// </summary>
+  /// <summary>
+  /// List Entity Futures Sweeps.
+  /// </summary>
   public class ListEntityFuturesSweepsRequest(string entityId)
   {
     [JsonIgnore]

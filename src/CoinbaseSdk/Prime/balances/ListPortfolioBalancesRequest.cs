@@ -21,9 +21,9 @@ namespace CoinbaseSdk.Prime.Balances
   using CoinbaseSdk.Prime.Common;
   using CoinbaseSdk.Prime.Model.Enums;
 
-    /// <summary>
-    /// List Portfolio Balances.
-    /// </summary>
+  /// <summary>
+  /// List Portfolio Balances.
+  /// </summary>
   public class ListPortfolioBalancesRequest(string portfolioId) : PaginatedRequest
   {
     [JsonIgnore]

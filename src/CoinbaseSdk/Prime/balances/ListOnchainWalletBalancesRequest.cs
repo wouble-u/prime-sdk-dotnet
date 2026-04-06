@@ -21,9 +21,9 @@ namespace CoinbaseSdk.Prime.Balances
   using CoinbaseSdk.Prime.Common;
   using CoinbaseSdk.Prime.Model.Enums;
 
-    /// <summary>
-    /// List Onchain Wallet Balances.
-    /// </summary>
+  /// <summary>
+  /// List Onchain Wallet Balances.
+  /// </summary>
   public class ListOnchainWalletBalancesRequest(string portfolioId, string walletId) : PaginatedRequest
   {
     [JsonIgnore]

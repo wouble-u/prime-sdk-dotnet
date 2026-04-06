@@ -20,9 +20,9 @@ namespace CoinbaseSdk.Prime.Staking
   using CoinbaseSdk.Core.Error;
   using CoinbaseSdk.Prime.Model;
 
-    /// <summary>
-    /// Claim Wallet Staking Rewards (Alpha).
-    /// </summary>
+  /// <summary>
+  /// Claim Wallet Staking Rewards (Alpha).
+  /// </summary>
   public class ClaimStakingRewardsRequest(string portfolioId, string walletId)
   {
     [JsonIgnore]

@@ -19,9 +19,9 @@ namespace CoinbaseSdk.Prime.Financing
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
 
-    /// <summary>
-    /// Create New Locates.
-    /// </summary>
+  /// <summary>
+  /// Create New Locates.
+  /// </summary>
   public class CreateNewLocatesRequest(string portfolioId)
   {
     [JsonIgnore]

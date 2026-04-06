@@ -29,6 +29,7 @@ public class ParsedOperation
   public string OperationId { get; init; } = "";
   public string HttpMethod { get; init; } = "";
   public string Path { get; init; } = "";
+  public List<string> Tags { get; init; } = new();
   public List<ParsedParameter> Parameters { get; init; } = new();
   public YamlMappingNode? RequestBodyJsonSchema { get; init; }
   public string? SuccessResponseSchemaRef { get; init; }

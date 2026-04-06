@@ -21,9 +21,9 @@ namespace CoinbaseSdk.Prime.Activities
   using CoinbaseSdk.Prime.Common;
   using CoinbaseSdk.Prime.Model.Enums;
 
-    /// <summary>
-    /// List Entity Activities.
-    /// </summary>
+  /// <summary>
+  /// List Entity Activities.
+  /// </summary>
   public class ListEntityActivitiesRequest(string entityId) : PaginatedRequest
   {
     [JsonIgnore]

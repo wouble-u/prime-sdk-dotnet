@@ -21,9 +21,9 @@ namespace CoinbaseSdk.Prime.Transactions
   using CoinbaseSdk.Prime.Common;
   using CoinbaseSdk.Prime.Model.Enums;
 
-    /// <summary>
-    /// List Wallet Transactions.
-    /// </summary>
+  /// <summary>
+  /// List Wallet Transactions.
+  /// </summary>
   public class ListWalletTransactionsRequest(string portfolioId, string walletId) : PaginatedRequest
   {
     [JsonIgnore]

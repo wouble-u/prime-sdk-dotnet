@@ -19,9 +19,9 @@ namespace CoinbaseSdk.Prime.AdvancedTransfer
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Prime.Model;
 
-    /// <summary>
-    /// List transactions associated with an Advanced Transfer.
-    /// </summary>
+  /// <summary>
+  /// List transactions associated with an Advanced Transfer.
+  /// </summary>
   public class ListAdvancedTransferTransactionsResponse
   {
     [JsonPropertyName("transactions")]

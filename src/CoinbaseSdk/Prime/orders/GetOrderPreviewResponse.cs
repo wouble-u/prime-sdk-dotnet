@@ -19,9 +19,9 @@ namespace CoinbaseSdk.Prime.Orders
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Prime.Model.Enums;
 
-    /// <summary>
-    /// Get Order Preview.
-    /// </summary>
+  /// <summary>
+  /// Get Order Preview.
+  /// </summary>
   public class GetOrderPreviewResponse
   {
     [JsonPropertyName("portfolio_id")]

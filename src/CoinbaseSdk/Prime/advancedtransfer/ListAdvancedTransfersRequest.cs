@@ -21,9 +21,9 @@ namespace CoinbaseSdk.Prime.AdvancedTransfer
   using CoinbaseSdk.Prime.Common;
   using CoinbaseSdk.Prime.Model.Enums;
 
-    /// <summary>
-    /// List Advanced Transfers.
-    /// </summary>
+  /// <summary>
+  /// List Advanced Transfers.
+  /// </summary>
   public class ListAdvancedTransfersRequest(string portfolioId) : PaginatedRequest
   {
     [JsonIgnore]

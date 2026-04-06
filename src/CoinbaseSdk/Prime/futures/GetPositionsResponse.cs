@@ -19,9 +19,9 @@ namespace CoinbaseSdk.Prime.Futures
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Prime.Model;
 
-    /// <summary>
-    /// Get Entity Positions.
-    /// </summary>
+  /// <summary>
+  /// Get Entity Positions.
+  /// </summary>
   public class GetPositionsResponse
   {
     [JsonPropertyName("positions")]

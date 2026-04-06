@@ -19,9 +19,9 @@ namespace CoinbaseSdk.Prime.Allocations
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
 
-    /// <summary>
-    /// Get Allocation by ID.
-    /// </summary>
+  /// <summary>
+  /// Get Allocation by ID.
+  /// </summary>
   public class GetAllocationRequest(string portfolioId, string allocationId)
   {
     [JsonIgnore]

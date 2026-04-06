@@ -19,9 +19,9 @@ namespace CoinbaseSdk.Prime.PaymentMethods
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
 
-    /// <summary>
-    /// List Entity Payment Methods.
-    /// </summary>
+  /// <summary>
+  /// List Entity Payment Methods.
+  /// </summary>
   public class ListEntityPaymentMethodsRequest(string entityId)
   {
     [JsonIgnore]

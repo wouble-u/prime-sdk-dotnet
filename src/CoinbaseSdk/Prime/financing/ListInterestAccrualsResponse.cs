@@ -19,9 +19,9 @@ namespace CoinbaseSdk.Prime.Financing
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Prime.Model;
 
-    /// <summary>
-    /// List Interest Accruals.
-    /// </summary>
+  /// <summary>
+  /// List Interest Accruals.
+  /// </summary>
   public class ListInterestAccrualsResponse
   {
     [JsonPropertyName("total_notional_accrual")]

@@ -21,16 +21,16 @@ namespace CoinbaseSdk.Prime.Balances
   using CoinbaseSdk.Prime.Common;
   using CoinbaseSdk.Prime.Model.Enums;
 
-    /// <summary>
-    /// List Entity Balances.
-    /// </summary>
+  /// <summary>
+  /// List Entity Balances.
+  /// </summary>
   public class ListEntityBalancesRequest(string entityId) : PaginatedRequest
   {
     [JsonIgnore]
     public string EntityId { get; set; } = entityId;
 
     [JsonPropertyName("symbols")]
-    public string? Symbols { get; set; }
+    public string[] Symbols { get; set; } = [];
 
     [JsonPropertyName("aggregation_type")]
     public string? AggregationType { get; set; }
@@ -38,7 +38,7 @@ namespace CoinbaseSdk.Prime.Balances
     public class ListEntityBalancesRequestBuilder
     {
       private string? _entityId;
-      private string? _symbols;
+      private string[]? _symbols;
       private string? _aggregationType;
       private string? _cursor;
       private SortDirection? _sortDirection;
@@ -50,7 +50,7 @@ namespace CoinbaseSdk.Prime.Balances
         return this;
       }
 
-      public ListEntityBalancesRequestBuilder WithSymbols(string? symbols)
+      public ListEntityBalancesRequestBuilder WithSymbols(string[] symbols)
       {
         _symbols = symbols;
         return this;
@@ -93,7 +93,7 @@ namespace CoinbaseSdk.Prime.Balances
         Validate();
         return new ListEntityBalancesRequest(_entityId!)
         {
-          Symbols = _symbols,
+          Symbols = _symbols ?? [],
           AggregationType = _aggregationType,
           Cursor = _cursor,
           SortDirection = _sortDirection,

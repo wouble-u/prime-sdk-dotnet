@@ -21,9 +21,9 @@ namespace CoinbaseSdk.Prime.Wallets
   using CoinbaseSdk.Prime.Model;
   using CoinbaseSdk.Prime.Model.Enums;
 
-    /// <summary>
-    /// Create Wallet.
-    /// </summary>
+  /// <summary>
+  /// Create Wallet.
+  /// </summary>
   public class CreateWalletRequest(string portfolioId)
   {
     [JsonIgnore]

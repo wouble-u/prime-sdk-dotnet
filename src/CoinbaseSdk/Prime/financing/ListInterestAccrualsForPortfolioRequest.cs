@@ -19,9 +19,9 @@ namespace CoinbaseSdk.Prime.Financing
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
 
-    /// <summary>
-    /// List Interest Accruals For Portfolio.
-    /// </summary>
+  /// <summary>
+  /// List Interest Accruals For Portfolio.
+  /// </summary>
   public class ListInterestAccrualsForPortfolioRequest(string portfolioId)
   {
     [JsonIgnore]

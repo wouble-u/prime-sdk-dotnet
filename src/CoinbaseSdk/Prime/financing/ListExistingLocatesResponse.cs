@@ -19,9 +19,9 @@ namespace CoinbaseSdk.Prime.Financing
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Prime.Model;
 
-    /// <summary>
-    /// List Existing Locates.
-    /// </summary>
+  /// <summary>
+  /// List Existing Locates.
+  /// </summary>
   public class ListExistingLocatesResponse
   {
     [JsonPropertyName("locates")]

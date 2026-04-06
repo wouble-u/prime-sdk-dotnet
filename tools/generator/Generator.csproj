@@ -19,7 +19,7 @@
     <None Update="config\generator-config.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="config\operations.json">
+    <None Update="config\operations-overrides.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="config\.openapi-generator-ignore">

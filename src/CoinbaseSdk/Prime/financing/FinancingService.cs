@@ -230,7 +230,6 @@ namespace CoinbaseSdk.Prime.Financing
     /// List Financing Eligible Assets.
     /// </summary>
     public ListFinancingEligibleAssetsResponse ListFinancingEligibleAssets(
-      ListFinancingEligibleAssetsRequest request,
       CallOptions? options = null)
     {
       return Request<ListFinancingEligibleAssetsResponse>(
@@ -242,7 +241,6 @@ namespace CoinbaseSdk.Prime.Financing
     }
 
     public Task<ListFinancingEligibleAssetsResponse> ListFinancingEligibleAssetsAsync(
-      ListFinancingEligibleAssetsRequest request,
       CallOptions? options = null,
       CancellationToken cancellationToken = default)
     {

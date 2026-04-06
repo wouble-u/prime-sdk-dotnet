@@ -1,0 +1,45 @@
+[
+  {
+    "operationId": "PrimeRESTAPI_GetEntityActivities",
+    "paramTypeOverrides": {
+      "categories": "ActivityCategory?[]",
+      "statuses": "ActivityStatus?[]",
+      "activity_level": "ActivityLevel?"
+    }
+  },
+  {
+    "operationId": "PrimeRESTAPI_GetPortfolioActivities",
+    "paramTypeOverrides": {
+      "categories": "ActivityCategory?[]",
+      "statuses": "ActivityStatus?[]"
+    }
+  },
+  {
+    "operationId": "PrimeRESTAPI_GetPortfolioAllocations",
+    "paramTypeOverrides": {
+      "order_side": "OrderSide?"
+    }
+  },
+  {
+    "operationId": "PrimeRESTAPI_GetPortfolioBalances",
+    "forcePaginated": true,
+    "paramTypeOverrides": {
+      "balance_type": "PortfolioBalanceType?",
+      "symbols": "string[]"
+    }
+  },
+  {
+    "operationId": "PrimeRESTAPI_GetOpenOrders",
+    "paramTypeOverrides": {
+      "order_type": "OrderType?",
+      "order_side": "OrderSide?"
+    }
+  },
+  {
+    "operationId": "PrimeRESTAPI_GetOrders",
+    "paramTypeOverrides": {
+      "order_type": "OrderType?",
+      "order_side": "OrderSide?"
+    }
+  }
+]

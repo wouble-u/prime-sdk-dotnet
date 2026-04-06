@@ -19,9 +19,9 @@ namespace CoinbaseSdk.Prime.Financing
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Prime.Model;
 
-    /// <summary>
-    /// List Financing Eligible Assets.
-    /// </summary>
+  /// <summary>
+  /// List Financing Eligible Assets.
+  /// </summary>
   public class ListFinancingEligibleAssetsResponse
   {
     [JsonPropertyName("assets")]

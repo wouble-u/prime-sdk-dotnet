@@ -20,9 +20,9 @@ namespace CoinbaseSdk.Prime.Staking
   using CoinbaseSdk.Core.Error;
   using CoinbaseSdk.Prime.Model;
 
-    /// <summary>
-    /// Request to stake or delegate a wallet.
-    /// </summary>
+  /// <summary>
+  /// Request to stake or delegate a wallet.
+  /// </summary>
   public class CreateStakeRequest(string portfolioId, string walletId)
   {
     [JsonIgnore]

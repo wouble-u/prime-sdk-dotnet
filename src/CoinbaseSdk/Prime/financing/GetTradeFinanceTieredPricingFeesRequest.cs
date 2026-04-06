@@ -19,9 +19,9 @@ namespace CoinbaseSdk.Prime.Financing
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
 
-    /// <summary>
-    /// Get Trade Finance Tiered Pricing Fees.
-    /// </summary>
+  /// <summary>
+  /// Get Trade Finance Tiered Pricing Fees.
+  /// </summary>
   public class GetTradeFinanceTieredPricingFeesRequest(string entityId)
   {
     [JsonIgnore]

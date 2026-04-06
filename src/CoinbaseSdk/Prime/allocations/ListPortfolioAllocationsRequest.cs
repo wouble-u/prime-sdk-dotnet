@@ -21,9 +21,9 @@ namespace CoinbaseSdk.Prime.Allocations
   using CoinbaseSdk.Prime.Common;
   using CoinbaseSdk.Prime.Model.Enums;
 
-    /// <summary>
-    /// List Portfolio Allocations.
-    /// </summary>
+  /// <summary>
+  /// List Portfolio Allocations.
+  /// </summary>
   public class ListPortfolioAllocationsRequest(string portfolioId) : PaginatedRequest
   {
     [JsonIgnore]

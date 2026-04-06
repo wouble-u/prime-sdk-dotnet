@@ -20,9 +20,9 @@ namespace CoinbaseSdk.Prime.Staking
   using CoinbaseSdk.Prime.Common;
   using CoinbaseSdk.Prime.Model;
 
-    /// <summary>
-    /// List Transaction Validators.
-    /// </summary>
+  /// <summary>
+  /// List Transaction Validators.
+  /// </summary>
   public class ListTransactionValidatorsResponse
   {
     [JsonPropertyName("transaction_validators")]

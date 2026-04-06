@@ -19,9 +19,9 @@ namespace CoinbaseSdk.Prime.Portfolios
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
 
-    /// <summary>
-    /// Get Portfolio Counterparty ID.
-    /// </summary>
+  /// <summary>
+  /// Get Portfolio Counterparty ID.
+  /// </summary>
   public class GetPortfolioCounterpartyRequest(string portfolioId)
   {
     [JsonIgnore]
