@@ -7,7 +7,7 @@ Holistic code generation for the Coinbase Prime .NET SDK from the [Prime OpenAPI
 Every run produces, together:
 
 1. **Models & enums** (`CoinbaseSdk.Prime.Model` / `Model.Enums`) via OpenAPI Generator CLI + post-processing (same pipeline as the former model-only tool).
-2. **Request / Response DTOs**, **service interfaces**, and **service implementations** under each feature folder (e.g. `orders/`, `wallets/`), driven by auto-derived operation bindings (`OperationBindingGenerator`), `config/operations-overrides.json`, and `config/generator-config.json`.
+2. **Request / Response DTOs**, **service interfaces**, and **service implementations** under each feature folder (e.g. `orders/`, `wallets/`), driven by `SpecAnalyzer` (tag routing, services, optional schema-prefix discovery), `OperationBindingGenerator`, `config/operations-overrides.json`, and `config/generator-config.json`.
 
 There is no mode to generate only one category; output is always kept in sync.
 
@@ -17,7 +17,7 @@ There is no mode to generate only one category; output is always kept in sync.
 tools/generator/
   Program.cs                 # Entry: download spec, run all phases
   config/
-    generator-config.json    # Transforms, tagToFolder, services registry, status-code overrides
+    generator-config.json    # Transforms, tag overrides, method-order overrides, specUrl
     operations-overrides.json # Sparse patches per operationId (overrides win)
     .openapi-generator-ignore
     openapitools.json
@@ -37,6 +37,7 @@ tools/generator/
     OpenApiSchemaCodegen.cs
     OperationBindingGenerator.cs
     OperationBindingValidator.cs
+    SpecAnalyzer.cs           # Derives tag→folder, services, schema prefixes from spec
   spec/
     SpecParser.cs
     SpecModels.cs
@@ -91,16 +92,20 @@ cd tools/generator
 
 ## Configuration
 
-- **`config/generator-config.json`** — `filePathReplacements`, `contentReplacements`, `acronymMappings`, `enumNameMappings`, `tagToFolder` (OpenAPI tag → service key), `services` (folder + namespace + interface/class names), `serviceMethodOrders`, `statusCodeOverrides`, `specUrl`.
+- **`config/generator-config.json`** — `specUrl`, `filePathReplacements` (semantic renames; common schema prefixes are also merged from the spec), `contentReplacements`, `acronymMappings`, `enumNameMappings`, `tagToFolderOverrides` (only when the default tag→folder rule is wrong, e.g. routing a tag to an existing folder), `serviceMethodOrderOverrides` (optional per-service method order), `statusCodeOverrides` (optional permissive create-status lists).
 - **`config/operations-overrides.json`** — Optional array of sparse patches: `operationId` plus any of `sdkMethod`, `service`, `omitRequest`, `forcePaginated`, `paramTypeOverrides` (merged onto derived values).
 
-### `serviceMethodOrders`
+Default **tag → folder** is lowercase with spaces removed (`Payment Methods` → `paymentmethods`). **Services** (`folder`, `namespace`, `I*Service` / `*Service` names) are derived from the canonical OpenAPI tag for that folder.
 
-Maps each `service` key (same as binding `service`) to an ordered list of `sdkMethod` names. After binding operations, the generator sorts each service’s operations to match this list so emitted `I*Service` / `*Service` method order stays stable and aligned with the handwritten SDK. Methods not listed sort after known entries, alphabetically.
+### `serviceMethodOrderOverrides`
 
-### `statusCodeOverrides`
+When present for a service key, fixes `I*Service` / `*Service` method order. When omitted, methods sort by HTTP verb (GET, POST, PUT, PATCH, DELETE), path depth, path, then `sdkMethod`.
 
-Maps `sdkMethod` to HTTP status names accepted as success for `CoinbaseService.Request` / `RequestAsync` (e.g. `Created`, `OK`). The generator first uses OpenAPI-documented success codes (200/201); overrides extend that list when the live API returns **201 Created** but the published spec only lists **200** (or similar). **Confirm with the API team** when adding endpoints: accepting both `Created` and `OK` is permissive and avoids client failures if the server varies by environment or version.
+### Success HTTP status codes
+
+By default, success codes come from the OpenAPI `responses` map (200, 201, 202 with JSON body, 204). When both **200** and **201** are documented, **Created** is emitted before **OK**. Optional `statusCodeOverrides` maps `sdkMethod` to status names (e.g. `Created`, `OK`) when the spec omits **201** but the API may return it.
+
+Optional `x-sdk-method-name` on an operation overrides the derived `SdkMethod` name before `operations-overrides.json` is applied.
 
 ## Workflow
 
@@ -108,7 +113,8 @@ Maps `sdkMethod` to HTTP status names accepted as success for `CoinbaseService.R
 2. Review diff (`--diff` or `git diff`).
 3. `dotnet build prime-sdk-dotnet.sln`
 4. `dotnet test src/CoinbaseSdk/Prime.Tests/CoinbaseSdk.Prime.Tests.csproj`
-5. Commit.
+5. `dotnet test tools/generator/Generator.Tests/Generator.Tests.csproj` (generator unit tests)
+6. Commit.
 
 ## Technical notes
 

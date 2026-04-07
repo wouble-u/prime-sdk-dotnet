@@ -15,6 +15,7 @@
  */
 
 using System.Text;
+using System.Text.RegularExpressions;
 using CoinbaseSdk.Tools.Generator.Processing;
 using CoinbaseSdk.Tools.Generator.Spec;
 
@@ -22,16 +23,17 @@ namespace CoinbaseSdk.Tools.Generator.Phases;
 
 public static class RequestPhase
 {
-  /// <summary>
-  /// Returns true when a configured CLR type override refers to types in <c>CoinbaseSdk.Prime.Model.Enums</c>.
-  /// </summary>
-  private static bool TypeOverrideUsesModelEnumsNamespace(string clrType)
+  private static bool EnumClrReferencesKnownName(string clrType, IReadOnlySet<string> knownEnumTypeNames)
   {
-    return clrType.Contains("ActivityCategory", StringComparison.Ordinal)
-           || clrType.Contains("ActivityStatus", StringComparison.Ordinal)
-           || clrType.Contains("ActivityLevel", StringComparison.Ordinal)
-           || clrType.Contains("OrderType", StringComparison.Ordinal)
-           || clrType.Contains("OrderSide", StringComparison.Ordinal);
+    foreach (var en in knownEnumTypeNames)
+    {
+      if (Regex.IsMatch(clrType, $@"\b{Regex.Escape(en)}\b"))
+      {
+        return true;
+      }
+    }
+
+    return false;
   }
 
   public static string EmitRequest(
@@ -39,7 +41,8 @@ public static class RequestPhase
     GeneratorConfiguration cfg,
     SharedTransforms transforms,
     SdkOperationBinding b,
-    ParsedOperation op)
+    ParsedOperation op,
+    IReadOnlySet<string> knownEnumTypeNames)
   {
     string MapParamToClr(ParsedParameter p)
     {
@@ -103,7 +106,9 @@ public static class RequestPhase
     }
 
     // Always include Model.Enums when paginated (SortDirection is in that namespace)
-    var overrideUsesEnums = b.ParamTypeOverrides.Values.Any(TypeOverrideUsesModelEnumsNamespace);
+    var overrideUsesEnums = knownEnumTypeNames.Count > 0 &&
+                            b.ParamTypeOverrides.Values.Any(clr =>
+                              EnumClrReferencesKnownName(clr, knownEnumTypeNames));
     var usesEnums = paginated ||
                    overrideUsesEnums ||
                    pathParams.Concat(queryParamsForMembers).Any(p => p.Schema != null &&

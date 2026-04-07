@@ -52,6 +52,7 @@ public sealed class ClientSurfacePhase
     bool dryRun,
     bool diffMode)
   {
+    var knownEnumTypeNames = LoadEnumTypeNames(_primeSrcRoot);
     var byService = new Dictionary<string, List<(SdkOperationBinding B, ParsedOperation Op)>>(StringComparer.Ordinal);
     foreach (var b in bindings)
     {
@@ -81,7 +82,7 @@ public sealed class ClientSurfacePhase
       {
         if (!b.OmitRequest)
         {
-          var req = RequestPhase.EmitRequest(_doc, _cfg, _transforms, b, op);
+          var req = RequestPhase.EmitRequest(_doc, _cfg, _transforms, b, op, knownEnumTypeNames);
           await WriteOrDiffAsync(
             Path.Combine(_primeSrcRoot, NamingResolver.RequireService(_cfg, b.Service).Folder, $"{b.SdkMethod}Request.cs"),
             req,
@@ -197,15 +198,55 @@ public sealed class ClientSurfacePhase
     string serviceKey,
     List<(SdkOperationBinding B, ParsedOperation Op)> ops)
   {
-    if (!cfg.ServiceMethodOrders.TryGetValue(serviceKey, out var order) || order.Count == 0)
+    if (cfg.ServiceMethodOrderOverrides.TryGetValue(serviceKey, out var order) && order.Count > 0)
     {
-      return ops;
+      var rank = order.Select((m, i) => (m, i)).ToDictionary(x => x.m, x => x.i, StringComparer.Ordinal);
+      return ops
+        .OrderBy(x => rank.TryGetValue(x.B.SdkMethod, out var i) ? i : int.MaxValue)
+        .ThenBy(x => x.B.SdkMethod, StringComparer.Ordinal)
+        .ToList();
     }
 
-    var rank = order.Select((m, i) => (m, i)).ToDictionary(x => x.m, x => x.i, StringComparer.Ordinal);
     return ops
-      .OrderBy(x => rank.TryGetValue(x.B.SdkMethod, out var i) ? i : int.MaxValue)
+      .OrderBy(x => HttpVerbRank(x.Op.HttpMethod))
+      .ThenBy(x => PathDepth(x.Op.Path))
+      .ThenBy(x => x.Op.Path, StringComparer.Ordinal)
       .ThenBy(x => x.B.SdkMethod, StringComparer.Ordinal)
       .ToList();
+  }
+
+  private static int HttpVerbRank(string method) => method.ToUpperInvariant() switch
+  {
+    "GET" => 0,
+    "POST" => 1,
+    "PUT" => 2,
+    "PATCH" => 3,
+    "DELETE" => 4,
+    _ => 5
+  };
+
+  private static int PathDepth(string path)
+  {
+    if (string.IsNullOrEmpty(path))
+    {
+      return 0;
+    }
+
+    return path.Count(c => c == '/');
+  }
+
+  private static HashSet<string> LoadEnumTypeNames(string primeSrcRoot)
+  {
+    var dir = Path.Combine(primeSrcRoot, "model", "enums");
+    if (!Directory.Exists(dir))
+    {
+      return new HashSet<string>(StringComparer.Ordinal);
+    }
+
+    return Directory.GetFiles(dir, "*.cs")
+      .Select(f => Path.GetFileNameWithoutExtension(f))
+      .Where(s => !string.IsNullOrEmpty(s))
+      .Select(s => s!)
+      .ToHashSet(StringComparer.Ordinal);
   }
 }

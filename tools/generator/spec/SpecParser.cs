@@ -115,7 +115,8 @@ public static class SpecParser
         if (opNode.Children.ContainsKey(new YamlScalarNode("responses")))
         {
           var responses = (YamlMappingNode)opNode.Children[new YamlScalarNode("responses")];
-          foreach (var (codeStr, codeInt) in new[] { ("200", 200), ("201", 201) })
+          foreach (var (codeStr, codeInt) in new[]
+                   { ("200", 200), ("201", 201), ("202", 202), ("204", 204) })
           {
             if (!responses.Children.ContainsKey(new YamlScalarNode(codeStr)))
             {
@@ -123,6 +124,12 @@ public static class SpecParser
             }
 
             var resp = (YamlMappingNode)responses.Children[new YamlScalarNode(codeStr)];
+            if (codeInt == 204)
+            {
+              successStatusCodes.Add(codeInt);
+              continue;
+            }
+
             if (!resp.Children.ContainsKey(new YamlScalarNode("content")))
             {
               continue;
@@ -149,6 +156,16 @@ public static class SpecParser
           }
         }
 
+        string? extensionSdkMethodName = null;
+        if (opNode.Children.ContainsKey(new YamlScalarNode("x-sdk-method-name")))
+        {
+          var ext = opNode.Children[new YamlScalarNode("x-sdk-method-name")];
+          if (ext is YamlScalarNode extSn && !string.IsNullOrEmpty(extSn.Value))
+          {
+            extensionSdkMethodName = extSn.Value;
+          }
+        }
+
         ops[operationId] = new ParsedOperation
         {
           OperationId = operationId,
@@ -159,7 +176,8 @@ public static class SpecParser
           RequestBodyJsonSchema = bodySchema,
           SuccessResponseSchemaRef = successRef,
           SuccessStatusCodes = successStatusCodes,
-          Summary = summary
+          Summary = summary,
+          ExtensionSdkMethodName = extensionSdkMethodName
         };
       }
     }

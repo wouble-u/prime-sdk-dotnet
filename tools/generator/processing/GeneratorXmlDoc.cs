@@ -25,7 +25,8 @@ public static class GeneratorXmlDoc
 {
   public static string FormatTypeSummary(string? summary)
   {
-    return FormatSummary(summary, baseIndentSpaces: 4);
+    // Two spaces inside namespace block (after usings), before type declarations.
+    return FormatSummary(summary, baseIndentSpaces: 2);
   }
 
   public static string FormatMemberSummary(string? summary)

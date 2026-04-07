@@ -3,11 +3,6 @@
   "filePathReplacements": {
     "CoinbaseCustodyApiActivityType": "CustodyActivityType",
     "CoinbasePublicRestApiActivityType": "PrimeActivityType",
-    "CoinbaseBrokerageProxyEventsMaterializedApi": "",
-    "CoinbasePublicRestApi": "",
-    "CoinbaseCustodyApi": "",
-    "PrimeRESTAPI": "",
-    "PublicRestApi": "",
     "rFQ": "RFQ",
     "FcmFuturesSweep": "FuturesSweep"
   },
@@ -51,52 +46,10 @@
   "enumNameMappings": {
     "ActivityType": "PrimeActivityType"
   },
-  "tagToFolder": {
-    "Activities": "activities",
-    "Allocations": "allocations",
-    "Assets": "assets",
-    "Balances": "balances",
-    "Commission": "commission",
-    "Financing": "financing",
-    "Futures": "futures",
-    "Invoice": "invoice",
-    "Orders": "orders",
-    "Payment Methods": "paymentmethods",
-    "Portfolios": "portfolios",
-    "Positions": "positions",
-    "Products": "products",
-    "Staking": "staking",
-    "Transactions": "transactions",
-    "Users": "users",
-    "Wallets": "wallets",
-    "Address Book": "addressbook",
-    "Onchain Address Book": "onchainaddressbook",
-    "Advanced Transfer": "advancedtransfer",
+  "tagToFolderOverrides": {
     "Travel Rule": "transactions"
   },
-  "services": {
-    "activities": { "folder": "activities", "namespace": "Activities", "interfaceName": "IActivitiesService", "className": "ActivitiesService" },
-    "allocations": { "folder": "allocations", "namespace": "Allocations", "interfaceName": "IAllocationsService", "className": "AllocationsService" },
-    "assets": { "folder": "assets", "namespace": "Assets", "interfaceName": "IAssetsService", "className": "AssetsService" },
-    "balances": { "folder": "balances", "namespace": "Balances", "interfaceName": "IBalancesService", "className": "BalancesService" },
-    "commission": { "folder": "commission", "namespace": "Commission", "interfaceName": "ICommissionService", "className": "CommissionService" },
-    "financing": { "folder": "financing", "namespace": "Financing", "interfaceName": "IFinancingService", "className": "FinancingService" },
-    "futures": { "folder": "futures", "namespace": "Futures", "interfaceName": "IFuturesService", "className": "FuturesService" },
-    "invoice": { "folder": "invoice", "namespace": "Invoice", "interfaceName": "IInvoiceService", "className": "InvoiceService" },
-    "orders": { "folder": "orders", "namespace": "Orders", "interfaceName": "IOrdersService", "className": "OrdersService" },
-    "paymentmethods": { "folder": "paymentmethods", "namespace": "PaymentMethods", "interfaceName": "IPaymentMethodsService", "className": "PaymentMethodsService" },
-    "portfolios": { "folder": "portfolios", "namespace": "Portfolios", "interfaceName": "IPortfoliosService", "className": "PortfoliosService" },
-    "positions": { "folder": "positions", "namespace": "Positions", "interfaceName": "IPositionsService", "className": "PositionsService" },
-    "products": { "folder": "products", "namespace": "Products", "interfaceName": "IProductsService", "className": "ProductsService" },
-    "staking": { "folder": "staking", "namespace": "Staking", "interfaceName": "IStakingService", "className": "StakingService" },
-    "transactions": { "folder": "transactions", "namespace": "Transactions", "interfaceName": "ITransactionsService", "className": "TransactionsService" },
-    "users": { "folder": "users", "namespace": "Users", "interfaceName": "IUsersService", "className": "UsersService" },
-    "wallets": { "folder": "wallets", "namespace": "Wallets", "interfaceName": "IWalletsService", "className": "WalletsService" },
-    "addressbook": { "folder": "addressbook", "namespace": "AddressBook", "interfaceName": "IAddressBookService", "className": "AddressBookService" },
-    "onchainaddressbook": { "folder": "onchainaddressbook", "namespace": "OnchainAddressBook", "interfaceName": "IOnchainAddressBookService", "className": "OnchainAddressBookService" },
-    "advancedtransfer": { "folder": "advancedtransfer", "namespace": "AdvancedTransfer", "interfaceName": "IAdvancedTransferService", "className": "AdvancedTransferService" }
-  },
-  "serviceMethodOrders": {
+  "serviceMethodOrderOverrides": {
     "activities": [ "ListActivities", "ListEntityActivities", "GetActivity", "GetPortfolioActivity" ],
     "addressbook": [ "ListAddressBookEntries", "CreateAddressBookEntry" ],
     "advancedtransfer": [ "ListAdvancedTransfers", "CreateAdvancedTransfer", "CancelAdvancedTransfer", "ListAdvancedTransferTransactions" ],

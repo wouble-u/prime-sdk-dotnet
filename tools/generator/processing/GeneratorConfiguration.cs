@@ -38,20 +38,35 @@ public class GeneratorConfiguration
   [JsonPropertyName("enumNameMappings")]
   public Dictionary<string, string> EnumNameMappings { get; set; } = new();
 
-  [JsonPropertyName("tagToFolder")]
-  public Dictionary<string, string> TagToFolder { get; set; } = new();
-
-  [JsonPropertyName("services")]
-  public Dictionary<string, ServiceDefinition> Services { get; set; } = new();
-
-  [JsonPropertyName("statusCodeOverrides")]
-  public Dictionary<string, List<string>> StatusCodeOverrides { get; set; } = new();
+  /// <summary>
+  /// Optional tag → folder overrides when <see cref="SpecAnalyzer.DefaultFolderFromTag"/> is not enough (e.g. route a tag to an existing service folder).
+  /// </summary>
+  [JsonPropertyName("tagToFolderOverrides")]
+  public Dictionary<string, string> TagToFolderOverrides { get; set; } = new();
 
   /// <summary>
-  /// Per-service preferred <see cref="SdkOperationBinding.SdkMethod"/> ordering for emitted interfaces and services (stable order vs binding list traversal).
+  /// Populated by <see cref="SpecAnalyzer"/> from spec tags plus <see cref="TagToFolderOverrides"/>.
   /// </summary>
-  [JsonPropertyName("serviceMethodOrders")]
-  public Dictionary<string, List<string>> ServiceMethodOrders { get; set; } = new();
+  [JsonIgnore]
+  public Dictionary<string, string> TagToFolder { get; set; } = new();
+
+  /// <summary>
+  /// Populated by <see cref="SpecAnalyzer"/> from derived folders and canonical tag names.
+  /// </summary>
+  [JsonIgnore]
+  public Dictionary<string, ServiceDefinition> Services { get; set; } = new();
+
+  /// <summary>
+  /// When non-empty for a service key, fixes method order; otherwise order is derived from HTTP verb and path.
+  /// </summary>
+  [JsonPropertyName("serviceMethodOrderOverrides")]
+  public Dictionary<string, List<string>> ServiceMethodOrderOverrides { get; set; } = new();
+
+  /// <summary>
+  /// Optional per-<see cref="SdkOperationBinding.SdkMethod"/> success status names when the published spec omits 201 but the API may return it.
+  /// </summary>
+  [JsonPropertyName("statusCodeOverrides")]
+  public Dictionary<string, List<string>> StatusCodeOverrides { get; set; } = new();
 
   public static GeneratorConfiguration Load(string projectRoot)
   {

@@ -43,6 +43,11 @@ public class ParsedOperation
   /// OpenAPI <c>summary</c> field, used for XML documentation on generated request/response/service members.
   /// </summary>
   public string? Summary { get; init; }
+
+  /// <summary>
+  /// Optional extension <c>x-sdk-method-name</c> on the operation, if present in the spec.
+  /// </summary>
+  public string? ExtensionSdkMethodName { get; init; }
 }
 
 public class ParsedParameter

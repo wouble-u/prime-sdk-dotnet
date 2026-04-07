@@ -220,23 +220,47 @@ public static class ServicePhase
 
   private static string StatusArray(GeneratorConfiguration cfg, string sdkMethod, ParsedOperation op)
   {
-    if (cfg.StatusCodeOverrides.TryGetValue(sdkMethod, out var list))
+    if (cfg.StatusCodeOverrides.TryGetValue(sdkMethod, out var configured))
     {
-      return "[" + string.Join(", ", list.Select(s => $"HttpStatusCode.{s}")) + "]";
+      return "[" + string.Join(", ", configured.Select(s => $"HttpStatusCode.{s}")) + "]";
     }
 
-    if (op.SuccessStatusCodes.Count > 0)
+    if (op.SuccessStatusCodes.Count == 0)
     {
-      return "[" + string.Join(", ", op.SuccessStatusCodes.Select(ToHttpStatusCode)) + "]";
+      return "[HttpStatusCode.OK]";
     }
 
-    return "[HttpStatusCode.OK]";
+    var codes = op.SuccessStatusCodes.Distinct().ToList();
+    codes.Sort(CompareSuccessStatusCodes);
+    return "[" + string.Join(", ", codes.Select(ToHttpStatusCode)) + "]";
+  }
+
+  private static int CompareSuccessStatusCodes(int a, int b)
+  {
+    if (a == b)
+    {
+      return 0;
+    }
+
+    if (a == 201 && b == 200)
+    {
+      return -1;
+    }
+
+    if (a == 200 && b == 201)
+    {
+      return 1;
+    }
+
+    return a.CompareTo(b);
   }
 
   private static string ToHttpStatusCode(int code) => code switch
   {
     200 => "HttpStatusCode.OK",
     201 => "HttpStatusCode.Created",
+    202 => "HttpStatusCode.Accepted",
+    204 => "HttpStatusCode.NoContent",
     _ => $"(HttpStatusCode){code}"
   };
 

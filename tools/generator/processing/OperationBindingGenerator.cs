@@ -14,6 +14,8 @@
  *  limitations under the License.
  */
 
+using System.Collections.Generic;
+using System.Linq;
 using CoinbaseSdk.Tools.Generator.Spec;
 using YamlDotNet.RepresentationModel;
 
@@ -22,45 +24,6 @@ namespace CoinbaseSdk.Tools.Generator.Processing;
 public static class OperationBindingGenerator
 {
   private const string OperationIdPrefix = "PrimeRESTAPI_";
-
-  /// <summary>
-  /// Manual SDK method names where prefix strip, acronym normalization, List-summary heuristic,
-  /// and Web3 rename are not enough to match the public SDK surface.
-  /// </summary>
-  private static readonly Dictionary<string, string> ManualSdkMethodByOperationId = new(StringComparer.Ordinal)
-  {
-    ["PrimeRESTAPI_GetAllocationsByClientNettingId"] = "ListAllocationsByClientNettingId",
-    ["PrimeRESTAPI_GetBuyingPower"] = "GetPortfolioBuyingPower",
-    ["PrimeRESTAPI_GetEntityAssets"] = "ListAssets",
-    ["PrimeRESTAPI_GetEntityUsers"] = "ListUsers",
-    ["PrimeRESTAPI_GetFuturesSweeps"] = "ListEntityFuturesSweeps",
-    ["PrimeRESTAPI_GetLocateAvailabilities"] = "GetEntityLocateAvailabilities",
-    ["PrimeRESTAPI_GetMarginSummaries"] = "ListMarginCallSummaries",
-    ["PrimeRESTAPI_GetOrders"] = "ListPortfolioOrders",
-    ["PrimeRESTAPI_GetPortfolioActivities"] = "ListActivities",
-    ["PrimeRESTAPI_GetPortfolioAddressBook"] = "ListAddressBookEntries",
-    ["PrimeRESTAPI_GetPortfolioInterestAccruals"] = "ListInterestAccrualsForPortfolio",
-    ["PrimeRESTAPI_GetPortfolioCounterpartyID"] = "GetPortfolioCounterparty",
-    ["PrimeRESTAPI_GetPostTradeCredit"] = "GetPortfolioCreditInformation",
-    ["PrimeRESTAPI_GetTFTieredPricingFees"] = "GetTradeFinanceTieredPricingFees",
-    ["PrimeRESTAPI_GetWithdrawalPower"] = "GetPortfolioWithdrawalPower",
-    ["PrimeRESTAPI_CancelFuturesSweep"] = "CancelEntityFuturesSweep",
-    ["PrimeRESTAPI_ScheduleFuturesSweep"] = "ScheduleEntityFuturesSweep",
-    ["PrimeRESTAPI_CreatePortfolioAddressBookEntry"] = "CreateAddressBookEntry",
-    ["PrimeRESTAPI_CreateOnchainAddressGroup"] = "CreateOnchainAddressBookEntry",
-    ["PrimeRESTAPI_UpdateOnchainAddressGroup"] = "UpdateOnchainAddressBookEntry",
-    ["PrimeRESTAPI_CreateQuoteRequest"] = "CreateQuote",
-    ["PrimeRESTAPI_CreateWalletTransfer"] = "CreateTransfer",
-    ["PrimeRESTAPI_CreateWalletWithdrawal"] = "CreateWithdrawal",
-    ["PrimeRESTAPI_ListTFObligations"] = "ListTradeFinanceObligations",
-    ["PrimeRESTAPI_OrderPreview"] = "GetOrderPreview",
-    ["PrimeRESTAPI_PortfolioStakingInitiate"] = "CreatePortfolioStake",
-    ["PrimeRESTAPI_PortfolioStakingUnstake"] = "CreatePortfolioUnstake",
-    ["PrimeRESTAPI_StakingClaimRewards"] = "ClaimStakingRewards",
-    ["PrimeRESTAPI_StakingInitiate"] = "CreateStake",
-    ["PrimeRESTAPI_StakingUnstake"] = "CreateUnstake",
-    ["PrimeRESTAPI_GetEntityPaymentMethodDetails"] = "GetEntityPaymentMethod"
-  };
 
   public static List<SdkOperationBinding> DeriveAll(
     ParsedOpenApiDocument doc,
@@ -86,10 +49,7 @@ public static class OperationBindingGenerator
     var service = ResolveServiceKey(cfg, op);
     var omitRequest = DeriveOmitRequest(op);
     var paramOverrides = DeriveParamTypeOverrides(root, transforms, op);
-    // Response-shape pagination hints are not used here: some POST bodies embed cursor/limit
-    // in JSON; forcing PaginatedRequest would duplicate those properties. Use
-    // operations-overrides.json for the rare GET cases (e.g. ListPortfolioBalances).
-    var forcePaginated = false;
+    var forcePaginated = DeriveForcePaginated(root, op);
 
     return new SdkOperationBinding
     {
@@ -104,9 +64,11 @@ public static class OperationBindingGenerator
 
   private static string DeriveSdkMethod(ParsedOperation op, SharedTransforms transforms)
   {
-    if (ManualSdkMethodByOperationId.TryGetValue(op.OperationId, out var manual))
+    if (!string.IsNullOrWhiteSpace(op.ExtensionSdkMethodName))
     {
-      return manual;
+      var ext = op.ExtensionSdkMethodName.Trim();
+      ext = transforms.NormalizeAcronyms(ext);
+      return transforms.ApplyWeb3ToOnchainName(ext);
     }
 
     var name = op.OperationId;
@@ -126,16 +88,47 @@ public static class OperationBindingGenerator
       name = string.Concat("List", name.AsSpan(3));
     }
 
+    name = ApplyPortfolioPathPrefix(name, op);
     return name;
+  }
+
+  /// <summary>
+  /// Portfolio-scoped paths use <c>GetPortfolio…</c> only for selected OpenAPI operation names
+  /// (broad <c>Get</c>+portfolio injection would rename e.g. <c>GetAllocation</c> incorrectly).
+  /// </summary>
+  private static readonly HashSet<string> PortfolioScopedGetSuffixes = new(StringComparer.Ordinal)
+  {
+    "BuyingPower",
+    "WithdrawalPower"
+  };
+
+  private static string ApplyPortfolioPathPrefix(string name, ParsedOperation op)
+  {
+    var path = op.Path;
+    if (!path.Contains("{portfolio_id}", StringComparison.Ordinal) &&
+        !path.Contains("/portfolios/", StringComparison.Ordinal))
+    {
+      return name;
+    }
+
+    if (!name.StartsWith("Get", StringComparison.Ordinal) ||
+        name.Contains("Portfolio", StringComparison.Ordinal) ||
+        name.Length <= 3)
+    {
+      return name;
+    }
+
+    var rest = name[3..];
+    if (!PortfolioScopedGetSuffixes.Contains(rest))
+    {
+      return name;
+    }
+
+    return "GetPortfolio" + rest;
   }
 
   private static string ResolveServiceKey(GeneratorConfiguration cfg, ParsedOperation op)
   {
-    if (string.Equals(op.OperationId, "PrimeRESTAPI_ListAdvancedTransferTransactions", StringComparison.Ordinal))
-    {
-      return "advancedtransfer";
-    }
-
     foreach (var tag in op.Tags)
     {
       if (cfg.TagToFolder.TryGetValue(tag, out var folder) &&
@@ -146,7 +139,7 @@ public static class OperationBindingGenerator
     }
 
     throw new InvalidOperationException(
-      $"Operation '{op.OperationId}' has no tag mapped in generator-config.json tagToFolder " +
+      $"Operation '{op.OperationId}' has no tag mapped in derived tagToFolder " +
       $"(tags: {string.Join(", ", op.Tags.Select(t => "'" + t + "'"))}).");
   }
 
@@ -155,10 +148,13 @@ public static class OperationBindingGenerator
     return op.Parameters.Count == 0 && op.RequestBodyJsonSchema == null;
   }
 
+  private static bool DeriveForcePaginated(YamlMappingNode root, ParsedOperation op)
+  {
+    return op.HttpMethod == "GET" && SpecResponseSchema.ResponseSchemaSuggestsPagination(root, op);
+  }
+
   /// <summary>
-  /// Derives query-parameter CLR overrides. Inline string enums stay <c>string?</c> in
-  /// <see cref="OpenApiSchemaCodegen"/>; explicit enum typing is supplied via
-  /// <c>operations-overrides.json</c> where the SDK surface requires it.
+  /// Derives query-parameter CLR overrides (e.g. <c>symbols</c> as array, enum <c>$ref</c> parameters).
   /// </summary>
   private static Dictionary<string, string> DeriveParamTypeOverrides(
     YamlMappingNode root,

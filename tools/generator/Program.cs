@@ -52,7 +52,6 @@ try
   var projectRoot = GeneratorPaths.FindProjectRoot();
   CopyrightHelper.InitializeSdkEmittedCopyrightYear(projectRoot);
   var cfg = GeneratorConfiguration.Load(projectRoot);
-  var transforms = new SharedTransforms(cfg);
 
   var specPath = Path.Combine(projectRoot, "generated", "openapi.yaml");
   Directory.CreateDirectory(Path.GetDirectoryName(specPath)!);
@@ -62,6 +61,11 @@ try
     var yaml = await http.GetStringAsync(cfg.SpecUrl);
     await File.WriteAllTextAsync(specPath, yaml);
   }
+
+  logger.LogInformation("Parsing OpenAPI YAML for client surface...");
+  var document = await SpecParser.LoadAsync(specPath);
+  SpecAnalyzer.Apply(document, cfg, logger);
+  var transforms = new SharedTransforms(cfg);
 
   var primeRoot = Path.Combine(projectRoot, "src", "CoinbaseSdk", "Prime");
   var modelDir = Path.Combine(primeRoot, "model");
@@ -84,8 +88,6 @@ try
     logger.LogInformation("Skipping model/enum CLI phase (--dry-run or --diff).");
   }
 
-  logger.LogInformation("Parsing OpenAPI YAML for client surface...");
-  var document = await SpecParser.LoadAsync(specPath);
   var bindingMerge = GeneratorConfiguration.MergeOperationBindings(document, cfg, transforms, projectRoot);
   OperationBindingValidator.ValidateOperationBindings(logger, document, bindingMerge);
   var operations = bindingMerge.Merged;

@@ -14,6 +14,7 @@
  *  limitations under the License.
  */
 
+using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -30,7 +31,7 @@ public class SharedTransforms
 
   public string ApplyContentReplacements(string content)
   {
-    foreach (var replacement in _cfg.ContentReplacements)
+    foreach (var replacement in _cfg.ContentReplacements.OrderByDescending(e => e.Key.Length))
     {
       content = content.Replace(replacement.Key, replacement.Value, StringComparison.Ordinal);
     }
@@ -41,7 +42,7 @@ public class SharedTransforms
   public string StripCommonPrefixes(string className)
   {
     var result = className;
-    foreach (var entry in _cfg.FilePathReplacements)
+    foreach (var entry in _cfg.FilePathReplacements.OrderByDescending(e => e.Key.Length))
     {
       if (result.Contains(entry.Key, StringComparison.Ordinal))
       {
