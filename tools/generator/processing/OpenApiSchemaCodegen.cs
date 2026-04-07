@@ -14,6 +14,7 @@
  *  limitations under the License.
  */
 
+using System.Linq;
 using System.Text;
 using CoinbaseSdk.Tools.Generator.Spec;
 using YamlDotNet.RepresentationModel;
@@ -79,6 +80,16 @@ public static class OpenApiSchemaCodegen
         if (type == "array")
         {
           var items = mm.Children[new YamlScalarNode("items")];
+          if (items is YamlMappingNode itemsMm)
+          {
+            var matched = FindMatchingNamedEnum(documentRoot, itemsMm, transforms);
+            if (matched != null)
+            {
+              enumTypes.Add(matched);
+              return matched + "[]";
+            }
+          }
+
           var inner = MapType(documentRoot, items, transforms, modelTypes, enumTypes);
           return NormalizeArrayElementType(inner) + "[]";
         }
@@ -94,6 +105,59 @@ public static class OpenApiSchemaCodegen
     }
 
     return "object?";
+  }
+
+  private static HashSet<string> GetInlineEnumValues(YamlMappingNode node)
+  {
+    if (!node.Children.ContainsKey(new YamlScalarNode("enum")))
+    {
+      return [];
+    }
+
+    return ((YamlSequenceNode)node.Children[new YamlScalarNode("enum")])
+      .Children.OfType<YamlScalarNode>()
+      .Select(s => s.Value!)
+      .ToHashSet(StringComparer.Ordinal);
+  }
+
+  private static string? FindMatchingNamedEnum(
+    YamlMappingNode documentRoot,
+    YamlMappingNode inlineNode,
+    SharedTransforms transforms)
+  {
+    var inlineValues = GetInlineEnumValues(inlineNode);
+    if (inlineValues.Count == 0)
+    {
+      return null;
+    }
+
+    if (!documentRoot.Children.ContainsKey(new YamlScalarNode("components")))
+    {
+      return null;
+    }
+
+    var schemas = (YamlMappingNode)((YamlMappingNode)documentRoot.Children[new YamlScalarNode("components")])
+      .Children[new YamlScalarNode("schemas")];
+    foreach (var (key, value) in schemas.Children)
+    {
+      if (value is not YamlMappingNode schema)
+      {
+        continue;
+      }
+
+      if (!schema.Children.ContainsKey(new YamlScalarNode("enum")))
+      {
+        continue;
+      }
+
+      var schemaValues = GetInlineEnumValues(schema);
+      if (inlineValues.IsSubsetOf(schemaValues))
+      {
+        return transforms.TransformSchemaRefToClrName(((YamlScalarNode)key).Value!);
+      }
+    }
+
+    return null;
   }
 
   private static string MapPrimitive(YamlMappingNode mm, string type)
@@ -230,6 +294,11 @@ public static class OpenApiSchemaCodegen
       if (type == "array" && mm.Children.ContainsKey(new YamlScalarNode("items")))
       {
         return TypeIsEnumRef(documentRoot, mm.Children[new YamlScalarNode("items")]);
+      }
+
+      if (type == "string" && mm.Children.ContainsKey(new YamlScalarNode("enum")))
+      {
+        return true;
       }
     }
 

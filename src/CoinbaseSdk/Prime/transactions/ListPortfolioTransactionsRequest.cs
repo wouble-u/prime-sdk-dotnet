@@ -33,7 +33,7 @@ namespace CoinbaseSdk.Prime.Transactions
     public string[] Symbols { get; set; } = [];
 
     [JsonPropertyName("types")]
-    public string[] Types { get; set; } = [];
+    public TransactionType[] Types { get; set; } = [];
 
     [JsonPropertyName("start_time")]
     public string? StartTime { get; set; }
@@ -45,17 +45,17 @@ namespace CoinbaseSdk.Prime.Transactions
     public bool? GetNetworkUnifiedTransactions { get; set; }
 
     [JsonPropertyName("travel_rule_status")]
-    public string[] TravelRuleStatus { get; set; } = [];
+    public TravelRuleStatus[] TravelRuleStatus { get; set; } = [];
 
     public class ListPortfolioTransactionsRequestBuilder
     {
       private string? _portfolioId;
       private string[]? _symbols;
-      private string[]? _types;
+      private TransactionType[]? _types;
       private string? _startTime;
       private string? _endTime;
       private bool? _getNetworkUnifiedTransactions;
-      private string[]? _travelRuleStatus;
+      private TravelRuleStatus[]? _travelRuleStatus;
       private string? _cursor;
       private SortDirection? _sortDirection;
       private int? _limit;
@@ -72,7 +72,7 @@ namespace CoinbaseSdk.Prime.Transactions
         return this;
       }
 
-      public ListPortfolioTransactionsRequestBuilder WithTypes(string[] types)
+      public ListPortfolioTransactionsRequestBuilder WithTypes(TransactionType[] types)
       {
         _types = types;
         return this;
@@ -96,7 +96,7 @@ namespace CoinbaseSdk.Prime.Transactions
         return this;
       }
 
-      public ListPortfolioTransactionsRequestBuilder WithTravelRuleStatus(string[] travelRuleStatus)
+      public ListPortfolioTransactionsRequestBuilder WithTravelRuleStatus(TravelRuleStatus[] travelRuleStatus)
       {
         _travelRuleStatus = travelRuleStatus;
         return this;

@@ -30,7 +30,7 @@ namespace CoinbaseSdk.Prime.Orders
     public string PortfolioId { get; set; } = portfolioId;
 
     [JsonPropertyName("order_statuses")]
-    public string[] OrderStatuses { get; set; } = [];
+    public OrderStatus[] OrderStatuses { get; set; } = [];
 
     [JsonPropertyName("product_ids")]
     public string[] ProductIds { get; set; } = [];
@@ -50,7 +50,7 @@ namespace CoinbaseSdk.Prime.Orders
     public class ListPortfolioOrdersRequestBuilder
     {
       private string? _portfolioId;
-      private string[]? _orderStatuses;
+      private OrderStatus[]? _orderStatuses;
       private string[]? _productIds;
       private OrderType? _orderType;
       private OrderSide? _orderSide;
@@ -66,7 +66,7 @@ namespace CoinbaseSdk.Prime.Orders
         return this;
       }
 
-      public ListPortfolioOrdersRequestBuilder WithOrderStatuses(string[] orderStatuses)
+      public ListPortfolioOrdersRequestBuilder WithOrderStatuses(OrderStatus[] orderStatuses)
       {
         _orderStatuses = orderStatuses;
         return this;

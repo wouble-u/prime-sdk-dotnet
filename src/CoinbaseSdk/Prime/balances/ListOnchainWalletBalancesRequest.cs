@@ -33,13 +33,13 @@ namespace CoinbaseSdk.Prime.Balances
     public string WalletId { get; set; } = walletId;
 
     [JsonPropertyName("visibility_statuses")]
-    public string[] VisibilityStatuses { get; set; } = [];
+    public VisibilityStatus[] VisibilityStatuses { get; set; } = [];
 
     public class ListOnchainWalletBalancesRequestBuilder
     {
       private string? _portfolioId;
       private string? _walletId;
-      private string[]? _visibilityStatuses;
+      private VisibilityStatus[]? _visibilityStatuses;
       private string? _cursor;
       private SortDirection? _sortDirection;
       private int? _limit;
@@ -56,7 +56,7 @@ namespace CoinbaseSdk.Prime.Balances
         return this;
       }
 
-      public ListOnchainWalletBalancesRequestBuilder WithVisibilityStatuses(string[] visibilityStatuses)
+      public ListOnchainWalletBalancesRequestBuilder WithVisibilityStatuses(VisibilityStatus[] visibilityStatuses)
       {
         _visibilityStatuses = visibilityStatuses;
         return this;

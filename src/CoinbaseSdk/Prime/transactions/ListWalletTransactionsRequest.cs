@@ -33,7 +33,7 @@ namespace CoinbaseSdk.Prime.Transactions
     public string WalletId { get; set; } = walletId;
 
     [JsonPropertyName("types")]
-    public string[] Types { get; set; } = [];
+    public TransactionType[] Types { get; set; } = [];
 
     [JsonPropertyName("start_time")]
     public string? StartTime { get; set; }
@@ -45,7 +45,7 @@ namespace CoinbaseSdk.Prime.Transactions
     {
       private string? _portfolioId;
       private string? _walletId;
-      private string[]? _types;
+      private TransactionType[]? _types;
       private string? _startTime;
       private string? _endTime;
       private string? _cursor;
@@ -64,7 +64,7 @@ namespace CoinbaseSdk.Prime.Transactions
         return this;
       }
 
-      public ListWalletTransactionsRequestBuilder WithTypes(string[] types)
+      public ListWalletTransactionsRequestBuilder WithTypes(TransactionType[] types)
       {
         _types = types;
         return this;
