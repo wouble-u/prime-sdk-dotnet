@@ -65,7 +65,8 @@ rootCommand.SetHandler((entityId, symbolsStr, aggregationTypeStr) =>
         var client = CoinbasePrimeClient.FromEnv();
         var balancesService = new BalancesService(client);
 
-        var requestBuilder = new ListEntityBalancesRequest.ListEntityBalancesRequestBuilder(entityId);
+        var requestBuilder = new ListEntityBalancesRequest.ListEntityBalancesRequestBuilder()
+            .WithEntityId(entityId);
 
         if (!string.IsNullOrEmpty(symbolsStr))
         {
@@ -77,7 +78,7 @@ rootCommand.SetHandler((entityId, symbolsStr, aggregationTypeStr) =>
         {
             if (Enum.TryParse<PortfolioBalanceType>(aggregationTypeStr, true, out var aggregationType))
             {
-                requestBuilder.WithAggregationType(aggregationType);
+                requestBuilder.WithAggregationType(aggregationType.ToString());
             }
             else
             {

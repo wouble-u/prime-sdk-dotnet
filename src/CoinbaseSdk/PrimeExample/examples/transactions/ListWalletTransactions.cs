@@ -97,7 +97,7 @@ rootCommand.SetHandler((portfolioId, walletId, typeStr, startTime, endTime) =>
         {
             if (Enum.TryParse<TransactionType>(typeStr, true, out var transactionType))
             {
-                requestBuilder.WithType(transactionType);
+                requestBuilder.WithTypes([transactionType]);
             }
             else
             {

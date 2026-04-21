@@ -89,6 +89,25 @@ public sealed class ClientSurfacePhase
             dryRun,
             diffMode);
         }
+        else
+        {
+          var staleRequestPath = Path.Combine(
+            _primeSrcRoot,
+            NamingResolver.RequireService(_cfg, b.Service).Folder,
+            $"{b.SdkMethod}Request.cs");
+          if (File.Exists(staleRequestPath))
+          {
+            if (!dryRun && !diffMode)
+            {
+              File.Delete(staleRequestPath);
+              _logger.LogInformation("REQUEST deleted stale (OmitRequest): {Path}", staleRequestPath);
+            }
+            else
+            {
+              _logger.LogInformation("REQUEST stale (OmitRequest) would delete: {Path}", staleRequestPath);
+            }
+          }
+        }
 
         var resp = ResponsePhase.EmitResponse(_doc, _cfg, _transforms, b, op);
         await WriteOrDiffAsync(

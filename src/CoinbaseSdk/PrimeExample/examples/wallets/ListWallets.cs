@@ -77,7 +77,7 @@ rootCommand.SetHandler((portfolioId, typeStr, symbolsStr) =>
                 Environment.ExitCode = 1;
                 return;
             }
-            request.Type = walletType;
+            request.Type = walletType.ToString();
         }
 
         if (!string.IsNullOrEmpty(symbolsStr))
