@@ -1,4 +1,4 @@
-# Security Policy for core-go
+# Security Policy for prime-sdk-dotnet
 
 ## Reporting a Security Bug
 
