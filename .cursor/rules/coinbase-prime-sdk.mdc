@@ -4,4 +4,4 @@ globs:
 alwaysApply: false
 ---
 
-@include CLAUDE.md
+@include AGENTS.md
