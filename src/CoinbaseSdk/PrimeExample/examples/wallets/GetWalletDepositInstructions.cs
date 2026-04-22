@@ -85,7 +85,7 @@ rootCommand.SetHandler((portfolioId, walletId, depositTypeStr) =>
                 Environment.ExitCode = 1;
                 return;
             }
-            request.DepositType = depositType;
+            request.DepositType = depositType.ToString();
         }
 
         PrettyPrinter.PrintResponse("GetWalletDepositInstructionsRequest", request);

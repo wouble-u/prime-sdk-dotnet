@@ -20,6 +20,9 @@ namespace CoinbaseSdk.Prime.Orders
   using CoinbaseSdk.Core.Error;
   using CoinbaseSdk.Prime.Model.Enums;
 
+  /// <summary>
+  /// Get Order Preview.
+  /// </summary>
   public class GetOrderPreviewRequest(string portfolioId)
   {
     [JsonIgnore]
@@ -28,9 +31,11 @@ namespace CoinbaseSdk.Prime.Orders
     [JsonPropertyName("product_id")]
     public string? ProductId { get; set; }
 
-    public OrderSide? Side { get; set; }
+    [JsonPropertyName("side")]
+    public OrderSide Side { get; set; }
 
-    public OrderType? Type { get; set; }
+    [JsonPropertyName("type")]
+    public OrderType Type { get; set; }
 
     [JsonPropertyName("base_quantity")]
     public string? BaseQuantity { get; set; }
@@ -41,17 +46,14 @@ namespace CoinbaseSdk.Prime.Orders
     [JsonPropertyName("limit_price")]
     public string? LimitPrice { get; set; }
 
-    [JsonPropertyName("stop_price")]
-    public string? StopPrice { get; set; }
-
-    [JsonPropertyName("time_in_force")]
-    public TimeInForceType? TimeInForce { get; set; }
-
     [JsonPropertyName("start_time")]
     public string? StartTime { get; set; }
 
     [JsonPropertyName("expiry_time")]
     public string? ExpiryTime { get; set; }
+
+    [JsonPropertyName("time_in_force")]
+    public TimeInForceType? TimeInForce { get; set; }
 
     [JsonPropertyName("is_raise_exact")]
     public bool? IsRaiseExact { get; set; }
@@ -59,21 +61,52 @@ namespace CoinbaseSdk.Prime.Orders
     [JsonPropertyName("historical_pov")]
     public string? HistoricalPov { get; set; }
 
+    [JsonPropertyName("stop_price")]
+    public string? StopPrice { get; set; }
+
+    [JsonPropertyName("settl_currency")]
+    public string? SettlCurrency { get; set; }
+
+    [JsonPropertyName("postOnly")]
+    public bool? PostOnly { get; set; }
+
+    [JsonPropertyName("display_quote_size")]
+    public string? DisplayQuoteSize { get; set; }
+
+    [JsonPropertyName("display_base_size")]
+    public string? DisplayBaseSize { get; set; }
+
+    [JsonPropertyName("peg_offset_type")]
+    public PegOffsetType? PegOffsetType { get; set; }
+
+    [JsonPropertyName("offset")]
+    public string? Offset { get; set; }
+
+    [JsonPropertyName("wig_level")]
+    public string? WigLevel { get; set; }
+
     public class GetOrderPreviewRequestBuilder
     {
       private string? _portfolioId;
       private string? _productId;
-      private OrderSide? _side;
-      private OrderType? _type;
+      private OrderSide _side;
+      private OrderType _type;
       private string? _baseQuantity;
       private string? _quoteValue;
       private string? _limitPrice;
-      private string? _stopPrice;
-      private TimeInForceType? _timeInForce;
       private string? _startTime;
       private string? _expiryTime;
+      private TimeInForceType? _timeInForce;
       private bool? _isRaiseExact;
       private string? _historicalPov;
+      private string? _stopPrice;
+      private string? _settlCurrency;
+      private bool? _postOnly;
+      private string? _displayQuoteSize;
+      private string? _displayBaseSize;
+      private PegOffsetType? _pegOffsetType;
+      private string? _offset;
+      private string? _wigLevel;
 
       public GetOrderPreviewRequestBuilder WithPortfolioId(string portfolioId)
       {
@@ -81,7 +114,7 @@ namespace CoinbaseSdk.Prime.Orders
         return this;
       }
 
-      public GetOrderPreviewRequestBuilder WithProductId(string productId)
+      public GetOrderPreviewRequestBuilder WithProductId(string? productId)
       {
         _productId = productId;
         return this;
@@ -99,64 +132,102 @@ namespace CoinbaseSdk.Prime.Orders
         return this;
       }
 
-      public GetOrderPreviewRequestBuilder WithBaseQuantity(string baseQuantity)
+      public GetOrderPreviewRequestBuilder WithBaseQuantity(string? baseQuantity)
       {
         _baseQuantity = baseQuantity;
         return this;
       }
 
-      public GetOrderPreviewRequestBuilder WithQuoteValue(string quoteValue)
+      public GetOrderPreviewRequestBuilder WithQuoteValue(string? quoteValue)
       {
         _quoteValue = quoteValue;
         return this;
       }
 
-      public GetOrderPreviewRequestBuilder WithLimitPrice(string limitPrice)
+      public GetOrderPreviewRequestBuilder WithLimitPrice(string? limitPrice)
       {
         _limitPrice = limitPrice;
         return this;
       }
 
-      public GetOrderPreviewRequestBuilder WithStopPrice(string stopPrice)
-      {
-        _stopPrice = stopPrice;
-        return this;
-      }
-
-      public GetOrderPreviewRequestBuilder WithTimeInForce(TimeInForceType timeInForce)
-      {
-        _timeInForce = timeInForce;
-        return this;
-      }
-
-      public GetOrderPreviewRequestBuilder WithStartTime(string startTime)
+      public GetOrderPreviewRequestBuilder WithStartTime(string? startTime)
       {
         _startTime = startTime;
         return this;
       }
 
-      public GetOrderPreviewRequestBuilder WithExpiryTime(string expiryTime)
+      public GetOrderPreviewRequestBuilder WithExpiryTime(string? expiryTime)
       {
         _expiryTime = expiryTime;
         return this;
       }
 
-      public GetOrderPreviewRequestBuilder WithIsRaiseExact(bool isRaiseExact)
+      public GetOrderPreviewRequestBuilder WithTimeInForce(TimeInForceType? timeInForce)
+      {
+        _timeInForce = timeInForce;
+        return this;
+      }
+
+      public GetOrderPreviewRequestBuilder WithIsRaiseExact(bool? isRaiseExact)
       {
         _isRaiseExact = isRaiseExact;
         return this;
       }
 
-      public GetOrderPreviewRequestBuilder WithHistoricalPov(string historicalPov)
+      public GetOrderPreviewRequestBuilder WithHistoricalPov(string? historicalPov)
       {
         _historicalPov = historicalPov;
         return this;
       }
 
-      /// <summary>
-      /// Validates the request.
-      /// </summary>
-      /// <exception cref="CoinbaseClientException">Thrown when <see cref="_portfolioId" /> is null, empty, or whitespace.</exception>
+      public GetOrderPreviewRequestBuilder WithStopPrice(string? stopPrice)
+      {
+        _stopPrice = stopPrice;
+        return this;
+      }
+
+      public GetOrderPreviewRequestBuilder WithSettlCurrency(string? settlCurrency)
+      {
+        _settlCurrency = settlCurrency;
+        return this;
+      }
+
+      public GetOrderPreviewRequestBuilder WithPostOnly(bool? postOnly)
+      {
+        _postOnly = postOnly;
+        return this;
+      }
+
+      public GetOrderPreviewRequestBuilder WithDisplayQuoteSize(string? displayQuoteSize)
+      {
+        _displayQuoteSize = displayQuoteSize;
+        return this;
+      }
+
+      public GetOrderPreviewRequestBuilder WithDisplayBaseSize(string? displayBaseSize)
+      {
+        _displayBaseSize = displayBaseSize;
+        return this;
+      }
+
+      public GetOrderPreviewRequestBuilder WithPegOffsetType(PegOffsetType? pegOffsetType)
+      {
+        _pegOffsetType = pegOffsetType;
+        return this;
+      }
+
+      public GetOrderPreviewRequestBuilder WithOffset(string? offset)
+      {
+        _offset = offset;
+        return this;
+      }
+
+      public GetOrderPreviewRequestBuilder WithWigLevel(string? wigLevel)
+      {
+        _wigLevel = wigLevel;
+        return this;
+      }
+
       private void Validate()
       {
         if (string.IsNullOrWhiteSpace(_portfolioId))
@@ -165,11 +236,6 @@ namespace CoinbaseSdk.Prime.Orders
         }
       }
 
-      /// <summary>
-      /// Builds the <see cref="GetOrderPreviewRequest"/>.
-      /// </summary>
-      /// <returns>The <see cref="GetOrderPreviewRequest"/> object.</returns>
-      /// <exception cref="CoinbaseClientException">Thrown when the required fields are not set.</exception>
       public GetOrderPreviewRequest Build()
       {
         Validate();
@@ -181,12 +247,19 @@ namespace CoinbaseSdk.Prime.Orders
           BaseQuantity = _baseQuantity,
           QuoteValue = _quoteValue,
           LimitPrice = _limitPrice,
-          StopPrice = _stopPrice,
-          TimeInForce = _timeInForce,
           StartTime = _startTime,
           ExpiryTime = _expiryTime,
+          TimeInForce = _timeInForce,
           IsRaiseExact = _isRaiseExact,
           HistoricalPov = _historicalPov,
+          StopPrice = _stopPrice,
+          SettlCurrency = _settlCurrency,
+          PostOnly = _postOnly,
+          DisplayQuoteSize = _displayQuoteSize,
+          DisplayBaseSize = _displayBaseSize,
+          PegOffsetType = _pegOffsetType,
+          Offset = _offset,
+          WigLevel = _wigLevel,
         };
       }
     }

@@ -36,11 +36,7 @@ rootCommand.SetHandler(() =>
         var client = CoinbasePrimeClient.FromEnv();
         var financingService = new FinancingService(client);
 
-        var request = new ListFinancingEligibleAssetsRequest();
-
-        PrettyPrinter.PrintResponse("ListFinancingEligibleAssetsRequest", request);
-
-        var response = financingService.ListFinancingEligibleAssets(request);
+        var response = financingService.ListFinancingEligibleAssets();
 
         PrettyPrinter.PrintResponse("ListFinancingEligibleAssetsResponse", response);
 

@@ -1,17 +1,17 @@
 /*
  * Copyright 2024-present Coinbase Global, Inc.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ *  http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
  */
 
 namespace CoinbaseSdk.Prime.Wallets
@@ -20,6 +20,9 @@ namespace CoinbaseSdk.Prime.Wallets
 
   public interface IWalletsService
   {
+    /// <summary>
+    /// List Portfolio Wallets.
+    /// </summary>
     public ListWalletsResponse ListWallets(
       ListWalletsRequest request,
       CallOptions? options = null);
@@ -29,6 +32,9 @@ namespace CoinbaseSdk.Prime.Wallets
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
+    /// <summary>
+    /// Create Wallet.
+    /// </summary>
     public CreateWalletResponse CreateWallet(
       CreateWalletRequest request,
       CallOptions? options = null);
@@ -38,6 +44,9 @@ namespace CoinbaseSdk.Prime.Wallets
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
+    /// <summary>
+    /// Get Wallet by Wallet ID.
+    /// </summary>
     public GetWalletResponse GetWallet(
       GetWalletRequest request,
       CallOptions? options = null);
@@ -47,15 +56,21 @@ namespace CoinbaseSdk.Prime.Wallets
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
-    public GetWalletDepositInstructionsResponse GetWalletDepositInstructions(
-      GetWalletDepositInstructionsRequest request,
+    /// <summary>
+    /// List Wallet Addresses.
+    /// </summary>
+    public ListWalletAddressesResponse ListWalletAddresses(
+      ListWalletAddressesRequest request,
       CallOptions? options = null);
 
-    public Task<GetWalletDepositInstructionsResponse> GetWalletDepositInstructionsAsync(
-      GetWalletDepositInstructionsRequest request,
+    public Task<ListWalletAddressesResponse> ListWalletAddressesAsync(
+      ListWalletAddressesRequest request,
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
+    /// <summary>
+    /// Create Wallet Deposit Address.
+    /// </summary>
     public CreateWalletDepositAddressResponse CreateWalletDepositAddress(
       CreateWalletDepositAddressRequest request,
       CallOptions? options = null);
@@ -65,12 +80,15 @@ namespace CoinbaseSdk.Prime.Wallets
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
-    public ListWalletAddressesResponse ListWalletAddresses(
-      ListWalletAddressesRequest request,
+    /// <summary>
+    /// Get Wallet Deposit Instructions.
+    /// </summary>
+    public GetWalletDepositInstructionsResponse GetWalletDepositInstructions(
+      GetWalletDepositInstructionsRequest request,
       CallOptions? options = null);
 
-    public Task<ListWalletAddressesResponse> ListWalletAddressesAsync(
-      ListWalletAddressesRequest request,
+    public Task<GetWalletDepositInstructionsResponse> GetWalletDepositInstructionsAsync(
+      GetWalletDepositInstructionsRequest request,
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
   }

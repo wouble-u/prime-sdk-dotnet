@@ -18,6 +18,9 @@ namespace CoinbaseSdk.Prime.Orders
 {
   using System.Text.Json.Serialization;
 
+  /// <summary>
+  /// Create Quote Request.
+  /// </summary>
   public class CreateQuoteResponse
   {
     [JsonPropertyName("quote_id")]
@@ -38,4 +41,3 @@ namespace CoinbaseSdk.Prime.Orders
     public CreateQuoteResponse() { }
   }
 }
-

@@ -19,6 +19,9 @@ namespace CoinbaseSdk.Prime.Orders
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
 
+  /// <summary>
+  /// Cancel Order.
+  /// </summary>
   public class CancelOrderRequest(string portfolioId, string orderId)
   {
     [JsonIgnore]
@@ -26,5 +29,43 @@ namespace CoinbaseSdk.Prime.Orders
 
     [JsonIgnore]
     public string OrderId { get; set; } = orderId;
+
+    public class CancelOrderRequestBuilder
+    {
+      private string? _portfolioId;
+      private string? _orderId;
+
+      public CancelOrderRequestBuilder WithPortfolioId(string portfolioId)
+      {
+        _portfolioId = portfolioId;
+        return this;
+      }
+
+      public CancelOrderRequestBuilder WithOrderId(string orderId)
+      {
+        _orderId = orderId;
+        return this;
+      }
+
+      private void Validate()
+      {
+        if (string.IsNullOrWhiteSpace(_portfolioId))
+        {
+          throw new CoinbaseClientException("PortfolioId is required");
+        }
+        if (string.IsNullOrWhiteSpace(_orderId))
+        {
+          throw new CoinbaseClientException("OrderId is required");
+        }
+      }
+
+      public CancelOrderRequest Build()
+      {
+        Validate();
+        return new CancelOrderRequest(_portfolioId!, _orderId!)
+        {
+        };
+      }
+    }
   }
 }

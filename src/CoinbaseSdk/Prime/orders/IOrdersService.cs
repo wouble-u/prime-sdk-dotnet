@@ -20,77 +20,21 @@ namespace CoinbaseSdk.Prime.Orders
 
   public interface IOrdersService
   {
-    public AcceptQuoteResponse AcceptQuote(AcceptQuoteRequest request, CallOptions? options = null);
+    /// <summary>
+    /// Accept Quote.
+    /// </summary>
+    public AcceptQuoteResponse AcceptQuote(
+      AcceptQuoteRequest request,
+      CallOptions? options = null);
 
     public Task<AcceptQuoteResponse> AcceptQuoteAsync(
       AcceptQuoteRequest request,
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
-    public CreateOrderResponse CreateOrder(CreateOrderRequest request, CallOptions? options = null);
-
-    public Task<CreateOrderResponse> CreateOrderAsync(
-      CreateOrderRequest request,
-      CallOptions? options = null,
-      CancellationToken cancellationToken = default);
-
-    public CreateQuoteResponse CreateQuote(CreateQuoteRequest request, CallOptions? options = null);
-
-    public Task<CreateQuoteResponse> CreateQuoteAsync(
-      CreateQuoteRequest request,
-      CallOptions? options = null,
-      CancellationToken cancellationToken = default);
-
-    public CancelOrderResponse CancelOrder(CancelOrderRequest request, CallOptions? options = null);
-
-    public Task<CancelOrderResponse> CancelOrderAsync(
-      CancelOrderRequest request,
-      CallOptions? options = null,
-      CancellationToken cancellationToken = default);
-
-    public GetOrderResponse GetOrder(GetOrderRequest request, CallOptions? options = null);
-
-    public Task<GetOrderResponse> GetOrderAsync(
-      GetOrderRequest request,
-      CallOptions? options = null,
-      CancellationToken cancellationToken = default);
-
-    public GetOrderPreviewResponse GetOrderPreview(
-      GetOrderPreviewRequest request,
-      CallOptions? options = null);
-
-    public Task<GetOrderPreviewResponse> GetOrderPreviewAsync(
-      GetOrderPreviewRequest request,
-      CallOptions? options = null,
-      CancellationToken cancellationToken = default);
-
-    public ListOpenOrdersResponse ListOpenOrders(
-      ListOpenOrdersRequest request,
-      CallOptions? options = null);
-
-    public Task<ListOpenOrdersResponse> ListOpenOrdersAsync(
-      ListOpenOrdersRequest request,
-      CallOptions? options = null,
-      CancellationToken cancellationToken = default);
-
-    public ListOrderFillsResponse ListOrderFills(
-      ListOrderFillsRequest request,
-      CallOptions? options = null);
-
-    public Task<ListOrderFillsResponse> ListOrderFillsAsync(
-      ListOrderFillsRequest request,
-      CallOptions? options = null,
-      CancellationToken cancellationToken = default);
-
-    public ListPortfolioOrdersResponse ListPortfolioOrders(
-      ListPortfolioOrdersRequest request,
-      CallOptions? options = null);
-
-    public Task<ListPortfolioOrdersResponse> ListPortfolioOrdersAsync(
-      ListPortfolioOrdersRequest request,
-      CallOptions? options = null,
-      CancellationToken cancellationToken = default);
-
+    /// <summary>
+    /// List Portfolio Fills.
+    /// </summary>
     public ListPortfolioFillsResponse ListPortfolioFills(
       ListPortfolioFillsRequest request,
       CallOptions? options = null);
@@ -100,6 +44,93 @@ namespace CoinbaseSdk.Prime.Orders
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
+    /// <summary>
+    /// List Open Orders.
+    /// </summary>
+    public ListOpenOrdersResponse ListOpenOrders(
+      ListOpenOrdersRequest request,
+      CallOptions? options = null);
+
+    public Task<ListOpenOrdersResponse> ListOpenOrdersAsync(
+      ListOpenOrdersRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Create Order.
+    /// </summary>
+    public CreateOrderResponse CreateOrder(
+      CreateOrderRequest request,
+      CallOptions? options = null);
+
+    public Task<CreateOrderResponse> CreateOrderAsync(
+      CreateOrderRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Get Order Preview.
+    /// </summary>
+    public GetOrderPreviewResponse GetOrderPreview(
+      GetOrderPreviewRequest request,
+      CallOptions? options = null);
+
+    public Task<GetOrderPreviewResponse> GetOrderPreviewAsync(
+      GetOrderPreviewRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// List Portfolio Orders.
+    /// </summary>
+    public ListPortfolioOrdersResponse ListPortfolioOrders(
+      ListPortfolioOrdersRequest request,
+      CallOptions? options = null);
+
+    public Task<ListPortfolioOrdersResponse> ListPortfolioOrdersAsync(
+      ListPortfolioOrdersRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Get Order by Order ID.
+    /// </summary>
+    public GetOrderResponse GetOrder(
+      GetOrderRequest request,
+      CallOptions? options = null);
+
+    public Task<GetOrderResponse> GetOrderAsync(
+      GetOrderRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Cancel Order.
+    /// </summary>
+    public CancelOrderResponse CancelOrder(
+      CancelOrderRequest request,
+      CallOptions? options = null);
+
+    public Task<CancelOrderResponse> CancelOrderAsync(
+      CancelOrderRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Edit Order (Beta).
+    /// </summary>
+    public EditOrderResponse EditOrder(
+      EditOrderRequest request,
+      CallOptions? options = null);
+
+    public Task<EditOrderResponse> EditOrderAsync(
+      EditOrderRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// List Order Edit History.
+    /// </summary>
     public ListOrderEditHistoryResponse ListOrderEditHistory(
       ListOrderEditHistoryRequest request,
       CallOptions? options = null);
@@ -109,10 +140,27 @@ namespace CoinbaseSdk.Prime.Orders
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
 
-    public EditOrderResponse EditOrder(EditOrderRequest request, CallOptions? options = null);
+    /// <summary>
+    /// List Order Fills.
+    /// </summary>
+    public ListOrderFillsResponse ListOrderFills(
+      ListOrderFillsRequest request,
+      CallOptions? options = null);
 
-    public Task<EditOrderResponse> EditOrderAsync(
-      EditOrderRequest request,
+    public Task<ListOrderFillsResponse> ListOrderFillsAsync(
+      ListOrderFillsRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Create Quote Request.
+    /// </summary>
+    public CreateQuoteResponse CreateQuote(
+      CreateQuoteRequest request,
+      CallOptions? options = null);
+
+    public Task<CreateQuoteResponse> CreateQuoteAsync(
+      CreateQuoteRequest request,
       CallOptions? options = null,
       CancellationToken cancellationToken = default);
   }

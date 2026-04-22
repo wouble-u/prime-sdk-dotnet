@@ -17,7 +17,11 @@
 namespace CoinbaseSdk.Prime.OnchainAddressBook
 {
   using System.Text.Json.Serialization;
+  using CoinbaseSdk.Core.Error;
 
+  /// <summary>
+  /// Delete Onchain Address Group.
+  /// </summary>
   public class DeleteOnchainAddressGroupRequest(string portfolioId, string addressGroupId)
   {
     [JsonIgnore]
@@ -25,5 +29,43 @@ namespace CoinbaseSdk.Prime.OnchainAddressBook
 
     [JsonIgnore]
     public string AddressGroupId { get; set; } = addressGroupId;
+
+    public class DeleteOnchainAddressGroupRequestBuilder
+    {
+      private string? _portfolioId;
+      private string? _addressGroupId;
+
+      public DeleteOnchainAddressGroupRequestBuilder WithPortfolioId(string portfolioId)
+      {
+        _portfolioId = portfolioId;
+        return this;
+      }
+
+      public DeleteOnchainAddressGroupRequestBuilder WithAddressGroupId(string addressGroupId)
+      {
+        _addressGroupId = addressGroupId;
+        return this;
+      }
+
+      private void Validate()
+      {
+        if (string.IsNullOrWhiteSpace(_portfolioId))
+        {
+          throw new CoinbaseClientException("PortfolioId is required");
+        }
+        if (string.IsNullOrWhiteSpace(_addressGroupId))
+        {
+          throw new CoinbaseClientException("AddressGroupId is required");
+        }
+      }
+
+      public DeleteOnchainAddressGroupRequest Build()
+      {
+        Validate();
+        return new DeleteOnchainAddressGroupRequest(_portfolioId!, _addressGroupId!)
+        {
+        };
+      }
+    }
   }
 }

@@ -1,5 +1,82 @@
 # Changelog
 
+## [0.5.0] - 2026-APR-7
+
+### Added
+
+- **New API Endpoints**
+  - `FuturesService.GetFcmEquity`
+  - `ProductsService.GetCandles`
+  - `StakingService.GetStakingStatus`
+  - `StakingService.GetUnstakingStatus`
+  - `StakingService.PreviewUnstake`
+  - `TransactionsService.ListAdvancedTransfers`
+  - `TransactionsService.CreateAdvancedTransfer`
+  - `TransactionsService.CancelAdvancedTransfer`
+  - `TransactionsService.ListAdvancedTransferTransactions`
+  - `TransactionsService.GetTransactionTravelRuleData`
+  - `TransactionsService.SubmitDepositTravelRuleData`
+
+- **New Examples** (run with `dotnet run --file <path>`)
+
+  ```bash
+  # Allocations
+  dotnet run --file src/CoinbaseSdk/PrimeExample/examples/allocations/ListAllocationsByClientNettingId.cs --portfolioId <portfolio_id> --nettingId <netting_id>
+
+  # Futures
+  dotnet run --file src/CoinbaseSdk/PrimeExample/examples/futures/GetFcmEquity.cs --entityId <entity_id>
+
+  # Onchain Address Book
+  dotnet run --file src/CoinbaseSdk/PrimeExample/examples/onchainaddressbook/CreateOnchainAddressBookEntry.cs --portfolioId <portfolio_id> --addressGroup <address_group>
+  dotnet run --file src/CoinbaseSdk/PrimeExample/examples/onchainaddressbook/UpdateOnchainAddressBookEntry.cs --portfolioId <portfolio_id> --addressGroup <address_group>
+
+  # Products
+  dotnet run --file src/CoinbaseSdk/PrimeExample/examples/products/GetCandles.cs --portfolioId <portfolio_id> --productId BTC-USD --granularity ONE_HOUR
+
+  # Staking
+  dotnet run --file src/CoinbaseSdk/PrimeExample/examples/staking/GetStakingStatus.cs --portfolioId <portfolio_id> --walletId <wallet_id>
+  dotnet run --file src/CoinbaseSdk/PrimeExample/examples/staking/GetUnstakingStatus.cs --portfolioId <portfolio_id> --walletId <wallet_id>
+  dotnet run --file src/CoinbaseSdk/PrimeExample/examples/staking/PreviewUnstake.cs --portfolioId <portfolio_id> --walletId <wallet_id> --amount 1.0
+
+  # Advanced Transfers
+  dotnet run --file src/CoinbaseSdk/PrimeExample/examples/transactions/ListAdvancedTransfers.cs --portfolioId <portfolio_id>
+  dotnet run --file src/CoinbaseSdk/PrimeExample/examples/transactions/CreateAdvancedTransfer.cs --portfolioId <portfolio_id> --transferType BLIND_MATCH
+  dotnet run --file src/CoinbaseSdk/PrimeExample/examples/transactions/CancelAdvancedTransfer.cs --portfolioId <portfolio_id> --advancedTransferId <transfer_id>
+  dotnet run --file src/CoinbaseSdk/PrimeExample/examples/transactions/ListAdvancedTransferTransactions.cs --portfolioId <portfolio_id> --advancedTransferId <transfer_id>
+
+  # Onchain Transactions
+  dotnet run --file src/CoinbaseSdk/PrimeExample/examples/transactions/CreateOnchainTransaction.cs --portfolioId <portfolio_id> --walletId <wallet_id> --rawUnsignedTxn <raw_txn>
+
+  # Travel Rule
+  dotnet run --file src/CoinbaseSdk/PrimeExample/examples/transactions/GetTransactionTravelRuleData.cs --portfolioId <portfolio_id> --transactionId <transaction_id>
+  dotnet run --file src/CoinbaseSdk/PrimeExample/examples/transactions/SubmitDepositTravelRuleData.cs --portfolioId <portfolio_id> --transactionId <transaction_id>
+  ```
+
+- **New Domain Models**
+  - `AdvancedTransfer`, `BlindMatchMetadata`, `CommissionDetailTotal`
+  - `FcmScheduledMaintenance`, `FcmTradingSessionDetails`, `FundMovement`
+  - `FutureProductDetails`, `PerpetualProductDetails`
+  - `RequestToSubmitTravelRuleDataForAnExistingDepositTransaction`
+  - `StakingStatus`, `TravelRuleData`, `ValidatorAllocation`, `ValidatorStakingInfo`
+
+- **New Enums**
+  - `AdvancedTransferState`, `AdvancedTransferType`, `ContractExpiryType`
+  - `ExpiringContractStatus`, `FcmMarginHealthState`, `FcmTradingSessionClosedReason`
+  - `FcmTradingSessionState`, `ProductType`, `RiskManagementType`
+  - `SecondaryPermission`, `StakeType`
+
+### Changed
+
+- **SDK Generator overhaul** — `tools/model-generator` has been replaced by `tools/generator`, a
+  fully OpenAPI-spec-driven multi-phase code generator. It now generates models, enums, request and
+  response types, service interfaces, service implementations, and runnable example scripts directly
+  from the Prime OpenAPI spec. Run with `dotnet run --project tools/generator`; use `--dry-run` or
+  `--diff` to preview changes without writing files. See `tools/generator/README.md` for full usage.
+
+### Removed
+
+- **`tools/model-generator`** — superseded by `tools/generator` (see above).
+
 ## [0.4.0] - 2025-DEC-23
 
 ### Added

@@ -21,16 +21,19 @@ namespace CoinbaseSdk.Prime.Orders
   using CoinbaseSdk.Prime.Common;
   using CoinbaseSdk.Prime.Model.Enums;
 
+  /// <summary>
+  /// List Portfolio Orders.
+  /// </summary>
   public class ListPortfolioOrdersRequest(string portfolioId) : PaginatedRequest
   {
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
 
     [JsonPropertyName("order_statuses")]
-    public OrderStatus[]? OrderStatuses { get; set; }
+    public OrderStatus[] OrderStatuses { get; set; } = [];
 
     [JsonPropertyName("product_ids")]
-    public string[]? ProductIds { get; set; }
+    public string[] ProductIds { get; set; } = [];
 
     [JsonPropertyName("order_type")]
     public OrderType? OrderType { get; set; }
@@ -44,7 +47,7 @@ namespace CoinbaseSdk.Prime.Orders
     [JsonPropertyName("end_date")]
     public string? EndDate { get; set; }
 
-    public class Builder
+    public class ListPortfolioOrdersRequestBuilder
     {
       private string? _portfolioId;
       private OrderStatus[]? _orderStatuses;
@@ -57,70 +60,66 @@ namespace CoinbaseSdk.Prime.Orders
       private SortDirection? _sortDirection;
       private int? _limit;
 
-      public Builder WithPortfolioId(string portfolioId)
+      public ListPortfolioOrdersRequestBuilder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithOrderStatuses(OrderStatus[] orderStatuses)
+      public ListPortfolioOrdersRequestBuilder WithOrderStatuses(OrderStatus[] orderStatuses)
       {
         _orderStatuses = orderStatuses;
         return this;
       }
 
-      public Builder WithProductIds(string[] productIds)
+      public ListPortfolioOrdersRequestBuilder WithProductIds(string[] productIds)
       {
         _productIds = productIds;
         return this;
       }
 
-      public Builder WithOrderType(OrderType orderType)
+      public ListPortfolioOrdersRequestBuilder WithOrderType(OrderType? orderType)
       {
         _orderType = orderType;
         return this;
       }
 
-      public Builder WithOrderSide(OrderSide orderSide)
+      public ListPortfolioOrdersRequestBuilder WithOrderSide(OrderSide? orderSide)
       {
         _orderSide = orderSide;
         return this;
       }
 
-      public Builder WithStartDate(string startDate)
+      public ListPortfolioOrdersRequestBuilder WithStartDate(string? startDate)
       {
         _startDate = startDate;
         return this;
       }
 
-      public Builder WithEndDate(string endDate)
+      public ListPortfolioOrdersRequestBuilder WithEndDate(string? endDate)
       {
         _endDate = endDate;
         return this;
       }
 
-      public Builder WithCursor(string cursor)
+      public ListPortfolioOrdersRequestBuilder WithCursor(string cursor)
       {
         _cursor = cursor;
         return this;
       }
 
-      public Builder WithSortDirection(SortDirection sortDirection)
+      public ListPortfolioOrdersRequestBuilder WithSortDirection(SortDirection sortDirection)
       {
         _sortDirection = sortDirection;
         return this;
       }
 
-      public Builder WithLimit(int limit)
+      public ListPortfolioOrdersRequestBuilder WithLimit(int limit)
       {
         _limit = limit;
         return this;
       }
 
-      /// <summary>
-      /// Validates the builder.
-      /// </summary>
-      /// <exception cref="CoinbaseClientException">Thrown when <see cref="_portfolioId" /> is null, empty, or whitespace.</exception>
       private void Validate()
       {
         if (string.IsNullOrWhiteSpace(_portfolioId))
@@ -129,18 +128,13 @@ namespace CoinbaseSdk.Prime.Orders
         }
       }
 
-      /// <summary>
-      /// Builds the <see cref="ListPortfolioOrdersRequest"/>.
-      /// </summary>
-      /// <returns>The <see cref="ListPortfolioOrdersRequest"/>.</returns>
-      /// <exception cref="CoinbaseClientException">Thrown when required fields are not provided.</exception>
       public ListPortfolioOrdersRequest Build()
       {
         Validate();
-        var request = new ListPortfolioOrdersRequest(_portfolioId!)
+        return new ListPortfolioOrdersRequest(_portfolioId!)
         {
-          OrderStatuses = _orderStatuses,
-          ProductIds = _productIds,
+          OrderStatuses = _orderStatuses ?? [],
+          ProductIds = _productIds ?? [],
           OrderType = _orderType,
           OrderSide = _orderSide,
           StartDate = _startDate,
@@ -149,7 +143,6 @@ namespace CoinbaseSdk.Prime.Orders
           SortDirection = _sortDirection,
           Limit = _limit,
         };
-        return request;
       }
     }
   }

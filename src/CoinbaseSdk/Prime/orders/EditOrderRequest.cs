@@ -19,6 +19,9 @@ namespace CoinbaseSdk.Prime.Orders
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
 
+  /// <summary>
+  /// Edit Order (Beta).
+  /// </summary>
   public class EditOrderRequest(string portfolioId, string orderId)
   {
     [JsonIgnore]
@@ -144,38 +147,18 @@ namespace CoinbaseSdk.Prime.Orders
         return this;
       }
 
-      /// <summary>
-      /// Validates the builder.
-      /// </summary>
-      /// <exception cref="CoinbaseClientException">Thrown when required fields are missing.</exception>
       private void Validate()
       {
         if (string.IsNullOrWhiteSpace(_portfolioId))
         {
           throw new CoinbaseClientException("PortfolioId is required");
         }
-
         if (string.IsNullOrWhiteSpace(_orderId))
         {
           throw new CoinbaseClientException("OrderId is required");
         }
-
-        if (string.IsNullOrWhiteSpace(_origClientOrderId))
-        {
-          throw new CoinbaseClientException("OrigClientOrderId is required");
-        }
-
-        if (string.IsNullOrWhiteSpace(_clientOrderId))
-        {
-          throw new CoinbaseClientException("ClientOrderId is required");
-        }
       }
 
-      /// <summary>
-      /// Builds the <see cref="EditOrderRequest"/> object.
-      /// </summary>
-      /// <returns>The <see cref="EditOrderRequest"/> object.</returns>
-      /// <exception cref="CoinbaseClientException">Thrown when the required fields are not set.</exception>
       public EditOrderRequest Build()
       {
         Validate();

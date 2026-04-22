@@ -129,7 +129,8 @@ rootCommand.SetHandler((context) =>
 
         clientQuoteId ??= Guid.NewGuid().ToString();
 
-        var requestBuilder = new CreateQuoteRequest.CreateQuoteRequestBuilder(portfolioId)
+        var requestBuilder = new CreateQuoteRequest.CreateQuoteRequestBuilder()
+            .WithPortfolioId(portfolioId)
             .WithProductId(productId)
             .WithSide(side)
             .WithClientQuoteId(clientQuoteId);

@@ -1,17 +1,17 @@
 /*
  * Copyright 2024-present Coinbase Global, Inc.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ *  http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
  */
 
 namespace CoinbaseSdk.Prime.Transactions
@@ -21,6 +21,9 @@ namespace CoinbaseSdk.Prime.Transactions
   using CoinbaseSdk.Prime.Common;
   using CoinbaseSdk.Prime.Model.Enums;
 
+  /// <summary>
+  /// List Wallet Transactions.
+  /// </summary>
   public class ListWalletTransactionsRequest(string portfolioId, string walletId) : PaginatedRequest
   {
     [JsonIgnore]
@@ -29,8 +32,8 @@ namespace CoinbaseSdk.Prime.Transactions
     [JsonIgnore]
     public string WalletId { get; set; } = walletId;
 
-    [JsonPropertyName("type")]
-    public TransactionType Type { get; set; }
+    [JsonPropertyName("types")]
+    public TransactionType[] Types { get; set; } = [];
 
     [JsonPropertyName("start_time")]
     public string? StartTime { get; set; }
@@ -38,69 +41,65 @@ namespace CoinbaseSdk.Prime.Transactions
     [JsonPropertyName("end_time")]
     public string? EndTime { get; set; }
 
-    public class Builder
+    public class ListWalletTransactionsRequestBuilder
     {
       private string? _portfolioId;
       private string? _walletId;
-      private TransactionType _type;
+      private TransactionType[]? _types;
       private string? _startTime;
       private string? _endTime;
       private string? _cursor;
       private SortDirection? _sortDirection;
       private int? _limit;
 
-      public Builder WithPortfolioId(string portfolioId)
+      public ListWalletTransactionsRequestBuilder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithWalletId(string walletId)
+      public ListWalletTransactionsRequestBuilder WithWalletId(string walletId)
       {
         _walletId = walletId;
         return this;
       }
 
-      public Builder WithType(TransactionType type)
+      public ListWalletTransactionsRequestBuilder WithTypes(TransactionType[] types)
       {
-        _type = type;
+        _types = types;
         return this;
       }
 
-      public Builder WithStartTime(string startTime)
+      public ListWalletTransactionsRequestBuilder WithStartTime(string? startTime)
       {
         _startTime = startTime;
         return this;
       }
 
-      public Builder WithEndTime(string endTime)
+      public ListWalletTransactionsRequestBuilder WithEndTime(string? endTime)
       {
         _endTime = endTime;
         return this;
       }
 
-      public Builder WithCursor(string cursor)
+      public ListWalletTransactionsRequestBuilder WithCursor(string cursor)
       {
         _cursor = cursor;
         return this;
       }
 
-      public Builder WithSortDirection(SortDirection sortDirection)
+      public ListWalletTransactionsRequestBuilder WithSortDirection(SortDirection sortDirection)
       {
         _sortDirection = sortDirection;
         return this;
       }
 
-      public Builder WithLimit(int limit)
+      public ListWalletTransactionsRequestBuilder WithLimit(int limit)
       {
         _limit = limit;
         return this;
       }
 
-      /// <summary>
-      /// Validates the builder.
-      /// </summary>
-      /// <exception cref="CoinbaseClientException">Thrown when <see cref="_portfolioId" /> is null, empty, or whitespace.</exception>
       private void Validate()
       {
         if (string.IsNullOrWhiteSpace(_portfolioId))
@@ -113,24 +112,18 @@ namespace CoinbaseSdk.Prime.Transactions
         }
       }
 
-      /// <summary>
-      /// Builds the <see cref="ListWalletTransactionsRequest"/>.
-      /// </summary>
-      /// <returns>The <see cref="ListWalletTransactionsRequest"/>.</returns>
-      /// <exception cref="CoinbaseClientException">Thrown when the required fields are not set.</exception>
       public ListWalletTransactionsRequest Build()
       {
         Validate();
-        var request = new ListWalletTransactionsRequest(_portfolioId!, _walletId!)
+        return new ListWalletTransactionsRequest(_portfolioId!, _walletId!)
         {
-          Type = _type,
+          Types = _types ?? [],
           StartTime = _startTime,
           EndTime = _endTime,
           Cursor = _cursor,
           SortDirection = _sortDirection,
           Limit = _limit,
         };
-        return request;
       }
     }
   }

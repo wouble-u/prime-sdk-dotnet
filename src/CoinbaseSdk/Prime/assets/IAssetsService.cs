@@ -17,8 +17,12 @@
 namespace CoinbaseSdk.Prime.Assets
 {
   using CoinbaseSdk.Core.Http;
+
   public interface IAssetsService
   {
+    /// <summary>
+    /// List Assets.
+    /// </summary>
     public ListAssetsResponse ListAssets(
       ListAssetsRequest request,
       CallOptions? options = null);
@@ -29,4 +33,3 @@ namespace CoinbaseSdk.Prime.Assets
       CancellationToken cancellationToken = default);
   }
 }
-

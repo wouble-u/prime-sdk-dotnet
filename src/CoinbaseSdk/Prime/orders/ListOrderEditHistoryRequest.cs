@@ -18,14 +18,54 @@ namespace CoinbaseSdk.Prime.Orders
 {
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
-  using CoinbaseSdk.Prime.Common;
 
-  public class ListOrderEditHistoryRequest(string portfolioId, string orderId) : PaginatedRequest
+  /// <summary>
+  /// List Order Edit History.
+  /// </summary>
+  public class ListOrderEditHistoryRequest(string portfolioId, string orderId)
   {
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
 
     [JsonIgnore]
     public string OrderId { get; set; } = orderId;
+
+    public class ListOrderEditHistoryRequestBuilder
+    {
+      private string? _portfolioId;
+      private string? _orderId;
+
+      public ListOrderEditHistoryRequestBuilder WithPortfolioId(string portfolioId)
+      {
+        _portfolioId = portfolioId;
+        return this;
+      }
+
+      public ListOrderEditHistoryRequestBuilder WithOrderId(string orderId)
+      {
+        _orderId = orderId;
+        return this;
+      }
+
+      private void Validate()
+      {
+        if (string.IsNullOrWhiteSpace(_portfolioId))
+        {
+          throw new CoinbaseClientException("PortfolioId is required");
+        }
+        if (string.IsNullOrWhiteSpace(_orderId))
+        {
+          throw new CoinbaseClientException("OrderId is required");
+        }
+      }
+
+      public ListOrderEditHistoryRequest Build()
+      {
+        Validate();
+        return new ListOrderEditHistoryRequest(_portfolioId!, _orderId!)
+        {
+        };
+      }
+    }
   }
 }

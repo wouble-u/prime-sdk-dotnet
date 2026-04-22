@@ -1,17 +1,17 @@
 /*
  * Copyright 2024-present Coinbase Global, Inc.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ *  http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
  */
 
 namespace CoinbaseSdk.Prime.Transactions
@@ -19,6 +19,9 @@ namespace CoinbaseSdk.Prime.Transactions
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
 
+  /// <summary>
+  /// Create Transfer.
+  /// </summary>
   public class CreateTransferRequest(string portfolioId, string walletId)
   {
     [JsonIgnore]
@@ -27,8 +30,10 @@ namespace CoinbaseSdk.Prime.Transactions
     [JsonIgnore]
     public string WalletId { get; set; } = walletId;
 
+    [JsonPropertyName("amount")]
     public string? Amount { get; set; }
 
+    [JsonPropertyName("destination")]
     public string? Destination { get; set; }
 
     [JsonPropertyName("idempotency_key")]
@@ -37,7 +42,7 @@ namespace CoinbaseSdk.Prime.Transactions
     [JsonPropertyName("currency_symbol")]
     public string? CurrencySymbol { get; set; }
 
-    public class Builder
+    public class CreateTransferRequestBuilder
     {
       private string? _portfolioId;
       private string? _walletId;
@@ -46,47 +51,42 @@ namespace CoinbaseSdk.Prime.Transactions
       private string? _idempotencyKey;
       private string? _currencySymbol;
 
-      public Builder WithPortfolioId(string portfolioId)
+      public CreateTransferRequestBuilder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithWalletId(string walletId)
+      public CreateTransferRequestBuilder WithWalletId(string walletId)
       {
         _walletId = walletId;
         return this;
       }
 
-      public Builder WithAmount(string amount)
+      public CreateTransferRequestBuilder WithAmount(string? amount)
       {
         _amount = amount;
         return this;
       }
 
-      public Builder WithDestination(string destination)
+      public CreateTransferRequestBuilder WithDestination(string? destination)
       {
         _destination = destination;
         return this;
       }
 
-      public Builder WithIdempotencyKey(string idempotencyKey)
+      public CreateTransferRequestBuilder WithIdempotencyKey(string? idempotencyKey)
       {
         _idempotencyKey = idempotencyKey;
         return this;
       }
 
-      public Builder WithCurrencySymbol(string currencySymbol)
+      public CreateTransferRequestBuilder WithCurrencySymbol(string? currencySymbol)
       {
         _currencySymbol = currencySymbol;
         return this;
       }
 
-      /// <summary>
-      /// Validate the builder.
-      /// </summary>
-      /// <exception cref="CoinbaseClientException">Thrown when the
-      /// <see cref="_portfolioId"/> is null, empty or whitespace.</exception>
       private void Validate()
       {
         if (string.IsNullOrWhiteSpace(_portfolioId))
@@ -99,11 +99,6 @@ namespace CoinbaseSdk.Prime.Transactions
         }
       }
 
-      /// <summary>
-      /// Build the <see cref="CreateTransferRequest"/> object.
-      /// </summary>
-      /// <returns>The <see cref="CreateTransferRequest"/> object.</returns>
-      /// <exception cref="CoinbaseClientException">Thrown when the required fields are not set.</exception>
       public CreateTransferRequest Build()
       {
         Validate();
@@ -112,7 +107,7 @@ namespace CoinbaseSdk.Prime.Transactions
           Amount = _amount,
           Destination = _destination,
           IdempotencyKey = _idempotencyKey,
-          CurrencySymbol = _currencySymbol
+          CurrencySymbol = _currencySymbol,
         };
       }
     }

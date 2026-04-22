@@ -20,8 +20,12 @@ namespace CoinbaseSdk.Prime.Assets
   using CoinbaseSdk.Core.Client;
   using CoinbaseSdk.Core.Http;
   using CoinbaseSdk.Core.Service;
+
   public class AssetsService(ICoinbaseClient client) : CoinbaseService(client), IAssetsService
   {
+    /// <summary>
+    /// List Assets.
+    /// </summary>
     public ListAssetsResponse ListAssets(
       ListAssetsRequest request,
       CallOptions? options = null)

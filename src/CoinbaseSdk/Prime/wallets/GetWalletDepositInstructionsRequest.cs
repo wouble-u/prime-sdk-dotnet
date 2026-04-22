@@ -17,9 +17,11 @@
 namespace CoinbaseSdk.Prime.Wallets
 {
   using System.Text.Json.Serialization;
-  using CoinbaseSdk.Prime.Model;
-  using CoinbaseSdk.Prime.Model.Enums;
+  using CoinbaseSdk.Core.Error;
 
+  /// <summary>
+  /// Get Wallet Deposit Instructions.
+  /// </summary>
   public class GetWalletDepositInstructionsRequest(string portfolioId, string walletId)
   {
     [JsonIgnore]
@@ -29,8 +31,74 @@ namespace CoinbaseSdk.Prime.Wallets
     public string WalletId { get; set; } = walletId;
 
     [JsonPropertyName("deposit_type")]
-    public WalletDepositInstructionType DepositType { get; set; }
+    public string? DepositType { get; set; }
 
-    public Network? Network { get; set; }
+    [JsonPropertyName("network.id")]
+    public string? NetworkId { get; set; }
+
+    [JsonPropertyName("network.type")]
+    public string? NetworkType { get; set; }
+
+    public class GetWalletDepositInstructionsRequestBuilder
+    {
+      private string? _portfolioId;
+      private string? _walletId;
+      private string? _depositType;
+      private string? _networkId;
+      private string? _networkType;
+
+      public GetWalletDepositInstructionsRequestBuilder WithPortfolioId(string portfolioId)
+      {
+        _portfolioId = portfolioId;
+        return this;
+      }
+
+      public GetWalletDepositInstructionsRequestBuilder WithWalletId(string walletId)
+      {
+        _walletId = walletId;
+        return this;
+      }
+
+      public GetWalletDepositInstructionsRequestBuilder WithDepositType(string? depositType)
+      {
+        _depositType = depositType;
+        return this;
+      }
+
+      public GetWalletDepositInstructionsRequestBuilder WithNetworkId(string? networkId)
+      {
+        _networkId = networkId;
+        return this;
+      }
+
+      public GetWalletDepositInstructionsRequestBuilder WithNetworkType(string? networkType)
+      {
+        _networkType = networkType;
+        return this;
+      }
+
+      private void Validate()
+      {
+        if (string.IsNullOrWhiteSpace(_portfolioId))
+        {
+          throw new CoinbaseClientException("PortfolioId is required");
+        }
+        if (string.IsNullOrWhiteSpace(_walletId))
+        {
+          throw new CoinbaseClientException("WalletId is required");
+        }
+      }
+
+      public GetWalletDepositInstructionsRequest Build()
+      {
+        Validate();
+        return new GetWalletDepositInstructionsRequest(_portfolioId!, _walletId!)
+        {
+          DepositType = _depositType,
+          NetworkId = _networkId,
+          NetworkType = _networkType,
+        };
+      }
+    }
   }
 }

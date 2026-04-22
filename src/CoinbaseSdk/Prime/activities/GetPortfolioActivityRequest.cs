@@ -19,6 +19,9 @@ namespace CoinbaseSdk.Prime.Activities
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
 
+  /// <summary>
+  /// Get Portfolio Activity by Activity ID.
+  /// </summary>
   public class GetPortfolioActivityRequest(string portfolioId, string activityId)
   {
     [JsonIgnore]
@@ -27,49 +30,41 @@ namespace CoinbaseSdk.Prime.Activities
     [JsonIgnore]
     public string ActivityId { get; set; } = activityId;
 
-    public class Builder
+    public class GetPortfolioActivityRequestBuilder
     {
       private string? _portfolioId;
       private string? _activityId;
 
-      public Builder WithPortfolioId(string portfolioId)
+      public GetPortfolioActivityRequestBuilder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithActivityId(string activityId)
+      public GetPortfolioActivityRequestBuilder WithActivityId(string activityId)
       {
         _activityId = activityId;
         return this;
       }
 
-      /// <summary>
-      /// Validates the builder.
-      /// </summary>
-      /// <exception cref="CoinbaseClientException">Thrown when <see cref="_portfolioId" /> or <see cref="_activityId" /> is null, empty, or whitespace.</exception>
       private void Validate()
       {
         if (string.IsNullOrWhiteSpace(_portfolioId))
         {
           throw new CoinbaseClientException("PortfolioId is required");
         }
-
         if (string.IsNullOrWhiteSpace(_activityId))
         {
           throw new CoinbaseClientException("ActivityId is required");
         }
       }
 
-      /// <summary>
-      /// Builds the <see cref="GetPortfolioActivityRequest"/>.
-      /// </summary>
-      /// <returns>The <see cref="GetPortfolioActivityRequest"/>.</returns>
-      /// <exception cref="CoinbaseClientException">Thrown when <see cref="_portfolioId" /> or <see cref="_activityId" /> is null, empty, or whitespace.</exception>
       public GetPortfolioActivityRequest Build()
       {
         Validate();
-        return new GetPortfolioActivityRequest(_portfolioId!, _activityId!);
+        return new GetPortfolioActivityRequest(_portfolioId!, _activityId!)
+        {
+        };
       }
     }
   }

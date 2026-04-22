@@ -17,14 +17,53 @@
 namespace CoinbaseSdk.Prime.OnchainAddressBook
 {
   using System.Text.Json.Serialization;
+  using CoinbaseSdk.Core.Error;
   using CoinbaseSdk.Prime.Model;
 
-  public class CreateOnchainAddressBookEntryRequest(string portfolioId, AddressGroup addressGroup)
+  /// <summary>
+  /// Create Onchain Address Book Entry.
+  /// </summary>
+  public class CreateOnchainAddressBookEntryRequest(string portfolioId)
   {
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
 
     [JsonPropertyName("address_group")]
-    public AddressGroup AddressGroup { get; set; } = addressGroup;
+    public AddressGroup AddressGroup { get; set; }
+
+    public class CreateOnchainAddressBookEntryRequestBuilder
+    {
+      private string? _portfolioId;
+      private AddressGroup _addressGroup;
+
+      public CreateOnchainAddressBookEntryRequestBuilder WithPortfolioId(string portfolioId)
+      {
+        _portfolioId = portfolioId;
+        return this;
+      }
+
+      public CreateOnchainAddressBookEntryRequestBuilder WithAddressGroup(AddressGroup addressGroup)
+      {
+        _addressGroup = addressGroup;
+        return this;
+      }
+
+      private void Validate()
+      {
+        if (string.IsNullOrWhiteSpace(_portfolioId))
+        {
+          throw new CoinbaseClientException("PortfolioId is required");
+        }
+      }
+
+      public CreateOnchainAddressBookEntryRequest Build()
+      {
+        Validate();
+        return new CreateOnchainAddressBookEntryRequest(_portfolioId!)
+        {
+          AddressGroup = _addressGroup,
+        };
+      }
+    }
   }
 }

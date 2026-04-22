@@ -21,6 +21,9 @@ namespace CoinbaseSdk.Prime.AddressBook
   using CoinbaseSdk.Prime.Common;
   using CoinbaseSdk.Prime.Model.Enums;
 
+  /// <summary>
+  /// Get Address Book.
+  /// </summary>
   public class ListAddressBookEntriesRequest(string portfolioId) : PaginatedRequest
   {
     [JsonIgnore]
@@ -28,9 +31,11 @@ namespace CoinbaseSdk.Prime.AddressBook
 
     [JsonPropertyName("currency_symbol")]
     public string? CurrencySymbol { get; set; }
+
+    [JsonPropertyName("search")]
     public string? Search { get; set; }
 
-    public class Builder
+    public class ListAddressBookEntriesRequestBuilder
     {
       private string? _portfolioId;
       private string? _currencySymbol;
@@ -39,47 +44,42 @@ namespace CoinbaseSdk.Prime.AddressBook
       private SortDirection? _sortDirection;
       private int? _limit;
 
-      public Builder WithPortfolioId(string portfolioId)
+      public ListAddressBookEntriesRequestBuilder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithCurrencySymbol(string? currencySymbol)
+      public ListAddressBookEntriesRequestBuilder WithCurrencySymbol(string? currencySymbol)
       {
         _currencySymbol = currencySymbol;
         return this;
       }
 
-      public Builder WithSearch(string? search)
+      public ListAddressBookEntriesRequestBuilder WithSearch(string? search)
       {
         _search = search;
         return this;
       }
 
-      public Builder WithCursor(string cursor)
+      public ListAddressBookEntriesRequestBuilder WithCursor(string cursor)
       {
         _cursor = cursor;
         return this;
       }
 
-      public Builder WithSortDirection(SortDirection? sortDirection)
+      public ListAddressBookEntriesRequestBuilder WithSortDirection(SortDirection sortDirection)
       {
         _sortDirection = sortDirection;
         return this;
       }
 
-      public Builder WithLimit(int limit)
+      public ListAddressBookEntriesRequestBuilder WithLimit(int limit)
       {
         _limit = limit;
         return this;
       }
 
-      /// <summary>
-      /// Validate the builder.
-      /// </summary>
-      /// <exception cref="CoinbaseClientException">Thrown when the
-      /// <see cref="_portfolioId"/> is null, empty or whitespace.</exception>
       private void Validate()
       {
         if (string.IsNullOrWhiteSpace(_portfolioId))
@@ -88,23 +88,17 @@ namespace CoinbaseSdk.Prime.AddressBook
         }
       }
 
-      /// <summary>
-      /// Build the <see cref="ListAddressBookEntriesRequest"/>.
-      /// </summary>
-      /// <returns>The <see cref="ListAddressBookEntriesRequest"/>.</returns>
-      /// <exception cref="CoinbaseClientException">Thrown when the required fields are not set.</exception>
       public ListAddressBookEntriesRequest Build()
       {
         Validate();
-        var request = new ListAddressBookEntriesRequest(_portfolioId!)
+        return new ListAddressBookEntriesRequest(_portfolioId!)
         {
           CurrencySymbol = _currencySymbol,
           Search = _search,
           Cursor = _cursor,
           SortDirection = _sortDirection,
-          Limit = _limit
+          Limit = _limit,
         };
-        return request;
       }
     }
   }

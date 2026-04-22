@@ -16,9 +16,17 @@
 
 namespace CoinbaseSdk.Prime.Activities
 {
+  using System.Text.Json.Serialization;
   using CoinbaseSdk.Prime.Model;
+
+  /// <summary>
+  /// Get Activity by Activity ID.
+  /// </summary>
   public class GetActivityResponse
   {
-    public Activity? Activity { get; set; }
+    [JsonPropertyName("activity")]
+    public Activity Activity { get; set; }
+
+    public GetActivityResponse() { }
   }
 }

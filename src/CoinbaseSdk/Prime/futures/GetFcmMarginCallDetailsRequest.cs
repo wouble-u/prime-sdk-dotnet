@@ -17,10 +17,41 @@
 namespace CoinbaseSdk.Prime.Futures
 {
   using System.Text.Json.Serialization;
+  using CoinbaseSdk.Core.Error;
 
+  /// <summary>
+  /// Get FCM Margin Call Details.
+  /// </summary>
   public class GetFcmMarginCallDetailsRequest(string entityId)
   {
     [JsonIgnore]
     public string EntityId { get; set; } = entityId;
+
+    public class GetFcmMarginCallDetailsRequestBuilder
+    {
+      private string? _entityId;
+
+      public GetFcmMarginCallDetailsRequestBuilder WithEntityId(string entityId)
+      {
+        _entityId = entityId;
+        return this;
+      }
+
+      private void Validate()
+      {
+        if (string.IsNullOrWhiteSpace(_entityId))
+        {
+          throw new CoinbaseClientException("EntityId is required");
+        }
+      }
+
+      public GetFcmMarginCallDetailsRequest Build()
+      {
+        Validate();
+        return new GetFcmMarginCallDetailsRequest(_entityId!)
+        {
+        };
+      }
+    }
   }
 }

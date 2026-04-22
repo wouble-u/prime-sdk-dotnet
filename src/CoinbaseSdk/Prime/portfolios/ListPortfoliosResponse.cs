@@ -16,16 +16,17 @@
 
 namespace CoinbaseSdk.Prime.Portfolios
 {
+  using System.Text.Json.Serialization;
   using CoinbaseSdk.Prime.Model;
+
+  /// <summary>
+  /// List Portfolios.
+  /// </summary>
   public class ListPortfoliosResponse
   {
-    public ListPortfoliosResponse(Portfolio[] portfolios)
-    {
-      Portfolios = portfolios;
-    }
+    [JsonPropertyName("portfolios")]
+    public Portfolio[] Portfolios { get; set; } = [];
 
     public ListPortfoliosResponse() { }
-
-    public Portfolio[]? Portfolios { get; set; }
   }
 }

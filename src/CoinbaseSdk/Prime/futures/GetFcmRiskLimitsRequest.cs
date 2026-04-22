@@ -19,12 +19,39 @@ namespace CoinbaseSdk.Prime.Futures
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
 
+  /// <summary>
+  /// Get FCM Risk Limits.
+  /// </summary>
   public class GetFcmRiskLimitsRequest(string entityId)
   {
     [JsonIgnore]
     public string EntityId { get; set; } = entityId;
 
-    [JsonPropertyName("product_id")]
-    public string? ProductId { get; set; }
+    public class GetFcmRiskLimitsRequestBuilder
+    {
+      private string? _entityId;
+
+      public GetFcmRiskLimitsRequestBuilder WithEntityId(string entityId)
+      {
+        _entityId = entityId;
+        return this;
+      }
+
+      private void Validate()
+      {
+        if (string.IsNullOrWhiteSpace(_entityId))
+        {
+          throw new CoinbaseClientException("EntityId is required");
+        }
+      }
+
+      public GetFcmRiskLimitsRequest Build()
+      {
+        Validate();
+        return new GetFcmRiskLimitsRequest(_entityId!)
+        {
+        };
+      }
+    }
   }
 }

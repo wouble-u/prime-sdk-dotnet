@@ -21,6 +21,9 @@ namespace CoinbaseSdk.Prime.Allocations
   using CoinbaseSdk.Prime.Common;
   using CoinbaseSdk.Prime.Model.Enums;
 
+  /// <summary>
+  /// List Portfolio Allocations.
+  /// </summary>
   public class ListPortfolioAllocationsRequest(string portfolioId) : PaginatedRequest
   {
     [JsonIgnore]
@@ -30,7 +33,7 @@ namespace CoinbaseSdk.Prime.Allocations
     public string[] ProductIds { get; set; } = [];
 
     [JsonPropertyName("order_side")]
-    public OrderSide OrderSide { get; set; }
+    public OrderSide? OrderSide { get; set; }
 
     [JsonPropertyName("start_date")]
     public string? StartDate { get; set; }
@@ -38,102 +41,86 @@ namespace CoinbaseSdk.Prime.Allocations
     [JsonPropertyName("end_date")]
     public string? EndDate { get; set; }
 
-    public class Builder
+    public class ListPortfolioAllocationsRequestBuilder
     {
       private string? _portfolioId;
-      private string[] _productIds = [];
-      private OrderSide _orderSide;
+      private string[]? _productIds;
+      private OrderSide? _orderSide;
       private string? _startDate;
       private string? _endDate;
       private string? _cursor;
       private SortDirection? _sortDirection;
       private int? _limit;
 
-      public Builder WithPortfolioId(string portfolioId)
+      public ListPortfolioAllocationsRequestBuilder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithProductIds(string[] productIds)
+      public ListPortfolioAllocationsRequestBuilder WithProductIds(string[] productIds)
       {
         _productIds = productIds;
         return this;
       }
 
-      public Builder WithOrderSide(OrderSide orderSide)
+      public ListPortfolioAllocationsRequestBuilder WithOrderSide(OrderSide? orderSide)
       {
         _orderSide = orderSide;
         return this;
       }
 
-      public Builder WithStartDate(string? startDate)
+      public ListPortfolioAllocationsRequestBuilder WithStartDate(string? startDate)
       {
         _startDate = startDate;
         return this;
       }
 
-      public Builder WithEndDate(string? endDate)
+      public ListPortfolioAllocationsRequestBuilder WithEndDate(string? endDate)
       {
         _endDate = endDate;
         return this;
       }
 
-      public Builder WithCursor(string cursor)
+      public ListPortfolioAllocationsRequestBuilder WithCursor(string cursor)
       {
         _cursor = cursor;
         return this;
       }
 
-      public Builder WithSortDirection(SortDirection sortDirection)
+      public ListPortfolioAllocationsRequestBuilder WithSortDirection(SortDirection sortDirection)
       {
         _sortDirection = sortDirection;
         return this;
       }
 
-      public Builder WithLimit(int limit)
+      public ListPortfolioAllocationsRequestBuilder WithLimit(int limit)
       {
         _limit = limit;
         return this;
       }
 
-      /// <summary>
-      /// Validates the builder.
-      /// </summary>
-      /// <exception cref="CoinbaseClientException">Thrown when the
-      /// <see cref="_portfolioId"/> or <see cref="_startDate"/> are null, empty
-      /// or whitespace.</exception>
       private void Validate()
       {
         if (string.IsNullOrWhiteSpace(_portfolioId))
         {
           throw new CoinbaseClientException("PortfolioId is required");
         }
-        if (string.IsNullOrWhiteSpace(_startDate))
-        {
-          throw new CoinbaseClientException("StartDate is required");
-        }
       }
 
-      /// <summary>
-      /// Builds the <see cref="ListPortfolioAllocationsRequest"/>.
-      /// </summary>
-      /// <returns>The <see cref="ListPortfolioAllocationsRequest"/>.</returns>
-      /// <exception cref="CoinbaseClientException">Thrown when the required fields are not set.</exception>
       public ListPortfolioAllocationsRequest Build()
       {
         Validate();
-        var request = new ListPortfolioAllocationsRequest(_portfolioId!)
+        return new ListPortfolioAllocationsRequest(_portfolioId!)
         {
-          ProductIds = _productIds,
+          ProductIds = _productIds ?? [],
           OrderSide = _orderSide,
-          StartDate = _startDate!,
+          StartDate = _startDate,
           EndDate = _endDate,
           Cursor = _cursor,
           SortDirection = _sortDirection,
-          Limit = _limit
+          Limit = _limit,
         };
-        return request;
       }
     }
   }

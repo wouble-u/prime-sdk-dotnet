@@ -1,17 +1,17 @@
 /*
  * Copyright 2024-present Coinbase Global, Inc.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ *  http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
  */
 
 namespace CoinbaseSdk.Prime.Transactions
@@ -19,6 +19,9 @@ namespace CoinbaseSdk.Prime.Transactions
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Core.Error;
 
+  /// <summary>
+  /// Create Conversion.
+  /// </summary>
   public class CreateConversionRequest(string portfolioId, string walletId)
   {
     [JsonIgnore]
@@ -27,8 +30,10 @@ namespace CoinbaseSdk.Prime.Transactions
     [JsonIgnore]
     public string WalletId { get; set; } = walletId;
 
+    [JsonPropertyName("amount")]
     public string? Amount { get; set; }
 
+    [JsonPropertyName("destination")]
     public string? Destination { get; set; }
 
     [JsonPropertyName("idempotency_key")]
@@ -62,59 +67,48 @@ namespace CoinbaseSdk.Prime.Transactions
         return this;
       }
 
-      public CreateConversionRequestBuilder WithAmount(string amount)
+      public CreateConversionRequestBuilder WithAmount(string? amount)
       {
         _amount = amount;
         return this;
       }
 
-      public CreateConversionRequestBuilder WithDestination(string destination)
+      public CreateConversionRequestBuilder WithDestination(string? destination)
       {
         _destination = destination;
         return this;
       }
 
-      public CreateConversionRequestBuilder WithIdempotencyKey(string idempotencyKey)
+      public CreateConversionRequestBuilder WithIdempotencyKey(string? idempotencyKey)
       {
         _idempotencyKey = idempotencyKey;
         return this;
       }
 
-      public CreateConversionRequestBuilder WithSourceSymbol(string sourceSymbol)
+      public CreateConversionRequestBuilder WithSourceSymbol(string? sourceSymbol)
       {
         _sourceSymbol = sourceSymbol;
         return this;
       }
 
-      public CreateConversionRequestBuilder WithDestinationSymbol(string destinationSymbol)
+      public CreateConversionRequestBuilder WithDestinationSymbol(string? destinationSymbol)
       {
         _destinationSymbol = destinationSymbol;
         return this;
       }
 
-      /// <summary>
-      /// Validate the builder.
-      /// </summary>
-      /// <exception cref="CoinbaseClientException">Thrown when the
-      /// <see cref="_portfolioId"/> or <see cref="_walletId"/> are null, empty
-      /// or whitespace.</exception>
       private void Validate()
       {
-        if (string.IsNullOrEmpty(_portfolioId))
+        if (string.IsNullOrWhiteSpace(_portfolioId))
         {
           throw new CoinbaseClientException("PortfolioId is required");
         }
-        if (string.IsNullOrEmpty(_walletId))
+        if (string.IsNullOrWhiteSpace(_walletId))
         {
           throw new CoinbaseClientException("WalletId is required");
         }
       }
 
-      /// <summary>
-      /// Build the <see cref="CreateConversionRequest"/> object.
-      /// </summary>
-      /// <returns>The <see cref="CreateConversionRequest"/> object.</returns>
-      /// <exception cref="CoinbaseClientException">Thrown when the required fields are not set.</exception>
       public CreateConversionRequest Build()
       {
         Validate();

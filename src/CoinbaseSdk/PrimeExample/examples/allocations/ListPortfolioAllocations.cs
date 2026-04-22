@@ -82,7 +82,7 @@ rootCommand.SetHandler((portfolioId, productIdsStr, startDate, endDate, orderSid
         var client = CoinbasePrimeClient.FromEnv();
         var allocationsService = new AllocationsService(client);
 
-        var requestBuilder = new ListPortfolioAllocationsRequest.Builder()
+        var requestBuilder = new ListPortfolioAllocationsRequest.ListPortfolioAllocationsRequestBuilder()
             .WithPortfolioId(portfolioId)
             .WithStartDate(startDate);
 

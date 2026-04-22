@@ -21,24 +21,16 @@ namespace CoinbaseSdk.Prime.Activities
   using CoinbaseSdk.Prime.Model;
 
   /// <summary>
-  /// Response containing activities.
+  /// List Activities.
   /// </summary>
   public class ListActivitiesResponse
   {
-    /// <summary>
-    /// Array of activities.
-    /// </summary>
     [JsonPropertyName("activities")]
     public Activity[] Activities { get; set; } = [];
 
-    /// <summary>
-    /// Pagination information.
-    /// </summary>
     [JsonPropertyName("pagination")]
-    public Pagination? Pagination { get; set; }
+    public Pagination Pagination { get; set; }
 
-    public ListActivitiesResponse()
-    {
-    }
+    public ListActivitiesResponse() { }
   }
 }

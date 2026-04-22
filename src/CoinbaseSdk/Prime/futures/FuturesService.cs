@@ -1,17 +1,17 @@
 /*
  * Copyright 2025-present Coinbase Global, Inc.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ *  http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
  */
 
 namespace CoinbaseSdk.Prime.Futures
@@ -23,136 +23,9 @@ namespace CoinbaseSdk.Prime.Futures
 
   public class FuturesService(ICoinbaseClient client) : CoinbaseService(client), IFuturesService
   {
-    public CancelEntityFuturesSweepResponse CancelEntityFuturesSweep(
-      CancelEntityFuturesSweepRequest request,
-      CallOptions? options = null)
-    {
-      return Request<CancelEntityFuturesSweepResponse>(
-        HttpMethod.Delete,
-        $"/entities/{request.EntityId}/futures/sweeps",
-        [HttpStatusCode.OK],
-        null,
-        options);
-    }
-
-    public Task<CancelEntityFuturesSweepResponse> CancelEntityFuturesSweepAsync(
-      CancelEntityFuturesSweepRequest request,
-      CallOptions? options = null,
-      CancellationToken cancellationToken = default)
-    {
-      return RequestAsync<CancelEntityFuturesSweepResponse>(
-        HttpMethod.Delete,
-        $"/entities/{request.EntityId}/futures/sweeps",
-        [HttpStatusCode.OK],
-        null,
-        options,
-        cancellationToken);
-    }
-
-    public GetFcmBalanceResponse GetFcmBalance(
-      GetFcmBalanceRequest request,
-      CallOptions? options = null)
-    {
-      return Request<GetFcmBalanceResponse>(
-        HttpMethod.Get,
-        $"/entities/{request.EntityId}/futures/balance_summary",
-        [HttpStatusCode.OK],
-        null,
-        options);
-    }
-
-    public Task<GetFcmBalanceResponse> GetFcmBalanceAsync(
-      GetFcmBalanceRequest request,
-      CallOptions? options = null,
-      CancellationToken cancellationToken = default)
-    {
-      return RequestAsync<GetFcmBalanceResponse>(
-        HttpMethod.Get,
-        $"/entities/{request.EntityId}/futures/balance_summary",
-        [HttpStatusCode.OK],
-        null,
-        options,
-        cancellationToken);
-    }
-
-    public GetPositionsResponse GetPositions(
-      GetPositionsRequest request,
-      CallOptions? options = null)
-    {
-      return Request<GetPositionsResponse>(
-        HttpMethod.Get,
-        $"/entities/{request.EntityId}/futures/positions",
-        [HttpStatusCode.OK],
-        null,
-        options);
-    }
-
-    public Task<GetPositionsResponse> GetPositionsAsync(
-      GetPositionsRequest request,
-      CallOptions? options = null,
-      CancellationToken cancellationToken = default)
-    {
-      return RequestAsync<GetPositionsResponse>(
-        HttpMethod.Get,
-        $"/entities/{request.EntityId}/futures/positions",
-        [HttpStatusCode.OK],
-        null,
-        options,
-        cancellationToken);
-    }
-
-    public ListEntityFuturesSweepsResponse ListEntityFuturesSweeps(
-      ListEntityFuturesSweepsRequest request,
-      CallOptions? options = null)
-    {
-      return Request<ListEntityFuturesSweepsResponse>(
-        HttpMethod.Get,
-        $"/entities/{request.EntityId}/futures/sweeps",
-        [HttpStatusCode.OK],
-        null,
-        options);
-    }
-
-    public Task<ListEntityFuturesSweepsResponse> ListEntityFuturesSweepsAsync(
-      ListEntityFuturesSweepsRequest request,
-      CallOptions? options = null,
-      CancellationToken cancellationToken = default)
-    {
-      return RequestAsync<ListEntityFuturesSweepsResponse>(
-        HttpMethod.Get,
-        $"/entities/{request.EntityId}/futures/sweeps",
-        [HttpStatusCode.OK],
-        null,
-        options,
-        cancellationToken);
-    }
-
-    public ScheduleEntityFuturesSweepResponse ScheduleEntityFuturesSweep(
-      ScheduleEntityFuturesSweepRequest request,
-      CallOptions? options = null)
-    {
-      return Request<ScheduleEntityFuturesSweepResponse>(
-        HttpMethod.Post,
-        $"/entities/{request.EntityId}/futures/sweeps",
-        [HttpStatusCode.OK],
-        request,
-        options);
-    }
-
-    public Task<ScheduleEntityFuturesSweepResponse> ScheduleEntityFuturesSweepAsync(
-      ScheduleEntityFuturesSweepRequest request,
-      CallOptions? options = null,
-      CancellationToken cancellationToken = default)
-    {
-      return RequestAsync<ScheduleEntityFuturesSweepResponse>(
-        HttpMethod.Post,
-        $"/entities/{request.EntityId}/futures/sweeps",
-        [HttpStatusCode.OK],
-        request,
-        options,
-        cancellationToken);
-    }
-
+    /// <summary>
+    /// Set Auto Sweep.
+    /// </summary>
     public SetAutoSweepResponse SetAutoSweep(
       SetAutoSweepRequest request,
       CallOptions? options = null)
@@ -179,6 +52,38 @@ namespace CoinbaseSdk.Prime.Futures
         cancellationToken);
     }
 
+    /// <summary>
+    /// Get Entity FCM Balance.
+    /// </summary>
+    public GetFcmBalanceResponse GetFcmBalance(
+      GetFcmBalanceRequest request,
+      CallOptions? options = null)
+    {
+      return Request<GetFcmBalanceResponse>(
+        HttpMethod.Get,
+        $"/entities/{request.EntityId}/futures/balance_summary",
+        [HttpStatusCode.OK],
+        null,
+        options);
+    }
+
+    public Task<GetFcmBalanceResponse> GetFcmBalanceAsync(
+      GetFcmBalanceRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default)
+    {
+      return RequestAsync<GetFcmBalanceResponse>(
+        HttpMethod.Get,
+        $"/entities/{request.EntityId}/futures/balance_summary",
+        [HttpStatusCode.OK],
+        null,
+        options,
+        cancellationToken);
+    }
+
+    /// <summary>
+    /// Get FCM Margin Call Details.
+    /// </summary>
     public GetFcmMarginCallDetailsResponse GetFcmMarginCallDetails(
       GetFcmMarginCallDetailsRequest request,
       CallOptions? options = null)
@@ -205,6 +110,38 @@ namespace CoinbaseSdk.Prime.Futures
         cancellationToken);
     }
 
+    /// <summary>
+    /// Get Entity Positions.
+    /// </summary>
+    public GetPositionsResponse GetPositions(
+      GetPositionsRequest request,
+      CallOptions? options = null)
+    {
+      return Request<GetPositionsResponse>(
+        HttpMethod.Get,
+        $"/entities/{request.EntityId}/futures/positions",
+        [HttpStatusCode.OK],
+        request,
+        options);
+    }
+
+    public Task<GetPositionsResponse> GetPositionsAsync(
+      GetPositionsRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default)
+    {
+      return RequestAsync<GetPositionsResponse>(
+        HttpMethod.Get,
+        $"/entities/{request.EntityId}/futures/positions",
+        [HttpStatusCode.OK],
+        request,
+        options,
+        cancellationToken);
+    }
+
+    /// <summary>
+    /// Get FCM Risk Limits.
+    /// </summary>
     public GetFcmRiskLimitsResponse GetFcmRiskLimits(
       GetFcmRiskLimitsRequest request,
       CallOptions? options = null)
@@ -213,7 +150,7 @@ namespace CoinbaseSdk.Prime.Futures
         HttpMethod.Get,
         $"/entities/{request.EntityId}/futures/risk_limits",
         [HttpStatusCode.OK],
-        request,
+        null,
         options);
     }
 
@@ -226,11 +163,14 @@ namespace CoinbaseSdk.Prime.Futures
         HttpMethod.Get,
         $"/entities/{request.EntityId}/futures/risk_limits",
         [HttpStatusCode.OK],
-        request,
+        null,
         options,
         cancellationToken);
     }
 
+    /// <summary>
+    /// Get FCM Settings.
+    /// </summary>
     public GetFcmSettingsResponse GetFcmSettings(
       GetFcmSettingsRequest request,
       CallOptions? options = null)
@@ -257,6 +197,9 @@ namespace CoinbaseSdk.Prime.Futures
         cancellationToken);
     }
 
+    /// <summary>
+    /// Set FCM Settings.
+    /// </summary>
     public SetFcmSettingsResponse SetFcmSettings(
       SetFcmSettingsRequest request,
       CallOptions? options = null)
@@ -279,6 +222,122 @@ namespace CoinbaseSdk.Prime.Futures
         $"/entities/{request.EntityId}/futures/settings",
         [HttpStatusCode.OK],
         request,
+        options,
+        cancellationToken);
+    }
+
+    /// <summary>
+    /// List Entity Futures Sweeps.
+    /// </summary>
+    public ListEntityFuturesSweepsResponse ListEntityFuturesSweeps(
+      ListEntityFuturesSweepsRequest request,
+      CallOptions? options = null)
+    {
+      return Request<ListEntityFuturesSweepsResponse>(
+        HttpMethod.Get,
+        $"/entities/{request.EntityId}/futures/sweeps",
+        [HttpStatusCode.OK],
+        null,
+        options);
+    }
+
+    public Task<ListEntityFuturesSweepsResponse> ListEntityFuturesSweepsAsync(
+      ListEntityFuturesSweepsRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default)
+    {
+      return RequestAsync<ListEntityFuturesSweepsResponse>(
+        HttpMethod.Get,
+        $"/entities/{request.EntityId}/futures/sweeps",
+        [HttpStatusCode.OK],
+        null,
+        options,
+        cancellationToken);
+    }
+
+    /// <summary>
+    /// Schedule Entity Futures Sweep.
+    /// </summary>
+    public ScheduleEntityFuturesSweepResponse ScheduleEntityFuturesSweep(
+      ScheduleEntityFuturesSweepRequest request,
+      CallOptions? options = null)
+    {
+      return Request<ScheduleEntityFuturesSweepResponse>(
+        HttpMethod.Post,
+        $"/entities/{request.EntityId}/futures/sweeps",
+        [HttpStatusCode.OK],
+        request,
+        options);
+    }
+
+    public Task<ScheduleEntityFuturesSweepResponse> ScheduleEntityFuturesSweepAsync(
+      ScheduleEntityFuturesSweepRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default)
+    {
+      return RequestAsync<ScheduleEntityFuturesSweepResponse>(
+        HttpMethod.Post,
+        $"/entities/{request.EntityId}/futures/sweeps",
+        [HttpStatusCode.OK],
+        request,
+        options,
+        cancellationToken);
+    }
+
+    /// <summary>
+    /// Cancel Entity Futures Sweep.
+    /// </summary>
+    public CancelEntityFuturesSweepResponse CancelEntityFuturesSweep(
+      CancelEntityFuturesSweepRequest request,
+      CallOptions? options = null)
+    {
+      return Request<CancelEntityFuturesSweepResponse>(
+        HttpMethod.Delete,
+        $"/entities/{request.EntityId}/futures/sweeps",
+        [HttpStatusCode.OK],
+        null,
+        options);
+    }
+
+    public Task<CancelEntityFuturesSweepResponse> CancelEntityFuturesSweepAsync(
+      CancelEntityFuturesSweepRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default)
+    {
+      return RequestAsync<CancelEntityFuturesSweepResponse>(
+        HttpMethod.Delete,
+        $"/entities/{request.EntityId}/futures/sweeps",
+        [HttpStatusCode.OK],
+        null,
+        options,
+        cancellationToken);
+    }
+
+    /// <summary>
+    /// Get FCM Equity.
+    /// </summary>
+    public GetFcmEquityResponse GetFcmEquity(
+      GetFcmEquityRequest request,
+      CallOptions? options = null)
+    {
+      return Request<GetFcmEquityResponse>(
+        HttpMethod.Get,
+        $"/entities/{request.EntityId}/futures/equity",
+        [HttpStatusCode.OK],
+        null,
+        options);
+    }
+
+    public Task<GetFcmEquityResponse> GetFcmEquityAsync(
+      GetFcmEquityRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default)
+    {
+      return RequestAsync<GetFcmEquityResponse>(
+        HttpMethod.Get,
+        $"/entities/{request.EntityId}/futures/equity",
+        [HttpStatusCode.OK],
+        null,
         options,
         cancellationToken);
     }

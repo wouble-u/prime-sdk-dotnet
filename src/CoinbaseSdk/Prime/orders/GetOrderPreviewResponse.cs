@@ -19,6 +19,9 @@ namespace CoinbaseSdk.Prime.Orders
   using System.Text.Json.Serialization;
   using CoinbaseSdk.Prime.Model.Enums;
 
+  /// <summary>
+  /// Get Order Preview.
+  /// </summary>
   public class GetOrderPreviewResponse
   {
     [JsonPropertyName("portfolio_id")]
@@ -27,8 +30,10 @@ namespace CoinbaseSdk.Prime.Orders
     [JsonPropertyName("product_id")]
     public string? ProductId { get; set; }
 
+    [JsonPropertyName("side")]
     public OrderSide? Side { get; set; }
 
+    [JsonPropertyName("type")]
     public OrderType? Type { get; set; }
 
     [JsonPropertyName("base_quantity")]
@@ -55,6 +60,18 @@ namespace CoinbaseSdk.Prime.Orders
     [JsonPropertyName("slippage")]
     public string? Slippage { get; set; }
 
+    [JsonPropertyName("best_bid")]
+    public string? BestBid { get; set; }
+
+    [JsonPropertyName("best_ask")]
+    public string? BestAsk { get; set; }
+
+    [JsonPropertyName("average_filled_price")]
+    public string? AverageFilledPrice { get; set; }
+
+    [JsonPropertyName("order_total")]
+    public string? OrderTotal { get; set; }
+
     [JsonPropertyName("historical_pov")]
     public string? HistoricalPov { get; set; }
 
@@ -72,19 +89,6 @@ namespace CoinbaseSdk.Prime.Orders
 
     [JsonPropertyName("display_base_size")]
     public string? DisplayBaseSize { get; set; }
-
-    [JsonPropertyName("best_bid")]
-    public string? BestBid { get; set; }
-
-    [JsonPropertyName("best_ask")]
-    public string? BestAsk { get; set; }
-
-    [JsonPropertyName("average_filled_price")]
-    public string? AverageFilledPrice { get; set; }
-
-    [JsonPropertyName("order_total")]
-    public string? OrderTotal { get; set; }
-
 
     public GetOrderPreviewResponse() { }
   }

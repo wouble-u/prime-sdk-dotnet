@@ -16,16 +16,16 @@
 
 namespace CoinbaseSdk.Prime.Portfolios
 {
+  using System.Text.Json.Serialization;
   using CoinbaseSdk.Prime.Model;
 
+  /// <summary>
+  /// Get Portfolio by Portfolio ID.
+  /// </summary>
   public class GetPortfolioResponse
   {
-    public Portfolio? Portfolio { get; set; }
-
-    public GetPortfolioResponse(Portfolio portfolio)
-    {
-      Portfolio = portfolio;
-    }
+    [JsonPropertyName("portfolio")]
+    public Portfolio Portfolio { get; set; }
 
     public GetPortfolioResponse() { }
   }

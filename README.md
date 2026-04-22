@@ -4,11 +4,10 @@
 
 The _Coinbase Prime .NET SDK_ is a sample library that demonstrates the structure of a [Coinbase Prime](https://prime.coinbase.com/) driver for the [REST APIs](https://docs.cdp.coinbase.com/prime/reference).
 
-## License
+## Prerequisites
 
-The _Coinbase Prime .NET SDK_ sample library is free and open source and released under the [Apache License, Version 2.0](LICENSE).
-
-The application and code are only available for demonstration purposes.
+- [.NET 10 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/10.0) or later
+- Coinbase Prime API credentials (access key, passphrase, and signing key), which can be created in the Prime web console under **Settings > APIs**
 
 ## Installation
 
@@ -18,7 +17,7 @@ dotnet add package CoinbaseSdk.Prime --version x.y.z
 
 ## Configuration
 
-Create a `.env` file with your API credentials:
+Coinbase Prime API credentials can be provided via environment variables. Copy the example file and populate your credentials:
 
 ```bash
 cp .env.example .env
@@ -32,48 +31,86 @@ PRIME_PASSPHRASE=your-passphrase
 PRIME_SIGNING_KEY=your-signing-key
 ```
 
-## Usage
-
-Initialize the client using environment variables:
-
-```csharp
-var client = CoinbasePrimeClient.FromEnv();
-var activitiesService = new ActivitiesService(client);
-
-var request = new GetActivityRequest(activityId);
-var response = activitiesService.GetActivity(request);
-```
-
-## Examples
-
-Run examples from the PrimeExample project:
-
-```bash
-# List available examples
-dotnet run --project src/CoinbaseSdk/PrimeExample list
-
-# Run examples via Program.cs
-dotnet run --project src/CoinbaseSdk/PrimeExample ListPortfolios
-dotnet run --project src/CoinbaseSdk/PrimeExample GetPortfolio --portfolioId <portfolio-id>
-dotnet run --project src/CoinbaseSdk/PrimeExample ListAssets --entityId <entity-id>
-
-# Run standalone file-based examples (.NET 10+)
-dotnet run --file src/CoinbaseSdk/PrimeExample/examples/activities/GetActivity.cs -- --activityId <activity-id>
-
-# Or with executable permissions on Unix:
-./src/CoinbaseSdk/PrimeExample/examples/activities/GetActivity.cs --activityId <activity-id>
-```
-
-Set optional environment variables for convenience:
+Optional environment variables used by examples:
 
 ```bash
 PRIME_ENTITY_ID=your-entity-id
 PRIME_PORTFOLIO_ID=your-portfolio-id
 ```
 
-## JSON Serialization
+Entity ID can be retrieved by calling [Get Portfolio](https://docs.cdp.coinbase.com/prime/reference/primerestapi_getportfolio).
 
-The SDK relies entirely on the shared `CoinbaseSdk.Core.Serialization.JsonUtility` defaults for all request/response payloads. Those defaults already include camelCase property names, tolerant enum handling (via `NullOnUnknownEnumConverter`), and ISO-8601 timestamps backed by `UtcIso8601DateTimeOffsetConverter`.
+## Usage
 
-Global overrides have been removed to keep the serialization surface deterministic across packages. If you need custom behavior, create your own `JsonSerializerOptions` instance and pass it through a custom `IJsonUtility` implementation (or a derived `CoinbaseClient`) for your application-specific calls instead of mutating global state.
+Initialize the client using environment variables (automatically loads a `.env` file if present):
 
+```csharp
+var client = CoinbasePrimeClient.FromEnv();
+```
+
+Or construct credentials manually:
+
+```csharp
+var credentials = new CoinbaseCredentials(accessKey, passphrase, signingKey);
+var client = new CoinbasePrimeClient(credentials);
+```
+
+Once the client is initialized, instantiate a service to make the desired call. For example, to list portfolios:
+
+```csharp
+var portfoliosService = new PortfoliosService(client);
+var response = portfoliosService.ListPortfolios(new ListPortfoliosRequest());
+```
+
+Or to list activities for a portfolio using the request builder:
+
+```csharp
+var activitiesService = new ActivitiesService(client);
+
+var request = new ListActivitiesRequest.ListActivitiesRequestBuilder()
+    .WithPortfolioId(portfolioId)
+    .Build();
+
+var response = activitiesService.ListActivities(request);
+```
+
+## Build
+
+To build the sample library, ensure that [.NET 10 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/10.0) or later is installed and then run:
+
+```bash
+dotnet build prime-sdk-dotnet.sln
+```
+
+## Examples
+
+Each example under `src/CoinbaseSdk/PrimeExample/examples/` is a standalone `.cs` file executable directly with .NET 10+:
+
+```bash
+dotnet run --file src/CoinbaseSdk/PrimeExample/examples/portfolios/ListPortfolios.cs
+dotnet run --file src/CoinbaseSdk/PrimeExample/examples/portfolios/GetPortfolio.cs -- --portfolioId <portfolio-id>
+dotnet run --file src/CoinbaseSdk/PrimeExample/examples/activities/ListActivities.cs -- --portfolioId <portfolio-id>
+dotnet run --file src/CoinbaseSdk/PrimeExample/examples/balances/ListEntityBalances.cs -- --entityId <entity-id>
+```
+
+On Unix systems with executable permissions set, examples can also be invoked directly:
+
+```bash
+./src/CoinbaseSdk/PrimeExample/examples/portfolios/ListPortfolios.cs
+```
+
+Available example categories: `activities`, `addressbook`, `advancedtransfer`, `allocations`, `assets`, `balances`, `commission`, `financing`, `futures`, `invoice`, `onchainaddressbook`, `orders`, `paymentmethods`, `portfolios`, `positions`, `products`, `staking`, `transactions`, `users`, `wallets`.
+
+## 🚨 Security and Bug Reports
+
+If you discover a security vulnerability within this SDK, please see our [Security Policy](SECURITY.md) for disclosure information.
+
+## 📧 Contact
+
+- [GitHub Issues](https://github.com/coinbase-samples/prime-sdk-dotnet/issues)
+
+## License
+
+The _Coinbase Prime .NET SDK_ sample library is free and open source and released under the [Apache License, Version 2.0](LICENSE).
+
+The application and code are only available for demonstration purposes.

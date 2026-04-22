@@ -180,6 +180,12 @@ rootCommand.SetHandler((context) =>
         timeInForce = parsedTimeInForce;
     }
 
+    // MARKET orders reject GTD/GTC/FOK; the request type defaults TIF to the first enum (GTD).
+    if (orderType == OrderType.MARKET && !timeInForce.HasValue)
+    {
+        timeInForce = TimeInForceType.IMMEDIATE_OR_CANCEL;
+    }
+
     try
     {
         Console.WriteLine($"Using Portfolio ID: {portfolioId}");

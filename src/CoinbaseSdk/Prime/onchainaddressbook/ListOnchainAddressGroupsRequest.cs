@@ -17,11 +17,41 @@
 namespace CoinbaseSdk.Prime.OnchainAddressBook
 {
   using System.Text.Json.Serialization;
-  using CoinbaseSdk.Prime.Common;
+  using CoinbaseSdk.Core.Error;
 
-  public class ListOnchainAddressGroupsRequest(string portfolioId) : PaginatedRequest
+  /// <summary>
+  /// List Onchain Address Groups.
+  /// </summary>
+  public class ListOnchainAddressGroupsRequest(string portfolioId)
   {
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
+
+    public class ListOnchainAddressGroupsRequestBuilder
+    {
+      private string? _portfolioId;
+
+      public ListOnchainAddressGroupsRequestBuilder WithPortfolioId(string portfolioId)
+      {
+        _portfolioId = portfolioId;
+        return this;
+      }
+
+      private void Validate()
+      {
+        if (string.IsNullOrWhiteSpace(_portfolioId))
+        {
+          throw new CoinbaseClientException("PortfolioId is required");
+        }
+      }
+
+      public ListOnchainAddressGroupsRequest Build()
+      {
+        Validate();
+        return new ListOnchainAddressGroupsRequest(_portfolioId!)
+        {
+        };
+      }
+    }
   }
 }

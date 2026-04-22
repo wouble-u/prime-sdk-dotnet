@@ -16,12 +16,21 @@
 
 namespace CoinbaseSdk.Prime.AddressBook
 {
+  using System.Text.Json.Serialization;
   using CoinbaseSdk.Prime.Common;
   using CoinbaseSdk.Prime.Model;
 
+  /// <summary>
+  /// Get Address Book.
+  /// </summary>
   public class ListAddressBookEntriesResponse
   {
+    [JsonPropertyName("addresses")]
     public AddressBookEntry[] Addresses { get; set; } = [];
-    public Pagination? Pagination { get; set; }
+
+    [JsonPropertyName("pagination")]
+    public Pagination Pagination { get; set; }
+
+    public ListAddressBookEntriesResponse() { }
   }
 }

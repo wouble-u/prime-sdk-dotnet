@@ -17,17 +17,16 @@
 namespace CoinbaseSdk.Prime.Portfolios
 {
   using System.Text.Json.Serialization;
+  using CoinbaseSdk.Prime.Model;
 
   /// <summary>
-  /// Response object for getting a portfolio's counterparty ID.
+  /// Get Portfolio Counterparty ID.
   /// </summary>
   public class GetPortfolioCounterpartyResponse
   {
-    /// <summary>
-    /// The counterparty ID for the portfolio.
-    /// </summary>
-    [JsonPropertyName("counterparty_id")]
-    public string? CounterpartyId { get; set; }
+    [JsonPropertyName("counterparty")]
+    public Counterparty Counterparty { get; set; }
+
+    public GetPortfolioCounterpartyResponse() { }
   }
 }
-

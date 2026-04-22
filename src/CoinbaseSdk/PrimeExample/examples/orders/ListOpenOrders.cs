@@ -75,7 +75,7 @@ rootCommand.SetHandler((context) =>
         var client = CoinbasePrimeClient.FromEnv();
         var ordersService = new OrdersService(client);
 
-        var requestBuilder = new ListOpenOrdersRequest.Builder()
+        var requestBuilder = new ListOpenOrdersRequest.ListOpenOrdersRequestBuilder()
             .WithPortfolioId(portfolioId);
 
         if (!string.IsNullOrEmpty(productIds))

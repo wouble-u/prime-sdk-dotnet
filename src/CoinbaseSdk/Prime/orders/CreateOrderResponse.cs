@@ -17,16 +17,15 @@
 namespace CoinbaseSdk.Prime.Orders
 {
   using System.Text.Json.Serialization;
+
+  /// <summary>
+  /// Create Order.
+  /// </summary>
   public class CreateOrderResponse
   {
     [JsonPropertyName("order_id")]
     public string? OrderId { get; set; }
 
     public CreateOrderResponse() { }
-
-    public CreateOrderResponse(string orderId)
-    {
-      OrderId = orderId;
-    }
   }
 }

@@ -20,34 +20,12 @@ namespace CoinbaseSdk.Prime.AddressBook
   using CoinbaseSdk.Core.Client;
   using CoinbaseSdk.Core.Http;
   using CoinbaseSdk.Core.Service;
+
   public class AddressBookService(ICoinbaseClient client) : CoinbaseService(client), IAddressBookService
   {
-    public CreateAddressBookEntryResponse CreateAddressBookEntry(
-      CreateAddressBookEntryRequest request,
-      CallOptions? options = null)
-    {
-      return Request<CreateAddressBookEntryResponse>(
-        HttpMethod.Post,
-        $"/portfolios/{request.PortfolioId}/address_book",
-        [HttpStatusCode.Created, HttpStatusCode.OK],
-        request,
-        options);
-    }
-
-    public Task<CreateAddressBookEntryResponse> CreateAddressBookEntryAsync(
-      CreateAddressBookEntryRequest request,
-      CallOptions? options = null,
-      CancellationToken cancellationToken = default)
-    {
-      return RequestAsync<CreateAddressBookEntryResponse>(
-        HttpMethod.Post,
-        $"/portfolios/{request.PortfolioId}/address_book",
-        [HttpStatusCode.Created, HttpStatusCode.OK],
-        request,
-        options,
-        cancellationToken);
-    }
-
+    /// <summary>
+    /// Get Address Book.
+    /// </summary>
     public ListAddressBookEntriesResponse ListAddressBookEntries(
       ListAddressBookEntriesRequest request,
       CallOptions? options = null)
@@ -69,6 +47,35 @@ namespace CoinbaseSdk.Prime.AddressBook
         HttpMethod.Get,
         $"/portfolios/{request.PortfolioId}/address_book",
         [HttpStatusCode.OK],
+        request,
+        options,
+        cancellationToken);
+    }
+
+    /// <summary>
+    /// Create Address Book Entry.
+    /// </summary>
+    public CreateAddressBookEntryResponse CreateAddressBookEntry(
+      CreateAddressBookEntryRequest request,
+      CallOptions? options = null)
+    {
+      return Request<CreateAddressBookEntryResponse>(
+        HttpMethod.Post,
+        $"/portfolios/{request.PortfolioId}/address_book",
+        [HttpStatusCode.Created, HttpStatusCode.OK],
+        request,
+        options);
+    }
+
+    public Task<CreateAddressBookEntryResponse> CreateAddressBookEntryAsync(
+      CreateAddressBookEntryRequest request,
+      CallOptions? options = null,
+      CancellationToken cancellationToken = default)
+    {
+      return RequestAsync<CreateAddressBookEntryResponse>(
+        HttpMethod.Post,
+        $"/portfolios/{request.PortfolioId}/address_book",
+        [HttpStatusCode.Created, HttpStatusCode.OK],
         request,
         options,
         cancellationToken);

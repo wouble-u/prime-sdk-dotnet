@@ -17,11 +17,41 @@
 namespace CoinbaseSdk.Prime.Assets
 {
   using System.Text.Json.Serialization;
-  using CoinbaseSdk.Prime.Common;
+  using CoinbaseSdk.Core.Error;
 
-  public class ListAssetsRequest(string entityId) : PaginatedRequest
+  /// <summary>
+  /// List Assets.
+  /// </summary>
+  public class ListAssetsRequest(string entityId)
   {
     [JsonIgnore]
-    public string EntityId { get; } = entityId;
+    public string EntityId { get; set; } = entityId;
+
+    public class ListAssetsRequestBuilder
+    {
+      private string? _entityId;
+
+      public ListAssetsRequestBuilder WithEntityId(string entityId)
+      {
+        _entityId = entityId;
+        return this;
+      }
+
+      private void Validate()
+      {
+        if (string.IsNullOrWhiteSpace(_entityId))
+        {
+          throw new CoinbaseClientException("EntityId is required");
+        }
+      }
+
+      public ListAssetsRequest Build()
+      {
+        Validate();
+        return new ListAssetsRequest(_entityId!)
+        {
+        };
+      }
+    }
   }
 }

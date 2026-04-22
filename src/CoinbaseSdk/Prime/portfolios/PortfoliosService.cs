@@ -21,14 +21,17 @@ namespace CoinbaseSdk.Prime.Portfolios
   using CoinbaseSdk.Core.Http;
   using CoinbaseSdk.Core.Service;
 
-  public class PortfoliosService(ICoinbaseClient client) :
-   CoinbaseService(client), IPortfoliosService
+  public class PortfoliosService(ICoinbaseClient client) : CoinbaseService(client), IPortfoliosService
   {
-    public ListPortfoliosResponse ListPortfolios(CallOptions? options = null)
+    /// <summary>
+    /// List Portfolios.
+    /// </summary>
+    public ListPortfoliosResponse ListPortfolios(
+      CallOptions? options = null)
     {
       return Request<ListPortfoliosResponse>(
         HttpMethod.Get,
-        "/portfolios",
+        $"/portfolios",
         [HttpStatusCode.OK],
         null,
         options);
@@ -40,13 +43,16 @@ namespace CoinbaseSdk.Prime.Portfolios
     {
       return RequestAsync<ListPortfoliosResponse>(
         HttpMethod.Get,
-        "/portfolios",
+        $"/portfolios",
         [HttpStatusCode.OK],
         null,
         options,
         cancellationToken);
     }
 
+    /// <summary>
+    /// Get Portfolio by Portfolio ID.
+    /// </summary>
     public GetPortfolioResponse GetPortfolio(
       GetPortfolioRequest request,
       CallOptions? options = null)
@@ -73,6 +79,9 @@ namespace CoinbaseSdk.Prime.Portfolios
         cancellationToken);
     }
 
+    /// <summary>
+    /// Get Portfolio Counterparty ID.
+    /// </summary>
     public GetPortfolioCounterpartyResponse GetPortfolioCounterparty(
       GetPortfolioCounterpartyRequest request,
       CallOptions? options = null)

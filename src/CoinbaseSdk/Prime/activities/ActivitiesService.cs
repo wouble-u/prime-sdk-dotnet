@@ -21,10 +21,11 @@ namespace CoinbaseSdk.Prime.Activities
   using CoinbaseSdk.Core.Http;
   using CoinbaseSdk.Core.Service;
 
-  public class ActivitiesService(ICoinbaseClient client)
-    : CoinbaseService(client),
-      IActivitiesService
+  public class ActivitiesService(ICoinbaseClient client) : CoinbaseService(client), IActivitiesService
   {
+    /// <summary>
+    /// List Activities.
+    /// </summary>
     public ListActivitiesResponse ListActivities(
       ListActivitiesRequest request,
       CallOptions? options = null)
@@ -51,6 +52,9 @@ namespace CoinbaseSdk.Prime.Activities
         cancellationToken);
     }
 
+    /// <summary>
+    /// List Entity Activities.
+    /// </summary>
     public ListEntityActivitiesResponse ListEntityActivities(
       ListEntityActivitiesRequest request,
       CallOptions? options = null)
@@ -77,7 +81,12 @@ namespace CoinbaseSdk.Prime.Activities
         cancellationToken);
     }
 
-    public GetActivityResponse GetActivity(GetActivityRequest request, CallOptions? options = null)
+    /// <summary>
+    /// Get Activity by Activity ID.
+    /// </summary>
+    public GetActivityResponse GetActivity(
+      GetActivityRequest request,
+      CallOptions? options = null)
     {
       return Request<GetActivityResponse>(
         HttpMethod.Get,
@@ -101,6 +110,9 @@ namespace CoinbaseSdk.Prime.Activities
         cancellationToken);
     }
 
+    /// <summary>
+    /// Get Portfolio Activity by Activity ID.
+    /// </summary>
     public GetPortfolioActivityResponse GetPortfolioActivity(
       GetPortfolioActivityRequest request,
       CallOptions? options = null)

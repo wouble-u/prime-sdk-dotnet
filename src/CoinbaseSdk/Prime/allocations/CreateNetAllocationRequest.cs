@@ -17,14 +17,15 @@
 namespace CoinbaseSdk.Prime.Allocations
 {
   using System.Text.Json.Serialization;
+  using CoinbaseSdk.Core.Error;
   using CoinbaseSdk.Prime.Model;
   using CoinbaseSdk.Prime.Model.Enums;
 
-  public class CreateNetAllocationRequest
+  /// <summary>
+  /// Create Portfolio Net Allocations.
+  /// </summary>
+  public class CreateNetAllocationRequest()
   {
-    [JsonPropertyName("allocation_id")]
-    public string? AllocationId { get; set; }
-
     [JsonPropertyName("source_portfolio_id")]
     public string? SourcePortfolioId { get; set; }
 
@@ -38,7 +39,7 @@ namespace CoinbaseSdk.Prime.Allocations
     public AllocationLeg[] AllocationLegs { get; set; } = [];
 
     [JsonPropertyName("size_type")]
-    public AllocationSizeType SizeType { get; set; }
+    public AllocationSizeType? SizeType { get; set; }
 
     [JsonPropertyName("remainder_destination_portfolio")]
     public string? RemainderDestinationPortfolio { get; set; }
@@ -46,79 +47,74 @@ namespace CoinbaseSdk.Prime.Allocations
     [JsonPropertyName("netting_id")]
     public string? NettingId { get; set; }
 
-    public CreateNetAllocationRequest() { }
-
-    public class Builder
+    public class CreateNetAllocationRequestBuilder
     {
-      private string? _allocationId;
       private string? _sourcePortfolioId;
       private string? _productId;
-      private string[] _orderIds = Array.Empty<string>();
-      private AllocationLeg[] _allocationLegs = Array.Empty<AllocationLeg>();
-      private AllocationSizeType _sizeType;
+      private string[] _orderIds;
+      private AllocationLeg[] _allocationLegs;
+      private AllocationSizeType? _sizeType;
       private string? _remainderDestinationPortfolio;
       private string? _nettingId;
 
-      public Builder WithAllocationId(string? allocationId)
-      {
-        _allocationId = allocationId;
-        return this;
-      }
-
-      public Builder WithSourcePortfolioId(string? sourcePortfolioId)
+      public CreateNetAllocationRequestBuilder WithSourcePortfolioId(string? sourcePortfolioId)
       {
         _sourcePortfolioId = sourcePortfolioId;
         return this;
       }
 
-      public Builder WithProductId(string? productId)
+      public CreateNetAllocationRequestBuilder WithProductId(string? productId)
       {
         _productId = productId;
         return this;
       }
 
-      public Builder WithOrderIds(string[] orderIds)
+      public CreateNetAllocationRequestBuilder WithOrderIds(string[] orderIds)
       {
         _orderIds = orderIds;
         return this;
       }
 
-      public Builder WithAllocationLegs(AllocationLeg[] allocationLegs)
+      public CreateNetAllocationRequestBuilder WithAllocationLegs(AllocationLeg[] allocationLegs)
       {
         _allocationLegs = allocationLegs;
         return this;
       }
 
-      public Builder WithSizeType(AllocationSizeType sizeType)
+      public CreateNetAllocationRequestBuilder WithSizeType(AllocationSizeType? sizeType)
       {
         _sizeType = sizeType;
         return this;
       }
 
-      public Builder WithRemainderDestinationPortfolio(string? remainderDestinationPortfolio)
+      public CreateNetAllocationRequestBuilder WithRemainderDestinationPortfolio(string? remainderDestinationPortfolio)
       {
         _remainderDestinationPortfolio = remainderDestinationPortfolio;
         return this;
       }
 
-      public Builder WithNettingId(string? nettingId)
+      public CreateNetAllocationRequestBuilder WithNettingId(string? nettingId)
       {
         _nettingId = nettingId;
         return this;
       }
 
+      private void Validate()
+      {
+      }
+
       public CreateNetAllocationRequest Build()
       {
-        return new CreateNetAllocationRequest
+        Validate();
+        return new CreateNetAllocationRequest()
         {
-          AllocationId = _allocationId,
           SourcePortfolioId = _sourcePortfolioId,
           ProductId = _productId,
-          OrderIds = _orderIds,
-          AllocationLegs = _allocationLegs,
+          OrderIds = _orderIds ?? [],
+          AllocationLegs = _allocationLegs ?? [],
           SizeType = _sizeType,
           RemainderDestinationPortfolio = _remainderDestinationPortfolio,
-          NettingId = _nettingId
+          NettingId = _nettingId,
         };
       }
     }

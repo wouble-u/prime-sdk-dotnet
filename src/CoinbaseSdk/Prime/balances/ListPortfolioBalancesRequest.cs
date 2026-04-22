@@ -21,65 +21,65 @@ namespace CoinbaseSdk.Prime.Balances
   using CoinbaseSdk.Prime.Common;
   using CoinbaseSdk.Prime.Model.Enums;
 
+  /// <summary>
+  /// List Portfolio Balances.
+  /// </summary>
   public class ListPortfolioBalancesRequest(string portfolioId) : PaginatedRequest
   {
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
 
+    [JsonPropertyName("symbols")]
     public string[] Symbols { get; set; } = [];
 
     [JsonPropertyName("balance_type")]
     public PortfolioBalanceType? BalanceType { get; set; }
 
-    public class Builder
+    public class ListPortfolioBalancesRequestBuilder
     {
       private string? _portfolioId;
-      private string[] _symbols = [];
-      private PortfolioBalanceType _balanceType;
+      private string[]? _symbols;
+      private PortfolioBalanceType? _balanceType;
       private string? _cursor;
       private SortDirection? _sortDirection;
       private int? _limit;
 
-      public Builder WithPortfolioId(string portfolioId)
+      public ListPortfolioBalancesRequestBuilder WithPortfolioId(string portfolioId)
       {
         _portfolioId = portfolioId;
         return this;
       }
 
-      public Builder WithSymbols(string[] symbols)
+      public ListPortfolioBalancesRequestBuilder WithSymbols(string[] symbols)
       {
         _symbols = symbols;
         return this;
       }
 
-      public Builder WithBalanceType(PortfolioBalanceType balanceType)
+      public ListPortfolioBalancesRequestBuilder WithBalanceType(PortfolioBalanceType? balanceType)
       {
         _balanceType = balanceType;
         return this;
       }
 
-      public Builder WithCursor(string cursor)
+      public ListPortfolioBalancesRequestBuilder WithCursor(string cursor)
       {
         _cursor = cursor;
         return this;
       }
 
-      public Builder WithSortDirection(SortDirection sortDirection)
+      public ListPortfolioBalancesRequestBuilder WithSortDirection(SortDirection sortDirection)
       {
         _sortDirection = sortDirection;
         return this;
       }
 
-      public Builder WithLimit(int limit)
+      public ListPortfolioBalancesRequestBuilder WithLimit(int limit)
       {
         _limit = limit;
         return this;
       }
 
-      /// <summary>
-      /// Validates the request.
-      /// </summary>
-      /// <exception cref="CoinbaseClientException">Thrown when <see cref="_portfolioId" /> is null, empty, or whitespace.</exception>
       private void Validate()
       {
         if (string.IsNullOrWhiteSpace(_portfolioId))
@@ -88,23 +88,17 @@ namespace CoinbaseSdk.Prime.Balances
         }
       }
 
-      /// <summary>
-      /// Builds the <see cref="ListPortfolioBalancesRequest"/>.
-      /// </summary>
-      /// <returns>The <see cref="ListPortfolioBalancesRequest"/>.</returns>
-      /// <exception cref="CoinbaseClientException">Thrown when <see cref="_portfolioId" /> is null, empty, or whitespace.</exception>
       public ListPortfolioBalancesRequest Build()
       {
         Validate();
-        var request = new ListPortfolioBalancesRequest(_portfolioId!)
+        return new ListPortfolioBalancesRequest(_portfolioId!)
         {
-          Symbols = _symbols,
+          Symbols = _symbols ?? [],
           BalanceType = _balanceType,
           Cursor = _cursor,
           SortDirection = _sortDirection,
-          Limit = _limit
+          Limit = _limit,
         };
-        return request;
       }
     }
   }

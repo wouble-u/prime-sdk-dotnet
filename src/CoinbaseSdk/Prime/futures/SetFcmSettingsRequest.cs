@@ -1,23 +1,27 @@
 /*
  * Copyright 2025-present Coinbase Global, Inc.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ *  http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
  */
 
 namespace CoinbaseSdk.Prime.Futures
 {
   using System.Text.Json.Serialization;
+  using CoinbaseSdk.Core.Error;
 
+  /// <summary>
+  /// Set FCM Settings.
+  /// </summary>
   public class SetFcmSettingsRequest(string entityId)
   {
     [JsonIgnore]
@@ -25,5 +29,40 @@ namespace CoinbaseSdk.Prime.Futures
 
     [JsonPropertyName("target_derivatives_excess")]
     public string? TargetDerivativesExcess { get; set; }
+
+    public class SetFcmSettingsRequestBuilder
+    {
+      private string? _entityId;
+      private string? _targetDerivativesExcess;
+
+      public SetFcmSettingsRequestBuilder WithEntityId(string entityId)
+      {
+        _entityId = entityId;
+        return this;
+      }
+
+      public SetFcmSettingsRequestBuilder WithTargetDerivativesExcess(string? targetDerivativesExcess)
+      {
+        _targetDerivativesExcess = targetDerivativesExcess;
+        return this;
+      }
+
+      private void Validate()
+      {
+        if (string.IsNullOrWhiteSpace(_entityId))
+        {
+          throw new CoinbaseClientException("EntityId is required");
+        }
+      }
+
+      public SetFcmSettingsRequest Build()
+      {
+        Validate();
+        return new SetFcmSettingsRequest(_entityId!)
+        {
+          TargetDerivativesExcess = _targetDerivativesExcess,
+        };
+      }
+    }
   }
 }

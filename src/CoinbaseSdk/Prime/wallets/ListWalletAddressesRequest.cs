@@ -17,8 +17,13 @@
 namespace CoinbaseSdk.Prime.Wallets
 {
   using System.Text.Json.Serialization;
+  using CoinbaseSdk.Core.Error;
   using CoinbaseSdk.Prime.Common;
+  using CoinbaseSdk.Prime.Model.Enums;
 
+  /// <summary>
+  /// List Wallet Addresses.
+  /// </summary>
   public class ListWalletAddressesRequest(string portfolioId, string walletId) : PaginatedRequest
   {
     [JsonIgnore]
@@ -29,5 +34,75 @@ namespace CoinbaseSdk.Prime.Wallets
 
     [JsonPropertyName("network_id")]
     public string? NetworkId { get; set; }
+
+    public class ListWalletAddressesRequestBuilder
+    {
+      private string? _portfolioId;
+      private string? _walletId;
+      private string? _networkId;
+      private string? _cursor;
+      private SortDirection? _sortDirection;
+      private int? _limit;
+
+      public ListWalletAddressesRequestBuilder WithPortfolioId(string portfolioId)
+      {
+        _portfolioId = portfolioId;
+        return this;
+      }
+
+      public ListWalletAddressesRequestBuilder WithWalletId(string walletId)
+      {
+        _walletId = walletId;
+        return this;
+      }
+
+      public ListWalletAddressesRequestBuilder WithNetworkId(string? networkId)
+      {
+        _networkId = networkId;
+        return this;
+      }
+
+      public ListWalletAddressesRequestBuilder WithCursor(string cursor)
+      {
+        _cursor = cursor;
+        return this;
+      }
+
+      public ListWalletAddressesRequestBuilder WithSortDirection(SortDirection sortDirection)
+      {
+        _sortDirection = sortDirection;
+        return this;
+      }
+
+      public ListWalletAddressesRequestBuilder WithLimit(int limit)
+      {
+        _limit = limit;
+        return this;
+      }
+
+      private void Validate()
+      {
+        if (string.IsNullOrWhiteSpace(_portfolioId))
+        {
+          throw new CoinbaseClientException("PortfolioId is required");
+        }
+        if (string.IsNullOrWhiteSpace(_walletId))
+        {
+          throw new CoinbaseClientException("WalletId is required");
+        }
+      }
+
+      public ListWalletAddressesRequest Build()
+      {
+        Validate();
+        return new ListWalletAddressesRequest(_portfolioId!, _walletId!)
+        {
+          NetworkId = _networkId,
+          Cursor = _cursor,
+          SortDirection = _sortDirection,
+          Limit = _limit,
+        };
+      }
+    }
   }
 }

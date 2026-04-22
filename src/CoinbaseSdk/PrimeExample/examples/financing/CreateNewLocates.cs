@@ -83,7 +83,7 @@ rootCommand.SetHandler((portfolioId, symbol, amount, locateDate) =>
         var client = CoinbasePrimeClient.FromEnv();
         var financingService = new FinancingService(client);
 
-        var builder = new CreateNewLocatesRequest.Builder()
+        var builder = new CreateNewLocatesRequest.CreateNewLocatesRequestBuilder()
             .WithSymbol(symbol)
             .WithAmount(amount);
 

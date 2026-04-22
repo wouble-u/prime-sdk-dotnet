@@ -17,8 +17,13 @@
 namespace CoinbaseSdk.Prime.Orders
 {
   using System.Text.Json.Serialization;
+  using CoinbaseSdk.Core.Error;
   using CoinbaseSdk.Prime.Common;
+  using CoinbaseSdk.Prime.Model.Enums;
 
+  /// <summary>
+  /// List Order Fills.
+  /// </summary>
   public class ListOrderFillsRequest(string portfolioId, string orderId) : PaginatedRequest
   {
     [JsonIgnore]
@@ -26,5 +31,67 @@ namespace CoinbaseSdk.Prime.Orders
 
     [JsonIgnore]
     public string OrderId { get; set; } = orderId;
+
+    public class ListOrderFillsRequestBuilder
+    {
+      private string? _portfolioId;
+      private string? _orderId;
+      private string? _cursor;
+      private SortDirection? _sortDirection;
+      private int? _limit;
+
+      public ListOrderFillsRequestBuilder WithPortfolioId(string portfolioId)
+      {
+        _portfolioId = portfolioId;
+        return this;
+      }
+
+      public ListOrderFillsRequestBuilder WithOrderId(string orderId)
+      {
+        _orderId = orderId;
+        return this;
+      }
+
+      public ListOrderFillsRequestBuilder WithCursor(string cursor)
+      {
+        _cursor = cursor;
+        return this;
+      }
+
+      public ListOrderFillsRequestBuilder WithSortDirection(SortDirection sortDirection)
+      {
+        _sortDirection = sortDirection;
+        return this;
+      }
+
+      public ListOrderFillsRequestBuilder WithLimit(int limit)
+      {
+        _limit = limit;
+        return this;
+      }
+
+      private void Validate()
+      {
+        if (string.IsNullOrWhiteSpace(_portfolioId))
+        {
+          throw new CoinbaseClientException("PortfolioId is required");
+        }
+        if (string.IsNullOrWhiteSpace(_orderId))
+        {
+          throw new CoinbaseClientException("OrderId is required");
+        }
+      }
+
+      public ListOrderFillsRequest Build()
+      {
+        Validate();
+        return new ListOrderFillsRequest(_portfolioId!, _orderId!)
+        {
+          Cursor = _cursor,
+          SortDirection = _sortDirection,
+          Limit = _limit,
+        };
+      }
+    }
   }
 }

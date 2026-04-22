@@ -17,25 +17,97 @@
 namespace CoinbaseSdk.Prime.Orders
 {
   using System.Text.Json.Serialization;
+  using CoinbaseSdk.Core.Error;
   using CoinbaseSdk.Prime.Model.Enums;
 
-  public class AcceptQuoteRequest(string portfolioId, string productId, string quoteId, string clientQuoteId)
+  /// <summary>
+  /// Accept Quote.
+  /// </summary>
+  public class AcceptQuoteRequest(string portfolioId)
   {
     [JsonIgnore]
     public string PortfolioId { get; set; } = portfolioId;
 
-    [JsonPropertyName("quote_id")]
-    public string QuoteId { get; set; } = quoteId;
-
     [JsonPropertyName("product_id")]
-    public string? ProductId { get; set; } = productId;
+    public string? ProductId { get; set; }
+
+    [JsonPropertyName("side")]
+    public OrderSide Side { get; set; }
 
     [JsonPropertyName("client_order_id")]
-    public string? ClientOrderId { get; set; } = clientQuoteId;
+    public string? ClientOrderId { get; set; }
+
+    [JsonPropertyName("quote_id")]
+    public string? QuoteId { get; set; }
 
     [JsonPropertyName("settl_currency")]
     public string? SettlCurrency { get; set; }
 
-    public OrderSide? Side { get; set; }
+    public class AcceptQuoteRequestBuilder
+    {
+      private string? _portfolioId;
+      private string? _productId;
+      private OrderSide _side;
+      private string? _clientOrderId;
+      private string? _quoteId;
+      private string? _settlCurrency;
+
+      public AcceptQuoteRequestBuilder WithPortfolioId(string portfolioId)
+      {
+        _portfolioId = portfolioId;
+        return this;
+      }
+
+      public AcceptQuoteRequestBuilder WithProductId(string? productId)
+      {
+        _productId = productId;
+        return this;
+      }
+
+      public AcceptQuoteRequestBuilder WithSide(OrderSide side)
+      {
+        _side = side;
+        return this;
+      }
+
+      public AcceptQuoteRequestBuilder WithClientOrderId(string? clientOrderId)
+      {
+        _clientOrderId = clientOrderId;
+        return this;
+      }
+
+      public AcceptQuoteRequestBuilder WithQuoteId(string? quoteId)
+      {
+        _quoteId = quoteId;
+        return this;
+      }
+
+      public AcceptQuoteRequestBuilder WithSettlCurrency(string? settlCurrency)
+      {
+        _settlCurrency = settlCurrency;
+        return this;
+      }
+
+      private void Validate()
+      {
+        if (string.IsNullOrWhiteSpace(_portfolioId))
+        {
+          throw new CoinbaseClientException("PortfolioId is required");
+        }
+      }
+
+      public AcceptQuoteRequest Build()
+      {
+        Validate();
+        return new AcceptQuoteRequest(_portfolioId!)
+        {
+          ProductId = _productId,
+          Side = _side,
+          ClientOrderId = _clientOrderId,
+          QuoteId = _quoteId,
+          SettlCurrency = _settlCurrency,
+        };
+      }
+    }
   }
 }
