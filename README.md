@@ -114,3 +114,19 @@ If you discover a security vulnerability within this SDK, please see our [Securi
 The _Coinbase Prime .NET SDK_ sample library is free and open source and released under the [Apache License, Version 2.0](LICENSE).
 
 The application and code are only available for demonstration purposes.
+
+---
+
+## Woubleu Research Notes
+
+Purpose:
+Study institutional digital asset infrastructure and API architectures.
+
+Goals:
+- Learn portfolio systems
+- Learn secure API integrations
+- Learn institutional wallet structures
+- Build future experimental projects
+
+Status:
+Research Fork / Educational
